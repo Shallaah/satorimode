@@ -1352,3 +1352,378 @@ footer {
     }
 
 }
+
+/* =====================================================
+   PÁGINA DE COLECCIONES
+===================================================== */
+
+.page-header {
+
+    padding:
+        120px 20px 90px;
+
+    text-align: center;
+
+    background:
+        var(--negro);
+
+    color:
+        var(--blanco);
+
+}
+
+
+.page-kicker {
+
+    color:
+        var(--rojo);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.page-header h1 {
+
+    font-size:
+        clamp(
+            45px,
+            8vw,
+            85px
+        );
+
+    letter-spacing: 6px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.page-header > p:last-child {
+
+    max-width: 600px;
+
+    margin: auto;
+
+    color:
+        #999;
+
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.collection-page-section {
+
+    padding:
+        100px 5%;
+
+    background:
+        var(--blanco);
+
+}
+
+
+.dark-section {
+
+    background:
+        var(--negro);
+
+    color:
+        var(--blanco);
+
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.collection-page-title {
+
+    max-width: 1400px;
+
+    margin:
+        0 auto 40px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+}
+
+
+.collection-page-title > span {
+
+    color:
+        var(--rojo);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    padding-top: 8px;
+
+}
+
+
+.collection-page-title h2 {
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            55px
+        );
+
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.collection-page-title p {
+
+    color:
+        var(--gris);
+
+    font-size: 14px;
+
+}
+
+
+.dark-section
+.collection-page-title p {
+
+    color:
+        #888;
+
+}
+
+
+/* =====================================================
+   BANNER DE COLECCIÓN
+===================================================== */
+
+.collection-banner {
+
+    max-width: 1400px;
+
+    min-height: 450px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.collection-banner::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111,
+            #222
+        );
+
+}
+
+
+.collection-banner::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    background:
+        var(--rojo);
+
+    border-radius: 50%;
+
+    filter:
+        blur(180px);
+
+    opacity:
+        0.15;
+
+}
+
+
+/* =====================================================
+   TIPOS DE BANNER
+===================================================== */
+
+.anime-banner {
+
+    background:
+        #111;
+
+}
+
+
+.streetwear-banner {
+
+    background:
+        #080808;
+
+}
+
+
+.exclusive-banner {
+
+    background:
+        #151515;
+
+}
+
+
+.new-banner {
+
+    background:
+        #0d0d0d;
+
+}
+
+
+/* =====================================================
+   TEXTO DEL BANNER
+===================================================== */
+
+.collection-banner > div {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.collection-banner span {
+
+    color:
+        var(--rojo);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+}
+
+
+.collection-banner h3 {
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            90px
+        );
+
+    letter-spacing: 7px;
+
+    margin:
+        15px 0;
+
+}
+
+
+.collection-banner p {
+
+    color:
+        #999;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .page-header {
+
+        padding:
+            90px 20px 70px;
+
+    }
+
+
+    .collection-page-section {
+
+        padding:
+            70px 20px;
+
+    }
+
+
+    .collection-page-title {
+
+        gap: 15px;
+
+    }
+
+
+    .collection-page-title h2 {
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .collection-banner {
+
+        min-height: 330px;
+
+    }
+
+
+    .collection-banner h3 {
+
+        letter-spacing: 3px;
+
+    }
+
+}
