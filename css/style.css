@@ -151,64 +151,83 @@ input {
 }
 
 
-/* DROPDOWNS */
+/* =========================================
+   MENÚ DESPLEGABLE
+   ========================================= */
 
 .nav-dropdown {
     position: relative;
 }
 
-.dropdown-menu {
+/* Botón del menú */
+.nav-dropdown > a {
+    position: relative;
+    z-index: 10;
+}
+
+/* Caja desplegable */
+.nav-dropdown-menu {
     position: absolute;
-
-    top: calc(100% + 22px);
+    top: calc(100% - 2px);
     left: 50%;
+    transform: translateX(-50%);
 
-    transform: translateX(-50%) translateY(-5px);
+    min-width: 165px;
 
-    min-width: 190px;
-
-    padding: 10px;
-
-    background: white;
-
-    border: 1px solid #e8e8e8;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
     border-radius: 12px;
 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.10);
+    padding: 10px 0;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 
     transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+        opacity 0.18s ease,
+        visibility 0.18s ease;
+
+    z-index: 9999;
 }
 
-.nav-dropdown:hover .dropdown-menu {
+/* IMPORTANTE:
+   El menú permanece abierto mientras
+   el mouse esté sobre el botón o el menú */
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown-menu:hover {
     opacity: 1;
     visibility: visible;
-
-    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
 }
 
-.dropdown-menu a {
+/* Elementos del menú */
+.nav-dropdown-menu a {
     display: block;
 
-    padding: 11px 13px;
+    padding: 12px 20px;
 
-    font-size: 11px;
-    font-weight: 700;
+    color: #111111;
+    text-decoration: none;
 
-    letter-spacing: 0.7px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 
-    border-radius: 7px;
+    white-space: nowrap;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
 }
 
-.dropdown-menu a:hover {
+/* Hover de cada opción */
+.nav-dropdown-menu a:hover {
     background: #f5f5f5;
-    color: var(--red);
+    color: #e60000;
 }
-
 
 /* =========================================================
    ICONOS HEADER
