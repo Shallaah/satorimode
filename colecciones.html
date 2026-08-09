@@ -214,249 +214,470 @@
          CONTENIDO
     =========================================== -->
 
+<main>
 
-    <main>
+    <!-- ENCABEZADO -->
 
+    <section class="collections-heading">
 
-        <!-- ENCABEZADO -->
+        <p>SATORIMODE</p>
 
-        <section class="page-header">
+        <h1>COLECCIONES</h1>
 
-            <p class="page-kicker">
-                SATORIMODE
-            </p>
+        <span>
+            Explora nuestros diseños y encuentra tu próxima prenda.
+        </span>
 
-            <h1>
-                COLECCIONES
-            </h1>
-
-            <p>
-                Explora nuestras colecciones
-                inspiradas en anime, streetwear
-                y cultura japonesa.
-            </p>
-
-        </section>
+    </section>
 
 
-        <!-- ======================================
-             ANIME
-        ======================================= -->
+    <!-- COLECCIONES -->
 
-        <section
-            class="collection-page-section"
-            id="anime"
-        >
+    <section class="collections-showcase">
 
-            <div class="collection-page-title">
+        <a href="#productos" class="collection-card">
+
+            <div class="collection-card-bg anime-bg"></div>
+
+            <div class="collection-card-content">
+
+                <small>01</small>
+
+                <h2>ANIME</h2>
 
                 <span>
-                    01
+                    Diseños inspirados en anime.
                 </span>
 
-                <div>
+            </div>
 
-                    <h2>
-                        ANIME
-                    </h2>
+        </a>
 
-                    <p>
-                        Diseños inspirados
-                        en el mundo del anime.
-                    </p>
 
-                </div>
+        <a href="#productos" class="collection-card">
+
+            <div class="collection-card-bg streetwear-bg"></div>
+
+            <div class="collection-card-content">
+
+                <small>02</small>
+
+                <h2>STREETWEAR</h2>
+
+                <span>
+                    Anime y cultura urbana.
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <a href="#productos" class="collection-card">
+
+            <div class="collection-card-bg exclusive-bg"></div>
+
+            <div class="collection-card-content">
+
+                <small>03</small>
+
+                <h2>EXCLUSIVOS</h2>
+
+                <span>
+                    Diseños especiales y limitados.
+                </span>
+
+            </div>
+
+        </a>
+
+    </section>
+
+
+    <!-- CATÁLOGO -->
+
+    <section
+        class="catalog-section"
+        id="productos"
+    >
+
+        <div class="catalog-top">
+
+            <div>
+
+                <p class="catalog-kicker">
+                    SATORIMODE
+                </p>
+
+                <h2>
+                    TODOS LOS DISEÑOS
+                </h2>
+
+                <span>
+                    Explora nuestras prendas disponibles.
+                </span>
 
             </div>
 
 
-            <div class="collection-banner anime-banner">
+            <button
+                class="filter-button"
+                onclick="toggleFilters()"
+            >
 
-                <div>
+                ☷
+
+                MOSTRAR FILTROS
+
+            </button>
+
+        </div>
+
+
+        <!-- FILTROS -->
+
+        <div
+            class="filters"
+            id="filters"
+        >
+
+            <div class="filter-group">
+
+                <strong>
+                    CATEGORÍA
+                </strong>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="polera"
+                    >
+                    Poleras
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="poleron"
+                    >
+                    Polerones
+                </label>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <strong>
+                    COLECCIÓN
+                </strong>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="anime"
+                    >
+                    Anime
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="streetwear"
+                    >
+                    Streetwear
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="exclusivo"
+                    >
+                    Exclusivos
+                </label>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <strong>
+                    COLOR
+                </strong>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="negro"
+                    >
+                    Negro
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="blanco"
+                    >
+                    Blanco
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        value="rojo"
+                    >
+                    Rojo
+                </label>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <strong>
+                    ORDENAR
+                </strong>
+
+                <select>
+
+                    <option>
+                        Más recientes
+                    </option>
+
+                    <option>
+                        Más vendidos
+                    </option>
+
+                    <option>
+                        Precio: menor a mayor
+                    </option>
+
+                    <option>
+                        Precio: mayor a menor
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTOS -->
+
+        <div class="products-grid">
+
+
+            <!-- PRODUCTO 1 -->
+
+            <a
+                href="#"
+                class="product-card"
+            >
+
+                <div class="product-image product-placeholder">
 
                     <span>
-                        SATORIMODE
+                        PRENDA 01
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        POLERA · ANIME
                     </span>
 
                     <h3>
-                        ANIME
+                        Satori #001
                     </h3>
 
                     <p>
-                        Próximamente
+                        $24.990
                     </p>
 
                 </div>
 
-            </div>
-
-        </section>
+            </a>
 
 
-        <!-- ======================================
-             STREETWEAR
-        ======================================= -->
+            <!-- PRODUCTO 2 -->
 
-        <section
-            class="collection-page-section dark-section"
-            id="streetwear"
-        >
+            <a
+                href="#"
+                class="product-card"
+            >
 
-            <div class="collection-page-title">
-
-                <span>
-                    02
-                </span>
-
-                <div>
-
-                    <h2>
-                        STREETWEAR
-                    </h2>
-
-                    <p>
-                        Una estética urbana
-                        con identidad SatoriMode.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="collection-banner streetwear-banner">
-
-                <div>
+                <div class="product-image product-placeholder">
 
                     <span>
-                        SATORIMODE
+                        PRENDA 02
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        POLERA · ANIME
                     </span>
 
                     <h3>
-                        STREETWEAR
+                        Satori #002
                     </h3>
 
                     <p>
-                        Próximamente
+                        $24.990
                     </p>
 
                 </div>
 
-            </div>
-
-        </section>
+            </a>
 
 
-        <!-- ======================================
-             EXCLUSIVOS
-        ======================================= -->
+            <!-- PRODUCTO 3 -->
 
-        <section
-            class="collection-page-section"
-            id="exclusivos"
-        >
+            <a
+                href="#"
+                class="product-card"
+            >
 
-            <div class="collection-page-title">
-
-                <span>
-                    03
-                </span>
-
-                <div>
-
-                    <h2>
-                        EXCLUSIVOS
-                    </h2>
-
-                    <p>
-                        Diseños especiales
-                        y lanzamientos limitados.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="collection-banner exclusive-banner">
-
-                <div>
+                <div class="product-image product-placeholder">
 
                     <span>
-                        SATORIMODE
+                        PRENDA 03
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        POLERA · STREETWEAR
                     </span>
 
                     <h3>
-                        EXCLUSIVOS
+                        Satori #003
                     </h3>
 
                     <p>
-                        Próximamente
+                        $24.990
                     </p>
 
                 </div>
 
-            </div>
-
-        </section>
+            </a>
 
 
-        <!-- ======================================
-             NUEVOS DISEÑOS
-        ======================================= -->
+            <!-- PRODUCTO 4 -->
 
-        <section
-            class="collection-page-section dark-section"
-            id="nuevos"
-        >
+            <a
+                href="#"
+                class="product-card"
+            >
 
-            <div class="collection-page-title">
-
-                <span>
-                    04
-                </span>
-
-                <div>
-
-                    <h2>
-                        NUEVOS DISEÑOS
-                    </h2>
-
-                    <p>
-                        Las últimas novedades
-                        de SatoriMode.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="collection-banner new-banner">
-
-                <div>
+                <div class="product-image product-placeholder">
 
                     <span>
-                        SATORIMODE
+                        PRENDA 04
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        POLERA · STREETWEAR
                     </span>
 
                     <h3>
-                        NUEVOS DISEÑOS
+                        Satori #004
                     </h3>
 
                     <p>
-                        Próximamente
+                        $24.990
                     </p>
 
                 </div>
 
-            </div>
-
-        </section>
+            </a>
 
 
-    </main>
+            <!-- PRODUCTO 5 -->
 
+            <a
+                href="#"
+                class="product-card"
+            >
+
+                <div class="product-image product-placeholder">
+
+                    <span>
+                        PRENDA 05
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        POLERÓN · EXCLUSIVO
+                    </span>
+
+                    <h3>
+                        Satori #005
+                    </h3>
+
+                    <p>
+                        $34.990
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <!-- PRODUCTO 6 -->
+
+            <a
+                href="#"
+                class="product-card"
+            >
+
+                <div class="product-image product-placeholder">
+
+                    <span>
+                        PRENDA 06
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        POLERÓN · EXCLUSIVO
+                    </span>
+
+                    <h3>
+                        Satori #006
+                    </h3>
+
+                    <p>
+                        $34.990
+                    </p>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+</main>
+   
 
     <!-- FOOTER -->
 
@@ -567,4 +788,18 @@
 
 </body>
 
+    <script>
+
+function toggleFilters() {
+
+    const filters =
+        document.getElementById("filters");
+
+    filters.classList.toggle("active");
+
+}
+
+</script>
+    
 </html>
+
