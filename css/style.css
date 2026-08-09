@@ -929,3 +929,126 @@ footer {
         text-align: center;
     }
 }
+
+/* ==================================================
+   SATORIMODE - MENÚS DESPLEGABLES
+   CORRECCIÓN
+================================================== */
+
+.menu-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Botón principal del menú */
+
+.menu-dropdown > .dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Flecha */
+
+.menu-dropdown .arrow {
+    display: inline-block;
+    font-size: 13px;
+    transition: transform 0.25s ease;
+}
+
+/* CAJA DESPLEGABLE */
+
+.menu-dropdown > .dropdown-content {
+    position: absolute !important;
+
+    top: calc(100% + 20px) !important;
+    left: 50% !important;
+
+    transform: translateX(-50%) translateY(-10px) !important;
+
+    width: 220px !important;
+
+    display: block !important;
+
+    background: #ffffff !important;
+
+    padding: 10px 0 !important;
+
+    border: 1px solid #e5e5e5 !important;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    z-index: 9999 !important;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease !important;
+}
+
+/* MOSTRAR AL PASAR EL MOUSE */
+
+.menu-dropdown:hover > .dropdown-content {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* ELEMENTOS DEL DESPLEGABLE */
+
+.menu-dropdown > .dropdown-content a {
+    display: block !important;
+
+    position: static !important;
+
+    width: 100% !important;
+
+    padding: 12px 20px !important;
+
+    margin: 0 !important;
+
+    color: #0A0A0A !important;
+
+    background: transparent !important;
+
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 0.8px !important;
+
+    white-space: nowrap !important;
+
+    text-align: left !important;
+}
+
+/* Quitar línea roja de los enlaces */
+
+.menu-dropdown > .dropdown-content a::after {
+    display: none !important;
+}
+
+/* Hover de cada opción */
+
+.menu-dropdown > .dropdown-content a:hover {
+    background: #f5f5f5 !important;
+
+    color: #E10600 !important;
+}
+
+/* Flecha gira */
+
+.menu-dropdown:hover .arrow {
+    transform: rotate(180deg);
+}
