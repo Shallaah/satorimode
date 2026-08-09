@@ -5,6 +5,2137 @@
 
     <meta charset="UTF-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Colecciones SatoriMode — Anime, Streetwear y diseños exclusivos."
+    >
+
+    <title>Colecciones | SatoriMode</title>
+
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
+
+        :root {
+            --rojo: #ed0000;
+            --rojo-oscuro: #8f0000;
+
+            --negro: #080808;
+            --negro-suave: #111111;
+
+            --blanco: #ffffff;
+            --gris: #666666;
+            --gris-claro: #f5f5f5;
+
+            --radio: 18px;
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--blanco);
+            color: var(--negro);
+
+            line-height: 1.5;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button,
+        select {
+            font-family: inherit;
+        }
+
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* =====================================================
+           BARRA SUPERIOR
+        ===================================================== */
+
+        .top-bar {
+
+            width: 100%;
+
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--rojo);
+
+            color: var(--blanco);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            width: 100%;
+
+            height: 76px;
+
+            padding: 0 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: var(--blanco);
+
+            border-bottom: 1px solid #e8e8e8;
+
+            position: relative;
+
+            z-index: 100;
+        }
+
+
+        /* LOGO */
+
+        .logo-link {
+
+            display: flex;
+
+            align-items: center;
+
+            width: 90px;
+
+            flex-shrink: 0;
+        }
+
+
+        .logo {
+
+            width: 58px !important;
+
+            height: auto !important;
+
+            max-width: 58px !important;
+
+            max-height: 58px !important;
+
+            object-fit: contain;
+
+        }
+
+
+        /* MENU */
+
+        .menu {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 34px;
+
+            margin-left: auto;
+
+            margin-right: 35px;
+        }
+
+
+        .menu > a,
+        .dropdown-trigger {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: .8px;
+
+            white-space: nowrap;
+
+            transition: .2s ease;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+        }
+
+
+        .menu > a:hover,
+        .dropdown-trigger:hover {
+
+            color: var(--rojo);
+
+        }
+
+
+        /* =====================================================
+           MENÚ DESPLEGABLE
+        ===================================================== */
+
+        .menu-dropdown {
+
+            position: relative;
+        }
+
+
+        .dropdown-trigger span {
+
+            font-size: 14px;
+
+            transition: transform .2s ease;
+        }
+
+
+        .menu-dropdown:hover
+        .dropdown-trigger span {
+
+            transform: rotate(180deg);
+        }
+
+
+        .dropdown-content {
+
+            position: absolute;
+
+            top: calc(100% + 22px);
+
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                translateY(-8px);
+
+            width: 210px;
+
+            padding: 14px;
+
+            background: var(--negro);
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.2);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: .2s ease;
+
+            z-index: 200;
+        }
+
+
+        .dropdown-content::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: -8px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border-left: 8px solid transparent;
+
+            border-right: 8px solid transparent;
+
+            border-bottom: 8px solid var(--negro);
+        }
+
+
+        .menu-dropdown:hover
+        .dropdown-content {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
+
+
+        .dropdown-content a {
+
+            display: block;
+
+            padding: 10px 12px;
+
+            color: var(--blanco);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: .5px;
+
+            border-radius: 7px;
+
+            transition: .2s ease;
+        }
+
+
+        .dropdown-content a:hover {
+
+            background: var(--rojo);
+
+        }
+
+
+        /* =====================================================
+           ICONOS
+        ===================================================== */
+
+        .actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-shrink: 0;
+        }
+
+
+        .action {
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+
+        .action:hover {
+
+            color: var(--rojo);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .collections-heading {
+
+            min-height: 285px;
+
+            padding: 65px 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: var(--blanco);
+
+            background:
+
+                radial-gradient(
+                    circle at 75% 30%,
+                    rgba(140,0,0,.45),
+                    transparent 40%
+                ),
+
+                linear-gradient(
+                    120deg,
+                    #050505,
+                    #100000
+                );
+        }
+
+
+        .collections-heading p {
+
+            color: var(--rojo);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .collections-heading h1 {
+
+            font-size: clamp(48px, 7vw, 92px);
+
+            line-height: .95;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .collections-heading span {
+
+            color: #bdbdbd;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .collections-intro {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 80px 30px 55px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1.5fr;
+
+            gap: 80px;
+
+            align-items: center;
+        }
+
+
+        .intro-title {
+
+            font-size: 48px;
+
+            line-height: .95;
+
+            text-transform: uppercase;
+
+            font-weight: 900;
+        }
+
+
+        .intro-title span {
+
+            color: var(--rojo);
+
+        }
+
+
+        .intro-text {
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =====================================================
+           COLECCIONES
+        ===================================================== */
+
+        .collections-showcase {
+
+            max-width: 1360px;
+
+            margin: 0 auto;
+
+            padding: 0 30px 80px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+        }
+
+
+        .collection-card {
+
+            position: relative;
+
+            min-height: 280px;
+
+            overflow: hidden;
+
+            border-radius: var(--radio);
+
+            background: var(--negro);
+
+            color: var(--blanco);
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+
+            isolation: isolate;
+        }
+
+
+        /* ANIME GRANDE */
+
+        .collection-card:first-child {
+
+            grid-column: 1 / -1;
+
+            min-height: 390px;
+        }
+
+
+        .collection-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.18);
+        }
+
+
+        /* FONDOS */
+
+        .collection-card-bg {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: -2;
+        }
+
+
+        .anime-bg {
+
+            background:
+
+                radial-gradient(
+                    circle at 75% 45%,
+                    rgba(150,0,0,.65),
+                    transparent 45%
+                ),
+
+                linear-gradient(
+                    110deg,
+                    #050505,
+                    #280000
+                );
+        }
+
+
+        .streetwear-bg {
+
+            background:
+
+                radial-gradient(
+                    circle at 75% 30%,
+                    rgba(100,0,0,.55),
+                    transparent 45%
+                ),
+
+                linear-gradient(
+                    110deg,
+                    #090909,
+                    #190909
+                );
+        }
+
+
+        .exclusive-bg {
+
+            background:
+
+                radial-gradient(
+                    circle at 75% 30%,
+                    rgba(90,0,0,.45),
+                    transparent 45%
+                ),
+
+                linear-gradient(
+                    110deg,
+                    #090909,
+                    #141414
+                );
+        }
+
+
+        /* LOGO DECORATIVO */
+
+        .collection-card-bg::after {
+
+            content: "悟";
+
+            position: absolute;
+
+            right: 7%;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%)
+                rotate(-5deg);
+
+            font-size: 220px;
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            color: rgba(237,0,0,.75);
+
+            opacity: .9;
+        }
+
+
+        .collection-card-content {
+
+            position: absolute;
+
+            left: 40px;
+
+            bottom: 40px;
+
+            max-width: 540px;
+        }
+
+
+        .collection-card-content small {
+
+            color: var(--rojo);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
+        }
+
+
+        .collection-card-content h2 {
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            margin: 12px 0;
+
+            font-weight: 900;
+        }
+
+
+        .collection-card-content span {
+
+            display: block;
+
+            color: #c8c8c8;
+
+            font-size: 13px;
+
+            max-width: 480px;
+        }
+
+
+        /* =====================================================
+           FRASE
+        ===================================================== */
+
+        .collection-message {
+
+            padding: 85px 30px;
+
+            text-align: center;
+
+            background: var(--gris-claro);
+        }
+
+
+        .collection-message h2 {
+
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            font-size: clamp(28px, 4vw, 52px);
+
+            line-height: 1.05;
+
+            font-weight: 900;
+        }
+
+
+        .collection-message span {
+
+            color: var(--rojo);
+
+        }
+
+
+        /* =====================================================
+           CATÁLOGO
+        ===================================================== */
+
+        .catalog-section {
+
+            max-width: 1360px;
+
+            margin: 0 auto;
+
+            padding: 90px 30px;
+        }
+
+
+        .catalog-top {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .catalog-kicker {
+
+            color: var(--rojo);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .catalog-top h2 {
+
+            font-size: 45px;
+
+            line-height: 1;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .catalog-top span {
+
+            color: var(--gris);
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           FILTROS
+        ===================================================== */
+
+        .filter-button {
+
+            border: none;
+
+            background: var(--rojo);
+
+            color: var(--blanco);
+
+            padding: 14px 20px;
+
+            border-radius: 999px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+
+        .filter-button:hover {
+
+            background: #c40000;
+
+            transform: translateY(-2px);
+        }
+
+
+        .filters {
+
+            display: none;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 35px;
+
+            padding: 30px;
+
+            margin-bottom: 45px;
+
+            background: #f7f7f7;
+
+            border-radius: 15px;
+        }
+
+
+        .filters.active {
+
+            display: grid;
+        }
+
+
+        .filter-group {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .filter-group strong {
+
+            width: 100%;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .filter-group label {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+
+        .filter-group input {
+
+            accent-color: var(--rojo);
+
+        }
+
+
+        /* =====================================================
+           PRODUCTOS
+        ===================================================== */
+
+        .products-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 30px;
+        }
+
+
+        .product-card {
+
+            transition: .3s ease;
+        }
+
+
+        .product-card:hover {
+
+            transform: translateY(-5px);
+        }
+
+
+        .product-image {
+
+            aspect-ratio: 1 / 1;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 70% 25%,
+                    rgba(150,0,0,.5),
+                    transparent 40%
+                ),
+
+                #111;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: var(--rojo);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+
+        .product-info {
+
+            padding-top: 17px;
+        }
+
+
+        .product-category {
+
+            color: var(--rojo);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .product-info h3 {
+
+            font-size: 17px;
+
+            margin: 5px 0;
+        }
+
+
+        .product-info p {
+
+            font-size: 15px;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: var(--negro);
+
+            color: var(--blanco);
+
+            padding: 70px 5% 25px;
+        }
+
+
+        .footer-main {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 50px;
+
+            padding-bottom: 60px;
+        }
+
+
+        .footer-logo {
+
+            width: 55px !important;
+
+            height: auto !important;
+
+            max-width: 55px !important;
+
+            margin-bottom: 20px;
+        }
+
+
+        footer p {
+
+            color: #999;
+
+            font-size: 13px;
+
+            max-width: 280px;
+
+            line-height: 1.8;
+        }
+
+
+        .footer-column {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .footer-column h3 {
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .footer-column a {
+
+            color: #999;
+
+            font-size: 13px;
+
+            transition: .2s ease;
+        }
+
+
+        .footer-column a:hover {
+
+            color: var(--rojo);
+        }
+
+
+        .footer-bottom {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #222;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #666;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .menu {
+
+                gap: 15px;
+
+                margin-right: 15px;
+            }
+
+
+            .menu > a,
+            .dropdown-trigger {
+
+                font-size: 11px;
+            }
+
+
+            .actions {
+
+                gap: 10px;
+            }
+
+
+            .collections-intro {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+
+            .products-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .footer-main {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .top-bar {
+
+                font-size: 9px;
+            }
+
+
+            .navbar {
+
+                height: 65px;
+
+                padding: 0 20px;
+            }
+
+
+            .logo-link {
+
+                width: 55px;
+            }
+
+
+            .logo {
+
+                width: 45px !important;
+
+                max-width: 45px !important;
+            }
+
+
+            .menu {
+
+                gap: 9px;
+
+                margin: 0;
+            }
+
+
+            .menu > a,
+            .dropdown-trigger {
+
+                font-size: 9px;
+
+                letter-spacing: 0;
+            }
+
+
+            .actions {
+
+                display: none;
+            }
+
+
+            .dropdown-content {
+
+                width: 180px;
+            }
+
+
+            .collections-heading {
+
+                min-height: 230px;
+
+                padding: 50px 20px;
+            }
+
+
+            .collections-heading h1 {
+
+                letter-spacing: -1px;
+            }
+
+
+            .collections-intro {
+
+                padding: 55px 25px 40px;
+            }
+
+
+            .intro-title {
+
+                font-size: 38px;
+            }
+
+
+            .collections-showcase {
+
+                grid-template-columns: 1fr;
+
+                padding: 0 20px 55px;
+            }
+
+
+            .collection-card:first-child {
+
+                grid-column: auto;
+
+                min-height: 320px;
+            }
+
+
+            .collection-card {
+
+                min-height: 250px;
+            }
+
+
+            .collection-card-content {
+
+                left: 25px;
+
+                bottom: 25px;
+            }
+
+
+            .collection-card-content h2 {
+
+                font-size: 30px;
+            }
+
+
+            .collection-card-bg::after {
+
+                font-size: 150px;
+            }
+
+
+            .catalog-section {
+
+                padding: 60px 20px;
+            }
+
+
+            .catalog-top {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .catalog-top h2 {
+
+                font-size: 35px;
+            }
+
+
+            .filters {
+
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+
+                padding: 22px;
+            }
+
+
+            .products-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+
+            .footer-main {
+
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+
+            .footer-bottom {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BARRA SUPERIOR
+    ===================================================== -->
+
+    <div class="top-bar">
+
+        ENVÍOS A TODO CHILE · SATORIMODE
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header class="navbar">
+
+
+        <a
+            href="index.html"
+            class="logo-link"
+        >
+
+            <img
+                src="logo.png"
+                alt="SatoriMode"
+                class="logo"
+            >
+
+        </a>
+
+
+        <nav class="menu">
+
+
+            <a href="index.html">
+                INICIO
+            </a>
+
+
+            <div class="menu-dropdown">
+
+                <a
+                    href="colecciones.html"
+                    class="dropdown-trigger"
+                >
+
+                    COLECCIONES
+
+                    <span>⌄</span>
+
+                </a>
+
+
+                <div class="dropdown-content">
+
+                    <a href="#anime">
+                        ANIME
+                    </a>
+
+                    <a href="#streetwear">
+                        STREETWEAR
+                    </a>
+
+                    <a href="#exclusivos">
+                        EXCLUSIVOS
+                    </a>
+
+                    <a href="#productos">
+                        NUEVOS DISEÑOS
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-dropdown">
+
+                <a
+                    href="#productos"
+                    class="dropdown-trigger"
+                >
+
+                    PRODUCTOS
+
+                    <span>⌄</span>
+
+                </a>
+
+
+                <div class="dropdown-content">
+
+                    <a href="#productos">
+                        TODAS LAS PRENDAS
+                    </a>
+
+                    <a href="#productos">
+                        POLERAS
+                    </a>
+
+                    <a href="#productos">
+                        POLERONES
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="#">
+                NOSOTROS
+            </a>
+
+
+            <div class="menu-dropdown">
+
+                <a
+                    href="#"
+                    class="dropdown-trigger"
+                >
+
+                    AYUDA
+
+                    <span>⌄</span>
+
+                </a>
+
+
+                <div class="dropdown-content">
+
+                    <a href="#">
+                        GUÍA DE TALLAS
+                    </a>
+
+                    <a href="#">
+                        CUIDADO DE PRENDAS
+                    </a>
+
+                    <a href="#">
+                        ENVÍOS
+                    </a>
+
+                    <a href="#">
+                        CAMBIOS
+                    </a>
+
+                    <a href="#">
+                        PREGUNTAS FRECUENTES
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </nav>
+
+
+        <div class="actions">
+
+            <div
+                class="action"
+                title="Buscar"
+            >
+                ⌕
+            </div>
+
+            <div
+                class="action"
+                title="Mi cuenta"
+            >
+                ♙
+            </div>
+
+            <div
+                class="action"
+                title="Carrito"
+            >
+                🛒
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENIDO
+    ===================================================== -->
+
+    <main>
+
+
+        <!-- HERO -->
+
+        <section class="collections-heading">
+
+            <p>SATORIMODE</p>
+
+            <h1>
+                COLECCIONES
+            </h1>
+
+            <span>
+                Una selección de diseños inspirados en el anime,
+                el streetwear y la cultura japonesa.
+            </span>
+
+        </section>
+
+
+        <!-- INTRO -->
+
+        <section class="collections-intro">
+
+            <h2 class="intro-title">
+
+                VISTE<br>
+                TU<br>
+                <span>PASIÓN.</span>
+
+            </h2>
+
+
+            <div class="intro-text">
+
+                <p>
+
+                    En SatoriMode creamos prendas para quienes
+                    encuentran inspiración en el anime, la estética
+                    japonesa y la cultura urbana.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    Cada colección nace de una idea diferente,
+                    buscando convertir referencias que amamos
+                    en diseños que puedas llevar contigo.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLECCIONES -->
+
+        <section class="collections-showcase">
+
+
+            <!-- ANIME -->
+
+            <a
+                href="#productos"
+                class="collection-card"
+                id="anime"
+            >
+
+                <div
+                    class="collection-card-bg anime-bg"
+                ></div>
+
+
+                <div class="collection-card-content">
+
+                    <small>
+                        01 / COLECCIÓN
+                    </small>
+
+                    <h2>
+                        ANIME
+                    </h2>
+
+                    <span>
+
+                        Diseños inspirados en personajes,
+                        historias y universos del anime.
+
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- STREETWEAR -->
+
+            <a
+                href="#productos"
+                class="collection-card"
+                id="streetwear"
+            >
+
+                <div
+                    class="collection-card-bg streetwear-bg"
+                ></div>
+
+
+                <div class="collection-card-content">
+
+                    <small>
+                        02 / COLECCIÓN
+                    </small>
+
+                    <h2>
+                        STREETWEAR
+                    </h2>
+
+                    <span>
+
+                        Anime, cultura japonesa y estética
+                        urbana llevados a una propuesta
+                        más cotidiana.
+
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- EXCLUSIVOS -->
+
+            <a
+                href="#productos"
+                class="collection-card"
+                id="exclusivos"
+            >
+
+                <div
+                    class="collection-card-bg exclusive-bg"
+                ></div>
+
+
+                <div class="collection-card-content">
+
+                    <small>
+                        03 / COLECCIÓN
+                    </small>
+
+                    <h2>
+                        EXCLUSIVOS
+                    </h2>
+
+                    <span>
+
+                        Diseños especiales, ediciones limitadas
+                        y piezas creadas para destacar.
+
+                    </span>
+
+                </div>
+
+            </a>
+
+
+        </section>
+
+
+        <!-- MENSAJE -->
+
+        <section class="collection-message">
+
+            <h2>
+
+                NO SE TRATA SOLO DE LO QUE VISTES.
+                <span>
+                    SE TRATA DE LO QUE REPRESENTAS.
+                </span>
+
+            </h2>
+
+        </section>
+
+
+        <!-- =================================================
+             CATÁLOGO
+        ================================================== -->
+
+        <section
+            class="catalog-section"
+            id="productos"
+        >
+
+
+            <div class="catalog-top">
+
+                <div>
+
+                    <p class="catalog-kicker">
+                        SATORIMODE
+                    </p>
+
+                    <h2>
+                        TODOS LOS DISEÑOS
+                    </h2>
+
+                    <span>
+                        Explora nuestras prendas disponibles.
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="filter-button"
+                    onclick="toggleFilters()"
+                >
+
+                    ☷
+                    MOSTRAR FILTROS
+
+                </button>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div
+                class="filters"
+                id="filters"
+            >
+
+
+                <!-- COLOR -->
+
+                <div class="filter-group">
+
+                    <strong>
+                        COLOR
+                    </strong>
+
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            value="negro"
+                        >
+
+                        Negro
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            value="blanco"
+                        >
+
+                        Blanco
+
+                    </label>
+
+                </div>
+
+
+                <!-- TALLAS -->
+
+                <div class="filter-group">
+
+                    <strong>
+                        TALLA
+                    </strong>
+
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            value="S"
+                        >
+
+                        S
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            value="M"
+                        >
+
+                        M
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            value="L"
+                        >
+
+                        L
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            value="XL"
+                        >
+
+                        XL
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            value="XXL"
+                        >
+
+                        XXL
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- PRODUCTOS -->
+
+            <div class="products-grid">
+
+
+                <a
+                    href="#"
+                    class="product-card"
+                >
+
+                    <div class="product-image">
+
+                        PRENDA 01
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            POLERA · ANIME
+                        </span>
+
+                        <h3>
+                            Satori #001
+                        </h3>
+
+                        <p>
+                            $24.990
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="product-card"
+                >
+
+                    <div class="product-image">
+
+                        PRENDA 02
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            POLERA · ANIME
+                        </span>
+
+                        <h3>
+                            Satori #002
+                        </h3>
+
+                        <p>
+                            $24.990
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="product-card"
+                >
+
+                    <div class="product-image">
+
+                        PRENDA 03
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            POLERA · STREETWEAR
+                        </span>
+
+                        <h3>
+                            Satori #003
+                        </h3>
+
+                        <p>
+                            $24.990
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+
+        <div class="footer-main">
+
+
+            <div>
+
+                <img
+                    src="logo.png"
+                    alt="SatoriMode"
+                    class="footer-logo"
+                >
+
+                <p>
+
+                    SatoriMode nace de la combinación
+                    entre anime, cultura japonesa
+                    y streetwear.
+
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    TIENDA
+                </h3>
+
+                <a href="index.html">
+                    Inicio
+                </a>
+
+                <a href="colecciones.html">
+                    Colecciones
+                </a>
+
+                <a href="#productos">
+                    Productos
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    AYUDA
+                </h3>
+
+                <a href="#">
+                    Guía de tallas
+                </a>
+
+                <a href="#">
+                    Cuidado de prendas
+                </a>
+
+                <a href="#">
+                    Envíos
+                </a>
+
+                <a href="#">
+                    Preguntas frecuentes
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    SÍGUENOS
+                </h3>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    TikTok
+                </a>
+
+                <a href="#">
+                    Contacto
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SatoriMode
+            </span>
+
+            <span>
+                Todos los derechos reservados.
+            </span>
+
+        </div>
+
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        function toggleFilters() {
+
+            const filters =
+                document.getElementById("filters");
+
+            filters.classList.toggle("active");
+
+        }
+
+    </script>
+
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
