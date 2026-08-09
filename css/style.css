@@ -2038,3 +2038,28 @@ footer {
     }
 
 }
+
+/* =========================================
+   BORDES REDONDEADOS — SATORIMODE
+   ========================================= */
+
+.collection-main,
+.collection-small,
+.product-card,
+.collection-card,
+.category-card,
+.product-image,
+.filter-box,
+.info-box,
+.banner,
+.about-card {
+    border-radius: 16px;
+}
+
+/* Botones y controles */
+
+button,
+.btn,
+.filter-button {
+    border-radius: 8px;
+}
