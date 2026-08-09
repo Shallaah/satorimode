@@ -1755,267 +1755,352 @@
         </section>
 
 
-        <!-- =================================================
-             CATÁLOGO
-        ================================================== -->
+<!-- =====================================================
+     CATÁLOGO DE PRODUCTOS
+===================================================== -->
 
-        <section
-            class="catalog-section"
-            id="productos"
+<section class="catalog-section" id="productos">
+
+    <div class="catalog-top">
+
+        <div>
+            <p class="catalog-kicker">SATORIMODE</p>
+
+            <h2>TODOS LOS DISEÑOS</h2>
+
+            <span>
+                Explora nuestras prendas disponibles.
+            </span>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FILTROS
+    ================================================== -->
+
+    <div class="catalog-filters">
+
+        <div class="filter-group">
+
+            <span class="filter-title">COLOR</span>
+
+            <label class="filter-option">
+                <input type="checkbox" name="color" value="negro">
+                <span class="color-dot black"></span>
+                Negro
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" name="color" value="blanco">
+                <span class="color-dot white"></span>
+                Blanco
+            </label>
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <span class="filter-title">TALLA</span>
+
+            <label class="filter-option">
+                <input type="checkbox" name="size" value="S">
+                S
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" name="size" value="M">
+                M
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" name="size" value="L">
+                L
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" name="size" value="XL">
+                XL
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" name="size" value="XXL">
+                XXL
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PRODUCTOS
+    ================================================== -->
+
+    <div class="products-grid">
+
+
+        <!-- PRODUCTO 01 -->
+
+        <article
+            class="product-card"
+            data-color="negro"
+            data-sizes="S,M,L,XL"
         >
 
+            <a href="#" class="product-image">
 
-            <div class="catalog-top">
-
-                <div>
-
-                    <p class="catalog-kicker">
-                        SATORIMODE
-                    </p>
-
-                    <h2>
-                        TODOS LOS DISEÑOS
-                    </h2>
-
-                    <span>
-                        Explora nuestras prendas disponibles.
-                    </span>
-
+                <div class="product-placeholder">
+                    IMAGEN
                 </div>
 
+            </a>
 
-                <button
-                    class="filter-button"
-                    onclick="toggleFilters()"
-                >
+            <div class="product-info">
 
-                    ☷
-                    MOSTRAR FILTROS
+                <p class="product-category">
+                    POLERA
+                </p>
 
-                </button>
+                <h3>
+                    Satori #001
+                </h3>
+
+                <p class="product-price">
+                    $24.990
+                </p>
+
+                <p class="product-details">
+                    Negro · S · M · L · XL
+                </p>
 
             </div>
 
-
-            <!-- FILTROS -->
-
-            <div
-                class="filters"
-                id="filters"
-            >
+        </article>
 
 
-                <!-- COLOR -->
 
-                <div class="filter-group">
+        <!-- PRODUCTO 02 -->
 
-                    <strong>
-                        COLOR
-                    </strong>
+        <article
+            class="product-card"
+            data-color="blanco"
+            data-sizes="S,M,L,XL"
+        >
 
+            <a href="#" class="product-image">
 
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            value="negro"
-                        >
-
-                        Negro
-
-                    </label>
-
-
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            value="blanco"
-                        >
-
-                        Blanco
-
-                    </label>
-
+                <div class="product-placeholder">
+                    IMAGEN
                 </div>
 
+            </a>
 
-                <!-- TALLAS -->
+            <div class="product-info">
 
-                <div class="filter-group">
+                <p class="product-category">
+                    POLERA
+                </p>
 
-                    <strong>
-                        TALLA
-                    </strong>
+                <h3>
+                    Satori #002
+                </h3>
 
+                <p class="product-price">
+                    $24.990
+                </p>
 
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            value="S"
-                        >
-
-                        S
-
-                    </label>
-
-
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            value="M"
-                        >
-
-                        M
-
-                    </label>
-
-
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            value="L"
-                        >
-
-                        L
-
-                    </label>
-
-
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            value="XL"
-                        >
-
-                        XL
-
-                    </label>
-
-
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            value="XXL"
-                        >
-
-                        XXL
-
-                    </label>
-
-                </div>
-
+                <p class="product-details">
+                    Blanco · S · M · L · XL
+                </p>
 
             </div>
 
-
-            <!-- PRODUCTOS -->
-
-            <div class="products-grid">
+        </article>
 
 
-                <a
-                    href="#"
-                    class="product-card"
-                >
 
-                    <div class="product-image">
+        <!-- PRODUCTO 03 -->
 
-                        PRENDA 01
+        <article
+            class="product-card"
+            data-color="negro"
+            data-sizes="M,L,XL"
+        >
 
-                    </div>
+            <a href="#" class="product-image">
 
+                <div class="product-placeholder">
+                    IMAGEN
+                </div>
 
-                    <div class="product-info">
+            </a>
 
-                        <span class="product-category">
-                            POLERA · ANIME
-                        </span>
+            <div class="product-info">
 
-                        <h3>
-                            Satori #001
-                        </h3>
+                <p class="product-category">
+                    POLERÓN
+                </p>
 
-                        <p>
-                            $24.990
-                        </p>
+                <h3>
+                    Satori #003
+                </h3>
 
-                    </div>
+                <p class="product-price">
+                    $34.990
+                </p>
 
-                </a>
-
-
-                <a
-                    href="#"
-                    class="product-card"
-                >
-
-                    <div class="product-image">
-
-                        PRENDA 02
-
-                    </div>
-
-
-                    <div class="product-info">
-
-                        <span class="product-category">
-                            POLERA · ANIME
-                        </span>
-
-                        <h3>
-                            Satori #002
-                        </h3>
-
-                        <p>
-                            $24.990
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    class="product-card"
-                >
-
-                    <div class="product-image">
-
-                        PRENDA 03
-
-                    </div>
-
-
-                    <div class="product-info">
-
-                        <span class="product-category">
-                            POLERA · STREETWEAR
-                        </span>
-
-                        <h3>
-                            Satori #003
-                        </h3>
-
-                        <p>
-                            $24.990
-                        </p>
-
-                    </div>
-
-                </a>
-
+                <p class="product-details">
+                    Negro · M · L · XL
+                </p>
 
             </div>
 
+        </article>
 
-        </section>
+
+
+        <!-- PRODUCTO 04 -->
+
+        <article
+            class="product-card"
+            data-color="negro"
+            data-sizes="S,M,L"
+        >
+
+            <a href="#" class="product-image">
+
+                <div class="product-placeholder">
+                    IMAGEN
+                </div>
+
+            </a>
+
+            <div class="product-info">
+
+                <p class="product-category">
+                    POLERA
+                </p>
+
+                <h3>
+                    Satori #004
+                </h3>
+
+                <p class="product-price">
+                    $24.990
+                </p>
+
+                <p class="product-details">
+                    Negro · S · M · L
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 05 -->
+
+        <article
+            class="product-card"
+            data-color="blanco"
+            data-sizes="S,M,L,XL,XXL"
+        >
+
+            <a href="#" class="product-image">
+
+                <div class="product-placeholder">
+                    IMAGEN
+                </div>
+
+            </a>
+
+            <div class="product-info">
+
+                <p class="product-category">
+                    POLERA
+                </p>
+
+                <h3>
+                    Satori #005
+                </h3>
+
+                <p class="product-price">
+                    $24.990
+                </p>
+
+                <p class="product-details">
+                    Blanco · S · M · L · XL · XXL
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 06 -->
+
+        <article
+            class="product-card"
+            data-color="negro"
+            data-sizes="L,XL"
+        >
+
+            <a href="#" class="product-image">
+
+                <div class="product-placeholder">
+                    IMAGEN
+                </div>
+
+            </a>
+
+            <div class="product-info">
+
+                <p class="product-category">
+                    POLERÓN
+                </p>
+
+                <h3>
+                    Satori #006
+                </h3>
+
+                <p class="product-price">
+                    $39.990
+                </p>
+
+                <p class="product-details">
+                    Negro · L · XL
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <!-- =================================================
+         MENSAJE SIN RESULTADOS
+    ================================================== -->
+
+    <div class="no-products" id="no-products">
+
+        <h3>
+            NO ENCONTRAMOS PRENDAS
+        </h3>
+
+        <p>
+            Prueba con otro color o talla.
+        </p>
+
+    </div>
+
+</section>
 
 
     </main>
