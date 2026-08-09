@@ -1,6 +1,2278 @@
 /* =========================================================
    SATORIMODE
    STYLE.CSS
+   Sistema visual principal
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --red: #E10600;
+    --red-dark: #B80000;
+
+    --black: #080808;
+    --dark: #111111;
+    --dark-soft: #181818;
+
+    --white: #FFFFFF;
+
+    --gray-light: #F5F5F3;
+    --gray: #777777;
+    --gray-medium: #AAAAAA;
+    --gray-dark: #333333;
+
+    --border: #E5E5E5;
+
+    --radius-large: 18px;
+    --radius-medium: 14px;
+    --radius-small: 8px;
+
+    --shadow:
+        0 15px 40px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--white);
+
+    color: var(--black);
+
+    line-height: 1.5;
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+========================================================= */
+
+.top-bar {
+
+    height: 36px;
+
+    background: var(--red);
+
+    color: var(--white);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    height: 86px;
+
+    background: var(--white);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 5%;
+
+    border-bottom:
+        1px solid var(--border);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-link {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.logo {
+
+    width: auto;
+
+    height: 58px;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   MENÚ
+========================================================= */
+
+.menu {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 36px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.1px;
+
+}
+
+.menu > a,
+.dropdown-trigger {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding:
+        8px 0;
+
+    color: var(--black);
+
+    transition:
+        color 0.2s ease;
+
+}
+
+.menu > a:hover,
+.dropdown-trigger:hover {
+
+    color: var(--red);
+
+}
+
+
+/* Línea inferior */
+
+.menu > a::after,
+.dropdown-trigger::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--red);
+
+    transition:
+        width 0.25s ease;
+
+}
+
+.menu > a:hover::after,
+.dropdown-trigger:hover::after {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.menu-dropdown {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.dropdown-trigger {
+
+    cursor: pointer;
+
+}
+
+.dropdown-trigger span {
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.25s ease;
+
+}
+
+.menu-dropdown:hover
+.dropdown-trigger span {
+
+    transform:
+        rotate(180deg);
+
+}
+
+
+/* Caja */
+
+.dropdown-content {
+
+    position: absolute;
+
+    top:
+        calc(100% + 15px);
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(-10px);
+
+    width: 225px;
+
+    padding:
+        8px 0;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-small);
+
+    box-shadow:
+        var(--shadow);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transition:
+
+        opacity 0.2s ease,
+
+        transform 0.2s ease,
+
+        visibility 0.2s ease;
+
+}
+
+.menu-dropdown:hover
+.dropdown-content {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+}
+
+
+/* Enlaces */
+
+.dropdown-content a {
+
+    display: block;
+
+    width: 100%;
+
+    padding:
+        12px 20px;
+
+    color:
+        var(--black);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    white-space: nowrap;
+
+    transition:
+
+        background 0.2s ease,
+
+        color 0.2s ease;
+
+}
+
+
+/* Quitar línea del menú */
+
+.dropdown-content a::after {
+
+    display: none !important;
+
+}
+
+.dropdown-content a:hover {
+
+    background:
+        var(--gray-light);
+
+    color:
+        var(--red);
+
+}
+
+
+/* =========================================================
+   ICONOS
+========================================================= */
+
+.actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.action {
+
+    width: 24px;
+
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+
+        color 0.2s ease,
+
+        transform 0.2s ease;
+
+}
+
+.action:hover {
+
+    color:
+        var(--red);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 650px;
+
+    background:
+
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(
+                225,
+                6,
+                0,
+                0.16
+            ),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(
+                225,
+                6,
+                0,
+                0.08
+            ),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #050505,
+            #111111 55%,
+            #1a1a1a
+        );
+
+    color:
+        var(--white);
+
+    display: flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        80px 20px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   HERO CONTENIDO
+========================================================= */
+
+.hero-content {
+
+    max-width:
+        1000px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+.hero-logo {
+
+    width:
+        95px;
+
+    height:
+        auto;
+
+    margin-bottom:
+        35px;
+
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(
+            55px,
+            9vw,
+            115px
+        );
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        8px;
+
+    line-height:
+        1;
+
+    margin-bottom:
+        25px;
+
+}
+
+.hero p {
+
+    font-size:
+        16px;
+
+    letter-spacing:
+        5px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    margin-bottom:
+        45px;
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-width:
+        190px;
+
+    padding:
+        15px 28px;
+
+    background:
+        var(--red);
+
+    color:
+        var(--white);
+
+    border:
+        2px solid var(--red);
+
+    border-radius:
+        var(--radius-small);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1.3px;
+
+    transition:
+        all 0.25s ease;
+
+}
+
+.button:hover {
+
+    background:
+        var(--white);
+
+    color:
+        var(--black);
+
+    border-color:
+        var(--white);
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+.section {
+
+    padding:
+        100px 5%;
+
+    text-align:
+        center;
+
+}
+
+.section-header {
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto 55px;
+
+}
+
+.section-title {
+
+    font-size:
+        clamp(
+            30px,
+            5vw,
+            46px
+        );
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        3px;
+
+    margin-bottom:
+        15px;
+
+}
+
+.section-title span {
+
+    color:
+        var(--red);
+
+}
+
+.section-subtitle {
+
+    color:
+        var(--gray);
+
+    font-size:
+        15px;
+
+}
+
+
+/* =========================================================
+   PRODUCTOS - INICIO
+========================================================= */
+
+.products {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        22px;
+
+}
+
+.product {
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+}
+
+.product-image {
+
+    width:
+        100%;
+
+    aspect-ratio:
+        1 / 1.15;
+
+    background:
+        var(--gray-light);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-bottom:
+        18px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        var(--radius-medium);
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+.product-image::before {
+
+    content:
+        "SATORIMODE";
+
+    color:
+        #c4c4c4;
+
+    font-size:
+        12px;
+
+    letter-spacing:
+        3px;
+
+}
+
+.product:hover
+.product-image {
+
+    transform:
+        translateY(-5px);
+
+}
+
+.product-info {
+
+    padding:
+        0 5px;
+
+}
+
+.product-info h3 {
+
+    font-size:
+        15px;
+
+    margin-bottom:
+        5px;
+
+}
+
+.product-info p {
+
+    color:
+        var(--gray);
+
+    font-size:
+        13px;
+
+    margin-bottom:
+        7px;
+
+}
+
+.product-info strong {
+
+    font-size:
+        15px;
+
+}
+
+
+/* =========================================================
+   COLECCIONES - INICIO
+========================================================= */
+
+.collections {
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+}
+
+.collections
+.section-subtitle {
+
+    color:
+        #999999;
+
+}
+
+.collection-grid {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        20px;
+
+}
+
+.collection {
+
+    min-height:
+        380px;
+
+    padding:
+        30px;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        var(--radius-large);
+
+    background:
+        var(--dark);
+
+}
+
+.collection::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            transparent 30%,
+            rgba(
+                0,
+                0,
+                0,
+                0.9
+            )
+        );
+
+}
+
+.collection > div {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    text-align:
+        left;
+
+}
+
+.collection h3 {
+
+    font-size:
+        28px;
+
+    margin-bottom:
+        8px;
+
+}
+
+.collection p {
+
+    color:
+        #aaaaaa;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        18px;
+
+}
+
+.collection a {
+
+    color:
+        var(--red);
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+/* =========================================================
+   NOSOTROS / MARCA
+========================================================= */
+
+.brand {
+
+    padding:
+        110px 20px;
+
+    background:
+        var(--red);
+
+    color:
+        var(--white);
+
+    text-align:
+        center;
+
+}
+
+.brand h2 {
+
+    font-size:
+        clamp(
+            35px,
+            7vw,
+            75px
+        );
+
+    letter-spacing:
+        7px;
+
+    margin-bottom:
+        15px;
+
+}
+
+.brand p {
+
+    font-size:
+        15px;
+
+    letter-spacing:
+        4px;
+
+}
+
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
+.instagram-grid {
+
+    max-width:
+        1200px;
+
+    margin:
+        auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap:
+        8px;
+
+}
+
+.instagram-grid div {
+
+    aspect-ratio:
+        1 / 1;
+
+    background:
+        var(--gray-light);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        #bbbbbb;
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        1px;
+
+    border-radius:
+        var(--radius-small);
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+    padding:
+        70px 5% 30px;
+
+}
+
+.footer-main {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap:
+        50px;
+
+    padding-bottom:
+        50px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+}
+
+.footer-logo {
+
+    width:
+        65px;
+
+    margin-bottom:
+        20px;
+
+}
+
+.footer-main p {
+
+    max-width:
+        350px;
+
+    color:
+        #999999;
+
+    font-size:
+        14px;
+
+}
+
+.footer-column h3 {
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        1.5px;
+
+    margin-bottom:
+        20px;
+
+}
+
+.footer-column a {
+
+    display:
+        block;
+
+    color:
+        #999999;
+
+    font-size:
+        13px;
+
+    margin-bottom:
+        12px;
+
+    transition:
+        color 0.2s ease;
+
+}
+
+.footer-column a:hover {
+
+    color:
+        var(--red);
+
+}
+
+.footer-bottom {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    padding-top:
+        25px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #777777;
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   PÁGINA DE COLECCIONES
+========================================================= */
+
+
+/* ENCABEZADO */
+
+.collections-heading {
+
+    min-height:
+        310px;
+
+    background:
+
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.16
+            ),
+            transparent 35%
+        ),
+
+        var(--black);
+
+    color:
+        var(--white);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        70px 20px;
+
+}
+
+.collections-heading p {
+
+    color:
+        var(--red);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        5px;
+
+    margin-bottom:
+        25px;
+
+}
+
+.collections-heading h1 {
+
+    font-size:
+        clamp(
+            55px,
+            8vw,
+            100px
+        );
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        5px;
+
+    line-height:
+        1;
+
+    margin-bottom:
+        30px;
+
+}
+
+.collections-heading span {
+
+    color:
+        #aaaaaa;
+
+    font-size:
+        15px;
+
+}
+
+
+/* =========================================================
+   COLECCIONES VISUALES
+========================================================= */
+
+.collections-showcase {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    padding:
+        70px 5%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        22px;
+
+}
+
+.collection-card {
+
+    min-height:
+        300px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    color:
+        var(--white);
+
+    background:
+        var(--dark);
+
+    border-radius:
+        var(--radius-large);
+
+    transition:
+
+        transform 0.3s ease,
+
+        box-shadow 0.3s ease;
+
+}
+
+.collection-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+.collection-card-bg {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    transition:
+        transform 0.5s ease;
+
+}
+
+.collection-card:hover
+.collection-card-bg {
+
+    transform:
+        scale(1.06);
+
+}
+
+.collection-card-bg::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(
+                0,
+                0,
+                0,
+                0.9
+            ),
+            rgba(
+                0,
+                0,
+                0,
+                0.05
+            )
+        );
+
+}
+
+
+/* Anime */
+
+.anime-bg {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.35
+            ),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #111111,
+            #241010
+        );
+
+}
+
+
+/* Streetwear */
+
+.streetwear-bg {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.25
+            ),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #111111,
+            #171717
+        );
+
+}
+
+
+/* Exclusivos */
+
+.exclusive-bg {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.4
+            ),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0a0a0a,
+            #2b1111
+        );
+
+}
+
+.collection-card-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    padding:
+        30px;
+
+}
+
+.collection-card-content small {
+
+    display:
+        block;
+
+    color:
+        var(--red);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        10px;
+
+}
+
+.collection-card-content h2 {
+
+    font-size:
+        32px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        8px;
+
+}
+
+.collection-card-content span {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.7
+        );
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   CATÁLOGO
+========================================================= */
+
+.catalog-section {
+
+    background:
+        var(--white);
+
+    padding:
+        90px 5%;
+
+}
+
+.catalog-top {
+
+    max-width:
+        1400px;
+
+    margin:
+        0 auto 45px;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+}
+
+.catalog-kicker {
+
+    color:
+        var(--red);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        4px;
+
+    margin-bottom:
+        12px;
+
+}
+
+.catalog-top h2 {
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            55px
+        );
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        10px;
+
+}
+
+.catalog-top span {
+
+    color:
+        var(--gray);
+
+    font-size:
+        14px;
+
+}
+
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+.filter-button {
+
+    border:
+        none;
+
+    background:
+        var(--red);
+
+    color:
+        var(--white);
+
+    padding:
+        14px 22px;
+
+    border-radius:
+        999px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+    cursor:
+        pointer;
+
+    transition:
+        all 0.2s ease;
+
+}
+
+.filter-button:hover {
+
+    background:
+        var(--red-dark);
+
+    transform:
+        translateY(-2px);
+
+}
+
+.filters {
+
+    max-width:
+        1400px;
+
+    margin:
+        0 auto 45px;
+
+    display:
+        none;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        35px;
+
+    padding:
+        30px;
+
+    background:
+        var(--gray-light);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-medium);
+
+}
+
+.filters.active {
+
+    display:
+        grid;
+
+}
+
+.filter-group {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+}
+
+.filter-group strong {
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        6px;
+
+}
+
+.filter-group label {
+
+    color:
+        #555555;
+
+    font-size:
+        13px;
+
+    cursor:
+        pointer;
+
+}
+
+.filter-group input {
+
+    margin-right:
+        7px;
+
+}
+
+
+/* =========================================================
+   PRODUCTOS - CATÁLOGO
+========================================================= */
+
+.products-grid {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        32px 22px;
+
+}
+
+.product-card {
+
+    display:
+        block;
+
+    color:
+        var(--black);
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+.product-card:hover {
+
+    transform:
+        translateY(-5px);
+
+}
+
+.product-card
+.product-image {
+
+    width:
+        100%;
+
+    aspect-ratio:
+        0.85;
+
+    background:
+        var(--gray-light);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
+
+    margin-bottom:
+        17px;
+
+    border-radius:
+        var(--radius-medium);
+
+}
+
+.product-placeholder {
+
+    color:
+        #bbbbbb;
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        3px;
+
+}
+
+.product-placeholder::before {
+
+    display:
+        none;
+
+}
+
+.product-card
+.product-info {
+
+    padding:
+        0 4px;
+
+}
+
+.product-card
+.product-category {
+
+    display:
+        block;
+
+    color:
+        var(--gray);
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        1px;
+
+    margin-bottom:
+        7px;
+
+}
+
+.product-card
+.product-info h3 {
+
+    font-size:
+        16px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        7px;
+
+}
+
+.product-card
+.product-info p {
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   BORDES REDONDEADOS GENERALES
+========================================================= */
+
+.collection-main,
+.collection-small,
+.collection-card,
+.product-card,
+.product-image,
+.filters,
+.filter-button,
+.button,
+.collection,
+.instagram-grid div {
+
+    border-radius:
+        var(--radius-medium);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .menu {
+
+        gap:
+            20px;
+
+    }
+
+    .products {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .collection-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .collection {
+
+        min-height:
+            320px;
+
+    }
+
+    .footer-main {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .instagram-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+    .collections-showcase {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .products-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .top-bar {
+
+        height:
+            34px;
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+
+    }
+
+    .navbar {
+
+        height:
+            75px;
+
+        padding:
+            0 20px;
+
+    }
+
+    .logo {
+
+        height:
+            48px;
+
+    }
+
+    .menu {
+
+        display:
+            none;
+
+    }
+
+    .actions {
+
+        gap:
+            12px;
+
+    }
+
+    .hero {
+
+        min-height:
+            600px;
+
+        padding:
+            70px 20px;
+
+    }
+
+    .hero-logo {
+
+        width:
+            70px;
+
+        margin-bottom:
+            25px;
+
+    }
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                42px,
+                13vw,
+                70px
+            );
+
+        letter-spacing:
+            4px;
+
+    }
+
+    .hero p {
+
+        font-size:
+            12px;
+
+        letter-spacing:
+            2px;
+
+    }
+
+    .section {
+
+        padding:
+            70px 20px;
+
+    }
+
+    .products {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .collection-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .instagram-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .footer-main {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            35px;
+
+    }
+
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        text-align:
+            center;
+
+        gap:
+            10px;
+
+    }
+
+    .collections-heading {
+
+        min-height:
+            260px;
+
+        padding:
+            60px 20px;
+
+    }
+
+    .collections-heading h1 {
+
+        font-size:
+            48px;
+
+        letter-spacing:
+            3px;
+
+    }
+
+    .collections-showcase {
+
+        padding:
+            50px 20px;
+
+    }
+
+    .collection-card {
+
+        min-height:
+            280px;
+
+    }
+
+    .catalog-section {
+
+        padding:
+            60px 20px;
+
+    }
+
+    .catalog-top {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+    .filters {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .products-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            40px;
+
+    }
+
+}/* =========================================================
+   SATORIMODE
+   STYLE.CSS
    ========================================================= */
 
 
