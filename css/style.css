@@ -2040,26 +2040,32 @@ footer {
 }
 
 /* =========================================
-   BORDES REDONDEADOS — SATORIMODE
+   REDONDEADO GENERAL SATORIMODE
    ========================================= */
 
 .collection-main,
 .collection-small,
-.product-card,
 .collection-card,
+.collection-item,
 .category-card,
-.product-image,
-.filter-box,
-.info-box,
-.banner,
-.about-card {
-    border-radius: 16px;
+.card {
+    border-radius: 16px !important;
+    overflow: hidden !important;
 }
 
-/* Botones y controles */
+/* Imágenes dentro de las tarjetas */
+.collection-main img,
+.collection-small img,
+.collection-card img,
+.collection-item img,
+.category-card img,
+.card img {
+    border-radius: 16px !important;
+}
 
+/* Botones */
 button,
 .btn,
 .filter-button {
-    border-radius: 8px;
+    border-radius: 8px !important;
 }
