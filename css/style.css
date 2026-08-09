@@ -1,12 +1,12 @@
-/* =====================================================
+/* =========================================================
    SATORIMODE
    STYLE.CSS
-===================================================== */
+   ========================================================= */
 
 
-/* =====================================================
+/* =========================================================
    VARIABLES
-===================================================== */
+   ========================================================= */
 
 :root {
 
@@ -20,13 +20,14 @@
 
     --gris-claro: #F5F5F5;
     --gris: #777777;
+    --gris-medio: #AAAAAA;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+   ========================================================= */
 
 * {
     margin: 0;
@@ -34,11 +35,9 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
 
@@ -48,58 +47,48 @@ body {
         sans-serif;
 
     background: var(--blanco);
-
     color: var(--negro);
 
     line-height: 1.5;
-
 }
-
 
 a {
-
     color: inherit;
-
     text-decoration: none;
+}
 
+button {
+    font-family: inherit;
 }
 
 
-img {
-    max-width: 100%;
-}
-
-
-/* =====================================================
+/* =========================================================
    BARRA SUPERIOR
-===================================================== */
+   ========================================================= */
 
 .top-bar {
 
     height: 38px;
 
     background: var(--rojo);
-
     color: var(--blanco);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    font-size: 12px;
+    text-align: center;
 
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
 
     letter-spacing: 1.5px;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    NAVBAR
-===================================================== */
+   ========================================================= */
 
 .navbar {
 
@@ -108,92 +97,75 @@ img {
     background: var(--blanco);
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    padding:
-        0 5%;
+    padding: 0 5%;
 
-    border-bottom:
-        1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 
     position: sticky;
-
     top: 0;
 
     z-index: 1000;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGO
-===================================================== */
+   ========================================================= */
 
 .logo-link {
 
     display: flex;
-
     align-items: center;
-
 }
-
 
 .logo {
 
+    width: auto;
     height: 58px;
 
-    width: auto;
-
     display: block;
-
 }
 
 
-/* =====================================================
-   MENÚ PRINCIPAL
-===================================================== */
+/* =========================================================
+   MENU
+   ========================================================= */
 
 .menu {
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     gap: 38px;
 
     font-size: 13px;
-
     font-weight: 700;
 
     letter-spacing: 1.2px;
-
 }
-
 
 .menu > a,
 .dropdown-trigger {
 
     position: relative;
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 5px;
-
     padding: 8px 0;
 
-    color: var(--negro);
-
-    cursor: pointer;
-
+    transition: color 0.2s ease;
 }
 
+.menu > a:hover,
+.dropdown-trigger:hover {
+
+    color: var(--rojo);
+}
+
+
+/* Línea roja */
 
 .menu > a::after,
 .dropdown-trigger::after {
@@ -203,80 +175,80 @@ img {
     position: absolute;
 
     left: 0;
-
     bottom: 0;
 
     width: 0;
-
     height: 2px;
 
     background: var(--rojo);
 
-    transition:
-        width 0.2s ease;
-
+    transition: width 0.25s ease;
 }
-
-
-.menu > a:hover,
-.dropdown-trigger:hover {
-
-    color: var(--rojo);
-
-}
-
 
 .menu > a:hover::after,
 .dropdown-trigger:hover::after {
 
     width: 100%;
-
 }
 
 
-/* =====================================================
-   CONTENEDOR DROPDOWN
-===================================================== */
+/* =========================================================
+   MENÚ DESPLEGABLE
+   ========================================================= */
 
 .menu-dropdown {
 
     position: relative;
 
     display: flex;
+    align-items: center;
+}
 
+.dropdown-trigger {
+
+    display: flex;
     align-items: center;
 
+    gap: 6px;
+}
+
+.arrow {
+
+    display: inline-block;
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.25s ease;
 }
 
 
-/* =====================================================
-   DROPDOWN
-===================================================== */
+/* Caja */
 
 .dropdown-content {
 
     position: absolute;
 
-    top: calc(100% + 1px);
-
+    top: calc(100% + 18px);
     left: 50%;
 
     transform:
         translateX(-50%)
         translateY(-10px);
 
-    width: 230px;
-
-    padding: 8px 0;
+    width: 220px;
 
     background: var(--blanco);
 
-    border:
-        1px solid #e5e5e5;
+    border: 1px solid #e5e5e5;
 
     box-shadow:
         0 15px 35px
         rgba(0, 0, 0, 0.15);
+
+    padding: 10px 0;
 
     opacity: 0;
 
@@ -284,22 +256,21 @@ img {
 
     pointer-events: none;
 
+    z-index: 9999;
+
     transition:
+
         opacity 0.2s ease,
+
         transform 0.2s ease,
+
         visibility 0.2s ease;
-
-    z-index: 5000;
-
 }
 
 
-/* =====================================================
-   MOSTRAR DROPDOWN
-===================================================== */
+/* Mostrar */
 
-.menu-dropdown:hover
-.dropdown-content {
+.menu-dropdown:hover > .dropdown-content {
 
     opacity: 1;
 
@@ -310,13 +281,19 @@ img {
     transform:
         translateX(-50%)
         translateY(0);
-
 }
 
 
-/* =====================================================
-   ENLACES DROPDOWN
-===================================================== */
+/* Flecha */
+
+.menu-dropdown:hover .arrow {
+
+    transform:
+        rotate(180deg);
+}
+
+
+/* Enlaces */
 
 .dropdown-content a {
 
@@ -324,97 +301,64 @@ img {
 
     width: 100%;
 
-    padding:
-        12px 20px;
+    padding: 12px 20px;
+
+    color: var(--negro);
+
+    background: transparent;
 
     font-size: 11px;
 
     font-weight: 700;
 
-    letter-spacing: 0.7px;
+    letter-spacing: 0.8px;
 
-    color: var(--negro);
+    white-space: nowrap;
 
-    background: var(--blanco);
+    text-align: left;
 
     transition:
         background 0.2s ease,
         color 0.2s ease;
-
 }
 
 
-/* IMPORTANTÍSIMO:
-   evitar la línea roja
-   del menú principal */
+/* Quitar línea roja */
 
 .dropdown-content a::after {
-
-    display: none !important;
-
+    display: none;
 }
 
+
+/* Hover */
 
 .dropdown-content a:hover {
 
+    background: var(--gris-claro);
+
     color: var(--rojo);
-
-    background:
-        var(--gris-claro);
-
 }
 
 
-/* =====================================================
-   FLECHA
-===================================================== */
-
-.dropdown-trigger span {
-
-    display: inline-block;
-
-    font-size: 14px;
-
-    transition:
-        transform 0.2s ease;
-
-}
-
-
-.menu-dropdown:hover
-.dropdown-trigger span {
-
-    transform:
-        rotate(180deg);
-
-}
-
-
-/* =====================================================
-   ICONOS
-===================================================== */
+/* =========================================================
+   ICONOS / ACCIONES
+   ========================================================= */
 
 .actions {
 
     display: flex;
-
     align-items: center;
 
     gap: 20px;
-
 }
-
 
 .action {
 
     width: 22px;
-
     height: 22px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     font-size: 19px;
@@ -424,9 +368,7 @@ img {
     transition:
         color 0.2s ease,
         transform 0.2s ease;
-
 }
-
 
 .action:hover {
 
@@ -434,19 +376,30 @@ img {
 
     transform:
         scale(1.1);
-
 }
 
 
-/* =====================================================
-   HERO
-===================================================== */
+/* =========================================================
+   HERO - INICIO
+   ========================================================= */
 
 .hero {
 
     min-height: 650px;
 
     background:
+
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(225, 6, 0, 0.12),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(225, 6, 0, 0.08),
+            transparent 30%
+        ),
 
         linear-gradient(
             135deg,
@@ -458,93 +411,34 @@ img {
     color: var(--blanco);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
 
-    padding:
-        80px 20px;
+    padding: 80px 20px;
 
     position: relative;
 
     overflow: hidden;
-
 }
 
 
-.hero::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-
-    height: 500px;
-
-    background:
-        var(--rojo);
-
-    border-radius: 50%;
-
-    filter:
-        blur(180px);
-
-    opacity:
-        0.12;
-
-    top:
-        -250px;
-
-    right:
-        -200px;
-
-}
-
-
-.hero::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 400px;
-
-    height: 400px;
-
-    background:
-        var(--rojo);
-
-    border-radius: 50%;
-
-    filter:
-        blur(180px);
-
-    opacity:
-        0.08;
-
-    bottom:
-        -250px;
-
-    left:
-        -150px;
-
-}
-
+/* =========================================================
+   HERO CONTENIDO
+   ========================================================= */
 
 .hero-content {
+
+    max-width: 1000px;
 
     position: relative;
 
     z-index: 2;
-
-    max-width: 1000px;
-
 }
 
+
+/* Logo del Hero */
 
 .hero-logo {
 
@@ -553,9 +447,10 @@ img {
     height: auto;
 
     margin-bottom: 35px;
-
 }
 
+
+/* Título */
 
 .hero h1 {
 
@@ -573,9 +468,10 @@ img {
     line-height: 1;
 
     margin-bottom: 25px;
-
 }
 
+
+/* Subtítulo */
 
 .hero p {
 
@@ -592,32 +488,27 @@ img {
         );
 
     margin-bottom: 45px;
-
 }
 
 
-/* =====================================================
-   BOTÓN
-===================================================== */
+/* =========================================================
+   BOTONES
+   ========================================================= */
 
 .button {
 
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     min-width: 190px;
 
-    padding:
-        16px 30px;
+    padding: 16px 30px;
 
-    background:
-        var(--rojo);
+    background: var(--rojo);
 
-    color:
-        var(--blanco);
+    color: var(--blanco);
 
     font-size: 13px;
 
@@ -626,44 +517,41 @@ img {
     letter-spacing: 1.5px;
 
     border:
-        2px solid var(--rojo);
+        2px solid
+        var(--rojo);
 
     transition:
-        all 0.25s ease;
 
+        background 0.25s ease,
+
+        color 0.25s ease,
+
+        transform 0.25s ease;
 }
-
 
 .button:hover {
 
-    background:
-        var(--blanco);
+    background: var(--blanco);
 
-    color:
-        var(--negro);
+    color: var(--negro);
 
-    border-color:
-        var(--blanco);
+    border-color: var(--blanco);
 
     transform:
         translateY(-2px);
-
 }
 
 
-/* =====================================================
-   SECCIONES
-===================================================== */
+/* =========================================================
+   SECCIONES GENERALES
+   ========================================================= */
 
 .section {
 
-    padding:
-        100px 5%;
+    padding: 100px 5%;
 
     text-align: center;
-
 }
-
 
 .section-header {
 
@@ -671,9 +559,7 @@ img {
 
     margin:
         0 auto 55px;
-
 }
-
 
 .section-title {
 
@@ -689,31 +575,24 @@ img {
     letter-spacing: 3px;
 
     margin-bottom: 15px;
-
 }
-
 
 .section-title span {
 
-    color:
-        var(--rojo);
-
+    color: var(--rojo);
 }
-
 
 .section-subtitle {
 
-    color:
-        var(--gris);
+    color: var(--gris);
 
     font-size: 15px;
-
 }
 
 
-/* =====================================================
-   PRODUCTOS
-===================================================== */
+/* =========================================================
+   PRODUCTOS - INICIO
+   ========================================================= */
 
 .products {
 
@@ -727,18 +606,17 @@ img {
         repeat(4, 1fr);
 
     gap: 22px;
-
 }
-
 
 .product {
 
     text-align: left;
 
     cursor: pointer;
-
 }
 
+
+/* Imagen */
 
 .product-image {
 
@@ -753,51 +631,59 @@ img {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
-
-    color:
-        #c5c5c5;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
 
     margin-bottom: 18px;
 
+    position: relative;
+
+    overflow: hidden;
+
     transition:
         transform 0.3s ease;
-
 }
-
 
 .product:hover
 .product-image {
 
     transform:
         translateY(-5px);
-
 }
 
+
+/* Texto placeholder */
+
+.product-image::before {
+
+    content:
+        "SATORIMODE";
+
+    color: #cccccc;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+}
+
+
+/* Información */
 
 .product-info {
 
     padding:
         0 5px;
-
 }
 
-
-.product-info h3 {
+.product-name {
 
     font-size: 15px;
 
-    margin-bottom: 5px;
+    font-weight: 700;
 
+    margin-bottom: 5px;
 }
 
-
-.product-info p {
+.product-category {
 
     color:
         var(--gris);
@@ -805,20 +691,19 @@ img {
     font-size: 13px;
 
     margin-bottom: 8px;
-
 }
 
-
-.product-info strong {
+.product-price {
 
     font-size: 15px;
 
+    font-weight: 700;
 }
 
 
-/* =====================================================
-   COLECCIONES
-===================================================== */
+/* =========================================================
+   COLECCIONES - INICIO
+   ========================================================= */
 
 .collections {
 
@@ -827,18 +712,7 @@ img {
 
     color:
         var(--blanco);
-
 }
-
-
-.collections
-.section-subtitle {
-
-    color:
-        #999;
-
-}
-
 
 .collection-grid {
 
@@ -852,21 +726,17 @@ img {
         repeat(3, 1fr);
 
     gap: 20px;
-
 }
-
 
 .collection {
 
     min-height: 380px;
 
-    padding: 30px;
-
     display: flex;
 
     align-items: flex-end;
 
-    text-align: left;
+    padding: 30px;
 
     background:
         var(--negro-suave);
@@ -874,7 +744,63 @@ img {
     position: relative;
 
     overflow: hidden;
+}
 
+
+/* Fondos de las colecciones */
+
+.collection:nth-child(1) {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.25
+            ),
+            transparent 45%
+        ),
+
+        #151515;
+}
+
+.collection:nth-child(2) {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.18
+            ),
+            transparent 45%
+        ),
+
+        #151515;
+}
+
+.collection:nth-child(3) {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.3
+            ),
+            transparent 45%
+        ),
+
+        #151515;
 }
 
 
@@ -887,8 +813,9 @@ img {
     inset: 0;
 
     background:
+
         linear-gradient(
-            transparent 30%,
+            transparent 35%,
             rgba(
                 0,
                 0,
@@ -896,64 +823,58 @@ img {
                 0.9
             )
         );
-
 }
 
 
-.collection > div {
+.collection-content {
 
     position: relative;
 
     z-index: 2;
 
+    text-align: left;
 }
-
 
 .collection h3 {
 
     font-size: 28px;
 
     margin-bottom: 8px;
-
 }
-
 
 .collection p {
 
     color:
-        #aaa;
+        rgba(
+            255,
+            255,
+            255,
+            0.7
+        );
 
     font-size: 14px;
 
     margin-bottom: 18px;
-
 }
 
-
-.collection a {
+.collection-link {
 
     color:
         var(--rojo);
 
-    font-size: 13px;
-
     font-weight: 700;
 
-    letter-spacing: 1px;
+    font-size: 13px;
 
+    letter-spacing: 1px;
 }
 
 
-/* =====================================================
-   NOSOTROS
-===================================================== */
+/* =========================================================
+   MARCA
+   ========================================================= */
 
 .brand {
-
-    padding:
-        110px 20px;
-
-    text-align: center;
 
     background:
         var(--rojo);
@@ -961,8 +882,11 @@ img {
     color:
         var(--blanco);
 
-}
+    padding:
+        100px 20px;
 
+    text-align: center;
+}
 
 .brand h2 {
 
@@ -976,9 +900,7 @@ img {
     letter-spacing: 7px;
 
     margin-bottom: 15px;
-
 }
-
 
 .brand p {
 
@@ -986,15 +908,19 @@ img {
 
     letter-spacing: 4px;
 
-    opacity:
-        0.9;
-
+    opacity: 0.9;
 }
 
 
-/* =====================================================
+/* =========================================================
    INSTAGRAM
-===================================================== */
+   ========================================================= */
+
+.instagram {
+
+    background:
+        var(--blanco);
+}
 
 .instagram-grid {
 
@@ -1008,11 +934,9 @@ img {
         repeat(6, 1fr);
 
     gap: 8px;
-
 }
 
-
-.instagram-grid div {
+.instagram-item {
 
     aspect-ratio:
         1 / 1;
@@ -1023,22 +947,20 @@ img {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     color:
-        #bbb;
+        #bbbbbb;
 
     font-size: 11px;
 
     letter-spacing: 1px;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+   ========================================================= */
 
 footer {
 
@@ -1050,9 +972,7 @@ footer {
 
     padding:
         70px 5% 30px;
-
 }
-
 
 .footer-main {
 
@@ -1077,30 +997,26 @@ footer {
             255,
             0.12
         );
-
 }
-
 
 .footer-logo {
 
     width: 65px;
 
-    margin-bottom: 20px;
+    height: auto;
 
+    margin-bottom: 20px;
 }
 
-
-.footer-main p {
+.footer-description {
 
     max-width: 350px;
 
     color:
-        #999;
+        #999999;
 
     font-size: 14px;
-
 }
-
 
 .footer-column h3 {
 
@@ -1109,31 +1025,28 @@ footer {
     letter-spacing: 1.5px;
 
     margin-bottom: 20px;
-
 }
-
 
 .footer-column a {
 
     display: block;
 
     color:
-        #999;
+        #999999;
 
     font-size: 13px;
 
     margin-bottom: 12px;
 
+    transition:
+        color 0.2s ease;
 }
-
 
 .footer-column a:hover {
 
     color:
         var(--rojo);
-
 }
-
 
 .footer-bottom {
 
@@ -1145,68 +1058,758 @@ footer {
 
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
+
+    gap: 20px;
 
     color:
-        #777;
+        #777777;
 
     font-size: 12px;
-
 }
 
 
-/* =====================================================
+/* =========================================================
+   PÁGINA DE COLECCIONES
+   ========================================================= */
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.collections-heading {
+
+    min-height: 310px;
+
+    background:
+
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.16
+            ),
+            transparent 35%
+        ),
+
+        #0a0a0a;
+
+    color:
+        var(--blanco);
+
+    display: flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        70px 20px;
+}
+
+.collections-heading p {
+
+    color:
+        var(--rojo);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 25px;
+}
+
+.collections-heading h1 {
+
+    font-size:
+        clamp(
+            55px,
+            8vw,
+            100px
+        );
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    line-height: 1;
+
+    margin-bottom: 30px;
+}
+
+.collections-heading span {
+
+    color:
+        #aaaaaa;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   TARJETAS DE COLECCIONES
+   ========================================================= */
+
+.collections-showcase {
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding:
+        70px 5%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.collection-card {
+
+    min-height: 300px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    background:
+        #151515;
+
+    border-radius:
+        4px;
+
+    transition:
+
+        transform 0.3s ease,
+
+        box-shadow 0.3s ease;
+}
+
+.collection-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+}
+
+
+/* Fondo */
+
+.collection-card-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.collection-card:hover
+.collection-card-bg {
+
+    transform:
+        scale(1.05);
+}
+
+
+/* Overlay */
+
+.collection-card-bg::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(
+                0,
+                0,
+                0,
+                0.9
+            ),
+            rgba(
+                0,
+                0,
+                0,
+                0.05
+            )
+        );
+}
+
+
+/* Anime */
+
+.anime-bg {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.35
+            ),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #111111,
+            #241010
+        );
+}
+
+
+/* Streetwear */
+
+.streetwear-bg {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.25
+            ),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #111111,
+            #171717
+        );
+}
+
+
+/* Exclusivos */
+
+.exclusive-bg {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(
+                225,
+                6,
+                0,
+                0.4
+            ),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0a0a0a,
+            #2b1111
+        );
+}
+
+
+/* Contenido */
+
+.collection-card-content {
+
+    position:
+        relative;
+
+    z-index: 2;
+
+    padding:
+        30px;
+
+    color:
+        var(--blanco);
+}
+
+.collection-card-content small {
+
+    display: block;
+
+    color:
+        var(--rojo);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.collection-card-content h2 {
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.collection-card-content span {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.7
+        );
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CATÁLOGO
+   ========================================================= */
+
+.catalog-section {
+
+    background:
+        var(--blanco);
+
+    padding:
+        90px 5%;
+}
+
+.catalog-top {
+
+    max-width: 1400px;
+
+    margin:
+        0 auto 45px;
+
+    display: flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+
+    gap: 30px;
+}
+
+.catalog-kicker {
+
+    color:
+        var(--rojo);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+}
+
+.catalog-top h2 {
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            55px
+        );
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.catalog-top span {
+
+    color:
+        var(--gris);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BOTÓN DE FILTROS
+   ========================================================= */
+
+.filter-button {
+
+    border: none;
+
+    background:
+        var(--rojo);
+
+    color:
+        var(--blanco);
+
+    padding:
+        15px 22px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+
+        background 0.2s ease,
+
+        transform 0.2s ease;
+}
+
+.filter-button:hover {
+
+    background:
+        var(--rojo-oscuro);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+
+.filters {
+
+    max-width: 1400px;
+
+    margin:
+        0 auto 45px;
+
+    display: none;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+
+    padding: 30px;
+
+    background:
+        var(--gris-claro);
+
+    border:
+        1px solid
+        #e5e5e5;
+}
+
+.filters.active {
+
+    display: grid;
+}
+
+.filter-group {
+
+    display: flex;
+
+    flex-direction:
+        column;
+
+    gap: 10px;
+}
+
+.filter-group strong {
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+.filter-group label {
+
+    color:
+        #555555;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.filter-group input {
+
+    margin-right: 7px;
+}
+
+.filter-group select {
+
+    padding: 10px;
+
+    border:
+        1px solid
+        #dddddd;
+
+    background:
+        var(--blanco);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   GRID DE PRODUCTOS - COLECCIONES
+   ========================================================= */
+
+.products-grid {
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 30px;
+}
+
+.product-card {
+
+    display: block;
+
+    color:
+        var(--negro);
+
+    transition:
+        transform 0.3s ease;
+}
+
+.product-card:hover {
+
+    transform:
+        translateY(-5px);
+}
+
+
+/* Imagen */
+
+.product-card
+.product-image {
+
+    width: 100%;
+
+    aspect-ratio:
+        1 / 1.15;
+
+    background:
+        var(--gris-claro);
+
+    display: flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow: hidden;
+
+    margin-bottom: 18px;
+}
+
+
+/* Placeholder */
+
+.product-placeholder {
+
+    color:
+        #bbbbbb;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+.product-placeholder::before {
+
+    display: none;
+}
+
+
+/* Información */
+
+.product-card
+.product-info {
+
+    padding:
+        0 5px;
+}
+
+.product-card
+.product-category {
+
+    display: block;
+
+    color:
+        var(--gris);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 7px;
+}
+
+.product-card
+.product-info h3 {
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.product-card
+.product-info p {
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
    TABLET
-===================================================== */
+   ========================================================= */
 
 @media (max-width: 1000px) {
+
+
+    /* NAV */
 
     .menu {
 
         gap: 20px;
-
     }
 
+
+    /* PRODUCTOS */
 
     .products {
 
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
+
+    /* COLECCIONES */
 
     .collection-grid {
 
         grid-template-columns:
             1fr;
-
     }
 
+    .collection {
+
+        min-height:
+            320px;
+    }
+
+
+    /* FOOTER */
 
     .footer-main {
 
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
+
+    /* INSTAGRAM */
 
     .instagram-grid {
 
         grid-template-columns:
             repeat(3, 1fr);
+    }
 
+
+    /* PÁGINA COLECCIONES */
+
+    .collections-showcase {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .filters {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .products-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    CELULAR
-===================================================== */
+   ========================================================= */
 
 @media (max-width: 700px) {
+
+
+    /* BARRA */
 
     .top-bar {
 
@@ -1215,9 +1818,10 @@ footer {
         font-size: 9px;
 
         letter-spacing: 1px;
-
     }
 
+
+    /* NAVBAR */
 
     .navbar {
 
@@ -1225,38 +1829,47 @@ footer {
 
         padding:
             0 20px;
-
     }
 
+
+    /* LOGO */
 
     .logo {
 
         height: 48px;
-
     }
 
+
+    /* MENU */
 
     .menu {
 
         display: none;
-
     }
 
+
+    /* ACCIONES */
 
     .actions {
 
         gap: 12px;
+    }
 
+    .action {
+
+        font-size: 17px;
     }
 
 
+    /* HERO */
+
     .hero {
 
-        min-height: 600px;
+        min-height:
+            600px;
 
         padding:
             70px 20px;
-
     }
 
 
@@ -1265,7 +1878,6 @@ footer {
         width: 70px;
 
         margin-bottom: 25px;
-
     }
 
 
@@ -1278,8 +1890,8 @@ footer {
                 70px
             );
 
-        letter-spacing: 4px;
-
+        letter-spacing:
+            4px;
     }
 
 
@@ -1287,49 +1899,56 @@ footer {
 
         font-size: 12px;
 
-        letter-spacing: 2px;
-
+        letter-spacing:
+            2px;
     }
 
+
+    /* SECCIONES */
 
     .section {
 
         padding:
             70px 20px;
-
     }
 
+
+    /* PRODUCTOS */
 
     .products {
 
         grid-template-columns:
             1fr;
 
+        gap: 35px;
     }
 
+
+    /* COLECCIONES */
 
     .collection-grid {
 
         grid-template-columns:
             1fr;
-
     }
-
 
     .collection {
 
-        min-height: 300px;
-
+        min-height:
+            300px;
     }
 
+
+    /* INSTAGRAM */
 
     .instagram-grid {
 
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
+
+    /* FOOTER */
 
     .footer-main {
 
@@ -1337,393 +1956,85 @@ footer {
             1fr;
 
         gap: 35px;
-
     }
-
 
     .footer-bottom {
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        text-align: center;
-
-        gap: 10px;
-
+        text-align:
+            center;
     }
 
-}
 
-/* =====================================================
-   PÁGINA DE COLECCIONES
-===================================================== */
+    /* =====================================================
+       PÁGINA COLECCIONES
+       ===================================================== */
 
-.page-header {
+    .collections-heading {
 
-    padding:
-        120px 20px 90px;
-
-    text-align: center;
-
-    background:
-        var(--negro);
-
-    color:
-        var(--blanco);
-
-}
-
-
-.page-kicker {
-
-    color:
-        var(--rojo);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.page-header h1 {
-
-    font-size:
-        clamp(
-            45px,
-            8vw,
-            85px
-        );
-
-    letter-spacing: 6px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.page-header > p:last-child {
-
-    max-width: 600px;
-
-    margin: auto;
-
-    color:
-        #999;
-
-    font-size: 15px;
-
-}
-
-
-/* =====================================================
-   SECCIONES
-===================================================== */
-
-.collection-page-section {
-
-    padding:
-        100px 5%;
-
-    background:
-        var(--blanco);
-
-}
-
-
-.dark-section {
-
-    background:
-        var(--negro);
-
-    color:
-        var(--blanco);
-
-}
-
-
-/* =====================================================
-   TÍTULO
-===================================================== */
-
-.collection-page-title {
-
-    max-width: 1400px;
-
-    margin:
-        0 auto 40px;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 25px;
-
-}
-
-
-.collection-page-title > span {
-
-    color:
-        var(--rojo);
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    padding-top: 8px;
-
-}
-
-
-.collection-page-title h2 {
-
-    font-size:
-        clamp(
-            32px,
-            5vw,
-            55px
-        );
-
-    letter-spacing: 4px;
-
-    margin-bottom: 8px;
-
-}
-
-
-.collection-page-title p {
-
-    color:
-        var(--gris);
-
-    font-size: 14px;
-
-}
-
-
-.dark-section
-.collection-page-title p {
-
-    color:
-        #888;
-
-}
-
-
-/* =====================================================
-   BANNER DE COLECCIÓN
-===================================================== */
-
-.collection-banner {
-
-    max-width: 1400px;
-
-    min-height: 450px;
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-.collection-banner::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #111,
-            #222
-        );
-
-}
-
-
-.collection-banner::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-
-    height: 500px;
-
-    background:
-        var(--rojo);
-
-    border-radius: 50%;
-
-    filter:
-        blur(180px);
-
-    opacity:
-        0.15;
-
-}
-
-
-/* =====================================================
-   TIPOS DE BANNER
-===================================================== */
-
-.anime-banner {
-
-    background:
-        #111;
-
-}
-
-
-.streetwear-banner {
-
-    background:
-        #080808;
-
-}
-
-
-.exclusive-banner {
-
-    background:
-        #151515;
-
-}
-
-
-.new-banner {
-
-    background:
-        #0d0d0d;
-
-}
-
-
-/* =====================================================
-   TEXTO DEL BANNER
-===================================================== */
-
-.collection-banner > div {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.collection-banner span {
-
-    color:
-        var(--rojo);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 4px;
-
-}
-
-
-.collection-banner h3 {
-
-    font-size:
-        clamp(
-            40px,
-            8vw,
-            90px
-        );
-
-    letter-spacing: 7px;
-
-    margin:
-        15px 0;
-
-}
-
-
-.collection-banner p {
-
-    color:
-        #999;
-
-    font-size: 14px;
-
-    letter-spacing: 2px;
-
-}
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media (max-width: 700px) {
-
-    .page-header {
+        min-height:
+            260px;
 
         padding:
-            90px 20px 70px;
+            60px 20px;
+    }
 
+    .collections-heading h1 {
+
+        font-size:
+            48px;
+
+        letter-spacing:
+            3px;
     }
 
 
-    .collection-page-section {
+    .collections-showcase {
 
         padding:
-            70px 20px;
-
+            50px 20px;
     }
 
 
-    .collection-page-title {
+    .collection-card {
 
-        gap: 15px;
-
+        min-height:
+            280px;
     }
 
 
-    .collection-page-title h2 {
+    .catalog-section {
 
-        letter-spacing: 2px;
-
+        padding:
+            60px 20px;
     }
 
 
-    .collection-banner {
+    .catalog-top {
 
-        min-height: 330px;
+        flex-direction:
+            column;
 
+        align-items:
+            flex-start;
     }
 
 
-    .collection-banner h3 {
+    .filters {
 
-        letter-spacing: 3px;
+        grid-template-columns:
+            1fr;
+    }
 
+
+    .products-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 40px;
     }
 
 }
