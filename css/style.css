@@ -1135,3 +1135,301 @@ input {
     }
 
 }
+
+
+/* =========================================================
+   SATORIMODE — COMPATIBILIDAD Y MENÚS
+   ========================================================= */
+
+/* HEADER usado por colecciones.html */
+.shipping-bar {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--rojo);
+    color: var(--blanco);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.site-header {
+    width: 100%;
+    height: 76px;
+    background: var(--blanco);
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    z-index: 1000;
+}
+
+.header-inner {
+    width: 100%;
+    height: 100%;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.brand-logo {
+    width: 90px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.brand-logo img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+.main-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 34px;
+    white-space: nowrap;
+}
+
+.main-nav > a,
+.main-nav .nav-dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    padding: 8px 0;
+    color: var(--negro);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.main-nav > a:hover,
+.main-nav .nav-dropdown > a:hover {
+    color: var(--rojo);
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.header-icons button {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--negro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    cursor: pointer;
+    transition: color .2s ease, transform .2s ease;
+}
+
+.header-icons button:hover {
+    color: var(--rojo);
+    transform: translateY(-2px);
+}
+
+/* MENÚS: puente invisible para poder bajar el mouse */
+.menu-dropdown,
+.nav-dropdown {
+    position: relative;
+}
+
+.menu-dropdown::after,
+.nav-dropdown::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+    right: -12px;
+    top: 100%;
+    height: 16px;
+}
+
+/* Dropdown de index.html */
+.dropdown-content {
+    top: calc(100% + 10px);
+}
+
+.menu-dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Dropdown de colecciones.html */
+.nav-dropdown .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    width: 180px;
+    padding: 8px;
+    background: var(--blanco);
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.14);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 9999;
+    transition:
+        opacity .2s ease,
+        transform .2s ease,
+        visibility .2s ease;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown .dropdown-menu a {
+    display: block;
+    padding: 11px 13px;
+    color: var(--negro);
+    background: transparent;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .7px;
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease;
+}
+
+.nav-dropdown .dropdown-menu a:hover {
+    background: var(--rojo);
+    color: var(--blanco);
+}
+
+/* HERO usado por colecciones.html */
+.collections-hero {
+    min-height: 285px;
+    padding: 65px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--blanco);
+    background:
+        radial-gradient(circle at 75% 30%, rgba(140,0,0,.45), transparent 40%),
+        linear-gradient(120deg, #050505, #100000);
+}
+
+.collections-hero .hero-content {
+    max-width: 1000px;
+}
+
+.collections-hero .hero-kicker {
+    display: block;
+    color: var(--rojo);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.collections-hero h1 {
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: .95;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+.collections-hero p {
+    color: #bdbdbd;
+    font-size: 14px;
+}
+
+.collection-card {
+    text-decoration: none;
+}
+
+@media (max-width: 850px) {
+    .main-nav {
+        gap: 14px;
+    }
+
+    .main-nav > a,
+    .main-nav .nav-dropdown > a {
+        font-size: 11px;
+    }
+
+    .header-icons {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    .site-header {
+        height: 65px;
+    }
+
+    .header-inner {
+        padding: 0 20px;
+    }
+
+    .brand-logo {
+        width: 55px;
+    }
+
+    .brand-logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .header-icons {
+        gap: 12px;
+    }
+
+    .header-icons button {
+        font-size: 17px;
+    }
+
+    .shipping-bar {
+        height: 34px;
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .collections-hero {
+        min-height: 230px;
+        padding: 50px 20px;
+    }
+
+    .collections-hero h1 {
+        font-size: 48px;
+        letter-spacing: -1px;
+    }
+}
+
+/* Evita que el logo se agrande accidentalmente */
+.logo,
+.brand-logo img,
+.footer-logo {
+    object-fit: contain;
+}
