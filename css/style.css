@@ -1,7 +1,7 @@
 /* =========================================================
    SATORIMODE
    STYLE.CSS
-   VERSIÓN LIMPIA
+   VERSIÓN LIMPIA Y UNIFICADA
 ========================================================= */
 
 
@@ -20,6 +20,7 @@ html {
 }
 
 body {
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background: #ffffff;
     color: #080808;
@@ -52,8 +53,10 @@ img {
     background: #f31313;
     color: #ffffff;
 
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -92,7 +95,7 @@ img {
 ========================================================= */
 
 .brand-logo {
-    width: 90px;
+    width: 70px;
     height: 100%;
 
     display: flex;
@@ -103,15 +106,15 @@ img {
 }
 
 .brand-logo img {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
 
     object-fit: contain;
 }
 
 
 /* =========================================================
-   NAVEGACIÓN PRINCIPAL
+   NAVEGACIÓN
 ========================================================= */
 
 .main-nav {
@@ -126,9 +129,27 @@ img {
 
 
 /*
-   TODAS LAS OPCIONES DEL HEADER
-   tienen exactamente el mismo tamaño.
+   TODAS LAS OPCIONES PRINCIPALES
+   TIENEN EXACTAMENTE EL MISMO ESTILO.
 */
+
+.main-nav > a,
+.main-nav > .nav-dropdown > a,
+.main-nav > .nav-dropdown > a * {
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 12px !important;
+    font-weight: 500 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: 0.8px !important;
+
+    white-space: nowrap;
+}
+
+
+/* Links principales */
 
 .main-nav > a,
 .main-nav > .nav-dropdown > a {
@@ -139,17 +160,13 @@ img {
 
     position: relative;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1;
-
-    letter-spacing: 0.8px;
-
-    white-space: nowrap;
+    color: #080808;
 
     transition: color 0.2s ease;
 }
+
+
+/* Hover */
 
 .main-nav > a:hover,
 .main-nav > .nav-dropdown > a:hover {
@@ -173,10 +190,16 @@ img {
 
 /* Flecha */
 
-.arrow {
+.nav-dropdown .arrow {
+    display: inline-block;
+
     margin-left: 6px;
 
-    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 400 !important;
+
+    line-height: 1 !important;
 
     transition: transform 0.2s ease;
 }
@@ -222,9 +245,7 @@ img {
 }
 
 
-/*
-   APARECE AL PASAR EL MOUSE
-*/
+/* Aparece al pasar el mouse */
 
 .nav-dropdown:hover .dropdown-menu {
     opacity: 1;
@@ -236,21 +257,31 @@ img {
 }
 
 
-/* Opciones del menú */
+/* =========================================================
+   OPCIONES DEL DROPDOWN
+========================================================= */
 
 .dropdown-menu a {
     display: block;
+
+    width: 100%;
 
     padding: 13px 14px;
 
     border-radius: 8px;
 
-    font-size: 11px;
-    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif !important;
 
-    letter-spacing: 0.5px;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+
+    line-height: 1.2 !important;
+
+    letter-spacing: 0.5px !important;
 
     white-space: nowrap;
+
+    color: #080808;
 
     transition:
         background 0.2s ease,
@@ -268,26 +299,26 @@ img {
 ========================================================= */
 
 .header-icons {
-    width: 90px;
+    width: 70px;
 
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
-    gap: 16px;
+    gap: 14px;
 
     flex-shrink: 0;
 }
 
 .header-icon {
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 19px;
+    font-size: 17px;
 
     transition:
         color 0.2s ease,
@@ -296,6 +327,7 @@ img {
 
 .header-icon:hover {
     color: #f31313;
+
     transform: translateY(-1px);
 }
 
@@ -309,7 +341,7 @@ img {
 
     min-height: 470px;
 
-    margin: 0 auto;
+    margin: 0;
 
     padding: 70px 40px;
 
@@ -320,6 +352,7 @@ img {
     text-align: center;
 
     position: relative;
+
     overflow: hidden;
 
     border-radius: 0 0 22px 22px;
@@ -337,6 +370,9 @@ img {
             #3b0000 100%
         );
 }
+
+
+/* Líneas diagonales */
 
 .home-hero::after {
     content: "";
@@ -359,14 +395,17 @@ img {
 
 .home-hero-content {
     position: relative;
+
     z-index: 2;
+
+    width: 100%;
 
     max-width: 900px;
 }
 
 
 /* =========================================================
-   TEXTOS HERO
+   HERO - TEXTOS
 ========================================================= */
 
 .hero-kicker {
@@ -590,7 +629,7 @@ img {
 
 /* =========================================================
    SATORII PACK
-   UN SOLO BLOQUE VISUAL
+   UN SOLO BLOQUE
 ========================================================= */
 
 .pack-section {
@@ -604,12 +643,6 @@ img {
 
     border-radius: 22px;
 }
-
-
-/*
-   EL FONDO ESTÁ AQUÍ.
-   pack-content NO tendrá otro fondo.
-*/
 
 .pack-content {
     width: 100%;
@@ -646,16 +679,12 @@ img {
 }
 
 
-/*
-   IMPORTANTE:
-   No se crea un segundo rectángulo.
-*/
+/* Evita segundo cuadrado */
 
 .pack-content::before,
 .pack-content::after {
     display: none;
 }
-
 
 .pack-content .hero-kicker {
     display: block;
@@ -671,7 +700,6 @@ img {
 
     text-transform: uppercase;
 }
-
 
 .pack-content h2 {
     margin: 0;
@@ -711,7 +739,7 @@ img {
 
 
 /* =========================================================
-   PÁGINA PRODUCTOS
+   HERO DE PÁGINAS
 ========================================================= */
 
 .page-hero {
@@ -1106,7 +1134,7 @@ img {
 
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -1116,12 +1144,13 @@ img {
     }
 
     .main-nav {
-        gap: 15px;
+        gap: 18px;
     }
 
     .main-nav > a,
-    .main-nav > .nav-dropdown > a {
-        font-size: 11px;
+    .main-nav > .nav-dropdown > a,
+    .main-nav > .nav-dropdown > a * {
+        font-size: 11px !important;
     }
 
     .brand-logo {
@@ -1208,12 +1237,15 @@ img {
         overflow-x: auto;
 
         justify-content: flex-start;
+
+        gap: 18px;
     }
 
 
     .main-nav > a,
-    .main-nav > .nav-dropdown > a {
-        font-size: 10px;
+    .main-nav > .nav-dropdown > a,
+    .main-nav > .nav-dropdown > a * {
+        font-size: 10px !important;
     }
 
 
@@ -1321,4 +1353,3 @@ img {
         gap: 8px;
     }
 }
-
