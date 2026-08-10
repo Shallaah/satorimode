@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,12 +9,734 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Satori #001 | SatoriMode</title>
+    <title>Polera Daruma no Kakusei | SatoriMode</title>
+
+    <meta
+        name="description"
+        content="Polera Daruma no Kakusei de SatoriMode."
+    >
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
+
+    <style>
+
+        /* =========================================================
+           PRODUCTO — SATORIMODE
+        ========================================================= */
+
+        .product-page {
+            width: min(1400px, 92%);
+            margin: 0 auto;
+            padding: 70px 0 100px;
+        }
+
+
+        /* =========================================================
+           PRODUCTO PRINCIPAL
+        ========================================================= */
+
+        .product-main {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(380px, .85fr);
+            gap: 70px;
+            align-items: start;
+        }
+
+
+        /* =========================================================
+           GALERÍA
+        ========================================================= */
+
+        .product-gallery {
+            min-width: 0;
+        }
+
+        .product-main-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 18px;
+            background:
+                radial-gradient(
+                    circle at 75% 25%,
+                    rgba(100, 0, 0, .55),
+                    transparent 42%
+                ),
+                #111;
+        }
+
+        .product-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+
+
+        /* =========================================================
+           MINIATURAS
+        ========================================================= */
+
+        .product-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .product-thumbnail {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+
+            border: 1px solid #ddd;
+            border-radius: 12px;
+
+            background: #111;
+
+            cursor: pointer;
+
+            padding: 0;
+
+            transition:
+                border-color .2s ease,
+                transform .2s ease;
+        }
+
+        .product-thumbnail:hover {
+            transform: translateY(-2px);
+        }
+
+        .product-thumbnail.active {
+            border: 2px solid var(--red);
+        }
+
+        .product-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* =========================================================
+           INFORMACIÓN
+        ========================================================= */
+
+        .product-details-panel {
+            position: sticky;
+            top: 30px;
+        }
+
+        .product-category {
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: var(--red);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: clamp(38px, 4vw, 58px);
+
+            line-height: .95;
+
+            font-weight: 900;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 18px;
+        }
+
+        .product-price-big {
+            font-size: 25px;
+            font-weight: 900;
+
+            margin-bottom: 28px;
+        }
+
+        .product-separator {
+            width: 100%;
+            height: 1px;
+            background: #e5e5e5;
+            margin-bottom: 28px;
+        }
+
+
+        /* =========================================================
+           OPCIONES
+        ========================================================= */
+
+        .product-option {
+            margin-bottom: 28px;
+        }
+
+        .product-option-title {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .product-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .product-option-button {
+            min-width: 82px;
+            height: 46px;
+
+            padding: 0 18px;
+
+            border: 1px solid #d8d8d8;
+            border-radius: 8px;
+
+            background: white;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                border-color .2s ease,
+                color .2s ease;
+        }
+
+        .product-option-button:hover {
+            border-color: var(--red);
+        }
+
+        .product-option-button.active {
+            background: var(--red);
+            border-color: var(--red);
+            color: white;
+        }
+
+
+        /* =========================================================
+           DISPONIBILIDAD
+        ========================================================= */
+
+        .product-stock {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 9px 14px;
+
+            border-radius: 30px;
+
+            background: #eefbf1;
+            color: #15803d;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 25px;
+        }
+
+        .product-stock::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #16a34a;
+        }
+
+
+        /* =========================================================
+           BOTÓN CARRITO
+        ========================================================= */
+
+        .add-cart-button {
+            width: 100%;
+            min-height: 54px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: var(--red);
+            color: white;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                transform .2s ease;
+        }
+
+        .add-cart-button:hover {
+            background: #c90000;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           INFORMACIÓN RÁPIDA
+        ========================================================= */
+
+        .product-quick-info {
+            margin-top: 25px;
+        }
+
+        .quick-info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 17px 0;
+
+            border-bottom: 1px solid #e5e5e5;
+
+            font-size: 12px;
+        }
+
+        .quick-info-row strong {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .quick-info-row span {
+            color: #777;
+            text-align: right;
+        }
+
+
+        /* =========================================================
+           MEDIOS DE PAGO
+        ========================================================= */
+
+        .payment-box {
+            margin-top: 28px;
+
+            padding: 22px;
+
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+
+            background: #fafafa;
+        }
+
+        .payment-title {
+            margin-bottom: 8px;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+        .payment-text {
+            color: #777;
+            font-size: 12px;
+
+            margin-bottom: 15px;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .payment-method {
+            padding: 8px 12px;
+
+            background: white;
+
+            border: 1px solid #ddd;
+            border-radius: 6px;
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           INFORMACIÓN DEL PRODUCTO
+        ========================================================= */
+
+        .product-information {
+            margin-top: 90px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 80px;
+        }
+
+        .product-information-title {
+            margin-bottom: 20px;
+
+            font-size: 28px;
+            font-weight: 900;
+
+            letter-spacing: -1px;
+        }
+
+
+        /* =========================================================
+           PESTAÑAS
+        ========================================================= */
+
+        .product-tabs {
+            border-top: 1px solid #ddd;
+        }
+
+        .product-tab-buttons {
+            display: flex;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-tab-button {
+            flex: 1;
+
+            padding: 17px 12px;
+
+            border: none;
+            border-bottom: 2px solid transparent;
+
+            background: transparent;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+        }
+
+        .product-tab-button:hover {
+            color: var(--red);
+        }
+
+        .product-tab-button.active {
+            color: var(--red);
+            border-bottom-color: var(--red);
+        }
+
+        .product-tab-content {
+            display: none;
+
+            padding: 28px 5px;
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+        .product-tab-content.active {
+            display: block;
+        }
+
+        .product-tab-content strong {
+            color: #111;
+        }
+
+        .product-tab-content ul {
+            margin: 15px 0 0 18px;
+        }
+
+
+        /* =========================================================
+           BENEFICIOS
+        ========================================================= */
+
+        .product-benefits {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 90px;
+        }
+
+        .benefit-card {
+            padding: 30px 25px;
+
+            border-radius: 15px;
+
+            background: #f5f5f5;
+        }
+
+        .benefit-number {
+            display: block;
+
+            margin-bottom: 15px;
+
+            color: var(--red);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 8px;
+
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .benefit-card p {
+            color: #777;
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           RECOMENDADOS
+        ========================================================= */
+
+        .recommended-products {
+            margin-top: 100px;
+        }
+
+        .recommended-header {
+            margin-bottom: 30px;
+        }
+
+        .recommended-kicker {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--red);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+        .recommended-header h2 {
+            font-size: clamp(32px, 4vw, 48px);
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            letter-spacing: -2px;
+        }
+
+        .recommended-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .recommended-card {
+            display: block;
+
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+        .recommended-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            border-radius: 14px;
+
+            background:
+                radial-gradient(
+                    circle at 75% 25%,
+                    rgba(100,0,0,.55),
+                    transparent 42%
+                ),
+                #111;
+
+            transition: transform .25s ease;
+        }
+
+        .recommended-card:hover .recommended-image {
+            transform: translateY(-5px);
+        }
+
+        .recommended-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .recommended-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+        .recommended-info {
+            padding: 15px 3px;
+        }
+
+        .recommended-category {
+            color: var(--red);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+        }
+
+        .recommended-info h3 {
+            margin-top: 5px;
+
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .recommended-price {
+            margin-top: 6px;
+
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 950px) {
+
+            .product-main {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .product-details-panel {
+                position: static;
+            }
+
+            .product-information {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .product-page {
+                width: 94%;
+                padding: 40px 0 70px;
+            }
+
+            .product-main-image {
+                border-radius: 12px;
+            }
+
+            .product-title {
+                font-size: 40px;
+            }
+
+            .product-information {
+                margin-top: 60px;
+            }
+
+            .product-benefits {
+                grid-template-columns: 1fr;
+                margin-top: 60px;
+            }
+
+            .recommended-products {
+                margin-top: 70px;
+            }
+
+            .recommended-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .recommended-info h3 {
+                font-size: 14px;
+            }
+
+        }
+
+
+        @media (max-width: 430px) {
+
+            .recommended-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-tab-button {
+                font-size: 8px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -23,819 +744,1016 @@
 <body>
 
 
-<!-- =====================================================
-     BARRA DE ENVÍOS
-===================================================== -->
+    <!-- =========================================================
+         BARRA DE ENVÍOS
+    ========================================================= -->
 
-<div class="shipping-bar">
-
-    ENVÍOS A TODO CHILE · SATORIMODE
-
-</div>
+    <div class="shipping-bar">
+        ENVÍOS A TODO CHILE · SATORIMODE
+    </div>
 
 
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <header class="site-header">
 
-<header class="site-header">
-
-    <div class="header-inner">
+        <div class="header-inner">
 
 
-        <!-- LOGO -->
+            <!-- LOGO -->
 
-        <a
-            href="index.html"
-            class="brand-logo"
-        >
-
-            <img
-                src="logo.png"
-                alt="SatoriMode"
+            <a
+                href="index.html"
+                class="brand-logo"
             >
 
-        </a>
+                <img
+                    src="logo.png"
+                    alt="SatoriMode"
+                >
 
-
-
-        <!-- MENÚ -->
-
-        <nav class="main-nav">
-
-
-            <a href="index.html">
-                INICIO
             </a>
 
 
+            <!-- MENÚ -->
 
-            <!-- COLECCIONES -->
+            <nav class="main-nav">
 
-            <div class="nav-dropdown">
-
-                <a href="colecciones.html">
-
-                    COLECCIONES
-
-                    <span>⌄</span>
-
+                <a href="index.html">
+                    INICIO
                 </a>
 
 
-                <div class="dropdown-menu">
+                <div class="nav-dropdown">
 
-                    <a href="colecciones.html#anime">
-                        ANIME
+                    <a href="colecciones.html">
+                        COLECCIONES
+                        <span>⌄</span>
                     </a>
 
-                    <a href="colecciones.html#streetwear">
-                        STREETWEAR
-                    </a>
+                    <div class="dropdown-menu">
 
-                    <a href="colecciones.html#exclusivos">
-                        EXCLUSIVOS
-                    </a>
+                        <a href="colecciones.html#anime">
+                            ANIME
+                        </a>
+
+                        <a href="colecciones.html#streetwear">
+                            STREETWEAR
+                        </a>
+
+                        <a href="colecciones.html#exclusivos">
+                            EXCLUSIVOS
+                        </a>
+
+                    </div>
 
                 </div>
 
-            </div>
 
+                <div class="nav-dropdown">
 
-
-            <!-- PRODUCTOS -->
-
-            <div class="nav-dropdown">
-
-                <a href="colecciones.html#productos">
-
-                    PRODUCTOS
-
-                    <span>⌄</span>
-
-                </a>
-
-
-                <div class="dropdown-menu">
-
-                    <a href="producto.html?id=satori-001">
-                        SATORI #001
+                    <a href="#">
+                        PRODUCTOS
+                        <span>⌄</span>
                     </a>
 
-                    <a href="producto.html?id=satori-002">
-                        SATORI #002
-                    </a>
+                    <div class="dropdown-menu">
 
-                    <a href="producto.html?id=satori-003">
-                        SATORI #003
-                    </a>
+                        <a href="colecciones.html#productos">
+                            TODAS LAS POLERAS
+                        </a>
+
+                    </div>
 
                 </div>
 
-            </div>
-
-
-
-            <a href="index.html#nosotros">
-                NOSOTROS
-            </a>
-
-
-
-            <!-- AYUDA -->
-
-            <div class="nav-dropdown">
 
                 <a href="#">
-
-                    AYUDA
-
-                    <span>⌄</span>
-
+                    NOSOTROS
                 </a>
 
 
-                <div class="dropdown-menu">
+                <a href="#">
+                    AYUDA
+                </a>
 
-                    <a href="#">
-                        GUÍA DE TALLAS
-                    </a>
+            </nav>
 
-                    <a href="#">
-                        ENVÍOS
-                    </a>
 
-                    <a href="#">
-                        PREGUNTAS FRECUENTES
-                    </a>
+            <!-- ICONOS -->
+
+            <div class="header-icons">
+
+                <button
+                    type="button"
+                    aria-label="Buscar"
+                >
+                    ⌕
+                </button>
+
+                <button
+                    type="button"
+                    aria-label="Cuenta"
+                >
+                    ♙
+                </button>
+
+                <button
+                    type="button"
+                    aria-label="Carrito"
+                >
+                    🛒
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         PRODUCTO
+    ========================================================= -->
+
+    <main class="product-page">
+
+
+        <!-- =====================================================
+             PRODUCTO PRINCIPAL
+        ===================================================== -->
+
+        <section class="product-main">
+
+
+            <!-- =================================================
+                 GALERÍA
+            ================================================= -->
+
+            <div class="product-gallery">
+
+
+                <!-- IMAGEN PRINCIPAL -->
+
+                <div class="product-main-image">
+
+                    <!--
+                        CAMBIA ESTA RUTA POR TU IMAGEN REAL
+                    -->
+
+                    <img
+                        id="mainProductImage"
+                        src="productos/daruma-no-kakusei/frente.jpg"
+                        alt="Polera Daruma no Kakusei"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+
+                    <div
+                        class="product-placeholder"
+                        style="display:none;"
+                    >
+                        SATORIMODE
+                    </div>
+
+                </div>
+
+
+                <!-- MINIATURAS -->
+
+                <div class="product-thumbnails">
+
+
+                    <button
+                        class="product-thumbnail active"
+                        type="button"
+                        onclick="changeImage(this, 'productos/daruma-no-kakusei/frente.jpg')"
+                    >
+
+                        <img
+                            src="productos/daruma-no-kakusei/frente.jpg"
+                            alt="Frente"
+                        >
+
+                    </button>
+
+
+                    <button
+                        class="product-thumbnail"
+                        type="button"
+                        onclick="changeImage(this, 'productos/daruma-no-kakusei/espalda.jpg')"
+                    >
+
+                        <img
+                            src="productos/daruma-no-kakusei/espalda.jpg"
+                            alt="Espalda"
+                        >
+
+                    </button>
+
+
+                    <button
+                        class="product-thumbnail"
+                        type="button"
+                        onclick="changeImage(this, 'productos/daruma-no-kakusei/detalle.jpg')"
+                    >
+
+                        <img
+                            src="productos/daruma-no-kakusei/detalle.jpg"
+                            alt="Detalle"
+                        >
+
+                    </button>
+
 
                 </div>
 
             </div>
 
 
-        </nav>
+
+            <!-- =================================================
+                 INFORMACIÓN
+            ================================================= -->
+
+            <div class="product-details-panel">
 
 
-
-        <!-- ICONOS -->
-
-        <div class="header-icons">
-
-            <button
-                type="button"
-                aria-label="Buscar"
-            >
-                ⌕
-            </button>
-
-
-            <button
-                type="button"
-                aria-label="Cuenta"
-            >
-                ♙
-            </button>
-
-
-            <button
-                type="button"
-                aria-label="Carrito"
-            >
-                🛒
-            </button>
-
-        </div>
-
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
-
-<main>
-
-
-<!-- =====================================================
-     PRODUCTO
-===================================================== -->
-
-<section class="product-page">
-
-
-    <!-- =================================================
-         GALERÍA
-    ================================================== -->
-
-    <div class="product-gallery">
-
-
-        <!-- IMAGEN PRINCIPAL -->
-
-        <div class="product-main-image">
-
-            <div class="product-image-placeholder">
-
-                SATORIMODE
-
-            </div>
-
-        </div>
-
-
-
-        <!-- MINIATURAS -->
-
-        <div class="product-thumbnails">
-
-
-            <button
-                type="button"
-                class="product-thumbnail active"
-            >
-
-                <span>
-                    FRENTE
+                <span class="product-category">
+                    ANIME · SATORIMODE
                 </span>
 
-            </button>
+
+                <h1 class="product-title">
+                    Polera Daruma<br>
+                    no Kakusei
+                </h1>
 
 
-            <button
-                type="button"
-                class="product-thumbnail"
-            >
-
-                <span>
-                    ESPALDA
-                </span>
-
-            </button>
+                <div class="product-price-big">
+                    $24.990
+                </div>
 
 
-            <button
-                type="button"
-                class="product-thumbnail"
-            >
-
-                <span>
-                    DETALLE
-                </span>
-
-            </button>
+                <div class="product-separator"></div>
 
 
-        </div>
+                <!-- COLOR -->
+
+                <div class="product-option">
+
+                    <span class="product-option-title">
+                        COLOR
+                    </span>
+
+                    <div class="product-options">
+
+                        <button
+                            class="product-option-button active"
+                            type="button"
+                            onclick="selectOption(this, 'color')"
+                        >
+                            ● NEGRO
+                        </button>
+
+                        <button
+                            class="product-option-button"
+                            type="button"
+                            onclick="selectOption(this, 'color')"
+                        >
+                            ○ BLANCO
+                        </button>
+
+                    </div>
+
+                </div>
 
 
-    </div>
+                <!-- TALLA -->
+
+                <div class="product-option">
+
+                    <span class="product-option-title">
+                        TALLA
+                    </span>
+
+                    <div class="product-options">
+
+                        <button
+                            class="product-option-button active"
+                            type="button"
+                            onclick="selectOption(this, 'size')"
+                        >
+                            M
+                        </button>
+
+                        <button
+                            class="product-option-button"
+                            type="button"
+                            onclick="selectOption(this, 'size')"
+                        >
+                            L
+                        </button>
+
+                        <button
+                            class="product-option-button"
+                            type="button"
+                            onclick="selectOption(this, 'size')"
+                        >
+                            XL
+                        </button>
+
+                    </div>
+
+                </div>
 
 
+                <!-- DISPONIBILIDAD -->
 
-    <!-- =================================================
-         INFORMACIÓN DEL PRODUCTO
-    ================================================== -->
-
-    <div class="product-details-page">
-
-
-        <!-- CATEGORÍA -->
-
-        <p class="product-page-category">
-
-            ANIME · SATORIMODE
-
-        </p>
+                <div class="product-stock">
+                    DISPONIBLE
+                </div>
 
 
-
-        <!-- NOMBRE -->
-
-        <h1>
-
-            Satori #001
-
-        </h1>
-
-
-
-        <!-- PRECIO -->
-
-        <p class="product-page-price">
-
-            $24.990
-
-        </p>
-
-
-
-        <div class="product-page-divider"></div>
-
-
-
-        <!-- =================================================
-             COLOR
-        ================================================== -->
-
-        <div class="product-option">
-
-
-            <h3>
-
-                COLOR
-
-            </h3>
-
-
-            <div class="color-options">
-
+                <!-- CARRITO -->
 
                 <button
+                    class="add-cart-button"
                     type="button"
-                    class="color-option active"
+                    onclick="addToCart()"
                 >
-
-                    <span
-                        class="color-circle black"
-                    ></span>
-
-                    NEGRO
-
+                    AGREGAR AL CARRITO
                 </button>
 
 
-                <button
-                    type="button"
-                    class="color-option"
+                <!-- INFORMACIÓN -->
+
+                <div class="product-quick-info">
+
+
+                    <div class="quick-info-row">
+
+                        <strong>
+                            ENVÍOS
+                        </strong>
+
+                        <span>
+                            Envíos a todo Chile.
+                        </span>
+
+                    </div>
+
+
+                    <div class="quick-info-row">
+
+                        <strong>
+                            TALLAS
+                        </strong>
+
+                        <span>
+                            M · L · XL
+                        </span>
+
+                    </div>
+
+
+                    <div class="quick-info-row">
+
+                        <strong>
+                            PRODUCTO
+                        </strong>
+
+                        <span>
+                            Polera
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     MEDIOS DE PAGO
+                ================================================= -->
+
+                <div class="payment-box">
+
+                    <div class="payment-title">
+                        MEDIOS DE PAGO
+                    </div>
+
+                    <p class="payment-text">
+                        Paga de forma segura mediante los medios de pago
+                        disponibles en SatoriMode.
+                    </p>
+
+                    <div class="payment-methods">
+
+                        <span class="payment-method">
+                            WEBPAY
+                        </span>
+
+                        <span class="payment-method">
+                            MERCADO PAGO
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             INFORMACIÓN DEL PRODUCTO
+        ===================================================== -->
+
+        <section class="product-information">
+
+
+            <!-- =================================================
+                 PESTAÑAS
+            ================================================= -->
+
+            <div class="product-tabs">
+
+
+                <div class="product-tab-buttons">
+
+                    <button
+                        class="product-tab-button active"
+                        type="button"
+                        onclick="openTab(event, 'description')"
+                    >
+                        DESCRIPCIÓN
+                    </button>
+
+
+                    <button
+                        class="product-tab-button"
+                        type="button"
+                        onclick="openTab(event, 'details')"
+                    >
+                        DETALLES
+                    </button>
+
+
+                    <button
+                        class="product-tab-button"
+                        type="button"
+                        onclick="openTab(event, 'shipping')"
+                    >
+                        ENVÍOS Y GARANTÍA
+                    </button>
+
+                </div>
+
+
+                <!-- DESCRIPCIÓN -->
+
+                <div
+                    id="description"
+                    class="product-tab-content active"
                 >
 
-                    <span
-                        class="color-circle white"
-                    ></span>
+                    <strong>
+                        Polera Daruma no Kakusei
+                    </strong>
 
-                    BLANCO
+                    <p>
+                        Una polera inspirada en la estética japonesa,
+                        el anime y la identidad visual de SatoriMode.
+                    </p>
 
-                </button>
+                    <p>
+                        Una prenda pensada para llevar tu estilo
+                        contigo en el día a día.
+                    </p>
+
+                </div>
+
+
+                <!-- DETALLES -->
+
+                <div
+                    id="details"
+                    class="product-tab-content"
+                >
+
+                    <strong>
+                        Características
+                    </strong>
+
+                    <ul>
+
+                        <li>
+                            Polera manga corta.
+                        </li>
+
+                        <li>
+                            100% algodón.
+                        </li>
+
+                        <li>
+                            Fit estándar.
+                        </li>
+
+                        <li>
+                            Colores disponibles: negro y blanco.
+                        </li>
+
+                        <li>
+                            Tallas disponibles: M, L y XL.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- ENVÍOS -->
+
+                <div
+                    id="shipping"
+                    class="product-tab-content"
+                >
+
+                    <strong>
+                        Envíos
+                    </strong>
+
+                    <p>
+                        Realizamos envíos a todo Chile.
+                    </p>
+
+                    <p>
+                        Los tiempos y costos de envío serán informados
+                        durante el proceso de compra.
+                    </p>
+
+                    <br>
+
+                    <strong>
+                        Cambios y garantía
+                    </strong>
+
+                    <p>
+                        Las condiciones de cambios, devoluciones y
+                        garantía serán informadas de acuerdo con las
+                        políticas de SatoriMode.
+                    </p>
+
+                </div>
 
 
             </div>
 
 
-        </div>
+            <!-- =================================================
+                 TEXTO LATERAL
+            ================================================= -->
 
+            <div>
 
+                <h2 class="product-information-title">
+                    HECHA PARA<br>
+                    LLEVAR TU ESTILO.
+                </h2>
 
-        <!-- =================================================
-             TALLA
-        ================================================== -->
-
-        <div class="product-option">
-
-
-            <h3>
-
-                TALLA
-
-            </h3>
-
-
-            <div class="size-options">
-
-
-                <label>
-
-                    <input
-                        type="radio"
-                        name="size"
-                        value="M"
-                        checked
-                    >
-
-                    <span>
-                        M
-                    </span>
-
-                </label>
-
-
-                <label>
-
-                    <input
-                        type="radio"
-                        name="size"
-                        value="L"
-                    >
-
-                    <span>
-                        L
-                    </span>
-
-                </label>
-
-
-                <label>
-
-                    <input
-                        type="radio"
-                        name="size"
-                        value="XL"
-                    >
-
-                    <span>
-                        XL
-                    </span>
-
-                </label>
-
+                <p
+                    style="
+                        color:#777;
+                        font-size:13px;
+                        line-height:1.8;
+                    "
+                >
+                    En SatoriMode buscamos crear prendas que
+                    conecten el anime, la cultura japonesa y el
+                    streetwear con una estética propia.
+                </p>
 
             </div>
 
 
-        </div>
+        </section>
 
 
 
-        <!-- =================================================
-             DISPONIBILIDAD
-        ================================================== -->
+        <!-- =====================================================
+             BENEFICIOS
+        ===================================================== -->
 
-        <div class="product-stock">
-
-            <span class="stock-dot"></span>
-
-            DISPONIBLE
-
-        </div>
+        <section class="product-benefits">
 
 
+            <div class="benefit-card">
 
-        <!-- =================================================
-             CARRITO
-        ================================================== -->
+                <span class="benefit-number">
+                    01
+                </span>
 
-        <button
-            type="button"
-            class="add-to-cart"
-        >
+                <h3>
+                    ALGODÓN
+                </h3>
 
-            AGREGAR AL CARRITO
+                <p>
+                    Material pensado para entregar comodidad
+                    durante el uso diario.
+                </p>
 
-        </button>
-
-
-
-        <!-- =================================================
-             INFORMACIÓN
-        ================================================== -->
-
-        <div class="product-information">
+            </div>
 
 
-            <div class="product-information-item">
+            <div class="benefit-card">
 
-                <strong>
+                <span class="benefit-number">
+                    02
+                </span>
+
+                <h3>
                     ENVÍOS
-                </strong>
-
-                <span>
-                    Envíos a todo Chile.
-                </span>
-
-            </div>
-
-
-            <div class="product-information-item">
-
-                <strong>
-                    TALLAS
-                </strong>
-
-                <span>
-                    M · L · XL
-                </span>
-
-            </div>
-
-
-            <div class="product-information-item">
-
-                <strong>
-                    PRODUCTO
-                </strong>
-
-                <span>
-                    Polera
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             DESCRIPCIÓN
-        ================================================== -->
-
-        <div class="product-description">
-
-
-            <h3>
-                DESCRIPCIÓN
-            </h3>
-
-
-            <p>
-
-                Polera SatoriMode inspirada en la
-                estética japonesa y la cultura del anime.
-
-            </p>
-
-
-            <p>
-
-                Diseño exclusivo de SatoriMode,
-                pensado para llevar tu pasión contigo.
-
-            </p>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     RECOMENDADOS
-===================================================== -->
-
-<section class="recommended-products">
-
-
-    <div class="recommended-header">
-
-
-        <span>
-            SATORIMODE
-        </span>
-
-
-        <h2>
-            TAMBIÉN TE PUEDE GUSTAR
-        </h2>
-
-
-        <p>
-            Descubre otros diseños de nuestra colección.
-        </p>
-
-
-    </div>
-
-
-
-    <div class="recommended-grid">
-
-
-        <!-- PRODUCTO 002 -->
-
-        <a
-            href="producto.html?id=satori-002"
-            class="recommended-card"
-        >
-
-            <div class="recommended-image">
-
-                <span>
-                    SATORIMODE
-                </span>
-
-            </div>
-
-
-            <div class="recommended-info">
-
-                <span class="recommended-category">
-                    POLERA
-                </span>
-
-
-                <h3>
-                    Satori #002
                 </h3>
 
-
                 <p>
-                    $24.990
+                    Enviamos nuestros productos a todo Chile.
                 </p>
 
             </div>
 
-        </a>
 
+            <div class="benefit-card">
 
-
-        <!-- PRODUCTO 003 -->
-
-        <a
-            href="producto.html?id=satori-003"
-            class="recommended-card"
-        >
-
-            <div class="recommended-image">
-
-                <span>
-                    SATORIMODE
+                <span class="benefit-number">
+                    03
                 </span>
-
-            </div>
-
-
-            <div class="recommended-info">
-
-                <span class="recommended-category">
-                    POLERA
-                </span>
-
 
                 <h3>
-                    Satori #003
+                    SATORIMODE
                 </h3>
 
-
                 <p>
-                    $24.990
+                    Diseños inspirados en el anime y la cultura
+                    japonesa.
                 </p>
 
             </div>
 
-        </a>
+
+        </section>
 
 
 
-        <!-- PRODUCTO 004 -->
+        <!-- =====================================================
+             PRODUCTOS RECOMENDADOS
+        ===================================================== -->
 
-        <a
-            href="producto.html?id=satori-004"
-            class="recommended-card"
-        >
+        <section class="recommended-products">
 
-            <div class="recommended-image">
 
-                <span>
+            <div class="recommended-header">
+
+                <span class="recommended-kicker">
                     SATORIMODE
                 </span>
+
+                <h2>
+                    TAMBIÉN TE PUEDE GUSTAR
+                </h2>
 
             </div>
 
 
-            <div class="recommended-info">
+            <div class="recommended-grid">
 
-                <span class="recommended-category">
-                    POLERA
-                </span>
 
+                <!-- PRODUCTO 002 -->
+
+                <a
+                    href="polera-kimetsu-no-yaiba.html"
+                    class="recommended-card"
+                >
+
+                    <div class="recommended-image">
+
+                        <div class="recommended-placeholder">
+                            SATORIMODE
+                        </div>
+
+                    </div>
+
+                    <div class="recommended-info">
+
+                        <span class="recommended-category">
+                            ANIME
+                        </span>
+
+                        <h3>
+                            Polera Kimetsu no Yaiba
+                        </h3>
+
+                        <div class="recommended-price">
+                            $24.990
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PRODUCTO 003 -->
+
+                <a
+                    href="polera-002.html"
+                    class="recommended-card"
+                >
+
+                    <div class="recommended-image">
+
+                        <div class="recommended-placeholder">
+                            SATORIMODE
+                        </div>
+
+                    </div>
+
+                    <div class="recommended-info">
+
+                        <span class="recommended-category">
+                            STREETWEAR
+                        </span>
+
+                        <h3>
+                            Polera Satori #002
+                        </h3>
+
+                        <div class="recommended-price">
+                            $24.990
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PRODUCTO 004 -->
+
+                <a
+                    href="polera-003.html"
+                    class="recommended-card"
+                >
+
+                    <div class="recommended-image">
+
+                        <div class="recommended-placeholder">
+                            SATORIMODE
+                        </div>
+
+                    </div>
+
+                    <div class="recommended-info">
+
+                        <span class="recommended-category">
+                            EXCLUSIVOS
+                        </span>
+
+                        <h3>
+                            Polera Satori #003
+                        </h3>
+
+                        <div class="recommended-price">
+                            $24.990
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
 
                 <h3>
-                    Satori #004
+                    SATORIMODE
                 </h3>
 
-
                 <p>
-                    $24.990
+                    Anime, cultura japonesa y streetwear.
                 </p>
 
             </div>
 
-        </a>
+
+            <div class="footer-column">
+
+                <h4>
+                    COLECCIONES
+                </h4>
+
+                <a href="colecciones.html#anime">
+                    Anime
+                </a>
+
+                <a href="colecciones.html#streetwear">
+                    Streetwear
+                </a>
+
+                <a href="colecciones.html#exclusivos">
+                    Exclusivos
+                </a>
+
+            </div>
 
 
-    </div>
+            <div class="footer-column">
+
+                <h4>
+                    AYUDA
+                </h4>
+
+                <a href="#">
+                    Guía de tallas
+                </a>
+
+                <a href="#">
+                    Envíos
+                </a>
+
+                <a href="#">
+                    Preguntas frecuentes
+                </a>
+
+            </div>
 
 
-</section>
+            <div class="footer-column">
 
+                <h4>
+                    SATORIMODE
+                </h4>
 
-</main>
+                <a href="index.html">
+                    Inicio
+                </a>
 
+                <a href="colecciones.html">
+                    Colecciones
+                </a>
 
+            </div>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="site-footer">
-
-
-    <div class="footer-main">
-
-
-        <div class="footer-brand">
-
-            <h3>
-                SATORIMODE
-            </h3>
-
-            <p>
-                Anime, cultura japonesa y streetwear.
-            </p>
 
         </div>
 
 
+        <div class="footer-bottom">
 
-        <div class="footer-column">
+            <span>
+                © 2026 SatoriMode
+            </span>
 
-            <h4>
-                COLECCIONES
-            </h4>
-
-            <a href="colecciones.html#anime">
-                Anime
-            </a>
-
-            <a href="colecciones.html#streetwear">
-                Streetwear
-            </a>
-
-            <a href="colecciones.html#exclusivos">
-                Exclusivos
-            </a>
+            <span>
+                Todos los derechos reservados.
+            </span>
 
         </div>
 
 
-
-        <div class="footer-column">
-
-            <h4>
-                AYUDA
-            </h4>
-
-            <a href="#">
-                Guía de tallas
-            </a>
-
-            <a href="#">
-                Envíos
-            </a>
-
-            <a href="#">
-                Preguntas frecuentes
-            </a>
-
-        </div>
+    </footer>
 
 
 
-        <div class="footer-column">
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
 
-            <h4>
-                SATORIMODE
-            </h4>
-
-            <a href="index.html">
-                Inicio
-            </a>
-
-            <a href="colecciones.html">
-                Colecciones
-            </a>
-
-        </div>
+    <script>
 
 
-    </div>
+        /* =====================================================
+           CAMBIAR IMAGEN
+        ===================================================== */
+
+        function changeImage(button, image) {
+
+            const mainImage =
+                document.getElementById("mainProductImage");
+
+            mainImage.src = image;
+
+            document
+                .querySelectorAll(".product-thumbnail")
+                .forEach(item => {
+                    item.classList.remove("active");
+                });
+
+            button.classList.add("active");
+
+        }
 
 
+        /* =====================================================
+           SELECCIONAR COLOR / TALLA
+        ===================================================== */
 
-    <div class="footer-bottom">
+        function selectOption(button, group) {
 
-        <span>
-            © 2026 SatoriMode
-        </span>
+            const parent =
+                button.parentElement;
 
-        <span>
-            Todos los derechos reservados.
-        </span>
+            parent
+                .querySelectorAll(".product-option-button")
+                .forEach(item => {
+                    item.classList.remove("active");
+                });
 
-    </div>
+            button.classList.add("active");
+
+        }
 
 
-</footer>
+        /* =====================================================
+           PESTAÑAS
+        ===================================================== */
+
+        function openTab(event, tabName) {
+
+            document
+                .querySelectorAll(".product-tab-content")
+                .forEach(tab => {
+                    tab.classList.remove("active");
+                });
+
+            document
+                .querySelectorAll(".product-tab-button")
+                .forEach(button => {
+                    button.classList.remove("active");
+                });
+
+            document
+                .getElementById(tabName)
+                .classList.add("active");
+
+            event.currentTarget.classList.add("active");
+
+        }
+
+
+        /* =====================================================
+           CARRITO
+        ===================================================== */
+
+        function addToCart() {
+
+            const color =
+                document
+                    .querySelector(
+                        '.product-option:nth-of-type(1) .product-option-button.active'
+                    );
+
+            const size =
+                document
+                    .querySelector(
+                        '.product-option:nth-of-type(2) .product-option-button.active'
+                    );
+
+            alert(
+                "Producto seleccionado:\n\n" +
+                "Polera Daruma no Kakusei\n" +
+                "Color: " +
+                (color ? color.innerText : "Negro") +
+                "\nTalla: " +
+                (size ? size.innerText : "M")
+            );
+
+        }
+
+
+    </script>
 
 
 </body>
