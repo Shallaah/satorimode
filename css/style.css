@@ -1322,24 +1322,3 @@ img {
     }
 }
 
-/* =========================================================
-   IGUALAR TODAS LAS OPCIONES DEL HEADER
-========================================================= */
-
-.site-header .main-nav > a,
-.site-header .main-nav > .nav-dropdown > a {
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 10px !important;
-    font-weight: 500 !important;
-    line-height: 1 !important;
-    letter-spacing: 0.8px !important;
-}
-
-
-/* La flecha no modifica el tamaño de PRODUCTOS */
-
-.site-header .main-nav > .nav-dropdown > a .arrow {
-    font-size: 9px !important;
-    font-weight: 400 !important;
-    margin-left: 5px;
-}
