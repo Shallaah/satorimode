@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SatoriMode | Anime Streetwear</title>
 
@@ -15,7 +14,7 @@
 <body>
 
     <!-- =====================================================
-         BARRA DE ENVÍOS
+         BARRA SUPERIOR
     ====================================================== -->
 
     <div class="shipping-bar">
@@ -34,14 +33,27 @@
             <!-- LOGO -->
 
             <a href="index.html" class="brand-logo">
-                <img src="assets/img/logo.png"
-                     alt="SatoriMode">
+
+                <img
+                    src="assets/img/logo.png"
+                    alt="SatoriMode"
+                    onerror="this.style.display='none'; this.parentElement.classList.add('logo-fallback');"
+                >
+
+                <span class="logo-fallback-text">
+                    悟
+                </span>
+
             </a>
 
 
-            <!-- MENÚ -->
+            <!-- =================================================
+                 NAVEGACIÓN
+            ================================================== -->
 
             <nav class="main-nav">
+
+                <!-- INICIO -->
 
                 <a href="index.html">
                     INICIO
@@ -87,16 +99,16 @@
 
                     <div class="dropdown-menu">
 
+                        <a href="productos.html">
+                            TODAS LAS POLERAS
+                        </a>
+
                         <a href="satorii-pack.html">
                             SATORII PACK
                         </a>
 
                         <a href="que-es-satorii-pack.html">
                             ¿QUÉ ES EL SATORII PACK?
-                        </a>
-
-                        <a href="productos.html">
-                            TODAS LAS POLERAS
                         </a>
 
                     </div>
@@ -141,22 +153,28 @@
             </nav>
 
 
-            <!-- ICONOS -->
+            <!-- =================================================
+                 ICONOS
+            ================================================== -->
 
             <div class="header-icons">
 
-                <button type="button"
-                        aria-label="Buscar">
+                <button
+                    type="button"
+                    aria-label="Buscar"
+                    onclick="window.location.href='productos.html'">
                     ⌕
                 </button>
 
-                <button type="button"
-                        aria-label="Cuenta">
+                <button
+                    type="button"
+                    aria-label="Cuenta">
                     ♙
                 </button>
 
-                <button type="button"
-                        aria-label="Carrito">
+                <button
+                    type="button"
+                    aria-label="Carrito">
                     🛒
                 </button>
 
@@ -168,10 +186,15 @@
 
 
     <!-- =====================================================
-         HERO
+         CONTENIDO PRINCIPAL
     ====================================================== -->
 
     <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section class="home-hero">
 
@@ -191,15 +214,18 @@
                     llevados a prendas que puedes llevar contigo.
                 </p>
 
+
                 <div class="hero-buttons">
 
-                    <a href="productos.html"
-                       class="button button-red">
+                    <a
+                        href="productos.html"
+                        class="button button-red">
                         VER POLERAS
                     </a>
 
-                    <a href="colecciones.html"
-                       class="button button-light">
+                    <a
+                        href="colecciones.html"
+                        class="button button-light">
                         VER COLECCIONES
                     </a>
 
@@ -210,8 +236,9 @@
         </section>
 
 
+
         <!-- =================================================
-             DESTACADOS
+             COLECCIONES DESTACADAS
         ================================================== -->
 
         <section class="home-section">
@@ -237,8 +264,12 @@
 
             <div class="home-cards">
 
-                <a href="colecciones.html#anime"
-                   class="home-card">
+
+                <!-- ANIME -->
+
+                <a
+                    href="colecciones.html#anime"
+                    class="home-card">
 
                     <span>
                         01 / COLECCIÓN
@@ -260,8 +291,11 @@
                 </a>
 
 
-                <a href="colecciones.html#streetwear"
-                   class="home-card">
+                <!-- STREETWEAR -->
+
+                <a
+                    href="colecciones.html#streetwear"
+                    class="home-card">
 
                     <span>
                         02 / COLECCIÓN
@@ -283,8 +317,11 @@
                 </a>
 
 
-                <a href="colecciones.html#exclusivos"
-                   class="home-card">
+                <!-- EXCLUSIVOS -->
+
+                <a
+                    href="colecciones.html#exclusivos"
+                    class="home-card">
 
                     <span>
                         03 / COLECCIÓN
@@ -310,13 +347,14 @@
         </section>
 
 
+
         <!-- =================================================
              SATORII PACK
         ================================================== -->
 
         <section class="pack-section">
 
-            <div>
+            <div class="pack-content">
 
                 <span class="hero-kicker">
                     SATORIMODE
@@ -332,8 +370,9 @@
                     creada para acompañar tus pedidos.
                 </p>
 
-                <a href="que-es-satorii-pack.html"
-                   class="button button-red">
+                <a
+                    href="que-es-satorii-pack.html"
+                    class="button button-red">
                     DESCUBRIR SATORII PACK
                 </a>
 
@@ -344,6 +383,7 @@
     </main>
 
 
+
     <!-- =====================================================
          FOOTER
     ====================================================== -->
@@ -351,6 +391,9 @@
     <footer class="site-footer">
 
         <div class="footer-main">
+
+
+            <!-- MARCA -->
 
             <div class="footer-brand">
 
@@ -364,6 +407,8 @@
 
             </div>
 
+
+            <!-- COLECCIONES -->
 
             <div class="footer-column">
 
@@ -386,11 +431,17 @@
             </div>
 
 
+            <!-- PRODUCTOS -->
+
             <div class="footer-column">
 
                 <h4>
                     PRODUCTOS
                 </h4>
+
+                <a href="productos.html">
+                    Todas las poleras
+                </a>
 
                 <a href="satorii-pack.html">
                     Satorii Pack
@@ -400,12 +451,10 @@
                     ¿Qué es el Satorii Pack?
                 </a>
 
-                <a href="productos.html">
-                    Todas las poleras
-                </a>
-
             </div>
 
+
+            <!-- AYUDA -->
 
             <div class="footer-column">
 
@@ -443,6 +492,7 @@
         </div>
 
     </footer>
+
 
 </body>
 </html>
