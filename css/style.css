@@ -836,3 +836,15 @@ img {
         gap: 8px;
     }
 }
+
+/* ================================
+   AJUSTE TIPOGRAFÍA HEADER
+================================ */
+
+.site-header a {
+    font-weight: 500;
+}
+
+.site-header .top-bar {
+    font-weight: 500;
+}
