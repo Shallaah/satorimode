@@ -1270,3 +1270,89 @@ img {
     }
 
 }
+
+/* =========================================================
+   AJUSTES HEADER + SATORII PACK
+========================================================= */
+
+
+/* =========================================================
+   HEADER
+   Todas las opciones con el mismo tamaño
+========================================================= */
+
+.site-header nav a,
+.site-header .nav-link,
+.header-nav a,
+.main-nav a {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* PRODUCTOS no debe verse más grande que las demás opciones */
+
+.site-header .nav-dropdown > a,
+.header-nav .nav-dropdown > a,
+.main-nav .nav-dropdown > a {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   SATORII PACK
+   Elimina el segundo fondo interno
+========================================================= */
+
+.pack-card,
+.satorii-pack-card,
+.pack-content,
+.satorii-pack-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* El bloque exterior queda como único contenedor */
+
+.pack-section,
+.satorii-pack-section {
+    border-radius: 0 0 0 0;
+    overflow: hidden;
+}
+
+
+/* Si el bloque exterior utiliza un contenedor visual */
+
+.pack-section-inner,
+.satorii-pack-inner {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   ASEGURAR QUE EL FONDO SEA UN SOLO BLOQUE
+========================================================= */
+
+.pack-section,
+.satorii-pack-section {
+    background:
+        linear-gradient(
+            110deg,
+            #0b0b0b 0%,
+            #111111 45%,
+            #4d0000 100%
+        );
+}
+
+
+/* Contenido del Satorii Pack */
+
+.pack-section .pack-content,
+.satorii-pack-section .satorii-pack-content {
+    border-radius: 0 !important;
+}
