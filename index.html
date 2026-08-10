@@ -2,686 +2,447 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="SatoriMode — Anime, streetwear y cultura japonesa.">
-
-    <title>SatoriMode</title>
+    <title>SatoriMode | Anime Streetwear</title>
 
     <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 
 <body>
 
+    <!-- =====================================================
+         BARRA DE ENVÍOS
+    ====================================================== -->
 
-<!-- =====================================================
-     BARRA SUPERIOR
-===================================================== -->
-
-<div class="shipping-bar">
-    ENVÍOS A TODO CHILE · SATORIMODE
-</div>
-
+    <div class="shipping-bar">
+        ENVÍOS A TODO CHILE · SATORIMODE
+    </div>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-<header class="site-header">
+    <header class="site-header">
 
-    <div class="header-inner">
+        <div class="header-inner">
 
+            <!-- LOGO -->
 
-        <!-- LOGO -->
-
-        <a href="index.html"
-           class="brand-logo">
-
-            <img src="img/logo.png"
-                 alt="SatoriMode">
-
-        </a>
-
-
-
-        <!-- MENÚ -->
-
-        <nav class="main-nav">
-
-            <a href="index.html">
-                INICIO
+            <a href="index.html" class="brand-logo">
+                <img src="assets/img/logo.png"
+                     alt="SatoriMode">
             </a>
 
 
-            <div class="nav-dropdown">
+            <!-- MENÚ -->
 
-                <a href="colecciones.html">
+            <nav class="main-nav">
 
-                    COLECCIONES
-                    <span>⌄</span>
+                <a href="index.html">
+                    INICIO
+                </a>
+
+
+                <!-- COLECCIONES -->
+
+                <div class="nav-dropdown">
+
+                    <a href="colecciones.html">
+                        COLECCIONES
+                        <span class="arrow">⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+
+                        <a href="colecciones.html#anime">
+                            ANIME
+                        </a>
+
+                        <a href="colecciones.html#streetwear">
+                            STREETWEAR
+                        </a>
+
+                        <a href="colecciones.html#exclusivos">
+                            EXCLUSIVOS
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCTOS -->
+
+                <div class="nav-dropdown">
+
+                    <a href="productos.html">
+                        PRODUCTOS
+                        <span class="arrow">⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+
+                        <a href="satorii-pack.html">
+                            SATORII PACK
+                        </a>
+
+                        <a href="que-es-satorii-pack.html">
+                            ¿QUÉ ES EL SATORII PACK?
+                        </a>
+
+                        <a href="productos.html">
+                            TODAS LAS POLERAS
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NOSOTROS -->
+
+                <a href="nosotros.html">
+                    NOSOTROS
+                </a>
+
+
+                <!-- AYUDA -->
+
+                <div class="nav-dropdown">
+
+                    <a href="ayuda.html">
+                        AYUDA
+                        <span class="arrow">⌄</span>
+                    </a>
+
+                    <div class="dropdown-menu">
+
+                        <a href="guia-tallas.html">
+                            GUÍA DE TALLAS
+                        </a>
+
+                        <a href="envios.html">
+                            ENVÍOS
+                        </a>
+
+                        <a href="preguntas-frecuentes.html">
+                            PREGUNTAS FRECUENTES
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+
+            <!-- ICONOS -->
+
+            <div class="header-icons">
+
+                <button type="button"
+                        aria-label="Buscar">
+                    ⌕
+                </button>
+
+                <button type="button"
+                        aria-label="Cuenta">
+                    ♙
+                </button>
+
+                <button type="button"
+                        aria-label="Carrito">
+                    🛒
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <main>
+
+        <section class="home-hero">
+
+            <div class="home-hero-content">
+
+                <span class="hero-kicker">
+                    SATORIMODE
+                </span>
+
+                <h1>
+                    VISTE TU
+                    <span>PASIÓN.</span>
+                </h1>
+
+                <p>
+                    Anime, cultura japonesa y streetwear
+                    llevados a prendas que puedes llevar contigo.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="productos.html"
+                       class="button button-red">
+                        VER POLERAS
+                    </a>
+
+                    <a href="colecciones.html"
+                       class="button button-light">
+                        VER COLECCIONES
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DESTACADOS
+        ================================================== -->
+
+        <section class="home-section">
+
+            <div class="section-heading">
+
+                <span>
+                    01 / SATORIMODE
+                </span>
+
+                <h2>
+                    DISEÑOS QUE
+                    <strong>REPRESENTAN.</strong>
+                </h2>
+
+                <p>
+                    Descubre nuestros diseños inspirados en el
+                    anime, la estética japonesa y el streetwear.
+                </p>
+
+            </div>
+
+
+            <div class="home-cards">
+
+                <a href="colecciones.html#anime"
+                   class="home-card">
+
+                    <span>
+                        01 / COLECCIÓN
+                    </span>
+
+                    <h3>
+                        ANIME
+                    </h3>
+
+                    <p>
+                        Diseños inspirados en personajes,
+                        historias y universos del anime.
+                    </p>
+
+                    <strong>
+                        VER COLECCIÓN →
+                    </strong>
 
                 </a>
 
 
-                <div class="dropdown-menu">
+                <a href="colecciones.html#streetwear"
+                   class="home-card">
 
-                    <a href="colecciones.html#anime">
-                        ANIME
-                    </a>
+                    <span>
+                        02 / COLECCIÓN
+                    </span>
 
-                    <a href="colecciones.html#streetwear">
+                    <h3>
                         STREETWEAR
-                    </a>
+                    </h3>
 
-                    <a href="colecciones.html#exclusivos">
+                    <p>
+                        Anime, cultura japonesa y estética
+                        urbana llevados a una propuesta cotidiana.
+                    </p>
+
+                    <strong>
+                        VER COLECCIÓN →
+                    </strong>
+
+                </a>
+
+
+                <a href="colecciones.html#exclusivos"
+                   class="home-card">
+
+                    <span>
+                        03 / COLECCIÓN
+                    </span>
+
+                    <h3>
                         EXCLUSIVOS
-                    </a>
+                    </h3>
 
-                </div>
+                    <p>
+                        Diseños especiales y piezas creadas
+                        para destacar.
+                    </p>
+
+                    <strong>
+                        VER COLECCIÓN →
+                    </strong>
+
+                </a>
 
             </div>
 
+        </section>
 
-            <a href="colecciones.html#productos">
-                PRODUCTOS
-            </a>
 
+        <!-- =================================================
+             SATORII PACK
+        ================================================== -->
 
-            <a href="#nosotros">
-                NOSOTROS
-            </a>
+        <section class="pack-section">
 
+            <div>
 
-            <a href="#ayuda">
-                AYUDA
-            </a>
-
-        </nav>
-
-
-
-        <!-- ICONOS -->
-
-        <div class="header-icons">
-
-            <button type="button"
-                    aria-label="Buscar">
-
-                ⌕
-
-            </button>
-
-
-            <button type="button"
-                    aria-label="Cuenta">
-
-                ♙
-
-            </button>
-
-
-            <button type="button"
-                    aria-label="Carrito">
-
-                🛒
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<main>
-
-
-<section class="home-hero">
-
-    <div class="home-hero-content">
-
-        <span class="hero-kicker">
-            SATORIMODE
-        </span>
-
-
-        <h1>
-            VISTE<br>
-            TU<br>
-            <strong>PASIÓN.</strong>
-        </h1>
-
-
-        <p>
-            ANIME · STREETWEAR · CULTURA
-        </p>
-
-
-        <a href="colecciones.html"
-           class="hero-button">
-
-            VER COLECCIÓN
-
-        </a>
-
-    </div>
-
-
-    <div class="hero-kanji">
-        悟
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PRESENTACIÓN
-===================================================== -->
-
-<section class="home-intro"
-         id="nosotros">
-
-    <div class="home-intro-title">
-
-        <span>
-            01 / SATORIMODE
-        </span>
-
-        <h2>
-            MÁS QUE<br>
-            UNA<br>
-            <strong>POLERA.</strong>
-        </h2>
-
-    </div>
-
-
-    <div class="home-intro-text">
-
-        <p>
-            SatoriMode nace de nuestra pasión por el
-            anime, la cultura japonesa y el streetwear.
-        </p>
-
-
-        <p>
-            Creamos diseños para quienes quieren llevar
-            consigo aquello que los representa.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     COLECCIONES
-===================================================== -->
-
-<section class="home-collections">
-
-
-    <div class="section-heading">
-
-        <span>
-            02 / COLECCIONES
-        </span>
-
-        <h2>
-            DESCUBRE<br>
-            TU ESTILO.
-        </h2>
-
-    </div>
-
-
-
-    <div class="home-collection-grid">
-
-
-        <!-- ANIME -->
-
-        <a href="colecciones.html#anime"
-           class="home-collection-card home-collection-large">
-
-            <div class="home-collection-content">
-
-                <span>
-                    01 / COLECCIÓN
+                <span class="hero-kicker">
+                    SATORIMODE
                 </span>
 
+                <h2>
+                    CONOCE EL
+                    <strong>SATORII PACK.</strong>
+                </h2>
+
+                <p>
+                    Una experiencia especial de SatoriMode
+                    creada para acompañar tus pedidos.
+                </p>
+
+                <a href="que-es-satorii-pack.html"
+                   class="button button-red">
+                    DESCUBRIR SATORII PACK
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
                 <h3>
-                    ANIME
+                    SATORIMODE
                 </h3>
 
                 <p>
-                    Diseños inspirados en historias,
-                    personajes y universos que nos marcaron.
+                    Anime, cultura japonesa y streetwear.
                 </p>
 
             </div>
 
 
-            <div class="home-card-kanji">
-                悟
-            </div>
+            <div class="footer-column">
 
-        </a>
+                <h4>
+                    COLECCIONES
+                </h4>
 
+                <a href="colecciones.html#anime">
+                    Anime
+                </a>
 
+                <a href="colecciones.html#streetwear">
+                    Streetwear
+                </a>
 
-        <!-- STREETWEAR -->
-
-        <a href="colecciones.html#streetwear"
-           class="home-collection-card">
-
-            <div class="home-collection-content">
-
-                <span>
-                    02 / COLECCIÓN
-                </span>
-
-                <h3>
-                    STREETWEAR
-                </h3>
-
-                <p>
-                    Anime y cultura japonesa
-                    llevados a la calle.
-                </p>
+                <a href="colecciones.html#exclusivos">
+                    Exclusivos
+                </a>
 
             </div>
 
 
-            <div class="home-card-kanji">
-                悟
-            </div>
+            <div class="footer-column">
 
-        </a>
+                <h4>
+                    PRODUCTOS
+                </h4>
 
+                <a href="satorii-pack.html">
+                    Satorii Pack
+                </a>
 
+                <a href="que-es-satorii-pack.html">
+                    ¿Qué es el Satorii Pack?
+                </a>
 
-        <!-- EXCLUSIVOS -->
-
-        <a href="colecciones.html#exclusivos"
-           class="home-collection-card">
-
-            <div class="home-collection-content">
-
-                <span>
-                    03 / COLECCIÓN
-                </span>
-
-                <h3>
-                    EXCLUSIVOS
-                </h3>
-
-                <p>
-                    Diseños especiales y
-                    ediciones limitadas.
-                </p>
+                <a href="productos.html">
+                    Todas las poleras
+                </a>
 
             </div>
 
 
-            <div class="home-card-kanji">
-                悟
-            </div>
+            <div class="footer-column">
 
-        </a>
+                <h4>
+                    AYUDA
+                </h4>
 
+                <a href="guia-tallas.html">
+                    Guía de tallas
+                </a>
 
-    </div>
+                <a href="envios.html">
+                    Envíos
+                </a>
 
-</section>
-
-
-
-<!-- =====================================================
-     FRASE
-===================================================== -->
-
-<section class="brand-statement">
-
-    <h2>
-
-        NO SE TRATA SOLO DE LO QUE VISTES.
-
-        <span>
-            SE TRATA DE LO QUE REPRESENTAS.
-        </span>
-
-    </h2>
-
-</section>
-
-
-
-<!-- =====================================================
-     PRODUCTOS DESTACADOS
-===================================================== -->
-
-<section class="home-products"
-         id="productos">
-
-
-    <div class="section-heading">
-
-        <span>
-            03 / PRODUCTOS
-        </span>
-
-        <h2>
-            ÚLTIMOS<br>
-            DISEÑOS.
-        </h2>
-
-    </div>
-
-
-
-    <div class="products-grid">
-
-
-        <!-- PRODUCTO 001 -->
-
-        <article class="product-card">
-
-            <a href="producto.html?id=satori-001"
-               class="product-image">
-
-                <div class="image-placeholder">
-                    SATORIMODE
-                </div>
-
-            </a>
-
-
-            <div class="product-info">
-
-                <span class="product-category">
-                    POLERA
-                </span>
-
-
-                <h3>
-                    Satori #001
-                </h3>
-
-
-                <p class="product-price">
-                    $24.990
-                </p>
-
-
-                <p class="product-details">
-                    Negro · Blanco
-                </p>
+                <a href="preguntas-frecuentes.html">
+                    Preguntas frecuentes
+                </a>
 
             </div>
-
-        </article>
-
-
-
-        <!-- PRODUCTO 002 -->
-
-        <article class="product-card">
-
-            <a href="producto.html?id=satori-002"
-               class="product-image">
-
-                <div class="image-placeholder">
-                    SATORIMODE
-                </div>
-
-            </a>
-
-
-            <div class="product-info">
-
-                <span class="product-category">
-                    POLERA
-                </span>
-
-
-                <h3>
-                    Satori #002
-                </h3>
-
-
-                <p class="product-price">
-                    $24.990
-                </p>
-
-
-                <p class="product-details">
-                    Negro · Blanco
-                </p>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- PRODUCTO 003 -->
-
-        <article class="product-card">
-
-            <a href="producto.html?id=satori-003"
-               class="product-image">
-
-                <div class="image-placeholder">
-                    SATORIMODE
-                </div>
-
-            </a>
-
-
-            <div class="product-info">
-
-                <span class="product-category">
-                    POLERA
-                </span>
-
-
-                <h3>
-                    Satori #003
-                </h3>
-
-
-                <p class="product-price">
-                    $24.990
-                </p>
-
-
-                <p class="product-details">
-                    Negro · Blanco
-                </p>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-
-    <div class="section-button">
-
-        <a href="colecciones.html"
-           class="outline-button">
-
-            VER TODOS LOS DISEÑOS
-
-        </a>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     AYUDA
-===================================================== -->
-
-<section class="brand-statement"
-         id="ayuda">
-
-    <h2>
-
-        PRÓXIMAMENTE.
-
-        <span>
-            GUÍA DE TALLAS · ENVÍOS · CUIDADO
-        </span>
-
-    </h2>
-
-</section>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="site-footer">
-
-
-    <div class="footer-main">
-
-
-        <div class="footer-brand">
-
-            <h3>
-                SATORIMODE
-            </h3>
-
-            <p>
-                Anime · Streetwear · Cultura
-            </p>
-
-            <p>
-                Diseños creados para quienes
-                viven su pasión.
-            </p>
 
         </div>
 
 
+        <div class="footer-bottom">
 
-        <div class="footer-column">
+            <span>
+                © 2026 SatoriMode
+            </span>
 
-            <h4>
-                NAVEGA
-            </h4>
-
-            <a href="index.html">
-                Inicio
-            </a>
-
-            <a href="colecciones.html">
-                Colecciones
-            </a>
-
-            <a href="colecciones.html#productos">
-                Productos
-            </a>
+            <span>
+                Todos los derechos reservados.
+            </span>
 
         </div>
 
-
-
-        <div class="footer-column">
-
-            <h4>
-                AYUDA
-            </h4>
-
-            <a href="#ayuda">
-                Guía de tallas
-            </a>
-
-            <a href="#ayuda">
-                Envíos
-            </a>
-
-            <a href="#ayuda">
-                Preguntas frecuentes
-            </a>
-
-        </div>
-
-
-
-        <div class="footer-column">
-
-            <h4>
-                SÍGUENOS
-            </h4>
-
-            <a href="#">
-                Instagram
-            </a>
-
-            <a href="#">
-                TikTok
-            </a>
-
-            <a href="#">
-                Contacto
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © 2026 SatoriMode
-        </span>
-
-        <span>
-            Todos los derechos reservados.
-        </span>
-
-    </div>
-
-
-</footer>
-
-
-
-<script src="js/main.js"></script>
+    </footer>
 
 </body>
-
 </html>
