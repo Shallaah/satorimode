@@ -844,3 +844,429 @@ img {
 .site-header a {
     font-weight: 500;
 }
+
+/* =========================================================
+   PÁGINA PRODUCTOS
+========================================================= */
+
+/* HERO DE PRODUCTOS */
+
+.page-hero {
+    width: 100%;
+    min-height: 430px;
+    margin: 0;
+    padding: 80px 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(180, 0, 0, 0.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            110deg,
+            #080808 0%,
+            #111111 45%,
+            #480000 100%
+        );
+
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+
+
+.page-hero-content {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+
+.page-hero .hero-kicker {
+    display: block;
+    margin-bottom: 20px;
+
+    color: #ff1616;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+
+.page-hero h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(55px, 7vw, 105px);
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -4px;
+    text-transform: uppercase;
+}
+
+
+.page-hero h1 span {
+    display: block;
+    color: #ff1616;
+}
+
+
+.page-hero p {
+    max-width: 720px;
+    margin: 30px auto 0;
+
+    color: #dddddd;
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SECCIÓN DE PRODUCTOS
+========================================================= */
+
+.products-section {
+    width: min(1200px, calc(100% - 80px));
+    margin: 0 auto;
+    padding: 110px 0;
+}
+
+
+.products-section .section-heading {
+    margin-bottom: 55px;
+}
+
+
+.products-section .section-heading > span {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #ff1616;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+
+.products-section .section-heading h2 {
+    margin: 0;
+
+    color: #080808;
+
+    font-size: clamp(48px, 6vw, 82px);
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+}
+
+
+.products-section .section-heading h2 strong {
+    color: #ff1616;
+}
+
+
+.products-section .section-heading p {
+    max-width: 650px;
+    margin-top: 22px;
+
+    color: #666666;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GRID DE PRODUCTOS
+========================================================= */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+
+.product-card {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+
+/* IMAGEN */
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #111111;
+}
+
+
+.product-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(130, 0, 0, 0.55),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #090909,
+            #181818
+        );
+
+    position: relative;
+}
+
+
+.product-placeholder::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,0.025) 0,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 8px
+        );
+}
+
+
+.product-placeholder span {
+    position: relative;
+    z-index: 1;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 5px;
+}
+
+
+/* INFORMACIÓN */
+
+.product-info {
+    padding: 20px 4px 10px;
+}
+
+
+.product-category {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #ff1616;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+.product-info h3 {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+
+.product-info p {
+    margin: 10px 0 0;
+
+    color: #111111;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SATORII PACK
+========================================================= */
+
+.products-section + .pack-section {
+    width: min(1200px, calc(100% - 80px));
+    margin: 0 auto 110px;
+
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+
+.pack-section {
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(160, 0, 0, 0.45),
+            transparent 35%
+        ),
+        linear-gradient(
+            110deg,
+            #080808,
+            #151515 50%,
+            #430000
+        );
+
+    text-align: center;
+}
+
+
+.pack-content {
+    max-width: 850px;
+    padding: 70px 40px;
+}
+
+
+.pack-content .hero-kicker {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #ff1616;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+
+.pack-content h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(45px, 6vw, 80px);
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+}
+
+
+.pack-content h2 strong {
+    display: block;
+    color: #ff1616;
+}
+
+
+.pack-content p {
+    max-width: 650px;
+    margin: 25px auto 30px;
+
+    color: #dddddd;
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .page-hero {
+        min-height: 360px;
+        padding: 60px 25px;
+    }
+
+
+    .page-hero h1 {
+        font-size: 52px;
+        letter-spacing: -2px;
+    }
+
+
+    .products-section {
+        width: calc(100% - 40px);
+        padding: 75px 0;
+    }
+
+
+    .products-section .section-heading h2 {
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+
+    .products-section + .pack-section {
+        width: calc(100% - 40px);
+        margin-bottom: 70px;
+    }
+
+
+    .pack-content {
+        padding: 60px 25px;
+    }
+
+}
