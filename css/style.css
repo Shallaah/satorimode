@@ -1391,110 +1391,6 @@ img {
     transform: none !important;
 }
 
-/* =========================================================
-   SATORII PACK
-========================================================= */
-
-.pack-hero {
-    width: 100%;
-    min-height: 560px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        repeating-linear-gradient(
-            135deg,
-            rgba(255,255,255,0.025) 0px,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px,
-            transparent 8px
-        ),
-        linear-gradient(
-            110deg,
-            #090909 0%,
-            #111111 45%,
-            #520000 100%
-        );
-
-    color: #ffffff;
-
-    border-radius: 0 0 20px 20px;
-}
-
-
-.pack-hero-content {
-    max-width: 1000px;
-    padding: 80px 30px;
-}
-
-
-.pack-label,
-.pack-section-label {
-    color: #ff1717;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-}
-
-
-.pack-hero h1 {
-    margin: 25px 0 25px;
-
-    font-size: clamp(60px, 8vw, 120px);
-    line-height: 0.88;
-
-    font-weight: 900;
-    letter-spacing: -4px;
-}
-
-
-.pack-hero h1 span {
-    color: #ff1717;
-}
-
-
-.pack-hero p {
-    max-width: 700px;
-    margin: 0 auto 35px;
-
-    font-size: 17px;
-    line-height: 1.7;
-
-    color: #dddddd;
-}
-
-
-.pack-button {
-    display: inline-block;
-
-    padding: 15px 28px;
-
-    background: #ff1717;
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: 0.5px;
-
-    border-radius: 6px;
-
-    transition: 0.25s ease;
-}
-
-
-.pack-button:hover {
-    background: #d90000;
-    transform: translateY(-2px);
-}
-
 
 /* =========================================================
    INTRO
@@ -1805,3 +1701,108 @@ img {
     }
 
 }
+
+/* =========================================================
+   SATORII PACK
+========================================================= */
+
+.pack-hero {
+    width: 100%;
+    min-height: 560px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,0.025) 0px,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 8px
+        ),
+        linear-gradient(
+            110deg,
+            #090909 0%,
+            #111111 45%,
+            #520000 100%
+        );
+
+    color: #ffffff;
+
+    border-radius: 0 0 20px 20px;
+}
+
+
+.pack-hero-content {
+    max-width: 1000px;
+    padding: 80px 30px;
+}
+
+
+.pack-label,
+.pack-section-label {
+    color: #ff1717;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+
+.pack-hero h1 {
+    margin: 25px 0 25px;
+
+    font-size: clamp(60px, 8vw, 120px);
+    line-height: 0.88;
+
+    font-weight: 900;
+    letter-spacing: -4px;
+}
+
+
+.pack-hero h1 span {
+    color: #ff1717;
+}
+
+
+.pack-hero p {
+    max-width: 700px;
+    margin: 0 auto 35px;
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    color: #dddddd;
+}
+
+
+.pack-button {
+    display: inline-block;
+
+    padding: 15px 28px;
+
+    background: #ff1717;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    border-radius: 6px;
+
+    transition: 0.25s ease;
+}
+
+
+.pack-button:hover {
+    background: #d90000;
+    transform: translateY(-2px);
+}
+
