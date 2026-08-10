@@ -1804,3 +1804,407 @@ img {
     }
 
 }
+
+/* =========================================================
+   SATORIMODE · COLECCIONES
+========================================================= */
+
+.collections-hero {
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 40px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #0b0b0b 0%,
+            #171717 45%,
+            #720000 100%
+        );
+
+    border-radius: 0 0 18px 18px;
+
+    color: #ffffff;
+}
+
+.collections-hero-content {
+    max-width: 1000px;
+}
+
+.collections-hero .section-label {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #ff2020;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 6px;
+}
+
+.collections-hero h1 {
+    margin: 0;
+
+    font-size: clamp(48px, 7vw, 100px);
+
+    line-height: .9;
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+}
+
+.collections-hero h1 span {
+    display: block;
+
+    color: #ff2020;
+}
+
+.collections-hero p {
+    max-width: 700px;
+
+    margin: 30px auto 0;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   COLLECTION SECTIONS
+========================================================= */
+
+.collection-section {
+    padding: 110px 0;
+
+    background: #ffffff;
+}
+
+.collection-dark {
+    background: #0b0b0b;
+
+    color: #ffffff;
+}
+
+.collection-section > .collection-number {
+    width: min(1200px, calc(100% - 80px));
+
+    margin: 0 auto 35px;
+
+    color: #ff2020;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 5px;
+}
+
+.collection-content {
+    width: min(1200px, calc(100% - 80px));
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.collection-text h2 {
+    margin: 0 0 25px;
+
+    font-size: clamp(42px, 5vw, 75px);
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+}
+
+.collection-text h2 span {
+    display: block;
+
+    color: #ff2020;
+}
+
+.collection-text p {
+    max-width: 520px;
+
+    margin: 0 0 30px;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   COLLECTION BUTTON
+========================================================= */
+
+.collection-button {
+    display: inline-block;
+
+    padding: 15px 24px;
+
+    background: #ff2020;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    border-radius: 4px;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.collection-button:hover {
+    transform: translateY(-3px);
+
+    background: #d90000;
+}
+
+
+/* =========================================================
+   VISUAL BLOCKS
+========================================================= */
+
+.collection-visual {
+    min-height: 480px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: flex-start;
+
+    padding: 35px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.collection-visual::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,0,0,.1),
+            rgba(0,0,0,.75)
+        );
+}
+
+.collection-visual span {
+    position: relative;
+
+    z-index: 2;
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   VISUAL · ANIME
+========================================================= */
+
+.anime-visual {
+    background:
+        linear-gradient(
+            135deg,
+            #161616,
+            #7d0000
+        );
+}
+
+
+/* =========================================================
+   VISUAL · STREETWEAR
+========================================================= */
+
+.streetwear-visual {
+    background:
+        linear-gradient(
+            135deg,
+            #272727,
+            #080808
+        );
+}
+
+
+/* =========================================================
+   VISUAL · EXCLUSIVOS
+========================================================= */
+
+.exclusive-visual {
+    background:
+        linear-gradient(
+            135deg,
+            #080808,
+            #520000
+        );
+}
+
+
+/* =========================================================
+   SATORII PACK
+========================================================= */
+
+.collection-pack {
+    padding: 120px 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            110deg,
+            #0b0b0b,
+            #650000
+        );
+
+    color: #ffffff;
+}
+
+.collection-pack .section-label {
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: #ff2020;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 6px;
+}
+
+.collection-pack h2 {
+    max-width: 900px;
+
+    margin: 0 auto 25px;
+
+    font-size: clamp(40px, 5vw, 70px);
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+}
+
+.collection-pack h2 span {
+    display: block;
+
+    color: #ff2020;
+}
+
+.collection-pack p {
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .collections-hero {
+        min-height: 420px;
+
+        padding: 60px 25px;
+    }
+
+    .collections-hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .collection-section {
+        padding: 80px 0;
+    }
+
+    .collection-section > .collection-number {
+        width: calc(100% - 40px);
+    }
+
+    .collection-content {
+        width: calc(100% - 40px);
+
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .collection-text h2 {
+        letter-spacing: -2px;
+    }
+
+    .collection-visual {
+        min-height: 350px;
+    }
+
+    .collection-dark .collection-content {
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    .collection-dark .collection-visual {
+        order: 2;
+    }
+
+    .collection-dark .collection-text {
+        order: 1;
+    }
+
+    .collection-pack {
+        padding: 90px 25px;
+    }
+
+}
