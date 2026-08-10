@@ -1666,42 +1666,6 @@ img {
 }
 
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .pack-intro-grid {
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-    }
-
-
-    .experience-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .pack-hero {
-        min-height: 500px;
-    }
-
-
-    .pack-hero h1 {
-        letter-spacing: -2px;
-    }
-
-
-    .pack-philosophy h2,
-    .pack-final h2 {
-        letter-spacing: -2px;
-    }
-
-}
-
 /* =========================================================
    SATORII PACK
 ========================================================= */
@@ -1806,3 +1770,37 @@ img {
     transform: translateY(-2px);
 }
 
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .pack-intro-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .pack-hero {
+        min-height: 500px;
+    }
+
+
+    .pack-hero h1 {
+        letter-spacing: -2px;
+    }
+
+
+    .pack-philosophy h2,
+    .pack-final h2 {
+        letter-spacing: -2px;
+    }
+
+}
