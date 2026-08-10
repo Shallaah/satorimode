@@ -36,13 +36,16 @@
             </a>
 
 
-            <!-- MENÚ -->
+            <!-- MENÚ PRINCIPAL -->
 
             <nav class="main-nav">
 
                 <a href="index.html">
                     INICIO
                 </a>
+
+
+                <!-- COLECCIONES -->
 
                 <div class="nav-dropdown">
 
@@ -70,6 +73,8 @@
                 </div>
 
 
+                <!-- PRODUCTOS -->
+
                 <div class="nav-dropdown">
 
                     <a href="colecciones.html#productos">
@@ -96,6 +101,8 @@
                     NOSOTROS
                 </a>
 
+
+                <!-- AYUDA -->
 
                 <div class="nav-dropdown">
 
@@ -157,9 +164,14 @@
 
         <section class="product-page">
 
-            <!-- GALERÍA -->
+
+            <!-- =================================================
+                 GALERÍA
+            ================================================== -->
 
             <div class="product-gallery">
+
+                <!-- IMAGEN PRINCIPAL -->
 
                 <div class="product-main-image">
 
@@ -170,14 +182,40 @@
                 </div>
 
 
+                <!-- MINIATURAS -->
+
                 <div class="product-thumbnails">
 
-                    <button class="product-thumbnail active">
-                        FRENTE
+                    <button
+                        type="button"
+                        class="product-thumbnail active">
+
+                        <span>
+                            FRENTE
+                        </span>
+
                     </button>
 
-                    <button class="product-thumbnail">
-                        ESPALDA
+
+                    <button
+                        type="button"
+                        class="product-thumbnail">
+
+                        <span>
+                            ESPALDA
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="product-thumbnail">
+
+                        <span>
+                            DETALLE
+                        </span>
+
                     </button>
 
                 </div>
@@ -186,19 +224,28 @@
 
 
 
-            <!-- INFORMACIÓN -->
+            <!-- =================================================
+                 INFORMACIÓN DEL PRODUCTO
+            ================================================== -->
 
             <div class="product-details-page">
+
+
+                <!-- CATEGORÍA -->
 
                 <p class="product-page-category">
                     ANIME · SATORIMODE
                 </p>
 
 
+                <!-- NOMBRE -->
+
                 <h1>
                     Satori #001
                 </h1>
 
+
+                <!-- PRECIO -->
 
                 <p class="product-page-price">
                     $24.990
@@ -208,7 +255,10 @@
                 <div class="product-page-divider"></div>
 
 
-                <!-- COLOR -->
+
+                <!-- =================================================
+                     COLOR
+                ================================================== -->
 
                 <div class="product-option">
 
@@ -216,14 +266,28 @@
                         COLOR
                     </h3>
 
+
                     <div class="color-options">
 
-                        <button class="color-option active">
+                        <button
+                            type="button"
+                            class="color-option active">
+
+                            <span class="color-circle black"></span>
+
                             NEGRO
+
                         </button>
 
-                        <button class="color-option">
+
+                        <button
+                            type="button"
+                            class="color-option">
+
+                            <span class="color-circle white"></span>
+
                             BLANCO
+
                         </button>
 
                     </div>
@@ -231,7 +295,10 @@
                 </div>
 
 
-                <!-- TALLA -->
+
+                <!-- =================================================
+                     TALLA
+                ================================================== -->
 
                 <div class="product-option">
 
@@ -239,79 +306,96 @@
                         TALLA
                     </h3>
 
+
                     <div class="size-options">
 
+
                         <label>
+
                             <input
                                 type="radio"
                                 name="size"
                                 value="M"
-                                checked
-                            >
+                                checked>
 
-                            <span>M</span>
+                            <span>
+                                M
+                            </span>
+
                         </label>
 
 
                         <label>
+
                             <input
                                 type="radio"
                                 name="size"
-                                value="L"
-                            >
+                                value="L">
 
-                            <span>L</span>
+                            <span>
+                                L
+                            </span>
+
                         </label>
 
 
                         <label>
+
                             <input
                                 type="radio"
                                 name="size"
-                                value="XL"
-                            >
+                                value="XL">
 
-                            <span>XL</span>
+                            <span>
+                                XL
+                            </span>
+
                         </label>
+
 
                     </div>
 
                 </div>
 
 
-                <!-- DESCRIPCIÓN -->
 
-                <div class="product-description">
+                <!-- =================================================
+                     DISPONIBILIDAD
+                ================================================== -->
 
-                    <h3>
-                        DESCRIPCIÓN
-                    </h3>
+                <div class="product-stock">
 
-                    <p>
-                        Polera SatoriMode inspirada en la estética
-                        japonesa y la cultura del anime.
-                    </p>
+                    <span class="stock-dot"></span>
 
-                    <p>
-                        Diseño exclusivo de SatoriMode,
-                        disponible en negro y blanco.
-                    </p>
+                    DISPONIBLE
 
                 </div>
 
 
-                <!-- BOTÓN -->
 
-                <button class="add-to-cart">
+                <!-- =================================================
+                     BOTÓN CARRITO
+                ================================================== -->
+
+                <button
+                    type="button"
+                    class="add-to-cart">
+
                     AGREGAR AL CARRITO
+
                 </button>
 
 
-                <!-- INFORMACIÓN -->
+
+                <!-- =================================================
+                     INFORMACIÓN
+                ================================================== -->
 
                 <div class="product-information">
 
-                    <div>
+
+                    <div class="product-information-item">
+
                         <strong>
                             ENVÍOS
                         </strong>
@@ -319,10 +403,12 @@
                         <span>
                             Envíos a todo Chile.
                         </span>
+
                     </div>
 
 
-                    <div>
+                    <div class="product-information-item">
+
                         <strong>
                             TALLAS
                         </strong>
@@ -330,10 +416,12 @@
                         <span>
                             M · L · XL
                         </span>
+
                     </div>
 
 
-                    <div>
+                    <div class="product-information-item">
+
                         <strong>
                             PRODUCTO
                         </strong>
@@ -341,9 +429,38 @@
                         <span>
                             Polera
                         </span>
+
                     </div>
 
+
                 </div>
+
+
+
+                <!-- =================================================
+                     DESCRIPCIÓN
+                ================================================== -->
+
+                <div class="product-description">
+
+                    <h3>
+                        DESCRIPCIÓN
+                    </h3>
+
+
+                    <p>
+                        Polera SatoriMode inspirada en la estética
+                        japonesa y la cultura del anime.
+                    </p>
+
+
+                    <p>
+                        Diseño exclusivo de SatoriMode,
+                        pensado para llevar tu pasión contigo.
+                    </p>
+
+                </div>
+
 
             </div>
 
@@ -360,6 +477,7 @@
     <footer class="site-footer">
 
         <div class="footer-main">
+
 
             <div class="footer-brand">
 
@@ -432,6 +550,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -448,7 +567,6 @@
         </div>
 
     </footer>
-
 
 </body>
 
