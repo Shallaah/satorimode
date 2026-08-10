@@ -1728,93 +1728,142 @@
 
 
 
-        <!-- =================================================
-             DETALLES
-        ================================================== -->
+<!-- =========================================================
+     INFORMACIÓN DEL PRODUCTO
+========================================================= -->
 
-        <section class="product-details">
+<section class="product-info-tabs">
 
+    <!-- PESTAÑAS -->
+    <div class="product-tabs">
 
-            <div class="details-tabs">
+        <button
+            class="product-tab active"
+            type="button"
+            onclick="showProductTab('description', this)"
+        >
+            DESCRIPCIÓN
+        </button>
 
+        <button
+            class="product-tab"
+            type="button"
+            onclick="showProductTab('details', this)"
+        >
+            DETALLES
+        </button>
 
-                <button
-                    class="details-tab active"
-                    onclick="openTab('description', this)"
-                >
-                    DESCRIPCIÓN
-                </button>
+        <button
+            class="product-tab"
+            type="button"
+            onclick="showProductTab('shipping', this)"
+        >
+            ENVÍO Y GARANTÍA
+        </button>
 
-
-                <button
-                    class="details-tab"
-                    onclick="openTab('shipping', this)"
-                >
-                    ENVÍOS Y GARANTÍA
-                </button>
-
-
-            </div>
-
-
-            <div class="details-content">
-
-
-                <!-- DESCRIPCIÓN -->
-
-                <div
-                    id="description"
-                    class="details-panel active"
-                >
-
-                    <h3>
-                        <strong>Polera Manga Corta 100% Algodón – Calidad Premium</strong>
-                    </h3>
-
-                    <p>
-                        Nuestra polera manga corta Daruma no Kakusei está confeccionada en <strong>100% algodón</strong>, ofreciendo un calce estándar, cómodo y versátil.
-                        El diseño está aplicado mediante <strong>estampado DTF de alta calidad</strong>, logrando colores intensos, excelente definición y una terminación suave y resistente al uso.
-
-                    </p>
-
-                </div>
+    </div>
 
 
-                <!-- ENVÍOS -->
+    <!-- =====================================================
+         DESCRIPCIÓN
+    ====================================================== -->
 
-                <div
-                    id="shipping"
-                    class="details-panel"
-                >
+    <div
+        id="description"
+        class="product-tab-content active"
+    >
 
-                    <h3>
-                        Envíos y garantía
-                    </h3>
+        <h3>
+            Polera Daruma no Kakusei
+        </h3>
 
-                    <p>
-                        Realizamos envíos a todo Chile.
-                    </p>
+        <p>
+            Diseño inspirado en la estética japonesa y la cultura del anime,
+            creado para SatoriMode.
+        </p>
 
-                    <p>
-                        Los tiempos y costos de envío
-                        serán informados durante el proceso
-                        de compra.
-                    </p>
+        <p>
+            Una polera pensada para quienes quieren llevar consigo
+            una representación de su pasión por el anime y la cultura japonesa.
+        </p>
 
-                    <p>
-                        Si recibes un producto con algún
-                        problema, contáctanos para revisar
-                        tu caso.
-                    </p>
-
-                </div>
+    </div>
 
 
-            </div>
+    <!-- =====================================================
+         DETALLES
+    ====================================================== -->
+
+    <div
+        id="details"
+        class="product-tab-content"
+    >
+
+        <h3>
+            Detalles del producto
+        </h3>
+
+        <ul>
+            <li><strong>Producto:</strong> Polera</li>
+            <li><strong>Diseño:</strong> Daruma no Kakusei</li>
+            <li><strong>Colores:</strong> Negro y blanco</li>
+            <li><strong>Tallas:</strong> M, L y XL</li>
+            <li><strong>Estilo:</strong> Anime / Streetwear</li>
+        </ul>
+
+    </div>
 
 
-        </section>
+    <!-- =====================================================
+         ENVÍO Y GARANTÍA
+    ====================================================== -->
 
+    <div
+        id="shipping"
+        class="product-tab-content"
+    >
+
+        <h3>
+            El viaje de tu pedido 📦
+        </h3>
+
+        <ul>
+            <li>
+                <strong>Preparación:</strong>
+                Preparamos tu pedido cuidadosamente antes de enviarlo.
+            </li>
+
+            <li>
+                <strong>Envío:</strong>
+                Realizamos envíos a todo Chile.
+            </li>
+
+            <li>
+                <strong>Seguimiento:</strong>
+                Una vez enviado tu pedido, recibirás la información
+                correspondiente para poder realizar el seguimiento.
+            </li>
+        </ul>
+
+
+        <h3 class="guarantee-title">
+            Garantía SatoriMode 🤝
+        </h3>
+
+        <p>
+            Si tu producto presenta un problema relacionado con la fabricación
+            o el estampado, contáctanos para revisar tu caso y buscar una
+            solución.
+        </p>
+
+        <p>
+            Para conocer las condiciones completas de cambios, devoluciones
+            y garantía, revisa nuestra sección de ayuda.
+        </p>
+
+    </div>
+
+</section>
 
 
         <!-- =================================================
