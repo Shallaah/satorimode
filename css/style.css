@@ -1353,3 +1353,40 @@ img {
         gap: 8px;
     }
 }
+
+/* =========================================================
+   CORRECCIÓN DEFINITIVA DEL HEADER
+========================================================= */
+
+/* Todas las opciones principales */
+.site-header .main-nav > a,
+.site-header .main-nav > .nav-dropdown > a {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: none !important;
+}
+
+/* El contenido interno de PRODUCTOS / COLECCIONES / AYUDA */
+.site-header .main-nav > .nav-dropdown > a .arrow {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    margin-left: 5px !important;
+}
+
+/* Evita que PRODUCTOS reciba un tamaño diferente */
+.site-header .main-nav > .nav-dropdown:nth-child(3) > a {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* Mismo tamaño para todas */
+.site-header .main-nav > a:nth-child(1),
+.site-header .main-nav > a,
+.site-header .main-nav > .nav-dropdown > a {
+    transform: none !important;
+}
