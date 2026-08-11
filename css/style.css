@@ -2189,17 +2189,14 @@ main {
 ========================================================= */
 
 .mobile-social {
-
-    margin-top: 55px;
+    margin-top: auto;
 
     padding-top: 25px;
 
     border-top: 1px solid #e5e5e5;
 
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
 }
 
@@ -2240,4 +2237,12 @@ main {
 
     transform:
         translateX(4px);
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    min-height: calc(100vh - 120px);
 }
