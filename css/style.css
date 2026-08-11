@@ -2579,103 +2579,97 @@ main {
 ========================================================= */
 
 .anime-filters-wrapper {
-
     width: 100%;
-
-    margin-bottom: 40px;
+    margin-top: 32px;
+    margin-bottom: 36px;
 }
 
 
-/* =========================================================
-   BOTÓN MOSTRAR FILTROS
-========================================================= */
+/* BOTÓN MOSTRAR FILTROS */
 
 .anime-filter-toggle {
 
     appearance: none;
 
-    border: 0;
+    border: 1px solid #111;
 
-    background: var(--red);
+    background: #111;
 
-    color: #ffffff;
+    color: #fff;
 
-    min-height: 42px;
-
-    padding: 11px 20px;
+    padding: 12px 18px;
 
     border-radius: 999px;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
-    font-size: 10px;
+    font-size: 11px;
 
-    font-weight: 800;
+    font-weight: 700;
 
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
 
     cursor: pointer;
 
     transition:
-        background .2s ease,
-        transform .2s ease;
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+
 }
 
 
 .anime-filter-toggle:hover {
 
-    background: #c90000;
+    background: #ff2020;
 
-    transform:
-        translateY(-1px);
+    border-color: #ff2020;
+
 }
 
 
-/* =========================================================
-   PANEL
-========================================================= */
+/* CONTENEDOR */
 
 .anime-filters {
 
-    width: 100%;
-
-    margin-top: 18px;
-
-    padding: 22px;
-
-    display: none;
+    display: flex;
 
     align-items: flex-start;
 
-    gap: 50px;
+    gap: 40px;
 
-    border:
-        1px solid #e5e5e5;
+    margin-top: 20px;
 
-    border-radius: 14px;
+    max-height: 0;
 
-    background: #ffffff;
+    opacity: 0;
 
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.06);
+    overflow: hidden;
+
+    visibility: hidden;
+
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease,
+        margin-top 0.3s ease;
+
 }
 
 
-/* PANEL ABIERTO */
+/* FILTROS ABIERTOS */
 
 .anime-filters.is-open {
 
-    display: flex;
+    max-height: 180px;
+
+    opacity: 1;
+
+    visibility: visible;
+
 }
 
 
-/* =========================================================
-   GRUPO
-========================================================= */
+/* GRUPO */
 
 .anime-filter-group {
 
@@ -2684,78 +2678,69 @@ main {
     flex-direction: column;
 
     gap: 10px;
+
 }
 
+
+/* TÍTULO */
 
 .anime-filter-title {
 
-    color: #111111;
+    font-size: 11px;
 
-    font-size: 10px;
+    font-weight: 700;
 
-    font-weight: 900;
+    letter-spacing: 1px;
 
-    letter-spacing: 2px;
+    color: #111;
+
 }
 
 
-/* =========================================================
-   OPCIONES
-========================================================= */
+/* OPCIONES */
 
 .anime-filter-options {
 
     display: flex;
 
-    align-items: center;
-
     gap: 8px;
 
-    flex-wrap: wrap;
 }
 
 
-/* =========================================================
-   BOTONES
-========================================================= */
+/* BOTONES */
 
 .anime-filter {
 
     appearance: none;
 
-    min-width: 42px;
+    border: 1px solid #ddd;
 
-    min-height: 38px;
+    background: #fff;
 
-    padding: 9px 15px;
+    color: #111;
 
-    border:
-        1px solid #dddddd;
+    min-width: 52px;
+
+    padding: 10px 14px;
 
     border-radius: 999px;
 
-    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
 
-    color: #111111;
+    font-size: 11px;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-weight: 700;
 
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 
     cursor: pointer;
 
     transition:
-        color .2s ease,
-        background .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+
 }
 
 
@@ -2763,26 +2748,24 @@ main {
 
 .anime-filter:hover {
 
-    color: var(--red);
+    border-color: #ff2020;
 
-    border-color: var(--red);
+    color: #ff2020;
 
-    transform:
-        translateY(-1px);
 }
 
 
-/* ACTIVO */
+/* FILTRO ACTIVO */
 
 .anime-filter.active {
 
-    background: var(--red);
+    background: #ff2020;
 
-    border-color: var(--red);
+    border-color: #ff2020;
 
-    color: #ffffff;
+    color: #fff;
+
 }
-
 
 /* HOVER ACTIVO */
 
