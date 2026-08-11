@@ -9,10 +9,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        DROPDOWNS DESKTOP
+       SOLO SE ABREN AL HACER CLICK
     ===================================================== */
 
-    const dropdowns =
-        document.querySelectorAll(".nav-dropdown");
+    const dropdowns = document.querySelectorAll(".nav-dropdown");
+
+
+    function closeAllDropdowns() {
+
+        dropdowns.forEach(function (dropdown) {
+
+            dropdown.classList.remove("is-open");
+
+
+            const button =
+                dropdown.querySelector(".nav-dropdown-btn");
+
+
+            if (button) {
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        });
+
+    }
 
 
     dropdowns.forEach(function (dropdown) {
@@ -20,60 +45,34 @@ document.addEventListener("DOMContentLoaded", function () {
         const button =
             dropdown.querySelector(".nav-dropdown-btn");
 
+
         if (!button) return;
 
 
         button.addEventListener("click", function (event) {
 
+            event.preventDefault();
             event.stopPropagation();
 
-
-            /* ---------------------------------------------
-               Comprobar si ya estaba abierto
-            --------------------------------------------- */
 
             const wasOpen =
                 dropdown.classList.contains("is-open");
 
 
             /* ---------------------------------------------
-               Cerrar todos los dropdowns
+               CERRAR TODOS
             --------------------------------------------- */
 
-            dropdowns.forEach(function (otherDropdown) {
-
-                otherDropdown.classList.remove(
-                    "is-open"
-                );
-
-
-                const otherButton =
-                    otherDropdown.querySelector(
-                        ".nav-dropdown-btn"
-                    );
-
-
-                if (otherButton) {
-
-                    otherButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-
-            });
+            closeAllDropdowns();
 
 
             /* ---------------------------------------------
-               Abrir el seleccionado
+               ABRIR SOLO EL SELECCIONADO
             --------------------------------------------- */
 
             if (!wasOpen) {
 
-                dropdown.classList.add(
-                    "is-open"
-                );
+                dropdown.classList.add("is-open");
 
 
                 button.setAttribute(
@@ -93,46 +92,36 @@ document.addEventListener("DOMContentLoaded", function () {
        CERRAR DROPDOWN AL HACER CLICK FUERA
     ===================================================== */
 
-    document.addEventListener(
-        "click",
-        function (event) {
+    document.addEventListener("click", function (event) {
 
-            if (
-                !event.target.closest(
-                    ".nav-dropdown"
-                )
-            ) {
+        if (
+            !event.target.closest(".nav-dropdown")
+        ) {
 
-                dropdowns.forEach(
-                    function (dropdown) {
-
-                        dropdown.classList.remove(
-                            "is-open"
-                        );
-
-
-                        const button =
-                            dropdown.querySelector(
-                                ".nav-dropdown-btn"
-                            );
-
-
-                        if (button) {
-
-                            button.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
+            closeAllDropdowns();
 
         }
-    );
+
+    });
+
+
+
+    /* =====================================================
+       EVITAR QUE LOS LINKS DEL DROPDOWN CAMBIEN
+       EL ESTADO DEL MENÚ ANTES DE NAVEGAR
+    ===================================================== */
+
+    document
+        .querySelectorAll(".dropdown-menu a")
+        .forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                closeAllDropdowns();
+
+            });
+
+        });
 
 
 
@@ -141,27 +130,19 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     const mobileButton =
-        document.querySelector(
-            ".mobile-menu-button"
-        );
+        document.querySelector(".mobile-menu-button");
 
 
     const mobileMenu =
-        document.querySelector(
-            ".mobile-menu"
-        );
+        document.querySelector(".mobile-menu");
 
 
     const mobileClose =
-        document.querySelector(
-            ".mobile-menu-close"
-        );
+        document.querySelector(".mobile-menu-close");
 
 
     const mobileOverlay =
-        document.querySelector(
-            ".mobile-menu-overlay"
-        );
+        document.querySelector(".mobile-menu-overlay");
 
 
 
@@ -174,25 +155,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!mobileMenu) return;
 
 
-        mobileMenu.classList.add(
-            "is-open"
-        );
+        mobileMenu.classList.add("is-open");
 
 
         if (mobileOverlay) {
 
-            mobileOverlay.classList.add(
-                "is-open"
-            );
+            mobileOverlay.classList.add("is-open");
 
         }
 
 
         if (mobileButton) {
 
-            mobileButton.classList.add(
-                "is-open"
-            );
+            mobileButton.classList.add("is-open");
 
 
             mobileButton.setAttribute(
@@ -209,8 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        document.body.style.overflow =
-            "hidden";
+        document.body.style.overflow = "hidden";
 
     }
 
@@ -225,25 +199,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!mobileMenu) return;
 
 
-        mobileMenu.classList.remove(
-            "is-open"
-        );
+        mobileMenu.classList.remove("is-open");
 
 
         if (mobileOverlay) {
 
-            mobileOverlay.classList.remove(
-                "is-open"
-            );
+            mobileOverlay.classList.remove("is-open");
 
         }
 
 
         if (mobileButton) {
 
-            mobileButton.classList.remove(
-                "is-open"
-            );
+            mobileButton.classList.remove("is-open");
 
 
             mobileButton.setAttribute(
@@ -260,15 +228,14 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        document.body.style.overflow =
-            "";
+        document.body.style.overflow = "";
 
     }
 
 
 
     /* =====================================================
-       EVENTOS DEL MENÚ MÓVIL
+       BOTÓN HAMBURGUESA
     ===================================================== */
 
     if (mobileButton) {
@@ -279,13 +246,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 event.stopPropagation();
 
-                openMobileMenu();
+                const isOpen =
+                    mobileMenu &&
+                    mobileMenu.classList.contains("is-open");
+
+
+                if (isOpen) {
+
+                    closeMobileMenu();
+
+                } else {
+
+                    openMobileMenu();
+
+                }
 
             }
         );
 
     }
 
+
+
+    /* =====================================================
+       BOTÓN CERRAR
+    ===================================================== */
 
     if (mobileClose) {
 
@@ -296,6 +281,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
+
+    /* =====================================================
+       FONDO OSCURO
+    ===================================================== */
 
     if (mobileOverlay) {
 
@@ -310,6 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        SUBMENÚS MÓVILES
+       SOLO SE ABREN AL HACER CLICK
     ===================================================== */
 
     const mobileButtons =
@@ -318,99 +309,99 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    mobileButtons.forEach(
-        function (button, index) {
+    mobileButtons.forEach(function (button) {
 
-            button.addEventListener(
-                "click",
-                function () {
-
-
-                    /* -------------------------------------
-                       Obtener el submenu correspondiente
-
-                       Cada botón está seguido por su
-                       propio .mobile-submenu
-                    ------------------------------------- */
-
-                    const submenu =
-                        button.nextElementSibling;
+        button.addEventListener(
+            "click",
+            function () {
 
 
-                    if (
-                        !submenu ||
-                        !submenu.classList.contains(
-                            "mobile-submenu"
-                        )
-                    ) {
-                        return;
-                    }
+                const submenu =
+                    button.nextElementSibling;
 
 
-                    const wasOpen =
-                        submenu.classList.contains(
-                            "is-open"
-                        );
+                if (
+                    !submenu ||
+                    !submenu.classList.contains(
+                        "mobile-submenu"
+                    )
+                ) {
 
-
-                    /* -------------------------------------
-                       Cerrar todos los submenús
-                    ------------------------------------- */
-
-                    document
-                        .querySelectorAll(
-                            ".mobile-submenu"
-                        )
-                        .forEach(
-                            function (menu) {
-
-                                menu.classList.remove(
-                                    "is-open"
-                                );
-
-                            }
-                        );
-
-
-                    document
-                        .querySelectorAll(
-                            ".mobile-nav-button"
-                        )
-                        .forEach(
-                            function (otherButton) {
-
-                                otherButton.setAttribute(
-                                    "aria-expanded",
-                                    "false"
-                                );
-
-                            }
-                        );
-
-
-                    /* -------------------------------------
-                       Abrir el seleccionado
-                    ------------------------------------- */
-
-                    if (!wasOpen) {
-
-                        submenu.classList.add(
-                            "is-open"
-                        );
-
-
-                        button.setAttribute(
-                            "aria-expanded",
-                            "true"
-                        );
-
-                    }
+                    return;
 
                 }
-            );
 
-        }
-    );
+
+                const wasOpen =
+                    submenu.classList.contains(
+                        "is-open"
+                    );
+
+
+                /* -----------------------------------------
+                   CERRAR TODOS
+                ----------------------------------------- */
+
+                document
+                    .querySelectorAll(
+                        ".mobile-submenu"
+                    )
+                    .forEach(function (menu) {
+
+                        menu.classList.remove(
+                            "is-open"
+                        );
+
+                    });
+
+
+                document
+                    .querySelectorAll(
+                        ".mobile-nav-button"
+                    )
+                    .forEach(function (otherButton) {
+
+                        otherButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                        otherButton.classList.remove(
+                            "is-open"
+                        );
+
+                    });
+
+
+
+                /* -----------------------------------------
+                   ABRIR EL SELECCIONADO
+                ----------------------------------------- */
+
+                if (!wasOpen) {
+
+                    submenu.classList.add(
+                        "is-open"
+                    );
+
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+
+                    button.classList.add(
+                        "is-open"
+                    );
+
+                }
+
+            }
+        );
+
+    });
 
 
 
@@ -418,14 +409,9 @@ document.addEventListener("DOMContentLoaded", function () {
        CERRAR MENÚ MÓVIL AL ELEGIR UNA OPCIÓN
     ===================================================== */
 
-    const mobileLinks =
-        document.querySelectorAll(
-            ".mobile-menu a"
-        );
-
-
-    mobileLinks.forEach(
-        function (link) {
+    document
+        .querySelectorAll(".mobile-menu a")
+        .forEach(function (link) {
 
             link.addEventListener(
                 "click",
@@ -436,13 +422,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             );
 
-        }
-    );
+        });
 
 
 
     /* =====================================================
-       ESC = CERRAR MENÚS
+       ESC = CERRAR TODO
     ===================================================== */
 
     document.addEventListener(
@@ -454,25 +439,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            /* Cerrar dropdowns */
+            closeAllDropdowns();
 
-            dropdowns.forEach(
-                function (dropdown) {
-
-                    dropdown.classList.remove(
-                        "is-open"
-                    );
-
-                }
-            );
-
-
-            /* Cerrar menú móvil */
 
             closeMobileMenu();
 
         }
     );
-
 
 });
