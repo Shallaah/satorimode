@@ -2579,7 +2579,9 @@ main {
 ========================================================= */
 
 .anime-filters-wrapper {
+
     width: 100%;
+
     margin-bottom: 40px;
 }
 
@@ -2589,13 +2591,14 @@ main {
 ========================================================= */
 
 .anime-filter-toggle {
+
     appearance: none;
 
     border: 0;
 
     background: var(--red);
 
-    color: var(--white);
+    color: #ffffff;
 
     min-height: 42px;
 
@@ -2614,8 +2617,6 @@ main {
 
     letter-spacing: 1px;
 
-    text-transform: uppercase;
-
     cursor: pointer;
 
     transition:
@@ -2625,7 +2626,8 @@ main {
 
 
 .anime-filter-toggle:hover {
-    background: var(--red-dark);
+
+    background: #c90000;
 
     transform:
         translateY(-1px);
@@ -2633,21 +2635,22 @@ main {
 
 
 /* =========================================================
-   PANEL DE FILTROS
+   PANEL
 ========================================================= */
 
 .anime-filters {
+
     width: 100%;
 
     margin-top: 18px;
 
-    padding: 20px;
+    padding: 22px;
 
     display: none;
 
     align-items: flex-start;
 
-    gap: 45px;
+    gap: 50px;
 
     border:
         1px solid #e5e5e5;
@@ -2657,22 +2660,25 @@ main {
     background: #ffffff;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,.06);
+        0 10px 30px
+        rgba(0,0,0,.06);
 }
 
 
 /* PANEL ABIERTO */
 
 .anime-filters.is-open {
+
     display: flex;
 }
 
 
 /* =========================================================
-   GRUPO DE FILTROS
+   GRUPO
 ========================================================= */
 
 .anime-filter-group {
+
     display: flex;
 
     flex-direction: column;
@@ -2682,6 +2688,7 @@ main {
 
 
 .anime-filter-title {
+
     color: #111111;
 
     font-size: 10px;
@@ -2689,27 +2696,31 @@ main {
     font-weight: 900;
 
     letter-spacing: 2px;
-
-    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   BOTONES DE FILTRO
+   OPCIONES
 ========================================================= */
 
 .anime-filter-options {
+
     display: flex;
 
     align-items: center;
 
-    gap: 7px;
+    gap: 8px;
 
     flex-wrap: wrap;
 }
 
 
+/* =========================================================
+   BOTONES
+========================================================= */
+
 .anime-filter {
+
     appearance: none;
 
     min-width: 42px;
@@ -2751,6 +2762,7 @@ main {
 /* HOVER */
 
 .anime-filter:hover {
+
     color: var(--red);
 
     border-color: var(--red);
@@ -2760,9 +2772,10 @@ main {
 }
 
 
-/* FILTRO ACTIVO */
+/* ACTIVO */
 
 .anime-filter.active {
+
     background: var(--red);
 
     border-color: var(--red);
@@ -2771,16 +2784,16 @@ main {
 }
 
 
-/* HOVER DEL ACTIVO */
+/* HOVER ACTIVO */
 
 .anime-filter.active:hover {
-    background: var(--red-dark);
 
-    border-color: var(--red-dark);
+    background: #c90000;
+
+    border-color: #c90000;
 
     color: #ffffff;
 }
-
 
 /* =========================================================
    GRID ANIME
