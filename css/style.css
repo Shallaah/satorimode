@@ -228,8 +228,7 @@ input {
 ========================================================= */
 
 .main-nav > a.active,
-.nav-dropdown.is-open > .nav-dropdown-btn,
-.nav-dropdown.active > .nav-dropdown-btn {
+.nav-dropdown.active > .dropdown-trigger {
     color: var(--red);
 
     border-color: var(--red);
@@ -269,7 +268,7 @@ input {
 }
 
 
-.nav-dropdown.is-open .arrow {
+.nav-dropdown.active .arrow {
     transform: rotate(180deg);
 }
 
@@ -310,23 +309,12 @@ input {
 }
 
 
-/* ABRIR CON HOVER */
+/* =========================================================
+   MENÚ ABIERTO · SOLO CLICK
+========================================================= */
 
-.nav-dropdown:hover .dropdown-menu {
-    opacity: 1;
+.nav-dropdown.active .dropdown-menu {
 
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        translate(-50%, 0);
-}
-
-
-/* SOPORTE PARA .IS-OPEN */
-
-.nav-dropdown.is-open .dropdown-menu {
     opacity: 1;
 
     visibility: visible;
