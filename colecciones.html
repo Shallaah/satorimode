@@ -822,3 +822,429 @@
 </body>
 
 </html>
+
+/* =========================================================
+   AJUSTE FINAL - COLECCIONES
+   Más compacto + hero con bordes redondeados
+========================================================= */
+
+
+/* =========================================================
+   HERO DE COLECCIONES
+========================================================= */
+
+.collections-hero {
+
+    width: calc(100% - 0px);
+
+    min-height: 380px;
+
+    margin: 0;
+
+    padding: 65px 30px;
+
+    border-radius: 0 0 18px 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #fff;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(190, 0, 0, 0.45),
+            transparent 38%
+        ),
+        linear-gradient(
+            110deg,
+            #080808,
+            #111111 55%,
+            #3b0000
+        );
+}
+
+
+.collections-hero-content {
+
+    width: min(900px, 100%);
+
+}
+
+
+.collections-hero h1 {
+
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            82px
+        );
+
+    line-height: .92;
+
+    letter-spacing: -3px;
+
+}
+
+
+.collections-hero p {
+
+    max-width: 600px;
+
+    margin: 24px auto 0;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   SECCIONES DE COLECCIÓN
+========================================================= */
+
+.collection-section {
+
+    width: 100%;
+
+    padding:
+        65px 6%;
+
+    background: #fff;
+
+}
+
+
+.collection-dark {
+
+    background: #090909;
+
+    color: #fff;
+
+}
+
+
+.collection-number {
+
+    margin-bottom: 25px;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.collection-content {
+
+    width: min(1000px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 40px;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.collection-text h2 {
+
+    max-width: 480px;
+
+    font-size:
+        clamp(
+            34px,
+            4vw,
+            52px
+        );
+
+    line-height: .94;
+
+    letter-spacing: -2px;
+
+}
+
+
+.collection-text p {
+
+    max-width: 430px;
+
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+}
+
+
+/* =========================================================
+   IMÁGENES / VISUALES
+========================================================= */
+
+.collection-visual {
+
+    width: 100%;
+
+    max-width: 360px;
+
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+}
+
+
+.collection-visual span {
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            42px
+        );
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.collection-button {
+
+    margin-top: 20px;
+
+    padding:
+        11px 18px;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   SATORII PACK
+========================================================= */
+
+.collection-pack {
+
+    width: min(950px, calc(100% - 50px));
+
+    margin:
+        0 auto 65px;
+
+    padding:
+        65px 35px;
+
+    border-radius: 18px;
+
+}
+
+
+.collection-pack h2 {
+
+    font-size:
+        clamp(
+            34px,
+            4vw,
+            52px
+        );
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .collection-content {
+
+        gap: 30px;
+
+    }
+
+
+    .collection-visual {
+
+        max-width: 320px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .collections-hero {
+
+        min-height: 360px;
+
+        padding:
+            60px 22px;
+
+        border-radius:
+            0 0 16px 16px;
+
+    }
+
+
+    .collections-hero h1 {
+
+        font-size:
+            clamp(
+                42px,
+                11vw,
+                65px
+            );
+
+        letter-spacing: -2px;
+
+    }
+
+
+    .collection-section {
+
+        padding:
+            55px 20px;
+
+    }
+
+
+    .collection-content {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+    }
+
+
+    .collection-text {
+
+        order: 1;
+
+    }
+
+
+    .collection-visual {
+
+        order: 2;
+
+        max-width: 330px;
+
+    }
+
+
+    .collection-dark .collection-text {
+
+        order: 2;
+
+    }
+
+
+    .collection-dark .collection-visual {
+
+        order: 1;
+
+    }
+
+
+    .collection-text h2 {
+
+        font-size:
+            clamp(
+                36px,
+                10vw,
+                55px
+            );
+
+    }
+
+
+    .collection-pack {
+
+        width: calc(100% - 30px);
+
+        padding:
+            55px 22px;
+
+        margin-bottom: 40px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TELÉFONOS PEQUEÑOS
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .collections-hero {
+
+        min-height: 330px;
+
+    }
+
+
+    .collection-section {
+
+        padding:
+            50px 18px;
+
+    }
+
+
+    .collection-visual {
+
+        max-width: 280px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .collection-number {
+
+        margin-bottom: 22px;
+
+    }
+
+}
