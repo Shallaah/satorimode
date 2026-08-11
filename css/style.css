@@ -3033,33 +3033,31 @@ main {
     align-items: start;
 }
 
-
 /* =========================================================
-   GALERÍA
+   IMAGEN PRINCIPAL DEL PRODUCTO
 ========================================================= */
-
-.product-gallery {
-    width: 100%;
-}
-
 
 .product-main-image {
     width: 100%;
 
-    aspect-ratio: 1 / 1.08;
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #f5f5f5;
+
+    position: relative;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
-
-    overflow: hidden;
-
-    border-radius: 16px;
-
-    background: #f5f5f5;
 }
 
+
+/* IMAGEN REAL */
 
 .product-main-image img {
     width: 100%;
@@ -3069,16 +3067,18 @@ main {
 
     object-fit: contain;
 
+    object-position: center;
+
     transition:
-        opacity .2s ease,
         transform .3s ease;
 }
 
 
+/* PEQUEÑO ZOOM AL PASAR EL MOUSE */
+
 .product-main-image:hover img {
     transform: scale(1.02);
 }
-
 
 /* =========================================================
    MINIATURAS
