@@ -238,18 +238,200 @@ input {
 
 
 /* =========================================================
-   DROPDOWN
+   MENÚ DESPLEGABLE · CLICK
 ========================================================= */
 
 .nav-dropdown {
     position: relative;
-
+    display: flex;
+    align-items: center;
     height: 100%;
+}
+
+
+/* =========================================================
+   BOTÓN DEL DROPDOWN
+========================================================= */
+
+.nav-dropdown .nav-dropdown-btn {
+    appearance: none;
+    border: 1px solid transparent;
+    background: transparent;
+
+    padding: 9px 13px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1;
+    letter-spacing: 0.8px;
+
+    color: #111111;
+
+    cursor: pointer;
 
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    border-radius: 999px;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
 }
 
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.nav-dropdown .nav-dropdown-btn:hover {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   PESTAÑA ACTIVA
+   SOLO APARECE CUANDO SE HACE CLICK
+========================================================= */
+
+.nav-dropdown.is-open .nav-dropdown-btn {
+    color: var(--red);
+
+    border-color: var(--red);
+
+    background: rgba(237, 17, 17, 0.04);
+}
+
+
+/* =========================================================
+   FLECHA
+========================================================= */
+
+.nav-dropdown .arrow {
+    display: inline-block;
+
+    font-size: 9px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/* FLECHA HACIA ARRIBA CUANDO ESTÁ ABIERTO */
+
+.nav-dropdown.is-open .arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   MENÚ
+========================================================= */
+
+.nav-dropdown .dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 1px);
+    left: 50%;
+
+    width: 210px;
+
+    padding: 12px 0;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.15);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateX(-50%)
+        translateY(-8px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 2000;
+}
+
+
+/* =========================================================
+   MENÚ ABIERTO
+========================================================= */
+
+.nav-dropdown.is-open .dropdown-menu {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =========================================================
+   OPCIONES DEL MENÚ
+========================================================= */
+
+.nav-dropdown .dropdown-menu a {
+    display: block;
+
+    padding:
+        14px 20px;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* =========================================================
+   HOVER OPCIONES
+========================================================= */
+
+.nav-dropdown .dropdown-menu a:hover {
+    color: var(--red);
+
+    background: #f7f7f7;
+}
 
 /* =========================================================
    FLECHA DEL MENÚ
