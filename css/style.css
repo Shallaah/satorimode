@@ -3066,13 +3066,12 @@ main {
     display: block;
 
     object-fit: contain;
-
     object-position: center;
 
-    transition:
-        transform .3s ease;
-}
+    padding: 25px;
 
+    transition: transform .3s ease;
+}
 
 /* PEQUEÑO ZOOM AL PASAR EL MOUSE */
 
