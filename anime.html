@@ -29,12 +29,36 @@
 
         <div class="header-inner">
 
+            <!-- MENÚ MÓVIL -->
+
+            <button
+                class="mobile-menu-button"
+                type="button"
+                aria-label="Abrir menú"
+                aria-controls="mobileMenu"
+                onclick="toggleMobileMenu()">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <!-- LOGO -->
+
             <a href="index.html" class="brand-logo">
-                <img src="logo.png" alt="SatoriMode">
+
+                <img
+                    src="logo.png"
+                    alt="SatoriMode">
+
             </a>
 
 
-            <!-- NAVEGACIÓN -->
+            <!-- =================================================
+                 NAVEGACIÓN DESKTOP
+            ================================================== -->
 
             <nav class="main-nav">
 
@@ -77,9 +101,13 @@
 
                 <div class="nav-dropdown">
 
-                    <a href="#" onclick="return false;">
+                    <a
+                        href="#"
+                        onclick="return false;">
+
                         PRODUCTOS
                         <span class="arrow">⌄</span>
+
                     </a>
 
                     <div class="dropdown-menu">
@@ -102,8 +130,10 @@
                 <div class="nav-dropdown">
 
                     <a href="ayuda.html">
+
                         AYUDA
                         <span class="arrow">⌄</span>
+
                     </a>
 
                     <div class="dropdown-menu">
@@ -127,13 +157,35 @@
             </nav>
 
 
-            <!-- ICONOS -->
+            <!-- =================================================
+                 ICONOS
+            ================================================== -->
 
             <div class="header-icons">
 
-                <span>⌕</span>
-                <span>♙</span>
-                <span>🛒</span>
+                <a
+                    href="productos.html"
+                    aria-label="Buscar">
+
+                    ⌕
+
+                </a>
+
+                <a
+                    href="#"
+                    aria-label="Cuenta">
+
+                    ♙
+
+                </a>
+
+                <a
+                    href="#"
+                    aria-label="Carrito">
+
+                    🛒
+
+                </a>
 
             </div>
 
@@ -143,7 +195,88 @@
 
 
     <!-- =====================================================
-         CONTENIDO
+         MENÚ MÓVIL
+    ====================================================== -->
+
+    <aside
+        class="mobile-menu"
+        id="mobileMenu"
+        aria-hidden="true">
+
+        <!-- CERRAR -->
+
+        <button
+            class="mobile-menu-close"
+            type="button"
+            aria-label="Cerrar menú"
+            onclick="toggleMobileMenu()">
+
+            ×
+
+        </button>
+
+
+        <!-- NAVEGACIÓN -->
+
+        <nav class="mobile-nav">
+
+            <a href="index.html">
+                INICIO
+            </a>
+
+
+            <a href="colecciones.html">
+                COLECCIONES
+                <span>›</span>
+            </a>
+
+
+            <a href="productos.html">
+                PRODUCTOS
+                <span>›</span>
+            </a>
+
+
+            <a href="ayuda.html">
+                AYUDA
+                <span>›</span>
+            </a>
+
+
+            <a href="productos.html">
+                VER TODO
+            </a>
+
+        </nav>
+
+
+        <!-- PARTE INFERIOR -->
+
+        <div class="mobile-menu-bottom">
+
+            <span>
+                SATORIMODE
+            </span>
+
+            <div>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    TikTok
+                </a>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
     ====================================================== -->
 
     <main>
@@ -182,6 +315,11 @@
 
         <section class="collection-products">
 
+
+            <!-- =================================================
+                 ENCABEZADO
+            ================================================== -->
+
             <div class="collection-products-heading">
 
                 <span class="section-label">
@@ -202,17 +340,96 @@
 
 
             <!-- =================================================
+                 BARRA DE FILTROS
+            ================================================== -->
+
+            <div class="collection-filter-bar">
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    onclick="toggleFilters()">
+
+                    <span class="filter-icon">
+                        ☷
+                    </span>
+
+                    MOSTRAR FILTROS
+
+                </button>
+
+
+                <span class="filter-count">
+                    10 DISEÑOS
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 PANEL DE FILTROS
+            ================================================== -->
+
+            <div
+                class="filter-panel"
+                id="filterPanel">
+
+                <div class="filter-panel-inner">
+
+                    <span class="filter-panel-title">
+                        FILTRAR POR
+                    </span>
+
+
+                    <div class="filter-options">
+
+                        <button
+                            type="button"
+                            class="filter-option active">
+
+                            TODOS
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter-option">
+
+                            DISPONIBLES
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter-option">
+
+                            PRÓXIMAMENTE
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
                  PRODUCTOS
             ================================================== -->
 
             <div class="products-grid">
 
 
-                <!-- PRODUCTO 01 -->
+                <!-- =================================================
+                     PRODUCTO 01
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -239,11 +456,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 02 -->
+                <!-- =================================================
+                     PRODUCTO 02
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -270,11 +491,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 03 -->
+                <!-- =================================================
+                     PRODUCTO 03
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -301,11 +526,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 04 -->
+                <!-- =================================================
+                     PRODUCTO 04
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -332,11 +561,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 05 -->
+                <!-- =================================================
+                     PRODUCTO 05
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -363,11 +596,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 06 -->
+                <!-- =================================================
+                     PRODUCTO 06
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -394,11 +631,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 07 -->
+                <!-- =================================================
+                     PRODUCTO 07
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -425,11 +666,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 08 -->
+                <!-- =================================================
+                     PRODUCTO 08
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -456,11 +701,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 09 -->
+                <!-- =================================================
+                     PRODUCTO 09
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -487,11 +736,15 @@
                 </article>
 
 
-                <!-- PRODUCTO 10 -->
+                <!-- =================================================
+                     PRODUCTO 10
+                ================================================== -->
 
                 <article class="product-card">
 
-                    <a href="#" class="product-image">
+                    <a
+                        href="#"
+                        class="product-image">
 
                         <span>
                             PRÓXIMAMENTE
@@ -516,6 +769,7 @@
                     </div>
 
                 </article>
+
 
             </div>
 
@@ -545,7 +799,9 @@
             <a
                 href="satorii-pack.html"
                 class="collection-button">
+
                 DESCUBRIR SATORII PACK →
+
             </a>
 
         </section>
@@ -561,6 +817,9 @@
 
         <div class="footer-main">
 
+
+            <!-- MARCA -->
+
             <div class="footer-brand">
 
                 <h3>
@@ -573,6 +832,8 @@
 
             </div>
 
+
+            <!-- COLECCIONES -->
 
             <div class="footer-column">
 
@@ -595,6 +856,8 @@
             </div>
 
 
+            <!-- PRODUCTOS -->
+
             <div class="footer-column">
 
                 <h4>
@@ -611,6 +874,8 @@
 
             </div>
 
+
+            <!-- AYUDA -->
 
             <div class="footer-column">
 
@@ -635,6 +900,8 @@
         </div>
 
 
+        <!-- FOOTER INFERIOR -->
+
         <div class="footer-bottom">
 
             <span>
@@ -649,6 +916,73 @@
 
     </footer>
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =================================================
+           MENÚ MÓVIL
+        ================================================= */
+
+        function toggleMobileMenu() {
+
+            const menu =
+                document.getElementById("mobileMenu");
+
+            const isOpen =
+                menu.classList.toggle("active");
+
+            menu.setAttribute(
+                "aria-hidden",
+                !isOpen
+            );
+
+        }
+
+
+        /* =================================================
+           FILTROS
+        ================================================= */
+
+        function toggleFilters() {
+
+            const panel =
+                document.getElementById("filterPanel");
+
+            panel.classList.toggle("active");
+
+        }
+
+
+        /* =================================================
+           CERRAR MENÚ CON ESC
+        ================================================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    const menu =
+                        document.getElementById("mobileMenu");
+
+                    menu.classList.remove("active");
+
+                    menu.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
 
 </body>
 </html>
