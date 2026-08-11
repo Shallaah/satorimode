@@ -2578,35 +2578,154 @@ main {
    FILTROS ANIME
 ========================================================= */
 
+.anime-filters-wrapper {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+
+/* =========================================================
+   BOTÓN MOSTRAR FILTROS
+========================================================= */
+
+.anime-filter-toggle {
+    appearance: none;
+
+    border: 0;
+
+    background: var(--red);
+
+    color: var(--white);
+
+    min-height: 42px;
+
+    padding: 11px 20px;
+
+    border-radius: 999px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.anime-filter-toggle:hover {
+    background: var(--red-dark);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   PANEL DE FILTROS
+========================================================= */
+
 .anime-filters {
     width: 100%;
 
-    margin-bottom: 40px;
+    margin-top: 18px;
 
+    padding: 20px;
+
+    display: none;
+
+    align-items: flex-start;
+
+    gap: 45px;
+
+    border:
+        1px solid #e5e5e5;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.06);
+}
+
+
+/* PANEL ABIERTO */
+
+.anime-filters.is-open {
+    display: flex;
+}
+
+
+/* =========================================================
+   GRUPO DE FILTROS
+========================================================= */
+
+.anime-filter-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.anime-filter-title {
+    color: #111111;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BOTONES DE FILTRO
+========================================================= */
+
+.anime-filter-options {
     display: flex;
 
     align-items: center;
 
-    gap: 8px;
+    gap: 7px;
+
+    flex-wrap: wrap;
 }
 
-
-/* BOTONES */
 
 .anime-filter {
     appearance: none;
 
-    border: 1px solid #dddddd;
+    min-width: 42px;
+
+    min-height: 38px;
+
+    padding: 9px 15px;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 999px;
 
     background: #ffffff;
 
     color: #111111;
-
-    min-height: 40px;
-
-    padding: 10px 18px;
-
-    border-radius: 999px;
 
     font-family:
         Arial,
