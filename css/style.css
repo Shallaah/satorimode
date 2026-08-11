@@ -1057,7 +1057,7 @@ main {
 
 
 .section-heading h2 {
-    max-width: 800px;
+    max-width: 1100px;
 
     font-size:
         clamp(45px, 5.5vw, 75px);
@@ -2498,4 +2498,387 @@ main {
 
     transform:
         translateY(-2px);
+}
+
+/* =========================================================
+   SATORIMODE
+   AJUSTES ANIME / COLECCIONES
+========================================================= */
+
+
+/* =========================================================
+   ANCHO GENERAL DE LAS PÁGINAS DE PRODUCTOS
+   MISMO LENGUAJE VISUAL QUE INDEX
+========================================================= */
+
+.products-section,
+.collection-products {
+    width: min(var(--max-width), calc(100% - 80px));
+
+    margin: 0 auto;
+
+    padding: 80px 0;
+}
+
+
+/* =========================================================
+   TÍTULO DE LA COLECCIÓN
+========================================================= */
+
+.products-section .section-heading,
+.collection-products .section-heading {
+    width: 100%;
+}
+
+
+.products-section .section-heading h2,
+.collection-products .section-heading h2 {
+    max-width: 1100px;
+
+    font-size:
+        clamp(48px, 5.5vw, 78px);
+
+    line-height: .92;
+
+    letter-spacing: -3px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+
+.products-section .section-heading h2 strong,
+.collection-products .section-heading h2 strong {
+    display: inline;
+
+    color: var(--red);
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.products-section .section-heading p,
+.collection-products .section-heading p {
+    max-width: 700px;
+
+    margin-top: 20px;
+
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FILTROS ANIME
+========================================================= */
+
+.anime-filters {
+    width: 100%;
+
+    margin-bottom: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* BOTONES */
+
+.anime-filter {
+    appearance: none;
+
+    border: 1px solid #dddddd;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    min-height: 40px;
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+/* HOVER */
+
+.anime-filter:hover {
+    color: var(--red);
+
+    border-color: var(--red);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* FILTRO ACTIVO */
+
+.anime-filter.active {
+    background: var(--red);
+
+    border-color: var(--red);
+
+    color: #ffffff;
+}
+
+
+/* HOVER DEL ACTIVO */
+
+.anime-filter.active:hover {
+    background: var(--red-dark);
+
+    border-color: var(--red-dark);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   GRID ANIME
+========================================================= */
+
+.products-section .products-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap:
+        50px 22px;
+}
+
+
+/* =========================================================
+   IMÁGENES DE PRODUCTOS
+========================================================= */
+
+.products-section .product-image {
+    width: 100%;
+
+    aspect-ratio: 1 / 1.08;
+
+    border-radius: 12px;
+
+    background: #f5f5f5;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.products-section .product-image:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.09);
+}
+
+
+/* =========================================================
+   PRODUCTOS · TEXTO
+========================================================= */
+
+.products-section .product-info {
+    padding:
+        15px 3px 0;
+}
+
+
+.products-section .product-category {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--red);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.products-section .product-info h3 {
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+}
+
+
+.products-section .product-price {
+    margin-top: 7px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.products-section .product-details {
+    margin-top: 5px;
+
+    color: var(--gray);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE · TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .products-section,
+    .collection-products {
+        width: calc(100% - 60px);
+    }
+
+    .products-section .products-grid,
+    .collection-products .products-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 40px 18px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE · TELÉFONO
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .products-section,
+    .collection-products {
+        width: calc(100% - 30px);
+
+        padding: 60px 0;
+    }
+
+
+    .products-section .section-heading h2,
+    .collection-products .section-heading h2 {
+
+        font-size:
+            clamp(40px, 11vw, 60px);
+
+        line-height: .92;
+
+        letter-spacing: -2px;
+    }
+
+
+    .products-section .section-heading p,
+    .collection-products .section-heading p {
+
+        font-size: 13px;
+    }
+
+
+    .anime-filters {
+
+        margin-bottom: 30px;
+
+        flex-wrap: wrap;
+
+        gap: 7px;
+    }
+
+
+    .anime-filter {
+
+        min-height: 38px;
+
+        padding:
+            9px 14px;
+
+        font-size: 9px;
+    }
+
+
+    .products-section .products-grid,
+    .collection-products .products-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 30px 12px;
+    }
+
+
+    .products-section .product-info h3 {
+
+        font-size: 12px;
+    }
+
+
+    .products-section .product-price {
+
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   TELÉFONOS MUY PEQUEÑOS
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .products-section .products-grid,
+    .collection-products .products-grid {
+
+        grid-template-columns: 1fr;
+    }
+
 }
