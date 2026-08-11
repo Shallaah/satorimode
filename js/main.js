@@ -962,9 +962,15 @@ animeFilterButtons.forEach(
                     button.dataset.filter;
 
 
+                const wasActive =
+                    button.classList.contains(
+                        "active"
+                    );
+
+
                 /* -----------------------------------------
                    TALLA
-                   Solo una talla puede estar activa
+                   Solo una talla activa a la vez
                 ----------------------------------------- */
 
                 if (filterType === "size") {
@@ -983,16 +989,12 @@ animeFilterButtons.forEach(
                             }
                         );
 
-                    button.classList.add(
-                        "active"
-                    );
-
                 }
 
 
                 /* -----------------------------------------
                    COLOR
-                   Solo un color puede estar activo
+                   Solo un color activo a la vez
                 ----------------------------------------- */
 
                 if (filterType === "color") {
@@ -1010,6 +1012,16 @@ animeFilterButtons.forEach(
 
                             }
                         );
+
+                }
+
+
+                /* -----------------------------------------
+                   SI YA ESTABA ACTIVO
+                   → queda desmarcado
+                ----------------------------------------- */
+
+                if (!wasActive) {
 
                     button.classList.add(
                         "active"
