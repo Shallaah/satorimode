@@ -874,7 +874,7 @@ document
         }
     );
 /* =====================================================
-   FILTROS ANIME
+   FILTROS · ANIME
 ===================================================== */
 
 const animeFilterToggle =
@@ -884,12 +884,17 @@ const animeFilters =
     document.querySelector("#animeFilters");
 
 
+/* =====================================================
+   ABRIR / CERRAR FILTROS
+===================================================== */
+
 if (animeFilterToggle && animeFilters) {
 
     animeFilterToggle.addEventListener(
         "click",
         function (event) {
 
+            event.preventDefault();
             event.stopPropagation();
 
             const isOpen =
@@ -907,6 +912,9 @@ if (animeFilterToggle && animeFilters) {
                     "false"
                 );
 
+                animeFilterToggle.textContent =
+                    "☷ MOSTRAR FILTROS";
+
             } else {
 
                 animeFilters.classList.add(
@@ -917,6 +925,9 @@ if (animeFilterToggle && animeFilters) {
                     "aria-expanded",
                     "true"
                 );
+
+                animeFilterToggle.textContent =
+                    "× OCULTAR FILTROS";
 
             }
 
@@ -941,14 +952,19 @@ animeFilterButtons.forEach(
 
         button.addEventListener(
             "click",
-            function () {
+            function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
 
                 const filterType =
                     button.dataset.filter;
 
 
                 /* -----------------------------------------
-                   Si es talla, solo una talla activa
+                   TALLA
+                   Solo una talla puede estar activa
                 ----------------------------------------- */
 
                 if (filterType === "size") {
@@ -967,11 +983,16 @@ animeFilterButtons.forEach(
                             }
                         );
 
+                    button.classList.add(
+                        "active"
+                    );
+
                 }
 
 
                 /* -----------------------------------------
-                   Si es color, solo un color activo
+                   COLOR
+                   Solo un color puede estar activo
                 ----------------------------------------- */
 
                 if (filterType === "color") {
@@ -990,17 +1011,15 @@ animeFilterButtons.forEach(
                             }
                         );
 
+                    button.classList.add(
+                        "active"
+                    );
+
                 }
-
-
-                button.classList.toggle(
-                    "active"
-                );
 
             }
         );
 
     }
 );
-   
 });
