@@ -448,3 +448,284 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 });
+
+/* =====================================================
+   BUSCADOR
+===================================================== */
+
+const searchButton =
+    document.querySelector(
+        ".search-button"
+    );
+
+
+const searchOverlay =
+    document.querySelector(
+        ".search-overlay"
+    );
+
+
+const searchClose =
+    document.querySelector(
+        ".search-close"
+    );
+
+
+const searchInput =
+    document.querySelector(
+        "#product-search"
+    );
+
+
+const searchResults =
+    document.querySelector(
+        "#search-results"
+    );
+
+
+/* PRODUCTOS BASE */
+
+const searchProducts = [
+
+    {
+        name: "Polera Anime",
+        category: "ANIME",
+        price: "$24.990",
+        image: "images/polera-anime.jpg",
+        url: "anime.html"
+    },
+
+    {
+        name: "Polera Streetwear",
+        category: "STREETWEAR",
+        price: "$24.990",
+        image: "images/polera-streetwear.jpg",
+        url: "streetwear.html"
+    },
+
+    {
+        name: "Polera Satorii",
+        category: "EXCLUSIVOS",
+        price: "$26.990",
+        image: "images/polera-satorii.jpg",
+        url: "exclusivos.html"
+    }
+
+];
+
+
+/* ABRIR */
+
+if (searchButton) {
+
+    searchButton.addEventListener(
+        "click",
+        function () {
+
+            searchOverlay.classList.add(
+                "is-open"
+            );
+
+
+            searchOverlay.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            searchButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+
+            setTimeout(function () {
+
+                if (searchInput) {
+
+                    searchInput.focus();
+
+                }
+
+            }, 150);
+
+        }
+    );
+
+}
+
+
+/* CERRAR */
+
+function closeSearch() {
+
+    if (!searchOverlay) return;
+
+
+    searchOverlay.classList.remove(
+        "is-open"
+    );
+
+
+    searchOverlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    if (searchButton) {
+
+        searchButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+}
+
+
+if (searchClose) {
+
+    searchClose.addEventListener(
+        "click",
+        closeSearch
+    );
+
+}
+
+
+if (searchOverlay) {
+
+    searchOverlay.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target ===
+                searchOverlay
+            ) {
+
+                closeSearch();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RESULTADOS
+===================================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+
+            const query =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!query) {
+
+                searchResults.innerHTML = `
+                    <p class="search-empty">
+                        Busca tu próxima polera Satorii.
+                    </p>
+                `;
+
+                return;
+
+            }
+
+
+            const results =
+                searchProducts.filter(
+                    function (product) {
+
+                        return (
+                            product.name
+                                .toLowerCase()
+                                .includes(query)
+                            ||
+                            product.category
+                                .toLowerCase()
+                                .includes(query)
+                        );
+
+                    }
+                );
+
+
+            if (!results.length) {
+
+                searchResults.innerHTML = `
+                    <p class="search-empty">
+                        No encontramos productos para
+                        "${query}".
+                    </p>
+                `;
+
+                return;
+
+            }
+
+
+            searchResults.innerHTML =
+                results.map(
+                    function (product) {
+
+                        return `
+
+                            <a
+                                href="${product.url}"
+                                class="search-result-item"
+                            >
+
+                                <img
+                                    src="${product.image}"
+                                    alt="${product.name}"
+                                    class="search-result-image"
+                                >
+
+                                <div
+                                    class="search-result-info"
+                                >
+
+                                    <span
+                                        class="search-result-category"
+                                    >
+                                        ${product.category}
+                                    </span>
+
+                                    <span
+                                        class="search-result-name"
+                                    >
+                                        ${product.name}
+                                    </span>
+
+                                    <span
+                                        class="search-result-price"
+                                    >
+                                        ${product.price}
+                                    </span>
+
+                                </div>
+
+                            </a>
+
+                        `;
+
+                    }
+                ).join("");
+
+        }
+    );
+
+}
