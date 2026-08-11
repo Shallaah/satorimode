@@ -228,7 +228,7 @@ input {
 ========================================================= */
 
 .main-nav > a.active,
-.nav-dropdown.active > .dropdown-trigger {
+.nav-dropdown.active > .nav-dropdown-btn {
     color: var(--red);
 
     border-color: var(--red);
@@ -306,6 +306,28 @@ input {
         transform .2s ease;
 
     z-index: 2000;
+}
+
+
+/* =========================================================
+   APERTURA SOLO POR CLICK
+========================================================= */
+
+/* El dropdown NO se abre con hover.
+   JavaScript agrega .active al hacer click. */
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, -8px);
+}
+
+.nav-dropdown.active:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
 }
 
 
@@ -486,6 +508,9 @@ input {
     z-index: 5000;
 
     overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -2241,8 +2266,19 @@ main {
 
 .mobile-nav {
     display: flex;
+
     flex-direction: column;
+
     gap: 4px;
 
-    min-height: calc(100vh - 120px);
+    flex: 1;
+}
+
+/* =========================================================
+   INSTAGRAM · POSICIÓN AL FINAL DEL MENÚ MÓVIL
+========================================================= */
+
+.mobile-menu > .mobile-social {
+    margin-top: auto;
+    flex-shrink: 0;
 }
