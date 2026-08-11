@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Colecciones | SatoriMode</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
 
 <body>
 
-     <!-- =====================================================
+
+    <!-- =====================================================
          BARRA SUPERIOR
     ====================================================== -->
 
     <div class="shipping-bar">
         ENVÍOS A TODO CHILE · SATORIMODE
     </div>
+
 
 
     <!-- =====================================================
@@ -28,18 +41,46 @@
 
         <div class="header-inner">
 
+
+            <!-- BOTÓN MENÚ MÓVIL -->
+
+            <button
+                class="mobile-menu-button"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+
             <!-- LOGO -->
 
-            <a href="index.html" class="brand-logo">
-                <img src="logo.png" alt="SatoriMode">
+            <a
+                href="index.html"
+                class="brand-logo"
+            >
+
+                <img
+                    src="logo.png"
+                    alt="SatoriMode"
+                >
+
             </a>
 
 
+
             <!-- =================================================
-                 NAVEGACIÓN
+                 NAVEGACIÓN DESKTOP
             ================================================== -->
 
             <nav class="main-nav">
+
 
                 <!-- INICIO -->
 
@@ -48,14 +89,25 @@
                 </a>
 
 
+
                 <!-- COLECCIONES -->
 
                 <div class="nav-dropdown">
 
-                    <a href="colecciones.html">
+                    <button
+                        class="nav-dropdown-btn"
+                        type="button"
+                        aria-expanded="false"
+                    >
+
                         COLECCIONES
-                        <span class="arrow">⌄</span>
-                    </a>
+
+                        <span class="arrow">
+                            ↓
+                        </span>
+
+                    </button>
+
 
                     <div class="dropdown-menu">
 
@@ -76,37 +128,60 @@
                 </div>
 
 
-<!-- PRODUCTOS -->
 
-<div class="nav-dropdown">
+                <!-- PRODUCTOS -->
 
-    <a href="#" onclick="return false;">
-        PRODUCTOS
-        <span class="arrow">⌄</span>
-    </a>
+                <div class="nav-dropdown">
 
-    <div class="dropdown-menu">
+                    <button
+                        class="nav-dropdown-btn"
+                        type="button"
+                        aria-expanded="false"
+                    >
 
-        <a href="productos.html">
-            TODAS LAS POLERAS
-        </a>
+                        PRODUCTOS
 
-        <a href="satorii-pack.html">
-            SATORII PACK
-        </a>
+                        <span class="arrow">
+                            ↓
+                        </span>
 
-    </div>
+                    </button>
 
-</div>
-                
+
+                    <div class="dropdown-menu">
+
+                        <a href="productos.html">
+                            TODAS LAS POLERAS
+                        </a>
+
+                        <a href="satorii-pack.html">
+                            SATORII PACK
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
                 <!-- AYUDA -->
 
                 <div class="nav-dropdown">
 
-                    <a href="ayuda.html">
+                    <button
+                        class="nav-dropdown-btn"
+                        type="button"
+                        aria-expanded="false"
+                    >
+
                         AYUDA
-                        <span class="arrow">⌄</span>
-                    </a>
+
+                        <span class="arrow">
+                            ↓
+                        </span>
+
+                    </button>
+
 
                     <div class="dropdown-menu">
 
@@ -126,27 +201,226 @@
 
                 </div>
 
+
             </nav>
 
+
+
             <!-- ICONOS -->
+
             <div class="header-icons">
 
-                <span>⌕</span>
-                <span>♙</span>
-                <span>🛒</span>
+                <a
+                    href="productos.html"
+                    class="header-icon"
+                    aria-label="Buscar"
+                >
+                    ⌕
+                </a>
+
+
+                <a
+                    href="#"
+                    class="header-icon"
+                    aria-label="Cuenta"
+                >
+                    ♙
+                </a>
+
+
+                <a
+                    href="#"
+                    class="header-icon"
+                    aria-label="Carrito"
+                >
+                    🛒
+                </a>
 
             </div>
+
 
         </div>
 
     </header>
 
 
+
     <!-- =====================================================
-         HERO
+         MENÚ MÓVIL
+    ====================================================== -->
+
+    <div
+        class="mobile-menu-overlay"
+        aria-hidden="true"
+    ></div>
+
+
+    <aside
+        class="mobile-menu"
+        aria-hidden="true"
+    >
+
+
+        <div class="mobile-menu-header">
+
+            <a
+                href="index.html"
+                class="mobile-menu-logo"
+            >
+
+                <img
+                    src="logo.png"
+                    alt="SatoriMode"
+                >
+
+            </a>
+
+
+            <button
+                class="mobile-menu-close"
+                type="button"
+                aria-label="Cerrar menú"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <nav class="mobile-nav">
+
+
+            <!-- INICIO -->
+
+            <a href="index.html">
+                INICIO
+            </a>
+
+
+
+            <!-- COLECCIONES -->
+
+            <button
+                class="mobile-nav-button"
+                type="button"
+                aria-expanded="false"
+            >
+
+                <span>
+                    COLECCIONES
+                </span>
+
+                <span>
+                    ›
+                </span>
+
+            </button>
+
+
+            <div class="mobile-submenu">
+
+                <a href="colecciones.html#anime">
+                    ANIME
+                </a>
+
+                <a href="colecciones.html#streetwear">
+                    STREETWEAR
+                </a>
+
+                <a href="colecciones.html#exclusivos">
+                    EXCLUSIVOS
+                </a>
+
+            </div>
+
+
+
+            <!-- PRODUCTOS -->
+
+            <button
+                class="mobile-nav-button"
+                type="button"
+                aria-expanded="false"
+            >
+
+                <span>
+                    PRODUCTOS
+                </span>
+
+                <span>
+                    ›
+                </span>
+
+            </button>
+
+
+            <div class="mobile-submenu">
+
+                <a href="productos.html">
+                    TODAS LAS POLERAS
+                </a>
+
+                <a href="satorii-pack.html">
+                    SATORII PACK
+                </a>
+
+            </div>
+
+
+
+            <!-- AYUDA -->
+
+            <button
+                class="mobile-nav-button"
+                type="button"
+                aria-expanded="false"
+            >
+
+                <span>
+                    AYUDA
+                </span>
+
+                <span>
+                    ›
+                </span>
+
+            </button>
+
+
+            <div class="mobile-submenu">
+
+                <a href="guia-tallas.html">
+                    GUÍA DE TALLAS
+                </a>
+
+                <a href="envios.html">
+                    ENVÍOS
+                </a>
+
+                <a href="preguntas-frecuentes.html">
+                    PREGUNTAS FRECUENTES
+                </a>
+
+            </div>
+
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENIDO
     ====================================================== -->
 
     <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section class="collections-hero">
 
@@ -156,14 +430,23 @@
                     SATORIMODE · COLECCIONES
                 </span>
 
+
                 <h1>
+
                     DESCUBRE LO QUE
-                    <span>REPRESENTAS.</span>
+
+                    <span>
+                        REPRESENTAS.
+                    </span>
+
                 </h1>
 
+
                 <p>
-                    Diseños que nacen de tus gustos, tu estilo
-                    y aquello que te representa.
+
+                    Diseños que nacen de tus gustos,
+                    tu estilo y aquello que te representa.
+
                 </p>
 
             </div>
@@ -171,38 +454,62 @@
         </section>
 
 
+
         <!-- =================================================
              ANIME
         ================================================== -->
 
-        <section class="collection-section" id="anime">
+        <section
+            class="collection-section"
+            id="anime"
+        >
 
             <div class="collection-number">
                 01 / ANIME
             </div>
 
+
             <div class="collection-content">
+
 
                 <div class="collection-text">
 
                     <h2>
+
                         DISEÑOS QUE NACEN
-                        <span>DEL ANIME.</span>
+
+                        <span>
+                            DEL ANIME.
+                        </span>
+
                     </h2>
 
+
                     <p>
-                        Diseños inspirados en anime, manga y
-                        personajes que forman parte de aquello
-                        que nos apasiona.
+
+                        Diseños inspirados en anime,
+                        manga y personajes que forman
+                        parte de aquello que nos apasiona.
+
                     </p>
 
-                    <a href="anime.html" class="collection-button">
+
+                    <a
+                        href="anime.html"
+                        class="collection-button"
+                    >
                         VER COLECCIÓN →
                     </a>
 
                 </div>
 
-                <div class="collection-visual anime-visual">
+
+
+                <!-- IMAGEN / PLACEHOLDER -->
+
+                <div
+                    class="collection-visual anime-visual"
+                >
 
                     <span>
                         ANIME
@@ -210,24 +517,35 @@
 
                 </div>
 
+
             </div>
 
         </section>
+
 
 
         <!-- =================================================
              STREETWEAR
         ================================================== -->
 
-        <section class="collection-section collection-dark" id="streetwear">
+        <section
+            class="collection-section collection-dark"
+            id="streetwear"
+        >
 
             <div class="collection-number">
                 02 / STREETWEAR
             </div>
 
+
             <div class="collection-content">
 
-                <div class="collection-visual streetwear-visual">
+
+                <!-- IMAGEN / PLACEHOLDER -->
+
+                <div
+                    class="collection-visual streetwear-visual"
+                >
 
                     <span>
                         STREETWEAR
@@ -235,72 +553,113 @@
 
                 </div>
 
+
+
                 <div class="collection-text">
 
                     <h2>
+
                         LA CALLE,
-                        <span>A TU MANERA.</span>
+
+                        <span>
+                            A TU MANERA.
+                        </span>
+
                     </h2>
 
+
                     <p>
-                        Una estética urbana, minimalista y
-                        pensada para llevar SatoriMode contigo
-                        todos los días.
+
+                        Una estética urbana, minimalista
+                        y pensada para llevar SatoriMode
+                        contigo todos los días.
+
                     </p>
 
-                    <a href="streetwear.html" class="collection-button">
+
+                    <a
+                        href="streetwear.html"
+                        class="collection-button"
+                    >
                         VER COLECCIÓN →
                     </a>
 
                 </div>
 
+
             </div>
 
         </section>
+
 
 
         <!-- =================================================
              EXCLUSIVOS
         ================================================== -->
 
-        <section class="collection-section" id="exclusivos">
+        <section
+            class="collection-section"
+            id="exclusivos"
+        >
 
             <div class="collection-number">
                 03 / EXCLUSIVOS
             </div>
 
+
             <div class="collection-content">
+
 
                 <div class="collection-text">
 
                     <h2>
+
                         DISEÑOS QUE NO
-                        <span>ENCUENTRAS EN OTRO LUGAR.</span>
+
+                        <span>
+                            ENCUENTRAS EN OTRO LUGAR.
+                        </span>
+
                     </h2>
 
+
                     <p>
+
                         Creaciones propias de SatoriMode,
                         desarrolladas para representar la
                         identidad y esencia de nuestra marca.
+
                     </p>
 
-                    <a href="exclusivos.html" class="collection-button">
+
+                    <a
+                        href="exclusivos.html"
+                        class="collection-button"
+                    >
                         VER COLECCIÓN →
                     </a>
 
                 </div>
 
-                <div class="collection-visual exclusive-visual">
+
+
+                <!-- IMAGEN / PLACEHOLDER -->
+
+                <div
+                    class="collection-visual exclusive-visual"
+                >
 
                     <span>
-                        SATORIIMODE
+                        SATORIMODE
                     </span>
 
                 </div>
 
+
             </div>
 
         </section>
+
 
 
         <!-- =================================================
@@ -313,24 +672,39 @@
                 SATORII PACK
             </span>
 
+
             <h2>
+
                 TU PEDIDO TAMBIÉN ES PARTE
-                <span>DE LA EXPERIENCIA.</span>
+
+                <span>
+                    DE LA EXPERIENCIA.
+                </span>
+
             </h2>
 
+
             <p>
+
                 Descubre cómo preparamos cada compra
                 para que recibir tu prenda también sea
                 parte de la experiencia Satori.
+
             </p>
 
-            <a href="satorii-pack.html" class="collection-button">
+
+            <a
+                href="satorii-pack.html"
+                class="collection-button"
+            >
                 DESCUBRIR SATORII PACK →
             </a>
 
         </section>
 
+
     </main>
+
 
 
     <!-- =====================================================
@@ -340,6 +714,7 @@
     <footer class="site-footer">
 
         <div class="footer-main">
+
 
             <div class="footer-brand">
 
@@ -354,17 +729,27 @@
             </div>
 
 
+
             <div class="footer-column">
 
                 <h4>
                     COLECCIONES
                 </h4>
 
-                <a href="#anime">Anime</a>
-                <a href="#streetwear">Streetwear</a>
-                <a href="#exclusivos">Exclusivos</a>
+                <a href="#anime">
+                    Anime
+                </a>
+
+                <a href="#streetwear">
+                    Streetwear
+                </a>
+
+                <a href="#exclusivos">
+                    Exclusivos
+                </a>
 
             </div>
+
 
 
             <div class="footer-column">
@@ -384,27 +769,30 @@
             </div>
 
 
+
             <div class="footer-column">
 
                 <h4>
                     AYUDA
                 </h4>
 
-                <a href="#">
+                <a href="guia-tallas.html">
                     Guía de tallas
                 </a>
 
-                <a href="#">
+                <a href="envios.html">
                     Envíos
                 </a>
 
-                <a href="#">
+                <a href="preguntas-frecuentes.html">
                     Preguntas frecuentes
                 </a>
 
             </div>
 
+
         </div>
+
 
 
         <div class="footer-bottom">
@@ -419,8 +807,18 @@
 
         </div>
 
+
     </footer>
 
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/main.js"></script>
+
+
 </body>
+
 </html>
