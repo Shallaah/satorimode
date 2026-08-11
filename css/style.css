@@ -2464,3 +2464,52 @@ main {
     margin-top: auto;
     flex-shrink: 0;
 }
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
+.footer-social {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.instagram-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #999999;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.instagram-icon {
+    width: 20px;
+    height: 20px;
+
+    display: block;
+
+    flex-shrink: 0;
+}
+
+
+.instagram-link:hover {
+    color: #ffffff;
+
+    transform:
+        translateY(-2px);
+}
