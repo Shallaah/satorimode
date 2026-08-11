@@ -1701,7 +1701,7 @@ main {
 
 .products-section,
 .collection-products {
-    width: min(1100px, 92%);
+    width: min(var(--max-width), calc(100% - 80px));
     margin: 0 auto;
     padding: 80px 0;
 }
