@@ -1062,44 +1062,32 @@ main {
 .page-hero,
 .collections-hero,
 .collection-page-hero {
-    width: min(var(--max-width), calc(100% - 32px));
+    width: 100%;
 
-    min-height: 430px;
+    margin: 0;
 
-    margin: 0 auto;
-
-    padding:
-        70px 35px;
+    min-height: 465px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     text-align: center;
 
-    color: var(--white);
+    padding: 80px 40px;
 
-    overflow: hidden;
-
-    border-radius:
-        0 0 26px 26px;
+    border-radius: 0 0 24px 24px;
 
     background:
-        radial-gradient(
-            circle at 80% 25%,
-            rgba(180,0,0,.45),
-            transparent 38%
-        ),
-
         linear-gradient(
             110deg,
-            #080808,
+            #080808 0%,
             #111111 55%,
-            #420000
+            #480000 100%
         );
-}
 
+    color: #ffffff;
+}
 
 .page-hero-content,
 .collections-hero-content,
