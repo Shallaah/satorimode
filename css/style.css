@@ -165,26 +165,25 @@ input {
 
 
 /* =========================================================
-   NAVEGACIÓN
+   NAVEGACIÓN PRINCIPAL
 ========================================================= */
 
 .main-nav {
-    height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    gap: 34px;
+    gap: 28px;
+    height: 100%;
 }
 
 
+/* ENLACES NORMALES */
+
 .main-nav > a,
-.nav-dropdown > a,
 .nav-dropdown-btn {
     appearance: none;
 
-    border: 0;
+    border: 1px solid transparent;
     background: transparent;
 
     display: inline-flex;
@@ -193,28 +192,49 @@ input {
 
     gap: 6px;
 
-    padding: 8px 0;
+    min-height: 38px;
+    padding: 8px 12px;
+
+    border-radius: 7px;
 
     color: var(--black);
 
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
 
-    letter-spacing: .7px;
+    letter-spacing: 0.7px;
 
     white-space: nowrap;
 
     cursor: pointer;
 
     transition:
-        color .2s ease;
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
 }
 
 
+/* HOVER */
+
 .main-nav > a:hover,
-.nav-dropdown > a:hover,
 .nav-dropdown-btn:hover {
     color: var(--red);
+}
+
+
+/* =========================================================
+   PESTAÑA ACTIVA
+========================================================= */
+
+.main-nav > a.active,
+.nav-dropdown.is-open > .nav-dropdown-btn,
+.nav-dropdown.active > .nav-dropdown-btn {
+    color: var(--red);
+
+    border-color: var(--red);
+
+    background: #fff;
 }
 
 
@@ -232,15 +252,24 @@ input {
 }
 
 
+/* =========================================================
+   FLECHA DEL MENÚ
+========================================================= */
+
 .arrow {
+    display: inline-block;
+
     font-size: 10px;
+    font-weight: 700;
+
+    line-height: 1;
 
     transition:
-        transform .2s ease;
+        transform 0.2s ease;
 }
 
 
-.nav-dropdown:hover .arrow {
+.nav-dropdown.is-open .arrow {
     transform: rotate(180deg);
 }
 
