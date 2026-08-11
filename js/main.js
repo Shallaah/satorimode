@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         dropdowns.forEach(function (dropdown) {
 
-            dropdown.classList.remove("is-open");
+            dropdown.classList.remove("active");
 
 
             const button =
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             const wasOpen =
-                dropdown.classList.contains("is-open");
+                dropdown.classList.contains("active");
 
 
             /* ---------------------------------------------
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!wasOpen) {
 
-                dropdown.classList.add("is-open");
+                dropdown.classList.add("active");
 
 
                 button.setAttribute(
@@ -155,19 +155,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!mobileMenu) return;
 
 
-        mobileMenu.classList.add("is-open");
+        mobileMenu.classList.add("active");
 
 
         if (mobileOverlay) {
 
-            mobileOverlay.classList.add("is-open");
+            mobileOverlay.classList.add("active");
 
         }
 
 
         if (mobileButton) {
 
-            mobileButton.classList.add("is-open");
+            mobileButton.classList.add("active");
 
 
             mobileButton.setAttribute(
@@ -199,19 +199,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!mobileMenu) return;
 
 
-        mobileMenu.classList.remove("is-open");
+        mobileMenu.classList.remove("active");
 
 
         if (mobileOverlay) {
 
-            mobileOverlay.classList.remove("is-open");
+            mobileOverlay.classList.remove("active");
 
         }
 
 
         if (mobileButton) {
 
-            mobileButton.classList.remove("is-open");
+            mobileButton.classList.remove("active");
 
 
             mobileButton.setAttribute(
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const isOpen =
                     mobileMenu &&
-                    mobileMenu.classList.contains("is-open");
+                    mobileMenu.classList.contains("active");
 
 
                 if (isOpen) {
@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const wasOpen =
                     submenu.classList.contains(
-                        "is-open"
+                        "active"
                     );
 
 
@@ -349,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .forEach(function (menu) {
 
                         menu.classList.remove(
-                            "is-open"
+                            "active"
                         );
 
                     });
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                         otherButton.classList.remove(
-                            "is-open"
+                            "active"
                         );
 
                     });
@@ -382,7 +382,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!wasOpen) {
 
                     submenu.classList.add(
-                        "is-open"
+                        "active"
                     );
 
 
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                     button.classList.add(
-                        "is-open"
+                        "active"
                     );
 
                 }
@@ -523,7 +523,7 @@ if (searchButton) {
         function () {
 
             searchOverlay.classList.add(
-                "is-open"
+                "active"
             );
 
 
@@ -563,7 +563,7 @@ function closeSearch() {
 
 
     searchOverlay.classList.remove(
-        "is-open"
+        "active"
     );
 
 
