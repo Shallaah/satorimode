@@ -2,23 +2,37 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Anime | SatoriMode</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>SatoriMode | Anime</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
 
+
 <body>
+
 
     <!-- =====================================================
          BARRA SUPERIOR
     ====================================================== -->
 
     <div class="shipping-bar">
+
         ENVÍOS A TODO CHILE · SATORIMODE
+
     </div>
+
 
 
     <!-- =====================================================
@@ -29,14 +43,18 @@
 
         <div class="header-inner">
 
-            <!-- MENÚ MÓVIL -->
+
+            <!-- =================================================
+                 MENÚ MÓVIL
+            ================================================== -->
 
             <button
                 class="mobile-menu-button"
                 type="button"
                 aria-label="Abrir menú"
-                aria-controls="mobileMenu"
-                onclick="toggleMobileMenu()">
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
 
                 <span></span>
                 <span></span>
@@ -45,50 +63,100 @@
             </button>
 
 
-            <!-- LOGO -->
 
-            <a href="index.html" class="brand-logo">
+            <!-- =================================================
+                 LOGO
+            ================================================== -->
+
+            <a
+                href="index.html"
+                class="brand-logo"
+                aria-label="SatoriMode - Inicio"
+            >
 
                 <img
                     src="logo.png"
-                    alt="SatoriMode">
+                    alt="SatoriMode"
+                >
 
             </a>
+
 
 
             <!-- =================================================
                  NAVEGACIÓN DESKTOP
             ================================================== -->
 
-            <nav class="main-nav">
+            <nav
+                class="main-nav"
+                aria-label="Navegación principal"
+            >
+
 
                 <!-- INICIO -->
 
-                <a href="index.html">
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
                     INICIO
                 </a>
 
 
-                <!-- COLECCIONES -->
 
-                <div class="nav-dropdown">
+                <!-- =================================================
+                     COLECCIONES
+                ================================================== -->
 
-                    <a href="colecciones.html">
-                        COLECCIONES
-                        <span class="arrow">⌄</span>
-                    </a>
+                <div
+                    class="nav-dropdown is-open-page"
+                    data-dropdown="colecciones"
+                >
 
-                    <div class="dropdown-menu">
+                    <button
+                        class="nav-dropdown-btn"
+                        type="button"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                    >
 
-                        <a href="anime.html">
+                        <span>
+                            COLECCIONES
+                        </span>
+
+                        <span
+                            class="arrow"
+                            aria-hidden="true"
+                        >
+                            ↓
+                        </span>
+
+                    </button>
+
+
+                    <div
+                        class="dropdown-menu"
+                        role="menu"
+                    >
+
+                        <a
+                            href="anime.html"
+                            role="menuitem"
+                        >
                             ANIME
                         </a>
 
-                        <a href="streetwear.html">
+                        <a
+                            href="streetwear.html"
+                            role="menuitem"
+                        >
                             STREETWEAR
                         </a>
 
-                        <a href="exclusivos.html">
+                        <a
+                            href="exclusivos.html"
+                            role="menuitem"
+                        >
                             EXCLUSIVOS
                         </a>
 
@@ -97,26 +165,53 @@
                 </div>
 
 
-                <!-- PRODUCTOS -->
 
-                <div class="nav-dropdown">
+                <!-- =================================================
+                     PRODUCTOS
+                ================================================== -->
 
-                    <a
-                        href="#"
-                        onclick="return false;">
+                <div
+                    class="nav-dropdown"
+                    data-dropdown="productos"
+                >
 
-                        PRODUCTOS
-                        <span class="arrow">⌄</span>
+                    <button
+                        class="nav-dropdown-btn"
+                        type="button"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                    >
 
-                    </a>
+                        <span>
+                            PRODUCTOS
+                        </span>
 
-                    <div class="dropdown-menu">
+                        <span
+                            class="arrow"
+                            aria-hidden="true"
+                        >
+                            ↓
+                        </span>
 
-                        <a href="productos.html">
+                    </button>
+
+
+                    <div
+                        class="dropdown-menu"
+                        role="menu"
+                    >
+
+                        <a
+                            href="productos.html"
+                            role="menuitem"
+                        >
                             TODAS LAS POLERAS
                         </a>
 
-                        <a href="satorii-pack.html">
+                        <a
+                            href="satorii-pack.html"
+                            role="menuitem"
+                        >
                             SATORII PACK
                         </a>
 
@@ -125,28 +220,60 @@
                 </div>
 
 
-                <!-- AYUDA -->
 
-                <div class="nav-dropdown">
+                <!-- =================================================
+                     AYUDA
+                ================================================== -->
 
-                    <a href="ayuda.html">
+                <div
+                    class="nav-dropdown"
+                    data-dropdown="ayuda"
+                >
 
-                        AYUDA
-                        <span class="arrow">⌄</span>
+                    <button
+                        class="nav-dropdown-btn"
+                        type="button"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                    >
 
-                    </a>
+                        <span>
+                            AYUDA
+                        </span>
 
-                    <div class="dropdown-menu">
+                        <span
+                            class="arrow"
+                            aria-hidden="true"
+                        >
+                            ↓
+                        </span>
 
-                        <a href="guia-tallas.html">
+                    </button>
+
+
+                    <div
+                        class="dropdown-menu"
+                        role="menu"
+                    >
+
+                        <a
+                            href="guia-tallas.html"
+                            role="menuitem"
+                        >
                             GUÍA DE TALLAS
                         </a>
 
-                        <a href="envios.html">
+                        <a
+                            href="envios.html"
+                            role="menuitem"
+                        >
                             ENVÍOS
                         </a>
 
-                        <a href="preguntas-frecuentes.html">
+                        <a
+                            href="preguntas-frecuentes.html"
+                            role="menuitem"
+                        >
                             PREGUNTAS FRECUENTES
                         </a>
 
@@ -157,33 +284,51 @@
             </nav>
 
 
+
             <!-- =================================================
-                 ICONOS
+                 ICONOS HEADER
             ================================================== -->
 
             <div class="header-icons">
 
                 <a
-                    href="productos.html"
-                    aria-label="Buscar">
+                    href="buscar.html"
+                    class="header-icon"
+                    aria-label="Buscar"
+                    title="Buscar"
+                >
 
-                    ⌕
-
-                </a>
-
-                <a
-                    href="#"
-                    aria-label="Cuenta">
-
-                    ♙
+                    <span aria-hidden="true">
+                        ⌕
+                    </span>
 
                 </a>
 
-                <a
-                    href="#"
-                    aria-label="Carrito">
 
-                    🛒
+                <a
+                    href="iniciar-sesion.html"
+                    class="header-icon"
+                    aria-label="Iniciar sesión"
+                    title="Iniciar sesión"
+                >
+
+                    <span aria-hidden="true">
+                        ♙
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="carrito.html"
+                    class="header-icon"
+                    aria-label="Carrito de compras"
+                    title="Carrito"
+                >
+
+                    <span aria-hidden="true">
+                        🛒
+                    </span>
 
                 </a>
 
@@ -194,85 +339,215 @@
     </header>
 
 
+
     <!-- =====================================================
          MENÚ MÓVIL
     ====================================================== -->
 
+    <div
+        class="mobile-menu-overlay"
+        aria-hidden="true"
+    >
+    </div>
+
+
     <aside
+        id="mobile-menu"
         class="mobile-menu"
-        id="mobileMenu"
-        aria-hidden="true">
+        aria-hidden="true"
+    >
 
-        <!-- CERRAR -->
+        <div class="mobile-menu-header">
 
-        <button
-            class="mobile-menu-close"
-            type="button"
-            aria-label="Cerrar menú"
-            onclick="toggleMobileMenu()">
+            <a
+                href="index.html"
+                class="mobile-menu-logo"
+                aria-label="SatoriMode - Inicio"
+            >
 
-            ×
+                <img
+                    src="logo.png"
+                    alt="SatoriMode"
+                >
 
-        </button>
+            </a>
 
 
-        <!-- NAVEGACIÓN -->
+            <button
+                class="mobile-menu-close"
+                type="button"
+                aria-label="Cerrar menú"
+            >
 
-        <nav class="mobile-nav">
+                ×
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVEGACIÓN MÓVIL
+        ================================================== -->
+
+        <nav
+            class="mobile-nav"
+            aria-label="Navegación móvil"
+        >
+
 
             <a href="index.html">
                 INICIO
             </a>
 
 
-            <a href="colecciones.html">
-                COLECCIONES
-                <span>›</span>
-            </a>
+
+            <button
+                class="mobile-nav-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobile-collections"
+            >
+
+                <span>
+                    COLECCIONES
+                </span>
+
+                <span
+                    class="mobile-arrow"
+                    aria-hidden="true"
+                >
+                    ↓
+                </span>
+
+            </button>
 
 
-            <a href="productos.html">
-                PRODUCTOS
-                <span>›</span>
-            </a>
+            <div
+                id="mobile-collections"
+                class="mobile-submenu"
+            >
 
-
-            <a href="ayuda.html">
-                AYUDA
-                <span>›</span>
-            </a>
-
-
-            <a href="productos.html">
-                VER TODO
-            </a>
-
-        </nav>
-
-
-        <!-- PARTE INFERIOR -->
-
-        <div class="mobile-menu-bottom">
-
-            <span>
-                SATORIMODE
-            </span>
-
-            <div>
-
-                <a href="#">
-                    Instagram
+                <a href="anime.html">
+                    ANIME
                 </a>
 
-                <a href="#">
-                    TikTok
+                <a href="streetwear.html">
+                    STREETWEAR
+                </a>
+
+                <a href="exclusivos.html">
+                    EXCLUSIVOS
                 </a>
 
             </div>
 
-        </div>
+
+
+            <button
+                class="mobile-nav-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobile-products"
+            >
+
+                <span>
+                    PRODUCTOS
+                </span>
+
+                <span
+                    class="mobile-arrow"
+                    aria-hidden="true"
+                >
+                    ↓
+                </span>
+
+            </button>
+
+
+            <div
+                id="mobile-products"
+                class="mobile-submenu"
+            >
+
+                <a href="productos.html">
+                    TODAS LAS POLERAS
+                </a>
+
+                <a href="satorii-pack.html">
+                    SATORII PACK
+                </a>
+
+            </div>
+
+
+
+            <button
+                class="mobile-nav-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobile-help"
+            >
+
+                <span>
+                    AYUDA
+                </span>
+
+                <span
+                    class="mobile-arrow"
+                    aria-hidden="true"
+                >
+                    ↓
+                </span>
+
+            </button>
+
+
+            <div
+                id="mobile-help"
+                class="mobile-submenu"
+            >
+
+                <a href="guia-tallas.html">
+                    GUÍA DE TALLAS
+                </a>
+
+                <a href="envios.html">
+                    ENVÍOS
+                </a>
+
+                <a href="preguntas-frecuentes.html">
+                    PREGUNTAS FRECUENTES
+                </a>
+
+            </div>
+
+
+
+            <!-- INSTAGRAM -->
+
+            <div class="mobile-social">
+
+                <span>
+                    SÍGUENOS
+                </span>
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram SatoriMode"
+                >
+                    INSTAGRAM
+                </a>
+
+            </div>
+
+        </nav>
 
     </aside>
+
 
 
     <!-- =====================================================
@@ -283,25 +558,35 @@
 
 
         <!-- =================================================
-             HERO
+             HERO ANIME
         ================================================== -->
 
-        <section class="collection-page-hero">
+        <section class="home-hero">
 
-            <div class="collection-page-hero-content">
+            <div class="home-hero-content">
 
-                <span class="section-label">
-                    SATORIMODE · ANIME
+                <span class="hero-kicker">
+                    ANIME
                 </span>
 
+
                 <h1>
-                    DISEÑOS QUE NACEN
-                    <span>DEL ANIME.</span>
+
+                    DISEÑOS QUE
+
+                    <span>
+                        NACEN DEL ANIME.
+                    </span>
+
                 </h1>
 
+
                 <p>
-                    Diseños inspirados en anime, manga y personajes
-                    que forman parte de aquello que nos apasiona.
+
+                    Diseños inspirados en anime, manga
+                    y personajes que forman parte de
+                    aquello que nos apasiona.
+
                 </p>
 
             </div>
@@ -309,109 +594,70 @@
         </section>
 
 
+
         <!-- =================================================
-             COLECCIÓN
+             PRODUCTOS ANIME
         ================================================== -->
 
-        <section class="collection-products">
+        <section class="products-section">
 
 
-            <!-- =================================================
-                 ENCABEZADO
-            ================================================== -->
+            <div class="section-heading">
 
-            <div class="collection-products-heading">
-
-                <span class="section-label">
+                <span>
                     01 / ANIME
                 </span>
 
+
                 <h2>
+
                     NUESTRA COLECCIÓN
-                    <span>ANIME.</span>
+
+                    <strong>
+                        ANIME.
+                    </strong>
+
                 </h2>
 
+
                 <p>
-                    Explora nuestras prendas inspiradas en el
-                    mundo del anime.
+                    Explora nuestras prendas inspiradas
+                    en el mundo del anime.
                 </p>
 
             </div>
 
 
+
             <!-- =================================================
-                 BARRA DE FILTROS
+                 FILTROS
             ================================================== -->
 
-            <div class="collection-filter-bar">
+            <div class="anime-filters">
 
                 <button
                     type="button"
-                    class="filter-button"
-                    onclick="toggleFilters()">
-
-                    <span class="filter-icon">
-                        ☷
-                    </span>
-
-                    MOSTRAR FILTROS
-
+                    class="anime-filter active"
+                >
+                    TODOS
                 </button>
 
+                <button
+                    type="button"
+                    class="anime-filter"
+                >
+                    DISPONIBLES
+                </button>
 
-                <span class="filter-count">
-                    10 DISEÑOS
-                </span>
-
-            </div>
-
-
-            <!-- =================================================
-                 PANEL DE FILTROS
-            ================================================== -->
-
-            <div
-                class="filter-panel"
-                id="filterPanel">
-
-                <div class="filter-panel-inner">
-
-                    <span class="filter-panel-title">
-                        FILTRAR POR
-                    </span>
-
-
-                    <div class="filter-options">
-
-                        <button
-                            type="button"
-                            class="filter-option active">
-
-                            TODOS
-
-                        </button>
-
-                        <button
-                            type="button"
-                            class="filter-option">
-
-                            DISPONIBLES
-
-                        </button>
-
-                        <button
-                            type="button"
-                            class="filter-option">
-
-                            PRÓXIMAMENTE
-
-                        </button>
-
-                    </div>
-
-                </div>
+                <button
+                    type="button"
+                    class="anime-filter"
+                >
+                    PRÓXIMAMENTE
+                </button>
 
             </div>
+
 
 
             <!-- =================================================
@@ -421,21 +667,21 @@
             <div class="products-grid">
 
 
-                <!-- =================================================
-                     PRODUCTO 01
-                ================================================== -->
+                <!-- PRODUCTO 01 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 01
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -444,33 +690,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 01
+                            Polera Anime 01
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 02
-                ================================================== -->
+
+                <!-- PRODUCTO 02 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 02
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -479,33 +730,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 02
+                            Polera Anime 02
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 03
-                ================================================== -->
+
+                <!-- PRODUCTO 03 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 03
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -514,33 +770,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 03
+                            Polera Anime 03
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 04
-                ================================================== -->
+
+                <!-- PRODUCTO 04 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 04
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -549,33 +810,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 04
+                            Polera Anime 04
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 05
-                ================================================== -->
+
+                <!-- PRODUCTO 05 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 05
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -584,33 +850,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 05
+                            Polera Anime 05
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 06
-                ================================================== -->
+
+                <!-- PRODUCTO 06 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 06
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -619,33 +890,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 06
+                            Polera Anime 06
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 07
-                ================================================== -->
+
+                <!-- PRODUCTO 07 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 07
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -654,33 +930,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 07
+                            Polera Anime 07
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 08
-                ================================================== -->
+
+                <!-- PRODUCTO 08 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 08
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -689,33 +970,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 08
+                            Polera Anime 08
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 09
-                ================================================== -->
+
+                <!-- PRODUCTO 09 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 09
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -724,33 +1010,38 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 09
+                            Polera Anime 09
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
 
 
-                <!-- =================================================
-                     PRODUCTO 10
-                ================================================== -->
+
+                <!-- PRODUCTO 10 -->
 
                 <article class="product-card">
 
                     <a
                         href="#"
-                        class="product-image">
+                        class="product-image"
+                    >
 
-                        <span>
-                            PRÓXIMAMENTE
-                        </span>
+                        <div class="image-placeholder">
+                            ANIME 10
+                        </div>
 
                     </a>
+
 
                     <div class="product-info">
 
@@ -759,54 +1050,72 @@
                         </span>
 
                         <h3>
-                            DISEÑO ANIME 10
+                            Polera Anime 10
                         </h3>
 
-                        <p class="product-price">
-                            Próximamente
-                        </p>
+                        <div class="product-price">
+                            $24.990
+                        </div>
+
+                        <div class="product-details">
+                            Oversize · Algodón
+                        </div>
 
                     </div>
 
                 </article>
-
 
             </div>
 
         </section>
 
 
+
         <!-- =================================================
              SATORII PACK
         ================================================== -->
 
-        <section class="collection-page-pack">
+        <section class="pack-section">
 
-            <span class="section-label">
-                SATORII PACK
-            </span>
+            <div class="pack-content">
 
-            <h2>
-                TU PEDIDO TAMBIÉN ES PARTE
-                <span>DE LA EXPERIENCIA.</span>
-            </h2>
+                <span class="hero-kicker">
+                    SATORII PACK
+                </span>
 
-            <p>
-                Descubre cómo preparamos cada compra para que
-                recibir tu prenda también sea parte de la experiencia.
-            </p>
 
-            <a
-                href="satorii-pack.html"
-                class="collection-button">
+                <h2>
 
-                DESCUBRIR SATORII PACK →
+                    CONOCE EL
 
-            </a>
+                    <strong>
+                        SATORII PACK.
+                    </strong>
+
+                </h2>
+
+
+                <p>
+
+                    Una experiencia especial de SatoriMode
+                    creada para acompañar tus pedidos.
+
+                </p>
+
+
+                <a
+                    href="satorii-pack.html"
+                    class="button button-red"
+                >
+                    DESCUBRIR SATORII PACK
+                </a>
+
+            </div>
 
         </section>
 
     </main>
+
 
 
     <!-- =====================================================
@@ -814,6 +1123,7 @@
     ====================================================== -->
 
     <footer class="site-footer">
+
 
         <div class="footer-main">
 
@@ -831,6 +1141,7 @@
                 </p>
 
             </div>
+
 
 
             <!-- COLECCIONES -->
@@ -856,6 +1167,7 @@
             </div>
 
 
+
             <!-- PRODUCTOS -->
 
             <div class="footer-column">
@@ -873,6 +1185,7 @@
                 </a>
 
             </div>
+
 
 
             <!-- AYUDA -->
@@ -900,7 +1213,10 @@
         </div>
 
 
-        <!-- FOOTER INFERIOR -->
+
+        <!-- =================================================
+             FOOTER INFERIOR
+        ================================================== -->
 
         <div class="footer-bottom">
 
@@ -917,72 +1233,14 @@
     </footer>
 
 
+
     <!-- =====================================================
          JAVASCRIPT
     ====================================================== -->
 
-    <script>
+    <script src="js/main.js"></script>
 
-        /* =================================================
-           MENÚ MÓVIL
-        ================================================= */
-
-        function toggleMobileMenu() {
-
-            const menu =
-                document.getElementById("mobileMenu");
-
-            const isOpen =
-                menu.classList.toggle("active");
-
-            menu.setAttribute(
-                "aria-hidden",
-                !isOpen
-            );
-
-        }
-
-
-        /* =================================================
-           FILTROS
-        ================================================= */
-
-        function toggleFilters() {
-
-            const panel =
-                document.getElementById("filterPanel");
-
-            panel.classList.toggle("active");
-
-        }
-
-
-        /* =================================================
-           CERRAR MENÚ CON ESC
-        ================================================= */
-
-        document.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (event.key === "Escape") {
-
-                    const menu =
-                        document.getElementById("mobileMenu");
-
-                    menu.classList.remove("active");
-
-                    menu.setAttribute(
-                        "aria-hidden",
-                        "true"
-                    );
-
-                }
-
-            }
-        );
-
-    </script>
 
 </body>
+
 </html>
