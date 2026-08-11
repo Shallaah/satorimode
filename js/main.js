@@ -873,5 +873,132 @@ document
 
         }
     );
+/* =====================================================
+   FILTROS ANIME
+===================================================== */
 
+const animeFilterToggle =
+    document.querySelector(
+        "#animeFilterToggle"
+    );
+
+const animeFilters =
+    document.querySelector(
+        "#animeFilters"
+    );
+
+
+/* =====================================================
+   ABRIR / CERRAR FILTROS
+===================================================== */
+
+if (
+    animeFilterToggle &&
+    animeFilters
+) {
+
+    animeFilterToggle.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+
+            const isOpen =
+                animeFilters.classList.contains(
+                    "is-open"
+                );
+
+
+            if (isOpen) {
+
+                animeFilters.classList.remove(
+                    "is-open"
+                );
+
+                animeFilterToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                animeFilterToggle.textContent =
+                    "☷ MOSTRAR FILTROS";
+
+            } else {
+
+                animeFilters.classList.add(
+                    "is-open"
+                );
+
+                animeFilterToggle.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                animeFilterToggle.textContent =
+                    "× OCULTAR FILTROS";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SELECCIÓN DE FILTROS
+===================================================== */
+
+const animeFilterButtons =
+    document.querySelectorAll(
+        ".anime-filter"
+    );
+
+
+animeFilterButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const filterType =
+                    button.dataset.filter;
+
+
+                /* Quitar activo del mismo grupo */
+
+                animeFilterButtons.forEach(
+                    function (otherButton) {
+
+                        if (
+                            otherButton.dataset.filter ===
+                            filterType
+                        ) {
+
+                            otherButton.classList.remove(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                /* Activar seleccionado */
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+    }
+);
+   
 });
