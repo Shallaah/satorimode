@@ -632,31 +632,97 @@
                  FILTROS
             ================================================== -->
 
-            <div class="anime-filters">
+   <div class="anime-filter-area">
+
+    <button
+        type="button"
+        class="anime-filter-toggle"
+        aria-expanded="false"
+    >
+        ☷ MOSTRAR FILTROS
+    </button>
+
+
+    <div class="anime-filters">
+
+
+        <!-- TALLAS -->
+
+        <div class="filter-group">
+
+            <span class="filter-title">
+                TALLA
+            </span>
+
+            <div class="filter-options">
 
                 <button
                     type="button"
-                    class="anime-filter active"
+                    class="anime-filter"
+                    data-filter-type="size"
+                    data-filter-value="M"
                 >
-                    TODOS
+                    M
                 </button>
 
                 <button
                     type="button"
                     class="anime-filter"
+                    data-filter-type="size"
+                    data-filter-value="L"
                 >
-                    DISPONIBLES
+                    L
                 </button>
 
                 <button
                     type="button"
                     class="anime-filter"
+                    data-filter-type="size"
+                    data-filter-value="XL"
                 >
-                    PRÓXIMAMENTE
+                    XL
                 </button>
 
             </div>
 
+        </div>
+
+
+        <!-- COLOR -->
+
+        <div class="filter-group">
+
+            <span class="filter-title">
+                COLOR
+            </span>
+
+            <div class="filter-options">
+
+                <button
+                    type="button"
+                    class="anime-filter"
+                    data-filter-type="color"
+                    data-filter-value="blanco"
+                >
+                    BLANCO
+                </button>
+
+                <button
+                    type="button"
+                    class="anime-filter"
+                    data-filter-type="color"
+                    data-filter-value="negro"
+                >
+                    NEGRO
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
             <!-- =================================================
