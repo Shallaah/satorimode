@@ -456,134 +456,6 @@ function generateColors(product) {
 
 
 /* =====================================================
-   DESCRIPCIÓN / ENVÍOS / GARANTÍA
-===================================================== */
-
-function generateDetails(product) {
-
-    const details =
-        product.details || {};
-
-
-    const description =
-        details.description ||
-        product.description ||
-        "Producto SatoriMode.";
-
-
-    const shipping =
-        details.shipping ||
-        "Enviamos a todo Chile.";
-
-
-    const warranty =
-        details.warranty ||
-        "Todos nuestros productos cuentan con garantía.";
-
-
-    return `
-
-        <!-- =========================================
-             INFORMACIÓN DEL PRODUCTO
-        ========================================== -->
-
-        <section class="product-details-box">
-
-
-            <!-- =====================================
-                 PESTAÑAS
-            ====================================== -->
-
-            <div class="product-details-tabs">
-
-
-                <button
-                    type="button"
-                    class="product-details-tab active"
-                    data-tab="description"
-                >
-                    DESCRIPCIÓN
-                </button>
-
-
-                <button
-                    type="button"
-                    class="product-details-tab"
-                    data-tab="shipping"
-                >
-                    ENVÍOS Y GARANTÍA
-                </button>
-
-
-            </div>
-
-
-            <!-- =====================================
-                 DESCRIPCIÓN
-            ====================================== -->
-
-            <div
-                class="product-details-panel active"
-                id="productDetailsDescription"
-            >
-
-                <h4>
-                    DESCRIPCIÓN
-                </h4>
-
-
-                <p>
-                    ${escapeHTML(
-                        description
-                    )}
-                </p>
-
-            </div>
-
-
-            <!-- =====================================
-                 ENVÍOS Y GARANTÍA
-            ====================================== -->
-
-            <div
-                class="product-details-panel"
-                id="productDetailsShipping"
-            >
-
-                <h4>
-                    ENVÍOS
-                </h4>
-
-
-                <p>
-                    ${escapeHTML(
-                        shipping
-                    )}
-                </p>
-
-
-                <h4>
-                    GARANTÍA
-                </h4>
-
-
-                <p>
-                    ${escapeHTML(
-                        warranty
-                    )}
-                </p>
-
-            </div>
-
-
-        </section>
-
-    `;
-
-}
-
-
-/* =====================================================
    HTML COMPLETO DEL PRODUCTO
 ===================================================== */
 
@@ -627,12 +499,6 @@ function generateProductHTML(
 
     const sizes =
         generateSizes(
-            product
-        );
-
-
-    const details =
-        generateDetails(
             product
         );
 
@@ -691,213 +557,241 @@ function generateProductHTML(
         <section class="product-page">
 
 
-            <!-- =========================================
-                 GALERÍA
-            ========================================== -->
-
-            <div class="product-gallery">
-
-                ${gallery}
-
-            </div>
+            <div class="product-page-container">
 
 
-            <!-- =========================================
-                 INFORMACIÓN
-            ========================================== -->
+                <!-- =========================================
+                     GALERÍA
+                ========================================== -->
 
-            <div class="product-page-info">
+                <div class="product-gallery">
 
-
-                <span class="product-category">
-
-                    ${category}
-
-                </span>
-
-
-                <h1 class="product-page-title">
-
-                    ${name}
-
-                </h1>
-
-
-                <div class="product-page-price">
-
-                    ${price}
+                    ${gallery}
 
                 </div>
 
 
-                ${colors}
+                <!-- =========================================
+                     INFORMACIÓN
+                ========================================== -->
+
+                <div class="product-page-info">
 
 
-                ${sizes}
+                    <span class="product-page-category">
+
+                        ${category}
+
+                    </span>
 
 
-                <!-- =====================================
-                     CANTIDAD
-                ====================================== -->
+                    <h1 class="product-page-title">
 
-                <div class="product-option">
+                        ${name}
 
-                    <div class="product-option-title">
+                    </h1>
 
-                        CANTIDAD
+
+                    <div class="product-page-price">
+
+                        ${price}
+
+                    </div>
+
+
+                    ${colors}
+
+
+                    ${sizes}
+
+
+                    <!-- =====================================
+                         CANTIDAD
+                    ====================================== -->
+
+                    <div class="product-option">
+
+                        <div class="product-option-title">
+
+                            CANTIDAD
+
+                        </div>
+
+
+                        <div class="quantity-selector">
+
+                            <button
+                                type="button"
+                                id="quantityMinus"
+                            >
+                                −
+                            </button>
+
+
+                            <span id="quantity">
+                                1
+                            </span>
+
+
+                            <button
+                                type="button"
+                                id="quantityPlus"
+                            >
+                                +
+                            </button>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="quantity-selector">
+                    <!-- =====================================
+                         CARRITO
+                    ====================================== -->
 
-                        <button
-                            type="button"
-                            id="quantityMinus"
+                    <button
+                        type="button"
+                        class="add-to-cart-button"
+                        id="addToCart"
+                        data-product-id="${escapeHTML(
+                            product.id
+                        )}"
+                    >
+
+                        AGREGAR AL CARRITO
+
+                    </button>
+
+
+                    <!-- =====================================
+                         INFORMACIÓN DEL PRODUCTO
+                    ====================================== -->
+
+                    <div class="product-info-tabs">
+
+
+                        <div class="product-info-tabs-header">
+
+
+                            <button
+                                type="button"
+                                class="product-info-tab active"
+                                data-tab="description"
+                            >
+                                DESCRIPCIÓN
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="product-info-tab"
+                                data-tab="shipping"
+                            >
+                                ENVÍOS Y GARANTÍA
+                            </button>
+
+
+                        </div>
+
+
+                        <!-- ====================================
+                             DESCRIPCIÓN
+                        ===================================== -->
+
+                        <div
+                            class="product-info-tab-content active"
+                            data-content="description"
                         >
-                            −
-                        </button>
+
+                            <h3>
+
+                                ${escapeHTML(
+                                    product.details?.description ||
+                                    product.description ||
+                                    "Producto SatoriMode."
+                                )}
+
+                            </h3>
 
 
-                        <span id="quantity">
-                            1
-                        </span>
+                            ${
+                                product.details?.care
+                                    ? `
+                                        <p>
+                                            ${escapeHTML(
+                                                product.details.care
+                                            )}
+                                        </p>
+                                      `
+                                    : ""
+                            }
+
+                        </div>
 
 
-                        <button
-                            type="button"
-                            id="quantityPlus"
+                        <!-- ====================================
+                             ENVÍOS Y GARANTÍA
+                        ===================================== -->
+
+                        <div
+                            class="product-info-tab-content"
+                            data-content="shipping"
                         >
-                            +
-                        </button>
+
+
+                            <div class="product-info-item">
+
+
+                                <strong>
+                                    ENVÍOS
+                                </strong>
+
+
+                                <p>
+
+                                    ${escapeHTML(
+                                        product.details?.shipping ||
+                                        "Enviamos a todo Chile."
+                                    )}
+
+                                </p>
+
+
+                            </div>
+
+
+                            <div class="product-info-item">
+
+
+                                <strong>
+                                    GARANTÍA
+                                </strong>
+
+
+                                <p>
+
+                                    ${escapeHTML(
+                                        product.details?.warranty ||
+                                        "Todos nuestros productos cuentan con garantía."
+                                    )}
+
+                                </p>
+
+
+                            </div>
+
+
+                        </div>
+
 
                     </div>
+
 
                 </div>
 
 
-                <!-- =====================================
-                     CARRITO
-                ====================================== -->
-
-                <button
-                    type="button"
-                    class="add-to-cart-button"
-                    id="addToCart"
-                    data-product-id="${escapeHTML(
-                        product.id
-                    )}"
-                >
-
-                    AGREGAR AL CARRITO
-
-                </button>
-
-<!-- =====================================================
-     INFORMACIÓN DEL PRODUCTO
-====================================================== -->
-
-<div class="product-info-tabs">
-
-    <div class="product-info-tabs-header">
-
-        <button
-            type="button"
-            class="product-info-tab active"
-            data-tab="description"
-        >
-            DESCRIPCIÓN
-        </button>
-
-        <button
-            type="button"
-            class="product-info-tab"
-            data-tab="shipping"
-        >
-            ENVÍOS Y GARANTÍA
-        </button>
-
-    </div>
-
-
-    <!-- ================================================
-         DESCRIPCIÓN
-    ================================================= -->
-
-    <div
-        class="product-info-tab-content active"
-        data-content="description"
-    >
-
-        <h3>
-            ${escapeHTML(
-                product.details?.description ||
-                product.description ||
-                "Producto SatoriMode."
-            )}
-        </h3>
-
-        <p>
-            ${escapeHTML(
-                product.details?.care ||
-                ""
-            )}
-        </p>
-
-    </div>
-
-
-    <!-- ================================================
-         ENVÍOS Y GARANTÍA
-    ================================================= -->
-
-    <div
-        class="product-info-tab-content"
-        data-content="shipping"
-    >
-
-        <div class="product-info-item">
-
-            <strong>
-                ENVÍOS
-            </strong>
-
-            <p>
-                ${escapeHTML(
-                    product.details?.shipping ||
-                    "Enviamos a todo Chile."
-                )}
-            </p>
-
-        </div>
-
-
-        <div class="product-info-item">
-
-            <strong>
-                GARANTÍA
-            </strong>
-
-            <p>
-                ${escapeHTML(
-                    product.details?.warranty ||
-                    "Todos nuestros productos cuentan con garantía."
-                )}
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-                <!-- =====================================
-                     DESCRIPCIÓN / ENVÍOS / GARANTÍA
-                ====================================== -->
-
-                ${details}
-
-
             </div>
+
 
         </section>
 
@@ -908,7 +802,9 @@ function generateProductHTML(
 
         <section class="related-products">
 
+
             <div class="related-heading">
+
 
                 <span>
                     SATORIMODE · DESCUBRE MÁS
@@ -923,6 +819,7 @@ function generateProductHTML(
                 <p>
                     Descubre más diseños de SatoriMode.
                 </p>
+
 
             </div>
 
@@ -939,6 +836,7 @@ function generateProductHTML(
             >
 
             </div>
+
 
         </section>
 
@@ -958,6 +856,7 @@ function generateProductHTML(
 
             <div class="footer-brand">
 
+
                 <h3>
                     SATORIMODE
                 </h3>
@@ -967,10 +866,12 @@ function generateProductHTML(
                     Anime, cultura japonesa y streetwear.
                 </p>
 
+
             </div>
 
 
             <div class="footer-column">
+
 
                 <h4>
                     COLECCIONES
@@ -991,10 +892,12 @@ function generateProductHTML(
                     Accesorios
                 </a>
 
+
             </div>
 
 
             <div class="footer-column">
+
 
                 <h4>
                     PRODUCTOS
@@ -1010,6 +913,7 @@ function generateProductHTML(
                     Accesorios
                 </a>
 
+
             </div>
 
 
@@ -1017,6 +921,7 @@ function generateProductHTML(
 
 
         <div class="footer-bottom">
+
 
             <span>
                 © 2026 SatoriMode
@@ -1026,6 +931,7 @@ function generateProductHTML(
             <span>
                 Todos los derechos reservados.
             </span>
+
 
         </div>
 
@@ -1056,84 +962,85 @@ function generateProductHTML(
             "DOMContentLoaded",
             function () {
 
-            /* =====================================
-   INFORMACIÓN DEL PRODUCTO
-====================================== */
 
-const infoTabs =
-    document.querySelectorAll(
-        ".product-info-tab"
-    );
+                /* =====================================
+                   PESTAÑAS DE INFORMACIÓN
+                ====================================== */
 
-
-const infoContents =
-    document.querySelectorAll(
-        ".product-info-tab-content"
-    );
+                const infoTabs =
+                    document.querySelectorAll(
+                        ".product-info-tab"
+                    );
 
 
-infoTabs.forEach(
-    function (tab) {
+                const infoContents =
+                    document.querySelectorAll(
+                        ".product-info-tab-content"
+                    );
 
-        tab.addEventListener(
-            "click",
-            function () {
-
-                const selectedTab =
-                    this.dataset.tab;
-
-
-                /* =========================
-                   BOTONES
-                ========================== */
 
                 infoTabs.forEach(
-                    function (item) {
+                    function (tab) {
 
-                        item.classList.remove(
-                            "active"
+                        tab.addEventListener(
+                            "click",
+                            function () {
+
+                                const selectedTab =
+                                    this.dataset.tab;
+
+
+                                /* =========================
+                                   BOTONES
+                                ========================== */
+
+                                infoTabs.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                this.classList.add(
+                                    "active"
+                                );
+
+
+                                /* =========================
+                                   CONTENIDO
+                                ========================== */
+
+                                infoContents.forEach(
+                                    function (content) {
+
+                                        content.classList.remove(
+                                            "active"
+                                        );
+
+
+                                        if (
+                                            content.dataset.content ===
+                                            selectedTab
+                                        ) {
+
+                                            content.classList.add(
+                                                "active"
+                                            );
+
+                                        }
+
+                                    }
+                                );
+
+                            }
                         );
 
                     }
                 );
-
-
-                this.classList.add(
-                    "active"
-                );
-
-
-                /* =========================
-                   CONTENIDO
-                ========================== */
-
-                infoContents.forEach(
-                    function (content) {
-
-                        content.classList.remove(
-                            "active"
-                        );
-
-
-                        if (
-                            content.dataset.content ===
-                            selectedTab
-                        ) {
-
-                            content.classList.add(
-                                "active"
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-    }
-);
 
 
                 /* =====================================
@@ -1257,123 +1164,6 @@ infoTabs.forEach(
                     );
 
                 }
-
-
-                /* =====================================
-                   PESTAÑAS DE INFORMACIÓN
-                ====================================== */
-
-                const detailTabs =
-                    document.querySelectorAll(
-                        ".product-details-tab"
-                    );
-
-
-                const detailPanels =
-                    document.querySelectorAll(
-                        ".product-details-panel"
-                    );
-
-
-                detailTabs.forEach(
-                    function (tab) {
-
-                        tab.addEventListener(
-                            "click",
-                            function () {
-
-
-                                const target =
-                                    this.dataset.tab;
-
-
-                                /* -------------------------
-                                   TAB ACTIVO
-                                ------------------------- */
-
-                                detailTabs.forEach(
-                                    function (item) {
-
-                                        item.classList.remove(
-                                            "active"
-                                        );
-
-                                    }
-                                );
-
-
-                                this.classList.add(
-                                    "active"
-                                );
-
-
-                                /* -------------------------
-                                   PANEL ACTIVO
-                                ------------------------- */
-
-                                detailPanels.forEach(
-                                    function (panel) {
-
-                                        panel.classList.remove(
-                                            "active"
-                                        );
-
-                                    }
-                                );
-
-
-                                if (
-                                    target ===
-                                    "description"
-                                ) {
-
-                                    const descriptionPanel =
-                                        document.getElementById(
-                                            "productDetailsDescription"
-                                        );
-
-
-                                    if (
-                                        descriptionPanel
-                                    ) {
-
-                                        descriptionPanel.classList.add(
-                                            "active"
-                                        );
-
-                                    }
-
-                                }
-
-
-                                if (
-                                    target ===
-                                    "shipping"
-                                ) {
-
-                                    const shippingPanel =
-                                        document.getElementById(
-                                            "productDetailsShipping"
-                                        );
-
-
-                                    if (
-                                        shippingPanel
-                                    ) {
-
-                                        shippingPanel.classList.add(
-                                            "active"
-                                        );
-
-                                    }
-
-                                }
-
-                            }
-                        );
-
-                    }
-                );
 
 
             }
