@@ -161,7 +161,7 @@ const PRODUCTS = [
 
         "productos/anime/polera-kid-buu-02.PNG",
 
-        "productos/anime/polera-kid-buu-03.PNG.PNG"
+        "productos/anime/polera-kid-buu-03.PNG"
 
     ],
 
