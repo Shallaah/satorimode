@@ -1056,6 +1056,85 @@ function generateProductHTML(
             "DOMContentLoaded",
             function () {
 
+            /* =====================================
+   INFORMACIÓN DEL PRODUCTO
+====================================== */
+
+const infoTabs =
+    document.querySelectorAll(
+        ".product-info-tab"
+    );
+
+
+const infoContents =
+    document.querySelectorAll(
+        ".product-info-tab-content"
+    );
+
+
+infoTabs.forEach(
+    function (tab) {
+
+        tab.addEventListener(
+            "click",
+            function () {
+
+                const selectedTab =
+                    this.dataset.tab;
+
+
+                /* =========================
+                   BOTONES
+                ========================== */
+
+                infoTabs.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                /* =========================
+                   CONTENIDO
+                ========================== */
+
+                infoContents.forEach(
+                    function (content) {
+
+                        content.classList.remove(
+                            "active"
+                        );
+
+
+                        if (
+                            content.dataset.content ===
+                            selectedTab
+                        ) {
+
+                            content.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
 
                 /* =====================================
                    GALERÍA
