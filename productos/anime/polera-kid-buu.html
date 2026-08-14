@@ -14,127 +14,421 @@
 
     <link
         rel="stylesheet"
-        href="../../css/style.css"
+        href="/satorimode/css/style.css"
     >
-
-
-    <!-- =====================================================
-         AJUSTE DEFINITIVO · HEADER + PRODUCTO RESPONSIVE
-         Producto: /productos/anime/polera-kid-buu.html
-    ====================================================== -->
 
     <style>
 
-        /* =================================================
-           HEADER DESKTOP
-        ================================================== */
+        /* =====================================================
+           AJUSTES ESPECÍFICOS DE ESTA PÁGINA
+        ====================================================== */
 
-        @media (min-width: 1001px) {
+        * {
+            box-sizing: border-box;
+        }
 
-            .site-header .header-inner {
-                display: flex !important;
-                align-items: center !important;
-            }
-
-            .site-header .brand-logo {
-                order: 1 !important;
-                flex: 0 0 auto !important;
-            }
-
-            .site-header .main-nav {
-                order: 2 !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-
-            .site-header .header-icons {
-                order: 3 !important;
-                display: flex !important;
-                align-items: center !important;
-            }
-
-            .site-header .mobile-menu-button {
-                display: none !important;
-            }
-
-            .site-header .brand-logo img {
-                display: block !important;
-                width: auto !important;
-                height: 52px !important;
-                object-fit: contain !important;
-            }
+        body {
+            overflow-x: hidden;
         }
 
 
-        /* =================================================
+        /* =====================================================
+           HEADER DESKTOP
+        ====================================================== */
+
+        .site-header {
+            position: relative !important;
+            z-index: 3000 !important;
+        }
+
+        .site-header .header-inner {
+            width: min(1280px, calc(100% - 60px)) !important;
+            height: 72px !important;
+            margin: 0 auto !important;
+
+            display: grid !important;
+            grid-template-columns: auto 1fr auto !important;
+
+            align-items: center !important;
+
+            position: relative !important;
+        }
+
+
+        /* LOGO */
+
+        .site-header .brand-logo {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+
+            width: auto !important;
+            height: 100% !important;
+
+            text-decoration: none !important;
+        }
+
+        .site-header .brand-logo img {
+            display: block !important;
+
+            width: auto !important;
+            height: 52px !important;
+
+            max-width: 140px !important;
+
+            object-fit: contain !important;
+        }
+
+
+        /* NAVEGACIÓN */
+
+        .site-header .main-nav {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            gap: 30px !important;
+
+            margin: 0 !important;
+        }
+
+
+        /* ICONOS */
+
+        .site-header .header-icons {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+
+            gap: 10px !important;
+        }
+
+        .site-header .header-icon {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            width: 32px !important;
+            height: 38px !important;
+
+            margin: 0 !important;
+            padding: 0 !important;
+
+            text-decoration: none !important;
+        }
+
+
+        /* BOTÓN MÓVIL */
+
+        .site-header .mobile-menu-button {
+            display: none !important;
+        }
+
+
+        /* =====================================================
+           PRODUCTO DESKTOP
+        ====================================================== */
+
+        .product-page {
+            width: 100% !important;
+
+            padding: 65px 30px 0 !important;
+        }
+
+        .product-page-container {
+            width: min(1180px, 100%) !important;
+
+            margin: 0 auto !important;
+
+            display: grid !important;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(0, 1fr) !important;
+
+            gap: 60px !important;
+
+            align-items: start !important;
+        }
+
+
+        /* GALERÍA */
+
+        .product-gallery {
+            width: 100% !important;
+            min-width: 0 !important;
+        }
+
+        .product-main-image {
+            width: 100% !important;
+
+            aspect-ratio: 1 / 1 !important;
+
+            overflow: hidden !important;
+
+            border-radius: 14px !important;
+
+            background: #f5f5f5 !important;
+        }
+
+        .product-main-image img {
+            width: 100% !important;
+            height: 100% !important;
+
+            display: block !important;
+
+            object-fit: cover !important;
+        }
+
+
+        /* MINIATURAS */
+
+        .product-thumbnails {
+            width: 100% !important;
+
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr)) !important;
+
+            gap: 10px !important;
+
+            margin-top: 10px !important;
+        }
+
+        .product-thumbnail {
+            width: 100% !important;
+
+            aspect-ratio: 1 / 1 !important;
+
+            padding: 0 !important;
+
+            overflow: hidden !important;
+
+            border-radius: 10px !important;
+
+            background: #f5f5f5 !important;
+        }
+
+        .product-thumbnail img {
+            width: 100% !important;
+            height: 100% !important;
+
+            display: block !important;
+
+            object-fit: cover !important;
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN PRODUCTO
+        ====================================================== */
+
+        .product-page-info {
+            width: 100% !important;
+            min-width: 0 !important;
+        }
+
+        .product-page-info h1 {
+            margin-top: 12px !important;
+
+            font-size: clamp(
+                48px,
+                5vw,
+                78px
+            ) !important;
+
+            line-height: .92 !important;
+        }
+
+        .product-page-description {
+            max-width: 600px !important;
+        }
+
+        .add-to-cart-button {
+            width: 100% !important;
+        }
+
+
+        /* =====================================================
+           RECOMENDADOS
+        ====================================================== */
+
+        .recommended-products {
+            width: 100% !important;
+
+            padding: 110px 30px 100px !important;
+        }
+
+        .recommended-products-container {
+            width: min(1180px, 100%) !important;
+
+            margin: 0 auto !important;
+        }
+
+        .recommended-products-grid {
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr)) !important;
+
+            gap: 20px !important;
+
+            margin-top: 40px !important;
+        }
+
+        .recommended-card {
+            display: block !important;
+
+            text-decoration: none !important;
+
+            color: inherit !important;
+        }
+
+        .recommended-card-image {
+            width: 100% !important;
+
+            aspect-ratio: 1 / 1 !important;
+
+            overflow: hidden !important;
+
+            border-radius: 14px !important;
+
+            background: #f5f5f5 !important;
+        }
+
+        .recommended-card-image img {
+            width: 100% !important;
+            height: 100% !important;
+
+            display: block !important;
+
+            object-fit: cover !important;
+
+            transition:
+                transform .35s ease !important;
+        }
+
+        .recommended-card:hover
+        .recommended-card-image img {
+            transform: scale(1.04) !important;
+        }
+
+        .recommended-card-info {
+            padding-top: 16px !important;
+        }
+
+        .recommended-card-info span {
+            display: block !important;
+
+            font-size: 10px !important;
+
+            font-weight: 800 !important;
+
+            letter-spacing: 2px !important;
+
+            color: #ed1111 !important;
+
+            margin-bottom: 7px !important;
+        }
+
+        .recommended-card-info h3 {
+            margin: 0 !important;
+
+            font-size: 18px !important;
+
+            font-weight: 800 !important;
+        }
+
+        .recommended-card-info p {
+            margin-top: 7px !important;
+
+            font-size: 15px !important;
+        }
+
+
+        /* =====================================================
            TABLET / MÓVIL
-           Hasta 1000px se comporta como versión móvil.
-        ================================================== */
+        ====================================================== */
 
         @media (max-width: 1000px) {
 
             /* HEADER */
 
             .site-header {
-                position: relative !important;
-                z-index: 3000 !important;
+                width: 100% !important;
             }
 
             .site-header .header-inner {
                 width: 100% !important;
-                min-height: 72px !important;
+
                 height: 72px !important;
+                min-height: 72px !important;
+
+                margin: 0 !important;
+
+                padding:
+                    0 14px !important;
 
                 display: grid !important;
-                grid-template-columns: 1fr auto 1fr !important;
+
+                grid-template-columns:
+                    1fr
+                    auto
+                    1fr !important;
 
                 align-items: center !important;
-                padding: 0 16px !important;
-
-                position: relative !important;
-                box-sizing: border-box !important;
             }
 
-            /* HAMBURGUESA: SIEMPRE dentro del header,
-               a la izquierda */
 
-            .site-header .mobile-menu-button,
-            .mobile-menu-button {
-                position: static !important;
-                top: auto !important;
-                right: auto !important;
-                bottom: auto !important;
-                left: auto !important;
-                transform: none !important;
+            /* HAMBURGUESA */
+
+            .site-header .mobile-menu-button {
+                display: flex !important;
 
                 grid-column: 1 !important;
                 grid-row: 1 !important;
 
                 justify-self: start !important;
 
-                width: 38px !important;
-                height: 38px !important;
+                position: static !important;
+
+                width: 42px !important;
+                height: 42px !important;
+
                 margin: 0 !important;
                 padding: 0 !important;
 
-                display: flex !important;
                 flex-direction: column !important;
+
                 align-items: center !important;
                 justify-content: center !important;
+
                 gap: 5px !important;
 
-                z-index: 3100 !important;
+                border: 0 !important;
+
+                background: transparent !important;
+
+                cursor: pointer !important;
+
+                z-index: 3500 !important;
             }
 
-            .site-header .mobile-menu-button span,
-            .mobile-menu-button span {
+            .site-header .mobile-menu-button span {
                 display: block !important;
-                width: 22px !important;
+
+                width: 23px !important;
                 height: 2px !important;
+
                 margin: 0 !important;
+
+                background:
+                    var(--black, #080808) !important;
             }
 
-            /* LOGO: CENTRADO */
+
+            /* LOGO CENTRADO */
 
             .site-header .brand-logo {
                 grid-column: 2 !important;
@@ -142,7 +436,11 @@
 
                 justify-self: center !important;
 
+                width: auto !important;
+                height: 72px !important;
+
                 display: flex !important;
+
                 align-items: center !important;
                 justify-content: center !important;
 
@@ -150,20 +448,22 @@
             }
 
             .site-header .brand-logo img {
-                display: block !important;
                 width: auto !important;
+
                 height: 48px !important;
-                max-width: 130px !important;
-                object-fit: contain !important;
+
+                max-width: 115px !important;
             }
 
-            /* OCULTAR NAVEGACIÓN PC */
+
+            /* OCULTAR NAV PC */
 
             .site-header .main-nav {
                 display: none !important;
             }
 
-            /* ICONOS: DERECHA */
+
+            /* ICONOS DERECHA */
 
             .site-header .header-icons {
                 grid-column: 3 !important;
@@ -172,95 +472,93 @@
                 justify-self: end !important;
 
                 display: flex !important;
+
                 align-items: center !important;
                 justify-content: flex-end !important;
 
-                gap: 10px !important;
+                gap: 6px !important;
+
                 margin: 0 !important;
                 padding: 0 !important;
             }
 
             .site-header .header-icon {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-
                 width: 30px !important;
-                height: 38px !important;
-                margin: 0 !important;
+                height: 40px !important;
             }
 
 
-            /* =================================================
-               PRODUCTO
-               En móvil: imagen arriba, información abajo.
-            ================================================== */
+            /* PRODUCTO */
 
             .product-page {
                 width: 100% !important;
-                padding: 28px 16px 0 !important;
-                box-sizing: border-box !important;
+
+                padding:
+                    24px 16px 0 !important;
             }
 
             .product-page-container {
                 width: 100% !important;
-                max-width: 760px !important;
+
+                max-width: 700px !important;
+
                 margin: 0 auto !important;
 
-                display: grid !important;
-                grid-template-columns: 1fr !important;
-                gap: 38px !important;
+                display: flex !important;
 
-                box-sizing: border-box !important;
+                flex-direction: column !important;
+
+                gap: 40px !important;
             }
+
+
+            /* GALERÍA ARRIBA */
 
             .product-gallery {
                 width: 100% !important;
-                min-width: 0 !important;
+
+                order: 1 !important;
             }
 
             .product-main-image {
                 width: 100% !important;
+
                 aspect-ratio: 1 / 1 !important;
-                overflow: hidden !important;
-                box-sizing: border-box !important;
+
+                border-radius: 14px !important;
             }
 
-            .product-main-image img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: cover !important;
-                display: block !important;
-            }
+
+            /* MINIATURAS */
 
             .product-thumbnails {
                 width: 100% !important;
-                display: grid !important;
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 10px !important;
+
+                grid-template-columns:
+                    repeat(3, 1fr) !important;
+
+                gap: 8px !important;
+
                 margin-top: 10px !important;
             }
 
-            .product-thumbnail {
-                width: 100% !important;
-                aspect-ratio: 1 / 1 !important;
-                overflow: hidden !important;
-            }
 
-            .product-thumbnail img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: cover !important;
-                display: block !important;
-            }
+            /* INFORMACIÓN ABAJO */
 
             .product-page-info {
                 width: 100% !important;
-                min-width: 0 !important;
+
+                order: 2 !important;
             }
 
             .product-page-info h1 {
-                font-size: clamp(42px, 9vw, 68px) !important;
+                font-size:
+                    clamp(
+                        42px,
+                        10vw,
+                        65px
+                    ) !important;
+
                 line-height: .92 !important;
             }
 
@@ -272,8 +570,27 @@
                 width: 100% !important;
             }
 
-            /* Evita que el menú móvil quede desplazado por
-               reglas antiguas de position/fixed. */
+
+            /* RECOMENDADOS */
+
+            .recommended-products {
+                padding:
+                    80px 16px 80px !important;
+            }
+
+            .recommended-products-container {
+                width: 100% !important;
+            }
+
+            .recommended-products-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr)) !important;
+
+                gap: 14px !important;
+            }
+
+
+            /* MENÚ */
 
             .mobile-menu {
                 z-index: 5000 !important;
@@ -282,59 +599,102 @@
             .mobile-menu-overlay {
                 z-index: 4900 !important;
             }
+
         }
 
 
-        /* =================================================
-           TELÉFONO PEQUEÑO
-        ================================================== */
+        /* =====================================================
+           TELÉFONO
+        ====================================================== */
 
         @media (max-width: 600px) {
 
             .shipping-bar {
                 height: 34px !important;
+
                 padding: 0 10px !important;
+
                 font-size: 9px !important;
             }
 
+
             .site-header .header-inner {
-                min-height: 68px !important;
                 height: 68px !important;
-                padding: 0 10px !important;
+                min-height: 68px !important;
+
+                padding:
+                    0 8px !important;
+            }
+
+
+            .site-header .brand-logo {
+                height: 68px !important;
             }
 
             .site-header .brand-logo img {
-                height: 44px !important;
-                max-width: 105px !important;
+                height: 45px !important;
+
+                max-width: 100px !important;
             }
 
+
             .site-header .header-icons {
-                gap: 5px !important;
+                gap: 2px !important;
             }
 
             .site-header .header-icon {
                 width: 27px !important;
             }
 
+
+            /* PRODUCTO */
+
             .product-page {
-                padding: 18px 12px 0 !important;
+                padding:
+                    18px 12px 0 !important;
             }
 
             .product-page-container {
-                gap: 30px !important;
+                gap: 34px !important;
             }
 
             .product-main-image {
-                border-radius: 14px !important;
+                border-radius: 13px !important;
             }
 
-            .product-thumbnails {
-                gap: 7px !important;
-            }
 
             .product-page-info h1 {
-                font-size: clamp(38px, 12vw, 54px) !important;
+                font-size:
+                    clamp(
+                        38px,
+                        12vw,
+                        55px
+                    ) !important;
             }
+
+
+            /* RECOMENDADOS */
+
+            .recommended-products {
+                padding:
+                    70px 12px 70px !important;
+            }
+
+            .recommended-products-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr)) !important;
+
+                gap: 10px !important;
+            }
+
+            .recommended-card-info h3 {
+                font-size: 15px !important;
+            }
+
+            .recommended-card-info p {
+                font-size: 13px !important;
+            }
+
         }
 
     </style>
@@ -364,40 +724,46 @@
         <div class="header-inner">
 
 
+            <!-- HAMBURGUESA -->
+
+            <button
+                class="mobile-menu-button"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
             <!-- LOGO -->
 
             <a
-                href="../../../index.html"
+                href="/satorimode/index.html"
                 class="brand-logo"
             >
 
                 <img
-                    src="../../../img/logo.png"
+                    src="/satorimode/img/logo.png"
                     alt="SatoriMode"
                 >
 
             </a>
 
 
-
-            <!-- =================================================
-                 NAVEGACIÓN PC
-            ================================================== -->
+            <!-- NAVEGACIÓN PC -->
 
             <nav class="main-nav">
 
 
-                <!-- INICIO -->
-
-                <a href="../../../index.html">
+                <a href="/satorimode/index.html">
                     INICIO
                 </a>
 
-
-
-                <!-- =================================================
-                     COLECCIONES
-                ================================================== -->
 
                 <div class="nav-dropdown">
 
@@ -417,15 +783,15 @@
 
                     <div class="dropdown-menu">
 
-                        <a href="../../../anime.html">
+                        <a href="/satorimode/anime.html">
                             ANIME
                         </a>
 
-                        <a href="../../../streetwear.html">
+                        <a href="/satorimode/streetwear.html">
                             STREETWEAR
                         </a>
 
-                        <a href="../../../exclusivos.html">
+                        <a href="/satorimode/exclusivos.html">
                             EXCLUSIVOS
                         </a>
 
@@ -433,11 +799,6 @@
 
                 </div>
 
-
-
-                <!-- =================================================
-                     PRODUCTOS
-                ================================================== -->
 
                 <div class="nav-dropdown">
 
@@ -457,11 +818,11 @@
 
                     <div class="dropdown-menu">
 
-                        <a href="../../../productos.html">
+                        <a href="/satorimode/productos.html">
                             TODAS LAS POLERAS
                         </a>
 
-                        <a href="../../../satorii-pack.html">
+                        <a href="/satorimode/satorii-pack.html">
                             SATORII PACK
                         </a>
 
@@ -469,11 +830,6 @@
 
                 </div>
 
-
-
-                <!-- =================================================
-                     AYUDA
-                ================================================== -->
 
                 <div class="nav-dropdown">
 
@@ -493,15 +849,15 @@
 
                     <div class="dropdown-menu">
 
-                        <a href="../../../guia-tallas.html">
+                        <a href="/satorimode/guia-tallas.html">
                             GUÍA DE TALLAS
                         </a>
 
-                        <a href="../../../envios.html">
+                        <a href="/satorimode/envios.html">
                             ENVÍOS
                         </a>
 
-                        <a href="../../../preguntas-frecuentes.html">
+                        <a href="/satorimode/preguntas-frecuentes.html">
                             PREGUNTAS FRECUENTES
                         </a>
 
@@ -509,61 +865,42 @@
 
                 </div>
 
-
             </nav>
 
 
-
-            <!-- =================================================
-                 ICONOS
-            ================================================== -->
+            <!-- ICONOS -->
 
             <div class="header-icons">
 
-
-                <!-- BUSCAR -->
 
                 <button
                     type="button"
                     class="header-icon search-trigger"
                     aria-label="Buscar"
                 >
-
                     ⌕
-
                 </button>
 
 
-
-                <!-- CUENTA -->
-
                 <a
-                    href="../../../cuenta.html"
+                    href="/satorimode/cuenta.html"
                     class="header-icon"
                     aria-label="Mi cuenta"
                 >
-
                     ♙
-
                 </a>
 
 
-
-                <!-- CARRITO -->
-
                 <a
-                    href="../../../carrito.html"
+                    href="/satorimode/carrito.html"
                     class="header-icon"
                     aria-label="Carrito"
                 >
-
                     🛒
-
                 </a>
 
 
             </div>
-
 
         </div>
 
@@ -575,25 +912,9 @@
          MENÚ MÓVIL
     ====================================================== -->
 
-    <button
-        class="mobile-menu-button"
-        type="button"
-        aria-label="Abrir menú"
-        aria-expanded="false"
-    >
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </button>
-
-
-
     <div
         class="mobile-menu-overlay"
     ></div>
-
 
 
     <aside
@@ -602,20 +923,15 @@
     >
 
 
-        <!-- =================================================
-             HEADER MENÚ MÓVIL
-        ================================================== -->
-
         <div class="mobile-menu-header">
 
-
             <a
-                href="../../../index.html"
+                href="/satorimode/index.html"
                 class="mobile-menu-logo"
             >
 
                 <img
-                    src="../../../img/logo.png"
+                    src="/satorimode/img/logo.png"
                     alt="SatoriMode"
                 >
 
@@ -632,29 +948,16 @@
 
             </button>
 
-
         </div>
 
-
-
-        <!-- =================================================
-             NAVEGACIÓN MÓVIL
-        ================================================== -->
 
         <nav class="mobile-nav">
 
 
-            <!-- INICIO -->
-
-            <a href="../../../index.html">
+            <a href="/satorimode/index.html">
                 INICIO
             </a>
 
-
-
-            <!-- =================================================
-                 COLECCIONES
-            ================================================== -->
 
             <button
                 type="button"
@@ -675,25 +978,20 @@
 
             <div class="mobile-submenu">
 
-                <a href="../../../anime.html">
+                <a href="/satorimode/anime.html">
                     ANIME
                 </a>
 
-                <a href="../../../streetwear.html">
+                <a href="/satorimode/streetwear.html">
                     STREETWEAR
                 </a>
 
-                <a href="../../../exclusivos.html">
+                <a href="/satorimode/exclusivos.html">
                     EXCLUSIVOS
                 </a>
 
             </div>
 
-
-
-            <!-- =================================================
-                 PRODUCTOS
-            ================================================== -->
 
             <button
                 type="button"
@@ -714,21 +1012,16 @@
 
             <div class="mobile-submenu">
 
-                <a href="../../../productos.html">
+                <a href="/satorimode/productos.html">
                     TODAS LAS POLERAS
                 </a>
 
-                <a href="../../../satorii-pack.html">
+                <a href="/satorimode/satorii-pack.html">
                     SATORII PACK
                 </a>
 
             </div>
 
-
-
-            <!-- =================================================
-                 AYUDA
-            ================================================== -->
 
             <button
                 type="button"
@@ -749,32 +1042,27 @@
 
             <div class="mobile-submenu">
 
-                <a href="../../../guia-tallas.html">
+                <a href="/satorimode/guia-tallas.html">
                     GUÍA DE TALLAS
                 </a>
 
-                <a href="../../../envios.html">
+                <a href="/satorimode/envios.html">
                     ENVÍOS
                 </a>
 
-                <a href="../../../preguntas-frecuentes.html">
+                <a href="/satorimode/preguntas-frecuentes.html">
                     PREGUNTAS FRECUENTES
                 </a>
 
             </div>
 
 
-
-            <!-- INSTAGRAM -->
-
             <a
                 href="https://www.instagram.com/satorimode/"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
                 INSTAGRAM
-
             </a>
 
 
@@ -796,14 +1084,10 @@
             <div class="product-page-container">
 
 
-                <!-- =================================================
-                     GALERÍA
-                ================================================== -->
+                <!-- GALERÍA -->
 
                 <div class="product-gallery">
 
-
-                    <!-- IMAGEN PRINCIPAL -->
 
                     <div class="product-main-image">
 
@@ -815,11 +1099,6 @@
 
                     </div>
 
-
-
-                    <!-- =================================================
-                         MINIATURAS
-                    ================================================== -->
 
                     <div class="product-thumbnails">
 
@@ -838,7 +1117,6 @@
                         </button>
 
 
-
                         <button
                             type="button"
                             class="product-thumbnail"
@@ -851,7 +1129,6 @@
                             >
 
                         </button>
-
 
 
                         <button
@@ -874,9 +1151,7 @@
 
 
 
-                <!-- =================================================
-                     INFORMACIÓN DEL PRODUCTO
-                ================================================== -->
+                <!-- INFORMACIÓN -->
 
                 <div class="product-page-info">
 
@@ -906,12 +1181,9 @@
 
 
 
-                    <!-- =================================================
-                         COLOR
-                    ================================================== -->
+                    <!-- COLOR -->
 
                     <div class="product-option">
-
 
                         <span class="product-option-title">
                             COLOR
@@ -919,7 +1191,6 @@
 
 
                         <div class="product-color">
-
 
                             <button
                                 type="button"
@@ -935,22 +1206,17 @@
 
                             </button>
 
-
                         </div>
 
                     </div>
 
 
 
-                    <!-- =================================================
-                         TALLA
-                    ================================================== -->
+                    <!-- TALLA -->
 
                     <div class="product-option">
 
-
                         <div class="product-option-header">
-
 
                             <span class="product-option-title">
                                 TALLA
@@ -958,20 +1224,15 @@
 
 
                             <a
-                                href="../../../guia-tallas.html"
+                                href="/satorimode/guia-tallas.html"
                             >
-
                                 GUÍA DE TALLAS
-
                             </a>
-
 
                         </div>
 
 
-
                         <div class="product-sizes">
-
 
                             <button
                                 type="button"
@@ -999,19 +1260,15 @@
                                 XL
                             </button>
 
-
                         </div>
 
                     </div>
 
 
 
-                    <!-- =================================================
-                         CANTIDAD
-                    ================================================== -->
+                    <!-- CANTIDAD -->
 
                     <div class="product-option">
-
 
                         <span class="product-option-title">
                             CANTIDAD
@@ -1019,7 +1276,6 @@
 
 
                         <div class="quantity-selector">
-
 
                             <button
                                 type="button"
@@ -1041,76 +1297,60 @@
                                 +
                             </button>
 
-
                         </div>
 
                     </div>
 
 
 
-                    <!-- =================================================
-                         AGREGAR AL CARRITO
-                    ================================================== -->
+                    <!-- CARRITO -->
 
                     <button
                         type="button"
                         class="add-to-cart-button"
                         id="addToCart"
                     >
-
                         AGREGAR AL CARRITO
-
                     </button>
 
 
 
-                    <!-- =================================================
-                         INFORMACIÓN
-                    ================================================== -->
+                    <!-- INFORMACIÓN -->
 
                     <div class="product-information">
 
 
                         <div class="product-information-item">
 
-
                             <strong>
                                 ENVÍOS
                             </strong>
-
 
                             <p>
                                 Enviamos a todo Chile.
                             </p>
 
-
-                            <a href="../../../envios.html">
+                            <a href="/satorimode/envios.html">
                                 VER INFORMACIÓN DE ENVÍOS →
                             </a>
-
 
                         </div>
 
 
-
                         <div class="product-information-item">
-
 
                             <strong>
                                 DEVOLUCIONES
                             </strong>
-
 
                             <p>
                                 Revisa nuestras condiciones
                                 de cambios y devoluciones.
                             </p>
 
-
-                            <a href="../../../preguntas-frecuentes.html">
+                            <a href="/satorimode/preguntas-frecuentes.html">
                                 MÁS INFORMACIÓN →
                             </a>
-
 
                         </div>
 
@@ -1119,7 +1359,6 @@
 
 
                 </div>
-
 
             </div>
 
@@ -1133,9 +1372,7 @@
 
         <section class="product-description-section">
 
-
             <div class="product-description-container">
-
 
                 <span class="section-label">
                     SATORIMODE · ANIME
@@ -1143,28 +1380,21 @@
 
 
                 <h2>
-
                     KID BUU.
-
                     <span>
                         PARTE DE TU ESTILO.
                     </span>
-
                 </h2>
 
 
                 <p>
-
                     Una pieza inspirada en uno de los
                     personajes más reconocibles de
                     Dragon Ball, llevada a una estética
                     streetwear pensada para el día a día.
-
                 </p>
 
-
             </div>
-
 
         </section>
 
@@ -1172,17 +1402,11 @@
 
         <!-- =====================================================
              PRODUCTOS RECOMENDADOS
-             
-             ESTA SECCIÓN QUEDA PREPARADA.
-             Cuando tengamos más productos,
-             agregaremos las tarjetas aquí.
         ====================================================== -->
 
         <section class="recommended-products">
 
-
             <div class="recommended-products-container">
-
 
                 <span class="section-label">
                     SATORIMODE · DESCUBRE MÁS
@@ -1198,9 +1422,7 @@
 
 
                 <p class="recommended-products-intro">
-
                     Descubre más diseños de SatoriMode.
-
                 </p>
 
 
@@ -1209,17 +1431,12 @@
                     id="recommendedProducts"
                 >
 
-                    <!--
-                        Las recomendaciones se agregarán
-                        posteriormente desde main.js.
-                    -->
-
+                    <!-- Las recomendaciones se generan
+                         mediante JavaScript -->
 
                 </div>
 
-
             </div>
-
 
         </section>
 
@@ -1234,132 +1451,101 @@
 
     <footer class="site-footer">
 
-
         <div class="footer-main">
 
-
             <div class="footer-brand">
-
 
                 <h3>
                     SATORIMODE
                 </h3>
 
-
                 <p>
                     Anime, cultura japonesa y streetwear.
                 </p>
 
-
             </div>
 
 
-
             <div class="footer-column">
-
 
                 <h4>
                     COLECCIONES
                 </h4>
 
-
-                <a href="../../../anime.html">
+                <a href="/satorimode/anime.html">
                     Anime
                 </a>
 
-
-                <a href="../../../streetwear.html">
+                <a href="/satorimode/streetwear.html">
                     Streetwear
                 </a>
 
-
-                <a href="../../../exclusivos.html">
+                <a href="/satorimode/exclusivos.html">
                     Exclusivos
                 </a>
-
 
             </div>
 
 
-
             <div class="footer-column">
-
 
                 <h4>
                     PRODUCTOS
                 </h4>
 
-
-                <a href="../../../productos.html">
+                <a href="/satorimode/productos.html">
                     Todas las poleras
                 </a>
 
-
-                <a href="../../../satorii-pack.html">
+                <a href="/satorimode/satorii-pack.html">
                     Satorii Pack
                 </a>
-
 
             </div>
 
 
-
             <div class="footer-column">
-
 
                 <h4>
                     AYUDA
                 </h4>
 
-
-                <a href="../../../guia-tallas.html">
+                <a href="/satorimode/guia-tallas.html">
                     Guía de tallas
                 </a>
 
-
-                <a href="../../../envios.html">
+                <a href="/satorimode/envios.html">
                     Envíos
                 </a>
 
-
-                <a href="../../../preguntas-frecuentes.html">
+                <a href="/satorimode/preguntas-frecuentes.html">
                     Preguntas frecuentes
                 </a>
-
 
                 <a
                     href="https://www.instagram.com/satorimode/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-
                     Instagram
-
                 </a>
 
-
             </div>
-
 
         </div>
 
 
-
         <div class="footer-bottom">
-
 
             <span>
                 © 2026 SatoriMode
             </span>
 
-
             <span>
                 Todos los derechos reservados.
             </span>
 
-
         </div>
-
 
     </footer>
 
@@ -1369,246 +1555,172 @@
          JAVASCRIPT GLOBAL
     ====================================================== -->
 
-    <script src="../../js/main.js"></script>
+    <script src="/satorimode/js/main.js"></script>
 
 
 
     <!-- =====================================================
-         JAVASCRIPT DEL PRODUCTO
+         JAVASCRIPT PRODUCTO
     ====================================================== -->
 
     <script>
 
-
-        /* =================================================
+        /* =====================================================
            GALERÍA
-        ================================================== */
+        ====================================================== */
 
         const mainProductImage =
-            document.getElementById(
-                "mainProductImage"
-            );
-
+            document.getElementById("mainProductImage");
 
         const productThumbnails =
-            document.querySelectorAll(
-                ".product-thumbnail"
-            );
+            document.querySelectorAll(".product-thumbnail");
 
 
-        productThumbnails.forEach(
-            function (thumbnail) {
+        productThumbnails.forEach(function(thumbnail) {
+
+            thumbnail.addEventListener("click", function() {
+
+                const image =
+                    thumbnail.dataset.image;
+
+                mainProductImage.src = image;
 
 
-                thumbnail.addEventListener(
-                    "click",
-                    function () {
+                productThumbnails.forEach(
+                    function(otherThumbnail) {
 
-
-                        const image =
-                            thumbnail.dataset.image;
-
-
-                        mainProductImage.src =
-                            image;
-
-
-                        productThumbnails.forEach(
-                            function (otherThumbnail) {
-
-
-                                otherThumbnail.classList.remove(
-                                    "active"
-                                );
-
-
-                            }
-                        );
-
-
-                        thumbnail.classList.add(
+                        otherThumbnail.classList.remove(
                             "active"
                         );
-
 
                     }
                 );
 
 
-            }
-        );
+                thumbnail.classList.add("active");
+
+            });
+
+        });
 
 
 
-        /* =================================================
+        /* =====================================================
            TALLAS
-        ================================================== */
+        ====================================================== */
 
         const productSizes =
-            document.querySelectorAll(
-                ".product-size"
-            );
+            document.querySelectorAll(".product-size");
 
 
-        productSizes.forEach(
-            function (sizeButton) {
+        productSizes.forEach(function(sizeButton) {
 
+            sizeButton.addEventListener("click", function() {
 
-                sizeButton.addEventListener(
-                    "click",
-                    function () {
+                productSizes.forEach(
+                    function(otherButton) {
 
-
-                        productSizes.forEach(
-                            function (otherButton) {
-
-
-                                otherButton.classList.remove(
-                                    "active"
-                                );
-
-
-                            }
-                        );
-
-
-                        sizeButton.classList.add(
+                        otherButton.classList.remove(
                             "active"
                         );
-
 
                     }
                 );
 
 
-            }
-        );
+                sizeButton.classList.add("active");
+
+            });
+
+        });
 
 
 
-        /* =================================================
+        /* =====================================================
            CANTIDAD
-        ================================================== */
+        ====================================================== */
 
         const quantityMinus =
-            document.getElementById(
-                "quantityMinus"
-            );
-
+            document.getElementById("quantityMinus");
 
         const quantityPlus =
-            document.getElementById(
-                "quantityPlus"
-            );
-
+            document.getElementById("quantityPlus");
 
         const quantityValue =
-            document.getElementById(
-                "quantityValue"
-            );
+            document.getElementById("quantityValue");
 
 
         let quantity = 1;
 
 
+        quantityMinus.addEventListener("click", function() {
 
-        quantityMinus.addEventListener(
-            "click",
-            function () {
+            if (quantity > 1) {
 
-
-                if (quantity > 1) {
-
-
-                    quantity--;
-
-
-                    quantityValue.textContent =
-                        quantity;
-
-
-                }
-
-
-            }
-        );
-
-
-
-        quantityPlus.addEventListener(
-            "click",
-            function () {
-
-
-                quantity++;
-
+                quantity--;
 
                 quantityValue.textContent =
                     quantity;
 
-
             }
-        );
+
+        });
+
+
+        quantityPlus.addEventListener("click", function() {
+
+            quantity++;
+
+            quantityValue.textContent =
+                quantity;
+
+        });
 
 
 
-        /* =================================================
-           AGREGAR AL CARRITO
-        ================================================== */
+        /* =====================================================
+           CARRITO
+        ====================================================== */
 
         const addToCart =
-            document.getElementById(
-                "addToCart"
-            );
+            document.getElementById("addToCart");
 
 
-        addToCart.addEventListener(
-            "click",
-            function () {
+        addToCart.addEventListener("click", function() {
 
-
-                const selectedSize =
-                    document.querySelector(
-                        ".product-size.active"
-                    );
-
-
-                if (!selectedSize) {
-
-
-                    alert(
-                        "Selecciona una talla antes de continuar."
-                    );
-
-
-                    return;
-
-
-                }
-
-
-                showCartToast(
-                    selectedSize.textContent.trim()
+            const selectedSize =
+                document.querySelector(
+                    ".product-size.active"
                 );
 
 
+            if (!selectedSize) {
+
+                alert(
+                    "Selecciona una talla antes de continuar."
+                );
+
+                return;
+
             }
-        );
+
+
+            showCartToast(
+                selectedSize.textContent.trim()
+            );
+
+        });
 
 
 
-        /* =================================================
-           TOAST DEL CARRITO
-        ================================================== */
+        /* =====================================================
+           TOAST
+        ====================================================== */
 
         function showCartToast(size) {
 
-
             const toast =
-                document.getElementById(
-                    "cartToast"
-                );
-
+                document.getElementById("cartToast");
 
             const productText =
                 document.getElementById(
@@ -1617,19 +1729,15 @@
 
 
             if (!toast || !productText) {
-
                 return;
-
             }
 
 
             productText.textContent =
-                `Polera Kid Buu · Talla ${size}`;
+                `Polera Kid Buu · Talla ${size} · Cantidad ${quantity}`;
 
 
-            toast.classList.add(
-                "is-visible"
-            );
+            toast.classList.add("is-visible");
 
 
             clearTimeout(
@@ -1638,29 +1746,115 @@
 
 
             window.cartToastTimer =
-                setTimeout(
-                    function () {
+                setTimeout(function() {
 
+                    toast.classList.remove(
+                        "is-visible"
+                    );
 
-                        toast.classList.remove(
-                            "is-visible"
-                        );
-
-
-                    },
-                    4500
-                );
-
+                }, 4500);
 
         }
 
+
+
+        /* =====================================================
+           PRODUCTOS RECOMENDADOS
+        ====================================================== */
+
+        const recommendedProducts =
+            document.getElementById(
+                "recommendedProducts"
+            );
+
+
+        if (recommendedProducts) {
+
+            const products = [
+
+                {
+                    name: "Polera Kid Buu",
+                    category: "ANIME",
+                    price: "$18.990",
+                    image: "polera-kid-buu-01.PNG",
+                    url: "/satorimode/productos/anime/polera-kid-buu.html"
+                },
+
+                {
+                    name: "Polera Kid Buu · Diseño",
+                    category: "ANIME",
+                    price: "$18.990",
+                    image: "polera-kid-buu-03.PNG",
+                    url: "/satorimode/productos/anime/polera-kid-buu.html"
+                },
+
+                {
+                    name: "Ver todas las poleras",
+                    category: "SATORIMODE",
+                    price: "CATÁLOGO",
+                    image: "polera-kid-buu-02.PNG",
+                    url: "/satorimode/productos.html"
+                }
+
+            ];
+
+
+            products.forEach(function(product) {
+
+                const card =
+                    document.createElement("a");
+
+                card.className =
+                    "recommended-card";
+
+                card.href =
+                    product.url;
+
+
+                card.innerHTML = `
+
+                    <div class="recommended-card-image">
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                        >
+
+                    </div>
+
+                    <div class="recommended-card-info">
+
+                        <span>
+                            ${product.category}
+                        </span>
+
+                        <h3>
+                            ${product.name}
+                        </h3>
+
+                        <p>
+                            ${product.price}
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                recommendedProducts.appendChild(
+                    card
+                );
+
+            });
+
+        }
 
     </script>
 
 
 
     <!-- =====================================================
-         TOAST · PRODUCTO AGREGADO
+         TOAST
     ====================================================== -->
 
     <div
@@ -1670,45 +1864,33 @@
         aria-atomic="true"
     >
 
-
         <div class="cart-toast-title">
-
 
             <span class="cart-toast-check">
                 ✓
             </span>
 
-
             <span>
                 PRODUCTO AGREGADO
             </span>
 
-
         </div>
-
 
 
         <div
             class="cart-toast-product"
             id="cartToastProduct"
         >
-
             Polera Kid Buu · Talla M
-
         </div>
 
 
-
         <a
-            href="../../../carrito.html"
+            href="/satorimode/carrito.html"
             class="cart-toast-link"
-            id="cartToastCart"
         >
-
             VER CARRITO →
-
         </a>
-
 
     </div>
 
