@@ -14,16 +14,6 @@
     productos/accesorios/...
 
  Cada producto utiliza información de products.js.
-
- La página utiliza una plantilla estándar.
-
- Información editable desde products.js:
-
-    details.description
-    details.shipping
-    details.warranty
-    details.measurements
-    details.care
 =========================================================
 */
 
@@ -372,7 +362,9 @@ function generateSizes(product) {
                                     size
                                 )}"
                             >
+
                                 ${escapeHTML(size)}
+
                             </button>
 
                         `;
@@ -456,7 +448,7 @@ function generateColors(product) {
 
 
 /* =====================================================
-   HTML COMPLETO DEL PRODUCTO
+   HTML COMPLETO
 ===================================================== */
 
 function generateProductHTML(
@@ -517,17 +509,14 @@ function generateProductHTML(
 
     <meta charset="UTF-8">
 
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
-
     <title>
         ${name} | SatoriMode
     </title>
-
 
     <link
         rel="stylesheet"
@@ -553,16 +542,14 @@ function generateProductHTML(
 
     <main>
 
-
         <section class="product-page">
-
 
             <div class="product-page-container">
 
 
-                <!-- =========================================
+                <!-- =====================================
                      GALERÍA
-                ========================================== -->
+                ====================================== -->
 
                 <div class="product-gallery">
 
@@ -571,9 +558,9 @@ function generateProductHTML(
                 </div>
 
 
-                <!-- =========================================
+                <!-- =====================================
                      INFORMACIÓN
-                ========================================== -->
+                ====================================== -->
 
                 <div class="product-page-info">
 
@@ -605,9 +592,9 @@ function generateProductHTML(
                     ${sizes}
 
 
-                    <!-- =====================================
+                    <!-- =================================
                          CANTIDAD
-                    ====================================== -->
+                    ================================== -->
 
                     <div class="product-option">
 
@@ -645,9 +632,9 @@ function generateProductHTML(
                     </div>
 
 
-                    <!-- =====================================
-                         CARRITO
-                    ====================================== -->
+                    <!-- =================================
+                         AGREGAR AL CARRITO
+                    ================================== -->
 
                     <button
                         type="button"
@@ -663,9 +650,9 @@ function generateProductHTML(
                     </button>
 
 
-                    <!-- =====================================
+                    <!-- =================================
                          INFORMACIÓN DEL PRODUCTO
-                    ====================================== -->
+                    ================================== -->
 
                     <div class="product-info-tabs">
 
@@ -678,7 +665,9 @@ function generateProductHTML(
                                 class="product-info-tab active"
                                 data-tab="description"
                             >
+
                                 DESCRIPCIÓN
+
                             </button>
 
 
@@ -687,16 +676,18 @@ function generateProductHTML(
                                 class="product-info-tab"
                                 data-tab="shipping"
                             >
+
                                 ENVÍOS Y GARANTÍA
+
                             </button>
 
 
                         </div>
 
 
-                        <!-- ====================================
+                        <!-- ==============================
                              DESCRIPCIÓN
-                        ===================================== -->
+                        =============================== -->
 
                         <div
                             class="product-info-tab-content active"
@@ -729,9 +720,9 @@ function generateProductHTML(
                         </div>
 
 
-                        <!-- ====================================
+                        <!-- ==============================
                              ENVÍOS Y GARANTÍA
-                        ===================================== -->
+                        =============================== -->
 
                         <div
                             class="product-info-tab-content"
@@ -741,11 +732,9 @@ function generateProductHTML(
 
                             <div class="product-info-item">
 
-
                                 <strong>
                                     ENVÍOS
                                 </strong>
-
 
                                 <p>
 
@@ -756,17 +745,14 @@ function generateProductHTML(
 
                                 </p>
 
-
                             </div>
 
 
                             <div class="product-info-item">
 
-
                                 <strong>
                                     GARANTÍA
                                 </strong>
-
 
                                 <p>
 
@@ -776,7 +762,6 @@ function generateProductHTML(
                                     )}
 
                                 </p>
-
 
                             </div>
 
@@ -789,9 +774,7 @@ function generateProductHTML(
 
                 </div>
 
-
             </div>
-
 
         </section>
 
@@ -802,24 +785,19 @@ function generateProductHTML(
 
         <section class="related-products">
 
-
             <div class="related-heading">
-
 
                 <span>
                     SATORIMODE · DESCUBRE MÁS
                 </span>
 
-
                 <h2>
                     TAMBIÉN TE PUEDE GUSTAR.
                 </h2>
 
-
                 <p>
                     Descubre más diseños de SatoriMode.
                 </p>
-
 
             </div>
 
@@ -834,9 +812,7 @@ function generateProductHTML(
                     categoryPath
                 )}"
             >
-
             </div>
-
 
         </section>
 
@@ -850,69 +826,56 @@ function generateProductHTML(
 
     <footer class="site-footer">
 
-
         <div class="footer-main">
 
 
             <div class="footer-brand">
 
-
                 <h3>
                     SATORIMODE
                 </h3>
-
 
                 <p>
                     Anime, cultura japonesa y streetwear.
                 </p>
 
-
             </div>
 
 
             <div class="footer-column">
-
 
                 <h4>
                     COLECCIONES
                 </h4>
 
-
                 <a href="../../anime.html">
                     Anime
                 </a>
-
 
                 <a href="../../streetwear.html">
                     Streetwear
                 </a>
 
-
                 <a href="../../accesorios.html">
                     Accesorios
                 </a>
-
 
             </div>
 
 
             <div class="footer-column">
 
-
                 <h4>
                     PRODUCTOS
                 </h4>
-
 
                 <a href="../../productos.html">
                     Todas las poleras
                 </a>
 
-
                 <a href="../../accesorios.html">
                     Accesorios
                 </a>
-
 
             </div>
 
@@ -922,19 +885,15 @@ function generateProductHTML(
 
         <div class="footer-bottom">
 
-
             <span>
                 © 2026 SatoriMode
             </span>
-
 
             <span>
                 Todos los derechos reservados.
             </span>
 
-
         </div>
-
 
     </footer>
 
@@ -943,11 +902,10 @@ function generateProductHTML(
          JAVASCRIPT
     ================================================== -->
 
-<script src="../../js/products.js"></script>
-<script src="../../js/main.js"></script>
-<script src="../../js/header.js"></script>
-<script src="../../js/carrito.js"></script>
-<script src="../../js/products-page.js"></script>
+    <script src="../../js/products.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/products-page.js"></script>
 
 
     <!-- =================================================
@@ -962,7 +920,345 @@ function generateProductHTML(
 
 
                 /* =====================================
-                   PESTAÑAS DE INFORMACIÓN
+                   VARIABLES DEL PRODUCTO
+                ====================================== */
+
+                const productId =
+                    "${escapeHTML(product.id)}";
+
+
+                let selectedSize =
+                    ${
+                        product.sizes &&
+                        product.sizes.length
+                            ? JSON.stringify(product.sizes[0])
+                            : "null"
+                    };
+
+
+                let selectedColor =
+                    ${
+                        product.colors &&
+                        product.colors.length
+                            ? JSON.stringify(product.colors[0])
+                            : "null"
+                    };
+
+
+                let amount = 1;
+
+
+                /* =====================================
+                   TALLAS
+                ====================================== */
+
+                const sizeButtons =
+                    document.querySelectorAll(
+                        ".product-size"
+                    );
+
+
+                sizeButtons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                selectedSize =
+                                    this.dataset.size;
+
+
+                                sizeButtons.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                this.classList.add(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =====================================
+                   COLORES
+                ====================================== */
+
+                const colorButtons =
+                    document.querySelectorAll(
+                        ".product-color"
+                    );
+
+
+                colorButtons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                selectedColor =
+                                    this.dataset.color;
+
+
+                                colorButtons.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                this.classList.add(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =====================================
+                   CANTIDAD
+                ====================================== */
+
+                const minus =
+                    document.getElementById(
+                        "quantityMinus"
+                    );
+
+
+                const plus =
+                    document.getElementById(
+                        "quantityPlus"
+                    );
+
+
+                const quantity =
+                    document.getElementById(
+                        "quantity"
+                    );
+
+
+                if (minus) {
+
+                    minus.addEventListener(
+                        "click",
+                        function () {
+
+                            if (amount > 1) {
+
+                                amount--;
+
+                                quantity.textContent =
+                                    amount;
+
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                if (plus) {
+
+                    plus.addEventListener(
+                        "click",
+                        function () {
+
+                            amount++;
+
+                            quantity.textContent =
+                                amount;
+
+                        }
+                    );
+
+                }
+
+
+                /* =====================================
+                   AGREGAR AL CARRITO
+                ====================================== */
+
+                const addToCart =
+                    document.getElementById(
+                        "addToCart"
+                    );
+
+
+                if (addToCart) {
+
+                    addToCart.addEventListener(
+                        "click",
+                        function () {
+
+
+                            /*
+                             * Guardamos temporalmente
+                             * el producto en localStorage.
+                             *
+                             * Más adelante carrito.js
+                             * utilizará exactamente
+                             * esta información.
+                             */
+
+                            let cart = [];
+
+
+                            try {
+
+                                cart =
+                                    JSON.parse(
+                                        localStorage.getItem(
+                                            "satorimode-cart"
+                                        )
+                                    ) || [];
+
+                            } catch (error) {
+
+                                cart = [];
+
+                            }
+
+
+                            const existingIndex =
+                                cart.findIndex(
+                                    function (item) {
+
+                                        return (
+                                            item.productId ===
+                                                productId &&
+                                            item.size ===
+                                                selectedSize &&
+                                            item.color ===
+                                                selectedColor
+                                        );
+
+                                    }
+                                );
+
+
+                            if (
+                                existingIndex !==
+                                -1
+                            ) {
+
+                                cart[
+                                    existingIndex
+                                ].quantity += amount;
+
+                            } else {
+
+                                cart.push({
+
+                                    productId:
+                                        productId,
+
+                                    name:
+                                        ${JSON.stringify(product.name)},
+
+                                    price:
+                                        ${Number(product.price || 0)},
+
+                                    image:
+                                        ${JSON.stringify(
+                                            product.image ||
+                                            (
+                                                Array.isArray(product.images) &&
+                                                product.images.length
+                                                    ? product.images[0]
+                                                    : ""
+                                            )
+                                        )},
+
+                                    size:
+                                        selectedSize,
+
+                                    color:
+                                        selectedColor,
+
+                                    quantity:
+                                        amount
+
+                                });
+
+                            }
+
+
+                            localStorage.setItem(
+                                "satorimode-cart",
+                                JSON.stringify(cart)
+                            );
+
+
+                            /*
+                             * Confirmación visual
+                             */
+
+                            const originalText =
+                                addToCart.textContent;
+
+
+                            addToCart.textContent =
+                                "✓ AGREGADO AL CARRITO";
+
+
+                            addToCart.classList.add(
+                                "added"
+                            );
+
+
+                            setTimeout(
+                                function () {
+
+                                    addToCart.textContent =
+                                        originalText;
+
+                                    addToCart.classList.remove(
+                                        "added"
+                                    );
+
+                                },
+                                1800
+                            );
+
+
+                            console.log(
+                                "SatoriMode · producto agregado:",
+                                {
+                                    productId,
+                                    selectedSize,
+                                    selectedColor,
+                                    amount
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =====================================
+                   PESTAÑAS
                 ====================================== */
 
                 const infoTabs =
@@ -988,10 +1284,6 @@ function generateProductHTML(
                                     this.dataset.tab;
 
 
-                                /* =========================
-                                   BOTONES
-                                ========================== */
-
                                 infoTabs.forEach(
                                     function (item) {
 
@@ -1007,10 +1299,6 @@ function generateProductHTML(
                                     "active"
                                 );
 
-
-                                /* =========================
-                                   CONTENIDO
-                                ========================== */
 
                                 infoContents.forEach(
                                     function (content) {
@@ -1099,69 +1387,6 @@ function generateProductHTML(
 
                     }
                 );
-
-
-                /* =====================================
-                   CANTIDAD
-                ====================================== */
-
-                const minus =
-                    document.getElementById(
-                        "quantityMinus"
-                    );
-
-
-                const plus =
-                    document.getElementById(
-                        "quantityPlus"
-                    );
-
-
-                const quantity =
-                    document.getElementById(
-                        "quantity"
-                    );
-
-
-                let amount = 1;
-
-
-                if (minus) {
-
-                    minus.addEventListener(
-                        "click",
-                        function () {
-
-                            if (amount > 1) {
-
-                                amount--;
-
-                                quantity.textContent =
-                                    amount;
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-                if (plus) {
-
-                    plus.addEventListener(
-                        "click",
-                        function () {
-
-                            amount++;
-
-                            quantity.textContent =
-                                amount;
-
-                        }
-                    );
-
-                }
 
 
             }
