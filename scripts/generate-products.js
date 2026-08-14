@@ -84,9 +84,9 @@ function loadProducts() {
 
 
     vm.runInContext(
-        code,
-        context
-    );
+    code + "\n;globalThis.PRODUCTS = PRODUCTS;",
+    context
+);
 
 
     if (
