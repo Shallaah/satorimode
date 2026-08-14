@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SatoriMode | Accesorios</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER GLOBAL
+         Se genera automáticamente desde js/header.js
+    ====================================================== -->
+
+    <div id="satori-header"></div>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <span class="section-label">
+                    SATORIMODE · ACCESORIOS
+                </span>
+
+
+                <h1>
+
+                    DESCUBRE NUESTROS
+
+                    <span>
+                        ACCESORIOS.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Llaveros, figuras, peluches y más,
+                    inspirados en el anime y la cultura japonesa.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CATÁLOGO
+        ================================================== -->
+
+        <section class="products-section">
+
+
+            <div class="section-heading">
+
+                <span>
+                    01 / ACCESORIOS
+                </span>
+
+
+                <h2>
+
+                    MÁS QUE
+
+                    <strong>
+                        POLERAS.
+                    </strong>
+
+                </h2>
+
+
+                <p>
+
+                    Descubre accesorios y coleccionables
+                    para complementar tu estilo y representar
+                    lo que te gusta.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTROS
+            ================================================== -->
+
+            <div class="anime-filters-wrapper">
+
+                <button
+                    type="button"
+                    class="anime-filter-toggle"
+                    id="products-filter-toggle"
+                >
+                    MOSTRAR FILTROS
+                </button>
+
+
+                <div
+                    class="anime-filters"
+                    id="products-filters"
+                >
+
+
+                    <!-- TIPO -->
+
+                    <div class="anime-filter-group">
+
+                        <span class="anime-filter-title">
+                            TIPO
+                        </span>
+
+
+                        <div class="anime-filter-options">
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="type"
+                                data-value="llavero"
+                            >
+                                LLAVEROS
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="type"
+                                data-value="figura"
+                            >
+                                FIGURAS
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="type"
+                                data-value="peluche"
+                            >
+                                PELUCHES
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="type"
+                                data-value="coleccionable"
+                            >
+                                COLECCIONABLES
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COLOR -->
+
+                    <div class="anime-filter-group">
+
+                        <span class="anime-filter-title">
+                            COLOR
+                        </span>
+
+
+                        <div class="anime-filter-options">
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="color"
+                                data-value="blanco"
+                            >
+                                BLANCO
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="color"
+                                data-value="negro"
+                            >
+                                NEGRO
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 GRID AUTOMÁTICO
+            ================================================== -->
+
+            <div
+                class="products-grid"
+                id="all-products-grid"
+                data-category="accesorios"
+            >
+
+                <!--
+                    Los productos se generan automáticamente
+                    desde products.js.
+                -->
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SATORII PACK
+        ================================================== -->
+
+        <section class="pack-section">
+
+            <div class="pack-content">
+
+                <span class="hero-kicker">
+                    SATORIMODE
+                </span>
+
+
+                <h2>
+
+                    DESCUBRE EL
+
+                    <strong>
+                        SATORII PACK.
+                    </strong>
+
+                </h2>
+
+
+                <p>
+
+                    Una experiencia especial de SatoriMode
+                    creada para acompañar tus pedidos.
+
+                </p>
+
+
+                <a
+                    href="satorii-pack.html"
+                    class="button button-red"
+                >
+                    CONOCER SATORII PACK
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <h3>
+                    SATORIMODE
+                </h3>
+
+
+                <p>
+                    Anime, cultura japonesa y streetwear.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-column footer-social">
+
+                <h4>
+                    SÍGUENOS
+                </h4>
+
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-link"
+                >
+
+                    Instagram
+
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    COLECCIONES
+                </h4>
+
+
+                <a href="anime.html">
+                    Anime
+                </a>
+
+
+                <a href="streetwear.html">
+                    Streetwear
+                </a>
+
+
+                <a href="accesorios.html">
+                    Accesorios
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    PRODUCTOS
+                </h4>
+
+
+                <a href="productos.html">
+                    Todas las poleras
+                </a>
+
+
+                <a href="accesorios.html">
+                    Accesorios
+                </a>
+
+
+                <a href="satorii-pack.html">
+                    Satorii Pack
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    AYUDA
+                </h4>
+
+
+                <a href="guia-tallas.html">
+                    Guía de tallas
+                </a>
+
+
+                <a href="envios.html">
+                    Envíos
+                </a>
+
+
+                <a href="preguntas-frecuentes.html">
+                    Preguntas frecuentes
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SatoriMode
+            </span>
+
+
+            <span>
+                Todos los derechos reservados.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/products-page.js"></script>
+
+
+</body>
+
+</html>
