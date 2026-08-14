@@ -121,7 +121,76 @@ const PRODUCTS = [
 
         featured: true
 
-    }
+    },
+   {
+    id: "goku",
+
+    name: "Polera Goku",
+
+    category: "anime",
+    collection: "Anime",
+
+    price: 19990,
+    currency: "CLP",
+
+    details: {
+
+        description:
+            "Polera inspirada en Goku para nuestra colección Anime de SatoriMode.",
+
+        shipping:
+            "Enviamos a todo Chile. Los pedidos se preparan y despachan según la modalidad de envío seleccionada.",
+
+        warranty:
+            "Todos nuestros productos cuentan con garantía frente a fallas de fabricación.",
+
+        measurements:
+            "Disponible en tallas M, L y XL. Revisa nuestra guía de tallas antes de comprar.",
+
+        care:
+            "Lavar con agua fría y evitar el uso de cloro. No planchar directamente sobre el estampado."
+
+    },
+
+    image:
+        "productos/anime/polera-kid-buu-01.PNG",
+
+    images: [
+
+        "productos/anime/polera-kid-buu-01.PNG",
+
+        "productos/anime/polera-kid-buu-02.PNG",
+
+        "productos/anime/polera-kid-buu-03.PNG.PNG"
+
+    ],
+
+    url:
+        "productos/anime/goku.html",
+
+    sizes: [
+        "M",
+        "L",
+        "XL"
+    ],
+
+    colors: [
+        "Negro"
+    ],
+
+    tags: [
+        "goku",
+        "dragon ball",
+        "dragon ball z",
+        "anime",
+        "polera",
+        "streetwear"
+    ],
+
+    available: true,
+
+    featured: false
+}
 
 ];
 
