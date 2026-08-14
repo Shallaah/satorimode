@@ -7,28 +7,26 @@
  Lee:
     js/products.js
 
- Genera:
+ Genera automáticamente:
+
     productos/anime/...
     productos/streetwear/...
     productos/accesorios/...
 
- Cada producto utiliza esta información:
+ Cada producto utiliza información de products.js.
 
- - id
- - name
- - category
- - collection
- - price
- - description
- - images
- - image
- - url
- - sizes
- - colors
+ La página utiliza una plantilla estándar.
 
- La página se genera usando una plantilla estándar.
+ El contenido específico del producto se controla desde:
+
+    details.description
+    details.shipping
+    details.warranty
+    details.measurements
+    details.care
 =========================================================
 */
+
 
 const fs = require("fs");
 const path = require("path");
@@ -39,13 +37,23 @@ const vm = require("vm");
    RUTAS
 ===================================================== */
 
-const ROOT = path.resolve(__dirname, "..");
+const ROOT =
+    path.resolve(__dirname, "..");
+
 
 const PRODUCTS_FILE =
-    path.join(ROOT, "js", "products.js");
+    path.join(
+        ROOT,
+        "js",
+        "products.js"
+    );
+
 
 const OUTPUT_DIR =
-    path.join(ROOT, "productos");
+    path.join(
+        ROOT,
+        "productos"
+    );
 
 
 /* =====================================================
@@ -74,13 +82,18 @@ function loadProducts() {
 
     vm.createContext(context);
 
+
     vm.runInContext(
         code,
         context
     );
 
 
-    if (!Array.isArray(context.PRODUCTS)) {
+    if (
+        !Array.isArray(
+            context.PRODUCTS
+        )
+    ) {
 
         throw new Error(
             "PRODUCTS no es un arreglo válido."
@@ -100,7 +113,10 @@ function loadProducts() {
 
 function escapeHTML(value) {
 
-    if (value === undefined || value === null) {
+    if (
+        value === undefined ||
+        value === null
+    ) {
 
         return "";
 
@@ -108,43 +124,103 @@ function escapeHTML(value) {
 
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
+
+/* =====================================================
+   PRECIO
+===================================================== */
 
 function formatPrice(price) {
 
     return "$" +
-        Number(price || 0)
-            .toLocaleString("es-CL");
+
+        Number(
+            price || 0
+        )
+
+        .toLocaleString(
+            "es-CL"
+        );
 
 }
 
+
+/* =====================================================
+   SLUG
+===================================================== */
 
 function slugify(value) {
 
-    return String(value || "")
+    return String(
+        value || ""
+    )
+
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
+
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+
         .toLowerCase()
+
         .trim()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
+
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+
+        .replace(
+            /^-+|-+$/g,
+            "");
 
 }
 
 
-function normalizeCategory(category) {
+/* =====================================================
+   CATEGORÍA
+===================================================== */
+
+function normalizeCategory(
+    category
+) {
 
     const value =
-        String(category || "productos")
-            .toLowerCase()
-            .trim();
+        String(
+            category || "productos"
+        )
+
+        .toLowerCase()
+
+        .trim();
 
 
     if (
@@ -167,7 +243,10 @@ function normalizeCategory(category) {
    RUTA DE IMÁGENES
 ===================================================== */
 
-function getImagePath(image, outputDirectory) {
+function getImagePath(
+    image,
+    outputDirectory
+) {
 
     if (!image) {
 
@@ -176,22 +255,6 @@ function getImagePath(image, outputDirectory) {
     }
 
 
-    /*
-        Las rutas de products.js están escritas
-        desde la raíz del sitio.
-
-        Ejemplo:
-
-        productos/anime/polera-kid-buu-01.PNG
-
-        Como el HTML estará dentro de:
-
-        productos/anime/
-
-        debemos convertir la ruta para que
-        funcione desde allí.
-    */
-
     const absoluteImagePath =
         path.join(
             ROOT,
@@ -199,7 +262,7 @@ function getImagePath(image, outputDirectory) {
         );
 
 
-    let relative =
+    const relative =
         path.relative(
             outputDirectory,
             absoluteImagePath
@@ -223,22 +286,34 @@ function generateGallery(
 ) {
 
     const images =
-        Array.isArray(product.images) &&
+
+        Array.isArray(
+            product.images
+        ) &&
+
         product.images.length
+
             ? product.images
+
             : product.image
+
                 ? [product.image]
+
                 : [];
 
 
     if (!images.length) {
 
         return `
-            <div class="product-image">
+
+            <div class="product-main-image">
+
                 <div class="image-placeholder">
                     SIN IMAGEN
                 </div>
+
             </div>
+
         `;
 
     }
@@ -252,34 +327,52 @@ function generateGallery(
 
 
     const thumbnails =
+
         images
-            .map(function (image, index) {
 
-                const imagePath =
-                    getImagePath(
-                        image,
-                        outputDirectory
-                    );
+            .map(
+                function (
+                    image,
+                    index
+                ) {
+
+                    const imagePath =
+                        getImagePath(
+                            image,
+                            outputDirectory
+                        );
 
 
-                return `
-                    <button
-                        type="button"
-                        class="product-thumbnail ${
-                            index === 0
-                                ? "active"
-                                : ""
-                        }"
-                        data-image="${escapeHTML(imagePath)}"
-                    >
-                        <img
-                            src="${escapeHTML(imagePath)}"
-                            alt="${escapeHTML(product.name)}"
+                    return `
+
+                        <button
+                            type="button"
+                            class="product-thumbnail ${
+                                index === 0
+                                    ? "active"
+                                    : ""
+                            }"
+                            data-image="${escapeHTML(
+                                imagePath
+                            )}"
                         >
-                    </button>
-                `;
 
-            })
+                            <img
+                                src="${escapeHTML(
+                                    imagePath
+                                )}"
+                                alt="${escapeHTML(
+                                    product.name
+                                )}"
+                            >
+
+                        </button>
+
+                    `;
+
+                }
+            )
+
             .join("");
 
 
@@ -289,8 +382,12 @@ function generateGallery(
 
             <img
                 id="productMainImage"
-                src="${escapeHTML(mainImage)}"
-                alt="${escapeHTML(product.name)}"
+                src="${escapeHTML(
+                    mainImage
+                )}"
+                alt="${escapeHTML(
+                    product.name
+                )}"
             >
 
         </div>
@@ -311,10 +408,14 @@ function generateGallery(
    TALLAS
 ===================================================== */
 
-function generateSizes(product) {
+function generateSizes(
+    product
+) {
 
     if (
-        !Array.isArray(product.sizes) ||
+        !Array.isArray(
+            product.sizes
+        ) ||
         !product.sizes.length
     ) {
 
@@ -343,23 +444,38 @@ function generateSizes(product) {
             <div class="product-options">
 
                 ${product.sizes
-                    .map(function (size, index) {
 
-                        return `
-                            <button
-                                type="button"
-                                class="product-size ${
-                                    index === 0
-                                        ? "active"
-                                        : ""
-                                }"
-                                data-size="${escapeHTML(size)}"
-                            >
-                                ${escapeHTML(size)}
-                            </button>
-                        `;
+                    .map(
+                        function (
+                            size,
+                            index
+                        ) {
 
-                    })
+                            return `
+
+                                <button
+                                    type="button"
+                                    class="product-size ${
+                                        index === 0
+                                            ? "active"
+                                            : ""
+                                    }"
+                                    data-size="${escapeHTML(
+                                        size
+                                    )}"
+                                >
+
+                                    ${escapeHTML(
+                                        size
+                                    )}
+
+                                </button>
+
+                            `;
+
+                        }
+                    )
+
                     .join("")}
 
             </div>
@@ -375,10 +491,14 @@ function generateSizes(product) {
    COLORES
 ===================================================== */
 
-function generateColors(product) {
+function generateColors(
+    product
+) {
 
     if (
-        !Array.isArray(product.colors) ||
+        !Array.isArray(
+            product.colors
+        ) ||
         !product.colors.length
     ) {
 
@@ -392,35 +512,49 @@ function generateColors(product) {
         <div class="product-option">
 
             <div class="product-option-title">
+
                 COLOR
+
             </div>
 
 
             <div class="product-colors">
 
                 ${product.colors
-                    .map(function (color, index) {
 
-                        return `
-                            <button
-                                type="button"
-                                class="product-color ${
-                                    index === 0
-                                        ? "active"
-                                        : ""
-                                }"
-                                data-color="${escapeHTML(color)}"
-                            >
-                                <span></span>
+                    .map(
+                        function (
+                            color,
+                            index
+                        ) {
 
-                                ${escapeHTML(
-                                    color
-                                )}
+                            return `
 
-                            </button>
-                        `;
+                                <button
+                                    type="button"
+                                    class="product-color ${
+                                        index === 0
+                                            ? "active"
+                                            : ""
+                                    }"
+                                    data-color="${escapeHTML(
+                                        color
+                                    )}"
+                                >
 
-                    })
+                                    <span></span>
+
+                                    ${escapeHTML(
+                                        color
+                                    )}
+
+                                </button>
+
+                            `;
+
+                        }
+                    )
+
                     .join("")}
 
             </div>
@@ -433,23 +567,174 @@ function generateColors(product) {
 
 
 /* =====================================================
-   DESCRIPCIÓN
+   INFORMACIÓN EXTRA
 ===================================================== */
 
-function generateDescription(product) {
+function generateDetails(
+    product
+) {
+
+    const details =
+        product.details || {};
+
 
     return `
 
-        <div class="product-description">
+        <section
+            class="product-details-tabs"
+        >
 
-            <p>
-                ${escapeHTML(
-                    product.description ||
-                    "Diseño exclusivo de SatoriMode."
-                )}
-            </p>
 
-        </div>
+            <!-- =====================================
+                 PESTAÑAS
+            ====================================== -->
+
+            <div class="product-tabs">
+
+
+                <button
+                    type="button"
+                    class="product-tab active"
+                    data-tab="description"
+                >
+
+                    DESCRIPCIÓN, ENVÍOS Y GARANTÍA
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="product-tab"
+                    data-tab="measurements"
+                >
+
+                    MEDIDAS Y CUIDADOS
+
+                </button>
+
+
+            </div>
+
+
+            <!-- =====================================
+                 DESCRIPCIÓN
+            ====================================== -->
+
+            <div
+                class="product-tab-content active"
+                id="tab-description"
+            >
+
+
+                <div class="detail-block">
+
+                    <h3>
+                        Descripción
+                    </h3>
+
+                    <p>
+
+                        ${escapeHTML(
+                            details.description ||
+                            product.description ||
+                            "Producto SatoriMode."
+                        )}
+
+                    </p>
+
+                </div>
+
+
+                <div class="detail-block">
+
+                    <h3>
+                        Envíos
+                    </h3>
+
+                    <p>
+
+                        ${escapeHTML(
+                            details.shipping ||
+                            "Enviamos a todo Chile."
+                        )}
+
+                    </p>
+
+                </div>
+
+
+                <div class="detail-block">
+
+                    <h3>
+                        Garantía
+                    </h3>
+
+                    <p>
+
+                        ${escapeHTML(
+                            details.warranty ||
+                            "Consulta nuestras condiciones de garantía."
+                        )}
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =====================================
+                 MEDIDAS Y CUIDADOS
+            ====================================== -->
+
+            <div
+                class="product-tab-content"
+                id="tab-measurements"
+            >
+
+
+                <div class="detail-block">
+
+                    <h3>
+                        Medidas
+                    </h3>
+
+                    <p>
+
+                        ${escapeHTML(
+                            details.measurements ||
+                            "Consulta nuestra guía de tallas."
+                        )}
+
+                    </p>
+
+                </div>
+
+
+                <div class="detail-block">
+
+                    <h3>
+                        Cuidados
+                    </h3>
+
+                    <p>
+
+                        ${escapeHTML(
+                            details.care ||
+                            "Sigue las instrucciones de cuidado indicadas en la prenda."
+                        )}
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
 
     `;
 
@@ -465,23 +750,27 @@ function generateProductHTML(
     outputDirectory
 ) {
 
+
     const name =
-        escapeHTML(product.name);
+        escapeHTML(
+            product.name
+        );
+
 
     const category =
         escapeHTML(
+
             product.collection ||
             product.category ||
             "SatoriMode"
+
         );
 
 
     const price =
-        formatPrice(product.price);
-
-
-    const description =
-        generateDescription(product);
+        formatPrice(
+            product.price
+        );
 
 
     const gallery =
@@ -492,11 +781,21 @@ function generateProductHTML(
 
 
     const colors =
-        generateColors(product);
+        generateColors(
+            product
+        );
 
 
     const sizes =
-        generateSizes(product);
+        generateSizes(
+            product
+        );
+
+
+    const details =
+        generateDetails(
+            product
+        );
 
 
     const categoryPath =
@@ -511,12 +810,15 @@ function generateProductHTML(
 
 <head>
 
+
     <meta charset="UTF-8">
+
 
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
 
     <title>
         ${name} | SatoriMode
@@ -527,6 +829,7 @@ function generateProductHTML(
         rel="stylesheet"
         href="../../css/style.css"
     >
+
 
 </head>
 
@@ -590,9 +893,6 @@ function generateProductHTML(
                 </div>
 
 
-                ${description}
-
-
                 ${colors}
 
 
@@ -605,6 +905,7 @@ function generateProductHTML(
 
                 <div class="product-option">
 
+
                     <div class="product-option-title">
 
                         CANTIDAD
@@ -613,6 +914,7 @@ function generateProductHTML(
 
 
                     <div class="quantity-selector">
+
 
                         <button
                             type="button"
@@ -623,9 +925,7 @@ function generateProductHTML(
 
 
                         <span id="quantity">
-
                             1
-
                         </span>
 
 
@@ -636,7 +936,9 @@ function generateProductHTML(
                             +
                         </button>
 
+
                     </div>
+
 
                 </div>
 
@@ -649,7 +951,9 @@ function generateProductHTML(
                     type="button"
                     class="add-to-cart"
                     id="addToCart"
-                    data-product-id="${escapeHTML(product.id)}"
+                    data-product-id="${escapeHTML(
+                        product.id
+                    )}"
                 >
 
                     AGREGAR AL CARRITO
@@ -658,45 +962,14 @@ function generateProductHTML(
 
 
                 <!-- =====================================
-                     ENVÍOS
+                     INFORMACIÓN
                 ====================================== -->
 
-                <div class="product-shipping">
-
-                    <strong>
-                        ENVÍOS
-                    </strong>
-
-                    <p>
-                        Enviamos a todo Chile.
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================
-                     DEVOLUCIONES
-                ====================================== -->
-
-                <div class="product-shipping">
-
-                    <strong>
-                        DEVOLUCIONES
-                    </strong>
-
-                    <p>
-                        Revisa nuestras condiciones
-                        de cambios y devoluciones.
-                    </p>
-
-                    <a href="../../envios.html">
-                        MÁS INFORMACIÓN →
-                    </a>
-
-                </div>
+                ${details}
 
 
             </div>
+
 
         </section>
 
@@ -707,7 +980,9 @@ function generateProductHTML(
 
         <section class="related-products">
 
+
             <div class="related-heading">
+
 
                 <span>
                     SATORIMODE · DESCUBRE MÁS
@@ -723,17 +998,22 @@ function generateProductHTML(
                     Descubre más diseños de SatoriMode.
                 </p>
 
+
             </div>
 
 
             <div
                 class="products-grid"
                 id="relatedProductsGrid"
-                data-product-id="${escapeHTML(product.id)}"
-                data-category="${escapeHTML(categoryPath)}"
+                data-product-id="${escapeHTML(
+                    product.id
+                )}"
+                data-category="${escapeHTML(
+                    categoryPath
+                )}"
             >
-
             </div>
+
 
         </section>
 
@@ -747,56 +1027,69 @@ function generateProductHTML(
 
     <footer class="site-footer">
 
+
         <div class="footer-main">
 
 
             <div class="footer-brand">
 
+
                 <h3>
                     SATORIMODE
                 </h3>
+
 
                 <p>
                     Anime, cultura japonesa y streetwear.
                 </p>
 
+
             </div>
 
 
             <div class="footer-column">
+
 
                 <h4>
                     COLECCIONES
                 </h4>
 
+
                 <a href="../../anime.html">
                     Anime
                 </a>
+
 
                 <a href="../../streetwear.html">
                     Streetwear
                 </a>
 
+
                 <a href="../../accesorios.html">
                     Accesorios
                 </a>
+
 
             </div>
 
 
             <div class="footer-column">
 
+
                 <h4>
                     PRODUCTOS
                 </h4>
+
 
                 <a href="../../productos.html">
                     Todas las poleras
                 </a>
 
+
                 <a href="../../accesorios.html">
                     Accesorios
                 </a>
+
 
             </div>
 
@@ -806,15 +1099,19 @@ function generateProductHTML(
 
         <div class="footer-bottom">
 
+
             <span>
                 © 2026 SatoriMode
             </span>
+
 
             <span>
                 Todos los derechos reservados.
             </span>
 
+
         </div>
+
 
     </footer>
 
@@ -824,13 +1121,16 @@ function generateProductHTML(
     ================================================== -->
 
     <script src="../../js/products.js"></script>
+
     <script src="../../js/main.js"></script>
+
     <script src="../../js/header.js"></script>
+
     <script src="../../js/products-page.js"></script>
 
 
     <!-- =================================================
-         GALERÍA Y CANTIDAD
+         FUNCIONES DE LA PÁGINA
     ================================================== -->
 
     <script>
@@ -857,17 +1157,24 @@ function generateProductHTML(
 
 
                 thumbnails.forEach(
-                    function (thumbnail) {
+                    function (
+                        thumbnail
+                    ) {
+
 
                         thumbnail.addEventListener(
                             "click",
                             function () {
 
+
                                 const image =
                                     this.dataset.image;
 
 
-                                if (mainImage && image) {
+                                if (
+                                    mainImage &&
+                                    image
+                                ) {
 
                                     mainImage.src =
                                         image;
@@ -876,7 +1183,9 @@ function generateProductHTML(
 
 
                                 thumbnails.forEach(
-                                    function (item) {
+                                    function (
+                                        item
+                                    ) {
 
                                         item.classList.remove(
                                             "active"
@@ -890,8 +1199,10 @@ function generateProductHTML(
                                     "active"
                                 );
 
+
                             }
                         );
+
 
                     }
                 );
@@ -924,40 +1235,143 @@ function generateProductHTML(
 
                 if (minus) {
 
+
                     minus.addEventListener(
                         "click",
                         function () {
 
-                            if (amount > 1) {
+
+                            if (
+                                amount > 1
+                            ) {
+
 
                                 amount--;
+
 
                                 quantity.textContent =
                                     amount;
 
+
                             }
+
 
                         }
                     );
+
 
                 }
 
 
                 if (plus) {
 
+
                     plus.addEventListener(
                         "click",
                         function () {
 
+
                             amount++;
+
 
                             quantity.textContent =
                                 amount;
 
+
                         }
                     );
 
+
                 }
+
+
+                /* =====================================
+                   PESTAÑAS
+                ====================================== */
+
+                const tabs =
+                    document.querySelectorAll(
+                        ".product-tab"
+                    );
+
+
+                const tabContents =
+                    document.querySelectorAll(
+                        ".product-tab-content"
+                    );
+
+
+                tabs.forEach(
+                    function (
+                        tab
+                    ) {
+
+
+                        tab.addEventListener(
+                            "click",
+                            function () {
+
+
+                                const target =
+                                    this.dataset.tab;
+
+
+                                tabs.forEach(
+                                    function (
+                                        item
+                                    ) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                tabContents.forEach(
+                                    function (
+                                        content
+                                    ) {
+
+                                        content.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                this.classList.add(
+                                    "active"
+                                );
+
+
+                                const selectedContent =
+                                    document.getElementById(
+                                        "tab-" +
+                                        target
+                                    );
+
+
+                                if (
+                                    selectedContent
+                                ) {
+
+                                    selectedContent.classList.add(
+                                        "active"
+                                    );
+
+                                }
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
 
             }
         );
@@ -979,6 +1393,7 @@ function generateProductHTML(
 
 function generateProducts() {
 
+
     console.log(
         "SatoriMode · iniciando generación..."
     );
@@ -994,14 +1409,18 @@ function generateProducts() {
 
 
     products.forEach(
-        function (product) {
+        function (
+            product
+        ) {
 
 
             if (!product.id) {
 
+
                 console.warn(
                     "Producto ignorado: falta id."
                 );
+
 
                 return;
 
@@ -1010,9 +1429,11 @@ function generateProducts() {
 
             if (!product.name) {
 
+
                 console.warn(
                     `Producto ${product.id} ignorado: falta name.`
                 );
+
 
                 return;
 
@@ -1076,6 +1497,7 @@ function generateProducts() {
                 `✓ Generado: productos/${category}/${filename}`
             );
 
+
         }
     );
 
@@ -1083,6 +1505,7 @@ function generateProducts() {
     console.log(
         "SatoriMode · generación completada."
     );
+
 
 }
 
@@ -1093,14 +1516,20 @@ function generateProducts() {
 
 try {
 
+
     generateProducts();
 
-} catch (error) {
+
+} catch (
+    error
+) {
+
 
     console.error(
         "ERROR:",
-        error.message
+        error
     );
+
 
     process.exit(1);
 
