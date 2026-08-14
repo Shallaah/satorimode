@@ -1,9 +1,6 @@
 /* =========================================================
-   SATORIMODE
-   GENERADOR AUTOMÁTICO DE PRODUCTOS
+   SATORIMODE · GENERADOR DE PRODUCTOS
    =========================================================
-
-   Este archivo utiliza PRODUCTS de products.js.
 
    Funciona automáticamente en:
 
@@ -11,16 +8,16 @@
    - anime.html
    - streetwear.html
    - accesorios.html
+   - páginas individuales de productos
 
-   La categoría se determina mediante:
+   También genera correctamente:
 
-   data-category="anime"
-   data-category="streetwear"
-   data-category="accesorios"
-
-   Si data-category="all" o no existe:
-   muestra todos los productos.
-   ========================================================= */
+   - tarjetas de productos
+   - imágenes
+   - enlaces
+   - recomendaciones
+   - filtros
+========================================================= */
 
 
 document.addEventListener(
@@ -29,22 +26,107 @@ document.addEventListener(
 
 
         /* =================================================
-           BUSCAR CONTENEDOR DE PRODUCTOS
+           UTILIDADES
         ================================================= */
 
-        const productsGrid =
-            document.querySelector(
-                ".products-grid[data-category], #all-products-grid, #animeProductsGrid, #streetwearProductsGrid, #accesoriosProductsGrid"
+        function formatPrice(price) {
+
+            return new Intl.NumberFormat(
+                "es-CL"
+            ).format(
+                Number(price || 0)
             );
 
+        }
 
-        if (!productsGrid) {
 
-            console.warn(
-                "SatoriMode: no se encontró un contenedor de productos."
-            );
+        /*
+            Detecta si estamos dentro de:
 
-            return;
+            /productos/anime/
+            /productos/streetwear/
+            /productos/accesorios/
+
+            Esto es importante porque las rutas de
+            products.js están escritas desde la raíz.
+        */
+
+        function isProductPage() {
+
+            return window.location.pathname
+                .includes("/productos/");
+
+        }
+
+
+        /*
+            Convierte una ruta de products.js en una
+            ruta correcta para la página actual.
+        */
+
+        function getAssetPath(path) {
+
+            if (!path) {
+
+                return "";
+
+            }
+
+
+            /*
+                En páginas individuales:
+
+                /productos/anime/goku.html
+
+                necesitamos:
+
+                ../../productos/anime/imagen.PNG
+            */
+
+            if (isProductPage()) {
+
+                return "../../" + path;
+
+            }
+
+
+            /*
+                En páginas normales:
+
+                /anime.html
+
+                funciona directamente:
+
+                productos/anime/imagen.PNG
+            */
+
+            return path;
+
+        }
+
+
+        /*
+            Convierte la URL del producto para que
+            funcione correctamente desde cualquier página.
+        */
+
+        function getProductUrl(product) {
+
+            if (!product || !product.url) {
+
+                return "#";
+
+            }
+
+
+            if (isProductPage()) {
+
+                return "../../" + product.url;
+
+            }
+
+
+            return product.url;
 
         }
 
@@ -67,6 +149,35 @@ document.addEventListener(
 
 
         /* =================================================
+           BUSCAR CONTENEDOR
+        ================================================= */
+
+        const productsGrid =
+            document.querySelector(
+                ".products-grid[data-category], #all-products-grid, #animeProductsGrid, #streetwearProductsGrid, #accesoriosProductsGrid"
+            );
+
+
+        /*
+            Si no existe un contenedor de productos,
+            no hacemos nada.
+
+            Esto evita interferir con otros elementos
+            de la página.
+        */
+
+        if (!productsGrid) {
+
+            console.log(
+                "SatoriMode: no hay catálogo de productos en esta página."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
            DETECTAR CATEGORÍA
         ================================================= */
 
@@ -76,8 +187,7 @@ document.addEventListener(
 
 
         /*
-            Compatibilidad con páginas antiguas
-            que todavía utilizan IDs específicos.
+            Compatibilidad con IDs antiguos.
         */
 
         if (
@@ -111,7 +221,7 @@ document.addEventListener(
 
 
         /*
-            "all" significa mostrar todos.
+            "all" = todos los productos.
         */
 
         if (
@@ -139,21 +249,6 @@ document.addEventListener(
 
 
         /* =================================================
-           FORMATEAR PRECIO
-        ================================================= */
-
-        function formatPrice(price) {
-
-            return new Intl.NumberFormat(
-                "es-CL"
-            ).format(
-                Number(price || 0)
-            );
-
-        }
-
-
-        /* =================================================
            CREAR TARJETA
         ================================================= */
 
@@ -168,8 +263,15 @@ document.addEventListener(
                 "product-card";
 
 
+            /*
+                IMPORTANTE:
+
+                Usamos una ruta corregida dependiendo
+                de dónde esté ubicada la página.
+            */
+
             card.href =
-                product.url || "#";
+                getProductUrl(product);
 
 
             const image =
@@ -181,19 +283,23 @@ document.addEventListener(
                 "";
 
 
+            const imagePath =
+                getAssetPath(image);
+
+
             card.innerHTML = `
 
                 <div class="product-image">
 
                     ${
-                        image
+                        imagePath
 
                         ?
 
                         `
                         <img
-                            src="${image}"
-                            alt="${product.name}"
+                            src="${imagePath}"
+                            alt="${product.name || ""}"
                             loading="lazy"
                         >
                         `
@@ -224,7 +330,7 @@ document.addEventListener(
 
 
                     <h3>
-                        ${product.name}
+                        ${product.name || ""}
                     </h3>
 
 
@@ -265,7 +371,7 @@ document.addEventListener(
 
 
         /* =================================================
-           OBTENER PRODUCTOS DE LA PÁGINA
+           OBTENER PRODUCTOS
         ================================================= */
 
         function getPageProducts() {
@@ -289,8 +395,7 @@ document.addEventListener(
 
 
                     /*
-                        Si la página tiene categoría,
-                        solamente mostramos esa categoría.
+                        Filtrar por categoría.
                     */
 
                     if (
@@ -515,7 +620,7 @@ document.addEventListener(
 
                         /*
                             Si ya estaba seleccionado,
-                            lo quitamos.
+                            quitarlo.
                         */
 
                         if (
@@ -633,7 +738,7 @@ document.addEventListener(
 
 
         /* =================================================
-           MENSAJE SIN RESULTADOS
+           ESTILOS DE "SIN RESULTADOS"
         ================================================= */
 
         if (
@@ -717,7 +822,7 @@ document.addEventListener(
 
 
         /* =================================================
-           MENSAJES DE COMPROBACIÓN
+           COMPROBACIÓN
         ================================================= */
 
         console.log(
