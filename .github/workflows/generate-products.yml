@@ -16,22 +16,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Descargar repositorio
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Generar páginas
-        run: node scripts/generate-products.js
-
-      - name: Guardar páginas generadas
+      - name: Configurar Git
         run: |
           git config user.name "SatoriMode Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Generar páginas
+        run: |
+          node scripts/generate-products.js
+
+      - name: Guardar páginas generadas
+        run: |
           git add productos
 
           if git diff --cached --quiet; then
             echo "No hay cambios en las páginas de productos."
-          else
-            git commit -m "Generar páginas de productos"
-            git push
+            exit 0
           fi
+
+          git commit -m "Generar páginas de productos"
+
+          git pull --rebase origin main
+
+          git push origin main
