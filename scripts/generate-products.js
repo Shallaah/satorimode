@@ -1,1 +1,1107 @@
+/*
+=========================================================
+ SATORIMODE
+ GENERADOR AUTOMÁTICO DE PÁGINAS DE PRODUCTOS
+=========================================================
 
+ Lee:
+    js/products.js
+
+ Genera:
+    productos/anime/...
+    productos/streetwear/...
+    productos/accesorios/...
+
+ Cada producto utiliza esta información:
+
+ - id
+ - name
+ - category
+ - collection
+ - price
+ - description
+ - images
+ - image
+ - url
+ - sizes
+ - colors
+
+ La página se genera usando una plantilla estándar.
+=========================================================
+*/
+
+const fs = require("fs");
+const path = require("path");
+const vm = require("vm");
+
+
+/* =====================================================
+   RUTAS
+===================================================== */
+
+const ROOT = path.resolve(__dirname, "..");
+
+const PRODUCTS_FILE =
+    path.join(ROOT, "js", "products.js");
+
+const OUTPUT_DIR =
+    path.join(ROOT, "productos");
+
+
+/* =====================================================
+   LEER PRODUCTS.JS
+===================================================== */
+
+function loadProducts() {
+
+    if (!fs.existsSync(PRODUCTS_FILE)) {
+
+        throw new Error(
+            "No se encontró js/products.js"
+        );
+
+    }
+
+
+    const code =
+        fs.readFileSync(
+            PRODUCTS_FILE,
+            "utf8"
+        );
+
+
+    const context = {};
+
+    vm.createContext(context);
+
+    vm.runInContext(
+        code,
+        context
+    );
+
+
+    if (!Array.isArray(context.PRODUCTS)) {
+
+        throw new Error(
+            "PRODUCTS no es un arreglo válido."
+        );
+
+    }
+
+
+    return context.PRODUCTS;
+
+}
+
+
+/* =====================================================
+   UTILIDADES
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (value === undefined || value === null) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function formatPrice(price) {
+
+    return "$" +
+        Number(price || 0)
+            .toLocaleString("es-CL");
+
+}
+
+
+function slugify(value) {
+
+    return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+}
+
+
+function normalizeCategory(category) {
+
+    const value =
+        String(category || "productos")
+            .toLowerCase()
+            .trim();
+
+
+    if (
+        value === "anime" ||
+        value === "streetwear" ||
+        value === "accesorios"
+    ) {
+
+        return value;
+
+    }
+
+
+    return "otros";
+
+}
+
+
+/* =====================================================
+   RUTA DE IMÁGENES
+===================================================== */
+
+function getImagePath(image, outputDirectory) {
+
+    if (!image) {
+
+        return "";
+
+    }
+
+
+    /*
+        Las rutas de products.js están escritas
+        desde la raíz del sitio.
+
+        Ejemplo:
+
+        productos/anime/polera-kid-buu-01.PNG
+
+        Como el HTML estará dentro de:
+
+        productos/anime/
+
+        debemos convertir la ruta para que
+        funcione desde allí.
+    */
+
+    const absoluteImagePath =
+        path.join(
+            ROOT,
+            image
+        );
+
+
+    let relative =
+        path.relative(
+            outputDirectory,
+            absoluteImagePath
+        );
+
+
+    return relative
+        .split(path.sep)
+        .join("/");
+
+}
+
+
+/* =====================================================
+   GALERÍA
+===================================================== */
+
+function generateGallery(
+    product,
+    outputDirectory
+) {
+
+    const images =
+        Array.isArray(product.images) &&
+        product.images.length
+            ? product.images
+            : product.image
+                ? [product.image]
+                : [];
+
+
+    if (!images.length) {
+
+        return `
+            <div class="product-image">
+                <div class="image-placeholder">
+                    SIN IMAGEN
+                </div>
+            </div>
+        `;
+
+    }
+
+
+    const mainImage =
+        getImagePath(
+            images[0],
+            outputDirectory
+        );
+
+
+    const thumbnails =
+        images
+            .map(function (image, index) {
+
+                const imagePath =
+                    getImagePath(
+                        image,
+                        outputDirectory
+                    );
+
+
+                return `
+                    <button
+                        type="button"
+                        class="product-thumbnail ${
+                            index === 0
+                                ? "active"
+                                : ""
+                        }"
+                        data-image="${escapeHTML(imagePath)}"
+                    >
+                        <img
+                            src="${escapeHTML(imagePath)}"
+                            alt="${escapeHTML(product.name)}"
+                        >
+                    </button>
+                `;
+
+            })
+            .join("");
+
+
+    return `
+
+        <div class="product-main-image">
+
+            <img
+                id="productMainImage"
+                src="${escapeHTML(mainImage)}"
+                alt="${escapeHTML(product.name)}"
+            >
+
+        </div>
+
+
+        <div class="product-thumbnails">
+
+            ${thumbnails}
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   TALLAS
+===================================================== */
+
+function generateSizes(product) {
+
+    if (
+        !Array.isArray(product.sizes) ||
+        !product.sizes.length
+    ) {
+
+        return "";
+
+    }
+
+
+    return `
+
+        <div class="product-option">
+
+            <div class="product-option-header">
+
+                <span>
+                    TALLA
+                </span>
+
+                <a href="../../guia-tallas.html">
+                    GUÍA DE TALLAS
+                </a>
+
+            </div>
+
+
+            <div class="product-options">
+
+                ${product.sizes
+                    .map(function (size, index) {
+
+                        return `
+                            <button
+                                type="button"
+                                class="product-size ${
+                                    index === 0
+                                        ? "active"
+                                        : ""
+                                }"
+                                data-size="${escapeHTML(size)}"
+                            >
+                                ${escapeHTML(size)}
+                            </button>
+                        `;
+
+                    })
+                    .join("")}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   COLORES
+===================================================== */
+
+function generateColors(product) {
+
+    if (
+        !Array.isArray(product.colors) ||
+        !product.colors.length
+    ) {
+
+        return "";
+
+    }
+
+
+    return `
+
+        <div class="product-option">
+
+            <div class="product-option-title">
+                COLOR
+            </div>
+
+
+            <div class="product-colors">
+
+                ${product.colors
+                    .map(function (color, index) {
+
+                        return `
+                            <button
+                                type="button"
+                                class="product-color ${
+                                    index === 0
+                                        ? "active"
+                                        : ""
+                                }"
+                                data-color="${escapeHTML(color)}"
+                            >
+                                <span></span>
+
+                                ${escapeHTML(
+                                    color
+                                )}
+
+                            </button>
+                        `;
+
+                    })
+                    .join("")}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   DESCRIPCIÓN
+===================================================== */
+
+function generateDescription(product) {
+
+    return `
+
+        <div class="product-description">
+
+            <p>
+                ${escapeHTML(
+                    product.description ||
+                    "Diseño exclusivo de SatoriMode."
+                )}
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   HTML DEL PRODUCTO
+===================================================== */
+
+function generateProductHTML(
+    product,
+    outputDirectory
+) {
+
+    const name =
+        escapeHTML(product.name);
+
+    const category =
+        escapeHTML(
+            product.collection ||
+            product.category ||
+            "SatoriMode"
+        );
+
+
+    const price =
+        formatPrice(product.price);
+
+
+    const description =
+        generateDescription(product);
+
+
+    const gallery =
+        generateGallery(
+            product,
+            outputDirectory
+        );
+
+
+    const colors =
+        generateColors(product);
+
+
+    const sizes =
+        generateSizes(product);
+
+
+    const categoryPath =
+        normalizeCategory(
+            product.category
+        );
+
+
+    return `<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        ${name} | SatoriMode
+    </title>
+
+
+    <link
+        rel="stylesheet"
+        href="../../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <div id="satori-header"></div>
+
+
+    <!-- =================================================
+         PRODUCTO
+    ================================================== -->
+
+    <main>
+
+
+        <section class="product-page">
+
+
+            <!-- =========================================
+                 GALERÍA
+            ========================================== -->
+
+            <div class="product-gallery">
+
+                ${gallery}
+
+            </div>
+
+
+            <!-- =========================================
+                 INFORMACIÓN
+            ========================================== -->
+
+            <div class="product-info">
+
+
+                <span class="product-category">
+
+                    ${category}
+
+                </span>
+
+
+                <h1 class="product-title">
+
+                    ${name}
+
+                </h1>
+
+
+                <div class="product-price">
+
+                    ${price}
+
+                </div>
+
+
+                ${description}
+
+
+                ${colors}
+
+
+                ${sizes}
+
+
+                <!-- =====================================
+                     CANTIDAD
+                ====================================== -->
+
+                <div class="product-option">
+
+                    <div class="product-option-title">
+
+                        CANTIDAD
+
+                    </div>
+
+
+                    <div class="quantity-selector">
+
+                        <button
+                            type="button"
+                            id="quantityMinus"
+                        >
+                            −
+                        </button>
+
+
+                        <span id="quantity">
+
+                            1
+
+                        </span>
+
+
+                        <button
+                            type="button"
+                            id="quantityPlus"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     CARRITO
+                ====================================== -->
+
+                <button
+                    type="button"
+                    class="add-to-cart"
+                    id="addToCart"
+                    data-product-id="${escapeHTML(product.id)}"
+                >
+
+                    AGREGAR AL CARRITO
+
+                </button>
+
+
+                <!-- =====================================
+                     ENVÍOS
+                ====================================== -->
+
+                <div class="product-shipping">
+
+                    <strong>
+                        ENVÍOS
+                    </strong>
+
+                    <p>
+                        Enviamos a todo Chile.
+                    </p>
+
+                </div>
+
+
+                <!-- =====================================
+                     DEVOLUCIONES
+                ====================================== -->
+
+                <div class="product-shipping">
+
+                    <strong>
+                        DEVOLUCIONES
+                    </strong>
+
+                    <p>
+                        Revisa nuestras condiciones
+                        de cambios y devoluciones.
+                    </p>
+
+                    <a href="../../envios.html">
+                        MÁS INFORMACIÓN →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECOMENDACIONES
+        ================================================== -->
+
+        <section class="related-products">
+
+            <div class="related-heading">
+
+                <span>
+                    SATORIMODE · DESCUBRE MÁS
+                </span>
+
+
+                <h2>
+                    TAMBIÉN TE PUEDE GUSTAR.
+                </h2>
+
+
+                <p>
+                    Descubre más diseños de SatoriMode.
+                </p>
+
+            </div>
+
+
+            <div
+                class="products-grid"
+                id="relatedProductsGrid"
+                data-product-id="${escapeHTML(product.id)}"
+                data-category="${escapeHTML(categoryPath)}"
+            >
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <h3>
+                    SATORIMODE
+                </h3>
+
+                <p>
+                    Anime, cultura japonesa y streetwear.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    COLECCIONES
+                </h4>
+
+                <a href="../../anime.html">
+                    Anime
+                </a>
+
+                <a href="../../streetwear.html">
+                    Streetwear
+                </a>
+
+                <a href="../../accesorios.html">
+                    Accesorios
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    PRODUCTOS
+                </h4>
+
+                <a href="../../productos.html">
+                    Todas las poleras
+                </a>
+
+                <a href="../../accesorios.html">
+                    Accesorios
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SatoriMode
+            </span>
+
+            <span>
+                Todos los derechos reservados.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script src="../../js/products.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/header.js"></script>
+    <script src="../../js/products-page.js"></script>
+
+
+    <!-- =================================================
+         GALERÍA Y CANTIDAD
+    ================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* =====================================
+                   GALERÍA
+                ====================================== */
+
+                const mainImage =
+                    document.getElementById(
+                        "productMainImage"
+                    );
+
+
+                const thumbnails =
+                    document.querySelectorAll(
+                        ".product-thumbnail"
+                    );
+
+
+                thumbnails.forEach(
+                    function (thumbnail) {
+
+                        thumbnail.addEventListener(
+                            "click",
+                            function () {
+
+                                const image =
+                                    this.dataset.image;
+
+
+                                if (mainImage && image) {
+
+                                    mainImage.src =
+                                        image;
+
+                                }
+
+
+                                thumbnails.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                this.classList.add(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =====================================
+                   CANTIDAD
+                ====================================== */
+
+                const minus =
+                    document.getElementById(
+                        "quantityMinus"
+                    );
+
+
+                const plus =
+                    document.getElementById(
+                        "quantityPlus"
+                    );
+
+
+                const quantity =
+                    document.getElementById(
+                        "quantity"
+                    );
+
+
+                let amount = 1;
+
+
+                if (minus) {
+
+                    minus.addEventListener(
+                        "click",
+                        function () {
+
+                            if (amount > 1) {
+
+                                amount--;
+
+                                quantity.textContent =
+                                    amount;
+
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                if (plus) {
+
+                    plus.addEventListener(
+                        "click",
+                        function () {
+
+                            amount++;
+
+                            quantity.textContent =
+                                amount;
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
+`;
+
+}
+
+
+/* =====================================================
+   GENERAR PRODUCTOS
+===================================================== */
+
+function generateProducts() {
+
+    console.log(
+        "SatoriMode · iniciando generación..."
+    );
+
+
+    const products =
+        loadProducts();
+
+
+    console.log(
+        `Productos encontrados: ${products.length}`
+    );
+
+
+    products.forEach(
+        function (product) {
+
+
+            if (!product.id) {
+
+                console.warn(
+                    "Producto ignorado: falta id."
+                );
+
+                return;
+
+            }
+
+
+            if (!product.name) {
+
+                console.warn(
+                    `Producto ${product.id} ignorado: falta name.`
+                );
+
+                return;
+
+            }
+
+
+            const category =
+                normalizeCategory(
+                    product.category
+                );
+
+
+            const folder =
+                path.join(
+                    OUTPUT_DIR,
+                    category
+                );
+
+
+            fs.mkdirSync(
+                folder,
+                {
+                    recursive: true
+                }
+            );
+
+
+            const slug =
+                slugify(
+                    product.id ||
+                    product.name
+                );
+
+
+            const filename =
+                `${slug}.html`;
+
+
+            const outputFile =
+                path.join(
+                    folder,
+                    filename
+                );
+
+
+            const html =
+                generateProductHTML(
+                    product,
+                    folder
+                );
+
+
+            fs.writeFileSync(
+                outputFile,
+                html,
+                "utf8"
+            );
+
+
+            console.log(
+                `✓ Generado: productos/${category}/${filename}`
+            );
+
+        }
+    );
+
+
+    console.log(
+        "SatoriMode · generación completada."
+    );
+
+}
+
+
+/* =====================================================
+   EJECUTAR
+===================================================== */
+
+try {
+
+    generateProducts();
+
+} catch (error) {
+
+    console.error(
+        "ERROR:",
+        error.message
+    );
+
+    process.exit(1);
+
+}
