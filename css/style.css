@@ -4289,26 +4289,32 @@ main {
     }
 
     /* Menú hamburguesa izquierda */
-    .mobile-menu-button {
-        grid-column: 1;
-        justify-self: start;
+  .mobile-menu-button {
+    grid-column: 1;
+    justify-self: start;
 
-        display: flex;
+    display: flex;
 
-        width: 42px;
-        height: 42px;
+    width: 42px;
+    height: 42px;
 
-        padding: 0;
-        border: 0;
-        background: transparent;
+    padding: 0;
 
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 5px;
+    border: 0;
 
-        cursor: pointer;
-    }
+    background: transparent;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    cursor: pointer;
+
+    margin-left: 0;
+}
 
     .mobile-menu-button span {
         width: 23px;
@@ -4523,3 +4529,116 @@ main {
    franja blanca debajo del header, debe estar dentro de
    .mobile-menu y no suelto debajo de .site-header.
 --------------------------------------------------------- */
+
+
+/* =========================================================
+   SATORIMODE · CORRECCIÓN FINAL HEADER MÓVIL
+   Menú izquierda / logo centrado / iconos derecha
+   Este bloque sobrescribe cualquier regla anterior en conflicto.
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .header-inner {
+        position: relative !important;
+        width: calc(100% - 20px) !important;
+        grid-template-columns: 1fr auto 1fr !important;
+    }
+
+    /* HAMBURGUESA: SIEMPRE A LA IZQUIERDA */
+    .mobile-menu-button {
+        position: absolute !important;
+
+        left: 0 !important;
+        top: 50% !important;
+
+        transform: translateY(-50%) !important;
+
+        grid-column: 1 !important;
+        justify-self: unset !important;
+
+        width: 42px !important;
+        height: 42px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+
+    /* LOGO: EXACTAMENTE AL CENTRO */
+    .brand-logo {
+        grid-column: 2 !important;
+        justify-self: center !important;
+
+        width: auto !important;
+        height: 100% !important;
+    }
+
+    /* ICONOS: SIEMPRE A LA DERECHA */
+    .header-icons {
+        grid-column: 3 !important;
+        justify-self: end !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+
+        gap: 7px !important;
+    }
+}
+
+
+/* TELÉFONOS */
+@media (max-width: 700px) {
+
+    .header-inner {
+        width: calc(100% - 16px) !important;
+    }
+
+    .mobile-menu-button {
+        left: 0 !important;
+
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    .brand-logo img {
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+    .header-icons {
+        right: 0 !important;
+        gap: 4px !important;
+    }
+}
+
+
+/* TELÉFONOS MUY PEQUEÑOS */
+@media (max-width: 420px) {
+
+    .header-inner {
+        width: calc(100% - 10px) !important;
+    }
+
+    .mobile-menu-button {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .brand-logo img {
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    .header-icons {
+        gap: 2px !important;
+    }
+}
