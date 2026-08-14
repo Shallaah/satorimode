@@ -90,8 +90,7 @@ const PRODUCTS = [
            ================================================= */
 
         colors: [
-    "Negro",
-    "Blanco"
+        "Blanco"
 ],
 
 
@@ -173,9 +172,10 @@ const PRODUCTS = [
         "XL"
     ],
 
-    colors: [
-        "Negro"
-    ],
+colors: [
+    "Negro",
+    "Blanco"
+],
 
     tags: [
         "goku",
