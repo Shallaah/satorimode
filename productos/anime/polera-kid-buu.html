@@ -1032,13 +1032,38 @@
                 }
 
 
-                alert(
-                    "Polera Kid Buu agregada al carrito."
+               showCartToast(selectedSize.textContent.trim()
                 );
-
             }
         );
+function showCartToast(size) {
 
+    const toast =
+        document.getElementById("cartToast");
+
+    const productText =
+        document.getElementById("cartToastProduct");
+
+    if (!toast || !productText) return;
+
+    productText.textContent =
+        `Polera Kid Buu · Talla ${size}`;
+
+    toast.classList.add("is-visible");
+
+    clearTimeout(
+        window.cartToastTimer
+    );
+
+    window.cartToastTimer =
+        setTimeout(function () {
+
+            toast.classList.remove(
+                "is-visible"
+            );
+
+        }, 4500);
+}
     </script>
 
 <!-- =========================================================
@@ -1073,6 +1098,44 @@
         id="cartToastCart"
     >
         Ver carrito →
+    </a>
+
+</div>
+
+    <!-- TOAST · PRODUCTO AGREGADO -->
+
+<div
+    class="cart-toast"
+    id="cartToast"
+    aria-live="polite"
+    aria-atomic="true"
+>
+
+    <div class="cart-toast-title">
+
+        <span class="cart-toast-check">
+            ✓
+        </span>
+
+        <span>
+            PRODUCTO AGREGADO
+        </span>
+
+    </div>
+
+    <div
+        class="cart-toast-product"
+        id="cartToastProduct"
+    >
+        Polera Kid Buu · Talla M
+    </div>
+
+    <a
+        href="#"
+        class="cart-toast-link"
+        id="cartToastCart"
+    >
+        VER CARRITO →
     </a>
 
 </div>
