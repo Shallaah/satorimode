@@ -793,7 +793,103 @@ function generateProductHTML(
 
                 </button>
 
+<!-- =====================================================
+     INFORMACIÓN DEL PRODUCTO
+====================================================== -->
 
+<div class="product-info-tabs">
+
+    <div class="product-info-tabs-header">
+
+        <button
+            type="button"
+            class="product-info-tab active"
+            data-tab="description"
+        >
+            DESCRIPCIÓN
+        </button>
+
+        <button
+            type="button"
+            class="product-info-tab"
+            data-tab="shipping"
+        >
+            ENVÍOS Y GARANTÍA
+        </button>
+
+    </div>
+
+
+    <!-- ================================================
+         DESCRIPCIÓN
+    ================================================= -->
+
+    <div
+        class="product-info-tab-content active"
+        data-content="description"
+    >
+
+        <h3>
+            ${escapeHTML(
+                product.details?.description ||
+                product.description ||
+                "Producto SatoriMode."
+            )}
+        </h3>
+
+        <p>
+            ${escapeHTML(
+                product.details?.care ||
+                ""
+            )}
+        </p>
+
+    </div>
+
+
+    <!-- ================================================
+         ENVÍOS Y GARANTÍA
+    ================================================= -->
+
+    <div
+        class="product-info-tab-content"
+        data-content="shipping"
+    >
+
+        <div class="product-info-item">
+
+            <strong>
+                ENVÍOS
+            </strong>
+
+            <p>
+                ${escapeHTML(
+                    product.details?.shipping ||
+                    "Enviamos a todo Chile."
+                )}
+            </p>
+
+        </div>
+
+
+        <div class="product-info-item">
+
+            <strong>
+                GARANTÍA
+            </strong>
+
+            <p>
+                ${escapeHTML(
+                    product.details?.warranty ||
+                    "Todos nuestros productos cuentan con garantía."
+                )}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
                 <!-- =====================================
                      DESCRIPCIÓN / ENVÍOS / GARANTÍA
                 ====================================== -->
