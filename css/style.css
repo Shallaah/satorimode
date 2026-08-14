@@ -5267,3 +5267,90 @@ main {
     }
 
 }
+
+/* =====================================================
+   COLORES DEL PRODUCTO
+===================================================== */
+
+.product-colors {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.product-color {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    height: 40px;
+    padding: 0 15px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 22px;
+
+    background: #fff;
+
+    color: #111;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.product-color:hover {
+    border-color: #111;
+}
+
+.product-color.active {
+    border-color: #ff1010;
+    color: #ff1010;
+    background: #fff;
+}
+
+.color-dot {
+    width: 13px;
+    height: 13px;
+
+    min-width: 13px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    border: 1px solid #222;
+}
+
+.color-dot.color-black {
+    background: #000;
+}
+
+.color-dot.color-white {
+    background: #fff;
+}
+
+.color-dot.color-red {
+    background: #e50909;
+}
+
+.color-dot.color-blue {
+    background: #1565c0;
+}
+
+.color-dot.color-green {
+    background: #16833b;
+}
+
+.color-dot.color-default {
+    background: #ccc;
+}
