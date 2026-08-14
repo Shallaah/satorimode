@@ -49,7 +49,84 @@ const PRODUCTS = [
 
         available: true,
         featured: true
-    }
+    },
+
+   {
+    id: "streetwear-test",
+
+    name: "Polera Streetwear Test",
+
+    category: "streetwear",
+    collection: "Streetwear",
+
+    price: 24990,
+    currency: "CLP",
+
+    description:
+        "Producto de prueba para la colección Streetwear.",
+
+    images: [
+        "productos/anime/polera-kid-buu-01.PNG"
+    ],
+
+    image:
+        "productos/anime/polera-kid-buu-01.PNG",
+
+    url:
+        "productos/anime/polera-kid-buu.html",
+
+    sizes: ["M", "L", "XL"],
+
+    colors: ["Blanco"],
+
+    tags: [
+        "streetwear",
+        "polera",
+        "oversize",
+        "urbano"
+    ],
+
+    available: true,
+    featured: false
+},
+
+
+{
+    id: "accesorio-test",
+
+    name: "Llavero Anime Test",
+
+    category: "accesorios",
+    collection: "Anime",
+
+    price: 7990,
+    currency: "CLP",
+
+    description:
+        "Producto de prueba para la categoría Accesorios.",
+
+    images: [
+        "productos/anime/polera-kid-buu-03.PNG"
+    ],
+
+    image:
+        "productos/anime/polera-kid-buu-03.PNG",
+
+    url:
+        "productos/anime/polera-kid-buu.html",
+
+    colors: ["Blanco"],
+
+    tags: [
+        "accesorio",
+        "llavero",
+        "anime",
+        "coleccionable"
+    ],
+
+    available: true,
+    featured: false
+}
 
 ];
 
