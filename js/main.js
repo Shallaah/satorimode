@@ -210,9 +210,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 );
 
             if (menuIsOpen) {
+
                 closeMobileMenu();
+
             } else {
+
                 openMobileMenu();
+
             }
 
         });
@@ -226,13 +230,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (mobileClose) {
 
-        mobileClose.addEventListener("click", function (event) {
+        mobileClose.addEventListener(
+            "click",
+            function (event) {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            closeMobileMenu();
+                closeMobileMenu();
 
-        });
+            }
+        );
 
     }
 
@@ -243,11 +250,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (mobileOverlay) {
 
-        mobileOverlay.addEventListener("click", function () {
+        mobileOverlay.addEventListener(
+            "click",
+            function () {
 
-            closeMobileMenu();
+                closeMobileMenu();
 
-        });
+            }
+        );
 
     }
 
@@ -262,67 +272,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
     mobileButtons.forEach(function (button) {
 
-        button.addEventListener("click", function (event) {
+        button.addEventListener(
+            "click",
+            function (event) {
 
-            event.preventDefault();
-            event.stopPropagation();
+                event.preventDefault();
+                event.stopPropagation();
 
-            const submenu =
-                button.nextElementSibling;
+                const submenu =
+                    button.nextElementSibling;
 
-            if (
-                !submenu ||
-                !submenu.classList.contains("mobile-submenu")
-            ) {
-                return;
-            }
+                if (
+                    !submenu ||
+                    !submenu.classList.contains("mobile-submenu")
+                ) {
+                    return;
+                }
 
-            const wasOpen =
-                submenu.classList.contains("is-open") ||
-                submenu.classList.contains("active");
-
-
-            document
-                .querySelectorAll(".mobile-submenu")
-                .forEach(function (menu) {
-
-                    menu.classList.remove("is-open");
-                    menu.classList.remove("active");
-
-                });
+                const wasOpen =
+                    submenu.classList.contains("is-open") ||
+                    submenu.classList.contains("active");
 
 
-            document
-                .querySelectorAll(".mobile-nav-button")
-                .forEach(function (otherButton) {
+                document
+                    .querySelectorAll(".mobile-submenu")
+                    .forEach(function (menu) {
 
-                    otherButton.setAttribute(
+                        menu.classList.remove("is-open");
+                        menu.classList.remove("active");
+
+                    });
+
+
+                document
+                    .querySelectorAll(".mobile-nav-button")
+                    .forEach(function (otherButton) {
+
+                        otherButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        otherButton.classList.remove(
+                            "is-open"
+                        );
+
+                        otherButton.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                if (!wasOpen) {
+
+                    submenu.classList.add("is-open");
+                    submenu.classList.add("active");
+
+                    button.setAttribute(
                         "aria-expanded",
-                        "false"
+                        "true"
                     );
 
-                    otherButton.classList.remove("is-open");
-                    otherButton.classList.remove("active");
+                    button.classList.add("is-open");
+                    button.classList.add("active");
 
-                });
-
-
-            if (!wasOpen) {
-
-                submenu.classList.add("is-open");
-                submenu.classList.add("active");
-
-                button.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-                button.classList.add("is-open");
-                button.classList.add("active");
+                }
 
             }
-
-        });
+        );
 
     });
 
@@ -335,9 +353,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .querySelectorAll(".mobile-menu a")
         .forEach(function (link) {
 
-            link.addEventListener("click", function () {
-                closeMobileMenu();
-            });
+            link.addEventListener(
+                "click",
+                function () {
+
+                    closeMobileMenu();
+
+                }
+            );
 
         });
 
@@ -346,8 +369,14 @@ document.addEventListener("DOMContentLoaded", function () {
        BUSCADOR
     ===================================================== */
 
+    /*
+       IMPORTANTE:
+       El header utiliza .search-trigger.
+       Antes main.js buscaba .search-button.
+    */
+
     const searchButton =
-        document.querySelector(".search-button");
+        document.querySelector(".search-trigger");
 
     const searchOverlay =
         document.querySelector(".search-overlay");
@@ -412,7 +441,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       MENSAJE BUSCADOR
+       MENSAJE DEL BUSCADOR
     ===================================================== */
 
     function renderSearchMessage(message) {
@@ -434,32 +463,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (searchButton && searchOverlay) {
 
-        searchButton.addEventListener("click", function (event) {
+        searchButton.addEventListener(
+            "click",
+            function (event) {
 
-            event.preventDefault();
-            event.stopPropagation();
+                event.preventDefault();
+                event.stopPropagation();
 
-            searchOverlay.classList.add("active");
+                searchOverlay.classList.add("active");
 
-            searchOverlay.setAttribute(
-                "aria-hidden",
-                "false"
-            );
+                searchOverlay.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
 
-            searchButton.setAttribute(
-                "aria-expanded",
-                "true"
-            );
+                searchButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
 
-            if (searchInput) {
+                if (searchInput) {
 
-                setTimeout(function () {
-                    searchInput.focus();
-                }, 150);
+                    setTimeout(function () {
+
+                        searchInput.focus();
+
+                    }, 150);
+
+                }
 
             }
-
-        });
+        );
 
     }
 
@@ -489,7 +523,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (searchInput) {
+
             searchInput.value = "";
+
         }
 
         renderSearchMessage(
@@ -524,7 +560,9 @@ document.addEventListener("DOMContentLoaded", function () {
             function (event) {
 
                 if (event.target === searchOverlay) {
+
                     closeSearch();
+
                 }
 
             }
@@ -534,7 +572,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       RESULTADOS BUSCADOR
+       RESULTADOS DEL BUSCADOR
     ===================================================== */
 
     if (searchInput && searchResults) {
@@ -565,6 +603,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         function (product) {
 
                             return (
+
                                 product.name
                                     .toLowerCase()
                                     .includes(query)
@@ -574,6 +613,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 product.category
                                     .toLowerCase()
                                     .includes(query)
+
                             );
 
                         }
@@ -674,7 +714,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.stopPropagation();
 
                 const isOpen =
-                    animeFilters.classList.contains("is-open");
+                    animeFilters.classList.contains(
+                        "is-open"
+                    );
 
 
                 if (isOpen) {
@@ -714,7 +756,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       SELECCIÓN FILTROS
+       SELECCIÓN DE FILTROS
     ===================================================== */
 
     const animeFilterButtons =
