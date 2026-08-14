@@ -171,8 +171,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 STREETWEAR
                             </a>
 
-                            <a href="${baseUrl}exclusivos.html">
-                                EXCLUSIVOS
+                            <a href="${baseUrl}accesorios.html">
+                                ACCESORIOS
                             </a>
 
                         </div>
@@ -527,8 +527,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         STREETWEAR
                     </a>
 
-                    <a href="${baseUrl}exclusivos.html">
-                        EXCLUSIVOS
+                    <a href="${baseUrl}accesorios.html">
+                        ACCESORIOS
                     </a>
 
                 </div>
