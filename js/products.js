@@ -21,23 +21,87 @@ const PRODUCTS = [
         description:
             "Polera inspirada en Kid Buu, diseñada para nuestra colección Anime de SatoriMode.",
 
+
+        /* =================================================
+           INFORMACIÓN DEL PRODUCTO
+           ================================================= */
+
+        details: {
+
+            description:
+                "Polera inspirada en Kid Buu, diseñada para nuestra colección Anime de SatoriMode.",
+
+            shipping:
+                "Enviamos a todo Chile. Los pedidos se preparan y despachan según la modalidad de envío seleccionada.",
+
+            warranty:
+                "Todos nuestros productos cuentan con garantía frente a fallas de fabricación.",
+
+            measurements:
+                "Disponible en tallas M, L y XL. Revisa nuestra guía de tallas antes de comprar.",
+
+            care:
+                "Lavar con agua fría y evitar el uso de cloro. No planchar directamente sobre el estampado."
+
+        },
+
+
+        /* =================================================
+           IMÁGENES
+           ================================================= */
+
         image:
             "productos/anime/polera-kid-buu-01.PNG",
 
         images: [
+
             "productos/anime/polera-kid-buu-01.PNG",
+
             "productos/anime/polera-kid-buu-02.PNG",
+
             "productos/anime/polera-kid-buu-03.PNG"
+
         ],
+
+
+        /* =================================================
+           PÁGINA DEL PRODUCTO
+           ================================================= */
 
         url:
             "productos/anime/polera-kid-buu.html",
 
-        sizes: ["M", "L", "XL"],
 
-        colors: ["Blanco"],
+        /* =================================================
+           TALLAS
+           ================================================= */
+
+        sizes: [
+
+            "M",
+            "L",
+            "XL"
+
+        ],
+
+
+        /* =================================================
+           COLORES
+           ================================================= */
+
+        colors: [
+
+            "Blanco"
+
+        ],
+
+
+        /* =================================================
+           ETIQUETAS
+           ================================================= */
 
         tags: [
+
             "kid buu",
             "buu",
             "dragon ball",
@@ -45,10 +109,18 @@ const PRODUCTS = [
             "anime",
             "polera",
             "streetwear"
+
         ],
 
+
+        /* =================================================
+           ESTADO
+           ================================================= */
+
         available: true,
+
         featured: true
+
     }
 
 ];
@@ -148,10 +220,13 @@ function getRelatedProducts(
         if (sameCategory.length > 0) {
 
             products = [
+
                 ...sameCategory,
+
                 ...products.filter(product =>
                     product.category !== category
                 )
+
             ];
 
         }
