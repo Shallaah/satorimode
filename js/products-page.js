@@ -10,7 +10,7 @@
    - productos.html
    - anime.html
    - streetwear.html
-   - exclusivos.html
+   - accesorios.html
 
    La categoría se determina mediante:
 
