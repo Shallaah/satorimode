@@ -1,1434 +1,4649 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>SatoriMode | Anime</title>
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-    <!-- AJUSTE DEL HEADER · ANIME
-         Desktop: logo a la izquierda.
-         Móvil: menú a la izquierda, logo centrado e iconos a la derecha. -->
-    <style>
-        @media (max-width: 900px) {
+/* =========================================================
+   SATORIMODE
+   STYLE.CSS
+   VERSIÓN RESPONSIVE
+========================================================= */
 
-            .site-header .header-inner {
-                display: grid !important;
-                grid-template-columns: 1fr auto 1fr !important;
-                align-items: center !important;
-                min-height: 72px !important;
-                position: relative !important;
-            }
 
-            .site-header .mobile-menu-button {
-                display: flex !important;
-                grid-column: 1 !important;
-                justify-self: start !important;
-                align-items: center !important;
-                justify-content: center !important;
-                order: 1 !important;
-                z-index: 5 !important;
-            }
+/* =========================================================
+   VARIABLES
+========================================================= */
 
-            .site-header .brand-logo {
-                grid-column: 2 !important;
-                justify-self: center !important;
-                order: 2 !important;
-            }
+:root {
+    --black: #080808;
+    --dark: #111111;
+    --dark-2: #171717;
 
-            .site-header .brand-logo img {
-                display: block !important;
-                max-height: 48px !important;
-                width: auto !important;
-            }
+    --red: #ed1111;
+    --red-dark: #c90000;
 
-            .site-header .main-nav {
-                display: none !important;
-            }
+    --white: #ffffff;
 
-            .site-header .header-icons {
-                grid-column: 3 !important;
-                justify-self: end !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 14px !important;
-                order: 3 !important;
-            }
+    --gray: #777777;
+    --gray-light: #eeeeee;
+    --gray-bg: #f6f6f6;
 
-            .site-header .header-icon {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-        }
+    --max-width: 1280px;
 
-        @media (min-width: 901px) {
+    --header-height: 72px;
+    --shipping-height: 34px;
+}
 
-            .site-header .header-inner {
-                display: flex !important;
-                align-items: center !important;
-            }
 
-            .site-header .brand-logo {
-                order: 1 !important;
-            }
+/* =========================================================
+   RESET
+========================================================= */
 
-            .site-header .main-nav {
-                order: 2 !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            .site-header .header-icons {
-                order: 3 !important;
-            }
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+}
 
-            .site-header .mobile-menu-button {
-                display: none !important;
-            }
-        }
-    </style>
+body {
+    width: 100%;
+    min-width: 0;
 
-</head>
+    margin: 0;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-<body>
+    background: var(--white);
+    color: var(--black);
 
+    line-height: 1.5;
 
-    <!-- =====================================================
-         BARRA SUPERIOR
-    ====================================================== -->
+    overflow-x: hidden;
+}
 
-    <div class="shipping-bar">
+img {
+    max-width: 100%;
+}
 
-        ENVÍOS A TODO CHILE · SATORIMODE
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-    </div>
+button,
+input {
+    font-family: inherit;
+}
 
 
+/* =========================================================
+   BARRA SUPERIOR
+========================================================= */
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+.shipping-bar {
+    width: 100%;
+    height: var(--shipping-height);
 
-    <header class="site-header">
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        <div class="header-inner">
+    padding: 0 20px;
 
+    background: var(--red);
+    color: var(--white);
 
-            <!-- =================================================
-                 MENÚ MÓVIL
-            ================================================== -->
+    font-size: 10px;
+    font-weight: 800;
 
-            <button
-                class="mobile-menu-button"
-                type="button"
-                aria-label="Abrir menú"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-            >
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-                <span></span>
-                <span></span>
-                <span></span>
+    text-align: center;
+}
 
-            </button>
 
+/* =========================================================
+   HEADER
+========================================================= */
 
+.site-header {
+    width: 100%;
+    height: var(--header-height);
 
-            <!-- =================================================
-                 LOGO
-            ================================================== -->
+    background: var(--white);
 
-            <a
-                href="index.html"
-                class="brand-logo"
-                aria-label="SatoriMode - Inicio"
-            >
+    border-bottom: 1px solid #e8e8e8;
 
-                <img
-                    src="logo.png"
-                    alt="SatoriMode"
-                >
+    position: relative;
+    z-index: 1000;
+}
 
-            </a>
 
+.header-inner {
+    width: min(var(--max-width), calc(100% - 60px));
 
+    height: 100%;
 
-            <!-- =================================================
-                 NAVEGACIÓN DESKTOP
-            ================================================== -->
+    margin: 0 auto;
 
-            <nav
-                class="main-nav"
-                aria-label="Navegación principal"
-            >
+    display: grid;
 
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
 
-                <!-- INICIO -->
+    align-items: center;
+}
 
-                <a
-                    href="index.html"
-                    class="nav-link"
-                >
-                    INICIO
-                </a>
 
+/* =========================================================
+   LOGO
+========================================================= */
 
+.brand-logo {
+    width: 65px;
+    height: 100%;
 
-                <!-- =================================================
-                     COLECCIONES
-                ================================================== -->
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
 
-                <div
-                    class="nav-dropdown is-open-page"
-                    data-dropdown="colecciones"
-                >
+.brand-logo img {
+    width: 52px;
+    height: 52px;
 
-                    <button
-                        class="nav-dropdown-btn"
-                        type="button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
+    display: block;
 
-                        <span>
-                            COLECCIONES
-                        </span>
+    object-fit: contain;
+}
 
-                        <span
-                            class="arrow"
-                            aria-hidden="true"
-                        >
-                            ↓
-                        </span>
 
-                    </button>
+/* =========================================================
+   NAVEGACIÓN PRINCIPAL
+========================================================= */
 
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    height: 100%;
+}
 
-                    <div
-                        class="dropdown-menu"
-                        role="menu"
-                    >
 
-                        <a
-                            href="anime.html"
-                            role="menuitem"
-                        >
-                            ANIME
-                        </a>
+/* ENLACES NORMALES */
 
-                        <a
-                            href="streetwear.html"
-                            role="menuitem"
-                        >
-                            STREETWEAR
-                        </a>
+.main-nav > a,
+.nav-dropdown-btn {
+    appearance: none;
 
-                        <a
-                            href="exclusivos.html"
-                            role="menuitem"
-                        >
-                            EXCLUSIVOS
-                        </a>
+    border: 1px solid transparent;
+    background: transparent;
 
-                    </div>
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-                </div>
+    gap: 6px;
 
+    min-height: 38px;
+    padding: 8px 12px;
 
+    border-radius: 7px;
 
-                <!-- =================================================
-                     PRODUCTOS
-                ================================================== -->
+    color: var(--black);
 
-                <div
-                    class="nav-dropdown"
-                    data-dropdown="productos"
-                >
+    font-size: 12px;
+    font-weight: 700;
 
-                    <button
-                        class="nav-dropdown-btn"
-                        type="button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
+    letter-spacing: 0.7px;
 
-                        <span>
-                            PRODUCTOS
-                        </span>
+    white-space: nowrap;
 
-                        <span
-                            class="arrow"
-                            aria-hidden="true"
-                        >
-                            ↓
-                        </span>
+    cursor: pointer;
 
-                    </button>
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
 
 
-                    <div
-                        class="dropdown-menu"
-                        role="menu"
-                    >
+/* HOVER */
 
-                        <a
-                            href="productos.html"
-                            role="menuitem"
-                        >
-                            TODAS LAS POLERAS
-                        </a>
+.main-nav > a:hover,
+.nav-dropdown-btn:hover {
+    color: var(--red);
+}
 
-                        <a
-                            href="satorii-pack.html"
-                            role="menuitem"
-                        >
-                            SATORII PACK
-                        </a>
 
-                    </div>
+/* =========================================================
+   PESTAÑA ACTIVA
+========================================================= */
 
-                </div>
+.main-nav > a.active,
+.nav-dropdown.active > .nav-dropdown-btn {
+    color: var(--red);
 
+    border-color: var(--red);
 
+    background: #fff;
+}
 
-                <!-- =================================================
-                     AYUDA
-                ================================================== -->
 
-                <div
-                    class="nav-dropdown"
-                    data-dropdown="ayuda"
-                >
+/* =========================================================
+   MENÚ DESPLEGABLE · CLICK
+========================================================= */
 
-                    <button
-                        class="nav-dropdown-btn"
-                        type="button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
+.nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 
-                        <span>
-                            AYUDA
-                        </span>
 
-                        <span
-                            class="arrow"
-                            aria-hidden="true"
-                        >
-                            ↓
-                        </span>
+/* =========================================================
+   BOTÓN DEL DROPDOWN
+========================================================= */
 
-                    </button>
+.nav-dropdown .nav-dropdown-btn {
+    appearance: none;
+    border: 1px solid transparent;
+    background: transparent;
 
+    padding: 9px 13px;
 
-                    <div
-                        class="dropdown-menu"
-                        role="menu"
-                    >
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-                        <a
-                            href="guia-tallas.html"
-                            role="menuitem"
-                        >
-                            GUÍA DE TALLAS
-                        </a>
+    font-size: 12px;
+    font-weight: 600;
 
-                        <a
-                            href="envios.html"
-                            role="menuitem"
-                        >
-                            ENVÍOS
-                        </a>
+    line-height: 1;
+    letter-spacing: 0.8px;
 
-                        <a
-                            href="preguntas-frecuentes.html"
-                            role="menuitem"
-                        >
-                            PREGUNTAS FRECUENTES
-                        </a>
+    color: #111111;
 
-                    </div>
+    cursor: pointer;
 
-                </div>
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            </nav>
+    gap: 6px;
 
+    border-radius: 999px;
 
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
 
-            <!-- =================================================
-                 ICONOS HEADER
-            ================================================== -->
 
-            <div class="header-icons">
+/* =========================================================
+   HOVER
+========================================================= */
 
-                <a
-                    href="buscar.html"
-                    class="header-icon"
-                    aria-label="Buscar"
-                    title="Buscar"
-                >
+.nav-dropdown .nav-dropdown-btn:hover {
+    color: var(--red);
+}
 
-                    <span aria-hidden="true">
-                        ⌕
-                    </span>
 
-                </a>
+/* =========================================================
+   PESTAÑA ACTIVA
+   SOLO APARECE CUANDO SE HACE CLICK
+========================================================= */
 
+.nav-dropdown.is-open .nav-dropdown-btn {
+    color: var(--red);
 
-                <a
-                    href="iniciar-sesion.html"
-                    class="header-icon"
-                    aria-label="Iniciar sesión"
-                    title="Iniciar sesión"
-                >
+    border-color: var(--red);
 
-                    <span aria-hidden="true">
-                        ♙
-                    </span>
+    background: rgba(237, 17, 17, 0.04);
+}
 
-                </a>
 
+/* =========================================================
+   FLECHA
+========================================================= */
 
-                <a
-                    href="carrito.html"
-                    class="header-icon"
-                    aria-label="Carrito de compras"
-                    title="Carrito"
-                >
+.nav-dropdown .arrow {
+    display: inline-block;
 
-                    <span aria-hidden="true">
-                        🛒
-                    </span>
+    font-size: 9px;
 
-                </a>
+    line-height: 1;
 
-            </div>
+    transition:
+        transform 0.2s ease;
+}
 
-        </div>
 
-    </header>
+/* FLECHA HACIA ARRIBA CUANDO ESTÁ ABIERTO */
 
+.nav-dropdown.is-open .arrow {
+    transform: rotate(180deg);
+}
 
 
-    <!-- =====================================================
-         MENÚ MÓVIL
-    ====================================================== -->
+/* =========================================================
+   MENÚ
+========================================================= */
 
-    <div
-        class="mobile-menu-overlay"
-        aria-hidden="true"
-    >
-    </div>
+.nav-dropdown .dropdown-menu {
+    position: absolute;
 
+    top: calc(100% + 1px);
+    left: 50%;
 
-    <aside
-        id="mobile-menu"
-        class="mobile-menu"
-        aria-hidden="true"
-    >
+    width: 210px;
 
-        <div class="mobile-menu-header">
+    padding: 12px 0;
 
-            <a
-                href="index.html"
-                class="mobile-menu-logo"
-                aria-label="SatoriMode - Inicio"
-            >
+    background: #ffffff;
 
-                <img
-                    src="logo.png"
-                    alt="SatoriMode"
-                >
+    border:
+        1px solid #e5e5e5;
 
-            </a>
+    border-radius: 12px;
 
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.15);
 
-            <button
-                class="mobile-menu-close"
-                type="button"
-                aria-label="Cerrar menú"
-            >
+    opacity: 0;
 
-                ×
+    visibility: hidden;
 
-            </button>
+    pointer-events: none;
 
-        </div>
+    transform:
+        translateX(-50%)
+        translateY(-8px);
 
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
 
+    z-index: 2000;
+}
 
-        <!-- =================================================
-             NAVEGACIÓN MÓVIL
-        ================================================== -->
 
-        <nav
-            class="mobile-nav"
-            aria-label="Navegación móvil"
-        >
+/* =========================================================
+   MENÚ ABIERTO
+========================================================= */
 
+.nav-dropdown.is-open .dropdown-menu {
+    opacity: 1;
 
-            <a href="index.html">
-                INICIO
-            </a>
+    visibility: visible;
 
+    pointer-events: auto;
 
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
 
-            <button
-                class="mobile-nav-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobile-collections"
-            >
 
-                <span>
-                    COLECCIONES
-                </span>
+/* =========================================================
+   OPCIONES DEL MENÚ
+========================================================= */
 
-                <span
-                    class="mobile-arrow"
-                    aria-hidden="true"
-                >
-                    ↓
-                </span>
+.nav-dropdown .dropdown-menu a {
+    display: block;
 
-            </button>
+    padding:
+        14px 20px;
 
+    color: #111111;
 
-            <div
-                id="mobile-collections"
-                class="mobile-submenu"
-            >
+    text-decoration: none;
 
-                <a href="anime.html">
-                    ANIME
-                </a>
+    font-size: 12px;
 
-                <a href="streetwear.html">
-                    STREETWEAR
-                </a>
+    font-weight: 600;
 
-                <a href="exclusivos.html">
-                    EXCLUSIVOS
-                </a>
+    letter-spacing: 0.5px;
 
-            </div>
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
 
 
+/* =========================================================
+   HOVER OPCIONES
+========================================================= */
 
-            <button
-                class="mobile-nav-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobile-products"
-            >
+.nav-dropdown .dropdown-menu a:hover {
+    color: var(--red);
 
-                <span>
-                    PRODUCTOS
-                </span>
+    background: #f7f7f7;
+}
 
-                <span
-                    class="mobile-arrow"
-                    aria-hidden="true"
-                >
-                    ↓
-                </span>
+/* =========================================================
+   FLECHA DEL MENÚ
+========================================================= */
 
-            </button>
+.arrow {
+    display: inline-block;
 
+    font-size: 10px;
+    font-weight: 700;
 
-            <div
-                id="mobile-products"
-                class="mobile-submenu"
-            >
+    line-height: 1;
 
-                <a href="productos.html">
-                    TODAS LAS POLERAS
-                </a>
+    transition:
+        transform 0.2s ease;
+}
 
-                <a href="satorii-pack.html">
-                    SATORII PACK
-                </a>
 
-            </div>
+.nav-dropdown.active .arrow {
+    transform: rotate(180deg);
+}
 
 
+.dropdown-menu {
+    position: absolute;
 
-            <button
-                class="mobile-nav-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobile-help"
-            >
+    top: calc(100% - 1px);
+    left: 50%;
 
-                <span>
-                    AYUDA
-                </span>
+    width: 210px;
 
-                <span
-                    class="mobile-arrow"
-                    aria-hidden="true"
-                >
-                    ↓
-                </span>
+    padding: 8px;
 
-            </button>
+    background: var(--white);
 
+    border: 1px solid #e5e5e5;
 
-            <div
-                id="mobile-help"
-                class="mobile-submenu"
-            >
+    border-radius: 12px;
 
-                <a href="guia-tallas.html">
-                    GUÍA DE TALLAS
-                </a>
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.14);
 
-                <a href="envios.html">
-                    ENVÍOS
-                </a>
+    opacity: 0;
+    visibility: hidden;
 
-                <a href="preguntas-frecuentes.html">
-                    PREGUNTAS FRECUENTES
-                </a>
+    pointer-events: none;
 
-            </div>
+    transform:
+        translate(-50%, -8px);
 
-        <!-- =================================================
-             INSTAGRAM · MENÚ MÓVIL
-        ================================================== -->
+    transition:
+        opacity .2s ease,
+        visibility .2s ease,
+        transform .2s ease;
 
-       <div class="mobile-social">
+    z-index: 2000;
+}
 
-    <span>
-        SÍGUENOS
-    </span>
 
-    <a
-        href="https://www.instagram.com/satorimode/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram SatoriMode"
-    >
-        INSTAGRAM
-    </a>
+/* =========================================================
+   APERTURA SOLO POR CLICK
+========================================================= */
 
-</div>
-        </nav>
+/* El dropdown NO se abre con hover.
+   JavaScript agrega .active al hacer click. */
 
-    </aside>
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, -8px);
+}
 
+.nav-dropdown.active:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
 
 
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-    ====================================================== -->
+/* =========================================================
+   MENÚ ABIERTO · SOLO CLICK
+========================================================= */
 
-    <main>
+.nav-dropdown.active .dropdown-menu {
 
+    opacity: 1;
 
-        <!-- =================================================
-             HERO ANIME
-        ================================================== -->
+    visibility: visible;
 
-        <section class="home-hero">
+    pointer-events: auto;
 
-            <div class="home-hero-content">
+    transform:
+        translate(-50%, 0);
+}
 
-                <span class="hero-kicker">
-                    ANIME
-                </span>
 
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
 
-                <h1>
+    min-height: 40px;
 
-                    DISEÑOS QUE
+    padding: 10px 13px;
 
-                    <span>
-                        NACEN DEL ANIME.
-                    </span>
+    border-radius: 7px;
 
-                </h1>
+    color: var(--black);
 
+    font-size: 11px;
+    font-weight: 700;
 
-                <p>
+    letter-spacing: .4px;
+}
 
-                    Diseños inspirados en anime, manga
-                    y personajes que forman parte de
-                    aquello que nos apasiona.
 
-                </p>
+.dropdown-menu a:hover {
+    background: #f3f3f3;
 
-            </div>
+    color: var(--red);
+}
 
-        </section>
 
+/* =========================================================
+   ICONOS
+========================================================= */
 
+.header-icons {
+    display: flex;
 
-        <!-- =================================================
-             PRODUCTOS ANIME
-        ================================================== -->
+    align-items: center;
+    justify-content: flex-end;
 
-        <section class="products-section">
+    gap: 16px;
+}
 
 
-            <div class="section-heading">
+.header-icons > span,
+.header-icon {
+    width: 24px;
+    height: 24px;
 
-                <span>
-                    01 / ANIME
-                </span>
+    display: flex;
 
+    align-items: center;
+    justify-content: center;
 
-                <h2>
+    color: var(--black);
 
-                    NUESTRA COLECCIÓN
+    font-size: 17px;
 
-                    <strong>
-                        ANIME.
-                    </strong>
+    cursor: pointer;
 
-                </h2>
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
 
 
-                <p>
-                    Explora nuestras prendas inspiradas
-                    en el mundo del anime.
-                </p>
+.header-icons > span:hover,
+.header-icon:hover {
+    color: var(--red);
 
-            </div>
+    transform:
+        translateY(-2px);
+}
 
 
+/* =========================================================
+   MENÚ MÓVIL
+========================================================= */
 
-<!-- =================================================
-     FILTROS ANIME
-================================================= -->
+.mobile-menu-button {
+    display: none;
 
-<div class="anime-filters-wrapper">
+    width: 42px;
+    height: 42px;
 
-    <button
-        type="button"
-        class="anime-filter-toggle"
-        id="animeFilterToggle"
-        aria-expanded="false"
-        aria-controls="animeFilters"
-    >
-        ☷ MOSTRAR FILTROS
-    </button>
+    padding: 0;
 
+    border: 0;
 
-    <div
-        class="anime-filters"
-        id="animeFilters"
-    >
+    background: transparent;
 
-        <!-- TALLA -->
+    cursor: pointer;
 
-        <div class="anime-filter-group">
+    align-items: center;
+    justify-content: center;
 
-            <span class="anime-filter-title">
-                TALLA
-            </span>
+    flex-direction: column;
 
-            <div class="anime-filter-options">
+    gap: 5px;
+}
 
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="size"
-                    data-value="M"
-                >
-                    M
-                </button>
 
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="size"
-                    data-value="L"
-                >
-                    L
-                </button>
+.mobile-menu-button span {
+    width: 23px;
+    height: 2px;
 
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="size"
-                    data-value="XL"
-                >
-                    XL
-                </button>
+    display: block;
 
-            </div>
+    background: var(--black);
 
-        </div>
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
+}
 
 
-        <!-- COLOR -->
+.mobile-menu-button.is-open span:nth-child(1) {
+    transform:
+        translateY(7px)
+        rotate(45deg);
+}
 
-        <div class="anime-filter-group">
 
-            <span class="anime-filter-title">
-                COLOR
-            </span>
+.mobile-menu-button.is-open span:nth-child(2) {
+    opacity: 0;
+}
 
-            <div class="anime-filter-options">
 
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="color"
-                    data-value="blanco"
-                >
-                    BLANCO
-                </button>
+.mobile-menu-button.is-open span:nth-child(3) {
+    transform:
+        translateY(-7px)
+        rotate(-45deg);
+}
 
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="color"
-                    data-value="negro"
-                >
-                    NEGRO
-                </button>
 
-            </div>
+/* =========================================================
+   MENÚ MÓVIL
+========================================================= */
 
-        </div>
+.mobile-menu {
+    position: fixed;
 
-    </div>
+    top: 0;
+    left: 0;
 
-</div>
+    width: min(390px, 88vw);
+    height: 100vh;
 
-            <!-- =================================================
-                 PRODUCTOS
-            ================================================== -->
+    padding: 25px;
 
-            <div class="products-grid">
+    background: var(--white);
 
+    box-shadow:
+        10px 0 40px rgba(0,0,0,.18);
 
-                <!-- PRODUCTO 01 -->
+    transform:
+        translateX(-105%);
 
-<a href="productos/anime/polera-kid-buu.html" class="product-card">
+    transition:
+        transform .3s ease;
 
-    <div class="product-image">
-        <img
-            src="productos/anime/polera-kid-buu-01.PNG"
-            alt="Polera Kid Buu"
-        >
-    </div>
+    z-index: 5000;
 
-    <div class="product-info">
-        <span class="product-category">ANIME</span>
+    overflow-y: auto;
 
-        <h3>Polera Kid Buu</h3>
+    display: flex;
+    flex-direction: column;
+}
 
-        <div class="product-price">$18.990</div>
 
-        <div class="product-details">
-            100% Algodón
-        </div>
-    </div>
+.mobile-menu.is-open {
+    transform:
+        translateX(0);
+}
 
-</a>
-                <!-- PRODUCTO 02 -->
 
-                <article class="product-card">
+.mobile-menu-overlay {
+    position: fixed;
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+    inset: 0;
 
-                        <div class="image-placeholder">
-                            ANIME 02
-                        </div>
+    background:
+        rgba(0,0,0,.45);
 
-                    </a>
+    opacity: 0;
+    visibility: hidden;
 
+    pointer-events: none;
 
-                    <div class="product-info">
+    z-index: 4999;
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
 
-                        <h3>
-                            Polera Anime 02
-                        </h3>
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+.mobile-menu-overlay.is-open {
+    opacity: 1;
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
+    visibility: visible;
 
-                    </div>
+    pointer-events: auto;
+}
 
-                </article>
 
+.mobile-menu-header {
+    min-height: 55px;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-                <!-- PRODUCTO 03 -->
+    margin-bottom: 30px;
+}
 
-                <article class="product-card">
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+.mobile-menu-logo img {
+    width: 45px;
+    height: 45px;
 
-                        <div class="image-placeholder">
-                            ANIME 03
-                        </div>
+    object-fit: contain;
+}
 
-                    </a>
 
+.mobile-menu-close {
+    width: 38px;
+    height: 38px;
 
-                    <div class="product-info">
+    border: 1px solid #e5e5e5;
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+    border-radius: 50%;
 
-                        <h3>
-                            Polera Anime 03
-                        </h3>
+    background: white;
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+    color: var(--black);
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
+    font-size: 20px;
 
-                    </div>
+    cursor: pointer;
+}
 
-                </article>
 
+.mobile-nav {
+    display: flex;
 
+    flex-direction: column;
 
-                <!-- PRODUCTO 04 -->
+    gap: 4px;
+}
 
-                <article class="product-card">
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+.mobile-nav > a,
+.mobile-nav-button {
+    width: 100%;
 
-                        <div class="image-placeholder">
-                            ANIME 04
-                        </div>
+    min-height: 52px;
 
-                    </a>
+    padding: 10px 0;
 
+    border: 0;
 
-                    <div class="product-info">
+    background: transparent;
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+    display: flex;
 
-                        <h3>
-                            Polera Anime 04
-                        </h3>
+    align-items: center;
+    justify-content: space-between;
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+    color: var(--black);
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
+    font-size: 20px;
+    font-weight: 800;
 
-                    </div>
+    text-align: left;
 
-                </article>
+    cursor: pointer;
+}
 
 
+.mobile-nav > a:hover,
+.mobile-nav-button:hover {
+    color: var(--red);
+}
 
-                <!-- PRODUCTO 05 -->
 
-                <article class="product-card">
+.mobile-submenu {
+    display: none;
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+    padding:
+        0 0 10px 18px;
+}
 
-                        <div class="image-placeholder">
-                            ANIME 05
-                        </div>
 
-                    </a>
+.mobile-submenu.is-open {
+    display: flex;
 
+    flex-direction: column;
+}
 
-                    <div class="product-info">
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+.mobile-submenu a {
+    padding: 9px 0;
 
-                        <h3>
-                            Polera Anime 05
-                        </h3>
+    color: #555;
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+    font-size: 14px;
+}
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
 
-                    </div>
+/* =========================================================
+   MAIN
+========================================================= */
 
-                </article>
+main {
+    width: 100%;
+}
 
 
+/* =========================================================
+   HERO INICIO
+========================================================= */
 
-                <!-- PRODUCTO 06 -->
+.home-hero {
+    width: 100%;
 
-                <article class="product-card">
+    min-height: 465px;
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+    display: flex;
 
-                        <div class="image-placeholder">
-                            ANIME 06
-                        </div>
+    align-items: center;
+    justify-content: center;
 
-                    </a>
+    position: relative;
 
+    overflow: hidden;
 
-                    <div class="product-info">
+    color: var(--white);
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+    background:
+        radial-gradient(
+            circle at 75% 40%,
+            rgba(110,0,0,.65),
+            transparent 45%
+        ),
 
-                        <h3>
-                            Polera Anime 06
-                        </h3>
+        linear-gradient(
+            110deg,
+            #080808,
+            #111111 55%,
+            #300000
+        );
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+    border-radius:
+        0 0 24px 24px;
+}
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
 
-                    </div>
+.home-hero-content {
+    width: min(1000px, calc(100% - 40px));
 
-                </article>
+    padding: 70px 20px;
 
+    text-align: center;
+}
 
 
-                <!-- PRODUCTO 07 -->
+.hero-kicker {
+    display: block;
 
-                <article class="product-card">
+    margin-bottom: 20px;
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+    color: var(--red);
 
-                        <div class="image-placeholder">
-                            ANIME 07
-                        </div>
+    font-size: 11px;
+    font-weight: 900;
 
-                    </a>
+    letter-spacing: 5px;
+}
 
 
-                    <div class="product-info">
+.home-hero h1 {
+    margin: 0;
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+    color: var(--white);
 
-                        <h3>
-                            Polera Anime 07
-                        </h3>
+    font-size:
+        clamp(55px, 8vw, 115px);
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+    line-height: .84;
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
+    font-weight: 900;
 
-                    </div>
+    letter-spacing: -5px;
 
-                </article>
+    text-transform: uppercase;
+}
 
 
+.home-hero h1 span {
+    display: block;
+}
 
-                <!-- PRODUCTO 08 -->
 
-                <article class="product-card">
+.home-hero p {
+    max-width: 720px;
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+    margin:
+        28px auto 0;
 
-                        <div class="image-placeholder">
-                            ANIME 08
-                        </div>
+    color: #dddddd;
 
-                    </a>
+    font-size: 15px;
 
+    line-height: 1.7;
+}
 
-                    <div class="product-info">
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+/* =========================================================
+   BOTONES
+========================================================= */
 
-                        <h3>
-                            Polera Anime 08
-                        </h3>
+.hero-buttons {
+    margin-top: 30px;
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+    display: flex;
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
+    align-items: center;
+    justify-content: center;
 
-                    </div>
+    gap: 12px;
+}
 
-                </article>
 
+.button,
+.collection-button {
+    display: inline-flex;
 
+    align-items: center;
+    justify-content: center;
 
-                <!-- PRODUCTO 09 -->
+    min-height: 42px;
 
-                <article class="product-card">
+    padding:
+        12px 24px;
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+    border-radius: 7px;
 
-                        <div class="image-placeholder">
-                            ANIME 09
-                        </div>
+    font-size: 10px;
+    font-weight: 900;
 
-                    </a>
+    letter-spacing: 1px;
 
+    text-transform: uppercase;
 
-                    <div class="product-info">
+    cursor: pointer;
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
 
-                        <h3>
-                            Polera Anime 09
-                        </h3>
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+.button:hover,
+.collection-button:hover {
+    transform:
+        translateY(-2px);
+}
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
 
-                    </div>
+.button-red {
+    background: var(--red);
 
-                </article>
+    color: var(--white);
+}
 
 
+.button-red:hover {
+    background: var(--red-dark);
+}
 
-                <!-- PRODUCTO 10 -->
 
-                <article class="product-card">
+.button-light {
+    background: var(--white);
 
-                    <a
-                        href="#"
-                        class="product-image"
-                    >
+    color: var(--black);
+}
 
-                        <div class="image-placeholder">
-                            ANIME 10
-                        </div>
 
-                    </a>
+.button-light:hover {
+    background: #eeeeee;
+}
 
 
-                    <div class="product-info">
+/* =========================================================
+   HOME
+========================================================= */
 
-                        <span class="product-category">
-                            ANIME
-                        </span>
+.home-section {
+    width: min(var(--max-width), calc(100% - 80px));
 
-                        <h3>
-                            Polera Anime 10
-                        </h3>
+    margin: 0 auto;
 
-                        <div class="product-price">
-                            $24.990
-                        </div>
+    padding:
+        90px 0;
+}
 
-                        <div class="product-details">
-                            Oversize · Algodón
-                        </div>
 
-                    </div>
+.section-heading {
+    margin-bottom: 50px;
+}
 
-                </article>
 
-            </div>
+.section-heading > span {
+    display: block;
 
-        </section>
+    margin-bottom: 18px;
 
+    color: var(--red);
 
+    font-size: 10px;
 
-        <!-- =================================================
-             SATORII PACK
-        ================================================== -->
+    font-weight: 900;
 
-        <section class="pack-section">
+    letter-spacing: 4px;
+}
 
-            <div class="pack-content">
 
-                <span class="hero-kicker">
-                    SATORII PACK
-                </span>
+.section-heading h2 {
+    max-width: 1100px;
 
+    font-size:
+        clamp(45px, 5.5vw, 75px);
 
-                <h2>
+    line-height: .95;
 
-                    CONOCE EL
+    font-weight: 900;
 
-                    <strong>
-                        SATORII PACK.
-                    </strong>
+    letter-spacing: -3px;
 
-                </h2>
+    text-transform: uppercase;
+}
 
 
-                <p>
+.section-heading h2 strong {
+    display: block;
 
-                    Una experiencia especial de SatoriMode
-                    creada para acompañar tus pedidos.
+    color: var(--red);
+}
 
-                </p>
 
+.section-heading p {
+    max-width: 650px;
 
-                <a
-                    href="satorii-pack.html"
-                    class="button button-red"
-                >
-                    DESCUBRIR SATORII PACK
-                </a>
+    margin-top: 22px;
 
-            </div>
+    color: #666;
 
-        </section>
+    font-size: 15px;
 
-    </main>
+    line-height: 1.7;
+}
 
 
+/* =========================================================
+   TARJETAS HOME
+========================================================= */
 
-     <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+.home-cards {
+    display: grid;
 
-    <footer class="site-footer">
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
+    gap: 20px;
+}
 
-        <div class="footer-main">
 
+.home-card {
+    min-height: 300px;
 
-            <!-- MARCA -->
+    padding: 30px;
 
-            <div class="footer-brand">
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
-                <h3>
-                    SATORIMODE
-                </h3>
+    position: relative;
 
-                <p>
-                    Anime, cultura japonesa y streetwear.
-                </p>
+    overflow: hidden;
 
-            </div>
+    border:
+        1px solid #e5e5e5;
 
-            <div class="footer-column footer-social">
+    border-radius: 15px;
 
-    <h4>SÍGUENOS</h4>
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f5f5f5
+        );
 
-    <a
-        href="https://www.instagram.com/satorimode/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="instagram-link"
-        aria-label="Instagram de SatoriMode"
-    >
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
 
-        <svg
-            class="instagram-icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-        >
 
-            <rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="5"
-                ry="5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            />
+.home-card:hover {
+    transform:
+        translateY(-5px);
 
-            <circle
-                cx="12"
-                cy="12"
-                r="4"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            />
+    border-color:
+        var(--red);
 
-            <circle
-                cx="17.5"
-                cy="6.5"
-                r="1"
-                fill="currentColor"
-            />
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.08);
+}
 
-        </svg>
 
-        <span>Instagram</span>
+.home-card > span {
+    position: absolute;
 
-    </a>
+    top: 24px;
+    left: 27px;
 
-</div>
+    color: var(--red);
 
+    font-size: 10px;
 
-            <!-- COLECCIONES -->
+    font-weight: 900;
 
-            <div class="footer-column">
+    letter-spacing: 3px;
+}
 
-                <h4>
-                    COLECCIONES
-                </h4>
 
-                <a href="anime.html">
-                    Anime
-                </a>
+.home-card h3 {
+    font-size: 32px;
 
-                <a href="streetwear.html">
-                    Streetwear
-                </a>
+    font-weight: 900;
+}
 
-                <a href="exclusivos.html">
-                    Exclusivos
-                </a>
 
-            </div>
+.home-card p {
+    margin-top: 12px;
 
+    color: #666;
 
+    font-size: 13px;
 
-            <!-- PRODUCTOS -->
+    line-height: 1.6;
+}
 
-            <div class="footer-column">
 
-                <h4>
-                    PRODUCTOS
-                </h4>
+.home-card > strong {
+    margin-top: 18px;
 
-                <a href="productos.html">
-                    Todas las poleras
-                </a>
+    font-size: 10px;
 
-                <a href="satorii-pack.html">
-                    Satorii Pack
-                </a>
+    letter-spacing: 1px;
+}
 
-            </div>
 
+/* =========================================================
+   PACK
+========================================================= */
 
+.pack-section {
+    width: min(var(--max-width), calc(100% - 80px));
 
-            <!-- AYUDA -->
+    min-height: 420px;
 
-            <div class="footer-column">
+    margin:
+        0 auto 80px;
 
-                <h4>
-                    AYUDA
-                </h4>
+    display: flex;
 
-                <a href="guia-tallas.html">
-                    Guía de tallas
-                </a>
+    align-items: center;
+    justify-content: center;
 
-                <a href="envios.html">
-                    Envíos
-                </a>
+    overflow: hidden;
 
-                <a href="preguntas-frecuentes.html">
-                    Preguntas frecuentes
-                </a>
+    border-radius: 22px;
 
-            </div>
+    text-align: center;
 
-        </div>
+    color: var(--white);
 
+    background:
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(160,0,0,.45),
+            transparent 35%
+        ),
 
+        linear-gradient(
+            110deg,
+            #080808,
+            #160000 55%,
+            #430000
+        );
+}
 
-        <!-- =================================================
-             FOOTER INFERIOR
-        ================================================== -->
 
-        <div class="footer-bottom">
+.pack-content {
+    max-width: 850px;
 
-            <span>
-                © 2026 SatoriMode
-            </span>
+    padding: 65px 35px;
+}
 
-            <span>
-                Todos los derechos reservados.
-            </span>
 
-        </div>
+.pack-content h2 {
+    margin: 0;
 
-    </footer>
+    font-size:
+        clamp(43px, 5.5vw, 75px);
 
+    line-height: .95;
 
+    font-weight: 900;
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    letter-spacing: -3px;
 
-    <script src="js/main.js"></script>
+    text-transform: uppercase;
+}
 
 
-</body>
+.pack-content h2 strong {
+    display: block;
 
-</html>
+    color: var(--red);
+}
+
+
+.pack-content p {
+    max-width: 650px;
+
+    margin:
+        25px auto 30px;
+
+    color: #ddd;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   HERO PÁGINAS
+========================================================= */
+
+.page-hero,
+.collections-hero,
+.collection-page-hero {
+    width: 100%;
+
+    margin: 0;
+
+    min-height: 465px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 40px;
+
+    border-radius: 0 0 24px 24px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #080808 0%,
+            #111111 55%,
+            #480000 100%
+        );
+
+    color: #ffffff;
+}
+
+.page-hero-content,
+.collections-hero-content,
+.collection-page-hero-content {
+    width: min(1000px, 100%);
+}
+
+
+.section-label {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: var(--red);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+
+.page-hero h1,
+.collections-hero h1,
+.collection-page-hero h1 {
+    margin: 0;
+
+    font-size:
+        clamp(50px, 7vw, 100px);
+
+    line-height: .9;
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+
+    text-transform: uppercase;
+}
+
+
+.page-hero h1 span,
+.collections-hero h1 span,
+.collection-page-hero h1 span {
+    display: block;
+
+    color: var(--red);
+}
+
+
+.page-hero p,
+.collections-hero p,
+.collection-page-hero p {
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color: #ddd;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   COLECCIONES
+========================================================= */
+
+.collection-section {
+    width: 100%;
+
+    padding:
+        90px 30px;
+
+    background: var(--white);
+}
+
+
+.collection-dark {
+    background: #090909;
+
+    color: var(--white);
+}
+
+
+.collection-number {
+    width: min(1100px, 100%);
+
+    margin:
+        0 auto 35px;
+
+    color: var(--red);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+
+.collection-content {
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 55px;
+
+    align-items: center;
+}
+
+
+.collection-text h2 {
+    max-width: 650px;
+
+    font-size:
+        clamp(42px, 5vw, 68px);
+
+    line-height: .92;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+}
+
+
+.collection-text h2 span {
+    display: block;
+
+    color: var(--red);
+}
+
+
+.collection-text p {
+    max-width: 520px;
+
+    margin-top: 24px;
+
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.collection-dark .collection-text p {
+    color: #aaa;
+}
+
+
+.collection-button {
+    margin-top: 25px;
+
+    border:
+        1px solid var(--black);
+
+    color: var(--black);
+}
+
+
+.collection-button:hover {
+    background: var(--black);
+
+    color: var(--white);
+}
+
+
+.collection-dark .collection-button {
+    border-color: var(--white);
+
+    color: var(--white);
+}
+
+
+.collection-dark .collection-button:hover {
+    background: var(--white);
+
+    color: var(--black);
+}
+
+
+/* =========================================================
+   VISUALES COLECCIONES
+========================================================= */
+
+.collection-visual {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 70% 25%,
+            rgba(180,0,0,.55),
+            transparent 40%
+        ),
+        #111;
+}
+
+
+.collection-visual::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border:
+        1px solid rgba(255,255,255,.13);
+
+    border-radius: 14px;
+}
+
+
+.collection-visual span {
+    position: relative;
+
+    z-index: 2;
+
+    color: var(--white);
+
+    font-size:
+        clamp(28px, 4vw, 55px);
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    text-align: center;
+}
+
+
+.anime-visual {
+    background:
+        radial-gradient(
+            circle at 70% 25%,
+            rgba(255,20,20,.55),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #0a0a0a,
+            #260000
+        );
+}
+
+
+.streetwear-visual {
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #050505
+        );
+}
+
+
+.exclusive-visual {
+    background:
+        radial-gradient(
+            circle at 35% 65%,
+            rgba(180,0,0,.5),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #080808,
+            #350000
+        );
+}
+
+
+/* =========================================================
+   PACK COLECCIONES
+========================================================= */
+
+.collection-pack,
+.collection-page-pack {
+    width: min(1150px, calc(100% - 60px));
+
+    margin:
+        0 auto 80px;
+
+    padding:
+        90px 35px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    color: var(--white);
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(190,0,0,.5),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            110deg,
+            #080808,
+            #180000
+        );
+}
+
+
+.collection-pack h2,
+.collection-page-pack h2 {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    font-size:
+        clamp(40px, 5vw, 70px);
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+}
+
+
+.collection-pack h2 span,
+.collection-page-pack h2 span {
+    display: block;
+
+    color: var(--red);
+}
+
+
+.collection-pack p,
+.collection-page-pack p {
+    max-width: 650px;
+
+    margin:
+        25px auto 30px;
+
+    color: #ccc;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.collection-pack .collection-button,
+.collection-page-pack .collection-button {
+    border-color: var(--white);
+
+    color: var(--white);
+}
+
+
+.collection-pack .collection-button:hover,
+.collection-page-pack .collection-button:hover {
+    background: var(--white);
+
+    color: var(--black);
+}
+
+
+/* =========================================================
+   PRODUCTOS
+========================================================= */
+
+.products-section,
+.collection-products {
+    width: min(var(--max-width), calc(100% - 80px));
+    margin: 0 auto;
+    padding: 80px 0;
+}
+
+
+.collection-products-heading {
+    margin-bottom: 45px;
+}
+
+
+.collection-products-heading h2 {
+    margin-top: 12px;
+
+    font-size:
+        clamp(40px, 5vw, 65px);
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+}
+
+
+.collection-products-heading h2 span {
+    color: var(--red);
+}
+
+
+.collection-products-heading p {
+    margin-top: 15px;
+
+    color: #666;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   GRID PRODUCTOS
+========================================================= */
+
+.products-grid,
+.collection-products .products-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap:
+        50px 22px;
+}
+
+
+.product-card {
+    min-width: 0;
+
+    background: transparent;
+}
+
+
+.product-image {
+    width: 100%;
+
+    aspect-ratio: 1 / 1.08;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: #f5f5f5;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.product-image:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.09);
+}
+
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.product-card:hover .product-image img {
+    transform:
+        scale(1.04);
+}
+
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+}
+
+
+.product-info {
+    padding:
+        15px 3px 0;
+}
+
+
+.product-category {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--red);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.product-info h3 {
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+}
+
+
+.product-price {
+    margin-top: 7px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.product-details {
+    margin-top: 5px;
+
+    color: var(--gray);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+.product-filters {
+    width: 100%;
+
+    margin-bottom: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.filter-button {
+    min-height: 42px;
+
+    padding:
+        10px 18px;
+
+    border: 0;
+
+    border-radius: 30px;
+
+    background: var(--red);
+
+    color: var(--white);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.filter-button:hover {
+    background: var(--red-dark);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    width: 100%;
+
+    margin-top: 60px;
+
+    background: #090909;
+
+    color: var(--white);
+}
+
+
+.footer-main {
+    width: min(var(--max-width), calc(100% - 60px));
+
+    margin: 0 auto;
+
+    padding:
+        70px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+    gap: 45px;
+}
+
+
+.footer-brand h3 {
+    font-size: 22px;
+
+    letter-spacing: 2px;
+}
+
+
+.footer-brand p {
+    margin-top: 10px;
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+
+.footer-column {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.footer-column h4 {
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+.footer-column a {
+    color: #999;
+
+    font-size: 13px;
+
+    transition:
+        color .2s ease;
+}
+
+
+.footer-column a:hover {
+    color: var(--white);
+}
+
+
+.footer-bottom {
+    width: min(var(--max-width), calc(100% - 60px));
+
+    margin: 0 auto;
+
+    padding:
+        20px 0;
+
+    border-top:
+        1px solid #222;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    color: #666;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/* =========================================================
+   VENTANA MEDIANA / TABLET
+   701px - 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    /* HEADER */
+
+    .header-inner {
+        width: calc(100% - 32px);
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .header-inner {
+        grid-template-columns: 1fr auto 1fr;
+    }
+
+    .brand-logo {
+        width: auto;
+        justify-self: center;
+    }
+
+    .header-icons {
+        justify-self: end;
+    }
+
+
+    /* HERO */
+
+    .home-hero h1 {
+        font-size: clamp(55px, 8vw, 85px);
+    }
+
+
+    .collections-hero h1,
+    .page-hero h1,
+    .collection-page-hero h1 {
+        font-size: clamp(50px, 7vw, 80px);
+    }
+
+
+    /* COLECCIONES */
+
+    .collection-section {
+        padding: 75px 30px;
+    }
+
+    .collection-content {
+        gap: 40px;
+    }
+
+    .collection-text h2 {
+        font-size: clamp(40px, 5vw, 60px);
+    }
+
+
+    /* PRODUCTOS */
+
+    .products-section,
+    .collection-products {
+        width: calc(100% - 60px);
+        padding: 70px 0;
+    }
+
+    .products-grid,
+    .collection-products .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 40px 18px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   TELÉFONO
+   0px - 700px
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* BARRA SUPERIOR */
+
+    .shipping-bar {
+        height: 30px;
+
+        padding: 0 8px;
+
+        font-size: 8px;
+
+        letter-spacing: 1px;
+    }
+
+
+    /* HEADER */
+
+    .site-header {
+        height: 64px;
+    }
+
+    .header-inner {
+        width: calc(100% - 20px);
+
+        grid-template-columns:
+            auto
+            1fr
+            auto;
+    }
+
+    .brand-logo {
+        grid-column: 2;
+
+        justify-self: center;
+    }
+
+    .brand-logo img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .mobile-menu-button {
+        grid-column: 1;
+    }
+
+    .header-icons {
+        grid-column: 3;
+
+        gap: 6px;
+    }
+
+
+    /* HERO */
+
+    .home-hero {
+        min-height: 450px;
+    }
+
+    .home-hero-content {
+        width: calc(100% - 30px);
+
+        padding: 50px 5px;
+    }
+
+    .home-hero h1 {
+        font-size: clamp(43px, 13vw, 65px);
+
+        letter-spacing: -2px;
+    }
+
+    .home-hero p {
+        font-size: 13px;
+    }
+
+
+    /* BOTONES */
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .hero-buttons .button {
+        width: 100%;
+    }
+
+
+    /* HOME */
+
+    .home-section {
+        width: calc(100% - 30px);
+
+        padding: 60px 0;
+    }
+
+    .home-cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* HERO DE PÁGINAS */
+
+    .page-hero,
+    .collections-hero,
+    .collection-page-hero {
+        width: calc(100% - 20px);
+
+        min-height: 380px;
+
+        padding: 60px 18px;
+    }
+
+    .page-hero h1,
+    .collections-hero h1,
+    .collection-page-hero h1 {
+        font-size: clamp(42px, 12vw, 65px);
+
+        letter-spacing: -2px;
+    }
+
+
+    /* COLECCIONES */
+
+    .collection-section {
+        padding: 60px 15px;
+    }
+
+    .collection-content {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .collection-text {
+        order: 1;
+    }
+
+    .collection-visual {
+        order: 2;
+    }
+
+    .collection-dark .collection-text {
+        order: 1;
+    }
+
+    .collection-dark .collection-visual {
+        order: 2;
+    }
+
+    .collection-text h2 {
+        font-size: clamp(40px, 11vw, 60px);
+
+        letter-spacing: -2px;
+    }
+
+
+    /* PRODUCTOS */
+
+    .products-section,
+    .collection-products {
+        width: calc(100% - 28px);
+
+        padding: 55px 0;
+    }
+
+    .products-grid,
+    .collection-products .products-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 30px 12px;
+    }
+
+    .product-image {
+        border-radius: 9px;
+    }
+
+    .product-info h3 {
+        font-size: 12px;
+    }
+
+    .product-price {
+        font-size: 12px;
+    }
+
+
+    /* SATORII PACK */
+
+    .pack-section,
+    .collection-pack,
+   .collection-page-pack {
+    width: 100%;
+
+    margin: 30px 0 0;
+
+    padding: 100px 30px;
+
+    text-align: center;
+
+    border-radius: 24px 24px 0 0;
+
+    background:
+        linear-gradient(
+            110deg,
+            #080808,
+            #350000
+        );
+
+    color: #ffffff;
+}
+
+    /* FOOTER */
+
+    .footer-main {
+        grid-template-columns: 1fr;
+
+        width: calc(100% - 36px);
+
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        width: calc(100% - 36px);
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 7px;
+    }
+
+}
+
+
+/* =========================================================
+   TELÉFONOS MUY PEQUEÑOS
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .products-grid,
+    .collection-products .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-menu {
+        width: 90vw;
+    }
+
+    .mobile-nav > a,
+    .mobile-nav-button {
+        font-size: 18px;
+    }
+
+}
+
+/* =========================================================
+   INSTAGRAM · MENÚ MÓVIL
+========================================================= */
+
+.mobile-social {
+    margin-top: 28px;
+    padding-top: 24px;
+
+    border-top: 1px solid #e5e5e5;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.mobile-social span {
+    color: #999999;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+
+.mobile-social a {
+    display: inline-flex;
+
+    width: fit-content;
+
+    color: var(--black);
+
+    font-size: 16px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.mobile-social a:hover {
+    color: var(--red);
+
+    transform:
+        translateX(3px);
+}
+/* =========================================================
+   INSTAGRAM · POSICIÓN AL FINAL DEL MENÚ MÓVIL
+========================================================= */
+
+.mobile-menu > .mobile-social {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
+.footer-social {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.instagram-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #999999;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.instagram-icon {
+    width: 20px;
+    height: 20px;
+
+    display: block;
+
+    flex-shrink: 0;
+}
+
+
+.instagram-link:hover {
+    color: #ffffff;
+
+    transform:
+        translateY(-2px);
+}
+
+/* =========================================================
+   SATORIMODE
+   AJUSTES ANIME / COLECCIONES
+========================================================= */
+
+
+/* =========================================================
+   ANCHO GENERAL DE LAS PÁGINAS DE PRODUCTOS
+   MISMO LENGUAJE VISUAL QUE INDEX
+========================================================= */
+
+.products-section,
+.collection-products {
+    width: min(var(--max-width), calc(100% - 80px));
+
+    margin: 0 auto;
+
+    padding: 80px 0;
+}
+
+
+/* =========================================================
+   TÍTULO DE LA COLECCIÓN
+========================================================= */
+
+.products-section .section-heading,
+.collection-products .section-heading {
+    width: 100%;
+}
+
+
+.products-section .section-heading h2,
+.collection-products .section-heading h2 {
+    max-width: 1100px;
+
+    font-size:
+        clamp(48px, 5.5vw, 78px);
+
+    line-height: .92;
+
+    letter-spacing: -3px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+
+.products-section .section-heading h2 strong,
+.collection-products .section-heading h2 strong {
+    display: inline;
+
+    color: var(--red);
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.products-section .section-heading p,
+.collection-products .section-heading p {
+    max-width: 700px;
+
+    margin-top: 20px;
+
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FILTROS ANIME
+========================================================= */
+
+.anime-filters-wrapper {
+    width: 100%;
+    margin-top: 32px;
+    margin-bottom: 36px;
+}
+
+
+/* BOTÓN MOSTRAR FILTROS */
+
+.anime-filter-toggle {
+
+    appearance: none;
+
+    border: 1px solid #111;
+
+    background: #111;
+
+    color: #fff;
+
+    padding: 12px 18px;
+
+    border-radius: 999px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+
+.anime-filter-toggle:hover {
+
+    background: #ff2020;
+
+    border-color: #ff2020;
+
+}
+
+
+/* CONTENEDOR */
+
+.anime-filters {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 40px;
+
+    margin-top: 20px;
+
+    max-height: 0;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    visibility: hidden;
+
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease,
+        margin-top 0.3s ease;
+
+}
+
+
+/* FILTROS ABIERTOS */
+
+.anime-filters.is-open {
+
+    max-height: 180px;
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* GRUPO */
+
+.anime-filter-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+/* TÍTULO */
+
+.anime-filter-title {
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: #111;
+
+}
+
+
+/* OPCIONES */
+
+.anime-filter-options {
+
+    display: flex;
+
+    gap: 8px;
+
+}
+
+
+/* BOTONES */
+
+.anime-filter {
+
+    appearance: none;
+
+    border: 1px solid #ddd;
+
+    background: #fff;
+
+    color: #111;
+
+    min-width: 52px;
+
+    padding: 10px 14px;
+
+    border-radius: 999px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+
+/* HOVER */
+
+.anime-filter:hover {
+
+    border-color: #ff2020;
+
+    color: #ff2020;
+
+}
+
+
+/* FILTRO ACTIVO */
+
+.anime-filter.active {
+
+    background: #ff2020;
+
+    border-color: #ff2020;
+
+    color: #fff;
+
+}
+
+/* HOVER ACTIVO */
+
+.anime-filter.active:hover {
+
+    background: #c90000;
+
+    border-color: #c90000;
+
+    color: #ffffff;
+}
+
+/* =========================================================
+   GRID ANIME
+========================================================= */
+
+.products-section .products-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap:
+        50px 22px;
+}
+
+
+/* =========================================================
+   IMÁGENES DE PRODUCTOS
+========================================================= */
+
+.products-section .product-image {
+    width: 100%;
+
+    aspect-ratio: 1 / 1.08;
+
+    border-radius: 12px;
+
+    background: #f5f5f5;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.products-section .product-image:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.09);
+}
+
+
+/* =========================================================
+   PRODUCTOS · TEXTO
+========================================================= */
+
+.products-section .product-info {
+    padding:
+        15px 3px 0;
+}
+
+
+.products-section .product-category {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--red);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.products-section .product-info h3 {
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+}
+
+
+.products-section .product-price {
+    margin-top: 7px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.products-section .product-details {
+    margin-top: 5px;
+
+    color: var(--gray);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE · TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .products-section,
+    .collection-products {
+        width: calc(100% - 60px);
+    }
+
+    .products-section .products-grid,
+    .collection-products .products-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 40px 18px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE · TELÉFONO
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .products-section,
+    .collection-products {
+        width: calc(100% - 30px);
+
+        padding: 60px 0;
+    }
+
+
+    .products-section .section-heading h2,
+    .collection-products .section-heading h2 {
+
+        font-size:
+            clamp(40px, 11vw, 60px);
+
+        line-height: .92;
+
+        letter-spacing: -2px;
+    }
+
+
+    .products-section .section-heading p,
+    .collection-products .section-heading p {
+
+        font-size: 13px;
+    }
+
+
+    .anime-filters {
+
+        margin-bottom: 30px;
+
+        flex-wrap: wrap;
+
+        gap: 7px;
+    }
+
+
+    .anime-filter {
+
+        min-height: 38px;
+
+        padding:
+            9px 14px;
+
+        font-size: 9px;
+    }
+
+
+    .products-section .products-grid,
+    .collection-products .products-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 30px 12px;
+    }
+
+
+    .products-section .product-info h3 {
+
+        font-size: 12px;
+    }
+
+
+    .products-section .product-price {
+
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   TELÉFONOS MUY PEQUEÑOS
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .products-section .products-grid,
+    .collection-products .products-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   SATORIMODE
+   PÁGINA DE PRODUCTO
+   POLERA KID BUU
+========================================================= */
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
+
+.product-page {
+    width: 100%;
+    background: var(--white);
+}
+
+
+.product-page-container {
+    width: min(1100px, calc(100% - 60px));
+
+    margin: 0 auto;
+
+    padding: 75px 0 90px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(360px, .95fr);
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+/* =========================================================
+   IMAGEN PRINCIPAL DEL PRODUCTO
+========================================================= */
+
+.product-main-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background: #f5f5f5;
+}
+
+.product-main-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+    object-position: center;
+
+    transition: transform .3s ease;
+}
+
+/* PEQUEÑO ZOOM AL PASAR EL MOUSE */
+
+.product-main-image:hover img {
+    transform: scale(1.02);
+}
+
+/* =========================================================
+   MINIATURAS
+========================================================= */
+
+.product-thumbnails {
+    width: 100%;
+
+    margin-top: 14px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.product-thumbnail {
+    appearance: none;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    padding: 0;
+
+    border:
+        1px solid #dedede;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: #f5f5f5;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+
+.product-thumbnail:hover {
+    border-color: var(--red);
+
+    transform: translateY(-2px);
+}
+
+
+.product-thumbnail.active {
+    border:
+        2px solid var(--red);
+}
+
+
+.product-thumbnail img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DEL PRODUCTO
+========================================================= */
+
+.product-page-info {
+    width: 100%;
+
+    padding-top: 5px;
+}
+
+
+.product-page-category {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: var(--red);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.product-page-info h1 {
+    margin: 0;
+
+    color: var(--black);
+
+    font-size:
+        clamp(40px, 5vw, 64px);
+
+    line-height: .9;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+}
+
+
+.product-page-price {
+    margin-top: 22px;
+
+    color: var(--black);
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+.product-page-description {
+    max-width: 540px;
+
+    margin-top: 20px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   OPCIONES DEL PRODUCTO
+========================================================= */
+
+.product-option {
+    margin-top: 30px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid #e5e5e5;
+}
+
+
+.product-option-title {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--black);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.product-option-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.product-option-header .product-option-title {
+    margin-bottom: 12px;
+}
+
+
+.product-option-header a {
+    color: #777;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-decoration: underline;
+
+    transition:
+        color .2s ease;
+}
+
+
+.product-option-header a:hover {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   COLOR
+========================================================= */
+
+.product-color {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.product-color-button {
+    appearance: none;
+
+    min-height: 42px;
+
+    padding:
+        8px 15px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 999px;
+
+    background: var(--white);
+
+    color: var(--black);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.product-color-button:hover {
+    border-color: var(--red);
+
+    color: var(--red);
+}
+
+
+.product-color-button.active {
+    border-color: var(--red);
+
+    background:
+        rgba(237,17,17,.05);
+
+    color: var(--red);
+}
+
+
+.color-dot {
+    width: 13px;
+    height: 13px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    border:
+        1px solid #cccccc;
+}
+
+
+.color-black {
+    background: #050505;
+
+    border-color: #050505;
+}
+
+
+.color-white {
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   TALLAS
+========================================================= */
+
+.product-sizes {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.product-size {
+    appearance: none;
+
+    min-width: 52px;
+    min-height: 44px;
+
+    padding:
+        9px 15px;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 7px;
+
+    background: var(--white);
+
+    color: var(--black);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+}
+
+
+.product-size:hover {
+    border-color: var(--red);
+
+    color: var(--red);
+}
+
+
+.product-size.active {
+    background: var(--red);
+
+    border-color: var(--red);
+
+    color: var(--white);
+}
+
+
+/* =========================================================
+   CANTIDAD
+========================================================= */
+
+.quantity-selector {
+    width: 135px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    background: var(--white);
+}
+
+
+.quantity-selector button {
+    width: 42px;
+    height: 100%;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--black);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.quantity-selector button:hover {
+    background: #f4f4f4;
+
+    color: var(--red);
+}
+
+
+#quantityValue {
+    min-width: 35px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   AGREGAR AL CARRITO
+========================================================= */
+
+.add-to-cart-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 30px;
+
+    padding:
+        14px 20px;
+
+    border:
+        1px solid var(--red);
+
+    border-radius: 7px;
+
+    background: var(--red);
+
+    color: var(--white);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+.add-to-cart-button:hover {
+    background: var(--red-dark);
+
+    border-color: var(--red-dark);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.add-to-cart-button:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   INFORMACIÓN EXTRA
+========================================================= */
+
+.product-information {
+    margin-top: 30px;
+
+    border-top:
+        1px solid #e5e5e5;
+}
+
+
+.product-information-item {
+    padding:
+        20px 0;
+
+    border-bottom:
+        1px solid #e5e5e5;
+}
+
+
+.product-information-item strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--black);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.product-information-item p {
+    color: #777;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.product-information-item a {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    color: var(--black);
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition:
+        color .2s ease;
+}
+
+
+.product-information-item a:hover {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN INFERIOR
+========================================================= */
+
+.product-description-section {
+    width: 100%;
+
+    padding:
+        90px 30px;
+
+    background: #090909;
+
+    color: var(--white);
+}
+
+
+.product-description-container {
+    width: min(1000px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+.product-description-container .section-label {
+    margin-bottom: 20px;
+}
+
+
+.product-description-container h2 {
+    margin: 0;
+
+    font-size:
+        clamp(42px, 6vw, 75px);
+
+    line-height: .92;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+}
+
+
+.product-description-container h2 span {
+    display: block;
+
+    color: var(--red);
+}
+
+
+.product-description-container p {
+    max-width: 680px;
+
+    margin:
+        25px auto 0;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   RESPONSIVE · TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .product-page-container {
+        width: calc(100% - 50px);
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(330px, .9fr);
+
+        gap: 45px;
+
+        padding:
+            60px 0 75px;
+    }
+
+
+    .product-page-info h1 {
+        font-size:
+            clamp(38px, 5vw, 55px);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE · TELÉFONO
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .product-page-container {
+        width: calc(100% - 30px);
+
+        padding:
+            40px 0 60px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 35px;
+    }
+
+
+    .product-main-image {
+        border-radius: 12px;
+    }
+
+
+    .product-thumbnails {
+        gap: 8px;
+    }
+
+
+    .product-thumbnail {
+        border-radius: 8px;
+    }
+
+
+    .product-page-info {
+        padding-top: 0;
+    }
+
+
+    .product-page-category {
+        margin-bottom: 12px;
+
+        font-size: 9px;
+
+        letter-spacing: 2.5px;
+    }
+
+
+    .product-page-info h1 {
+        font-size:
+            clamp(36px, 11vw, 55px);
+
+        letter-spacing: -2px;
+    }
+
+
+    .product-page-price {
+        margin-top: 17px;
+
+        font-size: 19px;
+    }
+
+
+    .product-page-description {
+        font-size: 13px;
+    }
+
+
+    .product-option {
+        margin-top: 25px;
+
+        padding-top: 20px;
+    }
+
+
+    .product-size {
+        min-width: 50px;
+
+        min-height: 42px;
+    }
+
+
+    .add-to-cart-button {
+        min-height: 52px;
+
+        margin-top: 25px;
+    }
+
+
+    .product-description-section {
+        padding:
+            65px 20px;
+    }
+
+
+    .product-description-container h2 {
+        font-size:
+            clamp(38px, 11vw, 55px);
+
+        letter-spacing: -2px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE · TELÉFONOS PEQUEÑOS
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .product-page-container {
+        width: calc(100% - 24px);
+    }
+
+
+    .product-page-info h1 {
+        font-size: 36px;
+    }
+
+
+    .product-thumbnails {
+        gap: 6px;
+    }
+
+
+    .product-option-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+}
+
+/* =========================================================
+   TOAST · PRODUCTO AGREGADO AL CARRITO
+========================================================= */
+
+.cart-toast {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: min(380px, calc(100% - 30px));
+
+    padding: 20px 22px;
+
+    background: #080808;
+    color: #ffffff;
+
+    border: 1px solid #242424;
+    border-left: 4px solid var(--red);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, .25);
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+}
+
+
+/* APARECER */
+
+.cart-toast.is-visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+
+/* CONTENIDO */
+
+.cart-toast-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 7px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+
+/* CHECK */
+
+.cart-toast-check {
+    width: 20px;
+    height: 20px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 900;
+}
+
+
+/* PRODUCTO */
+
+.cart-toast-product {
+    margin-left: 29px;
+
+    color: #999999;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* BOTÓN */
+
+.cart-toast-link {
+    display: inline-flex;
+
+    margin-top: 13px;
+    margin-left: 29px;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+
+.cart-toast-link:hover {
+    color: var(--red);
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   TOAST · MÓVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .cart-toast {
+        right: 15px;
+        bottom: 15px;
+
+        width: calc(100% - 30px);
+
+        padding: 18px 19px;
+    }
+
+}
+
+/* =========================================================
+   TOAST · PRODUCTO AGREGADO AL CARRITO
+========================================================= */
+
+.cart-toast {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: min(380px, calc(100% - 30px));
+
+    padding: 20px 22px;
+
+    background: #080808;
+    color: #ffffff;
+
+    border: 1px solid #242424;
+    border-left: 4px solid var(--red);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, .25);
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+}
+
+
+.cart-toast.is-visible {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+
+.cart-toast-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 7px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.cart-toast-check {
+    width: 20px;
+    height: 20px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+.cart-toast-product {
+    margin-left: 29px;
+
+    color: #999999;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.cart-toast-link {
+    display: inline-flex;
+
+    margin-top: 13px;
+    margin-left: 29px;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+
+.cart-toast-link:hover {
+    color: var(--red);
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .cart-toast {
+
+        right: 15px;
+        bottom: 15px;
+
+        width:
+            calc(100% - 30px);
+
+        padding:
+            18px 19px;
+    }
+
+}
+
+/* =========================================================
+   CARRITO · CONTADOR DEL HEADER
+========================================================= */
+
+.cart-header-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+
+    top: -5px;
+    right: -7px;
+
+    min-width: 16px;
+    height: 16px;
+
+    padding: 0 4px;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--red);
+    color: var(--white);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   SATORIMODE · HEADER GLOBAL · AJUSTE FINAL
+   Este bloque sobrescribe las reglas anteriores del header.
+   PC: logo izquierda / navegación centro / iconos derecha
+   MÓVIL: menú izquierda / logo centro / iconos derecha
+========================================================= */
+
+/* ---------------------------------------------------------
+   PC
+--------------------------------------------------------- */
+
+@media (min-width: 1101px) {
+
+    .site-header {
+        height: var(--header-height);
+    }
+
+    .header-inner {
+        width: min(var(--max-width), calc(100% - 60px));
+        height: 100%;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+    }
+
+    .brand-logo {
+        grid-column: 1;
+        justify-self: start;
+
+        width: auto;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .brand-logo img {
+        width: 52px;
+        height: 52px;
+        display: block;
+        object-fit: contain;
+    }
+
+    .main-nav {
+        grid-column: 2;
+        justify-self: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 28px;
+        height: 100%;
+    }
+
+    .header-icons {
+        grid-column: 3;
+        justify-self: end;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        gap: 16px;
+    }
+
+    .mobile-menu-button {
+        display: none;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   TABLET + MÓVIL
+--------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .site-header {
+        height: 64px;
+    }
+
+    .header-inner {
+        width: calc(100% - 20px);
+        height: 100%;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+    }
+
+    /* Ocultar navegación de PC */
+    .main-nav {
+        display: none !important;
+    }
+
+    /* Menú hamburguesa izquierda */
+  .mobile-menu-button {
+    grid-column: 1;
+    justify-self: start;
+
+    display: flex;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    cursor: pointer;
+
+    margin-left: 0;
+}
+
+    .mobile-menu-button span {
+        width: 23px;
+        height: 2px;
+        display: block;
+
+        background: var(--black);
+
+        transition:
+            transform .25s ease,
+            opacity .25s ease;
+    }
+
+    /* Logo exactamente al centro */
+    .brand-logo {
+        grid-column: 2;
+        justify-self: center;
+
+        width: auto;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand-logo img {
+        width: 46px;
+        height: 46px;
+
+        display: block;
+        object-fit: contain;
+    }
+
+    /* Iconos derecha */
+    .header-icons {
+        grid-column: 3;
+        justify-self: end;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        gap: 7px;
+    }
+
+    .header-icons > span,
+    .header-icon {
+        width: 28px;
+        height: 28px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 16px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   TELÉFONOS
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .shipping-bar {
+        height: 30px;
+        padding: 0 8px;
+
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .site-header {
+        height: 64px;
+    }
+
+    .header-inner {
+        width: calc(100% - 16px);
+
+        grid-template-columns:
+            1fr
+            auto
+            1fr;
+    }
+
+    .mobile-menu-button {
+        grid-column: 1;
+        justify-self: start;
+    }
+
+    .brand-logo {
+        grid-column: 2;
+        justify-self: center;
+    }
+
+    .brand-logo img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .header-icons {
+        grid-column: 3;
+        justify-self: end;
+
+        gap: 4px;
+    }
+
+    .header-icons > span,
+    .header-icon {
+        width: 27px;
+        height: 27px;
+        font-size: 15px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   TELÉFONOS MUY PEQUEÑOS
+--------------------------------------------------------- */
+
+@media (max-width: 420px) {
+
+    .site-header {
+        height: 62px;
+    }
+
+    .header-inner {
+        width: calc(100% - 10px);
+    }
+
+    .brand-logo img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .mobile-menu-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-icons {
+        gap: 2px;
+    }
+
+    .header-icons > span,
+    .header-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   MENÚ LATERAL
+   En móvil queda por encima de todo el contenido.
+--------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .mobile-menu {
+        z-index: 5000;
+    }
+
+    .mobile-menu-overlay {
+        z-index: 4999;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   CONTADOR DEL CARRITO
+--------------------------------------------------------- */
+
+.cart-header-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+
+    top: -5px;
+    right: -6px;
+
+    min-width: 16px;
+    height: 16px;
+
+    padding: 0 4px;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--red);
+    color: var(--white);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+/* ---------------------------------------------------------
+   IMPORTANTE:
+   Si algún elemento de navegación móvil aparece como una
+   franja blanca debajo del header, debe estar dentro de
+   .mobile-menu y no suelto debajo de .site-header.
+--------------------------------------------------------- */
+
+
+/* =========================================================
+   SATORIMODE · CORRECCIÓN FINAL HEADER MÓVIL
+   Menú izquierda / logo centrado / iconos derecha
+   Este bloque sobrescribe cualquier regla anterior en conflicto.
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .header-inner {
+        position: relative !important;
+        width: calc(100% - 20px) !important;
+        grid-template-columns: 1fr auto 1fr !important;
+    }
+
+    /* HAMBURGUESA: SIEMPRE A LA IZQUIERDA */
+    .mobile-menu-button {
+        position: absolute !important;
+
+        left: 0 !important;
+        top: 50% !important;
+
+        transform: translateY(-50%) !important;
+
+        grid-column: 1 !important;
+        justify-self: unset !important;
+
+        width: 42px !important;
+        height: 42px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+
+    .site-header .main-nav {
+        display: none !important;
+    }
+
+    /* LOGO: EXACTAMENTE AL CENTRO */
+    .brand-logo {
+        grid-column: 2 !important;
+        justify-self: center !important;
+
+        width: auto !important;
+        height: 100% !important;
+    }
+
+    /* ICONOS: SIEMPRE A LA DERECHA */
+    .header-icons {
+        grid-column: 3 !important;
+        justify-self: end !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+
+        gap: 7px !important;
+    }
+}
+
+
+/* TELÉFONOS */
+@media (max-width: 700px) {
+
+    .header-inner {
+        width: calc(100% - 16px) !important;
+    }
+
+    .site-header .mobile-menu-button {
+        display: flex !important;
+        left: 0 !important;
+
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    .brand-logo img {
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+    .header-icons {
+        right: 0 !important;
+        gap: 4px !important;
+    }
+}
+
+
+/* TELÉFONOS MUY PEQUEÑOS */
+@media (max-width: 420px) {
+
+    .header-inner {
+        width: calc(100% - 10px) !important;
+    }
+
+    .mobile-menu-button {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .brand-logo img {
+        width: 42px !important;
+        height: 42px !important;
+    }
+
+    .header-icons {
+        gap: 2px !important;
+    }
+}
