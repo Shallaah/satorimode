@@ -1,11 +1,23 @@
 /* =========================================================
    SATORIMODE
-   PÁGINA DE PRODUCTOS
+   GENERADOR AUTOMÁTICO DE PRODUCTOS
    =========================================================
 
-   Este archivo toma los productos de PRODUCTS
-   (products.js) y genera automáticamente las tarjetas
-   dentro de productos.html.
+   Este archivo utiliza PRODUCTS de products.js.
+
+   Funciona automáticamente en:
+
+   - productos.html
+   - anime.html
+   - streetwear.html
+   - exclusivos.html
+
+   La categoría se determina mediante:
+
+   data-category="anime"
+
+   Si no existe categoría:
+   muestra todos los productos.
    ========================================================= */
 
 
@@ -13,19 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       CONTENEDOR
+       BUSCAR CONTENEDOR
     ===================================================== */
 
     const productsGrid =
-        document.getElementById(
-            "all-products-grid"
+        document.querySelector(
+            "#all-products-grid, #animeProductsGrid"
         );
 
-
-    /*
-        Si la página no tiene el catálogo,
-        no hacemos nada.
-    */
 
     if (!productsGrid) {
 
@@ -34,9 +41,48 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* =====================================================
+       COMPROBAR PRODUCTS.JS
+    ===================================================== */
+
+    if (
+        typeof PRODUCTS === "undefined"
+    ) {
+
+        console.error(
+            "SatoriMode: products.js no está cargado."
+        );
+
+        return;
+
+    }
+
 
     /* =====================================================
-       ESTADO DE LOS FILTROS
+       DETECTAR CATEGORÍA
+    ===================================================== */
+
+    let pageCategory =
+        productsGrid.dataset.category || null;
+
+
+    /*
+        Compatibilidad con el anime.html
+        que actualmente utiliza animeProductsGrid.
+    */
+
+    if (
+        !pageCategory &&
+        productsGrid.id === "animeProductsGrid"
+    ) {
+
+        pageCategory = "anime";
+
+    }
+
+
+    /* =====================================================
+       ESTADO DE FILTROS
     ===================================================== */
 
     let activeFilters = {
@@ -48,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
         color: null
 
     };
-
 
 
     /* =====================================================
@@ -64,9 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     /* =====================================================
-       CREAR TARJETA DE PRODUCTO
+       CREAR TARJETA
     ===================================================== */
 
     function createProductCard(product) {
@@ -81,46 +125,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         card.href =
-            product.url;
+            product.url || "#";
 
 
-        /*
-            Guardamos información en la tarjeta.
-            Esto también nos servirá para los filtros.
-        */
+        const image =
+            product.image ||
+            (
+                product.images &&
+                product.images[0]
+            ) ||
+            "";
 
-        card.dataset.collection =
-            product.category;
-
-
-        card.dataset.sizes =
-            product.sizes.join(",");
-
-
-        card.dataset.colors =
-            product.colors
-                .map(function (color) {
-
-                    return color.toLowerCase();
-
-                })
-                .join(",");
-
-
-
-        /* =================================================
-           CONTENIDO
-        ================================================= */
 
         card.innerHTML = `
 
             <div class="product-image">
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    loading="lazy"
-                >
+                ${
+                    image
+
+                    ?
+
+                    `
+                    <img
+                        src="${image}"
+                        alt="${product.name}"
+                        loading="lazy"
+                    >
+                    `
+
+                    :
+
+                    `
+                    <div class="image-placeholder">
+                        SIN IMAGEN
+                    </div>
+                    `
+                }
 
             </div>
 
@@ -129,7 +170,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <span class="product-category">
 
-                    ${product.collection}
+                    ${(
+                        product.collection ||
+                        product.category ||
+                        ""
+                    ).toUpperCase()}
 
                 </span>
 
@@ -151,7 +196,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p class="product-details">
 
                     Tallas
-                    ${product.sizes.join(" · ")}
+                    ${
+                        product.sizes
+                            ? product.sizes.join(" · ")
+                            : "Consultar"
+                    }
 
                 </p>
 
@@ -165,85 +214,106 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     /* =====================================================
-       MOSTRAR PRODUCTOS
+       OBTENER PRODUCTOS DE LA PÁGINA
     ===================================================== */
 
-    function renderProducts() {
+    function getPageProducts() {
 
 
-        /*
-            Limpiamos el catálogo actual.
-        */
-
-        productsGrid.innerHTML = "";
+        return PRODUCTS.filter(
+            function (product) {
 
 
+                /*
+                    Solo productos disponibles.
+                */
 
-        /*
-            Obtenemos todos los productos disponibles.
-        */
+                if (
+                    product.available !== true
+                ) {
 
-        const availableProducts =
-            PRODUCTS.filter(
-                function (product) {
-
-                    return product.available === true;
+                    return false;
 
                 }
-            );
 
 
+                /*
+                    Si la página tiene categoría,
+                    solamente mostramos esa categoría.
+                */
 
-        /*
-            Aplicamos los filtros.
-        */
+                if (
+                    pageCategory &&
+                    product.category !== pageCategory
+                ) {
 
-        const filteredProducts =
-            availableProducts.filter(
-                function (product) {
+                    return false;
 
-
-                    /* -------------------------------------
-                       COLECCIÓN
-                    -------------------------------------- */
-
-                    if (
-                        activeFilters.collection &&
-                        product.category !==
-                        activeFilters.collection
-                    ) {
-
-                        return false;
-
-                    }
+                }
 
 
+                return true;
 
-                    /* -------------------------------------
-                       TALLA
-                    -------------------------------------- */
+            }
+        );
 
-                    if (
-                        activeFilters.size &&
+    }
+
+
+    /* =====================================================
+       APLICAR FILTROS
+    ===================================================== */
+
+    function applyFilters(products) {
+
+
+        return products.filter(
+            function (product) {
+
+
+                /* -----------------------------------------
+                   COLECCIÓN
+                ------------------------------------------ */
+
+                if (
+                    activeFilters.collection &&
+                    product.category !==
+                    activeFilters.collection
+                ) {
+
+                    return false;
+
+                }
+
+
+                /* -----------------------------------------
+                   TALLA
+                ------------------------------------------ */
+
+                if (
+                    activeFilters.size &&
+                    (
+                        !product.sizes ||
                         !product.sizes.includes(
                             activeFilters.size
                         )
-                    ) {
+                    )
+                ) {
 
-                        return false;
+                    return false;
 
-                    }
+                }
 
 
+                /* -----------------------------------------
+                   COLOR
+                ------------------------------------------ */
 
-                    /* -------------------------------------
-                       COLOR
-                    -------------------------------------- */
-
-                    if (
-                        activeFilters.color &&
+                if (
+                    activeFilters.color &&
+                    (
+                        !product.colors ||
                         !product.colors.some(
                             function (color) {
 
@@ -254,27 +324,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             }
                         )
-                    ) {
+                    )
+                ) {
 
-                        return false;
-
-                    }
-
-
-
-                    return true;
+                    return false;
 
                 }
-            );
 
+
+                return true;
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       MOSTRAR PRODUCTOS
+    ===================================================== */
+
+    function renderProducts() {
+
+
+        productsGrid.innerHTML = "";
+
+
+        let products =
+            getPageProducts();
+
+
+        products =
+            applyFilters(products);
 
 
         /* =================================================
-           NINGÚN PRODUCTO
+           SIN RESULTADOS
         ================================================== */
 
         if (
-            filteredProducts.length === 0
+            products.length === 0
         ) {
 
             productsGrid.innerHTML = `
@@ -298,27 +387,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-
         /* =================================================
            CREAR TARJETAS
         ================================================== */
 
-        filteredProducts.forEach(
+        products.forEach(
             function (product) {
 
-                const card =
-                    createProductCard(product);
-
-
                 productsGrid.appendChild(
-                    card
+                    createProductCard(product)
                 );
 
             }
         );
 
     }
-
 
 
     /* =====================================================
@@ -348,11 +431,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         button.dataset.value;
 
 
-
-                    /* -------------------------------------
-                       SI YA ESTÁ ACTIVO
-                       LO DESACTIVAMOS
-                    -------------------------------------- */
+                    /*
+                        Si ya estaba seleccionado,
+                        lo quitamos.
+                    */
 
                     if (
                         activeFilters[filterType] ===
@@ -366,15 +448,14 @@ document.addEventListener("DOMContentLoaded", function () {
                             "active"
                         );
 
-
                     }
 
                     else {
 
 
                         /*
-                            Quitamos activo de otros
-                            botones del mismo grupo.
+                            Desactivar otros filtros
+                            del mismo grupo.
                         */
 
                         document
@@ -403,24 +484,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
 
-
-                    /*
-                        Volvemos a generar el catálogo.
-                    */
-
                     renderProducts();
 
                 }
             );
 
-
         }
     );
 
 
-
     /* =====================================================
-       BOTÓN MOSTRAR FILTROS EN MÓVIL
+       BOTÓN MOSTRAR FILTROS
     ===================================================== */
 
     const filterToggle =
@@ -459,9 +533,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 filterToggle.textContent =
                     isOpen
-                        ? "OCULTAR FILTROS"
-                        : "MOSTRAR FILTROS";
 
+                        ? "OCULTAR FILTROS"
+
+                        : "MOSTRAR FILTROS";
 
             }
         );
@@ -469,10 +544,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     /* =====================================================
-       CREAR ESTILO PARA MENSAJE SIN RESULTADOS
-       ===================================================== */
+       MENSAJE SIN RESULTADOS
+    ===================================================== */
 
     if (
         !document.getElementById(
@@ -545,21 +619,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     /* =====================================================
-       GENERAR CATÁLOGO INICIAL
+       GENERAR CATÁLOGO
     ===================================================== */
 
     renderProducts();
 
 
-
     /* =====================================================
-       MENSAJE EN CONSOLA
+       MENSAJE
     ===================================================== */
 
     console.log(
-        `SatoriMode · Catálogo generado: ${PRODUCTS.length} producto(s).`
+        `SatoriMode · ${PRODUCTS.length} producto(s) cargado(s).`
+    );
+
+    console.log(
+        pageCategory
+            ? `SatoriMode · Categoría: ${pageCategory}`
+            : "SatoriMode · Mostrando todos los productos."
     );
 
 
