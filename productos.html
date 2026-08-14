@@ -4,11 +4,18 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Productos | SatoriMode</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Todas las Poleras | SatoriMode</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
 
@@ -16,12 +23,9 @@
 <body>
 
 
-<body>
-
-
     <!-- =====================================================
          HEADER GLOBAL
-         Se genera desde js/header.js
+         Se genera automáticamente desde js/header.js
     ====================================================== -->
 
     <div id="satori-header"></div>
@@ -29,38 +33,40 @@
 
 
     <!-- =====================================================
-         CONTENIDO
+         CONTENIDO PRINCIPAL
     ====================================================== -->
 
     <main>
 
 
         <!-- =================================================
-             HERO PRODUCTOS
+             HERO
         ================================================== -->
 
         <section class="page-hero">
 
             <div class="page-hero-content">
 
-                <span class="hero-kicker">
+                <span class="section-label">
                     SATORIMODE · PRODUCTOS
                 </span>
 
 
                 <h1>
 
-                    VISTE LO QUE
-                    <span>REPRESENTAS.</span>
+                    TODAS LAS
+
+                    <span>
+                        POLERAS.
+                    </span>
 
                 </h1>
 
 
                 <p>
 
-                    Explora nuestras prendas inspiradas
-                    en el anime, la cultura japonesa
-                    y el streetwear.
+                    Explora todos los diseños disponibles
+                    de SatoriMode en un solo lugar.
 
                 </p>
 
@@ -71,7 +77,7 @@
 
 
         <!-- =================================================
-             POLERAS
+             CATÁLOGO
         ================================================== -->
 
         <section class="products-section">
@@ -80,22 +86,25 @@
             <div class="section-heading">
 
                 <span>
-                    01 / POLERAS
+                    01 / CATÁLOGO
                 </span>
 
 
                 <h2>
 
                     TODAS LAS
-                    <strong>POLERAS.</strong>
+
+                    <strong>
+                        POLERAS.
+                    </strong>
 
                 </h2>
 
 
                 <p>
 
-                    Diseños creados para llevar contigo
-                    aquello que te representa.
+                    Anime, streetwear y diseños exclusivos
+                    creados para representar lo que te gusta.
 
                 </p>
 
@@ -103,27 +112,186 @@
 
 
 
-            <!-- PRODUCTOS -->
+            <!-- =================================================
+                 FILTROS
+            ================================================== -->
 
-            <div class="products-grid">
+            <div class="anime-filters-wrapper">
+
+                <button
+                    type="button"
+                    class="anime-filter-toggle"
+                    id="products-filter-toggle"
+                >
+                    MOSTRAR FILTROS
+                </button>
 
 
-                <!-- DARUMA -->
+                <div
+                    class="anime-filters"
+                    id="products-filters"
+                >
+
+
+                    <!-- COLECCIÓN -->
+
+                    <div class="anime-filter-group">
+
+                        <span class="anime-filter-title">
+                            COLECCIÓN
+                        </span>
+
+
+                        <div class="anime-filter-options">
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="collection"
+                                data-value="anime"
+                            >
+                                ANIME
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="collection"
+                                data-value="streetwear"
+                            >
+                                STREETWEAR
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="collection"
+                                data-value="exclusivos"
+                            >
+                                EXCLUSIVOS
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TALLA -->
+
+                    <div class="anime-filter-group">
+
+                        <span class="anime-filter-title">
+                            TALLA
+                        </span>
+
+
+                        <div class="anime-filter-options">
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="size"
+                                data-value="M"
+                            >
+                                M
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="size"
+                                data-value="L"
+                            >
+                                L
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="size"
+                                data-value="XL"
+                            >
+                                XL
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COLOR -->
+
+                    <div class="anime-filter-group">
+
+                        <span class="anime-filter-title">
+                            COLOR
+                        </span>
+
+
+                        <div class="anime-filter-options">
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="color"
+                                data-value="blanco"
+                            >
+                                BLANCO
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="anime-filter"
+                                data-filter="color"
+                                data-value="negro"
+                            >
+                                NEGRO
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 GRID DE PRODUCTOS
+            ================================================== -->
+
+            <div class="products-grid" id="all-products-grid">
+
+
+
+                <!-- =================================================
+                     POLERA KID BUU
+                ================================================== -->
 
                 <a
-                    href="productos/daruma-no-kakusei/polera-daruma-no-kakusei.html"
-                    class="product-card">
-
+                    href="productos/anime/html/polera-kid-buu.html"
+                    class="product-card"
+                    data-collection="anime"
+                    data-sizes="M,L,XL"
+                    data-colors="blanco,negro"
+                >
 
                     <div class="product-image">
 
-                        <div class="product-placeholder">
-
-                            <span>
-                                SATORIMODE
-                            </span>
-
-                        </div>
+                        <img
+                            src="productos/anime/polera-kid-buu-01.png"
+                            alt="Polera Kid Buu"
+                            loading="lazy"
+                        >
 
                     </div>
 
@@ -136,35 +304,41 @@
 
 
                         <h3>
-                            Polera Daruma no Kakusei
+                            Polera Kid Buu
                         </h3>
 
 
-                        <p>
+                        <p class="product-price">
                             $18.990
                         </p>
 
-                    </div>
 
+                        <p class="product-details">
+                            Tallas M · L · XL
+                        </p>
+
+                    </div>
 
                 </a>
 
 
 
-                <!-- PRÓXIMO -->
+                <!-- =================================================
+                     PRODUCTO FUTURO
+                ================================================== -->
 
-                <a
-                    href="#"
-                    class="product-card">
-
+                <div
+                    class="product-card"
+                    data-collection="streetwear"
+                    data-sizes="M,L,XL"
+                    data-colors="blanco,negro"
+                >
 
                     <div class="product-image">
 
-                        <div class="product-placeholder">
+                        <div class="image-placeholder">
 
-                            <span>
-                                PRÓXIMO
-                            </span>
+                            PRÓXIMAMENTE
 
                         </div>
 
@@ -183,31 +357,32 @@
                         </h3>
 
 
-                        <p>
+                        <p class="product-price">
                             $18.990
                         </p>
 
                     </div>
 
-
-                </a>
-
+                </div>
 
 
-                <!-- PRÓXIMO -->
 
-                <a
-                    href="#"
-                    class="product-card">
+                <!-- =================================================
+                     PRODUCTO FUTURO
+                ================================================== -->
 
+                <div
+                    class="product-card"
+                    data-collection="exclusivos"
+                    data-sizes="M,L,XL"
+                    data-colors="blanco,negro"
+                >
 
                     <div class="product-image">
 
-                        <div class="product-placeholder">
+                        <div class="image-placeholder">
 
-                            <span>
-                                PRÓXIMO
-                            </span>
+                            PRÓXIMAMENTE
 
                         </div>
 
@@ -226,14 +401,13 @@
                         </h3>
 
 
-                        <p>
+                        <p class="product-price">
                             $18.990
                         </p>
 
                     </div>
 
-
-                </a>
+                </div>
 
 
             </div>
@@ -248,7 +422,6 @@
 
         <section class="pack-section">
 
-
             <div class="pack-content">
 
                 <span class="hero-kicker">
@@ -259,7 +432,10 @@
                 <h2>
 
                     DESCUBRE EL
-                    <strong>SATORII PACK.</strong>
+
+                    <strong>
+                        SATORII PACK.
+                    </strong>
 
                 </h2>
 
@@ -274,14 +450,12 @@
 
                 <a
                     href="satorii-pack.html"
-                    class="button button-red">
-
+                    class="button button-red"
+                >
                     CONOCER SATORII PACK
-
                 </a>
 
             </div>
-
 
         </section>
 
@@ -310,6 +484,28 @@
                 <p>
                     Anime, cultura japonesa y streetwear.
                 </p>
+
+            </div>
+
+
+
+            <div class="footer-column footer-social">
+
+                <h4>
+                    SÍGUENOS
+                </h4>
+
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-link"
+                >
+
+                    Instagram
+
+                </a>
 
             </div>
 
@@ -354,11 +550,6 @@
 
                 <a href="satorii-pack.html">
                     Satorii Pack
-                </a>
-
-
-                <a href="que-es-satorii-pack.html">
-                    ¿Qué es el Satorii Pack?
                 </a>
 
             </div>
@@ -406,8 +597,8 @@
 
         </div>
 
-
     </footer>
+
 
 
     <!-- =====================================================
@@ -415,6 +606,7 @@
     ====================================================== -->
 
     <script src="js/main.js"></script>
+
     <script src="js/header.js"></script>
 
 
