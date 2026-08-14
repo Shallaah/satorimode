@@ -4896,3 +4896,226 @@ main {
 .product-details-panel p:last-child {
     margin-bottom: 0;
 }
+
+/* =====================================================
+   INFORMACIÓN DEL PRODUCTO
+   DESCRIPCIÓN / ENVÍOS Y GARANTÍA
+===================================================== */
+
+.product-details-box {
+
+    width: 100%;
+
+    margin-top: 26px;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+}
+
+
+/* =====================================================
+   PESTAÑAS
+===================================================== */
+
+.product-details-tabs {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    border-bottom: 1px solid #e5e5e5;
+
+}
+
+
+.product-details-tab {
+
+    width: 100%;
+
+    min-height: 56px;
+
+    border: 0;
+
+    background: #f7f7f7;
+
+    color: #080808;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+
+}
+
+
+.product-details-tab:first-child {
+
+    border-right: 1px solid #e5e5e5;
+
+}
+
+
+.product-details-tab:hover {
+
+    background: #eeeeee;
+
+}
+
+
+.product-details-tab.active {
+
+    background: #ffffff;
+
+    color: #ed1111;
+
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.product-details-panel {
+
+    display: none;
+
+    padding: 26px 24px;
+
+}
+
+
+.product-details-panel.active {
+
+    display: block;
+
+}
+
+
+/* =====================================================
+   TÍTULOS
+===================================================== */
+
+.product-details-panel h4 {
+
+    margin: 0 0 10px;
+
+    color: #080808;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =====================================================
+   TEXTO
+===================================================== */
+
+.product-details-panel p {
+
+    margin: 0;
+
+    color: #666666;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   ENVÍOS / GARANTÍA
+===================================================== */
+
+.product-detail-item {
+
+    padding-bottom: 22px;
+
+}
+
+
+.product-detail-item:last-child {
+
+    padding-bottom: 0;
+
+}
+
+
+.product-detail-item + .product-detail-item {
+
+    padding-top: 22px;
+
+    border-top: 1px solid #eeeeee;
+
+}
+
+
+/* =====================================================
+   TELÉFONO
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .product-details-box {
+
+        margin-top: 22px;
+
+        border-radius: 7px;
+
+    }
+
+
+    .product-details-tab {
+
+        min-height: 52px;
+
+        padding: 0 8px;
+
+        font-size: 9px;
+
+        letter-spacing: .7px;
+
+    }
+
+
+    .product-details-panel {
+
+        padding: 22px 18px;
+
+    }
+
+
+    .product-details-panel p {
+
+        font-size: 13px;
+
+        line-height: 1.65;
+
+    }
+
+}
