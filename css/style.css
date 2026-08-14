@@ -4642,3 +4642,147 @@ main {
         gap: 2px !important;
     }
 }
+
+/* =========================================================
+   PESTAÑAS DE INFORMACIÓN DEL PRODUCTO
+========================================================= */
+
+.product-details-tabs {
+    width: 100%;
+    margin-top: 32px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+
+/* PESTAÑAS */
+
+.product-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+.product-tab {
+    appearance: none;
+    border: 0;
+    background: #f5f5f5;
+
+    padding: 18px 20px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.product-tab + .product-tab {
+    border-left: 1px solid #e5e5e5;
+}
+
+
+.product-tab:hover {
+    background: #eeeeee;
+}
+
+
+.product-tab.active {
+    background: #fff;
+    color: #111;
+}
+
+
+/* CONTENIDO */
+
+.product-tab-content {
+    display: none;
+    padding: 28px;
+}
+
+
+.product-tab-content.active {
+    display: block;
+}
+
+
+.detail-block {
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.detail-block:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+
+.detail-block h3 {
+    margin: 0 0 10px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+
+.detail-block p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .product-details-tabs {
+        margin-top: 24px;
+        border-radius: 8px;
+    }
+
+
+    .product-tab {
+        padding: 15px 10px;
+
+        font-size: 10px;
+    }
+
+
+    .product-tab-content {
+        padding: 22px 18px;
+    }
+
+
+    .detail-block h3 {
+        font-size: 12px;
+    }
+
+
+    .detail-block p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+}
