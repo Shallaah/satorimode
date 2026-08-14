@@ -1,20 +1,16 @@
 /* =========================================================
    SATORIMODE
    MAIN.JS
-   HEADER + MENÚS RESPONSIVE + BUSCADOR
+   HEADER + MENÚS RESPONSIVE + BUSCADOR + FILTROS
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-
     /* =====================================================
        DROPDOWNS DESKTOP
-       SOLO SE ABREN AL HACER CLICK
     ===================================================== */
 
-    const dropdowns =
-        document.querySelectorAll(".nav-dropdown");
-
+    const dropdowns = document.querySelectorAll(".nav-dropdown");
 
     function closeAllDropdowns() {
 
@@ -22,20 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             dropdown.classList.remove("active");
 
-
             const button =
-                dropdown.querySelector(
-                    ".nav-dropdown-btn"
-                );
-
+                dropdown.querySelector(".nav-dropdown-btn");
 
             if (button) {
-
                 button.setAttribute(
                     "aria-expanded",
                     "false"
                 );
-
             }
 
         });
@@ -46,233 +36,171 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdowns.forEach(function (dropdown) {
 
         const button =
-            dropdown.querySelector(
-                ".nav-dropdown-btn"
-            );
-
+            dropdown.querySelector(".nav-dropdown-btn");
 
         if (!button) return;
 
-
-        button.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-
-                const wasOpen =
-                    dropdown.classList.contains(
-                        "active"
-                    );
-
-
-                /* -----------------------------------------
-                   CERRAR TODOS
-                ----------------------------------------- */
-
-                closeAllDropdowns();
-
-
-                /* -----------------------------------------
-                   ABRIR EL SELECCIONADO
-                ----------------------------------------- */
-
-                if (!wasOpen) {
-
-                    dropdown.classList.add(
-                        "active"
-                    );
-
-
-                    button.setAttribute(
-                        "aria-expanded",
-                        "true"
-                    );
-
-                }
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       CERRAR DROPDOWN AL HACER CLICK FUERA
-    ===================================================== */
-
-    document.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                !event.target.closest(
-                    ".nav-dropdown"
-                )
-            ) {
-
-                closeAllDropdowns();
-
-            }
-
-        }
-    );
-
-
-
-    /* =====================================================
-       LINKS DEL DROPDOWN
-    ===================================================== */
-
-    document
-        .querySelectorAll(
-            ".dropdown-menu a"
-        )
-        .forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        closeAllDropdowns();
-
-                    }
-                );
-
-            }
-        );
-
-
-
-  /* =====================================================
-   MENÚ MÓVIL
-===================================================== */
-
-const mobileButton =
-    document.querySelector(".mobile-menu-button");
-
-const mobileMenu =
-    document.querySelector(".mobile-menu");
-
-const mobileClose =
-    document.querySelector(".mobile-menu-close");
-
-const mobileOverlay =
-    document.querySelector(".mobile-menu-overlay");
-
-
-/* =====================================================
-   ABRIR MENÚ MÓVIL
-===================================================== */
-
-function openMobileMenu() {
-
-    if (!mobileMenu) {
-        console.warn("SatoriMode: .mobile-menu no encontrado");
-        return;
-    }
-
-    /* Usamos ambos estados para evitar conflictos
-       entre versiones anteriores del CSS */
-
-    mobileMenu.classList.add("is-open");
-    mobileMenu.classList.add("active");
-
-
-    if (mobileOverlay) {
-
-        mobileOverlay.classList.add("is-open");
-        mobileOverlay.classList.add("active");
-
-    }
-
-
-    if (mobileButton) {
-
-        mobileButton.classList.add("is-open");
-        mobileButton.classList.add("active");
-
-        mobileButton.setAttribute(
-            "aria-expanded",
-            "true"
-        );
-
-    }
-
-
-    mobileMenu.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-/* =====================================================
-   CERRAR MENÚ MÓVIL
-===================================================== */
-
-function closeMobileMenu() {
-
-    if (!mobileMenu) return;
-
-
-    mobileMenu.classList.remove("is-open");
-    mobileMenu.classList.remove("active");
-
-
-    if (mobileOverlay) {
-
-        mobileOverlay.classList.remove("is-open");
-        mobileOverlay.classList.remove("active");
-
-    }
-
-
-    if (mobileButton) {
-
-        mobileButton.classList.remove("is-open");
-        mobileButton.classList.remove("active");
-
-        mobileButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-    }
-
-
-    mobileMenu.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-
-    document.body.style.overflow = "";
-
-}
-
-
-/* =====================================================
-   BOTÓN HAMBURGUESA
-===================================================== */
-
-if (mobileButton) {
-
-    mobileButton.addEventListener(
-        "click",
-        function (event) {
+        button.addEventListener("click", function (event) {
 
             event.preventDefault();
             event.stopPropagation();
 
+            const wasOpen =
+                dropdown.classList.contains("active");
+
+            closeAllDropdowns();
+
+            if (!wasOpen) {
+
+                dropdown.classList.add("active");
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+            }
+
+        });
+
+    });
+
+
+    /* =====================================================
+       CERRAR DROPDOWNS AL HACER CLICK FUERA
+    ===================================================== */
+
+    document.addEventListener("click", function (event) {
+
+        if (!event.target.closest(".nav-dropdown")) {
+            closeAllDropdowns();
+        }
+
+    });
+
+
+    /* =====================================================
+       LINKS DE DROPDOWN
+    ===================================================== */
+
+    document
+        .querySelectorAll(".dropdown-menu a")
+        .forEach(function (link) {
+
+            link.addEventListener("click", function () {
+                closeAllDropdowns();
+            });
+
+        });
+
+
+    /* =====================================================
+       MENÚ MÓVIL
+    ===================================================== */
+
+    const mobileButton =
+        document.querySelector(".mobile-menu-button");
+
+    const mobileMenu =
+        document.querySelector(".mobile-menu");
+
+    const mobileClose =
+        document.querySelector(".mobile-menu-close");
+
+    const mobileOverlay =
+        document.querySelector(".mobile-menu-overlay");
+
+
+    /* =====================================================
+       ABRIR MENÚ MÓVIL
+    ===================================================== */
+
+    function openMobileMenu() {
+
+        if (!mobileMenu) return;
+
+        mobileMenu.classList.add("is-open");
+        mobileMenu.classList.add("active");
+
+        if (mobileOverlay) {
+
+            mobileOverlay.classList.add("is-open");
+            mobileOverlay.classList.add("active");
+
+        }
+
+        if (mobileButton) {
+
+            mobileButton.classList.add("is-open");
+            mobileButton.classList.add("active");
+
+            mobileButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+        mobileMenu.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    /* =====================================================
+       CERRAR MENÚ MÓVIL
+    ===================================================== */
+
+    function closeMobileMenu() {
+
+        if (!mobileMenu) return;
+
+        mobileMenu.classList.remove("is-open");
+        mobileMenu.classList.remove("active");
+
+        if (mobileOverlay) {
+
+            mobileOverlay.classList.remove("is-open");
+            mobileOverlay.classList.remove("active");
+
+        }
+
+        if (mobileButton) {
+
+            mobileButton.classList.remove("is-open");
+            mobileButton.classList.remove("active");
+
+            mobileButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+        mobileMenu.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    /* =====================================================
+       BOTÓN HAMBURGUESA
+    ===================================================== */
+
+    if (mobileButton) {
+
+        mobileButton.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
 
             const menuIsOpen =
                 mobileMenu &&
@@ -281,125 +209,91 @@ if (mobileButton) {
                     mobileMenu.classList.contains("active")
                 );
 
-
             if (menuIsOpen) {
-
                 closeMobileMenu();
-
             } else {
-
                 openMobileMenu();
-
             }
 
-        }
-    );
+        });
 
-}
+    }
 
 
-/* =====================================================
-   BOTÓN X
-===================================================== */
+    /* =====================================================
+       BOTÓN X
+    ===================================================== */
 
-if (mobileClose) {
+    if (mobileClose) {
 
-    mobileClose.addEventListener(
-        "click",
-        function (event) {
+        mobileClose.addEventListener("click", function (event) {
 
             event.preventDefault();
 
             closeMobileMenu();
 
-        }
-    );
+        });
 
-}
+    }
 
 
-/* =====================================================
-   OVERLAY
-===================================================== */
+    /* =====================================================
+       OVERLAY
+    ===================================================== */
 
-if (mobileOverlay) {
+    if (mobileOverlay) {
 
-    mobileOverlay.addEventListener(
-        "click",
-        function () {
+        mobileOverlay.addEventListener("click", function () {
 
             closeMobileMenu();
 
-        }
-    );
+        });
 
-}
-
-
-/* =====================================================
-   SUBMENÚS MÓVILES
-===================================================== */
-
-const mobileButtons =
-    document.querySelectorAll(
-        ".mobile-nav-button"
-    );
+    }
 
 
-mobileButtons.forEach(function (button) {
+    /* =====================================================
+       SUBMENÚS MÓVILES
+    ===================================================== */
 
-    button.addEventListener(
-        "click",
-        function (event) {
+    const mobileButtons =
+        document.querySelectorAll(".mobile-nav-button");
+
+
+    mobileButtons.forEach(function (button) {
+
+        button.addEventListener("click", function (event) {
 
             event.preventDefault();
             event.stopPropagation();
 
-
             const submenu =
                 button.nextElementSibling;
 
-
             if (
                 !submenu ||
-                !submenu.classList.contains(
-                    "mobile-submenu"
-                )
+                !submenu.classList.contains("mobile-submenu")
             ) {
-
                 return;
-
             }
-
 
             const wasOpen =
                 submenu.classList.contains("is-open") ||
                 submenu.classList.contains("active");
 
 
-            /* CERRAR TODOS */
-
             document
-                .querySelectorAll(
-                    ".mobile-submenu"
-                )
+                .querySelectorAll(".mobile-submenu")
                 .forEach(function (menu) {
 
-                    menu.classList.remove(
-                        "is-open"
-                    );
-
-                    menu.classList.remove(
-                        "active"
-                    );
+                    menu.classList.remove("is-open");
+                    menu.classList.remove("active");
 
                 });
 
 
             document
-                .querySelectorAll(
-                    ".mobile-nav-button"
-                )
+                .querySelectorAll(".mobile-nav-button")
                 .forEach(function (otherButton) {
 
                     otherButton.setAttribute(
@@ -407,151 +301,123 @@ mobileButtons.forEach(function (button) {
                         "false"
                     );
 
-                    otherButton.classList.remove(
-                        "is-open"
-                    );
-
-                    otherButton.classList.remove(
-                        "active"
-                    );
+                    otherButton.classList.remove("is-open");
+                    otherButton.classList.remove("active");
 
                 });
 
 
-            /* ABRIR EL SELECCIONADO */
-
             if (!wasOpen) {
 
-                submenu.classList.add(
-                    "is-open"
-                );
-
-                submenu.classList.add(
-                    "active"
-                );
-
+                submenu.classList.add("is-open");
+                submenu.classList.add("active");
 
                 button.setAttribute(
                     "aria-expanded",
                     "true"
                 );
 
-
-                button.classList.add(
-                    "is-open"
-                );
-
-                button.classList.add(
-                    "active"
-                );
+                button.classList.add("is-open");
+                button.classList.add("active");
 
             }
 
-        }
-    );
-
-});
-
-
-/* =====================================================
-   CERRAR AL ELEGIR UN LINK
-===================================================== */
-
-document
-    .querySelectorAll(
-        ".mobile-menu a"
-    )
-    .forEach(function (link) {
-
-        link.addEventListener(
-            "click",
-            function () {
-
-                closeMobileMenu();
-
-            }
-        );
+        });
 
     });
 
-   
+
+    /* =====================================================
+       CERRAR MENÚ AL ELEGIR LINK
+    ===================================================== */
+
+    document
+        .querySelectorAll(".mobile-menu a")
+        .forEach(function (link) {
+
+            link.addEventListener("click", function () {
+                closeMobileMenu();
+            });
+
+        });
+
+
     /* =====================================================
        BUSCADOR
     ===================================================== */
 
     const searchButton =
-        document.querySelector(
-            ".search-button"
-        );
-
+        document.querySelector(".search-button");
 
     const searchOverlay =
-        document.querySelector(
-            ".search-overlay"
-        );
-
+        document.querySelector(".search-overlay");
 
     const searchClose =
-        document.querySelector(
-            ".search-close"
-        );
-
+        document.querySelector(".search-close");
 
     const searchInput =
-        document.querySelector(
-            "#product-search"
-        );
-
+        document.querySelector("#product-search");
 
     const searchResults =
-        document.querySelector(
-            "#search-results"
-        );
-
+        document.querySelector("#search-results");
 
 
     /* =====================================================
-       PRODUCTOS PARA EL BUSCADOR
+       PRODUCTOS DEL BUSCADOR
     ===================================================== */
 
     const searchProducts = [
 
         {
-            name: "Polera Anime",
+            name: "Polera Kid Buu",
+            category: "ANIME",
+            price: "$18.990",
+            image: "/satorimode/productos/anime/polera-kid-buu-01.PNG",
+            url: "/satorimode/productos/anime/polera-kid-buu.html"
+        },
+
+        {
+            name: "Polera Anime 02",
             category: "ANIME",
             price: "$24.990",
-            image: "images/polera-anime.jpg",
-            url: "anime.html"
+            image: "",
+            url: "/satorimode/anime.html"
+        },
+
+        {
+            name: "Polera Anime 03",
+            category: "ANIME",
+            price: "$24.990",
+            image: "",
+            url: "/satorimode/anime.html"
         },
 
         {
             name: "Polera Streetwear",
             category: "STREETWEAR",
             price: "$24.990",
-            image: "images/polera-streetwear.jpg",
-            url: "streetwear.html"
+            image: "",
+            url: "/satorimode/streetwear.html"
         },
 
         {
             name: "Polera Satorii",
             category: "EXCLUSIVOS",
             price: "$26.990",
-            image: "images/polera-satorii.jpg",
-            url: "exclusivos.html"
+            image: "",
+            url: "/satorimode/exclusivos.html"
         }
 
     ];
 
 
-
     /* =====================================================
-       MENSAJE DEL BUSCADOR
+       MENSAJE BUSCADOR
     ===================================================== */
 
     function renderSearchMessage(message) {
 
         if (!searchResults) return;
-
 
         searchResults.innerHTML = `
             <p class="search-empty">
@@ -562,59 +428,40 @@ document
     }
 
 
-
     /* =====================================================
        ABRIR BUSCADOR
     ===================================================== */
 
-    if (
-        searchButton &&
-        searchOverlay
-    ) {
+    if (searchButton && searchOverlay) {
 
-        searchButton.addEventListener(
-            "click",
-            function (event) {
+        searchButton.addEventListener("click", function (event) {
 
-                event.preventDefault();
-                event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
 
+            searchOverlay.classList.add("active");
 
-                searchOverlay.classList.add(
-                    "active"
-                );
+            searchOverlay.setAttribute(
+                "aria-hidden",
+                "false"
+            );
 
+            searchButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
 
-                searchOverlay.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
+            if (searchInput) {
 
-
-                searchButton.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-
-                if (searchInput) {
-
-                    setTimeout(
-                        function () {
-
-                            searchInput.focus();
-
-                        },
-                        150
-                    );
-
-                }
+                setTimeout(function () {
+                    searchInput.focus();
+                }, 150);
 
             }
-        );
+
+        });
 
     }
-
 
 
     /* =====================================================
@@ -625,17 +472,12 @@ document
 
         if (!searchOverlay) return;
 
-
-        searchOverlay.classList.remove(
-            "active"
-        );
-
+        searchOverlay.classList.remove("active");
 
         searchOverlay.setAttribute(
             "aria-hidden",
             "true"
         );
-
 
         if (searchButton) {
 
@@ -646,20 +488,15 @@ document
 
         }
 
-
         if (searchInput) {
-
             searchInput.value = "";
-
         }
-
 
         renderSearchMessage(
             "Busca tu próxima polera Satorii."
         );
 
     }
-
 
 
     /* =====================================================
@@ -676,10 +513,8 @@ document
     }
 
 
-
     /* =====================================================
-       CERRAR BUSCADOR AL HACER CLICK
-       FUERA DE LA VENTANA
+       CERRAR BUSCADOR HACIENDO CLICK FUERA
     ===================================================== */
 
     if (searchOverlay) {
@@ -688,13 +523,8 @@ document
             "click",
             function (event) {
 
-                if (
-                    event.target ===
-                    searchOverlay
-                ) {
-
+                if (event.target === searchOverlay) {
                     closeSearch();
-
                 }
 
             }
@@ -703,15 +533,11 @@ document
     }
 
 
-
     /* =====================================================
-       RESULTADOS DEL BUSCADOR
+       RESULTADOS BUSCADOR
     ===================================================== */
 
-    if (
-        searchInput &&
-        searchResults
-    ) {
+    if (searchInput && searchResults) {
 
         searchInput.addEventListener(
             "input",
@@ -722,10 +548,6 @@ document
                         .trim()
                         .toLowerCase();
 
-
-                /* -----------------------------------------
-                   SIN BÚSQUEDA
-                ----------------------------------------- */
 
                 if (!query) {
 
@@ -738,39 +560,25 @@ document
                 }
 
 
-                /* -----------------------------------------
-                   FILTRAR PRODUCTOS
-                ----------------------------------------- */
-
                 const results =
                     searchProducts.filter(
                         function (product) {
 
                             return (
-
                                 product.name
                                     .toLowerCase()
-                                    .includes(
-                                        query
-                                    )
+                                    .includes(query)
 
                                 ||
 
                                 product.category
                                     .toLowerCase()
-                                    .includes(
-                                        query
-                                    )
-
+                                    .includes(query)
                             );
 
                         }
                     );
 
-
-                /* -----------------------------------------
-                   SIN RESULTADOS
-                ----------------------------------------- */
 
                 if (!results.length) {
 
@@ -783,61 +591,60 @@ document
                 }
 
 
-                /* -----------------------------------------
-                   MOSTRAR RESULTADOS
-                ----------------------------------------- */
-
                 searchResults.innerHTML =
                     results
-                        .map(
-                            function (product) {
+                        .map(function (product) {
 
-                                return `
+                            return `
 
-                                    <a
-                                        href="${product.url}"
-                                        class="search-result-item"
-                                    >
+                                <a
+                                    href="${product.url}"
+                                    class="search-result-item"
+                                >
 
+                                    ${
+                                        product.image
+                                        ?
+                                        `
                                         <img
                                             src="${product.image}"
                                             alt="${product.name}"
                                             class="search-result-image"
                                         >
+                                        `
+                                        :
+                                        ""
+                                    }
 
+                                    <div
+                                        class="search-result-info"
+                                    >
 
-                                        <div
-                                            class="search-result-info"
+                                        <span
+                                            class="search-result-category"
                                         >
+                                            ${product.category}
+                                        </span>
 
-                                            <span
-                                                class="search-result-category"
-                                            >
-                                                ${product.category}
-                                            </span>
+                                        <span
+                                            class="search-result-name"
+                                        >
+                                            ${product.name}
+                                        </span>
 
+                                        <span
+                                            class="search-result-price"
+                                        >
+                                            ${product.price}
+                                        </span>
 
-                                            <span
-                                                class="search-result-name"
-                                            >
-                                                ${product.name}
-                                            </span>
+                                    </div>
 
+                                </a>
 
-                                            <span
-                                                class="search-result-price"
-                                            >
-                                                ${product.price}
-                                            </span>
+                            `;
 
-                                        </div>
-
-                                    </a>
-
-                                `;
-
-                            }
-                        )
+                        })
                         .join("");
 
             }
@@ -846,109 +653,75 @@ document
     }
 
 
-
     /* =====================================================
-       ESC = CERRAR TODO
+       FILTROS · ANIME
     ===================================================== */
 
-    document.addEventListener(
-        "keydown",
-        function (event) {
+    const animeFilterToggle =
+        document.querySelector("#animeFilterToggle");
 
-            if (
-                event.key !==
-                "Escape"
-            ) {
-
-                return;
-
-            }
+    const animeFilters =
+        document.querySelector("#animeFilters");
 
 
-            closeAllDropdowns();
+    if (animeFilterToggle && animeFilters) {
 
-            closeMobileMenu();
+        animeFilterToggle.addEventListener(
+            "click",
+            function (event) {
 
-            closeSearch();
+                event.preventDefault();
+                event.stopPropagation();
 
-        }
-    );
-/* =====================================================
-   FILTROS · ANIME
-===================================================== */
-
-const animeFilterToggle =
-    document.querySelector("#animeFilterToggle");
-
-const animeFilters =
-    document.querySelector("#animeFilters");
+                const isOpen =
+                    animeFilters.classList.contains("is-open");
 
 
-/* =====================================================
-   ABRIR / CERRAR FILTROS
-===================================================== */
+                if (isOpen) {
 
-if (animeFilterToggle && animeFilters) {
+                    animeFilters.classList.remove(
+                        "is-open"
+                    );
 
-    animeFilterToggle.addEventListener(
-        "click",
-        function (event) {
+                    animeFilterToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
 
-            event.preventDefault();
-            event.stopPropagation();
+                    animeFilterToggle.textContent =
+                        "☷ MOSTRAR FILTROS";
 
-            const isOpen =
-                animeFilters.classList.contains("is-open");
+                } else {
 
+                    animeFilters.classList.add(
+                        "is-open"
+                    );
 
-            if (isOpen) {
+                    animeFilterToggle.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
 
-                animeFilters.classList.remove(
-                    "is-open"
-                );
+                    animeFilterToggle.textContent =
+                        "× OCULTAR FILTROS";
 
-                animeFilterToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                animeFilterToggle.textContent =
-                    "☷ MOSTRAR FILTROS";
-
-            } else {
-
-                animeFilters.classList.add(
-                    "is-open"
-                );
-
-                animeFilterToggle.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-                animeFilterToggle.textContent =
-                    "× OCULTAR FILTROS";
+                }
 
             }
+        );
 
-        }
-    );
-
-}
+    }
 
 
-/* =====================================================
-   SELECCIÓN DE FILTROS
-===================================================== */
+    /* =====================================================
+       SELECCIÓN FILTROS
+    ===================================================== */
 
-const animeFilterButtons =
-    document.querySelectorAll(
-        ".anime-filter"
-    );
+    const animeFilterButtons =
+        document.querySelectorAll(".anime-filter");
 
 
-animeFilterButtons.forEach(
-    function (button) {
+    animeFilterButtons.forEach(function (button) {
 
         button.addEventListener(
             "click",
@@ -957,21 +730,12 @@ animeFilterButtons.forEach(
                 event.preventDefault();
                 event.stopPropagation();
 
-
                 const filterType =
                     button.dataset.filter;
 
-
                 const wasActive =
-                    button.classList.contains(
-                        "active"
-                    );
+                    button.classList.contains("active");
 
-
-                /* -----------------------------------------
-                   TALLA
-                   Solo una talla activa a la vez
-                ----------------------------------------- */
 
                 if (filterType === "size") {
 
@@ -979,23 +743,16 @@ animeFilterButtons.forEach(
                         .querySelectorAll(
                             '.anime-filter[data-filter="size"]'
                         )
-                        .forEach(
-                            function (otherButton) {
+                        .forEach(function (otherButton) {
 
-                                otherButton.classList.remove(
-                                    "active"
-                                );
+                            otherButton.classList.remove(
+                                "active"
+                            );
 
-                            }
-                        );
+                        });
 
                 }
 
-
-                /* -----------------------------------------
-                   COLOR
-                   Solo un color activo a la vez
-                ----------------------------------------- */
 
                 if (filterType === "color") {
 
@@ -1003,35 +760,46 @@ animeFilterButtons.forEach(
                         .querySelectorAll(
                             '.anime-filter[data-filter="color"]'
                         )
-                        .forEach(
-                            function (otherButton) {
+                        .forEach(function (otherButton) {
 
-                                otherButton.classList.remove(
-                                    "active"
-                                );
+                            otherButton.classList.remove(
+                                "active"
+                            );
 
-                            }
-                        );
+                        });
 
                 }
 
 
-                /* -----------------------------------------
-                   SI YA ESTABA ACTIVO
-                   → queda desmarcado
-                ----------------------------------------- */
-
                 if (!wasActive) {
 
-                    button.classList.add(
-                        "active"
-                    );
+                    button.classList.add("active");
 
                 }
 
             }
         );
 
-    }
-);
+    });
+
+
+    /* =====================================================
+       ESC → CERRAR TODO
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Escape") {
+                return;
+            }
+
+            closeAllDropdowns();
+            closeMobileMenu();
+            closeSearch();
+
+        }
+    );
+
 });
