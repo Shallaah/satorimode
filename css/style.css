@@ -5058,3 +5058,212 @@ main {
     }
 
 }
+
+/* =========================================================
+   INFORMACIÓN DEL PRODUCTO · TABS
+========================================================= */
+
+.product-info-tabs {
+
+    width: 100%;
+
+    margin-top: 26px;
+
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.product-info-tabs-header {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    width: 100%;
+
+}
+
+
+.product-info-tab {
+
+    appearance: none;
+
+    border: none;
+
+    background: #f7f7f7;
+
+    padding: 20px 16px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color: #111;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    border-bottom: 1px solid #dedede;
+
+}
+
+
+.product-info-tab:first-child {
+
+    border-right: 1px solid #dedede;
+
+}
+
+
+.product-info-tab:hover {
+
+    background: #eeeeee;
+
+}
+
+
+.product-info-tab.active {
+
+    background: #ffffff;
+
+    color: #ed1111;
+
+    border-bottom: 2px solid #ed1111;
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.product-info-tab-content {
+
+    display: none;
+
+    padding: 24px 22px 26px;
+
+    background: #ffffff;
+
+}
+
+
+.product-info-tab-content.active {
+
+    display: block;
+
+}
+
+
+.product-info-tab-content h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    font-weight: 700;
+
+}
+
+
+.product-info-tab-content p {
+
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    color: #666;
+
+}
+
+
+/* =========================================================
+   ENVÍOS / GARANTÍA
+========================================================= */
+
+.product-info-item {
+
+    margin-bottom: 20px;
+
+}
+
+
+.product-info-item:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+.product-info-item strong {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.8px;
+
+    color: #111;
+
+}
+
+
+.product-info-item p {
+
+    margin: 0;
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .product-info-tabs {
+
+        margin-top: 20px;
+
+    }
+
+
+    .product-info-tab {
+
+        padding: 17px 10px;
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+
+    }
+
+
+    .product-info-tab-content {
+
+        padding: 20px 16px 22px;
+
+    }
+
+}
