@@ -17,7 +17,7 @@
 
  La página utiliza una plantilla estándar.
 
- La información específica se controla desde:
+ Información editable desde products.js:
 
     details.description
     details.shipping
@@ -91,7 +91,7 @@ function loadProducts() {
 
 
 /* =====================================================
-   UTILIDADES
+   ESCAPAR HTML
 ===================================================== */
 
 function escapeHTML(value) {
@@ -456,13 +456,29 @@ function generateColors(product) {
 
 
 /* =====================================================
-   INFORMACIÓN DEL PRODUCTO
+   DESCRIPCIÓN / ENVÍOS / GARANTÍA
 ===================================================== */
 
 function generateDetails(product) {
 
     const details =
         product.details || {};
+
+
+    const description =
+        details.description ||
+        product.description ||
+        "Producto SatoriMode.";
+
+
+    const shipping =
+        details.shipping ||
+        "Enviamos a todo Chile.";
+
+
+    const warranty =
+        details.warranty ||
+        "Todos nuestros productos cuentan con garantía.";
 
 
     return `
@@ -518,9 +534,7 @@ function generateDetails(product) {
 
                 <p>
                     ${escapeHTML(
-                        details.description ||
-                        product.description ||
-                        "Producto SatoriMode."
+                        description
                     )}
                 </p>
 
@@ -543,8 +557,7 @@ function generateDetails(product) {
 
                 <p>
                     ${escapeHTML(
-                        details.shipping ||
-                        "Enviamos a todo Chile."
+                        shipping
                     )}
                 </p>
 
@@ -556,8 +569,7 @@ function generateDetails(product) {
 
                 <p>
                     ${escapeHTML(
-                        details.warranty ||
-                        "Todos nuestros productos cuentan con garantía."
+                        warranty
                     )}
                 </p>
 
@@ -572,7 +584,7 @@ function generateDetails(product) {
 
 
 /* =====================================================
-   HTML DEL PRODUCTO
+   HTML COMPLETO DEL PRODUCTO
 ===================================================== */
 
 function generateProductHTML(
@@ -581,7 +593,9 @@ function generateProductHTML(
 ) {
 
     const name =
-        escapeHTML(product.name);
+        escapeHTML(
+            product.name
+        );
 
 
     const category =
@@ -593,7 +607,9 @@ function generateProductHTML(
 
 
     const price =
-        formatPrice(product.price);
+        formatPrice(
+            product.price
+        );
 
 
     const gallery =
@@ -604,15 +620,21 @@ function generateProductHTML(
 
 
     const colors =
-        generateColors(product);
+        generateColors(
+            product
+        );
 
 
     const sizes =
-        generateSizes(product);
+        generateSizes(
+            product
+        );
 
 
     const details =
-        generateDetails(product);
+        generateDetails(
+            product
+        );
 
 
     const categoryPath =
@@ -684,7 +706,7 @@ function generateProductHTML(
                  INFORMACIÓN
             ========================================== -->
 
-            <div class="product-info">
+            <div class="product-page-info">
 
 
                 <span class="product-category">
@@ -694,14 +716,14 @@ function generateProductHTML(
                 </span>
 
 
-                <h1 class="product-title">
+                <h1 class="product-page-title">
 
                     ${name}
 
                 </h1>
 
 
-                <div class="product-price">
+                <div class="product-page-price">
 
                     ${price}
 
@@ -760,7 +782,7 @@ function generateProductHTML(
 
                 <button
                     type="button"
-                    class="add-to-cart"
+                    class="add-to-cart-button"
                     id="addToCart"
                     data-product-id="${escapeHTML(
                         product.id
@@ -1262,8 +1284,7 @@ function generateProducts() {
 
             const slug =
                 slugify(
-                    product.id ||
-                    product.name
+                    product.id
                 );
 
 
