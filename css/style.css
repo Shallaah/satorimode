@@ -4786,3 +4786,113 @@ main {
     }
 
 }
+
+/* =========================================================
+   INFORMACIÓN DEL PRODUCTO
+========================================================= */
+
+.product-details-box {
+    width: 100%;
+    margin-top: 26px;
+
+    border: 1px solid #e5e5e5;
+    background: #fff;
+}
+
+
+/* PESTAÑAS */
+
+.product-details-tabs {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    width: 100%;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+.product-details-tab {
+    width: 100%;
+
+    border: 0;
+
+    background: #f7f7f7;
+
+    padding: 18px 12px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    color: #111;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.product-details-tab:first-child {
+    border-right: 1px solid #e5e5e5;
+}
+
+
+.product-details-tab:hover {
+    background: #eeeeee;
+}
+
+
+.product-details-tab.active {
+    background: #fff;
+
+    color: #ed1111;
+}
+
+
+/* CONTENIDO */
+
+.product-details-panel {
+    display: none;
+
+    padding: 28px;
+}
+
+
+.product-details-panel.active {
+    display: block;
+}
+
+
+.product-details-panel h4 {
+    margin: 0 0 10px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+
+.product-details-panel p {
+    margin: 0 0 24px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.product-details-panel p:last-child {
+    margin-bottom: 0;
+}
