@@ -15,7 +15,7 @@
    - tarjetas de productos
    - imágenes
    - enlaces
-   - recomendaciones
+   - recomendaciones aleatorias
    - filtros
 ========================================================= */
 
@@ -46,9 +46,6 @@ document.addEventListener(
             /productos/anime/
             /productos/streetwear/
             /productos/accesorios/
-
-            Esto es importante porque las rutas de
-            products.js están escritas desde la raíz.
         */
 
         function isProductPage() {
@@ -60,8 +57,8 @@ document.addEventListener(
 
 
         /*
-            Convierte una ruta de products.js en una
-            ruta correcta para la página actual.
+            Convierte una ruta de products.js en
+            una ruta correcta para la página actual.
         */
 
         function getAssetPath(path) {
@@ -74,11 +71,9 @@ document.addEventListener(
 
 
             /*
-                En páginas individuales:
+                Página individual:
 
                 /productos/anime/goku.html
-
-                necesitamos:
 
                 ../../productos/anime/imagen.PNG
             */
@@ -91,11 +86,9 @@ document.addEventListener(
 
 
             /*
-                En páginas normales:
+                Página normal:
 
                 /anime.html
-
-                funciona directamente:
 
                 productos/anime/imagen.PNG
             */
@@ -107,7 +100,7 @@ document.addEventListener(
 
         /*
             Convierte la URL del producto para que
-            funcione correctamente desde cualquier página.
+            funcione desde cualquier página.
         */
 
         function getProductUrl(product) {
@@ -149,111 +142,10 @@ document.addEventListener(
 
 
         /* =================================================
-           BUSCAR CONTENEDOR
-        ================================================= */
-
-        const productsGrid =
-            document.querySelector(
-                ".products-grid[data-category], #all-products-grid, #animeProductsGrid, #streetwearProductsGrid, #accesoriosProductsGrid"
-            );
-
-
-        /*
-            Si no existe un contenedor de productos,
-            no hacemos nada.
-
-            Esto evita interferir con otros elementos
-            de la página.
-        */
-
-        if (!productsGrid) {
-
-            console.log(
-                "SatoriMode: no hay catálogo de productos en esta página."
-            );
-
-            return;
-
-        }
-
-
-        /* =================================================
-           DETECTAR CATEGORÍA
-        ================================================= */
-
-        let pageCategory =
-            productsGrid.dataset.category ||
-            null;
-
-
-        /*
-            Compatibilidad con IDs antiguos.
-        */
-
-        if (
-            !pageCategory &&
-            productsGrid.id === "animeProductsGrid"
-        ) {
-
-            pageCategory = "anime";
-
-        }
-
-
-        if (
-            !pageCategory &&
-            productsGrid.id === "streetwearProductsGrid"
-        ) {
-
-            pageCategory = "streetwear";
-
-        }
-
-
-        if (
-            !pageCategory &&
-            productsGrid.id === "accesoriosProductsGrid"
-        ) {
-
-            pageCategory = "accesorios";
-
-        }
-
-
-        /*
-            "all" = todos los productos.
-        */
-
-        if (
-            pageCategory === "all"
-        ) {
-
-            pageCategory = null;
-
-        }
-
-
-        /* =================================================
-           ESTADO DE FILTROS
-        ================================================= */
-
-        let activeFilters = {
-
-            collection: null,
-
-            size: null,
-
-            color: null
-
-        };
-
-
-        /* =================================================
-           CREAR TARJETA
+           CREAR TARJETA DE PRODUCTO
         ================================================= */
 
         function createProductCard(product) {
-
 
             const card =
                 document.createElement("a");
@@ -262,13 +154,6 @@ document.addEventListener(
             card.className =
                 "product-card";
 
-
-            /*
-                IMPORTANTE:
-
-                Usamos una ruta corregida dependiendo
-                de dónde esté ubicada la página.
-            */
 
             card.href =
                 getProductUrl(product);
@@ -371,11 +256,109 @@ document.addEventListener(
 
 
         /* =================================================
-           OBTENER PRODUCTOS
+           BUSCAR CONTENEDOR PRINCIPAL
+        ================================================= */
+
+        const productsGrid =
+            document.querySelector(
+                ".products-grid[data-category], #all-products-grid, #animeProductsGrid, #streetwearProductsGrid, #accesoriosProductsGrid"
+            );
+
+
+        /*
+            Si no existe un catálogo principal,
+            no interferimos con la página.
+        */
+
+        if (!productsGrid) {
+
+            console.log(
+                "SatoriMode: no hay catálogo principal de productos en esta página."
+            );
+
+        }
+
+
+        /* =================================================
+           DETECTAR CATEGORÍA
+        ================================================= */
+
+        let pageCategory =
+            productsGrid
+                ? productsGrid.dataset.category || null
+                : null;
+
+
+        /*
+            Compatibilidad con IDs antiguos.
+        */
+
+        if (
+            !pageCategory &&
+            productsGrid &&
+            productsGrid.id === "animeProductsGrid"
+        ) {
+
+            pageCategory = "anime";
+
+        }
+
+
+        if (
+            !pageCategory &&
+            productsGrid &&
+            productsGrid.id === "streetwearProductsGrid"
+        ) {
+
+            pageCategory = "streetwear";
+
+        }
+
+
+        if (
+            !pageCategory &&
+            productsGrid &&
+            productsGrid.id === "accesoriosProductsGrid"
+        ) {
+
+            pageCategory = "accesorios";
+
+        }
+
+
+        /*
+            "all" = todos los productos.
+        */
+
+        if (
+            pageCategory === "all"
+        ) {
+
+            pageCategory = null;
+
+        }
+
+
+        /* =================================================
+           ESTADO DE FILTROS
+        ================================================= */
+
+        let activeFilters = {
+
+            collection: null,
+
+            size: null,
+
+            color: null
+
+        };
+
+
+        /* =================================================
+           OBTENER PRODUCTOS DE LA PÁGINA
         ================================================= */
 
         function getPageProducts() {
-
 
             return PRODUCTS.filter(
                 function (product) {
@@ -423,7 +406,6 @@ document.addEventListener(
         function applyFilters(
             products
         ) {
-
 
             return products.filter(
                 function (product) {
@@ -513,6 +495,12 @@ document.addEventListener(
 
         function renderProducts() {
 
+            if (!productsGrid) {
+
+                return;
+
+            }
+
 
             productsGrid.innerHTML = "";
 
@@ -570,6 +558,218 @@ document.addEventListener(
                     );
 
                 }
+            );
+
+        }
+
+
+        /* =================================================
+           RECOMENDACIONES ALEATORIAS
+        ================================================= */
+
+        function getRandomRecommendations(
+            currentProductId,
+            limit = 3
+        ) {
+
+
+            /*
+                Tomamos TODOS los productos disponibles.
+
+                No importa si son:
+                - Anime
+                - Streetwear
+                - Accesorios
+
+                Así las recomendaciones pueden variar.
+            */
+
+            let products =
+                PRODUCTS.filter(
+                    function (product) {
+
+                        return (
+                            product.available === true &&
+                            product.id !== currentProductId
+                        );
+
+                    }
+                );
+
+
+            /*
+                Mezclar aleatoriamente.
+
+                De esta manera cada vez que se
+                genere la sección puede aparecer
+                una combinación diferente.
+            */
+
+            products.sort(
+                function () {
+
+                    return Math.random() - 0.5;
+
+                }
+            );
+
+
+            /*
+                Devolver solamente la cantidad
+                solicitada.
+            */
+
+            return products.slice(
+                0,
+                limit
+            );
+
+        }
+
+
+        /* =================================================
+           OBTENER PRODUCTO ACTUAL
+        ================================================= */
+
+        function getCurrentProductId() {
+
+            /*
+                Opción 1:
+                el contenedor de recomendaciones
+                puede indicar el ID.
+            */
+
+            const recommendationContainer =
+                document.querySelector(
+                    "#relatedProductsGrid, #recommendedProductsGrid"
+                );
+
+
+            if (
+                recommendationContainer &&
+                recommendationContainer.dataset.productId
+            ) {
+
+                return recommendationContainer
+                    .dataset
+                    .productId;
+
+            }
+
+
+            /*
+                Opción 2:
+                intentar obtener el ID desde
+                la URL actual comparándola con
+                products.js.
+            */
+
+            const currentPath =
+                window.location.pathname;
+
+
+            const currentProduct =
+                PRODUCTS.find(
+                    function (product) {
+
+                        if (!product.url) {
+
+                            return false;
+
+                        }
+
+
+                        return (
+                            currentPath.endsWith(
+                                product.url
+                            )
+                        );
+
+                    }
+                );
+
+
+            if (currentProduct) {
+
+                return currentProduct.id;
+
+            }
+
+
+            return null;
+
+        }
+
+
+        /* =================================================
+           MOSTRAR RECOMENDACIONES
+        ================================================= */
+
+        function renderRecommendations() {
+
+
+            const recommendationContainer =
+                document.querySelector(
+                    "#relatedProductsGrid, #recommendedProductsGrid"
+                );
+
+
+            /*
+                Si la página no tiene recomendaciones,
+                no hacemos nada.
+            */
+
+            if (
+                !recommendationContainer
+            ) {
+
+                return;
+
+            }
+
+
+            const currentProductId =
+                getCurrentProductId();
+
+
+            const recommendations =
+                getRandomRecommendations(
+                    currentProductId,
+                    3
+                );
+
+
+            recommendationContainer.innerHTML =
+                "";
+
+
+            /*
+                Si no hay suficientes productos,
+                mostramos los disponibles.
+            */
+
+            recommendations.forEach(
+                function (product) {
+
+                    recommendationContainer.appendChild(
+                        createProductCard(
+                            product
+                        )
+                    );
+
+                }
+            );
+
+
+            console.log(
+                "SatoriMode · Recomendaciones generadas:",
+                recommendations.map(
+                    function (product) {
+
+                        return product.name;
+
+                    }
+                )
             );
 
         }
@@ -822,6 +1022,13 @@ document.addEventListener(
 
 
         /* =================================================
+           GENERAR RECOMENDACIONES
+        ================================================= */
+
+        renderRecommendations();
+
+
+        /* =================================================
            COMPROBACIÓN
         ================================================= */
 
@@ -830,13 +1037,21 @@ document.addEventListener(
         );
 
 
-        console.log(
-            pageCategory
+        if (pageCategory) {
 
-                ? `SatoriMode · Categoría: ${pageCategory}`
+            console.log(
+                `SatoriMode · Categoría: ${pageCategory}`
+            );
 
-                : "SatoriMode · Mostrando todos los productos."
-        );
+        }
+
+        else {
+
+            console.log(
+                "SatoriMode · Mostrando todos los productos."
+            );
+
+        }
 
 
     }
