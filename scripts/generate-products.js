@@ -381,10 +381,6 @@ function generateSizes(product) {
 }
 
 
-/* =====================================================
-   COLORES
-===================================================== */
-
 function generateColors(product) {
 
     if (
@@ -411,6 +407,62 @@ function generateColors(product) {
                 ${product.colors
                     .map(function (color, index) {
 
+                        const colorName =
+                            String(color).toLowerCase().trim();
+
+                        let colorClass = "color-default";
+
+
+                        if (
+                            colorName === "blanco" ||
+                            colorName === "white"
+                        ) {
+
+                            colorClass = "color-white";
+
+                        }
+
+
+                        if (
+                            colorName === "negro" ||
+                            colorName === "black"
+                        ) {
+
+                            colorClass = "color-black";
+
+                        }
+
+
+                        if (
+                            colorName === "rojo" ||
+                            colorName === "red"
+                        ) {
+
+                            colorClass = "color-red";
+
+                        }
+
+
+                        if (
+                            colorName === "azul" ||
+                            colorName === "blue"
+                        ) {
+
+                            colorClass = "color-blue";
+
+                        }
+
+
+                        if (
+                            colorName === "verde" ||
+                            colorName === "green"
+                        ) {
+
+                            colorClass = "color-green";
+
+                        }
+
+
                         return `
 
                             <button
@@ -425,11 +477,17 @@ function generateColors(product) {
                                 )}"
                             >
 
-                                <span></span>
+                                <span
+                                    class="color-dot ${colorClass}"
+                                ></span>
 
-                                ${escapeHTML(
-                                    color
-                                )}
+                                <span class="color-name">
+
+                                    ${escapeHTML(
+                                        color
+                                    )}
+
+                                </span>
 
                             </button>
 
@@ -445,7 +503,6 @@ function generateColors(product) {
     `;
 
 }
-
 
 /* =====================================================
    HTML COMPLETO
