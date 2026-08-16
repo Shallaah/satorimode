@@ -1700,3 +1700,470 @@ img {
     }
 
 }
+
+/* =========================================================
+   SATORII — BUSCADOR GLOBAL
+   CORRECCIÓN FINAL
+========================================================= */
+
+/* ---------------------------------------------------------
+   OVERLAY
+--------------------------------------------------------- */
+
+#satori-header .search-overlay {
+
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+
+    display: flex !important;
+
+    align-items: flex-start !important;
+    justify-content: center !important;
+
+    padding:
+        90px 16px 30px !important;
+
+    background:
+        rgba(0, 0, 0, .55) !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    z-index: 2000000 !important;
+
+    transition:
+        opacity .2s ease,
+        visibility .2s ease !important;
+}
+
+
+/* ---------------------------------------------------------
+   OVERLAY ABIERTO
+--------------------------------------------------------- */
+
+#satori-header .search-overlay.open {
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   CAJA
+--------------------------------------------------------- */
+
+#satori-header .search-box {
+
+    position: relative !important;
+
+    width:
+        min(700px, 100%) !important;
+
+    max-width: 700px !important;
+
+    padding: 30px !important;
+
+    margin: 0 !important;
+
+    background: #fff !important;
+
+    border:
+        1px solid #ddd !important;
+
+    border-radius: 16px !important;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, .25) !important;
+
+    transform:
+        translateY(-15px) !important;
+
+    transition:
+        transform .2s ease !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   CAJA ABIERTA
+--------------------------------------------------------- */
+
+#satori-header
+.search-overlay.open
+.search-box {
+
+    transform:
+        translateY(0) !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   BOTÓN CERRAR
+--------------------------------------------------------- */
+
+#satori-header .search-close {
+
+    position: absolute !important;
+
+    top: 10px !important;
+
+    right: 12px !important;
+
+    width: 38px !important;
+
+    height: 38px !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    background: transparent !important;
+
+    color: #111 !important;
+
+    font-size: 30px !important;
+
+    line-height: 1 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    cursor: pointer !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   HOVER CERRAR
+--------------------------------------------------------- */
+
+#satori-header .search-close:hover {
+
+    color: var(--red) !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   TÍTULO
+--------------------------------------------------------- */
+
+#satori-header .search-title {
+
+    margin:
+        0 45px 18px 0 !important;
+
+    color: #111 !important;
+
+    font-size: 14px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: 2px !important;
+
+    line-height: 1.2 !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   FORMULARIO
+--------------------------------------------------------- */
+
+#satori-header .search-form {
+
+    width: 100% !important;
+
+    height: 52px !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+
+    align-items: stretch !important;
+
+    border:
+        1px solid #ccc !important;
+
+    border-radius: 10px !important;
+
+    overflow: hidden !important;
+
+    background: #fff !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   INPUT
+--------------------------------------------------------- */
+
+#satori-header .search-form input {
+
+    flex: 1 1 auto !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    height: 100% !important;
+
+    margin: 0 !important;
+
+    padding:
+        0 16px !important;
+
+    border: 0 !important;
+
+    outline: none !important;
+
+    background: #fff !important;
+
+    color: #111 !important;
+
+    font-family:
+        var(--font-main),
+        Arial,
+        sans-serif !important;
+
+    font-size: 15px !important;
+
+    opacity: 1 !important;
+
+    pointer-events: auto !important;
+
+    box-shadow: none !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   PLACEHOLDER
+--------------------------------------------------------- */
+
+#satori-header
+.search-form
+input::placeholder {
+
+    color: #999 !important;
+
+    opacity: 1 !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   BOTÓN BUSCAR
+--------------------------------------------------------- */
+
+#satori-header .search-form button {
+
+    flex:
+        0 0 60px !important;
+
+    width: 60px !important;
+
+    height: 100% !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    border-radius: 0 !important;
+
+    background:
+        var(--red) !important;
+
+    color: #fff !important;
+
+    font-size: 24px !important;
+
+    line-height: 1 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    cursor: pointer !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   HOVER BOTÓN
+--------------------------------------------------------- */
+
+#satori-header
+.search-form
+button:hover {
+
+    background:
+        #d90e13 !important;
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 900px) {
+
+    #satori-header .search-overlay {
+
+        padding:
+            78px 12px 24px !important;
+
+        align-items: flex-start !important;
+
+    }
+
+
+    #satori-header .search-box {
+
+        width:
+            calc(100vw - 24px) !important;
+
+        max-width: none !important;
+
+        padding:
+            24px 16px !important;
+
+        border-radius:
+            14px !important;
+
+    }
+
+
+    #satori-header .search-title {
+
+        margin-bottom: 15px !important;
+
+        font-size: 13px !important;
+
+    }
+
+
+    #satori-header .search-form {
+
+        height: 48px !important;
+
+        border-radius: 9px !important;
+
+    }
+
+
+    #satori-header
+    .search-form
+    input {
+
+        font-size: 14px !important;
+
+        padding:
+            0 13px !important;
+
+    }
+
+
+    #satori-header
+    .search-form
+    button {
+
+        flex-basis: 52px !important;
+
+        width: 52px !important;
+
+        font-size: 22px !important;
+
+    }
+
+
+    #satori-header .search-close {
+
+        top: 8px !important;
+
+        right: 9px !important;
+
+        width: 36px !important;
+
+        height: 36px !important;
+
+        font-size: 27px !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   MÓVILES MUY PEQUEÑOS
+========================================================= */
+
+@media (max-width: 430px) {
+
+    #satori-header .search-overlay {
+
+        padding:
+            74px 10px 20px !important;
+
+    }
+
+
+    #satori-header .search-box {
+
+        width:
+            calc(100vw - 20px) !important;
+
+        padding:
+            22px 13px !important;
+
+    }
+
+
+    #satori-header
+    .search-form
+    input {
+
+        font-size: 13px !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #satori-header .search-overlay,
+    #satori-header .search-box {
+
+        transition: none !important;
+
+    }
+
+}
