@@ -22,6 +22,371 @@
         href="css/style.css"
     >
 
+
+    <style id="satori-home-final-fixes">
+
+        /* =====================================================
+           HEADER FIJO
+        ====================================================== */
+
+        .site-header {
+            position: fixed !important;
+            top: 34px !important;
+            left: 0 !important;
+            width: 100% !important;
+            z-index: 4000 !important;
+        }
+
+        main {
+            padding-top: 64px;
+        }
+
+        .brand-logo {
+            font-weight: 500 !important;
+            letter-spacing: -1.5px !important;
+        }
+
+        .main-nav > a,
+        .main-nav .nav-dropdown-btn {
+            font-weight: 500 !important;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .footer {
+            border: 0 !important;
+            border-top: 1px solid #333 !important;
+            border-radius: 0 !important;
+        }
+
+        .footer-inner {
+            border: 0 !important;
+        }
+
+        .instagram-link {
+            width: 40px;
+            height: 40px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #444;
+            border-radius: 50%;
+            color: #fff;
+            transition: .2s ease;
+        }
+
+        .instagram-link svg {
+            width: 19px;
+            height: 19px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .instagram-link .instagram-dot {
+            fill: currentColor;
+            stroke: none;
+        }
+
+        .instagram-link:hover {
+            color: var(--red);
+            border-color: var(--red);
+        }
+
+        .newsletter {
+            display: flex !important;
+            width: 100% !important;
+            height: 48px !important;
+            border: 1px solid #444 !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+            background: #fff !important;
+        }
+
+        .newsletter input {
+            flex: 1;
+            min-width: 0;
+            border: 0 !important;
+            outline: 0 !important;
+            padding: 0 15px;
+            background: #fff;
+            color: #111;
+        }
+
+        .newsletter button {
+            width: 55px;
+            border: 0 !important;
+            background: var(--red);
+            color: #fff;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           SATORII PACK
+        ====================================================== */
+
+        .satori-pack {
+            position: relative;
+            overflow: hidden;
+            min-height: 250px;
+            margin-top: 70px;
+            padding: 50px 55px;
+            background:
+                radial-gradient(
+                    circle at 82% 30%,
+                    #430000 0%,
+                    #1d0000 38%,
+                    #080000 78%
+                ) !important;
+            border: 0 !important;
+            border-radius: 10px !important;
+            color: #fff;
+        }
+
+        .satori-pack::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(0,0,0,.05),
+                rgba(255,20,20,.08)
+            );
+            pointer-events: none;
+        }
+
+        .satori-pack-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .satori-pack-label {
+            margin-bottom: 8px;
+            color: var(--red);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+
+        .satori-pack h2 {
+            margin: 0 0 12px;
+            font-size: clamp(32px, 4vw, 52px);
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .satori-pack h2 span {
+            color: var(--red);
+        }
+
+        .satori-pack p {
+            max-width: 650px;
+            margin: 0 0 25px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .satori-pack-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 24px;
+            border-radius: 5px;
+            background: var(--red);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           RECOMENDACIONES DINÁMICAS
+        ====================================================== */
+
+        .recommendation-card {
+            text-decoration: none;
+        }
+
+        .recommendation-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .site-header {
+                top: 30px !important;
+                height: 64px !important;
+            }
+
+            main {
+                padding-top: 64px;
+            }
+
+            .header-inner {
+                position: relative !important;
+                width: calc(100% - 20px) !important;
+                display: grid !important;
+                grid-template-columns: 1fr auto 1fr !important;
+                align-items: center !important;
+            }
+
+            .mobile-menu-button {
+                position: absolute !important;
+                left: 0 !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                width: 42px !important;
+                height: 42px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 5px !important;
+                z-index: 10 !important;
+            }
+
+            .mobile-menu-button span {
+                width: 23px !important;
+                height: 2px !important;
+                display: block !important;
+                background: #111 !important;
+            }
+
+            .brand-logo {
+                grid-column: 2 !important;
+                justify-self: center !important;
+                width: auto !important;
+                font-size: 27px !important;
+                font-weight: 500 !important;
+                letter-spacing: -1.5px !important;
+            }
+
+            .header-icons {
+                grid-column: 3 !important;
+                justify-self: end !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 5px !important;
+            }
+
+            .header-icon {
+                width: 28px !important;
+                height: 28px !important;
+            }
+
+
+            /* MENÚ LATERAL */
+
+            .mobile-menu {
+                z-index: 5000 !important;
+            }
+
+            .mobile-menu-overlay {
+                z-index: 4999 !important;
+            }
+
+            .mobile-nav-button {
+                transform: none !important;
+                writing-mode: horizontal-tb !important;
+                text-orientation: mixed !important;
+            }
+
+            .mobile-nav-button > span:first-child {
+                transform: none !important;
+                writing-mode: horizontal-tb !important;
+                text-orientation: mixed !important;
+                white-space: nowrap !important;
+            }
+
+            .mobile-nav-button > .arrow {
+                transform: none !important;
+                writing-mode: horizontal-tb !important;
+            }
+
+            .mobile-nav-button.active > .arrow,
+            .mobile-nav-button[aria-expanded="true"] > .arrow {
+                transform: rotate(180deg) !important;
+            }
+
+            .mobile-submenu {
+                transform: none !important;
+                writing-mode: horizontal-tb !important;
+            }
+
+
+            /* PACK */
+
+            .satori-pack {
+                width: calc(100% - 28px) !important;
+                min-height: 240px;
+                margin-top: 50px;
+                padding: 35px 25px;
+                border-radius: 8px !important;
+            }
+
+            .satori-pack h2 {
+                font-size: 34px;
+            }
+
+            .satori-pack p {
+                font-size: 13px;
+            }
+
+            /* FOOTER */
+
+            .footer {
+                border-top: 1px solid #333 !important;
+            }
+
+            .newsletter {
+                height: 46px !important;
+            }
+
+            .recommendations-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 10px !important;
+            }
+
+            .recommendation-info {
+                padding: 11px !important;
+            }
+
+            .recommendation-name {
+                font-size: 13px !important;
+            }
+
+            .recommendation-price {
+                font-size: 12px !important;
+            }
+        }
+
+    </style>
+
 </head>
 
 
@@ -348,140 +713,7 @@
                 class="recommendations-grid"
                 id="recommendations-grid"
             >
-
-
-                <a
-                    href="productos.html"
-                    class="recommendation-card"
-                >
-
-                    <div class="recommendation-image">
-
-                        <img
-                            src="img/productos/recomendacion-01.jpg"
-                            alt="Producto recomendado"
-                        >
-
-                    </div>
-
-                    <div class="recommendation-info">
-
-                        <div class="recommendation-category">
-                            STREETWEAR
-                        </div>
-
-                        <div class="recommendation-name">
-                            Descubre nuestros diseños
-                        </div>
-
-                        <div class="recommendation-price">
-                            Ver producto
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="productos.html"
-                    class="recommendation-card"
-                >
-
-                    <div class="recommendation-image">
-
-                        <img
-                            src="img/productos/recomendacion-02.jpg"
-                            alt="Producto recomendado"
-                        >
-
-                    </div>
-
-                    <div class="recommendation-info">
-
-                        <div class="recommendation-category">
-                            ANIME
-                        </div>
-
-                        <div class="recommendation-name">
-                            Diseños para destacar
-                        </div>
-
-                        <div class="recommendation-price">
-                            Ver producto
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="productos.html"
-                    class="recommendation-card"
-                >
-
-                    <div class="recommendation-image">
-
-                        <img
-                            src="img/productos/recomendacion-03.jpg"
-                            alt="Producto recomendado"
-                        >
-
-                    </div>
-
-                    <div class="recommendation-info">
-
-                        <div class="recommendation-category">
-                            STREETWEAR
-                        </div>
-
-                        <div class="recommendation-name">
-                            Explora Satori
-                        </div>
-
-                        <div class="recommendation-price">
-                            Ver producto
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="productos.html"
-                    class="recommendation-card"
-                >
-
-                    <div class="recommendation-image">
-
-                        <img
-                            src="img/productos/recomendacion-04.jpg"
-                            alt="Producto recomendado"
-                        >
-
-                    </div>
-
-                    <div class="recommendation-info">
-
-                        <div class="recommendation-category">
-                            ACCESORIOS
-                        </div>
-
-                        <div class="recommendation-name">
-                            Completa tu estilo
-                        </div>
-
-                        <div class="recommendation-price">
-                            Ver producto
-                        </div>
-
-                    </div>
-
-                </a>
-
-
+                <!-- Las recomendaciones se generan automáticamente desde PRODUCTS. -->
             </div>
 
         </section>
@@ -494,20 +726,20 @@
 
         <section class="satori-pack">
 
-            <div>
+            <div class="satori-pack-content">
 
                 <div class="satori-pack-label">
                     SATORII PACK
                 </div>
 
                 <h2>
-                    SATORII
-                    <span>PACK.</span>
+                    SATORII <span>PACK.</span>
                 </h2>
 
                 <p>
-                    Una experiencia especial creada
-                    para acompañar tus pedidos.
+                    Una experiencia especial creada para acompañar
+                    tus pedidos y hacer que cada compra se sienta
+                    diferente.
                 </p>
 
                 <a
@@ -560,7 +792,29 @@
                     class="instagram-link"
                     aria-label="Instagram SatoriMode"
                 >
-                    ◎
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="5"
+                        ></rect>
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4"
+                        ></circle>
+                        <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                            class="instagram-dot"
+                        ></circle>
+                    </svg>
                 </a>
 
             </div>
