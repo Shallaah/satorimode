@@ -4,11 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!header) return;
 
+
     header.innerHTML = `
 
-        <!-- ================================
+        <!-- =================================================
              BARRA SUPERIOR
-        ================================= -->
+        ================================================== -->
 
         <div class="top-bar">
 
@@ -42,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             cx="17.5"
                             cy="6.5"
                             r="1"
+                            fill="currentColor"
+                            stroke="none"
                         ></circle>
 
                     </svg>
@@ -64,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        <!-- ================================
-             HEADER
-        ================================= -->
+        <!-- =================================================
+             HEADER PRINCIPAL
+        ================================================== -->
 
         <header class="main-header">
 
@@ -84,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-                <!-- NAVEGACIÓN -->
+                <!-- NAVEGACIÓN DESKTOP -->
 
                 <nav class="main-nav">
 
@@ -123,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
 
-
                     <div class="nav-dropdown">
 
                         <a href="productos.html">
@@ -152,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
 
                     </div>
-
 
 
                     <div class="nav-dropdown">
@@ -188,9 +189,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-                <!-- ACCIONES -->
+                <!-- =================================================
+                     ACCIONES
+                ================================================== -->
 
                 <div class="header-actions">
+
+
+                    <!-- MENÚ MÓVIL -->
+
+                    <button
+                        class="mobile-menu-button"
+                        id="mobile-menu-button"
+                        type="button"
+                        aria-label="Abrir menú"
+                    >
+                        ☰
+                    </button>
 
 
                     <!-- BUSCADOR -->
@@ -234,7 +249,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
 
-
                     <!-- CUENTA -->
 
                     <a
@@ -258,7 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         </svg>
 
                     </a>
-
 
 
                     <!-- CARRITO -->
@@ -291,19 +304,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </a>
 
-
-
-                    <!-- MENÚ MÓVIL -->
-
-                    <button
-                        class="mobile-menu-button"
-                        id="mobile-menu-button"
-                        type="button"
-                        aria-label="Abrir menú"
-                    >
-                        ☰
-                    </button>
-
                 </div>
 
             </div>
@@ -312,9 +312,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        <!-- ================================
+        <!-- =================================================
              MENÚ MÓVIL
-        ================================= -->
+        ================================================== -->
 
         <aside
             class="mobile-menu"
@@ -333,6 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button
                     id="mobile-menu-close"
                     type="button"
+                    aria-label="Cerrar menú"
                 >
                     ×
                 </button>
@@ -342,24 +343,121 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <nav>
 
-                <a href="index.html">
-                    INICIO
+
+                <!-- INICIO -->
+
+                <a
+                    class="mobile-menu-item"
+                    href="index.html"
+                >
+                    <span>INICIO</span>
                 </a>
 
-                <a href="productos.html">
-                    COLECCIONES
-                    <span>→</span>
-                </a>
 
-                <a href="productos.html">
-                    PRODUCTOS
-                    <span>→</span>
-                </a>
+                <!-- COLECCIONES -->
 
-                <a href="ayuda.html">
-                    AYUDA
+                <button
+                    class="mobile-menu-item"
+                    type="button"
+                    data-submenu="mobile-collections"
+                >
+                    <span>COLECCIONES</span>
                     <span>→</span>
-                </a>
+                </button>
+
+                <div
+                    class="mobile-submenu"
+                    id="mobile-collections"
+                >
+
+                    <a href="anime.html">
+                        Anime
+                    </a>
+
+                    <a href="streetwear.html">
+                        Streetwear
+                    </a>
+
+                    <a href="accesorios.html">
+                        Accesorios
+                    </a>
+
+                    <a href="productos.html">
+                        Todo
+                    </a>
+
+                </div>
+
+
+                <!-- PRODUCTOS -->
+
+                <button
+                    class="mobile-menu-item"
+                    type="button"
+                    data-submenu="mobile-products"
+                >
+                    <span>PRODUCTOS</span>
+                    <span>→</span>
+                </button>
+
+                <div
+                    class="mobile-submenu"
+                    id="mobile-products"
+                >
+
+                    <a href="poleras.html">
+                        Poleras
+                    </a>
+
+                    <a href="polerones.html">
+                        Polerones
+                    </a>
+
+                    <a href="accesorios.html">
+                        Accesorios
+                    </a>
+
+                    <a href="productos.html">
+                        Todos
+                    </a>
+
+                </div>
+
+
+                <!-- AYUDA -->
+
+                <button
+                    class="mobile-menu-item"
+                    type="button"
+                    data-submenu="mobile-help"
+                >
+                    <span>AYUDA</span>
+                    <span>→</span>
+                </button>
+
+                <div
+                    class="mobile-submenu"
+                    id="mobile-help"
+                >
+
+                    <a href="preguntas-frecuentes.html">
+                        Preguntas frecuentes
+                    </a>
+
+                    <a href="envios.html">
+                        Envíos
+                    </a>
+
+                    <a href="cambios.html">
+                        Cambios y devoluciones
+                    </a>
+
+                    <a href="guia-tallas.html">
+                        Guía de tallas
+                    </a>
+
+                </div>
+
 
             </nav>
 
@@ -391,10 +489,9 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
 
-
-    /* ==========================================
+    /* =====================================================
        BUSCADOR
-    ========================================== */
+    ====================================================== */
 
     const searchButton =
         document.getElementById("search-button");
@@ -406,18 +503,21 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("search-wrapper");
 
 
-    searchButton.addEventListener("click", (event) => {
+    searchButton?.addEventListener("click", (event) => {
 
         event.stopPropagation();
 
         searchWrapper.classList.toggle("active");
+
 
         if (
             searchWrapper.classList.contains("active")
         ) {
 
             setTimeout(() => {
+
                 searchInput.focus();
+
             }, 100);
 
         }
@@ -428,6 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (event) => {
 
         if (
+            searchWrapper &&
             !searchWrapper.contains(event.target)
         ) {
 
@@ -438,27 +539,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    searchInput.addEventListener("keydown", (event) => {
+    searchInput?.addEventListener(
+        "keydown",
+        (event) => {
 
-        if (event.key === "Enter") {
+            if (event.key !== "Enter") {
+                return;
+            }
+
 
             const query =
                 searchInput.value.trim();
 
-            if (!query) return;
+
+            if (!query) {
+                return;
+            }
+
 
             window.location.href =
                 `productos.html?search=${encodeURIComponent(query)}`;
 
         }
-
-    });
-
+    );
 
 
-    /* ==========================================
+    /* =====================================================
        MENÚ MÓVIL
-    ========================================== */
+    ====================================================== */
 
     const mobileButton =
         document.getElementById("mobile-menu-button");
@@ -511,5 +619,73 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         closeMenu
     );
+
+
+    /* =====================================================
+       SUBMENÚS MÓVILES
+    ====================================================== */
+
+    const submenuButtons =
+        document.querySelectorAll(
+            ".mobile-menu-item[data-submenu]"
+        );
+
+
+    submenuButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const submenuId =
+                button.dataset.submenu;
+
+            const submenu =
+                document.getElementById(submenuId);
+
+
+            if (!submenu) {
+                return;
+            }
+
+
+            const isOpen =
+                submenu.classList.contains("open");
+
+
+            /* Cerrar los demás */
+
+            document
+                .querySelectorAll(".mobile-submenu")
+                .forEach((item) => {
+
+                    item.classList.remove("open");
+
+                });
+
+
+            document
+                .querySelectorAll(
+                    ".mobile-menu-item[data-submenu]"
+                )
+                .forEach((item) => {
+
+                    item.classList.remove("open");
+
+                });
+
+
+            /* Abrir el seleccionado */
+
+            if (!isOpen) {
+
+                submenu.classList.add("open");
+
+                button.classList.add("open");
+
+            }
+
+        });
+
+    });
+
 
 });
