@@ -7,12 +7,20 @@
            ELIMINAR HEADER ANTERIOR
         ====================================================== */
 
-        const oldHeader = document.getElementById("satori-header");
-        const oldStyle = document.getElementById("satori-header-style");
-        const oldSpacer = document.getElementById("satori-header-spacer");
+        const oldHeader =
+            document.getElementById("satori-header");
+
+        const oldStyle =
+            document.getElementById("satori-header-style");
+
+        const oldSpacer =
+            document.getElementById("satori-header-spacer");
+
 
         if (oldHeader) oldHeader.remove();
+
         if (oldStyle) oldStyle.remove();
+
         if (oldSpacer) oldSpacer.remove();
 
 
@@ -20,9 +28,12 @@
            ROOT
         ====================================================== */
 
-        const root = document.createElement("div");
+        const root =
+            document.createElement("div");
 
-        root.id = "satori-header";
+        root.id =
+            "satori-header";
+
 
         root.innerHTML = `
 
@@ -126,6 +137,9 @@
 
                 <nav class="main-nav">
 
+
+                    <!-- INICIO -->
+
                     <a
                         href="index.html"
                         class="nav-home-button"
@@ -134,7 +148,9 @@
                     </a>
 
 
-                    <!-- COLECCIONES -->
+                    <!-- =================================================
+                         COLECCIONES
+                    ================================================== -->
 
                     <div class="nav-dropdown">
 
@@ -144,7 +160,9 @@
                             aria-expanded="false"
                         >
 
-                            <span>COLECCIONES</span>
+                            <span>
+                                COLECCIONES
+                            </span>
 
                             <span class="nav-arrow">
                                 ↓
@@ -176,7 +194,9 @@
                     </div>
 
 
-                    <!-- PRODUCTOS -->
+                    <!-- =================================================
+                         PRODUCTOS
+                    ================================================== -->
 
                     <div class="nav-dropdown">
 
@@ -186,7 +206,9 @@
                             aria-expanded="false"
                         >
 
-                            <span>PRODUCTOS</span>
+                            <span>
+                                PRODUCTOS
+                            </span>
 
                             <span class="nav-arrow">
                                 ↓
@@ -214,7 +236,9 @@
                     </div>
 
 
-                    <!-- AYUDA -->
+                    <!-- =================================================
+                         AYUDA
+                    ================================================== -->
 
                     <div class="nav-dropdown">
 
@@ -224,7 +248,9 @@
                             aria-expanded="false"
                         >
 
-                            <span>AYUDA</span>
+                            <span>
+                                AYUDA
+                            </span>
 
                             <span class="nav-arrow">
                                 ↓
@@ -263,6 +289,7 @@
                 ================================================== -->
 
                 <div class="header-icons">
+
 
                     <!-- BUSCAR -->
 
@@ -356,7 +383,7 @@
 
 
         <!-- =================================================
-             OVERLAY
+             OVERLAY MENÚ MÓVIL
         ================================================== -->
 
         <div
@@ -398,6 +425,9 @@
 
             <nav class="mobile-nav">
 
+
+                <!-- INICIO -->
+
                 <a
                     href="index.html"
                     class="mobile-nav-button mobile-home-button"
@@ -411,7 +441,9 @@
                 </a>
 
 
-                <!-- COLECCIONES -->
+                <!-- =================================================
+                     COLECCIONES
+                ================================================== -->
 
                 <button
                     class="mobile-nav-button"
@@ -454,7 +486,9 @@
                 </div>
 
 
-                <!-- PRODUCTOS -->
+                <!-- =================================================
+                     PRODUCTOS
+                ================================================== -->
 
                 <button
                     class="mobile-nav-button"
@@ -493,7 +527,9 @@
                 </div>
 
 
-                <!-- AYUDA -->
+                <!-- =================================================
+                     AYUDA
+                ================================================== -->
 
                 <button
                     class="mobile-nav-button"
@@ -548,6 +584,7 @@
                     SÍGUENOS
                 </span>
 
+
                 <a
                     href="https://www.instagram.com/satorimode/"
                     target="_blank"
@@ -588,6 +625,59 @@
 
         </aside>
 
+
+        <!-- =================================================
+             BUSCADOR
+        ================================================== -->
+
+        <div
+            class="search-overlay"
+            id="satori-search-overlay"
+        >
+
+            <div class="search-box">
+
+                <button
+                    class="search-close"
+                    id="satori-search-close"
+                    type="button"
+                    aria-label="Cerrar búsqueda"
+                >
+                    ×
+                </button>
+
+
+                <div class="search-title">
+                    BUSCAR
+                </div>
+
+
+                <form
+                    class="search-form"
+                    id="satori-search-form"
+                >
+
+                    <input
+                        type="search"
+                        id="satori-search-input"
+                        placeholder="¿Qué estás buscando?"
+                        autocomplete="off"
+                    />
+
+
+                    <button
+                        type="submit"
+                        aria-label="Buscar"
+                    >
+                        →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
         `;
 
 
@@ -598,9 +688,13 @@
            CSS
         ====================================================== */
 
-        const style = document.createElement("style");
+        const style =
+            document.createElement("style");
 
-        style.id = "satori-header-style";
+
+        style.id =
+            "satori-header-style";
+
 
         style.textContent = `
 
@@ -610,7 +704,9 @@
 
         #satori-header,
         #satori-header * {
+
             box-sizing:border-box;
+
         }
 
 
@@ -632,7 +728,6 @@
 
         /* =====================================================
            LOGO SATORII
-           MISMA TIPOGRAFÍA EN HEADER + MENÚ MÓVIL
         ====================================================== */
 
         #satori-header .satori-brand-logo {
@@ -716,7 +811,8 @@
 
             top:50%;
 
-            transform:translateY(-50%);
+            transform:
+                translateY(-50%);
 
             width:18px;
 
@@ -731,17 +827,6 @@
             justify-content:center;
 
             text-decoration:none;
-
-            transition:transform .2s ease;
-
-        }
-
-
-        #satori-header .top-instagram:hover {
-
-            transform:
-                translateY(-50%)
-                scale(1.12);
 
         }
 
@@ -837,13 +922,6 @@
             border-bottom:1px solid #dedede;
 
             z-index:10000;
-
-            transition:
-                width .25s ease,
-                height .25s ease,
-                border-radius .25s ease,
-                box-shadow .25s ease,
-                margin .25s ease;
 
         }
 
@@ -946,10 +1024,6 @@
 
             text-decoration:none;
 
-            transition:
-                color .2s ease,
-                transform .2s ease;
-
         }
 
 
@@ -958,8 +1032,6 @@
 
             color:#f31218;
 
-            transform:scale(1.08);
-
         }
 
 
@@ -967,7 +1039,8 @@
 
             font-size:9px;
 
-            transition:transform .2s ease;
+            transition:
+                transform .2s ease;
 
         }
 
@@ -976,7 +1049,8 @@
         .nav-dropdown.open
         .nav-arrow {
 
-            transform:rotate(180deg);
+            transform:
+                rotate(180deg);
 
         }
 
@@ -995,7 +1069,7 @@
 
 
         /* =====================================================
-           DROPDOWN
+           DROPDOWN PC
         ====================================================== */
 
         #satori-header .dropdown-menu {
@@ -1068,11 +1142,6 @@
 
             border-radius:7px;
 
-            transition:
-                background .15s ease,
-                color .15s ease,
-                padding-left .15s ease;
-
         }
 
 
@@ -1081,8 +1150,6 @@
             background:#f5f5f5;
 
             color:#f31218;
-
-            padding-left:15px;
 
         }
 
@@ -1130,18 +1197,12 @@
 
             cursor:pointer;
 
-            transition:
-                color .2s ease,
-                transform .2s ease;
-
         }
 
 
         #satori-header .header-icon:hover {
 
             color:#f31218;
-
-            transform:scale(1.12);
 
         }
 
@@ -1177,7 +1238,7 @@
 
 
         /* =====================================================
-           OVERLAY
+           OVERLAY MENÚ
         ====================================================== */
 
         #satori-header .mobile-menu-overlay {
@@ -1186,7 +1247,8 @@
 
             inset:0;
 
-            background:rgba(0,0,0,.45);
+            background:
+                rgba(0,0,0,.45);
 
             opacity:0;
 
@@ -1194,9 +1256,16 @@
 
             pointer-events:none;
 
-            transition:opacity .2s ease;
+            transition:
+                opacity .2s ease;
 
-            z-index:110000;
+            /*
+             * IMPORTANTE:
+             * Debe estar por encima del header
+             * pero debajo del menú.
+             */
+
+            z-index:1000000;
 
         }
 
@@ -1233,11 +1302,19 @@
 
             background:#fff;
 
-            transform:translateX(-100%);
+            transform:
+                translateX(-100%);
 
-            transition:transform .25s ease;
+            transition:
+                transform .25s ease;
 
-            z-index:110001;
+            /*
+             * ESTE ES EL CAMBIO IMPORTANTE.
+             * El menú está por encima del header
+             * flotante y del overlay.
+             */
+
+            z-index:1000001;
 
             overflow-y:auto;
 
@@ -1247,7 +1324,8 @@
         #satori-header
         .mobile-menu.open {
 
-            transform:translateX(0);
+            transform:
+                translateX(0);
 
         }
 
@@ -1267,11 +1345,6 @@
         }
 
 
-        /* =====================================================
-           LOGO MENÚ MÓVIL
-           USA EXACTAMENTE EL MISMO ESTILO
-        ====================================================== */
-
         #satori-header .mobile-menu-logo {
 
             font-size:25px;
@@ -1282,8 +1355,6 @@
         #satori-header .mobile-menu-logo:hover {
 
             color:#f31218;
-
-            transform:scale(1.06);
 
         }
 
@@ -1308,18 +1379,12 @@
 
             cursor:pointer;
 
-            transition:
-                color .2s ease,
-                transform .2s ease;
-
         }
 
 
         #satori-header .mobile-menu-close:hover {
 
             color:#f31218;
-
-            transform:scale(1.1);
 
         }
 
@@ -1356,18 +1421,12 @@
 
             text-decoration:none;
 
-            transition:
-                color .2s ease,
-                padding-left .2s ease;
-
         }
 
 
         #satori-header .mobile-nav-button:hover {
 
             color:#f31218;
-
-            padding-left:4px;
 
         }
 
@@ -1383,7 +1442,8 @@
 
             font-size:12px;
 
-            transition:transform .2s ease;
+            transition:
+                transform .2s ease;
 
         }
 
@@ -1392,7 +1452,8 @@
         .mobile-nav-button.active
         .mobile-arrow {
 
-            transform:rotate(180deg);
+            transform:
+                rotate(180deg);
 
         }
 
@@ -1440,18 +1501,12 @@
 
             font-size:14px;
 
-            transition:
-                color .2s ease,
-                padding-left .2s ease;
-
         }
 
 
         #satori-header .mobile-submenu a:hover {
 
             color:#f31218;
-
-            padding-left:26px;
 
         }
 
@@ -1502,8 +1557,6 @@
 
             font-weight:bold;
 
-            transition:color .2s ease;
-
         }
 
 
@@ -1543,6 +1596,219 @@
 
 
         /* =====================================================
+           BUSCADOR
+        ====================================================== */
+
+        #satori-header .search-overlay {
+
+            position:fixed;
+
+            inset:0;
+
+            background:
+                rgba(0,0,0,.55);
+
+            opacity:0;
+
+            visibility:hidden;
+
+            pointer-events:none;
+
+            display:flex;
+
+            align-items:flex-start;
+
+            justify-content:center;
+
+            padding-top:90px;
+
+            transition:
+                opacity .2s ease;
+
+            /*
+             * Más alto que absolutamente todo
+             */
+
+            z-index:2000000;
+
+        }
+
+
+        #satori-header
+        .search-overlay.open {
+
+            opacity:1;
+
+            visibility:visible;
+
+            pointer-events:auto;
+
+        }
+
+
+        #satori-header .search-box {
+
+            position:relative;
+
+            width:min(
+                700px,
+                calc(100% - 32px)
+            );
+
+            padding:30px;
+
+            background:#fff;
+
+            border-radius:16px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,.25);
+
+            transform:
+                translateY(-15px);
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        #satori-header
+        .search-overlay.open
+        .search-box {
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        #satori-header .search-close {
+
+            position:absolute;
+
+            top:12px;
+
+            right:14px;
+
+            width:36px;
+
+            height:36px;
+
+            border:0;
+
+            background:none;
+
+            color:#111;
+
+            font-size:30px;
+
+            line-height:1;
+
+            cursor:pointer;
+
+        }
+
+
+        #satori-header .search-close:hover {
+
+            color:#f31218;
+
+        }
+
+
+        #satori-header .search-title {
+
+            margin-bottom:18px;
+
+            color:#111;
+
+            font-size:13px;
+
+            font-weight:700;
+
+            letter-spacing:2px;
+
+        }
+
+
+        #satori-header .search-form {
+
+            display:flex;
+
+            width:100%;
+
+            height:52px;
+
+            border:1px solid #ccc;
+
+            border-radius:10px;
+
+            overflow:hidden;
+
+        }
+
+
+        #satori-header .search-form input {
+
+            flex:1;
+
+            min-width:0;
+
+            padding:
+                0 16px;
+
+            border:0;
+
+            outline:none;
+
+            background:#fff;
+
+            color:#111;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size:15px;
+
+        }
+
+
+        #satori-header .search-form input::placeholder {
+
+            color:#999;
+
+        }
+
+
+        #satori-header .search-form button {
+
+            width:60px;
+
+            border:0;
+
+            background:#f31218;
+
+            color:#fff;
+
+            font-size:24px;
+
+            cursor:pointer;
+
+        }
+
+
+        #satori-header .search-form button:hover {
+
+            background:#d90e13;
+
+        }
+
+
+        /* =====================================================
            ESPACIADOR
         ====================================================== */
 
@@ -1556,53 +1822,42 @@
 
 
         /* =====================================================
-           HEADER AL HACER SCROLL
+           HEADER FLOTANTE AL HACER SCROLL
         ====================================================== */
 
-      #satori-header.scrolled .main-header {
+        #satori-header.scrolled .main-header {
 
-    position:fixed !important;
+            position:fixed !important;
 
-    top:8px !important;
+            top:8px !important;
 
-    left:8px !important;
+            left:8px !important;
 
-    width:calc(100% - 16px) !important;
+            width:
+                calc(100% - 16px) !important;
 
-    height:64px !important;
+            height:64px !important;
 
-    border:1px solid #d4d4d4 !important;
+            background:#fff !important;
 
-    border-radius:16px !important;
+            border:
+                1px solid #d4d4d4 !important;
 
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.16) !important;
+            border-radius:16px !important;
 
-    z-index:100000 !important;
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,.16) !important;
 
-}
+            /*
+             * IMPORTANTE:
+             * Menor que el menú móvil.
+             */
 
-/* =====================================================
-   MENÚ MÓVIL SIEMPRE POR ENCIMA DEL HEADER FLOTANTE
-===================================================== */
+            z-index:900000 !important;
 
-@media (max-width:1000px) {
+        }
 
-    #satori-header .mobile-menu-overlay {
-
-        z-index:110000 !important;
-
-    }
-
-
-    #satori-header .mobile-menu {
-
-        z-index:110001 !important;
-
-    }
-
-}
 
         /* =====================================================
            PC
@@ -1610,7 +1865,8 @@
 
         @media (min-width:1001px) {
 
-            #satori-header.scrolled + #satori-header-spacer {
+            #satori-header.scrolled
+            + #satori-header-spacer {
 
                 display:block;
 
@@ -1626,6 +1882,7 @@
         ====================================================== */
 
         @media (max-width:1000px) {
+
 
             #satori-header .top-bar {
 
@@ -1679,7 +1936,9 @@
             }
 
 
-            /* HAMBURGUESA */
+            /* =================================================
+               HAMBURGUESA
+            ================================================== */
 
             #satori-header .mobile-menu-button {
 
@@ -1689,7 +1948,8 @@
 
                 top:50%;
 
-                transform:translateY(-50%);
+                transform:
+                    translateY(-50%);
 
                 width:36px;
 
@@ -1715,7 +1975,7 @@
 
                 cursor:pointer;
 
-                z-index:999999;
+                z-index:900001;
 
             }
 
@@ -1734,10 +1994,6 @@
 
                 flex:none;
 
-                transition:
-                    background .2s ease,
-                    width .2s ease;
-
             }
 
 
@@ -1750,16 +2006,9 @@
             }
 
 
-            #satori-header
-            .mobile-menu-button:hover
-            span:nth-child(2) {
-
-                width:18px;
-
-            }
-
-
-            /* LOGO CENTRADO */
+            /* =================================================
+               LOGO CENTRADO
+            ================================================== */
 
             #satori-header .satori-logo {
 
@@ -1781,7 +2030,7 @@
 
                 line-height:.9;
 
-                z-index:999998;
+                z-index:900001;
 
             }
 
@@ -1796,7 +2045,9 @@
             }
 
 
-            /* NAV PC */
+            /* =================================================
+               OCULTAR NAV PC
+            ================================================== */
 
             #satori-header .main-nav {
 
@@ -1805,7 +2056,9 @@
             }
 
 
-            /* ICONOS */
+            /* =================================================
+               ICONOS
+            ================================================== */
 
             #satori-header .header-icons {
 
@@ -1815,7 +2068,8 @@
 
                 top:50%;
 
-                transform:translateY(-50%);
+                transform:
+                    translateY(-50%);
 
                 display:flex;
 
@@ -1823,7 +2077,7 @@
 
                 gap:1px;
 
-                z-index:999999;
+                z-index:900001;
 
             }
 
@@ -1848,9 +2102,12 @@
             }
 
 
-            /* HEADER FIJO */
+            /* =================================================
+               HEADER FLOTANTE MÓVIL
+            ================================================== */
 
-            #satori-header.scrolled .main-header {
+            #satori-header.scrolled
+            .main-header {
 
                 position:fixed !important;
 
@@ -1858,11 +2115,13 @@
 
                 left:8px !important;
 
-                width:calc(100% - 16px) !important;
+                width:
+                    calc(100% - 16px) !important;
 
                 height:64px !important;
 
-                border:1px solid #d4d4d4 !important;
+                border:
+                    1px solid #d4d4d4 !important;
 
                 border-radius:16px !important;
 
@@ -1870,27 +2129,35 @@
                     0 8px 25px
                     rgba(0,0,0,.16) !important;
 
-                z-index:999999 !important;
+                z-index:900000 !important;
 
             }
 
 
-            #satori-header.scrolled + #satori-header-spacer {
-
-                display:block;
-
-                height:80px;
-
-            }
-
-
-            /* MENÚ */
+            /* =================================================
+               MENÚ MÓVIL
+            ================================================== */
 
             #satori-header .mobile-menu {
 
-                width:min(370px,88vw);
+                width:
+                    min(370px,88vw);
 
-                padding:20px 24px;
+                padding:
+                    20px 24px;
+
+                /*
+                 * Siempre encima del header flotante.
+                 */
+
+                z-index:1000001 !important;
+
+            }
+
+
+            #satori-header .mobile-menu-overlay {
+
+                z-index:1000000 !important;
 
             }
 
@@ -1904,11 +2171,35 @@
             }
 
 
-            /* LOGO DEL MENÚ */
-
             #satori-header .mobile-menu-logo {
 
                 font-size:27px;
+
+            }
+
+
+            /* =================================================
+               BUSCADOR MÓVIL
+            ================================================== */
+
+            #satori-header .search-overlay {
+
+                padding-top:82px;
+
+                z-index:2000000 !important;
+
+            }
+
+
+            #satori-header .search-box {
+
+                width:
+                    calc(100% - 24px);
+
+                padding:
+                    24px 18px;
+
+                border-radius:14px;
 
             }
 
@@ -1941,9 +2232,13 @@
            ESPACIADOR
         ====================================================== */
 
-        const spacer = document.createElement("div");
+        const spacer =
+            document.createElement("div");
 
-        spacer.id = "satori-header-spacer";
+
+        spacer.id =
+            "satori-header-spacer";
+
 
         root.insertAdjacentElement(
             "afterend",
@@ -1959,11 +2254,15 @@
 
             if (window.scrollY > 50) {
 
-                root.classList.add("scrolled");
+                root.classList.add(
+                    "scrolled"
+                );
 
             } else {
 
-                root.classList.remove("scrolled");
+                root.classList.remove(
+                    "scrolled"
+                );
 
             }
 
@@ -1989,7 +2288,7 @@
 
 
         /* =====================================================
-           MENÚ MÓVIL
+           ELEMENTOS MENÚ MÓVIL
         ====================================================== */
 
         const mobileMenu =
@@ -2016,6 +2315,44 @@
             );
 
 
+        /* =====================================================
+           ELEMENTOS BUSCADOR
+        ====================================================== */
+
+        const searchButton =
+            document.getElementById(
+                "satori-search"
+            );
+
+
+        const searchOverlay =
+            document.getElementById(
+                "satori-search-overlay"
+            );
+
+
+        const searchClose =
+            document.getElementById(
+                "satori-search-close"
+            );
+
+
+        const searchInput =
+            document.getElementById(
+                "satori-search-input"
+            );
+
+
+        const searchForm =
+            document.getElementById(
+                "satori-search-form"
+            );
+
+
+        /* =====================================================
+           CERRAR MENÚ MÓVIL
+        ====================================================== */
+
         function closeMobileMenu() {
 
             if (mobileMenu) {
@@ -2041,7 +2378,19 @@
         }
 
 
+        /* =====================================================
+           ABRIR MENÚ MÓVIL
+        ====================================================== */
+
         function openMobileMenu() {
+
+            /*
+             * Si el buscador está abierto,
+             * lo cerramos primero.
+             */
+
+            closeSearch();
+
 
             if (mobileMenu) {
 
@@ -2067,11 +2416,23 @@
         }
 
 
+        /* =====================================================
+           EVENTOS MENÚ
+        ====================================================== */
+
         if (openButton) {
 
             openButton.addEventListener(
                 "click",
-                openMobileMenu
+                function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    openMobileMenu();
+
+                }
             );
 
         }
@@ -2081,7 +2442,15 @@
 
             closeButton.addEventListener(
                 "click",
-                closeMobileMenu
+                function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    closeMobileMenu();
+
+                }
             );
 
         }
@@ -2091,7 +2460,210 @@
 
             overlay.addEventListener(
                 "click",
-                closeMobileMenu
+                function () {
+
+                    closeMobileMenu();
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           BUSCADOR
+        ====================================================== */
+
+        function closeSearch() {
+
+            if (searchOverlay) {
+
+                searchOverlay.classList.remove(
+                    "open"
+                );
+
+            }
+
+
+            /*
+             * Si no está abierto el menú,
+             * devolvemos el scroll.
+             */
+
+            if (
+                !mobileMenu ||
+                !mobileMenu.classList.contains("open")
+            ) {
+
+                document.body.style.overflow =
+                    "";
+
+            }
+
+        }
+
+
+        function openSearch() {
+
+            if (!searchOverlay) return;
+
+
+            /*
+             * Cerrar menú móvil si está abierto.
+             */
+
+            closeMobileMenu();
+
+
+            /*
+             * Cerrar dropdowns PC.
+             */
+
+            root.querySelectorAll(
+                ".nav-dropdown"
+            ).forEach(
+                function (dropdown) {
+
+                    dropdown.classList.remove(
+                        "open"
+                    );
+
+                }
+            );
+
+
+            searchOverlay.classList.add(
+                "open"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            /*
+             * Enfocar input automáticamente.
+             */
+
+            setTimeout(
+                function () {
+
+                    if (searchInput) {
+
+                        searchInput.focus();
+
+                    }
+
+                },
+                200
+            );
+
+        }
+
+
+        if (searchButton) {
+
+            searchButton.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    openSearch();
+
+                }
+            );
+
+        }
+
+
+        if (searchClose) {
+
+            searchClose.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    closeSearch();
+
+                }
+            );
+
+        }
+
+
+        /*
+         * Cerrar al tocar fuera de la caja.
+         */
+
+        if (searchOverlay) {
+
+            searchOverlay.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target ===
+                        searchOverlay
+                    ) {
+
+                        closeSearch();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /*
+         * Procesar búsqueda.
+         */
+
+        if (searchForm) {
+
+            searchForm.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const query =
+                        searchInput
+                            ? searchInput.value.trim()
+                            : "";
+
+
+                    if (!query) {
+
+                        if (searchInput) {
+
+                            searchInput.focus();
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Llevar a productos.html
+                     * con la búsqueda.
+                     */
+
+                    window.location.href =
+                        "productos.html?search=" +
+                        encodeURIComponent(query);
+
+                }
             );
 
         }
@@ -2119,7 +2691,16 @@
                     "click",
                     function (event) {
 
+                        event.preventDefault();
+
                         event.stopPropagation();
+
+
+                        /*
+                         * Cerrar buscador si estuviera abierto.
+                         */
+
+                        closeSearch();
 
 
                         root.querySelectorAll(
@@ -2165,7 +2746,7 @@
 
                         button.setAttribute(
                             "aria-expanded",
-                            isOpen
+                            String(isOpen)
                         );
 
                     }
@@ -2175,9 +2756,22 @@
         );
 
 
+        /* =====================================================
+           CERRAR DROPDOWNS AL HACER CLICK FUERA
+        ====================================================== */
+
         document.addEventListener(
             "click",
-            function () {
+            function (event) {
+
+                if (
+                    root.contains(event.target)
+                ) {
+
+                    return;
+
+                }
+
 
                 root.querySelectorAll(
                     ".nav-dropdown"
@@ -2222,7 +2816,12 @@
 
                 button.addEventListener(
                     "click",
-                    function () {
+                    function (event) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
 
                         const targetId =
                             button.dataset.target;
@@ -2289,6 +2888,28 @@
 
 
         /* =====================================================
+           CERRAR SUBMENÚS AL NAVEGAR
+        ====================================================== */
+
+        root.querySelectorAll(
+            ".mobile-submenu a"
+        ).forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        closeMobileMenu();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
            ESC
         ====================================================== */
 
@@ -2296,7 +2917,11 @@
             "keydown",
             function (event) {
 
-                if (event.key === "Escape") {
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeSearch();
 
                     closeMobileMenu();
 
@@ -2328,4 +2953,4 @@
 
     }
 
-})();d
+})();
