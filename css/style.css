@@ -6015,3 +6015,104 @@ main {
 @media(max-width:700px){
  .shipping-bar{font-size:8px!important;height:29px!important}.site-header{height:62px!important}.store-hero{min-height:0}.store-hero-copy{padding:36px 22px 34px}.hero-number{left:10px;top:35px}.store-hero h1{font-size:50px;letter-spacing:-2px}.store-hero-copy p{font-size:15px}.store-hero-art{min-height:220px}.hero-red-brush{width:190px;height:190px;right:15%;border-width:18px}.hero-art-copy{font-size:43px}.store-benefits{grid-template-columns:repeat(2,1fr);width:100%!important}.store-benefits .benefit-item{padding:8px 10px;border-bottom:1px solid #eee}.store-benefits .benefit-item:nth-child(2n){border-right:0}.store-benefits .benefit-item strong{font-size:7px}.store-benefits .benefit-item small{font-size:7px}.store-section{padding-left:14px;padding-right:14px}.store-section-head h2{font-size:14px}.collection-showcase-grid{grid-template-columns:repeat(2,1fr);gap:7px}.collection-showcase{height:150px}.collection-showcase strong{font-size:12px}.store-product-grid{grid-template-columns:repeat(2,1fr);gap:20px 9px}.store-lower-grid{grid-template-columns:1fr;padding:18px 14px 0}.store-brand-card,.store-clan-card{min-height:190px}.store-latest{grid-column:auto}.store-product-grid-compact{grid-template-columns:repeat(2,1fr)}.store-pack{margin-top:18px;min-height:300px;padding:50px 22px}.store-pack h2{font-size:35px}.pack-kanji{font-size:150px}.store-about{padding:40px 20px;display:block}.store-about h2{font-size:30px}.about-links{margin-top:25px}.store-footer .footer-main{grid-template-columns:1fr;padding:38px 18px}.store-footer .footer-bottom{width:calc(100% - 36px)}
 }
+
+
+/* =========================================================
+   SATORIMODE · HOME COMPACT FINAL
+   3–5 pantallas de scroll en móvil como objetivo visual.
+   Solo afecta a la portada .home-redesign.
+========================================================= */
+.home-redesign{background:#fff;color:#111}
+
+/* Barra superior roja */
+.home-redesign + .site-footer{} 
+.shipping-bar{
+    background:#ed1111 !important;
+    color:#fff !important;
+    min-height:31px !important;
+    height:31px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:18px !important;
+    padding:0 18px !important;
+    font-size:10px !important;
+    font-weight:800 !important;
+    letter-spacing:.45px !important;
+}
+.shipping-bar span{margin-left:auto;font-weight:700;font-size:9px;opacity:.95}
+
+/* Hero más compacto */
+.store-hero{min-height:340px !important}
+.store-hero-copy{padding:42px 38px 40px 48px !important}
+.store-hero h1{font-size:clamp(48px,5vw,76px) !important;line-height:.88 !important}
+
+/* Menos espacio vertical */
+.store-section{padding-top:26px !important}
+.store-section-head{margin-bottom:10px !important}
+.store-benefits{min-height:76px !important}
+.store-benefits .benefit-item{padding:10px 18px !important}
+
+/* Colecciones */
+.collection-showcase{height:165px !important}
+
+/* Productos: tarjetas más compactas */
+.store-product-grid{gap:10px !important}
+.store-product-image{aspect-ratio:1 / .96 !important}
+.store-product-info{padding:7px 4px 0 !important}
+.store-product-info h3{margin:2px 0 !important}
+
+/* Más vendidos con margen contenido */
+.products-showcase{padding-bottom:8px !important}
+
+/* Lower grid: solo últimos + marca + clan */
+.store-lower-grid{padding-top:22px !important}
+.store-latest .store-section{padding-top:0 !important}
+.store-brand-card,.store-clan-card{min-height:155px !important}
+
+/* Satorii Pack: único banner de marca fuerte */
+.store-pack{margin-top:28px !important;min-height:260px !important;padding:52px 28px !important}
+.store-pack h2{font-size:clamp(34px,5vw,58px) !important}
+
+/* Footer más cercano al contenido */
+.store-footer{margin-top:26px !important}
+
+@media (max-width:1100px){
+    .shipping-bar{font-size:9px !important}
+    .shipping-bar span{display:none}
+    .store-hero{min-height:320px !important}
+    .collection-showcase-grid{grid-template-columns:repeat(2,1fr) !important}
+    .store-product-grid{grid-template-columns:repeat(4,1fr) !important}
+}
+
+@media (max-width:700px){
+    .shipping-bar{height:30px !important;min-height:30px !important;padding:0 8px !important;font-size:8px !important;letter-spacing:.25px !important;white-space:nowrap !important;overflow:hidden !important}
+    .store-hero{min-height:300px !important;grid-template-columns:1fr !important}
+    .store-hero-copy{padding:34px 22px 28px !important;min-height:170px !important}
+    .store-hero-art{min-height:130px !important}
+    .store-hero h1{font-size:clamp(42px,13vw,58px) !important}
+    .store-section{padding:22px 15px 0 !important}
+    .store-section-head h2{font-size:15px !important}
+    .collection-showcase-grid{grid-template-columns:repeat(2,1fr) !important;gap:7px !important}
+    .collection-showcase{height:145px !important;padding:10px !important}
+    .collection-showcase strong{font-size:13px !important}
+    .collection-showcase span{font-size:9px !important}
+    .store-product-grid{grid-template-columns:repeat(2,1fr) !important;gap:18px 10px !important}
+    .store-product-info h3{font-size:11px !important}
+    .store-product-info strong{font-size:11px !important}
+    .store-lower-grid{grid-template-columns:1fr !important;padding:22px 15px 0 !important;gap:14px !important}
+    .store-latest{padding:0 !important}
+    .store-latest .store-product-grid{grid-template-columns:repeat(2,1fr) !important}
+    .store-brand-card,.store-clan-card{min-height:170px !important}
+    .store-pack{width:calc(100% - 30px) !important;margin:28px auto 0 !important;min-height:230px !important;padding:42px 20px !important;border-radius:14px !important}
+    .store-pack h2{font-size:clamp(31px,10vw,48px) !important;letter-spacing:-1.5px !important}
+    .store-pack p{font-size:12px !important}
+    .store-footer{margin-top:22px !important}
+}
+
+@media (max-width:420px){
+    .store-hero{min-height:280px !important}
+    .collection-showcase{height:135px !important}
+    .store-product-grid{gap:16px 9px !important}
+    .store-pack{min-height:215px !important}
+}
