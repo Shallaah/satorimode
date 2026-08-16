@@ -1,334 +1,599 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600&family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* =========================================================
-   SATORIMODE
-   BASE
+   SATORII — ESTILOS GENERALES
 ========================================================= */
 
 :root {
-    --black: #0b0b0b;
+    --black: #111111;
     --white: #ffffff;
-    --red: #f2161c;
-    --gray: #f5f5f5;
+    --red: #ff1616;
+    --gray: #666666;
+    --light-gray: #f5f5f5;
     --border: #dddddd;
-    --text: #111111;
 
-    --radius: 10px;
+    --font-main: "Inter", Arial, sans-serif;
+    --font-logo: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
 
-    --container: 1440px;
+    --radius: 5px;
 }
-
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
-
 
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--text);
-    background: var(--white);
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: var(--black);
+    font-family: var(--font-main);
+    font-size: 20px;
+    line-height: 1.45;
 }
 
-
-img {
-    display: block;
-    width: 100%;
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
 }
 
+button {
+    cursor: pointer;
+}
 
 a {
     color: inherit;
     text-decoration: none;
 }
 
-
-button,
-input {
-    font: inherit;
-}
-
-
-button {
-    cursor: pointer;
+img {
+    max-width: 100%;
+    display: block;
 }
 
 
 /* =========================================================
-   CONTENEDOR
+   CONTENEDOR GENERAL
 ========================================================= */
 
-.section,
-.benefits,
-.brand-grid,
-.footer-inner,
-.footer-bottom {
-    width: min(
-        calc(100% - 48px),
-        var(--container)
-    );
-
-    margin-left: auto;
-    margin-right: auto;
+.container {
+    width: min(100% - 48px, 1400px);
+    margin: 0 auto;
 }
 
 
 /* =========================================================
-   BOTONES
+   BARRA SUPERIOR
 ========================================================= */
 
-.button {
-    display: inline-flex;
+.top-bar {
+    width: 100%;
+    min-height: 34px;
+    background: var(--red);
+    color: white;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    min-height: 46px;
+    position: relative;
 
-    padding: 0 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
 
-    background: var(--black);
+.top-bar-content {
+    width: min(100% - 48px, 1400px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.top-bar-instagram {
+    position: absolute;
+    left: 0;
+
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     color: white;
-
-    border: 1px solid var(--black);
-    border-radius: 7px;
-
-    font-size: 14px;
-    font-weight: 800;
-
-    letter-spacing: .04em;
-
-    transition:
-        transform .2s ease,
-        background .2s ease;
 }
 
-
-.button:hover {
-    transform: translateY(-2px);
+.top-bar-instagram svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.7;
 }
 
+.top-bar-center {
+    margin: 0 auto;
+}
 
-.button-red {
-    background: var(--red);
-    border-color: var(--red);
+.top-bar-right {
+    position: absolute;
+    right: 0;
+
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 
 /* =========================================================
-   HERO SLIDER
+   HEADER PRINCIPAL
 ========================================================= */
 
-.hero-slider {
-    position: relative;
+.site-header {
+    width: 100%;
+    height: 72px;
 
-    width: min(
-        calc(100% - 48px),
-        var(--container)
-    );
+    background: #fff;
+
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    z-index: 1000;
+}
+
+.header-inner {
+    width: min(100% - 48px, 1400px);
+    height: 100%;
 
     margin: 0 auto;
 
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO SATORII
+========================================================= */
+
+.header-logo,
+.site-logo,
+.logo {
+    font-family: var(--font-logo) !important;
+
+    font-size: 31px !important;
+
+    /*
+       Antes estaba demasiado grueso.
+       500 da un aspecto más fino y streetwear.
+    */
+    font-weight: 500 !important;
+
+    font-style: italic;
+
+    letter-spacing: -1.8px;
+
+    line-height: 1;
+
+    color: #111;
+
+    white-space: nowrap;
+
+    transform: skewX(-4deg);
+
+    display: inline-block;
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 42px;
+
+    height: 100%;
+}
+
+.main-nav a,
+.main-nav button {
+    background: none;
+    border: none;
+
+    font-family: var(--font-main);
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: #111;
+
+    padding: 8px 0;
+
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav button:hover {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   MENÚ CON FLECHA
+========================================================= */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown > button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.nav-dropdown svg {
+    width: 12px;
+    height: 12px;
+}
+
+
+/* =========================================================
+   ICONOS DEL HEADER
+========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.header-action {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    background: transparent;
+
+    color: #111;
+
+    padding: 0;
+}
+
+.header-action svg {
+    width: 21px;
+    height: 21px;
+
+    stroke-width: 1.5;
+}
+
+.header-action:hover {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   BUSCADOR
+========================================================= */
+
+.header-search {
+    display: flex;
+    align-items: center;
+}
+
+.header-search-input {
+    width: 0;
+
+    opacity: 0;
 
     border: 1px solid var(--border);
+
     border-radius: var(--radius);
 
-    background: #eee;
+    padding: 8px 0;
+
+    font-size: 16px;
+
+    transition:
+        width 0.25s ease,
+        opacity 0.25s ease,
+        padding 0.25s ease;
+
+    outline: none;
+}
+
+.header-search.active .header-search-input {
+    width: 220px;
+
+    opacity: 1;
+
+    padding: 8px 12px;
+
+    margin-left: 10px;
+}
+
+.header-search-input:focus {
+    border-color: #111;
 }
 
 
-.hero-track {
-    display: flex;
+/* =========================================================
+   MENÚ MÓVIL
+========================================================= */
 
-    width: 100%;
+.mobile-menu {
+    position: fixed;
 
-    transition: transform .7s cubic-bezier(.77, 0, .18, 1);
+    top: 0;
+    left: 0;
+
+    width: min(360px, 90vw);
+    height: 100vh;
+
+    background: white;
+
+    z-index: 3000;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.3s ease;
+
+    border-right: 1px solid var(--border);
 }
 
-
-.hero-slide {
-    position: relative;
-
-    min-width: 100%;
-
-    height: clamp(420px, 52vw, 680px);
-
-    overflow: hidden;
+.mobile-menu.active {
+    transform: translateX(0);
 }
 
-
-.hero-slide img {
-    position: absolute;
+.mobile-menu-overlay {
+    position: fixed;
 
     inset: 0;
 
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 2999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-header {
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-logo {
+    font-family: var(--font-logo);
+
+    font-size: 30px;
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    letter-spacing: -1.5px;
+}
+
+.mobile-menu-close {
+    border: 0;
+    background: none;
+
+    font-size: 30px;
+
+    line-height: 1;
+}
+
+.mobile-menu-links {
+    padding: 20px 24px;
+}
+
+.mobile-menu-links a,
+.mobile-menu-links button {
     width: 100%;
-    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 0;
+
+    background: none;
+
+    border: none;
+    border-bottom: 1px solid var(--border);
+
+    font-size: 18px;
+    font-weight: 600;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   BANNER / HERO
+========================================================= */
+
+.hero {
+    width: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-slider {
+    width: 100%;
+    position: relative;
+}
+
+.hero-slide {
+    width: 100%;
+
+    position: relative;
+
+    min-height: 620px;
+
+    overflow: hidden;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 620px;
 
     object-fit: cover;
 }
 
-
-.hero-overlay {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.45),
-            rgba(0,0,0,.05) 70%
-        );
-}
-
-
 .hero-content {
     position: absolute;
 
-    z-index: 2;
+    left: 6%;
+    top: 50%;
 
-    left: clamp(30px, 6vw, 90px);
-    bottom: clamp(40px, 7vw, 90px);
+    transform: translateY(-50%);
 
-    max-width: 600px;
-
-    color: white;
+    z-index: 5;
 }
-
-
-.hero-label {
-    display: block;
-
-    margin-bottom: 14px;
-
-    color: var(--red);
-
-    font-size: 16px;
-    font-weight: 900;
-
-    letter-spacing: .18em;
-}
-
 
 .hero-content h1 {
-    font-size: clamp(48px, 7vw, 96px);
+    margin: 0;
 
-    line-height: .92;
+    font-size: clamp(52px, 6vw, 100px);
 
-    font-weight: 900;
+    line-height: 0.95;
 
-    letter-spacing: -.045em;
+    font-weight: 800;
+
+    letter-spacing: -3px;
 }
-
 
 .hero-content h1 span {
-    display: block;
-
     color: var(--red);
 }
-
 
 .hero-content p {
     margin: 22px 0;
 
-    font-size: 18px;
-}
-
-
-/* =========================================================
-   FLECHAS SLIDER
-========================================================= */
-
-.slider-arrow {
-    position: absolute;
-
-    z-index: 5;
-
-    top: 50%;
-
-    width: 48px;
-    height: 48px;
-
-    transform: translateY(-50%);
-
-    border: 1px solid rgba(255,255,255,.7);
-
-    border-radius: 50%;
-
-    background: rgba(0,0,0,.35);
+    font-size: 20px;
 
     color: white;
-
-    font-size: 22px;
-
-    backdrop-filter: blur(6px);
-
-    transition: background .2s ease;
 }
 
+.hero-button {
+    display: inline-flex;
 
-.slider-arrow:hover {
-    background: rgba(0,0,0,.7);
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 25px;
+
+    border-radius: var(--radius);
+
+    background: #111;
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
 }
 
-
-.slider-prev {
-    left: 20px;
-}
-
-
-.slider-next {
-    right: 20px;
+.hero-button:hover {
+    background: var(--red);
 }
 
 
 /* =========================================================
-   DOTS
+   INDICADORES DEL BANNER
 ========================================================= */
 
-.slider-dots {
+.hero-dots {
     position: absolute;
 
-    z-index: 5;
-
     bottom: 20px;
-
     left: 50%;
 
+    transform: translateX(-50%);
+
     display: flex;
+
     gap: 8px;
 
-    transform: translateX(-50%);
+    z-index: 20;
 }
 
-
-.slider-dots button {
+.hero-dot {
     width: 8px;
     height: 8px;
 
-    padding: 0;
-
-    border: 0;
     border-radius: 50%;
 
-    background: rgba(255,255,255,.55);
+    background: rgba(255,255,255,0.6);
+
+    border: none;
+}
+
+.hero-dot.active {
+    width: 28px;
+
+    border-radius: 20px;
+
+    background: white;
 }
 
 
-.slider-dots button.active {
-    width: 24px;
+/* =========================================================
+   IMPORTANTE:
+   NO MOSTRAR FLECHAS DEL BANNER
+========================================================= */
 
-    border-radius: 10px;
-
-    background: white;
+.hero-arrow,
+.hero-prev,
+.hero-next,
+.slider-arrow,
+.swiper-button-prev,
+.swiper-button-next {
+    display: none !important;
 }
 
 
@@ -337,64 +602,56 @@ button {
 ========================================================= */
 
 .benefits {
+    width: min(100% - 48px, 1400px);
+
+    margin: 0 auto;
+
     display: grid;
 
     grid-template-columns: repeat(4, 1fr);
 
-    margin-top: 0;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 
-    border: 1px solid var(--border);
-
-    border-top: 0;
-
-    border-radius:
-        0 0
-        var(--radius)
-        var(--radius);
+    border-radius: 0 0 var(--radius) var(--radius);
 
     overflow: hidden;
 }
 
-
 .benefit {
-    display: flex;
-    align-items: center;
-
-    min-height: 92px;
+    min-height: 82px;
 
     padding: 18px 24px;
+
+    display: flex;
+    align-items: center;
 
     gap: 14px;
 
     border-right: 1px solid var(--border);
 }
 
-
 .benefit:last-child {
-    border-right: 0;
+    border-right: none;
 }
-
 
 .benefit-icon {
     font-size: 22px;
 }
 
+.benefit-title {
+    font-size: 16px;
 
-.benefit strong {
-    display: block;
+    font-weight: 700;
 
-    margin-bottom: 4px;
-
-    font-size: 15px;
+    margin-bottom: 3px;
 }
 
-
-.benefit span:last-child {
-    display: block;
+.benefit-text {
+    font-size: 14px;
 
     color: #666;
-
-    font-size: 14px;
 }
 
 
@@ -403,9 +660,10 @@ button {
 ========================================================= */
 
 .section {
-    margin-top: 60px;
-}
+    width: min(100% - 48px, 1400px);
 
+    margin: 55px auto;
+}
 
 .section-header {
     display: flex;
@@ -413,31 +671,25 @@ button {
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
+.section-title {
+    margin: 0;
 
-.section-header h2 {
     font-size: 28px;
 
-    line-height: 1.1;
-
-    font-weight: 900;
-
-    letter-spacing: -.02em;
-}
-
-
-.section-header a {
-    color: var(--red);
-
-    font-size: 15px;
     font-weight: 800;
+
+    letter-spacing: -0.8px;
 }
 
+.section-link {
+    font-size: 15px;
 
-.section-header a:hover {
-    text-decoration: underline;
+    font-weight: 700;
+
+    color: var(--red);
 }
 
 
@@ -448,186 +700,205 @@ button {
 .collections-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
 
-    gap: 12px;
+    gap: 10px;
 }
-
 
 .collection-card {
     position: relative;
 
-    height: 280px;
-
-    display: flex;
-    align-items: flex-end;
-
-    padding: 24px;
+    min-height: 250px;
 
     overflow: hidden;
 
-    border: 1px solid #333;
+    border: 1px solid #ccc;
 
     border-radius: var(--radius);
 
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            #666,
-            #262626 45%,
-            #080808 100%
-        );
+    background: #111;
+
+    display: flex;
+
+    align-items: flex-end;
+}
+
+.collection-card img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0.85;
+
+    transition: transform 0.4s ease;
+}
+
+.collection-card:hover img {
+    transform: scale(1.04);
+}
+
+.collection-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 22px;
 
     color: white;
 
-    transition:
-        transform .25s ease,
-        border-color .25s ease;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.8),
+        transparent
+    );
 }
 
+.collection-content h3 {
+    margin: 0;
 
-.collection-card:hover {
-    transform: translateY(-4px);
+    font-size: 22px;
 
-    border-color: var(--red);
+    font-weight: 700;
 }
 
+.collection-content span {
+    display: block;
 
-.collection-card h3 {
-    font-size: 25px;
+    margin-top: 4px;
 
-    line-height: 1;
-
-    margin-bottom: 7px;
-
-    font-weight: 900;
-}
-
-
-.collection-card span {
     font-size: 14px;
 }
 
 
 /* =========================================================
-   PRODUCTOS
+   RECOMENDACIONES
 ========================================================= */
 
-.product-grid {
+.recommendations {
+    width: min(100% - 48px, 1400px);
+
+    margin: 70px auto;
+}
+
+.recommendations-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 16px;
 }
 
-
-.empty-products {
-    min-height: 150px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #999;
-
-    font-size: 16px;
-
-    text-align: center;
-
-    border-bottom: 1px solid var(--border);
-}
-
-
-/* =========================================================
-   BRAND CARDS
-========================================================= */
-
-.brand-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 16px;
-
-    margin-top: 70px;
-}
-
-
-.brand-card {
-    min-height: 310px;
-
-    padding: 40px;
-
+.recommendation-card {
     border: 1px solid var(--border);
 
     border-radius: var(--radius);
 
+    overflow: hidden;
+
+    background: white;
+}
+
+.recommendation-card img {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+.recommendation-info {
+    padding: 16px;
+}
+
+.recommendation-info h3 {
+    margin: 0 0 8px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+.recommendation-info p {
+    margin: 0;
+
+    font-size: 15px;
+
+    color: #666;
+}
+
+
+/* =========================================================
+   SATORII PACK
+========================================================= */
+
+.satorii-pack {
+    width: min(100% - 48px, 1400px);
+
+    margin: 70px auto;
+
+    min-height: 260px;
+
+    padding: 45px;
+
+    background: #160000;
+
+    color: white;
+
+    border: 1px solid #330000;
+
+    border-radius: var(--radius);
+
     display: flex;
 
-    flex-direction: column;
-
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
 
     overflow: hidden;
 }
 
+.satorii-pack h2 {
+    margin: 0 0 12px;
 
-.brand-card-light {
-    background: #f7f7f7;
+    font-size: 38px;
+
+    font-weight: 800;
 }
 
+.satorii-pack p {
+    margin: 0 0 22px;
 
-.brand-card-dark {
-    background: #160303;
+    font-size: 17px;
+
+    color: #ddd;
+}
+
+.satorii-pack-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 24px;
+
+    border-radius: var(--radius);
+
+    background: var(--red);
 
     color: white;
-}
 
+    font-size: 15px;
 
-.small-label {
-    margin-bottom: 10px;
-
-    color: var(--red);
-
-    font-size: 14px;
-
-    font-weight: 900;
-
-    letter-spacing: .18em;
-}
-
-
-.brand-card h2 {
-    max-width: 600px;
-
-    font-size: 48px;
-
-    line-height: .95;
-
-    font-weight: 900;
-}
-
-
-.brand-card h2 span {
-    color: var(--red);
-}
-
-
-.brand-card p {
-    margin: 18px 0 24px;
-
-    color: #666;
-
-    font-size: 16px;
-}
-
-
-.brand-card-dark p {
-    color: #ccc;
+    font-weight: 700;
 }
 
 
@@ -635,176 +906,140 @@ button {
    FOOTER
 ========================================================= */
 
-.footer {
-    margin-top: 80px;
+.site-footer {
+    width: 100%;
 
-    background: var(--black);
+    background: #0b0b0b;
 
     color: white;
-}
 
+    margin-top: 80px;
+
+    border-top: 1px solid #222;
+}
 
 .footer-inner {
+    width: min(100% - 48px, 1400px);
+
+    margin: 0 auto;
+
+    padding: 65px 0 25px;
+
     display: grid;
 
-    grid-template-columns:
-        1.4fr
-        1fr
-        1fr
-        1.5fr;
+    grid-template-columns: 1.3fr 1fr 1fr 1.5fr;
 
-    gap: 70px;
-
-    padding-top: 70px;
-    padding-bottom: 60px;
+    gap: 60px;
 }
 
+.footer-logo {
+    font-family: var(--font-logo);
 
-.footer-brand h2 {
-    font-size: 32px;
+    font-size: 35px;
+
+    font-weight: 500;
 
     font-style: italic;
 
-    line-height: 1;
+    letter-spacing: -1.5px;
 }
 
+.footer-description {
+    max-width: 330px;
 
-.footer-brand > span {
-    display: block;
-
-    margin-top: 8px;
-
-    color: var(--red);
-
-    font-size: 14px;
-}
-
-
-.footer-brand p {
-    max-width: 280px;
-
-    margin-top: 20px;
-
-    color: #aaa;
+    margin-top: 18px;
 
     font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #aaa;
 }
 
+.footer-title {
+    margin-bottom: 20px;
 
-.instagram-link {
-    width: 44px;
-    height: 44px;
+    font-size: 15px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-weight: 700;
 
-    margin-top: 24px;
-
-    border: 1px solid #555;
-
-    border-radius: 50%;
-
-    font-size: 24px;
-
-    transition:
-        background .2s ease,
-        border-color .2s ease;
+    letter-spacing: 1.5px;
 }
 
-
-.instagram-link:hover {
-    background: var(--red);
-
-    border-color: var(--red);
-}
-
-
-.footer-column {
+.footer-links {
     display: flex;
 
     flex-direction: column;
 
-    gap: 12px;
+    gap: 13px;
 }
 
-
-.footer-column h3 {
-    margin-bottom: 10px;
-
+.footer-links a {
     font-size: 15px;
 
-    letter-spacing: .12em;
-}
-
-
-.footer-column a {
     color: #aaa;
 
-    font-size: 15px;
-
-    transition: color .2s ease;
+    transition: 0.2s ease;
 }
 
-
-.footer-column a:hover {
+.footer-links a:hover {
     color: white;
 }
 
-
 .footer-community h2 {
-    font-size: 38px;
+    margin: 0;
 
-    line-height: .95;
+    font-size: 32px;
 
-    font-weight: 900;
+    line-height: 1;
+
+    font-weight: 800;
 }
-
 
 .footer-community h2 span {
     color: var(--red);
 }
 
-
 .footer-community p {
-    margin: 16px 0;
+    font-size: 14px;
 
     color: #aaa;
 
-    font-size: 15px;
+    margin: 15px 0;
 }
 
-
-.newsletter {
+.footer-newsletter {
     display: flex;
 
-    max-width: 500px;
+    width: 100%;
+
+    max-width: 430px;
+
+    border-radius: var(--radius);
 
     overflow: hidden;
-
-    border-radius: 7px;
 }
 
-
-.newsletter input {
+.footer-newsletter input {
     flex: 1;
 
     min-width: 0;
 
     height: 48px;
 
-    padding: 0 16px;
+    border: none;
 
-    border: 0;
+    padding: 0 15px;
 
-    outline: 0;
+    font-size: 15px;
+
+    outline: none;
 }
 
-
-.newsletter button {
+.footer-newsletter button {
     width: 58px;
 
-    border: 0;
+    border: none;
 
     background: var(--red);
 
@@ -813,2277 +1048,290 @@ button {
     font-size: 20px;
 }
 
-
 .footer-bottom {
+    width: min(100% - 48px, 1400px);
+
+    margin: 0 auto;
+
+    padding: 20px 0;
+
+    border-top: 1px solid #222;
+
     display: flex;
 
     align-items: center;
     justify-content: space-between;
-
-    padding-top: 22px;
-    padding-bottom: 22px;
-
-    border-top: 1px solid #252525;
 
     color: #777;
 
     font-size: 13px;
 }
 
-
-.footer-bottom div {
+.footer-bottom-links {
     display: flex;
 
-    gap: 24px;
-}
-
-
-.footer-bottom a:hover {
-    color: white;
+    gap: 25px;
 }
 
 
 /* =========================================================
-   TABLET
+   BOTONES
+========================================================= */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 24px;
+
+    border: none;
+
+    border-radius: var(--radius);
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.btn-black {
+    background: #111;
+    color: white;
+}
+
+.btn-black:hover {
+    background: var(--red);
+}
+
+.btn-red {
+    background: var(--red);
+    color: white;
+}
+
+.btn-red:hover {
+    background: #d90000;
+}
+
+
+/* =========================================================
+   BORDES GENERALES
+========================================================= */
+
+.hero,
+.benefits,
+.collection-card,
+.recommendation-card,
+.satorii-pack {
+    border-radius: var(--radius);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
 ========================================================= */
 
 @media (max-width: 1000px) {
+
+    .main-nav {
+        gap: 22px;
+    }
+
+    .main-nav a,
+    .main-nav button {
+        font-size: 14px;
+    }
+
+    .collections-grid,
+    .recommendations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .benefits {
         grid-template-columns: repeat(2, 1fr);
     }
 
-
     .benefit:nth-child(2) {
-        border-right: 0;
+        border-right: none;
     }
-
 
     .benefit:nth-child(-n+2) {
         border-bottom: 1px solid var(--border);
     }
 
-
-    .collections-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-
-    .brand-grid {
-        grid-template-columns: 1fr;
-    }
-
-
     .footer-inner {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
 
 /* =========================================================
-   MÓVIL
+   RESPONSIVE — MÓVIL
 ========================================================= */
 
 @media (max-width: 700px) {
 
     body {
-        font-size: 16px;
+        font-size: 18px;
     }
 
-
+    .container,
     .section,
+    .recommendations,
+    .satorii-pack,
     .benefits,
-    .brand-grid,
     .footer-inner,
     .footer-bottom {
         width: calc(100% - 28px);
     }
 
-
-    .hero-slider {
+    .top-bar-content {
         width: calc(100% - 28px);
     }
 
-
-    .hero-slide {
-        height: 520px;
+    .top-bar {
+        min-height: 32px;
+        font-size: 11px;
     }
 
+    .top-bar-right {
+        display: none;
+    }
+
+    .site-header {
+        height: 64px;
+    }
+
+    .header-inner {
+        width: calc(100% - 28px);
+    }
+
+    .header-logo,
+    .site-logo,
+    .logo {
+        font-size: 27px !important;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .header-actions {
+        gap: 10px;
+    }
+
+    .hero-slide,
+    .hero-slide img {
+        min-height: 500px;
+        height: 500px;
+    }
 
     .hero-content {
         left: 24px;
         right: 24px;
-        bottom: 60px;
     }
-
 
     .hero-content h1 {
-        font-size: 48px;
+        font-size: clamp(45px, 13vw, 75px);
     }
 
-
-    .hero-content p {
-        font-size: 16px;
+    .collections-grid,
+    .recommendations-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    .slider-arrow {
-        width: 40px;
-        height: 40px;
+    .collection-card {
+        min-height: 220px;
     }
-
 
     .benefits {
         grid-template-columns: 1fr;
     }
 
-
     .benefit {
-        border-right: 0;
-
+        border-right: none;
         border-bottom: 1px solid var(--border);
     }
 
-
     .benefit:last-child {
-        border-bottom: 0;
+        border-bottom: none;
     }
 
+    .satorii-pack {
+        padding: 30px 24px;
 
-    .section {
-        margin-top: 42px;
+        flex-direction: column;
+
+        align-items: flex-start;
     }
 
-
-    .section-header h2 {
-        font-size: 24px;
+    .satorii-pack h2 {
+        font-size: 30px;
     }
-
-
-    .collections-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .collection-card {
-        height: 220px;
-    }
-
-
-    .product-grid {
-        grid-template-columns: 1fr 1fr;
-
-        gap: 10px;
-    }
-
-
-    .brand-card {
-        min-height: 280px;
-
-        padding: 28px;
-    }
-
-
-    .brand-card h2 {
-        font-size: 36px;
-    }
-
 
     .footer-inner {
         grid-template-columns: 1fr;
 
-        gap: 42px;
+        gap: 40px;
 
-        padding-top: 50px;
+        padding-top: 45px;
     }
-
 
     .footer-bottom {
         flex-direction: column;
 
         align-items: flex-start;
 
-        gap: 14px;
-    }
-
-}
-
-
-/* =========================================================
-   TELÉFONOS PEQUEÑOS
-========================================================= */
-
-@media (max-width: 430px) {
-
-    .hero-content h1 {
-        font-size: 40px;
-    }
-
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .section-header {
-        align-items: flex-end;
-    }
-
-
-    .section-header a {
-        font-size: 14px;
-    }
-
-}
-
-/* =========================================================
-   SATORIMODE HEADER
-========================================================= */
-
-#satori-header {
-    width: 100%;
-}
-
-
-/* =========================================================
-   BARRA SUPERIOR
-========================================================= */
-
-.top-bar {
-    width: 100%;
-
-    height: 38px;
-
-    background: #f2161c;
-
-    color: white;
-}
-
-
-.top-bar-inner {
-    position: relative;
-
-    width: min(
-        calc(100% - 40px),
-        1600px
-    );
-
-    height: 100%;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-
-.shipping-message {
-    font-size: 13px;
-
-    font-weight: 800;
-
-    letter-spacing: .05em;
-}
-
-
-.top-message {
-    position: absolute;
-
-    right: 0;
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    opacity: .9;
-}
-
-
-.top-instagram {
-    position: absolute;
-
-    left: 0;
-
-    width: 25px;
-    height: 25px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(255,255,255,.8);
-
-    border-radius: 50%;
-
-    color: white;
-
-    font-size: 16px;
-
-    transition:
-        background .2s ease,
-        color .2s ease;
-}
-
-
-.top-instagram:hover {
-    background: white;
-
-    color: #f2161c;
-}
-
-
-/* =========================================================
-   HEADER PRINCIPAL
-========================================================= */
-
-.main-header {
-    position: relative;
-
-    z-index: 100;
-
-    width: 100%;
-
-    height: 76px;
-
-    background: white;
-
-    border-bottom: 1px solid #dedede;
-}
-
-
-.header-inner {
-    width: min(
-        calc(100% - 40px),
-        1600px
-    );
-
-    height: 100%;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 40px;
-}
-
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.satori-logo {
-    flex-shrink: 0;
-
-    color: #0b0b0b;
-
-    font-family:
-        Impact,
-        "Arial Black",
-        Arial,
-        sans-serif;
-
-    font-size: 31px;
-
-    font-weight: 900;
-
-    font-style: italic;
-
-    letter-spacing: -.06em;
-
-    line-height: 1;
-}
-
-
-.satori-logo:hover {
-    color: #f2161c;
-}
-
-
-/* =========================================================
-   NAVEGACIÓN
-========================================================= */
-
-.main-nav {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 38px;
-
-    height: 100%;
-}
-
-
-.main-nav > a,
-.nav-dropdown > a {
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    height: 100%;
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    white-space: nowrap;
-}
-
-
-.main-nav > a::after,
-.nav-dropdown > a::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 2px;
-
-    background: #f2161c;
-
-    transform: scaleX(0);
-
-    transform-origin: center;
-
-    transition: transform .2s ease;
-}
-
-
-.main-nav > a:hover::after,
-.nav-dropdown > a:hover::after {
-    transform: scaleX(1);
-}
-
-
-.nav-dropdown {
-    position: relative;
-
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-}
-
-
-.nav-dropdown > a span {
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   DROPDOWN
-========================================================= */
-
-.dropdown-menu {
-    position: absolute;
-
-    top: calc(100% + 1px);
-
-    left: 50%;
-
-    min-width: 190px;
-
-    padding: 10px;
-
-    transform:
-        translateX(-50%)
-        translateY(8px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    background: white;
-
-    border: 1px solid #ddd;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.08);
-
-    transition:
-        opacity .2s ease,
-        transform .2s ease,
-        visibility .2s ease;
-}
-
-
-.nav-dropdown:hover .dropdown-menu {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
-}
-
-
-.dropdown-menu a {
-    display: block;
-
-    padding: 12px 14px;
-
-    border-radius: 6px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-.dropdown-menu a:hover {
-    background: #f5f5f5;
-
-    color: #f2161c;
-}
-
-
-/* =========================================================
-   ACCIONES
-========================================================= */
-
-.header-actions {
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    flex-shrink: 0;
-}
-
-
-.header-icon {
-    width: 23px;
-    height: 23px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border: 0;
-
-    background: transparent;
-
-    color: #111;
-
-    padding: 0;
-}
-
-
-.header-icon svg {
-    width: 22px;
-    height: 22px;
-
-    fill: none;
-
-    stroke: currentColor;
-
-    stroke-width: 1.6;
-
-    stroke-linecap: round;
-
-    stroke-linejoin: round;
-}
-
-
-.header-icon:hover {
-    color: #f2161c;
-}
-
-
-/* =========================================================
-   BUSCADOR
-========================================================= */
-
-.search-wrapper {
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-}
-
-
-.search-input {
-    width: 0;
-
-    height: 38px;
-
-    padding: 0;
-
-    border: 1px solid transparent;
-
-    border-radius: 6px;
-
-    outline: none;
-
-    font-size: 14px;
-
-    opacity: 0;
-
-    transition:
-        width .25s ease,
-        opacity .2s ease,
-        padding .25s ease,
-        border-color .25s ease;
-}
-
-
-.search-wrapper.active .search-input {
-    width: 220px;
-
-    padding: 0 13px;
-
-    opacity: 1;
-
-    border-color: #ccc;
-}
-
-
-.search-input:focus {
-    border-color: #111;
-}
-
-
-/* =========================================================
-   MENÚ MÓVIL
-========================================================= */
-
-.mobile-menu-button {
-    display: none;
-
-    width: 28px;
-    height: 28px;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 25px;
-
-    line-height: 1;
-}
-
-
-.mobile-menu {
-    position: fixed;
-
-    z-index: 1001;
-
-    top: 0;
-    left: 0;
-
-    width: min(360px, 88vw);
-
-    height: 100vh;
-
-    padding: 24px;
-
-    background: white;
-
-    transform: translateX(-100%);
-
-    transition: transform .3s ease;
-
-    box-shadow:
-        10px 0 40px rgba(0,0,0,.12);
-}
-
-
-.mobile-menu.open {
-    transform: translateX(0);
-}
-
-
-.mobile-menu-header {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding-bottom: 24px;
-
-    border-bottom: 1px solid #ddd;
-}
-
-
-.mobile-menu-header button {
-    width: 32px;
-    height: 32px;
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 30px;
-
-    line-height: 1;
-}
-
-
-.mobile-menu nav {
-    display: flex;
-
-    flex-direction: column;
-
-    margin-top: 20px;
-}
-
-
-.mobile-menu nav a {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 20px 0;
-
-    border-bottom: 1px solid #ddd;
-
-    font-size: 16px;
-
-    font-weight: 800;
-}
-
-
-.mobile-menu nav a:hover {
-    color: #f2161c;
-}
-
-
-.mobile-instagram {
-    margin-top: 40px;
-}
-
-
-.mobile-instagram span {
-    display: block;
-
-    margin-bottom: 14px;
-
-    color: #f2161c;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: .15em;
-}
-
-
-.mobile-instagram a {
-    font-size: 15px;
-
-    font-weight: 800;
-}
-
-
-.mobile-overlay {
-    position: fixed;
-
-    z-index: 1000;
-
-    inset: 0;
-
-    background: rgba(0,0,0,.45);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity .3s ease,
-        visibility .3s ease;
-}
-
-
-.mobile-overlay.open {
-    opacity: 1;
-
-    visibility: visible;
-}
-
-
-body.menu-open {
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   HERO FULL WIDTH
-========================================================= */
-
-/*
-   IMPORTANTE:
-   El banner principal ahora ocupa TODO el ancho.
-*/
-
-.hero-slider {
-    width: 100% !important;
-
-    max-width: none !important;
-
-    margin: 0 !important;
-
-    border-left: 0;
-    border-right: 0;
-
-    border-top: 0;
-
-    border-radius: 0 !important;
-}
-
-
-.hero-slide {
-    border-radius: 0;
-}
-
-
-/* =========================================================
-   BENEFICIOS DEBAJO DEL BANNER
-========================================================= */
-
-.benefits {
-    width: min(
-        calc(100% - 40px),
-        1600px
-    );
-
-    margin-left: auto;
-    margin-right: auto;
-
-    border: 1px solid #ddd;
-
-    border-top: 0;
-
-    border-radius:
-        0 0
-        10px
-        10px;
-}
-
-
-/* =========================================================
-   RESPONSIVE HEADER
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .main-nav {
-        gap: 20px;
-    }
-
-
-    .main-nav > a,
-    .nav-dropdown > a {
-        font-size: 13px;
-    }
-
-
-    .header-inner {
-        gap: 20px;
-    }
-
-}
-
-
-@media (max-width: 760px) {
-
-    .top-message {
-        display: none;
-    }
-
-
-    .top-bar-inner {
-        justify-content: center;
-    }
-
-
-    .top-instagram {
-        left: 0;
-    }
-
-
-    .main-header {
-        height: 68px;
-    }
-
-
-    .main-nav {
-        display: none;
-    }
-
-
-    .mobile-menu-button {
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-    }
-
-
-    .header-inner {
-        width: calc(100% - 28px);
-    }
-
-
-    .satori-logo {
-        font-size: 28px;
-    }
-
-
-    .header-actions {
         gap: 15px;
     }
 
-
-    .hero-slide {
-        height: 560px;
+    .footer-bottom-links {
+        gap: 15px;
     }
-
-
-    .benefits {
-        width: calc(100% - 28px);
-    }
-
 }
 
 
-@media (max-width: 430px) {
+/* =========================================================
+   CORRECCIONES PARA ELEMENTOS ANTIGUOS
+========================================================= */
 
-    .top-bar {
-        height: 34px;
-    }
-
-
-    .shipping-message {
-        font-size: 11px;
-    }
-
-
-    .search-wrapper.active .search-input {
-        position: absolute;
-
-        z-index: 200;
-
-        top: 48px;
-
-        right: 14px;
-
-        width: calc(100vw - 28px);
-
-        background: white;
-
-        box-shadow:
-            0 8px 20px rgba(0,0,0,.1);
-    }
-
-
-    .hero-slide {
-        height: 500px;
-    }
-
+.old-header-logo {
+    font-weight: 500 !important;
 }
 
-/* ==========================================================
-   SATORII — NUEVO HEADER
-========================================================== */
-
-#satori-header {
-    width: 100%;
-}
-
-
-/* ==========================================================
-   BARRA SUPERIOR
-========================================================== */
-
-.top-bar {
-    width: 100%;
-    height: 34px;
-
-    background: #f2161c;
-    color: #fff;
-
-    border-bottom: 1px solid #d10e13;
-}
-
-
-.top-bar-inner {
-    position: relative;
-
-    width: calc(100% - 40px);
-    max-width: 1600px;
-
-    height: 100%;
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.shipping-message {
-    font-size: 12px;
+header h1,
+header h2,
+header h3 {
     font-weight: 600;
-
-    letter-spacing: .04em;
 }
 
-
-.top-message {
-    position: absolute;
-    right: 0;
-
-    font-size: 10px;
+header a {
     font-weight: 500;
-
-    letter-spacing: .04em;
-}
-
-
-.top-instagram {
-    position: absolute;
-    left: 0;
-
-    width: 22px;
-    height: 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #fff;
-
-    border: 1px solid rgba(255,255,255,.75);
-    border-radius: 50%;
-
-    transition: .2s ease;
-}
-
-
-.top-instagram svg {
-    width: 13px;
-    height: 13px;
-
-    fill: none;
-
-    stroke: currentColor;
-
-    stroke-width: 1.7;
-}
-
-
-.top-instagram:hover {
-    background: #fff;
-    color: #f2161c;
-}
-
-
-/* ==========================================================
-   HEADER PRINCIPAL
-========================================================== */
-
-.main-header {
-    position: relative;
-    z-index: 100;
-
-    width: 100%;
-    height: 62px;
-
-    background: #fff;
-
-    border-bottom: 1px solid #dedede;
-}
-
-
-.header-inner {
-    width: calc(100% - 40px);
-    max-width: 1600px;
-
-    height: 100%;
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-
-/* ==========================================================
-   LOGO
-========================================================== */
-
-.satori-logo {
-    flex-shrink: 0;
-
-    color: #111;
-
-    /*
-       Inspirado en lettering de streetwear,
-       pero sin copiar una fuente específica.
-    */
-
-    font-family:
-        Impact,
-        "Arial Black",
-        Arial,
-        sans-serif;
-
-    font-size: 27px;
-
-    font-weight: 800;
-
-    font-style: italic;
-
-    letter-spacing: -.07em;
-
-    line-height: 1;
-
-    text-decoration: none;
-}
-
-
-.satori-logo:hover {
-    color: #f2161c;
-}
-
-
-/* ==========================================================
-   NAVEGACIÓN
-========================================================== */
-
-.main-nav {
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 34px;
-}
-
-
-.main-nav > a,
-.nav-dropdown > a {
-
-    position: relative;
-
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
-
-    color: #111;
-
-    font-size: 13px;
-
-    /*
-       Ya NO tan gruesa.
-    */
-
-    font-weight: 600;
-
-    letter-spacing: .01em;
-
-    white-space: nowrap;
-
-    text-decoration: none;
-}
-
-
-.main-nav > a::after,
-.nav-dropdown > a::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 2px;
-
-    background: #f2161c;
-
-    transform: scaleX(0);
-
-    transition: transform .2s ease;
-}
-
-
-.main-nav > a:hover::after,
-.nav-dropdown > a:hover::after {
-
-    transform: scaleX(1);
-
-}
-
-
-.nav-dropdown {
-
-    position: relative;
-
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-}
-
-
-.nav-dropdown > a span {
-    font-size: 11px;
-}
-
-
-/* ==========================================================
-   MENÚ DESPLEGABLE
-========================================================== */
-
-.dropdown-menu {
-
-    position: absolute;
-
-    top: calc(100% + 1px);
-
-    left: 50%;
-
-    min-width: 185px;
-
-    padding: 8px;
-
-    background: #fff;
-
-    border: 1px solid #ddd;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
-
-    transform:
-        translate(-50%, 8px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        .2s ease;
-}
-
-
-.nav-dropdown:hover .dropdown-menu {
-
-    transform:
-        translate(-50%, 0);
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
-
-
-.dropdown-menu a {
-
-    display: block;
-
-    padding: 11px 13px;
-
-    color: #111;
-
-    border-radius: 5px;
-
-    font-size: 13px;
-
-    font-weight: 500;
-
-    text-decoration: none;
-}
-
-
-.dropdown-menu a:hover {
-
-    background: #f5f5f5;
-
-    color: #f2161c;
-
-}
-
-
-/* ==========================================================
-   ICONOS
-========================================================== */
-
-.header-actions {
-
-    display: flex;
-    align-items: center;
-
-    gap: 17px;
-}
-
-
-.header-icon {
-
-    width: 22px;
-    height: 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-
-    color: #111;
-
-    text-decoration: none;
-
-    cursor: pointer;
-}
-
-
-.header-icon svg {
-
-    width: 19px;
-    height: 19px;
-
-    fill: none;
-
-    stroke: currentColor;
-
-    stroke-width: 1.5;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-
-.header-icon:hover {
-
-    color: #f2161c;
-
-}
-
-
-/* ==========================================================
-   BUSCADOR
-========================================================== */
-
-.search-wrapper {
-
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-}
-
-
-.search-input {
-
-    width: 0;
-    height: 34px;
-
-    padding: 0;
-
-    border: 1px solid transparent;
-
-    border-radius: 6px;
-
-    outline: none;
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    opacity: 0;
-
-    transition:
-        width .25s ease,
-        padding .25s ease,
-        opacity .2s ease,
-        border-color .2s ease;
-}
-
-
-.search-wrapper.active .search-input {
-
-    width: 210px;
-
-    padding: 0 12px;
-
-    opacity: 1;
-
-    border-color: #ccc;
-
-}
-
-
-.search-input:focus {
-
-    border-color: #111;
-
-}
-
-
-/* ==========================================================
-   HERO / BANNER FULL WIDTH
-========================================================== */
-
-.hero-slider {
-
-    position: relative;
-
-    width: 100vw !important;
-
-    max-width: none !important;
-
-    margin-left: calc(50% - 50vw) !important;
-
-    margin-right: calc(50% - 50vw) !important;
-
-    overflow: hidden;
-
-    /*
-       Bordes arriba y abajo.
-    */
-
-    border-top: 1px solid #d8d8d8;
-
-    border-bottom: 1px solid #d8d8d8;
-
-    border-left: 0;
-    border-right: 0;
-
-    border-radius: 0 !important;
-
-    touch-action: pan-y;
-
-    cursor: grab;
-
-    user-select: none;
-}
-
-
-.hero-slider.dragging {
-
-    cursor: grabbing;
-
-}
-
-
-.hero-track {
-
-    display: flex;
-
-    width: 100%;
-
-    transition:
-        transform .65s cubic-bezier(.22,.61,.36,1);
-
-}
-
-
-.hero-slider.dragging .hero-track {
-
-    transition: none;
-
-}
-
-
-.hero-slide {
-
-    position: relative;
-
-    flex: 0 0 100%;
-
-    width: 100%;
-
-    min-width: 100%;
-
-    height: clamp(
-        420px,
-        52vw,
-        720px
-    );
-
-    overflow: hidden;
-
-    border-radius: 0 !important;
-}
-
-
-.hero-slide img {
-
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    pointer-events: none;
-
-}
-
-
-/* ==========================================================
-   PUNTOS DEL SLIDER
-========================================================== */
-
-.hero-dots {
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 18px;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    gap: 7px;
-
-    z-index: 5;
-}
-
-
-.hero-dot {
-
-    width: 7px;
-    height: 7px;
-
-    padding: 0;
-
-    border: 1px solid #fff;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.35);
-
-    cursor: pointer;
-}
-
-
-.hero-dot.active {
-
-    background: #fff;
-
-}
-
-
-/* ==========================================================
-   BENEFICIOS
-========================================================== */
-
-.benefits {
-
-    width: calc(100% - 40px);
-
-    max-width: 1600px;
-
-    margin: 0 auto;
-
-    border: 1px solid #ddd;
-
-    border-top: 0;
-
-    border-radius:
-        0 0
-        9px
-        9px;
-
-    overflow: hidden;
-}
-
-
-/* ==========================================================
-   RECOMENDACIONES
-========================================================== */
-
-.recommendations {
-
-    width: calc(100% - 40px);
-
-    max-width: 1600px;
-
-    margin: 80px auto;
-
-}
-
-
-.recommendations-header {
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 25px;
-}
-
-
-.recommendations-header h2 {
-
-    margin: 0;
-
-    font-size: 24px;
-
-    font-weight: 700;
-
-    letter-spacing: -.02em;
-}
-
-
-.recommendations-header a {
-
-    color: #f2161c;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-}
-
-
-.recommendations-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 14px;
-}
-
-
-.recommendation-card {
-
-    position: relative;
-
-    overflow: hidden;
-
-    border: 1px solid #ddd;
-
-    border-radius: 9px;
-
-    background: #fff;
-
-    text-decoration: none;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-}
-
-
-.recommendation-card:hover {
-
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
-
-}
-
-
-.recommendation-image {
-
-    aspect-ratio: 1 / 1.15;
-
-    background:
-        linear-gradient(
-            145deg,
-            #444,
-            #111
-        );
-
-    overflow: hidden;
-}
-
-
-.recommendation-image img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-}
-
-
-.recommendation-info {
-
-    padding: 15px;
-
-}
-
-
-.recommendation-category {
-
-    margin-bottom: 6px;
-
-    color: #999;
-
-    font-size: 10px;
-
-    font-weight: 600;
-
-    letter-spacing: .08em;
-
-    text-transform: uppercase;
-}
-
-
-.recommendation-name {
-
-    color: #111;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-.recommendation-price {
-
-    margin-top: 8px;
-
-    color: #555;
-
-    font-size: 13px;
-}
-
-
-/* ==========================================================
-   SATORII PACK
-========================================================== */
-
-.satori-pack {
-
-    width: calc(100% - 40px);
-
-    max-width: 1600px;
-
-    margin: 80px auto;
-
-    min-height: 300px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 50px;
-
-    padding: 55px;
-
-    background:
-        linear-gradient(
-            120deg,
-            #120000,
-            #260000
-        );
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    color: #fff;
-}
-
-
-.satori-pack-content {
-
-    max-width: 600px;
-}
-
-
-.satori-pack-label {
-
-    margin-bottom: 12px;
-
-    color: #f2161c;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: .18em;
-}
-
-
-.satori-pack h2 {
-
-    margin: 0 0 12px;
-
-    font-size: clamp(30px, 4vw, 52px);
-
-    line-height: 1;
-
-}
-
-
-.satori-pack p {
-
-    margin: 0 0 25px;
-
-    color: #ccc;
-
-    font-size: 14px;
-
-}
-
-
-.satori-pack-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    padding: 13px 22px;
-
-    background: #f2161c;
-
-    color: white;
-
-    border-radius: 6px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    text-decoration: none;
-}
-
-
-.satori-pack-button:hover {
-
-    background: #fff;
-
-    color: #111;
-
-}
-
-
-/* ==========================================================
-   MENÚ MÓVIL
-========================================================== */
-
-.mobile-menu-button {
-
-    display: none;
-
-    width: 28px;
-    height: 28px;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 23px;
-
-    cursor: pointer;
-}
-
-
-.mobile-menu {
-
-    position: fixed;
-
-    z-index: 1001;
-
-    top: 0;
-    left: 0;
-
-    width: min(360px, 88vw);
-
-    height: 100vh;
-
-    padding: 24px;
-
-    background: #fff;
-
-    transform: translateX(-100%);
-
-    transition:
-        transform .3s ease;
-}
-
-
-.mobile-menu.open {
-
-    transform: translateX(0);
-
-}
-
-
-.mobile-menu-header {
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding-bottom: 20px;
-
-    border-bottom: 1px solid #ddd;
-}
-
-
-.mobile-menu-header button {
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 30px;
-
-}
-
-
-.mobile-menu nav {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.mobile-menu nav a {
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 18px 0;
-
-    border-bottom: 1px solid #ddd;
-
-    color: #111;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-}
-
-
-.mobile-instagram {
-
-    margin-top: 35px;
-}
-
-
-.mobile-instagram span {
-
-    display: block;
-
-    margin-bottom: 12px;
-
-    color: #f2161c;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: .15em;
-}
-
-
-.mobile-instagram a {
-
-    color: #111;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-.mobile-overlay {
-
-    position: fixed;
-
-    z-index: 1000;
-
-    inset: 0;
-
-    background: rgba(0,0,0,.45);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition: .3s ease;
-}
-
-
-.mobile-overlay.open {
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
-
-
-body.menu-open {
-
-    overflow: hidden;
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-
-@media (max-width: 900px) {
-
-    .main-nav {
-
-        gap: 20px;
-
-    }
-
-
-    .main-nav > a,
-    .nav-dropdown > a {
-
-        font-size: 12px;
-
-    }
-
-
-    .recommendations-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
 }
-
-
-@media (max-width: 760px) {
-
-    .top-message {
-
-        display: none;
-
-    }
-
-
-    .main-header {
-
-        height: 58px;
-
-    }
-
-
-    .main-nav {
-
-        display: none;
-
-    }
-
-
-    .mobile-menu-button {
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-    }
-
-
-    .satori-logo {
-
-        font-size: 25px;
-
-    }
-
 
-    .hero-slide {
 
-        height: 500px;
+/* Evita que elementos antiguos creen esquinas puntiagudas */
 
-    }
-
-
-    .recommendations {
-
-        width: calc(100% - 28px);
-
-        margin: 55px auto;
-
-    }
-
-
-    .recommendations-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 10px;
-
-    }
-
-
-    .satori-pack {
-
-        width: calc(100% - 28px);
-
-        padding: 35px 25px;
-
-    }
-
+.card,
+.banner,
+.hero,
+.collection-card,
+.product-card,
+.info-card,
+.feature-card {
+    border-radius: var(--radius);
 }
-
-
-@media (max-width: 480px) {
-
-    .top-bar {
-
-        height: 32px;
-
-    }
-
-
-    .shipping-message {
-
-        font-size: 10px;
-
-    }
-
-
-    .top-instagram {
-
-        width: 20px;
-        height: 20px;
-
-    }
-
-
-    .header-inner {
-
-        width: calc(100% - 25px);
-
-    }
-
-
-    .search-wrapper.active .search-input {
-
-        position: absolute;
-
-        top: 42px;
-
-        right: 12px;
-
-        width: calc(100vw - 24px);
-
-        background: white;
-
-        box-shadow:
-            0 10px 30px rgba(0,0,0,.12);
-
-    }
-
-
-    .hero-slide {
-
-        height: 430px;
-
-    }
-
-
-    .recommendations-header h2 {
-
-        font-size: 20px;
-
-    }
-
-
-    .recommendations-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
-
-    .recommendation-info {
-
-        padding: 10px;
-
-    }
-
-
-    .recommendation-name {
-
-        font-size: 12px;
-
-    }
-
-
-    .satori-pack {
-
-        margin: 50px auto;
 
-        padding: 30px 20px;
 
-    }
+/* Ocultar títulos/secciones antiguas si todavía existen */
 
+.best-sellers,
+.latest-releases,
+.mas-vendidos,
+.ultimos-estrenos {
+    display: none !important;
 }
