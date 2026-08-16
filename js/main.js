@@ -154,3 +154,1008 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SatoriMode — Anime, streetwear y cultura japonesa."
+    >
+
+    <title>SatoriMode | Anime Streetwear</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div id="satori-header"></div>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             BANNER PRINCIPAL
+        ================================================== -->
+
+        <section
+            class="hero-slider"
+            id="hero-slider"
+        >
+
+            <div
+                class="hero-track"
+                id="hero-track"
+            >
+
+                <article class="hero-slide">
+
+                    <img
+                        src="img/banner-01.jpg"
+                        alt="Nueva colección SatoriMode"
+                        draggable="false"
+                    >
+
+                </article>
+
+
+                <article class="hero-slide">
+
+                    <img
+                        src="img/banner-02.jpg"
+                        alt="SatoriMode Anime Streetwear"
+                        draggable="false"
+                    >
+
+                </article>
+
+
+                <article class="hero-slide">
+
+                    <img
+                        src="img/banner-03.jpg"
+                        alt="Nueva colección SatoriMode"
+                        draggable="false"
+                    >
+
+                </article>
+
+            </div>
+
+
+            <div
+                class="hero-dots"
+                id="hero-dots"
+            >
+
+                <button
+                    class="hero-dot active"
+                    data-slide="0"
+                    aria-label="Banner 1"
+                ></button>
+
+                <button
+                    class="hero-dot"
+                    data-slide="1"
+                    aria-label="Banner 2"
+                ></button>
+
+                <button
+                    class="hero-dot"
+                    data-slide="2"
+                    aria-label="Banner 3"
+                ></button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BENEFICIOS
+        ================================================== -->
+
+        <section class="benefits">
+
+
+            <div class="benefit">
+
+                <span class="benefit-icon">
+                    🚚
+                </span>
+
+                <div>
+
+                    <strong>
+                        ENVÍOS A TODO CHILE
+                    </strong>
+
+                    <span>
+                        Despachos a regiones y todo el país
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <span class="benefit-icon">
+                    ↻
+                </span>
+
+                <div>
+
+                    <strong>
+                        CAMBIOS Y DEVOLUCIONES
+                    </strong>
+
+                    <span>
+                        Hasta 30 días
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <span class="benefit-icon">
+                    ▣
+                </span>
+
+                <div>
+
+                    <strong>
+                        PAGOS SEGUROS
+                    </strong>
+
+                    <span>
+                        Webpay + transferencia
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <span class="benefit-icon">
+                    ♧
+                </span>
+
+                <div>
+
+                    <strong>
+                        ATENCIÓN AL CLIENTE
+                    </strong>
+
+                    <span>
+                        Estamos para ayudarte
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COLECCIONES
+        ================================================== -->
+
+        <section class="section">
+
+
+            <div class="section-header">
+
+                <h2>
+                    NUESTRAS COLECCIONES
+                </h2>
+
+                <a href="productos.html">
+                    Ver todas
+                </a>
+
+            </div>
+
+
+            <div class="collections-grid">
+
+
+                <a
+                    href="anime.html"
+                    class="collection-card"
+                >
+
+                    <div>
+
+                        <h3>
+                            ANIME
+                        </h3>
+
+                        <span>
+                            Ver colección
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="streetwear.html"
+                    class="collection-card"
+                >
+
+                    <div>
+
+                        <h3>
+                            STREETWEAR
+                        </h3>
+
+                        <span>
+                            Ver colección
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="accesorios.html"
+                    class="collection-card"
+                >
+
+                    <div>
+
+                        <h3>
+                            ACCESORIOS
+                        </h3>
+
+                        <span>
+                            Ver colección
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="productos.html"
+                    class="collection-card"
+                >
+
+                    <div>
+
+                        <h3>
+                            TODO
+                        </h3>
+
+                        <span>
+                            Ver colección
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECOMENDACIONES
+        ================================================== -->
+
+        <section
+            class="recommendations"
+            id="recommendations"
+        >
+
+
+            <div class="section-header">
+
+                <h2>
+                    RECOMENDACIONES PARA TI
+                </h2>
+
+                <a href="productos.html">
+                    Ver todos
+                </a>
+
+            </div>
+
+
+            <div
+                class="recommendations-grid"
+                id="recommendations-grid"
+            >
+
+
+                <a
+                    href="productos.html"
+                    class="recommendation-card"
+                >
+
+                    <div class="recommendation-image">
+
+                        <img
+                            src="img/productos/recomendacion-01.jpg"
+                            alt="Producto recomendado"
+                        >
+
+                    </div>
+
+                    <div class="recommendation-info">
+
+                        <div class="recommendation-category">
+                            STREETWEAR
+                        </div>
+
+                        <div class="recommendation-name">
+                            Descubre nuestros diseños
+                        </div>
+
+                        <div class="recommendation-price">
+                            Ver producto
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="productos.html"
+                    class="recommendation-card"
+                >
+
+                    <div class="recommendation-image">
+
+                        <img
+                            src="img/productos/recomendacion-02.jpg"
+                            alt="Producto recomendado"
+                        >
+
+                    </div>
+
+                    <div class="recommendation-info">
+
+                        <div class="recommendation-category">
+                            ANIME
+                        </div>
+
+                        <div class="recommendation-name">
+                            Diseños para destacar
+                        </div>
+
+                        <div class="recommendation-price">
+                            Ver producto
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="productos.html"
+                    class="recommendation-card"
+                >
+
+                    <div class="recommendation-image">
+
+                        <img
+                            src="img/productos/recomendacion-03.jpg"
+                            alt="Producto recomendado"
+                        >
+
+                    </div>
+
+                    <div class="recommendation-info">
+
+                        <div class="recommendation-category">
+                            STREETWEAR
+                        </div>
+
+                        <div class="recommendation-name">
+                            Explora Satori
+                        </div>
+
+                        <div class="recommendation-price">
+                            Ver producto
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="productos.html"
+                    class="recommendation-card"
+                >
+
+                    <div class="recommendation-image">
+
+                        <img
+                            src="img/productos/recomendacion-04.jpg"
+                            alt="Producto recomendado"
+                        >
+
+                    </div>
+
+                    <div class="recommendation-info">
+
+                        <div class="recommendation-category">
+                            ACCESORIOS
+                        </div>
+
+                        <div class="recommendation-name">
+                            Completa tu estilo
+                        </div>
+
+                        <div class="recommendation-price">
+                            Ver producto
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SATORII PACK
+        ================================================== -->
+
+        <section class="satori-pack">
+
+            <div>
+
+                <div class="satori-pack-label">
+                    SATORII PACK
+                </div>
+
+                <h2>
+                    SATORII
+                    <span>PACK.</span>
+                </h2>
+
+                <p>
+                    Una experiencia especial creada
+                    para acompañar tus pedidos.
+                </p>
+
+                <a
+                    href="satorii-pack.html"
+                    class="satori-pack-button"
+                >
+                    DESCUBRIR PACK
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+
+        <div class="footer-inner">
+
+
+            <div class="footer-brand">
+
+                <h2>
+                    SATORII
+                </h2>
+
+                <span>
+                    悟り
+                </span>
+
+                <p>
+                    Cultura japonesa y streetwear
+                    llevados a prendas que puedes
+                    llevar contigo.
+                </p>
+
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-link"
+                    aria-label="Instagram SatoriMode"
+                >
+                    ◎
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>
+                    COLECCIONES
+                </h3>
+
+                <a href="anime.html">
+                    Anime
+                </a>
+
+                <a href="streetwear.html">
+                    Streetwear
+                </a>
+
+                <a href="accesorios.html">
+                    Accesorios
+                </a>
+
+                <a href="productos.html">
+                    Todo
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h3>
+                    AYUDA
+                </h3>
+
+                <a href="preguntas-frecuentes.html">
+                    Preguntas frecuentes
+                </a>
+
+                <a href="envios.html">
+                    Envíos
+                </a>
+
+                <a href="cambios.html">
+                    Cambios y devoluciones
+                </a>
+
+                <a href="guia-tallas.html">
+                    Guía de tallas
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-community">
+
+                <span class="small-label">
+                    SATORII COMMUNITY
+                </span>
+
+                <h2>
+                    ÚNETE AL
+                    <span>CLAN.</span>
+                </h2>
+
+                <p>
+                    Recibe lanzamientos exclusivos,
+                    novedades y beneficios de Satori.
+                </p>
+
+                <form
+                    class="newsletter"
+                    onsubmit="return false;"
+                >
+
+                    <input
+                        type="email"
+                        placeholder="Tu correo electrónico"
+                        aria-label="Tu correo electrónico"
+                    >
+
+                    <button type="submit">
+                        →
+                    </button>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SatoriMode
+            </span>
+
+            <div>
+
+                <a href="#">
+                    Privacidad
+                </a>
+
+                <a href="#">
+                    Términos
+                </a>
+
+                <a href="#">
+                    Contacto
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="js/products.js"></script>
+
+    <script src="js/header.js"></script>
+
+
+
+    <!-- =====================================================
+         SLIDER
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const slider =
+                    document.getElementById("hero-slider");
+
+                const track =
+                    document.getElementById("hero-track");
+
+                const slides =
+                    document.querySelectorAll(".hero-slide");
+
+                const dots =
+                    document.querySelectorAll(".hero-dot");
+
+
+                if (
+                    !slider ||
+                    !track ||
+                    slides.length === 0
+                ) {
+                    return;
+                }
+
+
+                let currentSlide = 0;
+
+                let startX = 0;
+
+                let currentX = 0;
+
+                let isDragging = false;
+
+                let autoSlide = null;
+
+
+                function goToSlide(index) {
+
+                    if (index < 0) {
+                        index = slides.length - 1;
+                    }
+
+                    if (index >= slides.length) {
+                        index = 0;
+                    }
+
+
+                    currentSlide = index;
+
+
+                    track.style.transform =
+                        `translateX(-${index * 100}%)`;
+
+
+                    dots.forEach(
+                        (dot, i) => {
+
+                            dot.classList.toggle(
+                                "active",
+                                i === index
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                function nextSlide() {
+
+                    goToSlide(
+                        currentSlide + 1
+                    );
+
+                }
+
+
+                function startAutoSlide() {
+
+                    clearInterval(autoSlide);
+
+
+                    autoSlide =
+                        setInterval(
+                            nextSlide,
+                            6000
+                        );
+
+                }
+
+
+                function resetAutoSlide() {
+
+                    startAutoSlide();
+
+                }
+
+
+                /* INDICADORES */
+
+                dots.forEach(
+                    (dot) => {
+
+                        dot.addEventListener(
+                            "click",
+                            (event) => {
+
+                                event.stopPropagation();
+
+
+                                goToSlide(
+                                    Number(
+                                        dot.dataset.slide
+                                    )
+                                );
+
+
+                                resetAutoSlide();
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* MOUSE */
+
+                slider.addEventListener(
+                    "mousedown",
+                    (event) => {
+
+                        isDragging = true;
+
+                        startX =
+                            event.clientX;
+
+                        currentX =
+                            event.clientX;
+
+                        slider.classList.add(
+                            "dragging"
+                        );
+
+                        clearInterval(
+                            autoSlide
+                        );
+
+                    }
+                );
+
+
+                window.addEventListener(
+                    "mousemove",
+                    (event) => {
+
+                        if (!isDragging) {
+                            return;
+                        }
+
+                        currentX =
+                            event.clientX;
+
+                    }
+                );
+
+
+                window.addEventListener(
+                    "mouseup",
+                    () => {
+
+                        if (!isDragging) {
+                            return;
+                        }
+
+
+                        isDragging = false;
+
+                        slider.classList.remove(
+                            "dragging"
+                        );
+
+
+                        const distance =
+                            currentX - startX;
+
+
+                        if (
+                            Math.abs(distance) > 60
+                        ) {
+
+                            if (distance < 0) {
+
+                                nextSlide();
+
+                            } else {
+
+                                goToSlide(
+                                    currentSlide - 1
+                                );
+
+                            }
+
+                        }
+
+
+                        resetAutoSlide();
+
+                    }
+                );
+
+
+                /* TOUCH */
+
+                slider.addEventListener(
+                    "touchstart",
+                    (event) => {
+
+                        startX =
+                            event.touches[0].clientX;
+
+                        currentX =
+                            startX;
+
+                        clearInterval(
+                            autoSlide
+                        );
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                slider.addEventListener(
+                    "touchmove",
+                    (event) => {
+
+                        currentX =
+                            event.touches[0].clientX;
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                slider.addEventListener(
+                    "touchend",
+                    () => {
+
+                        const distance =
+                            currentX - startX;
+
+
+                        if (
+                            Math.abs(distance) > 60
+                        ) {
+
+                            if (distance < 0) {
+
+                                nextSlide();
+
+                            } else {
+
+                                goToSlide(
+                                    currentSlide - 1
+                                );
+
+                            }
+
+                        }
+
+
+                        resetAutoSlide();
+
+                    }
+                );
+
+
+                /* INICIO */
+
+                goToSlide(0);
+
+                startAutoSlide();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
