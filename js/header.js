@@ -4,12 +4,20 @@
     function initSatoriiHeader() {
 
         /* =====================================================
-           ELIMINAR HEADER ANTERIOR SI EXISTE
+           ELIMINAR HEADER ANTERIOR
         ===================================================== */
 
-        const old = document.getElementById("satori-header");
+        const oldHeader = document.getElementById("satori-header");
 
-        if (old) old.remove();
+        if (oldHeader) {
+            oldHeader.remove();
+        }
+
+        const oldStyle = document.getElementById("satori-header-style");
+
+        if (oldStyle) {
+            oldStyle.remove();
+        }
 
 
         /* =====================================================
@@ -22,6 +30,10 @@
 
         root.innerHTML = `
 
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
         <div class="top-bar">
 
             <div class="top-bar-inner">
@@ -31,13 +43,44 @@
                     href="https://www.instagram.com/satorimode/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Instagram"
                 >
-                    ◎
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="5"
+                            ry="5"
+                        />
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4"
+                        />
+
+                        <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                            class="instagram-dot"
+                        />
+
+                    </svg>
+
                 </a>
+
 
                 <span class="shipping-message">
                     🚚 ENVÍOS A TODO CHILE
                 </span>
+
 
                 <span class="top-message">
                     CULTURA JAPONESA · STREETWEAR · ANIME
@@ -47,6 +90,10 @@
 
         </div>
 
+
+        <!-- =================================================
+             MAIN HEADER
+        ================================================== -->
 
         <header class="main-header">
 
@@ -61,9 +108,11 @@
                     type="button"
                     aria-label="Abrir menú"
                 >
+
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </button>
 
 
@@ -77,10 +126,14 @@
                 </a>
 
 
-                <!-- NAV DESKTOP -->
+                <!-- =================================================
+                     NAV DESKTOP
+                ================================================== -->
 
                 <nav class="main-nav">
 
+
+                    <!-- INICIO -->
 
                     <button
                         class="nav-home-button"
@@ -90,15 +143,23 @@
                     </button>
 
 
+                    <!-- COLECCIONES -->
+
                     <div class="nav-dropdown">
 
                         <button
                             class="nav-dropdown-btn"
                             type="button"
                         >
-                            COLECCIONES
-                            <span>⌄</span>
+
+                            <span>COLECCIONES</span>
+
+                            <span class="nav-arrow">
+                                ↓
+                            </span>
+
                         </button>
+
 
                         <div class="dropdown-menu">
 
@@ -123,15 +184,23 @@
                     </div>
 
 
+                    <!-- PRODUCTOS -->
+
                     <div class="nav-dropdown">
 
                         <button
                             class="nav-dropdown-btn"
                             type="button"
                         >
-                            PRODUCTOS
-                            <span>⌄</span>
+
+                            <span>PRODUCTOS</span>
+
+                            <span class="nav-arrow">
+                                ↓
+                            </span>
+
                         </button>
+
 
                         <div class="dropdown-menu">
 
@@ -152,15 +221,23 @@
                     </div>
 
 
+                    <!-- AYUDA -->
+
                     <div class="nav-dropdown">
 
                         <button
                             class="nav-dropdown-btn"
                             type="button"
                         >
-                            AYUDA
-                            <span>⌄</span>
+
+                            <span>AYUDA</span>
+
+                            <span class="nav-arrow">
+                                ↓
+                            </span>
+
                         </button>
+
 
                         <div class="dropdown-menu">
 
@@ -187,30 +264,104 @@
                 </nav>
 
 
-                <!-- ICONOS -->
+                <!-- =================================================
+                     ICONOS
+                ================================================== -->
 
                 <div class="header-icons">
+
+
+                    <!-- BUSCAR -->
 
                     <button
                         class="header-icon"
                         id="satori-search"
                         type="button"
+                        aria-label="Buscar"
                     >
-                        ⌕
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="10.8"
+                                cy="10.8"
+                                r="6.5"
+                            />
+
+                            <line
+                                x1="16"
+                                y1="16"
+                                x2="21"
+                                y2="21"
+                            />
+
+                        </svg>
+
                     </button>
+
+
+                    <!-- CUENTA -->
 
                     <a
                         class="header-icon"
                         href="cuenta.html"
+                        aria-label="Mi cuenta"
                     >
-                        ♙
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3.2"
+                            />
+
+                            <path
+                                d="M5.5 20c.8-3.5 3-5.2 6.5-5.2s5.7 1.7 6.5 5.2"
+                            />
+
+                        </svg>
+
                     </a>
+
+
+                    <!-- CARRITO -->
 
                     <a
                         class="header-icon"
                         href="carrito.html"
+                        aria-label="Carrito"
                     >
-                        🛒
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                d="M4 5h2l1.7 10.2a2 2 0 0 0 2 1.7h6.8a2 2 0 0 0 2-1.5L20 8H7"
+                            />
+
+                            <circle
+                                cx="10"
+                                cy="20"
+                                r="1.2"
+                            />
+
+                            <circle
+                                cx="17"
+                                cy="20"
+                                r="1.2"
+                            />
+
+                        </svg>
+
                     </a>
 
                 </div>
@@ -220,7 +371,9 @@
         </header>
 
 
-        <!-- OVERLAY -->
+        <!-- =================================================
+             OVERLAY
+        ================================================== -->
 
         <div
             class="mobile-menu-overlay"
@@ -228,12 +381,15 @@
         ></div>
 
 
-        <!-- MENÚ MÓVIL -->
+        <!-- =================================================
+             MENÚ MÓVIL
+        ================================================== -->
 
         <aside
             class="mobile-menu"
             id="satori-mobile-menu"
         >
+
 
             <div class="mobile-menu-header">
 
@@ -244,12 +400,16 @@
                     SATORII
                 </a>
 
+
                 <button
                     id="satori-mobile-close"
                     class="mobile-menu-close"
                     type="button"
+                    aria-label="Cerrar menú"
                 >
+
                     ×
+
                 </button>
 
             </div>
@@ -258,14 +418,18 @@
             <nav class="mobile-nav">
 
 
-                <!-- INICIO SIN SUBMENÚ -->
+                <!-- INICIO -->
 
                 <button
                     class="mobile-nav-button mobile-home-button"
                     id="mobile-home"
                     type="button"
                 >
-                    <span>INICIO</span>
+
+                    <span>
+                        INICIO
+                    </span>
+
                 </button>
 
 
@@ -276,9 +440,17 @@
                     data-target="mobile-collections"
                     type="button"
                 >
-                    <span>COLECCIONES</span>
-                    <span>↓</span>
+
+                    <span>
+                        COLECCIONES
+                    </span>
+
+                    <span>
+                        ↓
+                    </span>
+
                 </button>
+
 
                 <div
                     class="mobile-submenu"
@@ -311,9 +483,17 @@
                     data-target="mobile-products"
                     type="button"
                 >
-                    <span>PRODUCTOS</span>
-                    <span>↓</span>
+
+                    <span>
+                        PRODUCTOS
+                    </span>
+
+                    <span>
+                        ↓
+                    </span>
+
                 </button>
+
 
                 <div
                     class="mobile-submenu"
@@ -342,9 +522,17 @@
                     data-target="mobile-help"
                     type="button"
                 >
-                    <span>AYUDA</span>
-                    <span>↓</span>
+
+                    <span>
+                        AYUDA
+                    </span>
+
+                    <span>
+                        ↓
+                    </span>
+
                 </button>
+
 
                 <div
                     class="mobile-submenu"
@@ -372,9 +560,13 @@
             </nav>
 
 
+            <!-- REDES -->
+
             <div class="mobile-social">
 
-                <span>SÍGUENOS</span>
+                <span>
+                    SÍGUENOS
+                </span>
 
                 <a
                     href="https://www.instagram.com/satorimode/"
@@ -395,7 +587,7 @@
 
 
         /* =====================================================
-           CSS DEL HEADER
+           CSS
         ===================================================== */
 
         const style = document.createElement("style");
@@ -404,6 +596,10 @@
 
         style.textContent = `
 
+        /* =====================================================
+           BASE
+        ===================================================== */
+
         #satori-header,
         #satori-header * {
             box-sizing:border-box;
@@ -411,10 +607,18 @@
 
 
         #satori-header {
+
             position:relative;
+
             width:100%;
+
             z-index:9999;
-            font-family:Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
         }
 
 
@@ -423,42 +627,142 @@
         ===================================================== */
 
         #satori-header .top-bar {
-            height:32px;
+
             width:100%;
-            background:#ed1111;
+
+            height:32px;
+
+            background:#f31218;
+
             color:#fff;
+
         }
 
 
         #satori-header .top-bar-inner {
-            width:calc(100% - 40px);
+
+            position:relative;
+
+            width:100%;
+
             max-width:1400px;
+
             height:100%;
+
             margin:auto;
 
-            display:grid;
-            grid-template-columns:1fr auto 1fr;
+            display:flex;
+
             align-items:center;
+
+            justify-content:center;
+
         }
 
+
+        /* INSTAGRAM */
 
         #satori-header .top-instagram {
+
+            position:absolute;
+
+            left:20px;
+
+            top:50%;
+
+            transform:
+                translateY(-50%);
+
+            width:17px;
+
+            height:17px;
+
             color:#fff;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
             text-decoration:none;
-            font-size:18px;
+
         }
 
 
+        #satori-header .top-instagram svg {
+
+            width:16px;
+
+            height:16px;
+
+            fill:none;
+
+            stroke:currentColor;
+
+            stroke-width:1.8;
+
+            stroke-linecap:round;
+
+            stroke-linejoin:round;
+
+        }
+
+
+        #satori-header .top-instagram .instagram-dot {
+
+            fill:currentColor;
+
+            stroke:none;
+
+        }
+
+
+        /* TEXTO CENTRAL */
+
         #satori-header .shipping-message {
+
+            position:absolute;
+
+            left:50%;
+
+            top:50%;
+
+            transform:
+                translate(-50%,-50%);
+
             font-size:10px;
-            font-weight:bold;
+
+            line-height:1;
+
+            font-weight:700;
+
             white-space:nowrap;
+
+            letter-spacing:.2px;
+
         }
 
 
         #satori-header .top-message {
-            justify-self:end;
+
+            position:absolute;
+
+            right:20px;
+
+            top:50%;
+
+            transform:
+                translateY(-50%);
+
             font-size:9px;
+
+            line-height:1;
+
+            white-space:nowrap;
+
+            letter-spacing:.3px;
+
         }
 
 
@@ -467,29 +771,43 @@
         ===================================================== */
 
         #satori-header .main-header {
-            width:100%;
-            height:70px;
-            background:#fff;
-            border-bottom:1px solid #ddd;
+
             position:relative;
+
+            width:100%;
+
+            height:70px;
+
+            background:#fff;
+
+            border-bottom:1px solid #dedede;
+
             z-index:10000;
-            transition:
-                border-radius .25s ease,
-                box-shadow .25s ease,
-                left .25s ease,
-                width .25s ease;
+
         }
 
 
         #satori-header .header-inner {
+
+            position:relative;
+
             width:calc(100% - 40px);
+
             max-width:1400px;
+
             height:100%;
+
             margin:auto;
 
             display:grid;
-            grid-template-columns:1fr auto 1fr;
+
+            grid-template-columns:
+                1fr
+                auto
+                1fr;
+
             align-items:center;
+
         }
 
 
@@ -498,21 +816,27 @@
         ===================================================== */
 
         #satori-header .satori-logo {
+
             grid-column:1;
 
             justify-self:start;
 
             color:#111;
+
             text-decoration:none;
 
-            font-size:27px;
-            font-weight:600;
+            font-size:25px;
+
+            line-height:1;
+
+            font-weight:700;
+
             font-style:italic;
 
             letter-spacing:-2px;
-            line-height:1;
 
             transform:skewX(-5deg);
+
         }
 
 
@@ -521,13 +845,17 @@
         ===================================================== */
 
         #satori-header .main-nav {
+
             grid-column:2;
 
             height:100%;
 
             display:flex;
+
             align-items:center;
-            gap:30px;
+
+            gap:28px;
+
         }
 
 
@@ -536,58 +864,87 @@
 
             height:100%;
 
+            padding:0;
+
             border:0;
+
             background:none;
 
-            font-size:12px;
             color:#111;
+
+            font-size:12px;
 
             cursor:pointer;
 
             display:flex;
+
             align-items:center;
+
             gap:5px;
+
+        }
+
+
+        #satori-header .nav-arrow {
+
+            font-size:9px;
+
+            transform:
+                translateY(-1px);
+
         }
 
 
         #satori-header .nav-dropdown {
+
             position:relative;
+
             height:100%;
 
             display:flex;
+
             align-items:center;
+
         }
 
+
+        /* =====================================================
+           DROPDOWN
+        ===================================================== */
 
         #satori-header .dropdown-menu {
 
             position:absolute;
 
             top:70px;
+
             left:50%;
 
             transform:
-                translateX(-50%)
-                translateY(-8px);
+                translate(-50%,-8px);
 
-            width:215px;
+            width:220px;
 
             padding:8px;
 
             background:#fff;
 
             border:1px solid #ddd;
+
             border-radius:10px;
 
             box-shadow:
                 0 15px 35px
-                rgba(0,0,0,.15);
+                rgba(0,0,0,.12);
 
             opacity:0;
+
             visibility:hidden;
+
             pointer-events:none;
 
             transition:.2s ease;
+
         }
 
 
@@ -596,12 +953,14 @@
         .dropdown-menu {
 
             opacity:1;
+
             visibility:visible;
+
             pointer-events:auto;
 
             transform:
-                translateX(-50%)
-                translateY(0);
+                translate(-50%,0);
+
         }
 
 
@@ -612,58 +971,143 @@
             padding:11px;
 
             color:#111;
+
             text-decoration:none;
 
             font-size:12px;
+
+            border-radius:6px;
+
         }
 
 
         #satori-header .dropdown-menu a:hover {
+
             background:#f5f5f5;
-            color:#ed1111;
+
+            color:#f31218;
+
         }
 
 
         /* =====================================================
-           ICONOS
+           ICONOS DESKTOP
         ===================================================== */
 
         #satori-header .header-icons {
 
             grid-column:3;
+
             justify-self:end;
 
             display:flex;
+
             align-items:center;
-            gap:8px;
+
+            gap:5px;
+
         }
 
 
         #satori-header .header-icon {
 
-            width:30px;
-            height:30px;
+            width:34px;
+
+            height:34px;
+
+            padding:0;
 
             border:0;
-            background:none;
+
+            background:transparent;
 
             color:#111;
+
             text-decoration:none;
 
             display:flex;
+
             align-items:center;
+
             justify-content:center;
 
-            font-size:18px;
+            cursor:pointer;
+
+        }
+
+
+        #satori-header .header-icon svg {
+
+            width:17px;
+
+            height:17px;
+
+            fill:none;
+
+            stroke:currentColor;
+
+            stroke-width:1.6;
+
+            stroke-linecap:round;
+
+            stroke-linejoin:round;
+
+        }
+
+
+        #satori-header .header-icon:hover {
+
+            color:#f31218;
+
         }
 
 
         /* =====================================================
-           HAMBURGUESA OCULTA EN PC
+           HAMBURGUESA
         ===================================================== */
 
         #satori-header .mobile-menu-button {
+
             display:none;
+
+        }
+
+
+        /* =====================================================
+           OVERLAY
+        ===================================================== */
+
+        #satori-header .mobile-menu-overlay {
+
+            position:fixed;
+
+            inset:0;
+
+            background:
+                rgba(0,0,0,.45);
+
+            opacity:0;
+
+            visibility:hidden;
+
+            pointer-events:none;
+
+            transition:.2s ease;
+
+            z-index:110000;
+
+        }
+
+
+        #satori-header
+        .mobile-menu-overlay.open {
+
+            opacity:1;
+
+            visibility:visible;
+
+            pointer-events:auto;
+
         }
 
 
@@ -671,47 +1115,25 @@
            MENÚ MÓVIL
         ===================================================== */
 
-        #satori-header .mobile-menu-overlay {
-
-            position:fixed;
-            inset:0;
-
-            background:rgba(0,0,0,.45);
-
-            opacity:0;
-            visibility:hidden;
-
-            pointer-events:none;
-
-            transition:.2s;
-
-            z-index:110000;
-        }
-
-
-        #satori-header .mobile-menu-overlay.open {
-
-            opacity:1;
-            visibility:visible;
-            pointer-events:auto;
-        }
-
-
         #satori-header .mobile-menu {
 
             position:fixed;
 
             top:0;
+
             left:0;
 
             width:min(370px,88vw);
+
             height:100dvh;
+
+            padding:
+                20px 24px;
 
             background:#fff;
 
-            padding:20px 24px;
-
-            transform:translateX(-100%);
+            transform:
+                translateX(-100%);
 
             transition:
                 transform .25s ease;
@@ -719,11 +1141,16 @@
             z-index:110001;
 
             overflow-y:auto;
+
         }
 
 
-        #satori-header .mobile-menu.open {
-            transform:translateX(0);
+        #satori-header
+        .mobile-menu.open {
+
+            transform:
+                translateX(0);
+
         }
 
 
@@ -732,64 +1159,93 @@
             height:60px;
 
             display:flex;
+
             align-items:center;
+
             justify-content:space-between;
 
             border-bottom:1px solid #ddd;
+
         }
 
 
         #satori-header .mobile-menu-logo {
 
             color:#111;
+
             text-decoration:none;
 
             font-size:25px;
-            font-weight:600;
+
+            font-weight:700;
+
             font-style:italic;
+
+            letter-spacing:-2px;
+
         }
 
 
         #satori-header .mobile-menu-close {
 
             width:40px;
+
             height:40px;
 
+            padding:0;
+
             border:0;
+
             background:none;
 
-            font-size:30px;
+            color:#111;
+
+            font-size:29px;
+
+            line-height:1;
+
             cursor:pointer;
+
         }
 
+
+        /* =====================================================
+           NAV MÓVIL
+        ===================================================== */
 
         #satori-header .mobile-nav-button {
 
             width:100%;
+
             min-height:60px;
 
+            padding:0;
+
             border:0;
+
             border-bottom:1px solid #ddd;
 
             background:#fff;
 
+            color:#111;
+
             display:flex;
+
             align-items:center;
+
             justify-content:space-between;
 
-            font-size:16px;
-            color:#111;
+            font-size:15px;
 
             cursor:pointer;
 
-            padding:0;
         }
 
 
-        /* INICIO NO TIENE FLECHA */
-
         #satori-header .mobile-home-button {
+
             justify-content:flex-start;
+
         }
 
 
@@ -804,13 +1260,17 @@
             transition:
                 max-height .25s ease,
                 opacity .2s ease;
+
         }
 
 
-        #satori-header .mobile-submenu.open {
+        #satori-header
+        .mobile-submenu.open {
 
             max-height:500px;
+
             opacity:1;
+
         }
 
 
@@ -821,6 +1281,7 @@
             padding-left:20px;
 
             display:flex;
+
             align-items:center;
 
             border-bottom:1px solid #eee;
@@ -830,11 +1291,25 @@
             text-decoration:none;
 
             font-size:14px;
+
         }
 
 
+        #satori-header .mobile-submenu a:hover {
+
+            color:#f31218;
+
+        }
+
+
+        /* =====================================================
+           SOCIAL
+        ===================================================== */
+
         #satori-header .mobile-social {
+
             margin-top:35px;
+
         }
 
 
@@ -844,237 +1319,32 @@
 
             margin-bottom:15px;
 
-            color:#ed1111;
+            color:#f31218;
 
             font-size:10px;
+
             font-weight:bold;
 
             letter-spacing:3px;
+
         }
 
 
         #satori-header .mobile-social a {
 
             color:#111;
+
             text-decoration:none;
 
             font-size:14px;
+
             font-weight:bold;
-        }
-
-
-        /* =====================================================
-           MÓVIL
-        ===================================================== */
-
-        @media (max-width:1000px) {
-
-
-            #satori-header .top-bar {
-                height:32px;
-            }
-
-
-            #satori-header .top-bar-inner {
-
-                width:100%;
-                padding:0 12px;
-
-                display:flex;
-                align-items:center;
-                justify-content:center;
-            }
-
-
-            #satori-header .top-instagram {
-
-                position:absolute;
-                left:12px;
-            }
-
-
-            #satori-header .top-message {
-                display:none;
-            }
-
-
-            #satori-header .main-header {
-
-                height:64px;
-            }
-
-
-            #satori-header .header-inner {
-
-                position:relative;
-
-                width:100%;
-                height:64px;
-
-                margin:0;
-                padding:0;
-            }
-
-
-            /* =================================================
-               HAMBURGUESA
-            ================================================= */
-
-            #satori-header .mobile-menu-button {
-
-                display:flex !important;
-
-                position:absolute !important;
-
-                left:12px !important;
-                top:50% !important;
-
-                transform:translateY(-50%) !important;
-
-                width:36px !important;
-                height:36px !important;
-
-                padding:0 !important;
-                margin:0 !important;
-
-                border:0 !important;
-
-                background:transparent !important;
-
-                flex-direction:column !important;
-
-                justify-content:center !important;
-
-                align-items:flex-start !important;
-
-                gap:5px !important;
-
-                z-index:999999 !important;
-
-                cursor:pointer !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-button span {
-
-                display:block !important;
-
-                width:23px !important;
-                height:2px !important;
-
-                background:#111 !important;
-
-                flex:none !important;
-
-                visibility:visible !important;
-
-                opacity:1 !important;
-            }
-
-
-            /* =================================================
-               LOGO PERFECTAMENTE CENTRADO
-            ================================================= */
-
-            #satori-header .satori-logo {
-
-                position:absolute !important;
-
-                left:50% !important;
-                top:50% !important;
-
-                transform:
-                    translate(-50%,-50%)
-                    skewX(-5deg) !important;
-
-                margin:0 !important;
-                padding:0 !important;
-
-                font-size:25px !important;
-
-                z-index:999998 !important;
-            }
-
-
-            /* =================================================
-               OCULTAR DESKTOP
-            ================================================= */
-
-            #satori-header .main-nav {
-                display:none !important;
-            }
-
-
-            /* =================================================
-               ICONOS DERECHA
-            ================================================= */
-
-            #satori-header .header-icons {
-
-                position:absolute !important;
-
-                right:7px !important;
-                top:50% !important;
-
-                transform:translateY(-50%) !important;
-
-                display:flex !important;
-
-                gap:1px !important;
-
-                z-index:999999 !important;
-            }
-
-
-            #satori-header .header-icon {
-
-                width:32px !important;
-                height:32px !important;
-
-                font-size:17px !important;
-            }
-
-
-            /* =================================================
-               HEADER AL HACER SCROLL
-            ================================================= */
-
-            #satori-header.scrolled .main-header {
-
-                position:fixed !important;
-
-                top:8px !important;
-                left:8px !important;
-
-                width:
-                    calc(100% - 16px) !important;
-
-                height:64px !important;
-
-                border:
-                    1px solid #d7d7d7 !important;
-
-                border-radius:16px !important;
-
-                box-shadow:
-                    0 8px 25px
-                    rgba(0,0,0,.16) !important;
-
-                z-index:999999 !important;
-            }
-
-
-            #satori-header.scrolled {
-
-                padding-bottom:64px !important;
-            }
 
         }
 
 
         /* =====================================================
-           PC SCROLL
+           SCROLL DESKTOP
         ===================================================== */
 
         @media (min-width:1001px) {
@@ -1084,6 +1354,7 @@
                 position:fixed !important;
 
                 top:10px !important;
+
                 left:12px !important;
 
                 width:
@@ -1101,23 +1372,306 @@
                     rgba(0,0,0,.14) !important;
 
                 z-index:999999 !important;
+
             }
 
 
             #satori-header.scrolled {
 
-                padding-bottom:70px !important;
+                padding-bottom:70px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ===================================================== */
+
+        @media (max-width:1000px) {
+
+            #satori-header .top-bar {
+
+                height:32px;
+
+            }
+
+
+            #satori-header .top-bar-inner {
+
+                width:100%;
+
+            }
+
+
+            /* INSTAGRAM */
+
+            #satori-header .top-instagram {
+
+                left:14px;
+
+                width:17px;
+
+                height:17px;
+
+            }
+
+
+            /* CENTRAR ENVÍOS */
+
+            #satori-header .shipping-message {
+
+                left:50%;
+
+                transform:
+                    translate(-50%,-50%);
+
+                font-size:10px;
+
+            }
+
+
+            #satori-header .top-message {
+
+                display:none;
+
+            }
+
+
+            /* HEADER */
+
+            #satori-header .main-header {
+
+                height:64px;
+
+            }
+
+
+            #satori-header .header-inner {
+
+                width:100%;
+
+                height:64px;
+
+                margin:0;
+
+                padding:0;
+
+                display:block;
+
+            }
+
+
+            /* =================================================
+               HAMBURGUESA
+            ================================================= */
+
+            #satori-header .mobile-menu-button {
+
+                position:absolute !important;
+
+                left:14px !important;
+
+                top:50% !important;
+
+                transform:
+                    translateY(-50%) !important;
+
+                width:34px !important;
+
+                height:34px !important;
+
+                margin:0 !important;
+
+                padding:5px !important;
+
+                border:0 !important;
+
+                background:transparent !important;
+
+                display:flex !important;
+
+                flex-direction:column !important;
+
+                justify-content:center !important;
+
+                align-items:flex-start !important;
+
+                gap:5px !important;
+
+                cursor:pointer !important;
+
+                z-index:999999 !important;
+
+            }
+
+
+            #satori-header
+            .mobile-menu-button span {
+
+                display:block !important;
+
+                width:22px !important;
+
+                height:1.5px !important;
+
+                min-height:1.5px !important;
+
+                max-height:1.5px !important;
+
+                margin:0 !important;
+
+                padding:0 !important;
+
+                background:#111 !important;
+
+                border:0 !important;
+
+                border-radius:0 !important;
+
+                opacity:1 !important;
+
+                visibility:visible !important;
+
+                flex:none !important;
+
+            }
+
+
+            /* =================================================
+               LOGO
+            ================================================= */
+
+            #satori-header .satori-logo {
+
+                position:absolute !important;
+
+                left:50% !important;
+
+                top:50% !important;
+
+                transform:
+                    translate(-50%,-50%)
+                    skewX(-5deg) !important;
+
+                margin:0 !important;
+
+                padding:0 !important;
+
+                font-size:24px !important;
+
+                line-height:1 !important;
+
+                z-index:999998 !important;
+
+            }
+
+
+            /* =================================================
+               OCULTAR NAV DESKTOP
+            ================================================= */
+
+            #satori-header .main-nav {
+
+                display:none !important;
+
+            }
+
+
+            /* =================================================
+               ICONOS
+            ================================================= */
+
+            #satori-header .header-icons {
+
+                position:absolute !important;
+
+                right:7px !important;
+
+                top:50% !important;
+
+                transform:
+                    translateY(-50%) !important;
+
+                display:flex !important;
+
+                align-items:center !important;
+
+                gap:1px !important;
+
+                z-index:999999 !important;
+
+            }
+
+
+            #satori-header .header-icon {
+
+                width:32px !important;
+
+                height:32px !important;
+
+            }
+
+
+            #satori-header .header-icon svg {
+
+                width:17px !important;
+
+                height:17px !important;
+
+                stroke-width:1.5 !important;
+
+            }
+
+
+            /* =================================================
+               HEADER AL HACER SCROLL
+            ================================================= */
+
+            #satori-header.scrolled .main-header {
+
+                position:fixed !important;
+
+                top:8px !important;
+
+                left:8px !important;
+
+                width:
+                    calc(100% - 16px) !important;
+
+                height:64px !important;
+
+                border:
+                    1px solid #d7d7d7 !important;
+
+                border-radius:16px !important;
+
+                box-shadow:
+                    0 8px 25px
+                    rgba(0,0,0,.16) !important;
+
+                z-index:999999 !important;
+
+            }
+
+
+            #satori-header.scrolled {
+
+                padding-bottom:64px !important;
+
             }
 
         }
 
         `;
 
+
         document.head.appendChild(style);
 
 
         /* =====================================================
-           SCROLL — DIRECTAMENTE CON INLINE STYLE
+           SCROLL
         ===================================================== */
 
         function updateScrollHeader() {
@@ -1125,31 +1679,41 @@
             const mainHeader =
                 root.querySelector(".main-header");
 
-            if (!mainHeader) return;
+            if (!mainHeader) {
+                return;
+            }
 
 
             if (window.scrollY > 50) {
 
                 root.classList.add("scrolled");
 
-                /* Refuerzo directo */
+                mainHeader.style.position =
+                    "fixed";
 
-                mainHeader.style.position = "fixed";
-
-                mainHeader.style.zIndex = "999999";
+                mainHeader.style.zIndex =
+                    "999999";
 
 
                 if (window.innerWidth <= 1000) {
 
-                    mainHeader.style.top = "8px";
-                    mainHeader.style.left = "8px";
+                    mainHeader.style.top =
+                        "8px";
+
+                    mainHeader.style.left =
+                        "8px";
+
                     mainHeader.style.width =
                         "calc(100% - 16px)";
 
                 } else {
 
-                    mainHeader.style.top = "10px";
-                    mainHeader.style.left = "12px";
+                    mainHeader.style.top =
+                        "10px";
+
+                    mainHeader.style.left =
+                        "12px";
+
                     mainHeader.style.width =
                         "calc(100% - 24px)";
 
@@ -1159,12 +1723,19 @@
 
                 root.classList.remove("scrolled");
 
-                mainHeader.style.position = "relative";
+                mainHeader.style.position =
+                    "relative";
+
                 mainHeader.style.top = "";
+
                 mainHeader.style.left = "";
+
                 mainHeader.style.width = "";
+
                 mainHeader.style.zIndex = "";
+
             }
+
         }
 
 
@@ -1191,7 +1762,10 @@
         ===================================================== */
 
         const desktopHome =
-            root.querySelector(".nav-home-button");
+            root.querySelector(
+                ".nav-home-button"
+            );
+
 
         if (desktopHome) {
 
@@ -1211,7 +1785,10 @@
 
 
         const mobileHome =
-            document.getElementById("mobile-home");
+            document.getElementById(
+                "mobile-home"
+            );
+
 
         if (mobileHome) {
 
@@ -1233,10 +1810,12 @@
 
 
         /* =====================================================
-           DROPDOWNS DESKTOP
+           DROPDOWNS PC
         ===================================================== */
 
-        root.querySelectorAll(".nav-dropdown").forEach(
+        root.querySelectorAll(
+            ".nav-dropdown"
+        ).forEach(
             function (dropdown) {
 
                 const button =
@@ -1244,18 +1823,22 @@
                         ".nav-dropdown-btn"
                     );
 
+
                 button.addEventListener(
                     "click",
                     function (event) {
 
                         event.stopPropagation();
 
+
                         root.querySelectorAll(
                             ".nav-dropdown"
                         ).forEach(
                             function (other) {
 
-                                if (other !== dropdown) {
+                                if (
+                                    other !== dropdown
+                                ) {
 
                                     other.classList.remove(
                                         "open"
@@ -1265,6 +1848,7 @@
 
                             }
                         );
+
 
                         dropdown.classList.toggle(
                             "open"
@@ -1276,10 +1860,6 @@
             }
         );
 
-
-        /* =====================================================
-           CERRAR DROPDOWNS
-        ===================================================== */
 
         document.addEventListener(
             "click",
@@ -1310,15 +1890,18 @@
                 "satori-mobile-menu"
             );
 
+
         const overlay =
             document.getElementById(
                 "satori-mobile-overlay"
             );
 
+
         const openButton =
             document.getElementById(
                 "satori-mobile-open"
             );
+
 
         const closeButton =
             document.getElementById(
@@ -1328,21 +1911,33 @@
 
         function openMobileMenu() {
 
-            mobileMenu.classList.add("open");
-            overlay.classList.add("open");
+            mobileMenu.classList.add(
+                "open"
+            );
+
+            overlay.classList.add(
+                "open"
+            );
 
             document.body.style.overflow =
                 "hidden";
+
         }
 
 
         function closeMobileMenu() {
 
-            mobileMenu.classList.remove("open");
-            overlay.classList.remove("open");
+            mobileMenu.classList.remove(
+                "open"
+            );
+
+            overlay.classList.remove(
+                "open"
+            );
 
             document.body.style.overflow =
                 "";
+
         }
 
 
@@ -1380,7 +1975,10 @@
                         const targetId =
                             button.dataset.target;
 
-                        if (!targetId) return;
+
+                        if (!targetId) {
+                            return;
+                        }
 
 
                         const target =
@@ -1389,7 +1987,7 @@
                             );
 
 
-                        const alreadyOpen =
+                        const isOpen =
                             target.classList.contains(
                                 "open"
                             );
@@ -1408,7 +2006,7 @@
                         );
 
 
-                        if (!alreadyOpen) {
+                        if (!isOpen) {
 
                             target.classList.add(
                                 "open"
@@ -1448,7 +2046,8 @@
     ===================================================== */
 
     if (
-        document.readyState === "loading"
+        document.readyState ===
+        "loading"
     ) {
 
         document.addEventListener(
