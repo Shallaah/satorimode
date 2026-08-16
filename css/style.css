@@ -6,23 +6,34 @@
 ========================================================= */
 
 :root {
+
     --black: #111111;
     --white: #ffffff;
 
-    --red: #ff1616;
-    --dark-red: #b80000;
+    --red: #f31218;
+    --dark-red: #d90e13;
 
     --gray: #666666;
     --light-gray: #f5f5f5;
     --border: #dddddd;
 
-    --font-main: "Inter", Arial, sans-serif;
-    --font-logo: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --font-main:
+        "Inter",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    --font-logo:
+        "Barlow Condensed",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
 
     --radius: 8px;
 
     --satori-content-width: 1800px;
     --satori-side-space: 30px;
+
 }
 
 
@@ -34,28 +45,40 @@
     box-sizing: border-box;
 }
 
+
 html {
+
     scroll-behavior: smooth;
+
     overflow-x: hidden;
+
 }
 
+
 body {
+
     margin: 0;
     padding: 0;
 
     background: #fff;
+
     color: var(--black);
 
     font-family: var(--font-main);
+
     font-size: 16px;
+
     line-height: 1.45;
 
     overflow-x: hidden;
+
 }
+
 
 body.menu-open {
     overflow: hidden;
 }
+
 
 button,
 input,
@@ -64,792 +87,57 @@ select {
     font-family: inherit;
 }
 
+
 button {
     cursor: pointer;
 }
 
+
 a {
+
     color: inherit;
+
     text-decoration: none;
+
 }
+
 
 img {
+
     display: block;
+
     max-width: 100%;
-}
 
-
-/* =========================================================
-   BARRA SUPERIOR
-========================================================= */
-
-.top-bar {
-    width: 100%;
-    height: 32px;
-
-    background: var(--red);
-    color: #fff;
-
-    display: flex;
-    align-items: center;
-
-    position: relative;
-    z-index: 2000;
-}
-
-.top-bar-inner {
-    width: min(1500px, calc(100% - 40px));
-    height: 100%;
-
-    margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-}
-
-.top-instagram {
-    position: absolute;
-    left: 0;
-
-    width: 22px;
-    height: 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #fff;
-}
-
-.top-instagram svg {
-    width: 17px;
-    height: 17px;
-
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.7;
-}
-
-.shipping-message {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .3px;
-}
-
-.top-message {
-    position: absolute;
-    right: 0;
-
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: .5px;
 }
 
 
 /* =========================================================
    HEADER
+   IMPORTANTE:
+   El header es controlado por js/header.js.
+   No duplicar sus estilos aquí.
 ========================================================= */
 
 #satori-header {
+
+    width: 100%;
+
     position: relative;
+
     z-index: 9999;
-    width: 100%;
+
 }
 
 
 /*
-   Barra roja:
-   NO queda fija.
+   El contenido comienza inmediatamente
+   después del header.
 */
 
-#satori-header .top-bar {
-    position: relative !important;
-    z-index: 10001 !important;
-}
+#satori-header + main {
 
-
-/*
-   Header blanco:
-   queda sticky debajo de la barra roja.
-*/
-
-.main-header,
-#satori-header .main-header {
-    width: 100%;
-
-    height: 68px;
-    min-height: 68px;
-
-    background: #fff;
-
-    border-bottom: 1px solid #e5e5e5;
-
-    position: sticky !important;
-
-    top: 0;
-
-    z-index: 10000 !important;
-
-    box-shadow: 0 1px 5px rgba(0, 0, 0, .04);
-}
-
-
-.header-inner,
-#satori-header .header-inner {
-    width: min(1400px, calc(100% - 40px));
-
-    height: 68px;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    position: relative;
-}
-
-
-/*
-   No agregamos padding superior a main.
-*/
-
-main {
     padding-top: 0 !important;
-}
 
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.satori-logo,
-.brand-logo {
-    font-family: var(--font-logo);
-
-    color: #111;
-
-    font-size: 30px;
-
-    font-weight: 700;
-
-    font-style: italic;
-
-    letter-spacing: -1.8px;
-
-    line-height: 1;
-
-    white-space: nowrap;
-
-    display: inline-block;
-
-    transform: skewX(-4deg);
-
-    transition:
-        color .25s ease,
-        transform .25s ease;
-}
-
-.satori-logo:hover,
-.brand-logo:hover {
-    color: var(--red);
-}
-
-.brand-logo {
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   NAVEGACIÓN DESKTOP
-========================================================= */
-
-.main-nav {
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 38px;
-}
-
-.main-nav > a,
-.main-nav > button,
-.nav-dropdown > a {
-    height: 100%;
-
-    display: flex;
-
-    align-items: center;
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 14px;
-
-    font-weight: 500;
-
-    white-space: nowrap;
-
-    color: #111;
-
-    transition: color .2s ease;
-}
-
-.main-nav > a:hover,
-.main-nav > button:hover,
-.nav-dropdown > a:hover {
-    color: var(--red);
-}
-
-
-/* =========================================================
-   DROPDOWNS
-========================================================= */
-
-.nav-dropdown {
-    height: 100%;
-
-    position: relative;
-}
-
-.nav-dropdown > a {
-    gap: 6px;
-}
-
-.nav-dropdown > a span {
-    font-size: 12px;
-
-    transition: transform .2s ease;
-}
-
-.nav-dropdown:hover > a span {
-    transform: rotate(180deg);
-}
-
-.dropdown-menu {
-    position: absolute;
-
-    top: calc(100% + 1px);
-
-    left: 50%;
-
-    width: 190px;
-
-    padding: 8px;
-
-    background: #fff;
-
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius);
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform:
-        translateX(-50%)
-        translateY(8px);
-
-    transition:
-        opacity .2s ease,
-        transform .2s ease;
-}
-
-.nav-dropdown:hover .dropdown-menu {
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
-}
-
-.dropdown-menu a {
-    display: block;
-
-    padding: 11px 12px;
-
-    border-radius: 5px;
-
-    font-size: 14px;
-
-    font-weight: 500;
-}
-
-.dropdown-menu a:hover {
-    background: #f5f5f5;
-
-    color: var(--red);
-}
-
-
-/* =========================================================
-   ACCIONES HEADER
-========================================================= */
-
-.header-actions,
-.header-icons {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.header-icon {
-    width: 34px;
-    height: 34px;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #111;
-}
-
-.header-icon svg {
-    width: 19px;
-    height: 19px;
-
-    fill: none;
-
-    stroke: currentColor;
-
-    stroke-width: 1.5;
-}
-
-.header-icon:hover {
-    color: var(--red);
-}
-
-
-/* =========================================================
-   BUSCADOR
-========================================================= */
-
-.search-wrapper {
-    display: flex;
-
-    align-items: center;
-
-    position: relative;
-}
-
-.search-button {
-    flex-shrink: 0;
-}
-
-.search-input {
-    width: 0;
-
-    height: 34px;
-
-    margin: 0;
-
-    padding: 0;
-
-    opacity: 0;
-
-    border: 1px solid var(--border);
-
-    border-radius: 6px;
-
-    outline: none;
-
-    font-size: 14px;
-
-    pointer-events: none;
-
-    transition:
-        width .25s ease,
-        opacity .25s ease,
-        padding .25s ease,
-        margin .25s ease;
-}
-
-.search-wrapper.active .search-input {
-    width: 210px;
-
-    margin-left: 7px;
-
-    padding: 0 11px;
-
-    opacity: 1;
-
-    pointer-events: auto;
-}
-
-.search-input:focus {
-    border-color: #111;
-}
-
-
-/* =========================================================
-   MENÚ MÓVIL — BOTÓN
-========================================================= */
-
-.mobile-menu-button {
-    display: none;
-
-    width: 34px;
-
-    height: 34px;
-
-    margin: 0;
-
-    padding: 5px;
-
-    border: 0;
-
-    background: transparent;
-
-    color: #111;
-
-    font-size: 0;
-
-    line-height: 0;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    justify-content: center;
-
-    gap: 5px;
-
-    z-index: 10005;
-}
-
-.mobile-menu-button span,
-.mobile-menu-button .line {
-    display: block;
-
-    height: 1.5px;
-
-    margin: 0;
-
-    padding: 0;
-
-    background: #111;
-
-    border-radius: 2px;
-
-    transition:
-        width .2s ease,
-        background-color .2s ease;
-}
-
-.mobile-menu-button span:nth-child(1),
-.mobile-menu-button .line:nth-child(1) {
-    width: 24px;
-}
-
-.mobile-menu-button span:nth-child(2),
-.mobile-menu-button .line:nth-child(2) {
-    width: 17px;
-}
-
-.mobile-menu-button span:nth-child(3),
-.mobile-menu-button .line:nth-child(3) {
-    width: 24px;
-}
-
-.mobile-menu-button:hover span,
-.mobile-menu-button:hover .line {
-    background: var(--red);
-}
-
-.mobile-menu-button:hover span:nth-child(2),
-.mobile-menu-button:hover .line:nth-child(2) {
-    width: 24px;
-}
-
-
-/* =========================================================
-   MENÚ MÓVIL
-========================================================= */
-
-.mobile-menu {
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    width: min(370px, 82vw);
-
-    height: 100dvh;
-
-    background: #fff;
-
-    z-index: 11000;
-
-    overflow-y: auto;
-
-    border-right: 1px solid #ddd;
-
-    box-shadow:
-        8px 0 30px
-        rgba(0, 0, 0, .12);
-
-    transform: translateX(-100%);
-
-    transition:
-        transform .3s ease;
-}
-
-.mobile-menu.open {
-    transform: translateX(0);
-}
-
-.mobile-overlay,
-.mobile-menu-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0, 0, 0, .50);
-
-    z-index: 10999;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity .3s ease,
-        visibility .3s ease;
-}
-
-.mobile-overlay.open,
-.mobile-menu-overlay.open {
-    opacity: 1;
-
-    visibility: visible;
-}
-
-
-/* =========================================================
-   CABECERA MENÚ
-========================================================= */
-
-.mobile-menu-header {
-    height: 72px;
-
-    padding: 0 24px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    border-bottom: 1px solid #ddd;
-}
-
-.mobile-menu-header .satori-logo {
-    position: static;
-
-    transform: skewX(-4deg);
-
-    font-size: 29px;
-}
-
-.mobile-menu-header button {
-    width: 34px;
-
-    height: 34px;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 26px;
-
-    color: #111;
-}
-
-.mobile-menu-header button:hover {
-    color: var(--red);
-}
-
-
-/* =========================================================
-   NAVEGACIÓN MÓVIL
-========================================================= */
-
-.mobile-menu nav {
-    padding: 8px 24px;
-}
-
-.mobile-menu-item {
-    width: 100%;
-
-    min-height: 60px;
-
-    padding: 0;
-
-    border: 0;
-
-    border-bottom: 1px solid #ddd;
-
-    background: transparent;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    text-align: left;
-
-    font-size: 16px;
-
-    font-weight: 500;
-
-    color: #111;
-}
-
-.mobile-menu-item > button,
-.mobile-menu-item > a {
-    width: 100%;
-
-    min-height: 60px;
-
-    padding: 0;
-
-    border: 0;
-
-    background: transparent;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    color: #111;
-
-    font-size: 16px;
-
-    font-weight: 500;
-
-    text-align: left;
-}
-
-
-/* =========================================================
-   FLECHAS MENÚ
-========================================================= */
-
-.mobile-menu-item.has-submenu > button::after {
-    content: "↓";
-
-    font-size: 16px;
-
-    transition:
-        transform .2s ease;
-}
-
-.mobile-menu-item.has-submenu.open > button::after {
-    transform: rotate(180deg);
-}
-
-
-/* =========================================================
-   SUBMENÚ
-========================================================= */
-
-.mobile-submenu {
-    display: none;
-
-    padding:
-        0 24px 10px 24px;
-
-    background: #fafafa;
-}
-
-.mobile-submenu.open {
-    display: block;
-}
-
-.mobile-submenu a {
-    display: block;
-
-    padding: 14px 0;
-
-    color: #555;
-
-    font-size: 15px;
-
-    font-weight: 400;
-
-    border-bottom: 1px solid #eee;
-}
-
-.mobile-submenu a:hover {
-    color: var(--red);
-}
-
-
-/* =========================================================
-   REDES MENÚ
-========================================================= */
-
-.mobile-social-title {
-    margin:
-        38px 24px 16px;
-
-    color: var(--red);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-}
-
-.mobile-social-link {
-    margin: 0 24px;
-
-    color: #111;
-
-    font-size: 14px;
-
-    font-weight: 600;
 }
 
 
@@ -858,6 +146,7 @@ main {
 ========================================================= */
 
 .hero-slider {
+
     width: 100%;
 
     position: sticky;
@@ -877,13 +166,19 @@ main {
     box-shadow: none !important;
 
     cursor: grab;
+
 }
+
 
 .hero-slider.dragging {
+
     cursor: grabbing;
+
 }
 
+
 .hero-track {
+
     display: flex;
 
     width: 100%;
@@ -891,9 +186,12 @@ main {
     transition:
         transform .55s
         cubic-bezier(.22, .61, .36, 1);
+
 }
 
+
 .hero-slide {
+
     flex: 0 0 100%;
 
     width: 100%;
@@ -908,18 +206,11 @@ main {
 
     background: #eee;
 
-    border: none !important;
 }
 
-.hero-slide picture {
-    display: block;
-
-    width: 100%;
-
-    height: 100%;
-}
 
 .hero-slide img {
+
     width: 100%;
 
     height: 100%;
@@ -931,21 +222,24 @@ main {
     user-select: none;
 
     pointer-events: none;
+
 }
 
 
 /* =========================================================
-   DOTS
+   INDICADORES DEL BANNER
 ========================================================= */
 
 .hero-dots {
+
     position: absolute;
 
     bottom: 18px;
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     display: flex;
 
@@ -954,9 +248,12 @@ main {
     gap: 7px;
 
     z-index: 20;
+
 }
 
+
 .hero-dot {
+
     width: 8px;
 
     height: 8px;
@@ -968,49 +265,42 @@ main {
     border-radius: 50%;
 
     background:
-        rgba(255, 255, 255, .65);
+        rgba(255,255,255,.65);
 
-    transition: .25s ease;
+    transition:
+        width .25s ease,
+        background .25s ease;
+
 }
 
+
 .hero-dot.active {
+
     width: 24px;
 
     border-radius: 10px;
 
     background: #fff;
+
 }
 
 
 /* =========================================================
-   FLECHAS BANNER
-========================================================= */
-
-.hero-arrow,
-.hero-prev,
-.hero-next,
-.slider-arrow,
-.swiper-button-prev,
-.swiper-button-next {
-    display: none !important;
-}
-
-
-/* =========================================================
-   CONTENIDO SOBRE EL BANNER
+   CONTENIDO QUE TAPA EL BANNER
 ========================================================= */
 
 .benefits,
 .section,
 .recommendations,
 .satori-pack,
-.footer,
 .satori-global-footer {
+
     position: relative;
 
     z-index: 2;
 
     background: #fff;
+
 }
 
 
@@ -1019,24 +309,28 @@ main {
 ========================================================= */
 
 .benefits {
-    width: min(
-        var(--satori-content-width),
-        calc(
-            100% -
-            (var(--satori-side-space) * 2)
-        )
-    );
 
-    margin: 0 auto;
+    width:
+        min(
+            var(--satori-content-width),
+            calc(
+                100% -
+                (var(--satori-side-space) * 2)
+            )
+        );
+
+    margin:
+        0 auto;
 
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-top: none;
+    border-top: 0;
 
     border-radius:
         0 0
@@ -1046,12 +340,16 @@ main {
     overflow: hidden;
 
     background: #fff;
+
 }
 
+
 .benefit {
+
     min-height: 78px;
 
-    padding: 15px 22px;
+    padding:
+        15px 22px;
 
     display: flex;
 
@@ -1061,19 +359,28 @@ main {
 
     border-right:
         1px solid var(--border);
+
 }
+
 
 .benefit:last-child {
+
     border-right: 0;
+
 }
 
+
 .benefit-icon {
+
     flex-shrink: 0;
 
     font-size: 20px;
+
 }
 
+
 .benefit strong {
+
     display: block;
 
     margin-bottom: 3px;
@@ -1081,14 +388,22 @@ main {
     font-size: 14px;
 
     font-weight: 700;
+
+    line-height: 1.15;
+
 }
 
-.benefit span:not(.benefit-icon) {
+
+.benefit div > span {
+
     display: block;
 
     color: #777;
 
     font-size: 12px;
+
+    line-height: 1.3;
+
 }
 
 
@@ -1099,28 +414,39 @@ main {
 .section,
 .recommendations,
 .satori-pack {
-    width: min(
-        var(--satori-content-width),
-        calc(
-            100% -
-            (var(--satori-side-space) * 2)
-        )
-    );
+
+    width:
+        min(
+            var(--satori-content-width),
+            calc(
+                100% -
+                (var(--satori-side-space) * 2)
+            )
+        );
 
     margin-left: auto;
 
     margin-right: auto;
+
 }
+
 
 .section {
+
     margin-top: 52px;
+
 }
+
 
 .recommendations {
+
     margin-top: 70px;
+
 }
 
+
 .section-header {
+
     margin-bottom: 20px;
 
     display: flex;
@@ -1128,9 +454,14 @@ main {
     align-items: center;
 
     justify-content: space-between;
+
+    gap: 15px;
+
 }
 
+
 .section-header h2 {
+
     margin: 0;
 
     font-size: 24px;
@@ -1140,14 +471,27 @@ main {
     font-weight: 800;
 
     letter-spacing: -.5px;
+
 }
 
+
 .section-header a {
+
+    flex-shrink: 0;
+
     color: var(--red);
 
     font-size: 13px;
 
     font-weight: 700;
+
+}
+
+
+.section-header a:hover {
+
+    color: var(--dark-red);
+
 }
 
 
@@ -1156,6 +500,7 @@ main {
 ========================================================= */
 
 .collections-grid {
+
     width: 100%;
 
     display: grid;
@@ -1164,9 +509,12 @@ main {
         repeat(4, 1fr);
 
     gap: 10px;
+
 }
 
+
 .collection-card {
+
     min-height: 230px;
 
     position: relative;
@@ -1177,9 +525,11 @@ main {
 
     align-items: flex-end;
 
-    border: 1px solid #ccc;
+    border:
+        1px solid #ccc;
 
-    border-radius: var(--radius);
+    border-radius:
+        var(--radius);
 
     background:
         radial-gradient(
@@ -1192,15 +542,23 @@ main {
     transition:
         transform .25s ease,
         border-color .25s ease;
+
 }
+
 
 .collection-card:hover {
-    transform: translateY(-3px);
 
-    border-color: #999;
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #999;
+
 }
 
+
 .collection-card::after {
+
     content: "";
 
     position: absolute;
@@ -1210,12 +568,15 @@ main {
     background:
         linear-gradient(
             to top,
-            rgba(0, 0, 0, .85),
-            rgba(0, 0, 0, .05) 65%
+            rgba(0,0,0,.85),
+            rgba(0,0,0,.05) 65%
         );
+
 }
 
+
 .collection-card > div {
+
     position: relative;
 
     z-index: 2;
@@ -1225,22 +586,31 @@ main {
     padding: 20px;
 
     color: #fff;
+
 }
 
+
 .collection-card h3 {
+
     margin: 0;
 
     font-size: 19px;
 
     font-weight: 800;
+
+    line-height: 1;
+
 }
 
+
 .collection-card span {
+
     display: block;
 
-    margin-top: 4px;
+    margin-top: 5px;
 
     font-size: 12px;
+
 }
 
 
@@ -1249,6 +619,7 @@ main {
 ========================================================= */
 
 .recommendations-grid {
+
     width: 100%;
 
     display: grid;
@@ -1257,31 +628,43 @@ main {
         repeat(4, 1fr);
 
     gap: 14px;
+
 }
 
+
 .recommendation-card {
+
     overflow: hidden;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: var(--radius);
+    border-radius:
+        var(--radius);
 
     background: #fff;
 
     transition:
         transform .25s ease,
         box-shadow .25s ease;
+
 }
 
+
 .recommendation-card:hover {
-    transform: translateY(-3px);
+
+    transform:
+        translateY(-3px);
 
     box-shadow:
         0 8px 25px
-        rgba(0, 0, 0, .08);
+        rgba(0,0,0,.08);
+
 }
 
+
 .recommendation-image {
+
     width: 100%;
 
     aspect-ratio: 1 / 1;
@@ -1289,21 +672,30 @@ main {
     overflow: hidden;
 
     background: #f3f3f3;
+
 }
 
+
 .recommendation-image img {
+
     width: 100%;
 
     height: 100%;
 
     object-fit: cover;
+
 }
+
 
 .recommendation-info {
+
     padding: 15px;
+
 }
 
+
 .recommendation-category {
+
     margin-bottom: 6px;
 
     color: var(--red);
@@ -1313,26 +705,37 @@ main {
     font-weight: 700;
 
     letter-spacing: .7px;
+
 }
 
+
 .recommendation-name {
+
     margin-bottom: 4px;
 
     font-size: 15px;
 
     font-weight: 600;
+
 }
 
+
 .recommendation-price {
+
     color: #777;
 
     font-size: 13px;
+
 }
 
+
 .recommendation-placeholder {
+
     width: 100%;
 
     height: 100%;
+
+    min-height: 150px;
 
     display: flex;
 
@@ -1349,6 +752,7 @@ main {
     font-size: 28px;
 
     font-style: italic;
+
 }
 
 
@@ -1357,6 +761,7 @@ main {
 ========================================================= */
 
 .satori-pack {
+
     position: relative;
 
     overflow: hidden;
@@ -1365,26 +770,29 @@ main {
 
     margin-top: 70px;
 
-    padding: 50px 55px;
+    padding:
+        50px 55px;
 
     background:
-        radial-gradient(
-            circle at 82% 30%,
-            #430000 0%,
-            #1d0000 38%,
-            #080000 78%
+        linear-gradient(
+            110deg,
+            #080808 0%,
+            #260000 55%,
+            #f31218 150%
         ) !important;
 
     border: 0 !important;
 
-    border-radius: 10px !important;
+    border-radius:
+        10px !important;
 
     color: #fff;
 
-    box-sizing: border-box;
 }
 
+
 .satori-pack::after {
+
     content: "";
 
     position: absolute;
@@ -1394,22 +802,28 @@ main {
     background:
         linear-gradient(
             90deg,
-            rgba(0, 0, 0, .05),
-            rgba(255, 20, 20, .08)
+            rgba(0,0,0,.05),
+            rgba(255,20,20,.08)
         );
 
     pointer-events: none;
+
 }
 
+
 .satori-pack-content {
+
     position: relative;
 
     z-index: 2;
 
     max-width: 700px;
+
 }
 
+
 .satori-pack-label {
+
     margin-bottom: 8px;
 
     color: var(--red);
@@ -1419,34 +833,48 @@ main {
     font-weight: 800;
 
     letter-spacing: 4px;
+
 }
 
+
 .satori-pack h2 {
-    margin: 0 0 12px;
+
+    margin:
+        0 0 12px;
 
     font-size:
-        clamp(32px, 4vw, 52px);
+        clamp(32px,4vw,52px);
 
     line-height: 1;
 
     font-weight: 800;
+
 }
+
 
 .satori-pack h2 span {
+
     color: var(--red);
+
 }
+
 
 .satori-pack p {
+
     max-width: 650px;
 
-    margin: 0 0 25px;
+    margin:
+        0 0 25px;
 
-    color: #ccc;
+    color: #ddd;
 
     font-size: 14px;
+
 }
 
+
 .satori-pack-button {
+
     display: inline-flex;
 
     align-items: center;
@@ -1455,11 +883,13 @@ main {
 
     min-height: 44px;
 
-    padding: 0 24px;
+    padding:
+        0 24px;
 
     border-radius: 5px;
 
-    background: var(--red);
+    background:
+        var(--red);
 
     color: #fff;
 
@@ -1470,20 +900,28 @@ main {
     transition:
         background .2s ease,
         transform .2s ease;
+
 }
 
-.satori-pack-button:hover {
-    background: #d60000;
 
-    transform: translateY(-2px);
+.satori-pack-button:hover {
+
+    background:
+        var(--dark-red);
+
+    transform:
+        translateY(-2px);
+
 }
 
 
 /* =========================================================
-   FOOTER
+   FOOTER GLOBAL
+   Estas clases corresponden a js/footer.js
 ========================================================= */
 
-.footer {
+.satori-global-footer {
+
     width: 100%;
 
     margin-top: 70px;
@@ -1492,21 +930,24 @@ main {
 
     color: #fff;
 
-    border: none !important;
-
     border-top:
-        2px solid #222 !important;
+        2px solid #222;
 
-    border-radius: 0 !important;
 }
 
-.footer-inner {
+
+.satori-footer-main {
+
     width:
-        min(1500px, calc(100% - 40px));
+        min(
+            1500px,
+            calc(100% - 40px)
+        );
 
     margin: 0 auto;
 
-    padding: 65px 0 45px;
+    padding:
+        65px 0 45px;
 
     display: grid;
 
@@ -1517,21 +958,35 @@ main {
         1.5fr;
 
     gap: 50px;
+
 }
 
-.footer-brand h2 {
-    margin: 0 0 8px;
 
-    font-family: var(--font-logo);
+/* ---------------------------------------------------------
+   MARCA
+--------------------------------------------------------- */
+
+.satori-footer-brand h3 {
+
+    margin:
+        0 0 5px;
+
+    font-family:
+        var(--font-logo);
 
     font-size: 32px;
+
+    font-weight: 700;
 
     font-style: italic;
 
     letter-spacing: -1px;
+
 }
 
-.footer-brand > span {
+
+.satori-footer-kanji {
+
     display: block;
 
     margin-bottom: 18px;
@@ -1539,9 +994,12 @@ main {
     color: var(--red);
 
     font-size: 13px;
+
 }
 
-.footer-brand p {
+
+.satori-footer-brand p {
+
     max-width: 300px;
 
     margin: 0;
@@ -1551,118 +1009,12 @@ main {
     font-size: 13px;
 
     line-height: 1.6;
+
 }
 
-.footer-column {
-    display: flex;
 
-    flex-direction: column;
+.satori-footer-instagram {
 
-    gap: 12px;
-}
-
-.footer-column h3 {
-    margin: 0 0 8px;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-}
-
-.footer-column a {
-    color: #aaa;
-
-    font-size: 13px;
-
-    transition: color .2s ease;
-}
-
-.footer-column a:hover {
-    color: #fff;
-}
-
-.footer-community .small-label {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: var(--red);
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-}
-
-.footer-community h2 {
-    margin: 0 0 10px;
-
-    font-size: 30px;
-
-    line-height: 1;
-}
-
-.footer-community h2 span {
-    color: var(--red);
-}
-
-.footer-community p {
-    margin: 0 0 18px;
-
-    color: #aaa;
-
-    font-size: 13px;
-}
-
-.newsletter {
-    display: flex;
-
-    width: 100%;
-
-    height: 46px;
-
-    border:
-        1px solid #444;
-
-    border-radius: 6px;
-
-    overflow: hidden;
-
-    background: #fff;
-}
-
-.newsletter input {
-    flex: 1;
-
-    min-width: 0;
-
-    padding: 0 14px;
-
-    border: 0;
-
-    outline: none;
-
-    font-size: 13px;
-
-    color: #111;
-
-    background: #fff;
-}
-
-.newsletter button {
-    width: 52px;
-
-    border: 0;
-
-    background: var(--red);
-
-    color: #fff;
-
-    font-size: 20px;
-}
-
-.instagram-link {
     width: 38px;
 
     height: 38px;
@@ -1685,37 +1037,210 @@ main {
     transition:
         color .2s ease,
         border-color .2s ease;
+
 }
 
-.instagram-link:hover {
+
+.satori-footer-instagram:hover {
+
     color: var(--red);
 
     border-color: var(--red);
+
 }
 
-.instagram-link svg {
+
+.satori-footer-instagram svg {
+
     width: 18px;
 
     height: 18px;
 
-    fill: none;
-
-    stroke: currentColor;
-
-    stroke-width: 1.7;
-
-    stroke-linecap: round;
-
-    stroke-linejoin: round;
 }
 
-.footer-bottom {
+
+/* ---------------------------------------------------------
+   COLUMNAS
+--------------------------------------------------------- */
+
+.satori-footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.satori-footer-column h4 {
+
+    margin:
+        0 0 8px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.satori-footer-column a {
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    transition:
+        color .2s ease;
+
+}
+
+
+.satori-footer-column a:hover {
+
+    color: #fff;
+
+}
+
+
+/* ---------------------------------------------------------
+   COMMUNITY
+--------------------------------------------------------- */
+
+.satori-footer-community-label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--red);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+}
+
+
+.satori-footer-community h3 {
+
+    margin:
+        0 0 10px;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+}
+
+
+.satori-footer-community h3 span {
+
+    color: var(--red);
+
+}
+
+
+.satori-footer-community p {
+
+    margin:
+        0 0 18px;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+}
+
+
+.satori-footer-newsletter {
+
+    display: flex;
+
+    width: 100%;
+
+    max-width: 400px;
+
+    height: 46px;
+
+    border:
+        1px solid #444;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    background: #fff;
+
+}
+
+
+.satori-footer-newsletter input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        0 14px;
+
+    border: 0;
+
+    outline: none;
+
+    color: #111;
+
+    background: #fff;
+
+    font-size: 13px;
+
+}
+
+
+.satori-footer-newsletter button {
+
+    width: 52px;
+
+    border: 0;
+
+    background:
+        var(--red);
+
+    color: #fff;
+
+    font-size: 20px;
+
+}
+
+
+.satori-footer-newsletter button:hover {
+
+    background:
+        var(--dark-red);
+
+}
+
+
+/* ---------------------------------------------------------
+   PARTE INFERIOR
+--------------------------------------------------------- */
+
+.satori-footer-bottom {
+
     width:
-        min(1500px, calc(100% - 40px));
+        min(
+            1500px,
+            calc(100% - 40px)
+        );
 
     margin: 0 auto;
 
-    padding: 18px 0;
+    padding:
+        18px 0;
 
     border-top:
         1px solid #222;
@@ -1729,16 +1254,23 @@ main {
     color: #777;
 
     font-size: 11px;
+
 }
 
-.footer-bottom div {
+
+.satori-footer-bottom > div {
+
     display: flex;
 
     gap: 20px;
+
 }
 
-.footer-bottom a:hover {
+
+.satori-footer-bottom a:hover {
+
     color: #fff;
+
 }
 
 
@@ -1749,23 +1281,28 @@ main {
 @media (max-width: 1100px) {
 
     :root {
+
         --satori-side-space: 24px;
+
     }
 
-    .main-nav {
-        gap: 22px;
-    }
 
     .collections-grid,
     .recommendations-grid {
+
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
+
     }
 
-    .footer-inner {
+
+    .satori-footer-main {
+
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
+
     }
+
 }
 
 
@@ -1776,221 +1313,9 @@ main {
 @media (max-width: 900px) {
 
     :root {
+
         --satori-side-space: 15px;
-    }
 
-
-    /* -----------------------------------------------------
-       HEADER
-    ----------------------------------------------------- */
-
-    .main-header,
-    #satori-header .main-header {
-
-        height: 64px !important;
-
-        min-height: 64px !important;
-
-        background: #fff !important;
-    }
-
-
-    .header-inner,
-    #satori-header .header-inner {
-
-        width: 100% !important;
-
-        height: 64px !important;
-
-        margin: 0 !important;
-
-        padding: 0 18px !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-
-        justify-content: center !important;
-    }
-
-
-    .main-nav {
-        display: none !important;
-    }
-
-
-    /* -----------------------------------------------------
-       LOGO
-    ----------------------------------------------------- */
-
-    .satori-logo,
-    .brand-logo,
-    #satori-header .satori-logo,
-    #satori-header .brand-logo {
-
-        position: absolute !important;
-
-        left: 50% !important;
-
-        top: 50% !important;
-
-        transform:
-            translate(-50%, -50%)
-            skewX(-4deg) !important;
-
-        margin: 0 !important;
-
-        font-size: 29px !important;
-
-        font-weight: 700 !important;
-
-        z-index: 10004 !important;
-    }
-
-
-    /* -----------------------------------------------------
-       HAMBURGUESA
-    ----------------------------------------------------- */
-
-    .mobile-menu-button,
-    #satori-header .mobile-menu-button {
-
-        display: flex !important;
-
-        position: absolute !important;
-
-        left: 18px !important;
-
-        top: 50% !important;
-
-        transform:
-            translateY(-50%) !important;
-
-        z-index: 10005 !important;
-    }
-
-
-    /* -----------------------------------------------------
-       ICONOS
-    ----------------------------------------------------- */
-
-    .header-actions,
-    .header-icons,
-    #satori-header .header-actions,
-    #satori-header .header-icons {
-
-        position: absolute !important;
-
-        right: 15px !important;
-
-        left: auto !important;
-
-        top: 50% !important;
-
-        transform:
-            translateY(-50%) !important;
-
-        width: auto !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-
-        justify-content: flex-end !important;
-
-        gap: 8px !important;
-
-        z-index: 10005 !important;
-    }
-
-
-    .header-icon {
-
-        width: 34px !important;
-
-        height: 34px !important;
-    }
-
-
-    .header-icon svg {
-
-        width: 18px !important;
-
-        height: 18px !important;
-
-        stroke-width: 1.4 !important;
-    }
-
-
-    .header-icon[href="cuenta.html"] {
-        display: none !important;
-    }
-
-
-    /* -----------------------------------------------------
-       BUSCADOR MÓVIL
-    ----------------------------------------------------- */
-
-    .search-wrapper.active {
-
-        position: absolute !important;
-
-        right: 0 !important;
-
-        top: 50% !important;
-
-        transform:
-            translateY(-50%) !important;
-
-        width:
-            calc(100vw - 80px) !important;
-
-        height: 42px;
-
-        background: #fff;
-
-        z-index: 10020 !important;
-    }
-
-
-    .search-wrapper.active .search-input {
-
-        width:
-            calc(100vw - 120px) !important;
-
-        height: 38px !important;
-
-        margin-left: 5px !important;
-
-        padding: 0 10px !important;
-
-        opacity: 1 !important;
-
-        pointer-events: auto !important;
-    }
-
-
-    /* -----------------------------------------------------
-       MENÚ
-    ----------------------------------------------------- */
-
-    .mobile-menu,
-    #satori-header .mobile-menu {
-
-        width:
-            min(370px, 82vw) !important;
-
-        height: 100dvh !important;
-
-        z-index: 11000 !important;
-    }
-
-
-    .mobile-overlay,
-    .mobile-menu-overlay,
-    #satori-header .mobile-menu-overlay {
-
-        z-index: 10999 !important;
     }
 
 
@@ -2005,11 +1330,14 @@ main {
         min-height: 360px;
 
         max-height: 580px;
+
     }
 
 
     .hero-dots {
+
         bottom: 12px;
+
     }
 
 
@@ -2020,12 +1348,11 @@ main {
     .benefits {
 
         width:
-            calc(100% - 30px) !important;
+            calc(100% - 30px);
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
 
-        border-top: none;
     }
 
 
@@ -2040,28 +1367,37 @@ main {
 
         border-bottom:
             1px solid var(--border);
+
     }
 
 
     .benefit:nth-child(2),
     .benefit:nth-child(4) {
+
         border-right: 0;
+
     }
 
 
     .benefit:nth-child(3),
     .benefit:nth-child(4) {
+
         border-bottom: 0;
+
     }
 
 
     .benefit strong {
+
         font-size: 12px;
+
     }
 
 
-    .benefit span:not(.benefit-icon) {
+    .benefit div > span {
+
         font-size: 11px;
+
     }
 
 
@@ -2074,27 +1410,43 @@ main {
     .satori-pack {
 
         width:
-            calc(100% - 30px) !important;
+            calc(100% - 30px);
+
     }
 
 
     .section {
+
         margin-top: 38px;
+
     }
 
 
     .recommendations {
+
         margin-top: 50px;
+
+    }
+
+
+    .section-header {
+
+        margin-bottom: 16px;
+
     }
 
 
     .section-header h2 {
+
         font-size: 21px;
+
     }
 
 
     .section-header a {
+
         font-size: 12px;
+
     }
 
 
@@ -2105,29 +1457,38 @@ main {
     .collections-grid {
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
 
         gap: 8px;
+
     }
 
 
     .collection-card {
+
         min-height: 180px;
+
     }
 
 
     .collection-card > div {
+
         padding: 15px;
+
     }
 
 
     .collection-card h3 {
+
         font-size: 16px;
+
     }
 
 
     .collection-card span {
+
         font-size: 11px;
+
     }
 
 
@@ -2138,29 +1499,38 @@ main {
     .recommendations-grid {
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
 
         gap: 9px;
+
     }
 
 
     .recommendation-info {
+
         padding: 11px;
+
     }
 
 
     .recommendation-category {
+
         font-size: 9px;
+
     }
 
 
     .recommendation-name {
+
         font-size: 13px;
+
     }
 
 
     .recommendation-price {
+
         font-size: 11px;
+
     }
 
 
@@ -2172,14 +1542,25 @@ main {
 
         margin-top: 50px;
 
-        padding: 30px 22px;
+        padding:
+            30px 22px;
 
         min-height: 220px;
+
     }
 
 
     .satori-pack h2 {
+
         font-size: 28px;
+
+    }
+
+
+    .satori-pack p {
+
+        font-size: 13px;
+
     }
 
 
@@ -2187,12 +1568,14 @@ main {
        FOOTER
     ----------------------------------------------------- */
 
-    .footer {
+    .satori-global-footer {
+
         margin-top: 50px;
+
     }
 
 
-    .footer-inner {
+    .satori-footer-main {
 
         width:
             calc(100% - 30px);
@@ -2201,11 +1584,13 @@ main {
 
         gap: 35px;
 
-        padding: 45px 0 30px;
+        padding:
+            45px 0 30px;
+
     }
 
 
-    .footer-bottom {
+    .satori-footer-bottom {
 
         width:
             calc(100% - 30px);
@@ -2215,6 +1600,7 @@ main {
         align-items: flex-start;
 
         gap: 13px;
+
     }
 
 }
@@ -2226,154 +1612,91 @@ main {
 
 @media (max-width: 430px) {
 
-    .top-bar-inner {
-        width:
-            calc(100% - 28px);
-    }
+    .hero-slide {
 
+        min-height: 340px;
 
-    .shipping-message {
-        font-size: 10px;
-    }
-
-
-    .top-message {
-        display: none;
-    }
-
-
-    .collections-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .collection-card {
-        min-height: 150px;
-    }
-
-
-    .recommendations-grid {
-        grid-template-columns:
-            1fr 1fr;
     }
 
 
     .benefit {
+
         padding: 13px;
+
     }
 
 
     .benefit-icon {
+
         font-size: 17px;
+
+    }
+
+
+    .collections-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .collection-card {
+
+        min-height: 140px;
+
+    }
+
+
+    .collection-card > div {
+
+        padding: 12px;
+
+    }
+
+
+    .collection-card h3 {
+
+        font-size: 15px;
+
+    }
+
+
+    .recommendations-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .satori-footer-bottom > div {
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
     }
 
 }
 
 
 /* =========================================================
-   CORRECCIONES FINALES
+   ACCESIBILIDAD
 ========================================================= */
 
+@media (prefers-reduced-motion: reduce) {
 
-/*
-   El banner empieza inmediatamente
-   después del header.
-*/
+    *,
+    *::before,
+    *::after {
 
-#satori-header + main {
-    padding-top: 0 !important;
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+
+    }
+
 }
-
-
-/*
-   Banner sin bordes.
-*/
-
-.hero-slider,
-.hero,
-.hero-carousel,
-#hero,
-.banner,
-.main-banner,
-.home-hero {
-
-    border: none !important;
-
-    border-radius: 0 !important;
-
-    box-shadow: none !important;
-}
-
-
-/*
-   Banner debajo del header.
-*/
-
-.hero-slider {
-    z-index: 0 !important;
-
-    transform: none !important;
-
-    opacity: 1 !important;
-
-    will-change: auto;
-}
-
-
-/*
-   Contenido tapa el banner.
-*/
-
-.benefits,
-.section,
-.recommendations,
-.satori-pack,
-.footer,
-.satori-global-footer {
-
-    position: relative;
-
-    z-index: 2 !important;
-
-    background: #fff;
-}
-
-
-/*
-   Header siempre arriba.
-*/
-
-#satori-header,
-.site-header {
-
-    position: relative;
-
-    z-index: 9999 !important;
-}
-
-
-/*
-   Evita espacios heredados.
-*/
-
-.hero-slider,
-.hero,
-.hero-carousel,
-#hero,
-.banner,
-.main-banner,
-.home-hero {
-
-    margin-top: 0 !important;
-}
-
-
-.hero-slide,
-.hero-slide.active {
-    border: none !important;
-}
-
-
-/* =========================================================
-   FIN — SATORII
-========================================================= */
