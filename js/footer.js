@@ -1,35 +1,68 @@
 /* =========================================================
    SATORII · FOOTER GLOBAL
-   Este archivo genera automáticamente el footer
-   en todas las páginas de SatoriMode.
+   Genera automáticamente el footer en todas las páginas.
 ========================================================= */
 
 (function () {
+
+    "use strict";
+
 
     function loadSatoriFooter() {
 
         const footerContainer =
             document.getElementById("satori-footer");
 
-        if (!footerContainer) return;
+
+        if (!footerContainer) {
+            return;
+        }
+
+
+        /* =====================================================
+           EVITAR DUPLICAR FOOTER
+        ====================================================== */
+
+        if (
+            footerContainer.querySelector(
+                ".satori-global-footer"
+            )
+        ) {
+            return;
+        }
+
+
+        /* =====================================================
+           HTML
+        ====================================================== */
 
         footerContainer.innerHTML = `
 
             <footer class="satori-global-footer">
 
+
+                <!-- =================================================
+                     CONTENIDO PRINCIPAL
+                ================================================== -->
+
                 <div class="satori-footer-main">
 
-                    <!-- =========================
+
+                    <!-- =================================================
                          MARCA
-                    ========================== -->
+                    ================================================== -->
 
                     <div class="satori-footer-brand">
 
-                        <h3>SATORII</h3>
+                        <h3>
+                            SATORII
+                        </h3>
+
 
                         <span class="satori-footer-kanji">
                             悟り
                         </span>
+
 
                         <p>
                             Cultura japonesa y streetwear
@@ -37,66 +70,73 @@
                             llevar contigo.
                         </p>
 
+
                         <a
-                            href="#"
+                            href="https://www.instagram.com/satorimode/"
                             class="satori-footer-instagram"
-                            aria-label="Instagram Satori"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram de SatoriMode"
                         >
+
                             <svg
                                 viewBox="0 0 24 24"
                                 aria-hidden="true"
                             >
+
                                 <rect
                                     x="3"
                                     y="3"
                                     width="18"
                                     height="18"
                                     rx="5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
                                 />
 
                                 <circle
                                     cx="12"
                                     cy="12"
                                     r="4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
                                 />
 
                                 <circle
                                     cx="17.4"
                                     cy="6.6"
                                     r="1"
-                                    fill="currentColor"
+                                    class="instagram-dot"
                                 />
+
                             </svg>
+
                         </a>
 
                     </div>
 
 
-                    <!-- =========================
+                    <!-- =================================================
                          COLECCIONES
-                    ========================== -->
+                    ================================================== -->
 
                     <div class="satori-footer-column">
 
-                        <h4>COLECCIONES</h4>
+                        <h4>
+                            COLECCIONES
+                        </h4>
+
 
                         <a href="anime.html">
                             Anime
                         </a>
 
+
                         <a href="streetwear.html">
                             Streetwear
                         </a>
 
+
                         <a href="accesorios.html">
                             Accesorios
                         </a>
+
 
                         <a href="productos.html">
                             Todo
@@ -105,52 +145,63 @@
                     </div>
 
 
-                    <!-- =========================
+                    <!-- =================================================
                          AYUDA
-                    ========================== -->
+                    ================================================== -->
 
                     <div class="satori-footer-column">
 
-                        <h4>AYUDA</h4>
+                        <h4>
+                            AYUDA
+                        </h4>
 
-                        <a href="#">
+
+                        <a href="preguntas-frecuentes.html">
                             Preguntas frecuentes
                         </a>
 
-                        <a href="#">
+
+                        <a href="envios.html">
                             Envíos
                         </a>
 
-                        <a href="#">
+
+                        <a href="cambios.html">
                             Cambios y devoluciones
                         </a>
 
-                        <a href="#">
+
+                        <a href="guia-tallas.html">
                             Guía de tallas
                         </a>
 
                     </div>
 
 
-                    <!-- =========================
+                    <!-- =================================================
                          COMMUNITY
-                    ========================== -->
+                    ================================================== -->
 
                     <div class="satori-footer-community">
 
-                        <span class="satori-footer-community-label">
+                        <span
+                            class="satori-footer-community-label"
+                        >
                             SATORII COMMUNITY
                         </span>
+
 
                         <h3>
                             ÚNETE AL
                             <span>CLAN.</span>
                         </h3>
 
+
                         <p>
                             Recibe lanzamientos exclusivos,
                             novedades y beneficios de Satori.
                         </p>
+
 
                         <form
                             class="satori-footer-newsletter"
@@ -159,10 +210,13 @@
 
                             <input
                                 type="email"
+                                name="email"
                                 placeholder="Tu correo electrónico"
                                 aria-label="Tu correo electrónico"
+                                autocomplete="email"
                                 required
                             >
+
 
                             <button
                                 type="submit"
@@ -178,27 +232,31 @@
                 </div>
 
 
-                <!-- =========================
+                <!-- =================================================
                      PARTE INFERIOR
-                ========================== -->
+                ================================================== -->
 
                 <div class="satori-footer-bottom">
+
 
                     <span>
                         © 2026 SatoriMode
                     </span>
 
+
                     <div>
 
-                        <a href="#">
+                        <a href="privacidad.html">
                             Privacidad
                         </a>
 
-                        <a href="#">
+
+                        <a href="terminos.html">
                             Términos
                         </a>
 
-                        <a href="#">
+
+                        <a href="contacto.html">
                             Contacto
                         </a>
 
@@ -206,19 +264,21 @@
 
                 </div>
 
+
             </footer>
 
         `;
 
 
-        /* =========================================
+        /* =====================================================
            NEWSLETTER
-        ========================================== */
+        ====================================================== */
 
         const newsletter =
             document.getElementById(
                 "satori-footer-newsletter"
             );
+
 
         if (newsletter) {
 
@@ -228,18 +288,43 @@
 
                     event.preventDefault();
 
+
                     const input =
                         newsletter.querySelector(
                             "input"
                         );
 
-                    if (!input.value.trim()) {
+
+                    if (!input) {
                         return;
                     }
+
+
+                    const email =
+                        input.value.trim();
+
+
+                    if (!email) {
+
+                        input.focus();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Por ahora solamente mostramos
+                     * confirmación.
+                     *
+                     * Más adelante podemos conectarlo
+                     * a un sistema real de newsletter.
+                     */
 
                     alert(
                         "¡Gracias por unirte al Clan Satori!"
                     );
+
 
                     input.value = "";
 
@@ -251,9 +336,9 @@
     }
 
 
-    /* =============================================
-       CARGAR FOOTER
-    ============================================== */
+    /* =====================================================
+       INICIALIZACIÓN
+    ====================================================== */
 
     if (
         document.readyState === "loading"
