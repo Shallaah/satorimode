@@ -9,28 +9,27 @@
 
     const SATORIMODE_BASE = "/satorimode/";
 
+
     /*
      * =====================================================
-     * CLAVE ÚNICA DEL CARRITO
+     * CLAVE PRINCIPAL DEL CARRITO
      * =====================================================
      *
      * IMPORTANTE:
      *
-     * Esta debe ser exactamente la misma
-     * que utiliza cart.js
+     * Debe coincidir exactamente con cart.js
      */
 
-    const CART_STORAGE_KEY = "satorimode_cart";
+    const CART_STORAGE_KEY = "satorii_cart";
 
 
     /*
-     * Clave antigua.
+     * Clave utilizada en versiones anteriores.
      *
-     * Se utiliza solamente para recuperar
-     * carritos creados con versiones anteriores.
+     * Se conserva únicamente para migración.
      */
 
-    const OLD_CART_STORAGE_KEY = "satorii_cart";
+    const OLD_CART_STORAGE_KEY = "satorimode_cart";
 
 
     /* =====================================================
@@ -893,6 +892,7 @@
             align-items:center;
             justify-content:center;
             color:#fff;
+            text-decoration:none;
         }
 
         #satori-header .top-instagram svg {
@@ -968,6 +968,7 @@
                 Arial,
                 Helvetica,
                 sans-serif;
+
             font-weight:900;
             font-style:italic;
             letter-spacing:-2.5px;
@@ -976,9 +977,16 @@
             text-decoration:none;
             line-height:.9;
             white-space:nowrap;
+
+            /*
+             * IMPORTANTE:
+             * No aplicamos transform aquí.
+             * En móvil el transform se controla
+             * exclusivamente dentro del media query.
+             */
+
             transition:
-                color .2s ease,
-                transform .2s ease;
+                color .2s ease;
         }
 
         #satori-header .satori-logo {
@@ -988,11 +996,23 @@
             transform:skewX(-5deg);
         }
 
-        #satori-header .satori-logo:hover {
-            color:#f31218;
-            transform:
-                skewX(-5deg)
-                scale(1.06);
+
+        /*
+         * HOVER SOLAMENTE EN ESCRITORIO
+         *
+         * Evita que Safari/iOS interprete el :hover
+         * al tocar el logo en dispositivos móviles.
+         */
+
+        @media (min-width:1001px) {
+
+            #satori-header .satori-logo:hover {
+                color:#f31218;
+                transform:
+                    skewX(-5deg)
+                    scale(1.06);
+            }
+
         }
 
 
@@ -1119,6 +1139,7 @@
             justify-content:center;
             cursor:pointer;
             position:relative;
+            -webkit-tap-highlight-color:transparent;
         }
 
         #satori-header .header-icon:hover {
@@ -1274,6 +1295,7 @@
             color:#111;
             font-size:29px;
             cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
         }
 
         #satori-header .mobile-menu-close:hover {
@@ -1294,6 +1316,7 @@
             font-size:15px;
             text-decoration:none;
             cursor:pointer;
+            -webkit-tap-highlight-color:transparent;
         }
 
         #satori-header .mobile-home-button {
@@ -1798,6 +1821,7 @@
                 gap:5px;
                 cursor:pointer;
                 z-index:900001;
+                -webkit-tap-highlight-color:transparent;
             }
 
             #satori-header
@@ -1814,17 +1838,51 @@
             }
 
 
-            /* LOGO */
+            /* =================================================
+               LOGO MÓVIL
+               ================================================= */
 
-            #satori-header .satori-logo {
+            #satori-header .satori-logo,
+            #satori-header .satori-logo:hover,
+            #satori-header .satori-logo:active,
+            #satori-header .satori-logo:focus {
+
                 position:absolute;
+
                 left:50%;
                 top:50%;
+
                 transform:
                     translate(-50%,-50%)
                     skewX(-5deg);
+
                 font-size:27px;
+
                 z-index:900001;
+
+                color:#111;
+
+                /*
+                 * Evita cualquier transformación
+                 * accidental al tocar el logo.
+                 */
+
+                transition:
+                    color .2s ease;
+
+                -webkit-tap-highlight-color:transparent;
+            }
+
+
+            /*
+             * Cuando se toca el logo en móvil,
+             * no permitimos cambio de posición.
+             */
+
+            #satori-header .satori-logo:active {
+                transform:
+                    translate(-50%,-50%)
+                    skewX(-5deg);
             }
 
 
@@ -1888,14 +1946,30 @@
         }
 
 
+        /* =====================================================
+           MÓVILES PEQUEÑOS
+        ====================================================== */
+
         @media (max-width:430px) {
 
             #satori-header .shipping-message {
                 font-size:9px;
             }
 
-            #satori-header .satori-logo {
+            #satori-header .satori-logo,
+            #satori-header .satori-logo:hover,
+            #satori-header .satori-logo:active,
+            #satori-header .satori-logo:focus {
+
                 font-size:26px;
+
+                left:50%;
+                top:50%;
+
+                transform:
+                    translate(-50%,-50%)
+                    skewX(-5deg);
+
             }
 
             #satori-header .cart-preview {
@@ -2107,7 +2181,6 @@
                     localStorage.getItem(
                         CART_STORAGE_KEY
                     );
-
 
                 const old =
                     localStorage.getItem(
