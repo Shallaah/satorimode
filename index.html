@@ -36,15 +36,11 @@
 
 
 
-    <!-- =====================================================
-         CONTENIDO
-    ====================================================== -->
-
     <main>
 
 
         <!-- =================================================
-             HERO / BANNER
+             BANNER PRINCIPAL
         ================================================== -->
 
         <section
@@ -57,9 +53,6 @@
                 id="hero-track"
             >
 
-
-                <!-- BANNER 01 -->
-
                 <article class="hero-slide">
 
                     <img
@@ -70,9 +63,6 @@
 
                 </article>
 
-
-
-                <!-- BANNER 02 -->
 
                 <article class="hero-slide">
 
@@ -85,9 +75,6 @@
                 </article>
 
 
-
-                <!-- BANNER 03 -->
-
                 <article class="hero-slide">
 
                     <img
@@ -98,12 +85,8 @@
 
                 </article>
 
-
             </div>
 
-
-
-            <!-- INDICADORES -->
 
             <div
                 class="hero-dots"
@@ -129,7 +112,6 @@
                 ></button>
 
             </div>
-
 
         </section>
 
@@ -163,7 +145,6 @@
             </div>
 
 
-
             <div class="benefit">
 
                 <span class="benefit-icon">
@@ -185,7 +166,6 @@
             </div>
 
 
-
             <div class="benefit">
 
                 <span class="benefit-icon">
@@ -205,7 +185,6 @@
                 </div>
 
             </div>
-
 
 
             <div class="benefit">
@@ -253,7 +232,6 @@
             </div>
 
 
-
             <div class="collections-grid">
 
 
@@ -277,7 +255,6 @@
                 </a>
 
 
-
                 <a
                     href="streetwear.html"
                     class="collection-card"
@@ -298,7 +275,6 @@
                 </a>
 
 
-
                 <a
                     href="accesorios.html"
                     class="collection-card"
@@ -317,7 +293,6 @@
                     </div>
 
                 </a>
-
 
 
                 <a
@@ -341,7 +316,6 @@
 
 
             </div>
-
 
         </section>
 
@@ -370,20 +344,10 @@
             </div>
 
 
-
             <div
                 class="recommendations-grid"
                 id="recommendations-grid"
             >
-
-
-                <!--
-                    Estas tarjetas son provisionales.
-
-                    Más adelante las conectaremos directamente
-                    con products.js para que las recomendaciones
-                    sean aleatorias según los productos reales.
-                -->
 
 
                 <a
@@ -419,7 +383,6 @@
                 </a>
 
 
-
                 <a
                     href="productos.html"
                     class="recommendation-card"
@@ -453,7 +416,6 @@
                 </a>
 
 
-
                 <a
                     href="productos.html"
                     class="recommendation-card"
@@ -485,7 +447,6 @@
                     </div>
 
                 </a>
-
 
 
                 <a
@@ -523,7 +484,6 @@
 
             </div>
 
-
         </section>
 
 
@@ -534,25 +494,21 @@
 
         <section class="satori-pack">
 
-
-            <div class="satori-pack-content">
+            <div>
 
                 <div class="satori-pack-label">
                     SATORII PACK
                 </div>
-
 
                 <h2>
                     SATORII
                     <span>PACK.</span>
                 </h2>
 
-
                 <p>
                     Una experiencia especial creada
                     para acompañar tus pedidos.
                 </p>
-
 
                 <a
                     href="satorii-pack.html"
@@ -563,9 +519,7 @@
 
             </div>
 
-
         </section>
-
 
 
     </main>
@@ -581,8 +535,6 @@
 
         <div class="footer-inner">
 
-
-            <!-- MARCA -->
 
             <div class="footer-brand">
 
@@ -606,7 +558,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="instagram-link"
-                    aria-label="Instagram de SatoriMode"
+                    aria-label="Instagram SatoriMode"
                 >
                     ◎
                 </a>
@@ -614,8 +566,6 @@
             </div>
 
 
-
-            <!-- COLECCIONES -->
 
             <div class="footer-column">
 
@@ -643,8 +593,6 @@
 
 
 
-            <!-- AYUDA -->
-
             <div class="footer-column">
 
                 <h3>
@@ -671,26 +619,21 @@
 
 
 
-            <!-- COMMUNITY -->
-
             <div class="footer-community">
 
                 <span class="small-label">
                     SATORII COMMUNITY
                 </span>
 
-
                 <h2>
                     ÚNETE AL
                     <span>CLAN.</span>
                 </h2>
 
-
                 <p>
                     Recibe lanzamientos exclusivos,
                     novedades y beneficios de Satori.
                 </p>
-
 
                 <form
                     class="newsletter"
@@ -716,14 +659,11 @@
 
 
 
-        <!-- FOOTER BOTTOM -->
-
         <div class="footer-bottom">
 
             <span>
                 © 2026 SatoriMode
             </span>
-
 
             <div>
 
@@ -756,7 +696,6 @@
 
     <script src="js/header.js"></script>
 
-    <script src="js/main.js"></script>
 
 
     <!-- =====================================================
@@ -767,31 +706,19 @@
 
         document.addEventListener(
             "DOMContentLoaded",
-            function () {
-
+            () => {
 
                 const slider =
-                    document.getElementById(
-                        "hero-slider"
-                    );
-
+                    document.getElementById("hero-slider");
 
                 const track =
-                    document.getElementById(
-                        "hero-track"
-                    );
-
+                    document.getElementById("hero-track");
 
                 const slides =
-                    document.querySelectorAll(
-                        ".hero-slide"
-                    );
-
+                    document.querySelectorAll(".hero-slide");
 
                 const dots =
-                    document.querySelectorAll(
-                        ".hero-dot"
-                    );
+                    document.querySelectorAll(".hero-dot");
 
 
                 if (
@@ -811,34 +738,17 @@
 
                 let isDragging = false;
 
-                let autoSlide;
+                let autoSlide = null;
 
-
-                /*
-                ==========================================
-                CAMBIAR SLIDE
-                ==========================================
-                */
 
                 function goToSlide(index) {
 
-
-                    if (
-                        index < 0
-                    ) {
-
-                        index =
-                            slides.length - 1;
-
+                    if (index < 0) {
+                        index = slides.length - 1;
                     }
 
-
-                    if (
-                        index >= slides.length
-                    ) {
-
+                    if (index >= slides.length) {
                         index = 0;
-
                     }
 
 
@@ -846,15 +756,15 @@
 
 
                     track.style.transform =
-                        `translateX(-${currentSlide * 100}%)`;
+                        `translateX(-${index * 100}%)`;
 
 
                     dots.forEach(
-                        function (dot, i) {
+                        (dot, i) => {
 
                             dot.classList.toggle(
                                 "active",
-                                i === currentSlide
+                                i === index
                             );
 
                         }
@@ -862,13 +772,6 @@
 
                 }
 
-
-
-                /*
-                ==========================================
-                SIGUIENTE
-                ==========================================
-                */
 
                 function nextSlide() {
 
@@ -879,18 +782,9 @@
                 }
 
 
-
-                /*
-                ==========================================
-                AUTOMÁTICO
-                ==========================================
-                */
-
                 function startAutoSlide() {
 
-                    clearInterval(
-                        autoSlide
-                    );
+                    clearInterval(autoSlide);
 
 
                     autoSlide =
@@ -902,49 +796,30 @@
                 }
 
 
-
-                /*
-                ==========================================
-                REINICIAR AUTOMÁTICO
-                ==========================================
-                */
-
                 function resetAutoSlide() {
-
-                    clearInterval(
-                        autoSlide
-                    );
-
 
                     startAutoSlide();
 
                 }
 
 
-
-                /*
-                ==========================================
-                DOTS
-                ==========================================
-                */
+                /* INDICADORES */
 
                 dots.forEach(
-                    function (dot) {
+                    (dot) => {
 
                         dot.addEventListener(
                             "click",
-                            function (event) {
+                            (event) => {
 
                                 event.stopPropagation();
 
 
-                                const index =
+                                goToSlide(
                                     Number(
                                         dot.dataset.slide
-                                    );
-
-
-                                goToSlide(index);
+                                    )
+                                );
 
 
                                 resetAutoSlide();
@@ -956,144 +831,109 @@
                 );
 
 
-
-                /*
-                ==========================================
-                MOUSE / TOUCH
-                ==========================================
-                */
-
-                function pointerDown(event) {
-
-                    isDragging = true;
-
-
-                    slider.classList.add(
-                        "dragging"
-                    );
-
-
-                    startX =
-                        event.clientX ??
-                        event.touches?.[0]?.clientX ??
-                        0;
-
-
-                    currentX = startX;
-
-
-                    clearInterval(
-                        autoSlide
-                    );
-
-                }
-
-
-
-                function pointerMove(event) {
-
-                    if (!isDragging) {
-                        return;
-                    }
-
-
-                    currentX =
-                        event.clientX ??
-                        event.touches?.[0]?.clientX ??
-                        currentX;
-
-                }
-
-
-
-                function pointerUp() {
-
-                    if (!isDragging) {
-                        return;
-                    }
-
-
-                    isDragging = false;
-
-
-                    slider.classList.remove(
-                        "dragging"
-                    );
-
-
-                    const distance =
-                        currentX - startX;
-
-
-                    /*
-                    Solo cambia si se arrastra
-                    una cantidad suficiente.
-                    */
-
-                    if (
-                        Math.abs(distance) > 60
-                    ) {
-
-
-                        if (
-                            distance < 0
-                        ) {
-
-                            goToSlide(
-                                currentSlide + 1
-                            );
-
-                        } else {
-
-                            goToSlide(
-                                currentSlide - 1
-                            );
-
-                        }
-
-                    }
-
-
-                    resetAutoSlide();
-
-                }
-
-
-
-                /*
-                ==========================================
-                MOUSE
-                ==========================================
-                */
+                /* MOUSE */
 
                 slider.addEventListener(
                     "mousedown",
-                    pointerDown
+                    (event) => {
+
+                        isDragging = true;
+
+                        startX =
+                            event.clientX;
+
+                        currentX =
+                            event.clientX;
+
+                        slider.classList.add(
+                            "dragging"
+                        );
+
+                        clearInterval(
+                            autoSlide
+                        );
+
+                    }
                 );
 
 
                 window.addEventListener(
                     "mousemove",
-                    pointerMove
+                    (event) => {
+
+                        if (!isDragging) {
+                            return;
+                        }
+
+                        currentX =
+                            event.clientX;
+
+                    }
                 );
 
 
                 window.addEventListener(
                     "mouseup",
-                    pointerUp
+                    () => {
+
+                        if (!isDragging) {
+                            return;
+                        }
+
+
+                        isDragging = false;
+
+                        slider.classList.remove(
+                            "dragging"
+                        );
+
+
+                        const distance =
+                            currentX - startX;
+
+
+                        if (
+                            Math.abs(distance) > 60
+                        ) {
+
+                            if (distance < 0) {
+
+                                nextSlide();
+
+                            } else {
+
+                                goToSlide(
+                                    currentSlide - 1
+                                );
+
+                            }
+
+                        }
+
+
+                        resetAutoSlide();
+
+                    }
                 );
 
 
-
-                /*
-                ==========================================
-                TOUCH
-                ==========================================
-                */
+                /* TOUCH */
 
                 slider.addEventListener(
                     "touchstart",
-                    pointerDown,
+                    (event) => {
+
+                        startX =
+                            event.touches[0].clientX;
+
+                        currentX =
+                            startX;
+
+                        clearInterval(
+                            autoSlide
+                        );
+
+                    },
                     {
                         passive: true
                     }
@@ -1102,7 +942,12 @@
 
                 slider.addEventListener(
                     "touchmove",
-                    pointerMove,
+                    (event) => {
+
+                        currentX =
+                            event.touches[0].clientX;
+
+                    },
                     {
                         passive: true
                     }
@@ -1111,21 +956,42 @@
 
                 slider.addEventListener(
                     "touchend",
-                    pointerUp
+                    () => {
+
+                        const distance =
+                            currentX - startX;
+
+
+                        if (
+                            Math.abs(distance) > 60
+                        ) {
+
+                            if (distance < 0) {
+
+                                nextSlide();
+
+                            } else {
+
+                                goToSlide(
+                                    currentSlide - 1
+                                );
+
+                            }
+
+                        }
+
+
+                        resetAutoSlide();
+
+                    }
                 );
 
 
-
-                /*
-                ==========================================
-                INICIO
-                ==========================================
-                */
+                /* INICIO */
 
                 goToSlide(0);
 
                 startAutoSlide();
-
 
             }
         );
