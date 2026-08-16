@@ -7,7 +7,7 @@
 
         /* =====================================================
            RUTA BASE DE SATORIMODE
-           
+
            IMPORTANTE:
            Todas las páginas internas utilizan esta ruta
            para evitar problemas de rutas relativas.
@@ -374,10 +374,12 @@
                     </a>
 
 
-                    <!-- CARRITO -->
+                    <!-- =================================================
+                         CARRITO
+                    ================================================== -->
 
                     <a
-                        class="header-icon"
+                        class="header-icon cart-header-icon"
                         href="${SATORIMODE_BASE}carrito.html"
                         aria-label="Carrito"
                     >
@@ -401,6 +403,17 @@
                             />
 
                         </svg>
+
+
+                        <!-- CONTADOR GLOBAL -->
+
+                        <span
+                            class="satori-cart-badge is-empty"
+                            id="satori-cart-badge"
+                            aria-label="Productos en el carrito"
+                        >
+                            0
+                        </span>
 
                     </a>
 
@@ -738,6 +751,10 @@
 
         style.textContent = `
 
+        /* =====================================================
+           BASE
+        ====================================================== */
+
         #satori-header,
         #satori-header * {
             box-sizing:border-box;
@@ -1052,6 +1069,7 @@
             align-items:center;
             justify-content:center;
             cursor:pointer;
+            position:relative;
         }
 
 
@@ -1068,6 +1086,66 @@
             stroke-width:1.55;
             stroke-linecap:round;
             stroke-linejoin:round;
+        }
+
+
+        /* =====================================================
+           CONTADOR GLOBAL DEL CARRITO
+        ====================================================== */
+
+        #satori-header .cart-header-icon {
+            position:relative;
+        }
+
+
+        #satori-header .satori-cart-badge {
+            position:absolute;
+
+            top:1px;
+            right:-1px;
+
+            min-width:17px;
+            height:17px;
+
+            padding:0 4px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:999px;
+
+            background:#f31218;
+            color:#fff;
+
+            border:2px solid #fff;
+
+            font-size:8px;
+            font-weight:900;
+
+            line-height:1;
+
+            white-space:nowrap;
+
+            pointer-events:none;
+
+            z-index:20;
+
+            transition:
+                transform .15s ease,
+                opacity .15s ease;
+        }
+
+
+        #satori-header .satori-cart-badge.is-empty {
+            display:none;
+        }
+
+
+        #satori-header
+        .cart-header-icon:hover
+        .satori-cart-badge {
+            transform:scale(1.08);
         }
 
 
@@ -1183,6 +1261,7 @@
             color:#111;
             font-size:29px;
             line-height:1;
+            cursor:pointer;
         }
 
 
@@ -1396,6 +1475,7 @@
             color:#111;
             font-size:30px;
             line-height:1;
+            cursor:pointer;
         }
 
 
@@ -1512,6 +1592,7 @@
                 align-items:flex-start;
                 gap:5px;
                 z-index:900001;
+                cursor:pointer;
             }
 
 
@@ -1592,6 +1673,18 @@
                 width:17px;
                 height:17px;
                 stroke-width:1.5;
+            }
+
+
+            /* CONTADOR */
+
+            #satori-header .satori-cart-badge {
+                top:0;
+                right:-1px;
+                min-width:16px;
+                height:16px;
+                padding:0 4px;
+                font-size:8px;
             }
 
 
@@ -1837,6 +1930,197 @@
             }
 
         }
+
+
+        /* =====================================================
+           CONTADOR GLOBAL DEL CARRITO
+        ====================================================== */
+
+        function updateSatoriCartBadge() {
+
+            const badge =
+                document.getElementById(
+                    "satori-cart-badge"
+                );
+
+
+            if (!badge) {
+                return;
+            }
+
+
+            let cart = [];
+
+
+            try {
+
+                cart =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "satorimode_cart"
+                        )
+                    ) || [];
+
+            } catch (error) {
+
+                cart = [];
+
+            }
+
+
+            let total = 0;
+
+
+            if (Array.isArray(cart)) {
+
+                total =
+                    cart.reduce(
+                        function (sum, item) {
+
+                            return sum +
+                                (
+                                    Number(
+                                        item.quantity
+                                    ) || 0
+                                );
+
+                        },
+                        0
+                    );
+
+            }
+
+
+            badge.textContent =
+                total;
+
+
+            badge.classList.toggle(
+                "is-empty",
+                total <= 0
+            );
+
+
+            /*
+             * Accesibilidad:
+             * actualiza también el texto descriptivo
+             * del botón del carrito.
+             */
+
+            const cartLink =
+                root.querySelector(
+                    ".cart-header-icon"
+                );
+
+
+            if (cartLink) {
+
+                cartLink.setAttribute(
+                    "aria-label",
+                    total > 0
+                        ? "Carrito, " + total + " productos"
+                        : "Carrito vacío"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ACTUALIZAR CONTADOR AL CARGAR
+        ====================================================== */
+
+        updateSatoriCartBadge();
+
+
+        /* =====================================================
+           EXPONER FUNCIÓN PARA CARRITO.JS
+           
+           Esto permite que carrito.js pueda decirle
+           inmediatamente al header que el carrito cambió.
+        ====================================================== */
+
+        window.updateSatoriCartBadge =
+            updateSatoriCartBadge;
+
+
+        /* =====================================================
+           EVENTO DEL CARRITO
+           
+           carrito.js podrá ejecutar:
+
+           window.dispatchEvent(
+               new Event("satoriCartUpdated")
+           );
+
+        ====================================================== */
+
+        window.addEventListener(
+            "satoriCartUpdated",
+            updateSatoriCartBadge
+        );
+
+
+        /* =====================================================
+           CAMBIOS DESDE OTRA PESTAÑA
+        ====================================================== */
+
+        window.addEventListener(
+            "storage",
+            function (event) {
+
+                if (
+                    event.key ===
+                    "satorimode_cart"
+                ) {
+
+                    updateSatoriCartBadge();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           SEGURIDAD EXTRA
+
+           Comprueba periódicamente el localStorage
+           por si otra función modifica el carrito
+           sin lanzar el evento.
+        ====================================================== */
+
+        let lastCartValue =
+            localStorage.getItem(
+                "satorimode_cart"
+            );
+
+
+        setInterval(
+            function () {
+
+                const currentCartValue =
+                    localStorage.getItem(
+                        "satorimode_cart"
+                    );
+
+
+                if (
+                    currentCartValue !==
+                    lastCartValue
+                ) {
+
+                    lastCartValue =
+                        currentCartValue;
+
+                    updateSatoriCartBadge();
+
+                }
+
+            },
+            500
+        );
 
 
         /* =====================================================
@@ -2308,7 +2592,8 @@
 
 
                         const target =
-                            document.getElementById(
+                            root.querySelector(
+                                "#" +
                                 button.dataset.target
                             );
 
