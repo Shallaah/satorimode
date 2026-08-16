@@ -3180,3 +3180,339 @@ button {
     }
 
 }
+
+/* =========================================================
+   SATORIMODE · CORRECCIÓN FOOTER
+   ========================================================= */
+
+.site-footer,
+.satorii-footer {
+    width: 100%;
+    margin-top: 50px;
+    background: #090909;
+    color: #fff;
+}
+
+/* Contenedor principal del footer */
+.site-footer > div,
+.satorii-footer > div {
+    width: min(1100px, calc(100% - 80px));
+    margin: 0 auto;
+}
+
+/* Primera zona del footer */
+.site-footer .footer-main,
+.satorii-footer .footer-main,
+.site-footer .footer-content,
+.satorii-footer .footer-content {
+    display: grid !important;
+    grid-template-columns: 1.2fr .8fr .8fr 1.5fr !important;
+    gap: 70px !important;
+    align-items: start !important;
+    padding: 55px 0 45px !important;
+}
+
+/* Columnas */
+.site-footer .footer-brand,
+.site-footer .footer-column,
+.site-footer .footer-clan,
+.satorii-footer .footer-brand,
+.satorii-footer .footer-column,
+.satorii-footer .footer-clan {
+    width: auto !important;
+    margin: 0 !important;
+}
+
+/* Logo */
+.site-footer .footer-brand h3,
+.satorii-footer .footer-brand h3 {
+    margin: 0 0 15px !important;
+
+    color: #fff !important;
+
+    font-family:
+        "Teko",
+        Impact,
+        sans-serif !important;
+
+    font-size: 38px !important;
+    font-weight: 700 !important;
+
+    line-height: .8 !important;
+
+    transform: skewX(-5deg);
+}
+
+/* Descripción */
+.site-footer .footer-brand p,
+.satorii-footer .footer-brand p {
+    max-width: 240px !important;
+
+    margin: 15px 0 25px !important;
+
+    color: #aaa !important;
+
+    font-size: 10px !important;
+    line-height: 1.7 !important;
+}
+
+/* Títulos de columnas */
+.site-footer .footer-column h4,
+.site-footer .footer-clan h4,
+.satorii-footer .footer-column h4,
+.satorii-footer .footer-clan h4 {
+    margin: 0 0 16px !important;
+
+    color: #fff !important;
+
+    font-size: 9px !important;
+
+    font-weight: 900 !important;
+
+    letter-spacing: 2px !important;
+}
+
+/* Enlaces */
+.site-footer .footer-column a,
+.satorii-footer .footer-column a {
+    display: block !important;
+
+    margin: 0 0 10px !important;
+
+    color: #999 !important;
+
+    font-size: 10px !important;
+
+    line-height: 1.4 !important;
+}
+
+.site-footer .footer-column a:hover,
+.satorii-footer .footer-column a:hover {
+    color: #fff !important;
+}
+
+/* Clan */
+.site-footer .footer-clan h4,
+.satorii-footer .footer-clan h4 {
+    color: #ed1111 !important;
+}
+
+.site-footer .footer-clan h2,
+.satorii-footer .footer-clan h2 {
+    margin: 0 0 8px !important;
+
+    color: #fff !important;
+
+    font-size: 26px !important;
+
+    line-height: 1 !important;
+}
+
+.site-footer .footer-clan h2::after,
+.satorii-footer .footer-clan h2::after {
+    content: ".";
+
+    color: #ed1111;
+}
+
+/* Texto clan */
+.site-footer .footer-clan p,
+.satorii-footer .footer-clan p {
+    max-width: 430px !important;
+
+    margin: 0 0 15px !important;
+
+    color: #999 !important;
+
+    font-size: 10px !important;
+
+    line-height: 1.5 !important;
+}
+
+/* Newsletter */
+.site-footer .newsletter-form,
+.satorii-footer .newsletter-form {
+    width: 100% !important;
+    max-width: 430px !important;
+
+    height: 42px !important;
+
+    display: flex !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    background: #fff !important;
+
+    border-radius: 3px !important;
+
+    overflow: hidden !important;
+}
+
+.site-footer .newsletter-form input,
+.satorii-footer .newsletter-form input {
+    flex: 1 !important;
+
+    min-width: 0 !important;
+
+    height: 42px !important;
+
+    padding: 0 14px !important;
+
+    border: 0 !important;
+
+    outline: 0 !important;
+
+    background: #fff !important;
+
+    color: #111 !important;
+
+    font-size: 10px !important;
+}
+
+.site-footer .newsletter-form button,
+.satorii-footer .newsletter-form button {
+    width: 48px !important;
+
+    height: 42px !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    background: #ed1111 !important;
+
+    color: #fff !important;
+
+    font-size: 18px !important;
+}
+
+/* Instagram */
+.site-footer .footer-social a,
+.satorii-footer .footer-social a {
+    width: 38px !important;
+    height: 38px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 1px solid #444 !important;
+
+    border-radius: 50% !important;
+
+    color: #fff !important;
+
+    font-size: 0 !important;
+}
+
+.site-footer .footer-social a::before,
+.satorii-footer .footer-social a::before {
+    content: "◎";
+
+    font-size: 19px;
+}
+
+.site-footer .footer-social a:hover,
+.satorii-footer .footer-social a:hover {
+    border-color: #ed1111 !important;
+    color: #ed1111 !important;
+}
+
+
+/* =========================================================
+   PARTE INFERIOR
+   ========================================================= */
+
+.site-footer .footer-bottom,
+.satorii-footer .footer-bottom {
+    width: min(1100px, calc(100% - 80px)) !important;
+
+    margin: 0 auto !important;
+
+    padding: 16px 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: space-between !important;
+
+    border-top: 1px solid #222 !important;
+
+    color: #777 !important;
+
+    font-size: 8px !important;
+}
+
+.site-footer .footer-bottom a,
+.satorii-footer .footer-bottom a {
+    color: #777 !important;
+}
+
+.site-footer .footer-bottom a:hover,
+.satorii-footer .footer-bottom a:hover {
+    color: #fff !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .site-footer .footer-main,
+    .satorii-footer .footer-main,
+    .site-footer .footer-content,
+    .satorii-footer .footer-content {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 40px !important;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .site-footer .footer-main,
+    .satorii-footer .footer-main,
+    .site-footer .footer-content,
+    .satorii-footer .footer-content {
+        width: calc(100% - 40px) !important;
+
+        grid-template-columns: 1fr !important;
+
+        gap: 35px !important;
+
+        padding:
+            40px 0 35px !important;
+    }
+
+    .site-footer .footer-brand,
+    .site-footer .footer-column,
+    .site-footer .footer-clan,
+    .satorii-footer .footer-brand,
+    .satorii-footer .footer-column,
+    .satorii-footer .footer-clan {
+        width: 100% !important;
+    }
+
+    .site-footer .footer-bottom,
+    .satorii-footer .footer-bottom {
+        width: calc(100% - 40px) !important;
+
+        flex-direction: column !important;
+
+        align-items: flex-start !important;
+
+        gap: 10px !important;
+    }
+
+}
