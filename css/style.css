@@ -3538,3 +3538,15 @@ main {
     }
 
 }
+
+/* =========================================================
+   BANNER CATÁLOGO — SATORI
+========================================================= */
+
+.catalog-banner {
+    position: relative;
+    border: 1.5px solid #333 !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-sizing: border-box;
+}
