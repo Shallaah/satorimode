@@ -3667,3 +3667,25 @@ main {
     }
 
 }
+
+/* =====================================================
+   BANNER — EFECTO AL HACER SCROLL
+   ===================================================== */
+
+.hero-slider {
+    position: relative;
+    transform-origin: center top;
+    will-change: transform, opacity;
+    transition:
+        opacity 0.08s linear,
+        transform 0.08s linear;
+}
+
+/* Evita que el banner se deforme en móvil */
+@media (max-width: 700px) {
+
+    .hero-slider {
+        will-change: transform, opacity;
+    }
+
+}
