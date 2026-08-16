@@ -9,14 +9,14 @@
 
     /* =====================================================
        CONFIGURACIÓN
-    ===================================================== */
+    ====================================================== */
 
     const CART_STORAGE_KEY = "satorii_cart";
 
 
     /* =====================================================
        OBTENER CARRITO
-    ===================================================== */
+    ====================================================== */
 
     function getCart() {
 
@@ -61,7 +61,7 @@
 
     /* =====================================================
        GUARDAR CARRITO
-    ===================================================== */
+    ====================================================== */
 
     function saveCart(cart) {
 
@@ -87,8 +87,33 @@
 
 
     /* =====================================================
+       EMITIR ACTUALIZACIÓN GLOBAL
+    ====================================================== */
+
+    function dispatchCartUpdate() {
+
+        const cart =
+            getCart();
+
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "satorii:cart-updated",
+                {
+                    detail: {
+                        cart: cart,
+                        count: getCartCount()
+                    }
+                }
+            )
+        );
+
+    }
+
+
+    /* =====================================================
        AGREGAR PRODUCTO
-    ===================================================== */
+    ====================================================== */
 
     function addToCart(
         productId,
@@ -143,13 +168,32 @@
         }
 
 
+        quantity =
+            parseInt(
+                quantity,
+                10
+            );
+
+
+        if (
+            isNaN(quantity) ||
+            quantity <= 0
+        ) {
+
+            quantity = 1;
+
+        }
+
+
         const cart =
             getCart();
 
 
         /*
-         * El mismo producto + misma talla
-         * + mismo color = misma línea.
+         * Mismo producto +
+         * misma talla +
+         * mismo color
+         * = misma línea.
          */
 
         const existingItem =
@@ -163,7 +207,9 @@
 
         if (existingItem) {
 
-            existingItem.quantity += quantity;
+            existingItem.quantity =
+                Number(existingItem.quantity || 0) +
+                quantity;
 
         }
 
@@ -194,27 +240,14 @@
         updateCartUI();
 
 
-        /*
-         * Aviso global.
-         */
-
-        document.dispatchEvent(
-            new CustomEvent(
-                "satorii:cart-updated",
-                {
-                    detail: {
-                        cart: cart
-                    }
-                }
-            )
-        );
+        dispatchCartUpdate();
 
     }
 
 
     /* =====================================================
        ELIMINAR PRODUCTO
-    ===================================================== */
+    ====================================================== */
 
     function removeFromCart(
         productId,
@@ -243,23 +276,14 @@
         updateCartUI();
 
 
-        document.dispatchEvent(
-            new CustomEvent(
-                "satorii:cart-updated",
-                {
-                    detail: {
-                        cart: cart
-                    }
-                }
-            )
-        );
+        dispatchCartUpdate();
 
     }
 
 
     /* =====================================================
        CAMBIAR CANTIDAD
-    ===================================================== */
+    ====================================================== */
 
     function updateCartQuantity(
         productId,
@@ -321,23 +345,14 @@
         updateCartUI();
 
 
-        document.dispatchEvent(
-            new CustomEvent(
-                "satorii:cart-updated",
-                {
-                    detail: {
-                        cart: cart
-                    }
-                }
-            )
-        );
+        dispatchCartUpdate();
 
     }
 
 
     /* =====================================================
        VACIAR CARRITO
-    ===================================================== */
+    ====================================================== */
 
     function clearCart() {
 
@@ -349,23 +364,14 @@
         updateCartUI();
 
 
-        document.dispatchEvent(
-            new CustomEvent(
-                "satorii:cart-updated",
-                {
-                    detail: {
-                        cart: []
-                    }
-                }
-            )
-        );
+        dispatchCartUpdate();
 
     }
 
 
     /* =====================================================
-       CANTIDAD TOTAL DE PRODUCTOS
-    ===================================================== */
+       CANTIDAD TOTAL DE PRENDAS
+       ====================================================== */
 
     function getCartCount() {
 
@@ -393,7 +399,7 @@
 
     /* =====================================================
        SUBTOTAL
-    ===================================================== */
+    ====================================================== */
 
     function getCartSubtotal() {
 
@@ -433,10 +439,8 @@
 
                 return total +
                     (
-                        product.price *
-                        Number(
-                            item.quantity || 0
-                        )
+                        Number(product.price || 0) *
+                        Number(item.quantity || 0)
                     );
 
             },
@@ -448,7 +452,7 @@
 
     /* =====================================================
        FORMATO DE PRECIO
-    ===================================================== */
+    ====================================================== */
 
     function formatPrice(
         price
@@ -466,14 +470,16 @@
                 maximumFractionDigits:
                     0
             }
-        ).format(price);
+        ).format(
+            Number(price || 0)
+        );
 
     }
 
 
     /* =====================================================
        ACTUALIZAR CONTADOR DEL HEADER
-    ===================================================== */
+    ====================================================== */
 
     function updateCartUI() {
 
@@ -482,12 +488,9 @@
 
 
         /*
-         * Cualquier elemento que tenga:
+         * Elementos que utilicen:
          *
          * data-satori-cart-count
-         *
-         * recibirá automáticamente
-         * la cantidad del carrito.
          */
 
         document
@@ -500,13 +503,126 @@
                     element.textContent =
                         count;
 
+                    element.style.display =
+                        count > 0
+                            ? "flex"
+                            : "none";
+
                 }
             );
 
 
         /*
-         * También podemos ocultar el
-         * contador cuando está en cero.
+         * Si el header todavía no tiene
+         * el contador, lo creamos
+         * automáticamente sobre el
+         * icono del carrito.
+         */
+
+        const cartLink =
+            document.querySelector(
+                '#satori-header a[href*="carrito.html"]'
+            );
+
+
+        if (
+            cartLink &&
+            !cartLink.querySelector(
+                "[data-satori-cart-count]"
+            )
+        ) {
+
+            cartLink.style.position =
+                "relative";
+
+
+            const badge =
+                document.createElement(
+                    "span"
+                );
+
+
+            badge.setAttribute(
+                "data-satori-cart-count",
+                ""
+            );
+
+
+            badge.setAttribute(
+                "aria-label",
+                "Cantidad de productos en el carrito"
+            );
+
+
+            badge.textContent =
+                count;
+
+
+            badge.style.position =
+                "absolute";
+
+            badge.style.top =
+                "1px";
+
+            badge.style.right =
+                "1px";
+
+            badge.style.minWidth =
+                "15px";
+
+            badge.style.height =
+                "15px";
+
+            badge.style.padding =
+                "0 4px";
+
+            badge.style.borderRadius =
+                "999px";
+
+            badge.style.background =
+                "#f31218";
+
+            badge.style.color =
+                "#fff";
+
+            badge.style.fontSize =
+                "9px";
+
+            badge.style.fontWeight =
+                "700";
+
+            badge.style.lineHeight =
+                "15px";
+
+            badge.style.textAlign =
+                "center";
+
+            badge.style.alignItems =
+                "center";
+
+            badge.style.justifyContent =
+                "center";
+
+            badge.style.whiteSpace =
+                "nowrap";
+
+            badge.style.pointerEvents =
+                "none";
+
+            badge.style.zIndex =
+                "10";
+
+
+            cartLink.appendChild(
+                badge
+            );
+
+        }
+
+
+        /*
+         * Actualizar todos los
+         * contadores encontrados.
          */
 
         document
@@ -516,9 +632,12 @@
             .forEach(
                 element => {
 
+                    element.textContent =
+                        count;
+
                     element.style.display =
                         count > 0
-                            ? ""
+                            ? "flex"
                             : "none";
 
                 }
@@ -528,8 +647,8 @@
 
 
     /* =====================================================
-       OBTENER PRODUCTOS COMPLETOS DEL CARRITO
-       ===================================================== */
+       OBTENER PRODUCTOS COMPLETOS
+       ====================================================== */
 
     function getCartProducts() {
 
@@ -570,7 +689,9 @@
                         ...product,
 
                         quantity:
-                            item.quantity,
+                            Number(
+                                item.quantity || 0
+                            ),
 
                         selectedSize:
                             item.size,
@@ -589,7 +710,7 @@
 
     /* =====================================================
        EXPONER FUNCIONES GLOBALMENTE
-    ===================================================== */
+    ====================================================== */
 
     window.SatoriCart = {
 
@@ -619,8 +740,8 @@
 
 
     /* =====================================================
-       ACTUALIZAR AL CARGAR
-    ===================================================== */
+       INICIALIZACIÓN
+    ====================================================== */
 
     function initializeCart() {
 
@@ -649,8 +770,8 @@
 
 
     /* =====================================================
-       SINCRONIZAR ENTRE PESTAÑAS
-    ===================================================== */
+       SINCRONIZACIÓN ENTRE PESTAÑAS
+    ====================================================== */
 
     window.addEventListener(
         "storage",
@@ -663,19 +784,37 @@
 
                 updateCartUI();
 
+
                 document.dispatchEvent(
                     new CustomEvent(
                         "satorii:cart-updated",
                         {
                             detail: {
                                 cart:
-                                    getCart()
+                                    getCart(),
+
+                                count:
+                                    getCartCount()
                             }
                         }
                     )
                 );
 
             }
+
+        }
+    );
+
+
+    /* =====================================================
+       SINCRONIZACIÓN EN LA MISMA PÁGINA
+    ====================================================== */
+
+    document.addEventListener(
+        "satorii:cart-updated",
+        function () {
+
+            updateCartUI();
 
         }
     );
