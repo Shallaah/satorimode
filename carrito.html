@@ -20,9 +20,7 @@
         content="#ffffff"
     >
 
-    <title>
-        Carrito | SatoriMode
-    </title>
+    <title>Carrito | SatoriMode</title>
 
 
     <!-- =====================================================
@@ -194,14 +192,16 @@
 
 
         /* =====================================================
-           IMAGEN
+           IMAGEN CUADRADA
         ====================================================== */
 
         .satori-cart-image {
 
             width:130px;
 
-            height:150px;
+            aspect-ratio:1 / 1;
+
+            height:auto;
 
             overflow:hidden;
 
@@ -221,6 +221,8 @@
             display:block;
 
             object-fit:cover;
+
+            object-position:center;
 
         }
 
@@ -753,7 +755,7 @@
 
 
         /* =====================================================
-           RESPONSIVE
+           TABLET
         ====================================================== */
 
         @media (
@@ -788,6 +790,10 @@
         }
 
 
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
         @media (
             max-width:650px
         ) {
@@ -818,7 +824,7 @@
             .satori-cart-item {
 
                 grid-template-columns:
-                    90px
+                    100px
                     minmax(0,1fr);
 
                 gap:15px;
@@ -826,11 +832,15 @@
             }
 
 
+            /* IMAGEN CUADRADA EN MÓVIL */
+
             .satori-cart-image {
 
-                width:90px;
+                width:100px;
 
-                height:110px;
+                aspect-ratio:1 / 1;
+
+                height:auto;
 
             }
 
@@ -877,6 +887,32 @@
             .satori-cart-empty {
 
                 min-height:420px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL PEQUEÑO
+        ====================================================== */
+
+        @media (
+            max-width:380px
+        ) {
+
+            .satori-cart-item {
+
+                grid-template-columns:
+                    85px
+                    minmax(0,1fr);
+
+            }
+
+
+            .satori-cart-image {
+
+                width:85px;
 
             }
 
@@ -948,26 +984,19 @@
          SCRIPTS
     ====================================================== -->
 
-    <!-- HEADER -->
     <script src="/satorimode/js/header.js"></script>
 
-
-    <!-- CART -->
     <script src="/satorimode/js/cart.js"></script>
 
 
     <!-- =====================================================
-         RENDER DEL CARRITO
+         RENDER CARRITO
     ====================================================== -->
 
     <script>
 
         "use strict";
 
-
-        /* =====================================================
-           CONFIGURACIÓN
-        ====================================================== */
 
         const CART_KEY =
             "satorimode_cart";
@@ -1001,9 +1030,7 @@
 
 
                 const cart =
-                    JSON.parse(
-                        saved
-                    );
+                    JSON.parse(saved);
 
 
                 return Array.isArray(cart)
@@ -1027,7 +1054,7 @@
 
 
         /* =====================================================
-           PRECIO
+           FORMATO PRECIO
         ====================================================== */
 
         function formatPagePrice(
@@ -1049,7 +1076,7 @@
 
 
         /* =====================================================
-           ESCAPE
+           ESCAPE HTML
         ====================================================== */
 
         function escapeHTML(
@@ -1084,17 +1111,60 @@
 
 
         /* =====================================================
+           GUARDAR CARRITO
+        ====================================================== */
+
+        function savePageCart(
+            cart
+        ) {
+
+            try {
+
+                localStorage.setItem(
+                    CART_KEY,
+                    JSON.stringify(
+                        cart
+                    )
+                );
+
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "satorii:cart-updated"
+                    )
+                );
+
+
+                if (
+                    window.SatoriCart &&
+                    typeof
+                    window.SatoriCart.updateBadge ===
+                    "function"
+                ) {
+
+                    window.SatoriCart.updateBadge();
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "SatoriMode · Error guardando carrito:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
            RENDER
         ====================================================== */
 
         function renderPageCart() {
-
-            if (!cartContent) {
-
-                return;
-
-            }
-
 
             const cart =
                 getPageCart();
@@ -1146,20 +1216,21 @@
 
                 `;
 
-
                 return;
 
             }
 
 
+            let subtotal =
+                0;
+
+            let totalItems =
+                0;
+
+
             /* =================================================
                CALCULAR
             ================================================== */
-
-            let subtotal = 0;
-
-            let totalItems = 0;
-
 
             cart.forEach(
                 function (
@@ -1273,7 +1344,6 @@
                             class="satori-cart-item"
                         >
 
-
                             <div
                                 class="satori-cart-image"
                             >
@@ -1346,7 +1416,6 @@
                                         <button
                                             type="button"
                                             data-cart-decrease="${index}"
-                                            aria-label="Disminuir cantidad"
                                         >
                                             −
                                         </button>
@@ -1360,7 +1429,6 @@
                                         <button
                                             type="button"
                                             data-cart-increase="${index}"
-                                            aria-label="Aumentar cantidad"
                                         >
                                             +
                                         </button>
@@ -1384,9 +1452,11 @@
                             <div
                                 class="satori-cart-item-total"
                             >
+
                                 ${formatPagePrice(
                                     itemTotal
                                 )}
+
                             </div>
 
                         </article>
@@ -1398,7 +1468,7 @@
 
 
             /* =================================================
-               PÁGINA COMPLETA
+               ESTRUCTURA
             ================================================== */
 
             cartContent.innerHTML = `
@@ -1406,7 +1476,6 @@
                 <div
                     class="satori-cart-layout"
                 >
-
 
                     <section
                         class="satori-cart-products"
@@ -1563,7 +1632,6 @@
                                     current
                                 );
 
-
                                 renderPageCart();
 
                             }
@@ -1618,7 +1686,6 @@
                                 savePageCart(
                                     current
                                 );
-
 
                                 renderPageCart();
 
@@ -1675,7 +1742,6 @@
                                     current
                                 );
 
-
                                 renderPageCart();
 
                             }
@@ -1689,118 +1755,59 @@
                VACIAR
             ================================================== */
 
-            const clearButton =
-                document.getElementById(
+            document
+                .getElementById(
                     "satori-cart-clear"
-                );
+                )
+                ?.addEventListener(
+                    "click",
+                    function () {
+
+                        if (
+                            !confirm(
+                                "¿Seguro que quieres vaciar el carrito?"
+                            )
+                        ) {
+
+                            return;
+
+                        }
 
 
-            clearButton?.addEventListener(
-                "click",
-                function () {
+                        savePageCart(
+                            []
+                        );
 
-                    if (
-                        !confirm(
-                            "¿Seguro que quieres vaciar el carrito?"
-                        )
-                    ) {
-
-                        return;
+                        renderPageCart();
 
                     }
-
-
-                    savePageCart(
-                        []
-                    );
-
-
-                    renderPageCart();
-
-                }
-            );
+                );
 
 
             /* =================================================
                CHECKOUT
             ================================================== */
 
-            const checkoutButton =
-                document.getElementById(
+            document
+                .getElementById(
                     "satori-cart-checkout"
+                )
+                ?.addEventListener(
+                    "click",
+                    function () {
+
+                        alert(
+                            "El sistema de pago estará disponible próximamente."
+                        );
+
+                    }
                 );
-
-
-            checkoutButton?.addEventListener(
-                "click",
-                function () {
-
-                    alert(
-                        "El sistema de pago estará disponible próximamente."
-                    );
-
-                }
-            );
 
         }
 
 
         /* =====================================================
-           GUARDAR
-        ====================================================== */
-
-        function savePageCart(
-            cart
-        ) {
-
-            try {
-
-                localStorage.setItem(
-                    CART_KEY,
-                    JSON.stringify(
-                        cart
-                    )
-                );
-
-
-                document.dispatchEvent(
-                    new CustomEvent(
-                        "satorii:cart-updated"
-                    )
-                );
-
-
-                /*
-                 * Actualizar contador del header
-                 */
-
-                if (
-                    window.SatoriCart &&
-                    typeof
-                        window.SatoriCart.updateBadge ===
-                        "function"
-                ) {
-
-                    window.SatoriCart.updateBadge();
-
-                }
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "SatoriMode · Error guardando carrito:",
-                    error
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           INICIALIZACIÓN
+           INICIO
         ====================================================== */
 
         if (
