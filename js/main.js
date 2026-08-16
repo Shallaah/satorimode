@@ -1,136 +1,86 @@
 /* =========================================================
    SATORIMODE · MAIN.JS
-   Solo lógica de página:
-   - Productos de portada
-   - Recomendaciones aleatorias
-   - Filtros Anime
-   - Sin duplicar header/buscador
+   Portada + filtros. Usa PRODUCTS si existe y mantiene
+   compatibilidad con el catálogo actual.
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
     const baseUrl = new URL("./", window.location.href).href;
 
-    /* =====================================================
-       CATÁLOGO
-       Cuando agregues productos reales, los incorporamos aquí.
-       Por ahora se usa el producto existente de SatoriMode.
-    ===================================================== */
+    const fallback = [{
+        id: "kid-buu",
+        name: "Polera Kid Buu",
+        category: "anime",
+        price: 18990,
+        image: "productos/anime/polera-kid-buu-01.PNG",
+        url: "productos/anime/polera-kid-buu.html",
+        featured: true,
+        latest: true,
+        available: true
+    }];
 
-    const productos = [
-        {
-            id: "kid-buu",
-            name: "Polera Kid Buu",
-            category: "ANIME",
-            price: "$18.990",
-            image: "productos/anime/polera-kid-buu-01.PNG",
-            url: "productos/anime/polera-kid-buu.html",
-            tag: "DESTACADO",
-            featured: true,
-            latest: true
-        }
-    ];
-
-    /* =====================================================
-       TARJETA PRODUCTO
-    ===================================================== */
+    const raw = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : fallback;
+    const productos = raw.filter(p => p && p.available !== false).map(p => ({
+        id: p.id || p.name,
+        name: p.name || "Producto SatoriMode",
+        category: String(p.collection || p.category || "SATORIMODE").toUpperCase(),
+        price: typeof p.price === "number" ? `$${p.price.toLocaleString("es-CL")}` : String(p.price || "$0"),
+        image: p.image || (Array.isArray(p.images) ? p.images[0] : ""),
+        url: p.url || "productos.html",
+        featured: p.featured !== false,
+        latest: p.latest !== false
+    }));
 
     function productCard(product, tag = "") {
+        const image = product.image
+            ? `<img src="${baseUrl}${product.image.replace(/^\//, "")}" alt="${product.name}" loading="lazy">`
+            : `<span class="store-product-placeholder">SATORIMODE</span>`;
+
         return `
-            <a href="${baseUrl}${product.url}" class="home-product-card">
-                <div class="home-product-image">
-                    ${tag ? `<span class="home-product-tag">${tag}</span>` : ""}
-                    <img
-                        src="${baseUrl}${product.image}"
-                        alt="${product.name}"
-                        loading="lazy"
-                    >
+            <a class="store-product-card" href="${baseUrl}${product.url.replace(/^\//, "")}">
+                <div class="store-product-image">
+                    ${tag ? `<span class="store-product-tag">${tag}</span>` : ""}
+                    <button class="store-product-fav" type="button" aria-label="Agregar a favoritos" onclick="event.preventDefault()">♡</button>
+                    ${image}
                 </div>
-                <div class="home-product-info">
+                <div class="store-product-info">
                     <span>${product.category}</span>
                     <h3>${product.name}</h3>
                     <strong>${product.price}</strong>
                 </div>
-            </a>
-        `;
+            </a>`;
     }
 
-    function renderProducts(containerId, products, tag = "") {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        if (!products.length) {
-            container.innerHTML = `
-                <div class="home-product-empty">
-                    <strong>Estamos preparando nuevos diseños.</strong>
-                    <p>Muy pronto encontrarás más productos en SatoriMode.</p>
-                </div>
-            `;
-            return;
-        }
-
-        container.innerHTML = products.map(product => productCard(product, tag)).join("");
+    function render(id, list, tag) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const items = list.length ? list : productos.slice(0, 5);
+        el.innerHTML = items.map(p => productCard(p, tag)).join("");
     }
 
-    /* =====================================================
-       DESTACADOS
-    ===================================================== */
+    const featured = productos.filter(p => p.featured).slice(0, 5);
+    const latest = productos.filter(p => p.latest).slice(0, 4);
+    const recommended = [...productos].sort(() => Math.random() - 0.5).slice(0, 5);
 
-    const featured = productos.filter(product => product.featured);
-    renderProducts("featured-products", featured, "DESTACADO");
+    render("featured-products", featured, "");
+    render("latest-products", latest, "NUEVO");
+    render("recommended-products", recommended, "PARA TI");
 
-    /* =====================================================
-       RECOMENDADOS ALEATORIOS
-       Mezcla el catálogo cada vez que se carga la portada.
-    ===================================================== */
-
-    function shuffle(array) {
-        return [...array].sort(() => Math.random() - 0.5);
-    }
-
-    const recommended = shuffle(productos).slice(0, Math.min(4, productos.length));
-    renderProducts("recommended-products", recommended, "PARA TI");
-
-    /* =====================================================
-       ÚLTIMOS LANZAMIENTOS
-    ===================================================== */
-
-    const latest = productos.filter(product => product.latest);
-    renderProducts("latest-products", latest, "NUEVO");
-
-    /* =====================================================
-       FILTROS ANIME
-       Se mantienen para anime.html.
-    ===================================================== */
-
+    /* Filtros Anime */
     const animeFilterToggle = document.querySelector("#animeFilterToggle");
     const animeFilters = document.querySelector("#animeFilters");
-
     if (animeFilterToggle && animeFilters) {
-        animeFilterToggle.addEventListener("click", event => {
-            event.preventDefault();
-
-            const isOpen = animeFilters.classList.toggle("is-open");
-            animeFilterToggle.setAttribute("aria-expanded", String(isOpen));
-            animeFilterToggle.textContent = isOpen
-                ? "× OCULTAR FILTROS"
-                : "☷ MOSTRAR FILTROS";
+        animeFilterToggle.addEventListener("click", () => {
+            const open = animeFilters.classList.toggle("is-open");
+            animeFilterToggle.setAttribute("aria-expanded", String(open));
+            animeFilterToggle.textContent = open ? "× OCULTAR FILTROS" : "☷ MOSTRAR FILTROS";
         });
     }
-
     document.querySelectorAll(".anime-filter").forEach(button => {
-        button.addEventListener("click", event => {
-            event.preventDefault();
-
-            const filterType = button.dataset.filter;
-            const wasActive = button.classList.contains("active");
-
-            document
-                .querySelectorAll(`.anime-filter[data-filter="${filterType}"]`)
-                .forEach(other => other.classList.remove("active"));
-
-            if (!wasActive) button.classList.add("active");
+        button.addEventListener("click", () => {
+            const type = button.dataset.filter;
+            document.querySelectorAll(`.anime-filter[data-filter="${type}"]`).forEach(b => b.classList.remove("active"));
+            button.classList.add("active");
         });
     });
-
 });
