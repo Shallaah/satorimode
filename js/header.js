@@ -1,23 +1,14 @@
 /* =========================================================
    SATORIMODE · HEADER GLOBAL
-   ---------------------------------------------------------
-   RESPONSABILIDADES:
-   - Barra superior
-   - Header desktop
-   - Header móvil
+   - Barra de envíos
+   - Header desktop / móvil
    - Dropdowns
-   - Menú móvil
    - Buscador
+   - Menú móvil
    - Contador del carrito
 ========================================================= */
 
-
 document.addEventListener("DOMContentLoaded", () => {
-
-
-    /* =====================================================
-       RUTA BASE
-    ====================================================== */
 
     const script = document.currentScript;
 
@@ -25,81 +16,71 @@ document.addEventListener("DOMContentLoaded", () => {
         ? new URL("../", script.src).href
         : "/satorimode/";
 
-
-    function siteUrl(path = "") {
-
-        if (!path) {
-            return baseUrl;
-        }
+    const siteUrl = (path) => {
+        if (!path) return baseUrl;
 
         if (/^https?:\/\//i.test(path)) {
             return path;
         }
 
-        return new URL(
-            path.replace(/^\/+/, ""),
-            baseUrl
-        ).href;
+        return `${baseUrl}${String(path).replace(/^\/+/, "")}`;
+    };
 
-    }
+    const headerContainer = document.getElementById("satori-header");
 
-
-
-    /* =====================================================
-       PRODUCTOS
-       Usa PRODUCTS desde products.js
-    ====================================================== */
-
-    const productos = Array.isArray(window.PRODUCTS)
-        ? window.PRODUCTS
-        : [];
-
+    if (!headerContainer) return;
 
 
     /* =====================================================
-       HEADER CONTAINER
-    ====================================================== */
+       PRODUCTOS DE RESPALDO PARA EL BUSCADOR
+    ===================================================== */
 
-    let headerContainer =
-        document.getElementById("satori-header");
+    const fallbackProducts = [
+        {
+            name: "Polera Kid Buu",
+            price: 18990,
+            image: "productos/anime/polera-kid-buu-01.PNG",
+            url: "productos/anime/polera-kid-buu.html",
+            category: "anime"
+        }
+    ];
 
 
-    if (!headerContainer) {
+    const getProducts = () => {
 
-        headerContainer =
-            document.createElement("div");
+        const candidates = [
+            window.satoriProducts,
+            window.SATORI_PRODUCTS,
+            window.products,
+            window.PRODUCTS
+        ];
 
-        headerContainer.id =
-            "satori-header";
+        for (const candidate of candidates) {
 
-        document.body.insertBefore(
-            headerContainer,
-            document.body.firstChild
-        );
+            if (Array.isArray(candidate) && candidate.length) {
+                return candidate;
+            }
 
-    }
+        }
 
+        return fallbackProducts;
+    };
 
 
     /* =====================================================
-       HTML DEL HEADER
-    ====================================================== */
+       HEADER
+    ===================================================== */
 
     headerContainer.innerHTML = `
 
-        <!-- ===============================================
-             BARRA SUPERIOR
-        ================================================ -->
+        <!-- BARRA SUPERIOR -->
 
         <div class="shipping-bar">
             🚚 ENVÍOS A TODO CHILE
         </div>
 
 
-
-        <!-- ===============================================
-             HEADER
-        ================================================ -->
+        <!-- HEADER PRINCIPAL -->
 
         <header class="site-header">
 
@@ -114,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     id="mobile-menu-button"
                     aria-label="Abrir menú"
                     aria-expanded="false"
+                    aria-controls="mobile-menu"
                 >
                     <span></span>
                     <span></span>
@@ -121,40 +103,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 </button>
 
 
-
                 <!-- LOGO -->
 
                 <a
                     href="${siteUrl("index.html")}"
                     class="brand-logo"
-                    aria-label="SatoriMode inicio"
+                    aria-label="SatoriMode - Inicio"
                 >
-
                     <img
                         src="${siteUrl("logo.png")}"
                         alt="SatoriMode"
                     >
-
                 </a>
 
 
-
-                <!-- =======================================
-                     NAVEGACIÓN DESKTOP
-                ======================================== -->
+                <!-- NAVEGACIÓN DESKTOP -->
 
                 <nav
                     class="main-nav"
                     aria-label="Navegación principal"
                 >
 
-
-                    <a
-                        href="${siteUrl("index.html")}"
-                    >
+                    <a href="${siteUrl("index.html")}">
                         INICIO
                     </a>
-
 
 
                     <!-- COLECCIONES -->
@@ -169,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             COLECCIONES
                             <span class="arrow">⌄</span>
                         </button>
-
 
                         <div class="dropdown-menu">
 
@@ -190,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
 
-
                     <!-- PRODUCTOS -->
 
                     <div class="nav-dropdown">
@@ -204,25 +174,19 @@ document.addEventListener("DOMContentLoaded", () => {
                             <span class="arrow">⌄</span>
                         </button>
 
-
                         <div class="dropdown-menu">
 
-                            <a
-                                href="${siteUrl("productos.html")}"
-                            >
+                            <a href="${siteUrl("productos.html")}">
                                 TODAS LAS POLERAS
                             </a>
 
-                            <a
-                                href="${siteUrl("satorii-pack.html")}"
-                            >
+                            <a href="${siteUrl("satorii-pack.html")}">
                                 SATORII PACK
                             </a>
 
                         </div>
 
                     </div>
-
 
 
                     <!-- AYUDA -->
@@ -238,24 +202,17 @@ document.addEventListener("DOMContentLoaded", () => {
                             <span class="arrow">⌄</span>
                         </button>
 
-
                         <div class="dropdown-menu">
 
-                            <a
-                                href="${siteUrl("guia-tallas.html")}"
-                            >
+                            <a href="${siteUrl("guia-tallas.html")}">
                                 GUÍA DE TALLAS
                             </a>
 
-                            <a
-                                href="${siteUrl("envios.html")}"
-                            >
+                            <a href="${siteUrl("envios.html")}">
                                 ENVÍOS
                             </a>
 
-                            <a
-                                href="${siteUrl("preguntas-frecuentes.html")}"
-                            >
+                            <a href="${siteUrl("preguntas-frecuentes.html")}">
                                 PREGUNTAS FRECUENTES
                             </a>
 
@@ -263,14 +220,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </div>
 
-
                 </nav>
 
 
-
-                <!-- =======================================
-                     ICONOS
-                ======================================== -->
+                <!-- ICONOS -->
 
                 <div class="header-icons">
 
@@ -281,8 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         type="button"
                         class="header-icon search-button"
                         id="search-button"
-                        aria-label="Buscar"
-                        title="Buscar"
+                        aria-label="Buscar productos"
                         aria-expanded="false"
                     >
 
@@ -305,14 +257,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     </button>
 
 
-
                     <!-- CUENTA -->
 
                     <a
                         href="${siteUrl("cuenta.html")}"
                         class="header-icon"
                         aria-label="Cuenta"
-                        title="Cuenta"
                     >
 
                         <svg
@@ -335,14 +285,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
 
 
-
                     <!-- CARRITO -->
 
                     <a
                         href="${siteUrl("carrito.html")}"
                         class="header-icon cart-header-icon"
                         aria-label="Carrito"
-                        title="Carrito"
                     >
 
                         <svg
@@ -368,7 +316,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         </svg>
 
-
                         <span
                             class="cart-count"
                             id="cart-count"
@@ -378,7 +325,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </a>
 
-
                 </div>
 
             </div>
@@ -386,10 +332,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </header>
 
 
-
-        <!-- ===============================================
+        <!-- =================================================
              BUSCADOR
-        ================================================ -->
+        ================================================== -->
 
         <div
             class="search-overlay"
@@ -400,9 +345,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <div
                 class="search-box"
                 role="dialog"
+                aria-modal="true"
                 aria-label="Buscar productos"
             >
-
 
                 <div class="search-input-wrapper">
 
@@ -426,16 +371,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     </svg>
 
 
-
                     <input
                         type="search"
-                        id="product-search"
+                        id="search-input"
                         class="search-input"
                         placeholder="Buscar productos..."
                         autocomplete="off"
                         aria-label="Buscar productos"
                     >
-
 
 
                     <button
@@ -447,9 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         ×
                     </button>
 
-
                 </div>
-
 
 
                 <div
@@ -463,27 +404,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 </div>
 
-
             </div>
 
         </div>
 
 
-
-        <!-- ===============================================
-             OVERLAY MENÚ MÓVIL
-        ================================================ -->
+        <!-- =================================================
+             MENÚ MÓVIL
+        ================================================== -->
 
         <div
             class="mobile-menu-overlay"
             id="mobile-menu-overlay"
         ></div>
 
-
-
-        <!-- ===============================================
-             MENÚ MÓVIL
-        ================================================ -->
 
         <aside
             class="mobile-menu"
@@ -493,7 +427,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             <div class="mobile-menu-header">
-
 
                 <a
                     href="${siteUrl("index.html")}"
@@ -517,9 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ×
                 </button>
 
-
             </div>
-
 
 
             <nav
@@ -527,13 +458,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 aria-label="Navegación móvil"
             >
 
-
-                <a
-                    href="${siteUrl("index.html")}"
-                >
+                <a href="${siteUrl("index.html")}">
                     INICIO
                 </a>
-
 
 
                 <!-- COLECCIONES -->
@@ -576,7 +503,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
 
-
                 <!-- PRODUCTOS -->
 
                 <button
@@ -611,7 +537,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
 
                 </div>
-
 
 
                 <!-- AYUDA -->
@@ -653,9 +578,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 </div>
 
-
             </nav>
-
 
 
             <!-- INSTAGRAM -->
@@ -676,692 +599,362 @@ document.addEventListener("DOMContentLoaded", () => {
 
             </div>
 
-
         </aside>
 
     `;
 
 
-
-    /* =====================================================
-       ICONOS SVG
-    ====================================================== */
-
-    if (
-        !document.getElementById(
-            "satori-header-icons-style"
-        )
-    ) {
-
-        const style =
-            document.createElement("style");
-
-
-        style.id =
-            "satori-header-icons-style";
-
-
-        style.textContent = `
-
-            .header-icon svg {
-
-                width: 18px;
-                height: 18px;
-
-                fill: none;
-
-                stroke: currentColor;
-
-                stroke-width: 1.7;
-
-                stroke-linecap: round;
-                stroke-linejoin: round;
-
-            }
-
-
-            .search-input-icon-svg {
-
-                width: 20px;
-                height: 20px;
-
-                fill: none;
-
-                stroke: #111;
-
-                stroke-width: 1.8;
-
-                stroke-linecap: round;
-                stroke-linejoin: round;
-
-                flex: 0 0 auto;
-
-            }
-
-
-            .search-button {
-
-                border: 0;
-
-                background: transparent;
-
-                padding: 0;
-
-                cursor: pointer;
-
-            }
-
-
-            .header-icons .header-icon {
-
-                text-decoration: none;
-
-            }
-
-
-            @media (max-width: 700px) {
-
-                .header-icon svg {
-
-                    width: 17px;
-                    height: 17px;
-
-                }
-
-            }
-
-        `;
-
-
-        document.head.appendChild(style);
-
-    }
-
-
-
     /* =====================================================
        DROPDOWNS DESKTOP
-    ====================================================== */
+    ===================================================== */
 
-    const dropdowns =
-        [
-            ...document.querySelectorAll(
-                ".nav-dropdown"
-            )
-        ];
+    const dropdowns = [
+        ...document.querySelectorAll(".nav-dropdown")
+    ];
 
 
-    function closeDropdowns() {
+    const closeDropdowns = () => {
 
-        dropdowns.forEach(
-            dropdown => {
+        dropdowns.forEach(dropdown => {
 
-                dropdown.classList.remove(
-                    "active"
-                );
-
-
-                const button =
-                    dropdown.querySelector(
-                        ".nav-dropdown-btn"
-                    );
-
-
-                if (button) {
-
-                    button.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-
-    dropdowns.forEach(
-        dropdown => {
+            dropdown.classList.remove("active");
 
             const button =
-                dropdown.querySelector(
-                    ".nav-dropdown-btn"
+                dropdown.querySelector(".nav-dropdown-btn");
+
+            if (button) {
+                button.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+
+        });
+
+    };
+
+
+    dropdowns.forEach(dropdown => {
+
+        const button =
+            dropdown.querySelector(".nav-dropdown-btn");
+
+        if (!button) return;
+
+
+        button.addEventListener("click", event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const wasOpen =
+                dropdown.classList.contains("active");
+
+            closeDropdowns();
+
+            if (!wasOpen) {
+
+                dropdown.classList.add("active");
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "true"
                 );
 
-
-            if (!button) {
-                return;
             }
 
+        });
 
-            button.addEventListener(
-                "click",
-                event => {
-
-                    event.preventDefault();
-                    event.stopPropagation();
+    });
 
 
-                    const isOpen =
-                        dropdown.classList.contains(
-                            "active"
-                        );
+    document.addEventListener("click", event => {
 
-
-                    closeDropdowns();
-
-
-                    if (!isOpen) {
-
-                        dropdown.classList.add(
-                            "active"
-                        );
-
-
-                        button.setAttribute(
-                            "aria-expanded",
-                            "true"
-                        );
-
-                    }
-
-                }
-            );
-
+        if (!event.target.closest(".nav-dropdown")) {
+            closeDropdowns();
         }
-    );
 
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            if (
-                !event.target.closest(
-                    ".nav-dropdown"
-                )
-            ) {
-
-                closeDropdowns();
-
-            }
-
-        }
-    );
-
+    });
 
 
     /* =====================================================
        BUSCADOR
-    ====================================================== */
+    ===================================================== */
 
     const searchButton =
-        document.getElementById(
-            "search-button"
-        );
-
+        document.getElementById("search-button");
 
     const searchOverlay =
-        document.getElementById(
-            "search-overlay"
-        );
-
+        document.getElementById("search-overlay");
 
     const searchInput =
-        document.getElementById(
-            "product-search"
-        );
-
+        document.getElementById("search-input");
 
     const searchClose =
-        document.getElementById(
-            "search-close"
-        );
-
+        document.getElementById("search-close");
 
     const searchResults =
-        document.getElementById(
-            "search-results"
-        );
+        document.getElementById("search-results");
 
 
+    const renderSearchMessage = message => {
 
-    function renderSearchMessage(
-        message
-    ) {
-
-        if (!searchResults) {
-            return;
-        }
-
+        if (!searchResults) return;
 
         searchResults.innerHTML = `
-
             <div class="search-empty">
                 ${message}
             </div>
-
         `;
 
-    }
+    };
 
 
+    const normalizeProduct = product => {
 
-    function getProductName(product) {
-
-        return (
-            product.name ||
-            product.nombre ||
-            "Producto Satorii"
-        );
-
-    }
+        const name =
+            product?.name ||
+            product?.nombre ||
+            "Producto Satori";
 
 
-
-    function getProductImage(product) {
-
-        if (
-            Array.isArray(product.images) &&
-            product.images.length
-        ) {
-
-            return product.images[0];
-
-        }
+        const priceRaw =
+            product?.price ??
+            product?.precio ??
+            0;
 
 
-        return (
-            product.image ||
-            product.imagen ||
-            ""
-        );
-
-    }
+        const price =
+            typeof priceRaw === "number"
+                ? `$${priceRaw.toLocaleString("es-CL")}`
+                : String(priceRaw);
 
 
-
-    function getProductPrice(product) {
-
-        if (
-            typeof product.price === "number"
-        ) {
-
-            return "$" +
-                product.price.toLocaleString(
-                    "es-CL"
-                );
-
-        }
-
-
-        if (product.precio) {
-
-            return product.precio;
-
-        }
-
-
-        return "";
-
-    }
-
-
-
-    function getProductUrl(product) {
-
-        if (product.url) {
-
-            return siteUrl(
-                product.url
+        const image =
+            product?.image ||
+            product?.imagen ||
+            (
+                Array.isArray(product?.images)
+                    ? product.images[0]
+                    : ""
             );
 
-        }
+
+        const url =
+            product?.url ||
+            product?.href ||
+            "productos.html";
 
 
-        if (product.href) {
-
-            return siteUrl(
-                product.href
-            );
-
-        }
+        const keywords =
+            product?.keywords ||
+            product?.palabras ||
+            "";
 
 
-        return siteUrl(
-            "productos.html"
-        );
-
-    }
-
+        const category =
+            product?.category ||
+            product?.categoria ||
+            "";
 
 
-    function openSearch() {
+        return {
 
-        if (!searchOverlay) {
-            return;
-        }
+            name,
+
+            price,
+
+            image:
+                image &&
+                !/^https?:\/\//i.test(image)
+                    ? siteUrl(image)
+                    : image,
+
+            url:
+                /^https?:\/\//i.test(url)
+                    ? url
+                    : siteUrl(url),
+
+            searchText:
+                `${name} ${keywords} ${category}`
+                    .toLowerCase()
+
+        };
+
+    };
 
 
-        searchOverlay.classList.add(
-            "active"
-        );
+    const openSearch = () => {
 
+        if (!searchOverlay) return;
 
-        searchOverlay.classList.add(
-            "is-open"
-        );
-
+        searchOverlay.classList.add("is-open");
 
         searchOverlay.setAttribute(
             "aria-hidden",
             "false"
         );
 
-
-        if (searchButton) {
-
-            searchButton.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-        }
-
-
-        document.body.style.overflow =
-            "hidden";
-
-
-        setTimeout(
-            () => {
-
-                if (searchInput) {
-
-                    searchInput.focus();
-
-                }
-
-            },
-            80
+        searchButton?.setAttribute(
+            "aria-expanded",
+            "true"
         );
 
-    }
+        document.body.style.overflow = "hidden";
+
+        setTimeout(() => {
+
+            searchInput?.focus();
+
+        }, 80);
+
+    };
 
 
+    const closeSearch = () => {
 
-    function closeSearch() {
+        if (!searchOverlay) return;
 
-        if (!searchOverlay) {
-            return;
-        }
-
-
-        searchOverlay.classList.remove(
-            "active"
-        );
-
-
-        searchOverlay.classList.remove(
-            "is-open"
-        );
-
+        searchOverlay.classList.remove("is-open");
 
         searchOverlay.setAttribute(
             "aria-hidden",
             "true"
         );
 
+        searchButton?.setAttribute(
+            "aria-expanded",
+            "false"
+        );
 
-        if (searchButton) {
-
-            searchButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-
-        document.body.style.overflow =
-            "";
-
+        document.body.style.overflow = "";
 
         if (searchInput) {
-
             searchInput.value = "";
-
         }
-
 
         renderSearchMessage(
             "Busca una polera, personaje o colección."
         );
 
-    }
+    };
 
 
+    searchButton?.addEventListener(
+        "click",
+        event => {
 
-    if (searchButton) {
+            event.preventDefault();
+            event.stopPropagation();
 
-        searchButton.addEventListener(
-            "click",
-            event => {
+            openSearch();
 
-                event.preventDefault();
-                event.stopPropagation();
-
-                openSearch();
-
-            }
-        );
-
-    }
+        }
+    );
 
 
+    searchClose?.addEventListener(
+        "click",
+        closeSearch
+    );
 
-    if (searchClose) {
 
-        searchClose.addEventListener(
-            "click",
-            event => {
+    searchOverlay?.addEventListener(
+        "click",
+        event => {
 
-                event.preventDefault();
-
+            if (event.target === searchOverlay) {
                 closeSearch();
-
             }
-        );
 
-    }
+        }
+    );
 
 
+    searchInput?.addEventListener(
+        "input",
+        () => {
 
-    if (searchOverlay) {
+            const query =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
 
-        searchOverlay.addEventListener(
-            "click",
-            event => {
 
-                if (
-                    event.target ===
-                    searchOverlay
-                ) {
+            if (!query) {
 
-                    closeSearch();
+                renderSearchMessage(
+                    "Busca una polera, personaje o colección."
+                );
 
-                }
-
+                return;
             }
-        );
-
-    }
 
 
-
-    /* =====================================================
-       BÚSQUEDA REAL
-    ====================================================== */
-
-    if (searchInput) {
-
-        searchInput.addEventListener(
-            "input",
-            () => {
-
-                const query =
-                    searchInput.value
-                        .trim()
-                        .toLowerCase();
+            const results =
+                getProducts()
+                    .map(normalizeProduct)
+                    .filter(product =>
+                        product.searchText.includes(query)
+                    )
+                    .slice(0, 8);
 
 
-                if (!query) {
+            if (!results.length) {
 
-                    renderSearchMessage(
-                        "Busca una polera, personaje o colección."
-                    );
+                renderSearchMessage(
+                    `No encontramos productos para "${query}".`
+                );
 
-                    return;
-
-                }
-
-
-                const results =
-                    productos.filter(
-                        product => {
-
-                            if (!product) {
-                                return false;
-                            }
+                return;
+            }
 
 
-                            const name =
-                                getProductName(
-                                    product
-                                )
-                                .toLowerCase();
+            searchResults.innerHTML =
+                results
+                    .map(product => `
 
+                        <a
+                            href="${product.url}"
+                            class="search-result"
+                        >
 
-                            const category =
-                                String(
-                                    product.category ||
-                                    product.collection ||
-                                    product.categoria ||
-                                    ""
-                                )
-                                .toLowerCase();
-
-
-                            const id =
-                                String(
-                                    product.id ||
-                                    ""
-                                )
-                                .toLowerCase();
-
-
-                            return (
-                                name.includes(
-                                    query
-                                ) ||
-
-                                category.includes(
-                                    query
-                                ) ||
-
-                                id.includes(
-                                    query
-                                )
-                            );
-
-                        }
-                    );
-
-
-
-                if (!results.length) {
-
-                    renderSearchMessage(
-                        `No encontramos productos para "${query}".`
-                    );
-
-                    return;
-
-                }
-
-
-
-                searchResults.innerHTML =
-                    results
-                        .slice(0, 8)
-                        .map(
-                            product => {
-
-                                const image =
-                                    getProductImage(
-                                        product
-                                    );
-
-
-                                return `
-
-                                    <a
-                                        href="${getProductUrl(product)}"
-                                        class="search-result"
-                                    >
-
-                                        ${
-                                            image
-                                                ? `
-                                                    <img
-                                                        src="${siteUrl(image)}"
-                                                        alt="${getProductName(product)}"
-                                                        class="search-result-image"
-                                                    >
-                                                  `
-                                                : ""
-                                        }
-
-
-                                        <span
-                                            class="search-result-info"
+                            ${
+                                product.image
+                                    ? `
+                                        <img
+                                            src="${product.image}"
+                                            alt="${product.name}"
+                                            class="search-result-image"
                                         >
-
-                                            <span
-                                                class="search-result-name"
-                                            >
-                                                ${getProductName(product)}
-                                            </span>
-
-
-                                            <span
-                                                class="search-result-price"
-                                            >
-                                                ${getProductPrice(product)}
-                                            </span>
-
-                                        </span>
-
-                                    </a>
-
-                                `;
-
+                                    `
+                                    : ""
                             }
-                        )
-                        .join("");
 
-            }
-        );
+                            <span class="search-result-info">
 
-    }
+                                <span class="search-result-name">
+                                    ${product.name}
+                                </span>
 
+                                <span class="search-result-price">
+                                    ${product.price}
+                                </span>
+
+                            </span>
+
+                        </a>
+
+                    `)
+                    .join("");
+
+        }
+    );
 
 
     /* =====================================================
        MENÚ MÓVIL
-    ====================================================== */
+    ===================================================== */
 
     const mobileButton =
         document.getElementById(
@@ -1387,59 +980,60 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
+    const closeMobileMenu = () => {
 
-    function openMobileMenu() {
+        mobileMenu?.classList.remove(
+            "is-open"
+        );
 
-        if (!mobileMenu) {
-            return;
-        }
+        mobileOverlay?.classList.remove(
+            "is-open"
+        );
 
-
-        mobileMenu.classList.add(
+        mobileButton?.classList.remove(
             "is-open"
         );
 
 
-        mobileMenu.classList.add(
-            "active"
+        mobileButton?.setAttribute(
+            "aria-expanded",
+            "false"
         );
 
 
-        if (mobileOverlay) {
-
-            mobileOverlay.classList.add(
-                "is-open"
-            );
-
-
-            mobileOverlay.classList.add(
-                "active"
-            );
-
-        }
+        mobileMenu?.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
 
-        if (mobileButton) {
+        document.body.style.overflow = "";
 
-            mobileButton.classList.add(
-                "is-open"
-            );
+    };
 
 
-            mobileButton.classList.add(
-                "active"
-            );
+    const openMobileMenu = () => {
+
+        mobileMenu?.classList.add(
+            "is-open"
+        );
+
+        mobileOverlay?.classList.add(
+            "is-open"
+        );
+
+        mobileButton?.classList.add(
+            "is-open"
+        );
 
 
-            mobileButton.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-        }
+        mobileButton?.setAttribute(
+            "aria-expanded",
+            "true"
+        );
 
 
-        mobileMenu.setAttribute(
+        mobileMenu?.setAttribute(
             "aria-hidden",
             "false"
         );
@@ -1448,307 +1042,164 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow =
             "hidden";
 
-    }
+    };
 
 
+    mobileButton?.addEventListener(
+        "click",
+        event => {
 
-    function closeMobileMenu() {
+            event.preventDefault();
 
-        if (!mobileMenu) {
-            return;
-        }
+            if (
+                mobileMenu?.classList.contains(
+                    "is-open"
+                )
+            ) {
 
+                closeMobileMenu();
 
-        mobileMenu.classList.remove(
-            "is-open"
-        );
+            } else {
 
-
-        mobileMenu.classList.remove(
-            "active"
-        );
-
-
-        if (mobileOverlay) {
-
-            mobileOverlay.classList.remove(
-                "is-open"
-            );
-
-
-            mobileOverlay.classList.remove(
-                "active"
-            );
-
-        }
-
-
-        if (mobileButton) {
-
-            mobileButton.classList.remove(
-                "is-open"
-            );
-
-
-            mobileButton.classList.remove(
-                "active"
-            );
-
-
-            mobileButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-
-        mobileMenu.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-
-
-    if (mobileButton) {
-
-        mobileButton.addEventListener(
-            "click",
-            event => {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-
-                const isOpen =
-                    mobileMenu &&
-                    (
-                        mobileMenu.classList.contains(
-                            "is-open"
-                        ) ||
-                        mobileMenu.classList.contains(
-                            "active"
-                        )
-                    );
-
-
-                if (isOpen) {
-
-                    closeMobileMenu();
-
-                } else {
-
-                    openMobileMenu();
-
-                }
+                openMobileMenu();
 
             }
-        );
 
-    }
-
-
-
-    if (mobileClose) {
-
-        mobileClose.addEventListener(
-            "click",
-            closeMobileMenu
-        );
-
-    }
+        }
+    );
 
 
+    mobileClose?.addEventListener(
+        "click",
+        closeMobileMenu
+    );
 
-    if (mobileOverlay) {
 
-        mobileOverlay.addEventListener(
-            "click",
-            closeMobileMenu
-        );
-
-    }
-
+    mobileOverlay?.addEventListener(
+        "click",
+        closeMobileMenu
+    );
 
 
     /* =====================================================
        SUBMENÚS MÓVILES
-    ====================================================== */
+    ===================================================== */
 
     document
-        .querySelectorAll(
-            ".mobile-nav-button"
-        )
-        .forEach(
-            button => {
+        .querySelectorAll(".mobile-nav-button")
+        .forEach(button => {
 
-                button.addEventListener(
-                    "click",
-                    event => {
+            button.addEventListener(
+                "click",
+                () => {
 
-                        event.preventDefault();
-
-
-                        const submenu =
-                            document.getElementById(
-                                button.dataset.mobileSubmenu
-                            );
+                    const submenu =
+                        document.getElementById(
+                            button.dataset.mobileSubmenu
+                        );
 
 
-                        if (!submenu) {
-                            return;
-                        }
+                    if (!submenu) return;
 
 
-                        const wasOpen =
-                            submenu.classList.contains(
+                    const wasOpen =
+                        submenu.classList.contains(
+                            "is-open"
+                        );
+
+
+                    document
+                        .querySelectorAll(
+                            ".mobile-submenu"
+                        )
+                        .forEach(menu => {
+
+                            menu.classList.remove(
                                 "is-open"
                             );
 
-
-                        document
-                            .querySelectorAll(
-                                ".mobile-submenu"
-                            )
-                            .forEach(
-                                menu => {
-
-                                    menu.classList.remove(
-                                        "is-open"
-                                    );
+                        });
 
 
-                                    menu.classList.remove(
-                                        "active"
-                                    );
+                    document
+                        .querySelectorAll(
+                            ".mobile-nav-button"
+                        )
+                        .forEach(btn => {
 
-                                }
-                            );
-
-
-                        document
-                            .querySelectorAll(
-                                ".mobile-nav-button"
-                            )
-                            .forEach(
-                                btn => {
-
-                                    btn.classList.remove(
-                                        "is-open"
-                                    );
-
-
-                                    btn.classList.remove(
-                                        "active"
-                                    );
-
-
-                                    btn.setAttribute(
-                                        "aria-expanded",
-                                        "false"
-                                    );
-
-
-                                    const arrow =
-                                        btn.querySelector(
-                                            ".arrow"
-                                        );
-
-
-                                    if (arrow) {
-
-                                        arrow.textContent =
-                                            "↓";
-
-                                    }
-
-                                }
-                            );
-
-
-                        if (!wasOpen) {
-
-                            submenu.classList.add(
+                            btn.classList.remove(
                                 "is-open"
                             );
 
-
-                            submenu.classList.add(
-                                "active"
-                            );
-
-
-                            button.classList.add(
-                                "is-open"
-                            );
-
-
-                            button.classList.add(
-                                "active"
-                            );
-
-
-                            button.setAttribute(
+                            btn.setAttribute(
                                 "aria-expanded",
-                                "true"
+                                "false"
                             );
-
 
                             const arrow =
-                                button.querySelector(
+                                btn.querySelector(
                                     ".arrow"
                                 );
 
-
                             if (arrow) {
-
                                 arrow.textContent =
-                                    "↑";
-
+                                    "↓";
                             }
 
+                        });
+
+
+                    if (!wasOpen) {
+
+                        submenu.classList.add(
+                            "is-open"
+                        );
+
+                        button.classList.add(
+                            "is-open"
+                        );
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "true"
+                        );
+
+
+                        const arrow =
+                            button.querySelector(
+                                ".arrow"
+                            );
+
+                        if (arrow) {
+                            arrow.textContent =
+                                "↑";
                         }
 
                     }
-                );
 
-            }
-        );
+                }
+            );
 
+        });
 
-
-    /* =====================================================
-       CERRAR MENÚ AL NAVEGAR
-    ====================================================== */
 
     document
-        .querySelectorAll(
-            ".mobile-menu a"
-        )
-        .forEach(
-            link => {
+        .querySelectorAll(".mobile-menu a")
+        .forEach(link => {
 
-                link.addEventListener(
-                    "click",
-                    closeMobileMenu
-                );
+            link.addEventListener(
+                "click",
+                closeMobileMenu
+            );
 
-            }
-        );
-
+        });
 
 
     /* =====================================================
-       CONTADOR DEL CARRITO
-    ====================================================== */
+       CARRITO
+    ===================================================== */
 
-    function updateCartCount() {
+    const updateCartCount = () => {
 
         const cartCount =
             document.getElementById(
@@ -1756,9 +1207,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        if (!cartCount) {
-            return;
-        }
+        if (!cartCount) return;
 
 
         let cart = [];
@@ -1781,21 +1230,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const total =
-            cart.reduce(
-                (sum, product) => {
-
-                    return (
+            Array.isArray(cart)
+                ? cart.reduce(
+                    (sum, item) =>
                         sum +
                         (
                             Number(
-                                product.quantity
+                                item.quantity
                             ) || 0
-                        )
-                    );
-
-                },
-                0
-            );
+                        ),
+                    0
+                )
+                : 0;
 
 
         cartCount.textContent =
@@ -1807,7 +1253,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? "flex"
                 : "none";
 
-    }
+    };
 
 
     updateCartCount();
@@ -1819,32 +1265,23 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-
     /* =====================================================
-       ESC
-    ====================================================== */
+       ESCAPE
+    ===================================================== */
 
     document.addEventListener(
         "keydown",
         event => {
 
-            if (
-                event.key !== "Escape"
-            ) {
-
+            if (event.key !== "Escape") {
                 return;
-
             }
 
-
             closeDropdowns();
-
             closeSearch();
-
             closeMobileMenu();
 
         }
     );
-
 
 });
