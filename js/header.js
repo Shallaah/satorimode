@@ -6,8 +6,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     headerContainer.innerHTML = `
         <div class="shipping-bar">
-            🚚 ENVÍOS A TODO CHILE
-        </div>
+
+    <a
+        href="https://www.instagram.com/satorimode/"
+        class="shipping-instagram"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram de SatoriMode"
+    >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="5"
+            ></rect>
+
+            <circle
+                cx="12"
+                cy="12"
+                r="4"
+            ></circle>
+
+            <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+            ></circle>
+        </svg>
+    </a>
+
+    <span>
+        🚚 ENVÍOS A TODO CHILE 🚚
+    </span>
+
+</div>
 
         <header class="main-header">
 
