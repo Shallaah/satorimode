@@ -3689,3 +3689,61 @@ main {
     }
 
 }
+
+/* =====================================================
+   BANNER SATORII — FIJO DETRÁS DEL CONTENIDO
+   ===================================================== */
+
+.hero-slider {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+
+    z-index: 0;
+
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+
+/* =====================================================
+   CONTENIDO SOBRE EL BANNER
+   ===================================================== */
+
+.benefits,
+.section,
+.recommendations,
+.satori-pack {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+}
+
+
+/* =====================================================
+   HEADER SIEMPRE SOBRE TODO
+   ===================================================== */
+
+#satori-header {
+    position: relative;
+    z-index: 9999;
+}
+
+
+/* =====================================================
+   MÓVIL
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .hero-slider {
+        position: sticky;
+        top: 0;
+        z-index: 0;
+
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+}
