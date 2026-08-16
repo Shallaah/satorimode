@@ -48,11 +48,8 @@
         body {
 
             width: 100%;
-
             margin: 0;
-
             padding: 0;
-
             overflow-x: hidden;
 
         }
@@ -65,7 +62,6 @@
         .product-page {
 
             width: 100%;
-
             padding: 70px 30px 0;
 
         }
@@ -74,7 +70,6 @@
         .product-page-container {
 
             width: min(1180px, 100%);
-
             margin: 0 auto;
 
             display: grid;
@@ -97,7 +92,6 @@
         .product-gallery {
 
             width: 100%;
-
             min-width: 0;
 
         }
@@ -106,7 +100,6 @@
         .product-main-image {
 
             width: 100%;
-
             aspect-ratio: 1 / 1;
 
             overflow: hidden;
@@ -121,7 +114,6 @@
         .product-main-image img {
 
             width: 100%;
-
             height: 100%;
 
             display: block;
@@ -154,7 +146,6 @@
         .product-thumbnail {
 
             width: 100%;
-
             aspect-ratio: 1 / 1;
 
             padding: 0;
@@ -193,7 +184,6 @@
         .product-thumbnail img {
 
             width: 100%;
-
             height: 100%;
 
             display: block;
@@ -210,7 +200,6 @@
         .product-page-info {
 
             width: 100%;
-
             min-width: 0;
 
         }
@@ -327,8 +316,7 @@
         }
 
 
-        .product-option-header
-        .product-option-title {
+        .product-option-header .product-option-title {
 
             margin-bottom: 0;
 
@@ -353,7 +341,7 @@
 
 
         /* =====================================================
-           COLOR
+           COLORES
         ====================================================== */
 
         .product-colors {
@@ -424,7 +412,6 @@
         .color-dot {
 
             width: 13px;
-
             height: 13px;
 
             display: inline-block;
@@ -466,7 +453,6 @@
         .product-size {
 
             width: 52px;
-
             height: 48px;
 
             border: 1px solid #ddd;
@@ -516,7 +502,6 @@
         .quantity-selector {
 
             width: 118px;
-
             height: 48px;
 
             display: flex;
@@ -537,7 +522,6 @@
         .quantity-selector button {
 
             width: 38px;
-
             height: 100%;
 
             border: 0;
@@ -881,7 +865,6 @@
         .recommended-card-image img {
 
             width: 100%;
-
             height: 100%;
 
             display: block;
@@ -957,7 +940,6 @@
             position: fixed;
 
             right: 24px;
-
             bottom: 24px;
 
             width: min(
@@ -1024,13 +1006,11 @@
         .cart-toast-check {
 
             width: 20px;
-
             height: 20px;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             border-radius: 50%;
@@ -1113,31 +1093,6 @@
             }
 
 
-            .product-gallery {
-
-                order: 1;
-
-            }
-
-
-            .product-page-info {
-
-                order: 2;
-
-            }
-
-
-            .product-page-info h1 {
-
-                font-size: clamp(
-                    45px,
-                    9vw,
-                    70px
-                );
-
-            }
-
-
             .product-description-section {
 
                 padding: 50px 20px 50px;
@@ -1178,8 +1133,6 @@
             .product-page-container {
 
                 gap: 34px;
-
-                max-width: 100%;
 
             }
 
@@ -1352,18 +1305,14 @@
 
     <main>
 
-
         <section class="product-page">
 
             <div class="product-page-container">
 
 
-                <!-- =================================================
-                     GALERÍA
-                ================================================== -->
+                <!-- GALERÍA -->
 
                 <div class="product-gallery">
-
 
                     <div class="product-main-image">
 
@@ -1381,16 +1330,12 @@
                         id="productThumbnails"
                     ></div>
 
-
                 </div>
 
 
-                <!-- =================================================
-                     INFORMACIÓN
-                ================================================== -->
+                <!-- INFORMACIÓN -->
 
                 <div class="product-page-info">
-
 
                     <span
                         class="product-page-category"
@@ -1453,9 +1398,7 @@
                             </span>
 
 
-                            <a
-                                href="../../guia-tallas.html"
-                            >
+                            <a href="../../guia-tallas.html">
                                 GUÍA DE TALLAS
                             </a>
 
@@ -1523,7 +1466,6 @@
 
                     <div class="product-information">
 
-
                         <div class="product-information-item">
 
                             <strong>
@@ -1558,7 +1500,6 @@
 
                         </div>
 
-
                     </div>
 
                 </div>
@@ -1568,9 +1509,7 @@
         </section>
 
 
-        <!-- =====================================================
-             DESCRIPCIÓN
-        ====================================================== -->
+        <!-- DESCRIPCIÓN -->
 
         <section class="product-description-section">
 
@@ -1601,9 +1540,7 @@
         </section>
 
 
-        <!-- =====================================================
-             RECOMENDADOS
-        ====================================================== -->
+        <!-- RECOMENDADOS -->
 
         <section class="recommended-products">
 
@@ -1640,7 +1577,7 @@
 
 
     <!-- =====================================================
-         TOAST
+         TOAST CARRITO
     ====================================================== -->
 
     <div
@@ -1688,14 +1625,7 @@
 
 
     <!-- =====================================================
-         SCRIPTS
-         
-         IMPORTANTE:
-         Esta página está en:
-         
-         productos/anime/
-         
-         por eso usamos ../../
+         SCRIPTS GLOBALES
     ====================================================== -->
 
     <script src="../../js/products.js"></script>
@@ -1717,9 +1647,8 @@
             "DOMContentLoaded",
             function () {
 
-
                 /* =================================================
-                   PRODUCTO
+                   VERIFICAR PRODUCTO
                 ================================================== */
 
                 const product =
@@ -1738,6 +1667,35 @@
 
 
                 /* =================================================
+                   FORMATO DE PRECIO
+                   
+                   Se define aquí porque actualmente
+                   products.js no contiene formatPrice().
+                ================================================== */
+
+                function formatProductPrice(price) {
+
+                    return new Intl.NumberFormat(
+                        "es-CL"
+                    ).format(price) + " $".replace(
+                        " $",
+                        ""
+                    );
+
+                }
+
+
+                function formatPriceCLP(price) {
+
+                    return "$" +
+                        new Intl.NumberFormat(
+                            "es-CL"
+                        ).format(price);
+
+                }
+
+
+                /* =================================================
                    ELEMENTOS
                 ================================================== */
 
@@ -1746,96 +1704,90 @@
                         "mainProductImage"
                     );
 
-
                 const thumbnails =
                     document.getElementById(
                         "productThumbnails"
                     );
-
 
                 const productName =
                     document.getElementById(
                         "productName"
                     );
 
-
                 const productCategory =
                     document.getElementById(
                         "productCategory"
                     );
-
 
                 const productPrice =
                     document.getElementById(
                         "productPrice"
                     );
 
-
                 const productDescription =
                     document.getElementById(
                         "productDescription"
                     );
-
 
                 const productSizes =
                     document.getElementById(
                         "productSizes"
                     );
 
-
                 const productColors =
                     document.getElementById(
                         "productColors"
                     );
 
+                const colorOption =
+                    document.getElementById(
+                        "colorOption"
+                    );
+
+                const sizeOption =
+                    document.getElementById(
+                        "sizeOption"
+                    );
 
                 const shippingText =
                     document.getElementById(
                         "shippingText"
                     );
 
-
                 const quantityValue =
                     document.getElementById(
                         "quantityValue"
                     );
-
 
                 const quantityMinus =
                     document.getElementById(
                         "quantityMinus"
                     );
 
-
                 const quantityPlus =
                     document.getElementById(
                         "quantityPlus"
                     );
-
 
                 const addToCart =
                     document.getElementById(
                         "addToCart"
                     );
 
-
                 const toast =
                     document.getElementById(
                         "cartToast"
                     );
-
 
                 const toastProduct =
                     document.getElementById(
                         "cartToastProduct"
                     );
 
-
                 const goToCart =
                     document.getElementById(
                         "goToCart"
                     );
-
 
                 const recommendedProducts =
                     document.getElementById(
@@ -1844,7 +1796,7 @@
 
 
                 /* =================================================
-                   DATOS
+                   INFORMACIÓN
                 ================================================== */
 
                 productName.textContent =
@@ -1856,7 +1808,9 @@
 
 
                 productPrice.textContent =
-                    formatPrice(product.price);
+                    formatPriceCLP(
+                        product.price
+                    );
 
 
                 productDescription.textContent =
@@ -1868,6 +1822,27 @@
 
 
                 /* =================================================
+                   DESCRIPCIÓN LARGA
+                ================================================== */
+
+                const longDescription =
+                    document.getElementById(
+                        "longDescription"
+                    );
+
+
+                if (
+                    longDescription &&
+                    product.details.description
+                ) {
+
+                    longDescription.textContent =
+                        product.details.description;
+
+                }
+
+
+                /* =================================================
                    GALERÍA
                 ================================================== */
 
@@ -1876,6 +1851,10 @@
                     product.images.length
                         ? product.images
                         : [product.image];
+
+
+                mainImage.src =
+                    productImages[0];
 
 
                 productImages.forEach(
@@ -1980,9 +1959,7 @@
                     product.colors.length === 0
                 ) {
 
-                    document.getElementById(
-                        "colorOption"
-                    ).style.display =
+                    colorOption.style.display =
                         "none";
 
                 } else {
@@ -2094,9 +2071,7 @@
                     product.sizes.length === 0
                 ) {
 
-                    document.getElementById(
-                        "sizeOption"
-                    ).style.display =
+                    sizeOption.style.display =
                         "none";
 
                 } else {
@@ -2218,7 +2193,6 @@
                     "click",
                     function () {
 
-
                         if (
                             product.sizes &&
                             product.sizes.length > 0 &&
@@ -2251,8 +2225,7 @@
 
                         if (
                             !window.SatoriCart ||
-                            typeof
-                            window.SatoriCart.addToCart !==
+                            typeof window.SatoriCart.addToCart !==
                             "function"
                         ) {
 
@@ -2260,11 +2233,9 @@
                                 "SatoriMode: cart.js no está disponible."
                             );
 
-
                             alert(
                                 "No se pudo conectar con el carrito."
                             );
-
 
                             return;
 
@@ -2367,7 +2338,18 @@
                                 "recommended-card";
 
 
+                            /*
+                             * products.js guarda las URLs
+                             * desde la raíz del proyecto.
+                             *
+                             * Esta página está en:
+                             * productos/anime/
+                             *
+                             * Por eso subimos dos niveles.
+                             */
+
                             card.href =
+                                "../../" +
                                 item.url;
 
 
@@ -2378,7 +2360,7 @@
                                 >
 
                                     <img
-                                        src="${item.image}"
+                                        src="../../${item.image}"
                                         alt="${item.name}"
                                         loading="lazy"
                                     >
@@ -2401,7 +2383,7 @@
 
 
                                     <p>
-                                        ${formatPrice(item.price)}
+                                        ${formatPriceCLP(item.price)}
                                     </p>
 
                                 </div>
