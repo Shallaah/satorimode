@@ -968,297 +968,28 @@ img {
 }
 
 
-/* =========================================================
+/* =========================
    SATORII PACK
-========================================================= */
+   ========================= */
 
-.satori-pack {
-    margin-top: 65px;
-
-    padding: 42px;
-
-    min-height: 240px;
-
-    display: flex;
-    align-items: center;
-
-    border: 1px solid #330000;
-    border-radius: var(--radius);
-
-    background:
-        radial-gradient(
-            circle at 80% 40%,
-            rgba(255,22,22,.22),
-            transparent 35%
-        ),
-        #160000;
-
-    color: white;
-
-    overflow: hidden;
-}
-
-.satori-pack-label {
-    margin-bottom: 7px;
-
-    color: var(--red);
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 3px;
-}
-
-.satori-pack h2 {
-    margin: 0 0 8px;
-
-    font-size: 34px;
-    font-weight: 800;
-}
-
-.satori-pack h2 span {
-    color: var(--red);
-}
-
-.satori-pack p {
-    margin: 0 0 20px;
-
-    font-size: 14px;
-
-    color: #ccc;
-}
-
-.satori-pack-button {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 42px;
-
-    padding: 0 20px;
-
-    border-radius: var(--radius);
-
-    background: var(--red);
-
-    color: white;
-
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.satori-pack-button:hover {
-    background: white;
-    color: #111;
+.satorii-pack {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 10px;
 }
 
 
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
-
-.footer {
-    width: 100%;
-
-    margin-top: 75px;
-
-    background: #0b0b0b;
-
-    color: white;
-
-    border-top: 1px solid #222;
-}
-
-.footer-inner {
-    width: min(100% - 40px, 1500px);
-
-    margin: 0 auto;
-
-    padding: 60px 0 35px;
-
-    display: grid;
-
-    grid-template-columns: 1.25fr 1fr 1fr 1.5fr;
-
-    gap: 55px;
-}
-
-.footer-brand h2 {
-    margin: 0;
-
-    font-family: var(--font-logo);
-
-    font-size: 31px;
-
-    font-style: italic;
-
-    font-weight: 600;
-
-    letter-spacing: -1.5px;
-}
-
-.footer-brand > span {
-    display: block;
-
-    margin-top: 4px;
-
-    color: var(--red);
-
-    font-size: 13px;
-}
-
-.footer-brand p {
-    max-width: 290px;
-
-    margin: 16px 0 18px;
-
-    color: #aaa;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-.instagram-link {
-    width: 34px;
-    height: 34px;
-
-    border: 1px solid #555;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 17px;
-}
-
-.instagram-link:hover {
-    color: var(--red);
-    border-color: var(--red);
-}
-
-.footer-column h3 {
-    margin: 0 0 18px;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-}
-
-.footer-column a {
-    display: block;
-
-    margin-bottom: 12px;
-
-    color: #aaa;
-
-    font-size: 13px;
-}
-
-.footer-column a:hover {
-    color: white;
-}
-
-.small-label {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: var(--red);
-
-    font-size: 10px;
-    font-weight: 800;
-
-    letter-spacing: 3px;
-}
-
-.footer-community h2 {
-    margin: 0;
-
-    font-size: 30px;
-
-    line-height: 1;
-
-    font-weight: 800;
-}
-
-.footer-community h2 span {
-    color: var(--red);
-}
-
-.footer-community p {
-    max-width: 360px;
-
-    margin: 13px 0;
-
-    color: #aaa;
-
-    font-size: 13px;
-}
-
-.newsletter {
-    width: 100%;
-    max-width: 420px;
-
-    display: flex;
-
-    overflow: hidden;
-
-    border-radius: var(--radius);
-}
-
-.newsletter input {
-    flex: 1;
-
-    min-width: 0;
-
-    height: 44px;
-
-    padding: 0 13px;
-
-    border: none;
-
-    outline: none;
-
-    font-size: 13px;
-}
-
-.newsletter button {
-    width: 52px;
-
-    border: none;
-
-    background: var(--red);
-
-    color: white;
-
-    font-size: 18px;
-}
-
-.footer-bottom {
-    width: min(100% - 40px, 1500px);
-
-    margin: 0 auto;
-
-    padding: 18px 0;
-
-    border-top: 1px solid #242424;
-
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    color: #777;
-
-    font-size: 11px;
-}
-
-.footer-bottom div {
-    display: flex;
-    gap: 22px;
+   ========================= */
+
+.site-footer {
+    border: none !important;
+    border-top: 1px solid #222 !important;
+    border-radius: 0 !important;
 }
 
 
@@ -1628,4 +1359,38 @@ img {
 .newsletter,
 .dropdown-menu {
     border-radius: var(--radius);
+}
+
+/* =====================================================
+   AJUSTE FINAL DE BORDES
+   ===================================================== */
+
+/* Banner principal y banners promocionales */
+.hero,
+.hero-slider,
+.banner,
+.satorii-pack {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* SATORII PACK */
+.satorii-pack {
+    border-radius: 10px;
+}
+
+/* Footer: SOLO línea superior */
+.site-footer {
+    border: none !important;
+    border-top: 1px solid #222 !important;
+    border-radius: 0 !important;
+}
+
+/* Evita líneas adicionales justo antes del footer */
+main > section:last-child,
+.bottom-section {
+    border-bottom: none !important;
 }
