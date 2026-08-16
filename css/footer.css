@@ -1,0 +1,40 @@
+/* =========================================================
+   SATORII · FOOTER GLOBAL
+   ESQUINAS SUPERIORES REDONDEADAS
+========================================================= */
+
+.satori-global-footer {
+    width: 100%;
+    margin-top: 80px;
+
+    background: #0d0d0d;
+    color: #fff;
+
+    border: 0;
+    border-top: 3px solid #ed1111;
+
+    border-radius: 20px 20px 0 0;
+
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Evita bordes inferiores */
+.satori-footer-bottom {
+    border-bottom: 0 !important;
+}
+
+/* Instagram */
+.satori-footer-instagram {
+    border-radius: 50%;
+}
+
+/* Móvil */
+@media (max-width: 700px) {
+
+    .satori-global-footer {
+        margin-top: 50px;
+        border-radius: 16px 16px 0 0;
+        border-top-width: 3px;
+    }
+}
