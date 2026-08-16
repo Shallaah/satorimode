@@ -3443,3 +3443,98 @@ main {
     }
 
 }
+
+/* =========================================================
+   SATORII — ANCHO GLOBAL DE TODAS LAS PÁGINAS
+========================================================= */
+
+:root {
+    --satori-content-width: 1800px;
+    --satori-side-space: 30px;
+}
+
+
+/* =========================================================
+   CONTENEDORES PRINCIPALES
+========================================================= */
+
+.benefits,
+.section,
+.recommendations,
+.satori-pack {
+    width: min(
+        var(--satori-content-width),
+        calc(100% - (var(--satori-side-space) * 2))
+    );
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+/* =========================================================
+   GRIDS — OCUPAN TODO EL ANCHO DEL CONTENEDOR
+========================================================= */
+
+.collections-grid,
+.recommendations-grid {
+    width: 100%;
+}
+
+
+/* =========================================================
+   SATORII PACK
+========================================================= */
+
+.satori-pack {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BENEFICIOS
+========================================================= */
+
+.benefits {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    :root {
+        --satori-side-space: 24px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    :root {
+        --satori-side-space: 15px;
+    }
+
+
+    .benefits,
+    .section,
+    .recommendations,
+    .satori-pack {
+
+        width:
+            calc(100% - 30px) !important;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+    }
+
+}
