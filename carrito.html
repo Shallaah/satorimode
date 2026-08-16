@@ -356,6 +356,8 @@
 
             font-size: 16px;
 
+            cursor: pointer;
+
         }
 
 
@@ -426,6 +428,8 @@
             font-weight: 700;
 
             letter-spacing: .5px;
+
+            cursor: pointer;
 
         }
 
@@ -590,6 +594,8 @@
 
             letter-spacing: 1px;
 
+            cursor: pointer;
+
             transition:
                 background .2s ease,
                 transform .2s ease;
@@ -621,6 +627,8 @@
             font-size: 12px;
 
             font-weight: 700;
+
+            text-decoration: none;
 
         }
 
@@ -715,6 +723,8 @@
             font-size: 11px;
 
             font-weight: 800;
+
+            text-decoration: none;
 
         }
 
@@ -928,7 +938,6 @@
                 id="cart-layout"
             >
 
-
                 <!-- LISTA -->
 
                 <section class="cart-items">
@@ -951,8 +960,7 @@
 
                     <div
                         id="cart-items-list"
-                    >
-                    </div>
+                    ></div>
 
                 </section>
 
@@ -1082,14 +1090,494 @@
          SCRIPTS
     ====================================================== -->
 
-<script src="js/products.js"></script>
+    <!-- PRODUCTOS PRIMERO -->
+    <script src="js/products.js"></script>
 
-<script src="js/cart.js"></script>
+    <!-- CARRITO DESPUÉS -->
+    <script src="js/cart.js"></script>
 
-<script src="js/header.js"></script>
+    <!-- HEADER -->
+    <script src="js/header.js"></script>
 
-<script src="js/footer.js"></script>
+    <!-- FOOTER -->
+    <script src="js/footer.js"></script>
 
+
+    <!-- =====================================================
+         RENDER DEL CARRITO
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const layout =
+                    document.getElementById(
+                        "cart-layout"
+                    );
+
+                const empty =
+                    document.getElementById(
+                        "cart-empty"
+                    );
+
+                const list =
+                    document.getElementById(
+                        "cart-items-list"
+                    );
+
+                const count =
+                    document.getElementById(
+                        "cart-items-count"
+                    );
+
+                const subtotal =
+                    document.getElementById(
+                        "cart-subtotal"
+                    );
+
+                const total =
+                    document.getElementById(
+                        "cart-total"
+                    );
+
+
+                /* =================================================
+                   RENDERIZAR
+                ================================================== */
+
+                function renderCart() {
+
+                    if (
+                        !window.SatoriCart
+                    ) {
+
+                        console.error(
+                            "SatoriMode · SatoriCart no está disponible."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const cart =
+                        SatoriCart.getCart();
+
+
+                    const products =
+                        SatoriCart.getCartProducts();
+
+
+                    /* =============================================
+                       CARRITO VACÍO
+                    ============================================= */
+
+                    if (
+                        cart.length === 0 ||
+                        products.length === 0
+                    ) {
+
+                        if (layout) {
+
+                            layout.style.display =
+                                "none";
+
+                        }
+
+
+                        if (empty) {
+
+                            empty.style.display =
+                                "block";
+
+                        }
+
+
+                        if (count) {
+
+                            count.textContent =
+                                "0 productos";
+
+                        }
+
+
+                        if (subtotal) {
+
+                            subtotal.textContent =
+                                "$0";
+
+                        }
+
+
+                        if (total) {
+
+                            total.textContent =
+                                "$0";
+
+                        }
+
+
+                        return;
+
+                    }
+
+
+                    /* =============================================
+                       CARRITO CON PRODUCTOS
+                    ============================================= */
+
+                    if (layout) {
+
+                        layout.style.display =
+                            "grid";
+
+                    }
+
+
+                    if (empty) {
+
+                        empty.style.display =
+                            "none";
+
+                    }
+
+
+                    /* =============================================
+                       LISTA
+                    ============================================= */
+
+                    if (list) {
+
+                        list.innerHTML = "";
+
+
+                        products.forEach(
+                            function (product) {
+
+                                const item =
+                                    document.createElement(
+                                        "article"
+                                    );
+
+
+                                item.className =
+                                    "cart-item";
+
+
+                                const itemTotal =
+                                    product.price *
+                                    product.quantity;
+
+
+                                item.innerHTML = `
+
+                                    <div
+                                        class="cart-item-image"
+                                    >
+
+                                        <img
+                                            src="${product.image}"
+                                            alt="${product.name}"
+                                        >
+
+                                    </div>
+
+
+                                    <div
+                                        class="cart-item-info"
+                                    >
+
+                                        <div
+                                            class="cart-item-category"
+                                        >
+                                            ${
+                                                product.collection ||
+                                                product.category
+                                            }
+                                        </div>
+
+
+                                        <h3
+                                            class="cart-item-name"
+                                        >
+                                            ${product.name}
+                                        </h3>
+
+
+                                        ${
+                                            product.selectedSize
+                                            ? `
+                                                <div
+                                                    class="cart-item-option"
+                                                >
+                                                    Talla:
+                                                    <strong>
+                                                        ${product.selectedSize}
+                                                    </strong>
+                                                </div>
+                                            `
+                                            : ""
+                                        }
+
+
+                                        ${
+                                            product.selectedColor
+                                            ? `
+                                                <div
+                                                    class="cart-item-option"
+                                                >
+                                                    Color:
+                                                    <strong>
+                                                        ${product.selectedColor}
+                                                    </strong>
+                                                </div>
+                                            `
+                                            : ""
+                                        }
+
+
+                                        <div
+                                            class="cart-item-quantity"
+                                        >
+
+                                            <button
+                                                type="button"
+                                                class="cart-quantity-button"
+                                                data-action="decrease"
+                                            >
+                                                −
+                                            </button>
+
+
+                                            <span
+                                                class="cart-quantity-value"
+                                            >
+                                                ${product.quantity}
+                                            </span>
+
+
+                                            <button
+                                                type="button"
+                                                class="cart-quantity-button"
+                                                data-action="increase"
+                                            >
+                                                +
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div
+                                        class="cart-item-price"
+                                    >
+
+                                        <div
+                                            class="cart-item-total"
+                                        >
+                                            ${SatoriCart.formatPrice(itemTotal)}
+                                        </div>
+
+
+                                        <button
+                                            type="button"
+                                            class="cart-item-remove"
+                                        >
+                                            ELIMINAR
+                                        </button>
+
+                                    </div>
+
+                                `;
+
+
+                                /* =================================
+                                   MENOS
+                                ================================= */
+
+                                const decrease =
+                                    item.querySelector(
+                                        '[data-action="decrease"]'
+                                    );
+
+
+                                if (decrease) {
+
+                                    decrease.addEventListener(
+                                        "click",
+                                        function () {
+
+                                            SatoriCart.updateCartQuantity(
+
+                                                product.id,
+
+                                                product.quantity - 1,
+
+                                                product.selectedSize,
+
+                                                product.selectedColor
+
+                                            );
+
+                                        }
+                                    );
+
+                                }
+
+
+                                /* =================================
+                                   MÁS
+                                ================================= */
+
+                                const increase =
+                                    item.querySelector(
+                                        '[data-action="increase"]'
+                                    );
+
+
+                                if (increase) {
+
+                                    increase.addEventListener(
+                                        "click",
+                                        function () {
+
+                                            SatoriCart.updateCartQuantity(
+
+                                                product.id,
+
+                                                product.quantity + 1,
+
+                                                product.selectedSize,
+
+                                                product.selectedColor
+
+                                            );
+
+                                        }
+                                    );
+
+                                }
+
+
+                                /* =================================
+                                   ELIMINAR
+                                ================================= */
+
+                                const remove =
+                                    item.querySelector(
+                                        ".cart-item-remove"
+                                    );
+
+
+                                if (remove) {
+
+                                    remove.addEventListener(
+                                        "click",
+                                        function () {
+
+                                            SatoriCart.removeFromCart(
+
+                                                product.id,
+
+                                                product.selectedSize,
+
+                                                product.selectedColor
+
+                                            );
+
+                                        }
+                                    );
+
+                                }
+
+
+                                list.appendChild(
+                                    item
+                                );
+
+                            }
+                        );
+
+                    }
+
+
+                    /* =============================================
+                       CANTIDAD
+                    ============================================= */
+
+                    const totalProducts =
+                        SatoriCart.getCartCount();
+
+
+                    if (count) {
+
+                        count.textContent =
+                            totalProducts === 1
+                                ? "1 producto"
+                                : `${totalProducts} productos`;
+
+                    }
+
+
+                    /* =============================================
+                       SUBTOTAL
+                    ============================================= */
+
+                    const cartSubtotal =
+                        SatoriCart.getCartSubtotal();
+
+
+                    if (subtotal) {
+
+                        subtotal.textContent =
+                            SatoriCart.formatPrice(
+                                cartSubtotal
+                            );
+
+                    }
+
+
+                    /* =============================================
+                       TOTAL
+                    ============================================= */
+
+                    if (total) {
+
+                        total.textContent =
+                            SatoriCart.formatPrice(
+                                cartSubtotal
+                            );
+
+                    }
+
+                }
+
+
+                /* =================================================
+                   PRIMERA CARGA
+                ================================================== */
+
+                renderCart();
+
+
+                /* =================================================
+                   ACTUALIZAR AUTOMÁTICAMENTE
+                ================================================== */
+
+                document.addEventListener(
+                    "satorii:cart-updated",
+                    renderCart
+                );
+
+            }
+
+        );
+
+    </script>
 
 
 </body>
