@@ -3,6 +3,10 @@
 
 <head>
 
+    <!-- =====================================================
+         CONFIGURACIÓN BÁSICA
+    ====================================================== -->
+
     <meta charset="UTF-8">
 
     <meta
@@ -12,1812 +16,46 @@
 
     <meta
         name="description"
-        content="SATORII — Anime, streetwear y cultura japonesa."
+        content="SatoriMode — Anime, streetwear y cultura japonesa."
     >
 
-    <title>SATORII | Anime Streetwear</title>
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <title>SatoriMode | Anime Streetwear</title>
+
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
-
-
-    <style id="satori-home-final-fixes">
-
-        /* =====================================================
-           ANCHO GLOBAL SATORII
-        ====================================================== */
-
-        :root {
-            --satori-content-width: 1800px;
-            --satori-side-space: 30px;
-        }
-
-
-        /* =====================================================
-           CONTENEDORES PRINCIPALES
-        ====================================================== */
-
-        .benefits,
-        .section,
-        .recommendations,
-        .satori-pack,
-        .footer-inner {
-
-            width: min(
-                var(--satori-content-width),
-                calc(100% - (var(--satori-side-space) * 2))
-            );
-
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-
-
-        .collections-grid,
-        .recommendations-grid {
-            width: 100%;
-        }
-
-
-        .satori-pack {
-            box-sizing: border-box;
-        }
-
-
-        /* =====================================================
-           TABLET
-        ====================================================== */
-
-        @media (max-width: 1100px) {
-
-            :root {
-                --satori-side-space: 24px;
-            }
-
-        }
-
-
-        /* =====================================================
-           MÓVIL
-        ====================================================== */
-
-        @media (max-width: 700px) {
-
-            :root {
-                --satori-side-space: 15px;
-            }
-
-
-            .benefits,
-            .section,
-            .recommendations,
-            .satori-pack,
-            .footer-inner {
-
-                width: calc(100% - 30px) !important;
-
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-
-        }
-
-
-        /* =====================================================
-           HEADER
-        ====================================================== */
-
-        .site-header {
-            position: fixed !important;
-            top: 34px !important;
-            left: 0 !important;
-            width: 100% !important;
-            z-index: 4000 !important;
-        }
-
-
-        main {
-            padding-top: 64px;
-        }
-
-
-        .brand-logo {
-            font-weight: 500 !important;
-            letter-spacing: -1.5px !important;
-        }
-
-
-        .main-nav > a,
-        .main-nav .nav-dropdown-btn {
-            font-weight: 500 !important;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ====================================================== */
-
-        .footer {
-
-            border: 0 !important;
-            border-top: 1px solid #333 !important;
-            border-radius: 0 !important;
-        }
-
-
-        .footer-inner {
-            border: 0 !important;
-        }
-
-
-        .instagram-link {
-
-            width: 40px;
-            height: 40px;
-
-            margin-top: 20px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid #444;
-            border-radius: 50%;
-
-            color: #fff;
-
-            transition: .2s ease;
-        }
-
-
-        .instagram-link svg {
-
-            width: 19px;
-            height: 19px;
-
-            fill: none;
-
-            stroke: currentColor;
-            stroke-width: 1.7;
-
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-
-        .instagram-link .instagram-dot {
-
-            fill: currentColor;
-            stroke: none;
-        }
-
-
-        .instagram-link:hover {
-
-            color: var(--red);
-            border-color: var(--red);
-        }
-
-
-        .newsletter {
-
-            display: flex !important;
-
-            width: 100% !important;
-            height: 48px !important;
-
-            border: 1px solid #444 !important;
-            border-radius: 6px !important;
-
-            overflow: hidden !important;
-
-            background: #fff !important;
-        }
-
-
-        .newsletter input {
-
-            flex: 1;
-            min-width: 0;
-
-            border: 0 !important;
-            outline: 0 !important;
-
-            padding: 0 15px;
-
-            background: #fff;
-            color: #111;
-        }
-
-
-        .newsletter button {
-
-            width: 55px;
-
-            border: 0 !important;
-
-            background: var(--red);
-
-            color: #fff;
-
-            cursor: pointer;
-        }
-
-
-        /* =====================================================
-           SATORII PACK
-        ====================================================== */
-
-        .satori-pack {
-
-            position: relative;
-
-            overflow: hidden;
-
-            min-height: 250px;
-
-            margin-top: 70px;
-
-            padding: 50px 55px;
-
-            background:
-                radial-gradient(
-                    circle at 82% 30%,
-                    #430000 0%,
-                    #1d0000 38%,
-                    #080000 78%
-                ) !important;
-
-            border: 0 !important;
-
-            border-radius: 10px !important;
-
-            color: #fff;
-        }
-
-
-        .satori-pack::after {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.05),
-                    rgba(255,20,20,.08)
-                );
-
-            pointer-events: none;
-        }
-
-
-        .satori-pack-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 700px;
-        }
-
-
-        .satori-pack-label {
-
-            margin-bottom: 8px;
-
-            color: var(--red);
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 4px;
-        }
-
-
-        .satori-pack h2 {
-
-            margin: 0 0 12px;
-
-            font-size: clamp(32px, 4vw, 52px);
-
-            line-height: 1;
-
-            font-weight: 800;
-        }
-
-
-        .satori-pack h2 span {
-            color: var(--red);
-        }
-
-
-        .satori-pack p {
-
-            max-width: 650px;
-
-            margin: 0 0 25px;
-
-            color: #ccc;
-
-            font-size: 14px;
-        }
-
-
-        .satori-pack-button {
-
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-height: 44px;
-
-            padding: 0 24px;
-
-            border-radius: 5px;
-
-            background: var(--red);
-
-            color: #fff;
-
-            font-size: 12px;
-
-            font-weight: 800;
-        }
-
-
-        /* =====================================================
-           RECOMENDACIONES
-        ====================================================== */
-
-        .recommendation-card {
-            text-decoration: none;
-        }
-
-
-        .recommendation-placeholder {
-
-            width: 100%;
-            height: 100%;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            background: #111;
-
-            color: #fff;
-
-            font-size: 24px;
-
-            font-weight: 700;
-
-            font-style: italic;
-        }
-
-
-        /* =====================================================
-           MÓVIL
-        ====================================================== */
-
-        @media (max-width: 700px) {
-
-            .site-header {
-
-                top: 30px !important;
-
-                height: 64px !important;
-            }
-
-
-            main {
-                padding-top: 64px;
-            }
-
-
-            .header-inner {
-
-                position: relative !important;
-
-                width: calc(100% - 20px) !important;
-
-                display: grid !important;
-
-                grid-template-columns:
-                    1fr auto 1fr !important;
-
-                align-items: center !important;
-            }
-
-
-            .mobile-menu-button {
-
-                position: absolute !important;
-
-                left: 0 !important;
-                top: 50% !important;
-
-                transform:
-                    translateY(-50%) !important;
-
-                width: 42px !important;
-                height: 42px !important;
-
-                margin: 0 !important;
-                padding: 0 !important;
-
-                display: flex !important;
-
-                flex-direction: column !important;
-
-                align-items: center !important;
-                justify-content: center !important;
-
-                gap: 5px !important;
-
-                z-index: 10 !important;
-            }
-
-
-            .mobile-menu-button span {
-
-                width: 23px !important;
-                height: 2px !important;
-
-                display: block !important;
-
-                background: #111 !important;
-            }
-
-
-            .brand-logo {
-
-                grid-column: 2 !important;
-
-                justify-self: center !important;
-
-                width: auto !important;
-
-                font-size: 27px !important;
-
-                font-weight: 500 !important;
-
-                letter-spacing: -1.5px !important;
-            }
-
-
-            .header-icons {
-
-                grid-column: 3 !important;
-
-                justify-self: end !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                gap: 5px !important;
-            }
-
-
-            .header-icon {
-
-                width: 28px !important;
-                height: 28px !important;
-            }
-
-
-            /* =================================================
-               MENÚ LATERAL
-            ================================================= */
-
-            .mobile-menu {
-                z-index: 5000 !important;
-            }
-
-
-            .mobile-menu-overlay {
-                z-index: 4999 !important;
-            }
-
-
-            .mobile-nav-button {
-
-                transform: none !important;
-
-                writing-mode: horizontal-tb !important;
-
-                text-orientation: mixed !important;
-            }
-
-
-            .mobile-nav-button > span:first-child {
-
-                transform: none !important;
-
-                writing-mode: horizontal-tb !important;
-
-                text-orientation: mixed !important;
-
-                white-space: nowrap !important;
-            }
-
-
-            .mobile-nav-button > .arrow {
-
-                transform: none !important;
-
-                writing-mode: horizontal-tb !important;
-            }
-
-
-            .mobile-nav-button.active > .arrow,
-            .mobile-nav-button[aria-expanded="true"] > .arrow {
-
-                transform: rotate(180deg) !important;
-            }
-
-
-            .mobile-submenu {
-
-                transform: none !important;
-
-                writing-mode: horizontal-tb !important;
-            }
-
-
-            /* =================================================
-               PACK
-            ================================================= */
-
-            .satori-pack {
-
-                width: calc(100% - 28px) !important;
-
-                min-height: 240px;
-
-                margin-top: 50px;
-
-                padding: 35px 25px;
-
-                border-radius: 8px !important;
-            }
-
-
-            .satori-pack h2 {
-                font-size: 34px;
-            }
-
-
-            .satori-pack p {
-                font-size: 13px;
-            }
-
-
-            /* =================================================
-               FOOTER
-            ================================================= */
-
-            .footer {
-                border-top: 1px solid #333 !important;
-            }
-
-
-            .newsletter {
-                height: 46px !important;
-            }
-
-
-            .recommendations-grid {
-
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr)) !important;
-
-                gap: 10px !important;
-            }
-
-
-            .recommendation-info {
-                padding: 11px !important;
-            }
-
-
-            .recommendation-name {
-                font-size: 13px !important;
-            }
-
-
-            .recommendation-price {
-                font-size: 12px !important;
-            }
-
-        }
-
-
-        /* =====================================================
-           BANNER — SIN BORDES
-        ====================================================== */
-
-        .hero-slider {
-
-            border: none !important;
-
-            border-radius: 0 !important;
-
-            box-shadow: none !important;
-        }
-
-
-        .hero-slide {
-
-            border: none !important;
-        }
-
-
-        /* =====================================================
-           BANNER — COMPORTAMIENTO
-           QUEDA DETRÁS DEL CONTENIDO AL HACER SCROLL
-        ====================================================== */
-
-        .hero-slider {
-
-            position: sticky;
-
-            top: 0;
-
-            width: 100%;
-
-            z-index: 0;
-
-            transform: none !important;
-
-            opacity: 1 !important;
-
-            background: #eee;
-
-            overflow: hidden;
-        }
-
-
-        /* Contenido sobre el banner */
-
-        .benefits,
-        .section,
-        .recommendations,
-        .satori-pack {
-
-            position: relative;
-
-            z-index: 2;
-
-            background: #fff;
-        }
-
-
-        /* Header sobre todo */
-
-        #satori-header {
-
-            position: relative;
-
-            z-index: 9999;
-        }
-
-
-        /* =====================================================
-           BANNER — DESKTOP
-        ====================================================== */
-
-        @media (min-width: 701px) {
-
-            .hero-slide {
-
-                height: min(68vh, 720px);
-
-                min-height: 500px;
-            }
-
-        }
-
-
-        /* =====================================================
-           BANNER — MÓVIL
-        ====================================================== */
-
-        @media (max-width: 700px) {
-
-            .hero-slider {
-
-                position: sticky;
-
-                top: 0;
-
-                z-index: 0;
-            }
-
-
-            .hero-slide {
-
-                height: 58vh;
-
-                min-height: 360px;
-
-                max-height: 580px;
-            }
-
-        }
-
-
-        /* =====================================================
-           HEADER — AJUSTE FINAL
-        ====================================================== */
-
-        #satori-header {
-
-            position: relative;
-
-            z-index: 9999;
-
-            width: 100%;
-        }
-
-
-        #satori-header .main-header {
-
-            position: sticky !important;
-
-            top: 0 !important;
-
-            z-index: 10000 !important;
-
-            width: 100% !important;
-
-            background: #fff !important;
-
-            border-bottom:
-                1px solid #e5e5e5 !important;
-        }
-
-
-        #satori-header .top-bar {
-
-            position: relative !important;
-
-            z-index: 10001 !important;
-        }
-
-
-        /* =====================================================
-           DESKTOP HEADER
-        ====================================================== */
-
-        @media (min-width: 901px) {
-
-            #satori-header .main-header {
-
-                min-height: 68px !important;
-            }
-
-
-            #satori-header .header-inner {
-
-                position: relative !important;
-
-                width:
-                    min(
-                        1400px,
-                        calc(100% - 40px)
-                    ) !important;
-
-                height: 68px !important;
-
-                margin: 0 auto !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: space-between !important;
-            }
-
-
-            #satori-header .satori-logo {
-
-                font-weight: 500 !important;
-            }
-
-
-            #satori-header .main-nav a,
-            #satori-header .main-nav button {
-
-                font-weight: 500 !important;
-            }
-
-        }
-
-
-        /* =====================================================
-           HEADER MÓVIL
-        ====================================================== */
-
-        @media (max-width: 900px) {
-
-            #satori-header .main-header {
-
-                position: sticky !important;
-
-                top: 0 !important;
-
-                height: 64px !important;
-
-                min-height: 64px !important;
-
-                background: #fff !important;
-            }
-
-
-            #satori-header .header-inner {
-
-                position: relative !important;
-
-                width: 100% !important;
-
-                height: 64px !important;
-
-                margin: 0 !important;
-
-                padding: 0 18px !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-            }
-
-
-            /* =================================================
-               HAMBURGUESA
-            ================================================= */
-
-            #satori-header .mobile-menu-button {
-
-                position: absolute !important;
-
-                left: 18px !important;
-
-                top: 50% !important;
-
-                transform:
-                    translateY(-50%) !important;
-
-                width: 34px !important;
-
-                height: 34px !important;
-
-                margin: 0 !important;
-
-                padding: 5px !important;
-
-                display: flex !important;
-
-                flex-direction: column !important;
-
-                align-items: flex-start !important;
-
-                justify-content: center !important;
-
-                gap: 5px !important;
-
-                background: transparent !important;
-
-                border: none !important;
-
-                outline: none !important;
-
-                z-index: 10005 !important;
-
-                font-size: 0 !important;
-
-                line-height: 0 !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-button::before,
-            #satori-header
-            .mobile-menu-button::after {
-
-                content: none !important;
-
-                display: none !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-button span,
-            #satori-header
-            .mobile-menu-button .line {
-
-                display: block !important;
-
-                height: 1.5px !important;
-
-                margin: 0 !important;
-
-                padding: 0 !important;
-
-                background: #111 !important;
-
-                border: none !important;
-
-                border-radius: 2px !important;
-
-                transform: none !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-button span:nth-child(1),
-            #satori-header
-            .mobile-menu-button .line:nth-child(1) {
-
-                width: 24px !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-button span:nth-child(2),
-            #satori-header
-            .mobile-menu-button .line:nth-child(2) {
-
-                width: 17px !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-button span:nth-child(3),
-            #satori-header
-            .mobile-menu-button .line:nth-child(3) {
-
-                width: 24px !important;
-            }
-
-
-            /* =================================================
-               LOGO CENTRADO
-            ================================================= */
-
-            #satori-header .brand-logo,
-            #satori-header .satori-logo {
-
-                position: absolute !important;
-
-                left: 50% !important;
-
-                top: 50% !important;
-
-                transform:
-                    translate(-50%, -50%) !important;
-
-                margin: 0 !important;
-
-                padding: 0 !important;
-
-                white-space: nowrap !important;
-
-                z-index: 10004 !important;
-            }
-
-
-            /* =================================================
-               ICONOS DERECHA
-            ================================================= */
-
-            #satori-header .header-actions,
-            #satori-header .header-icons {
-
-                position: absolute !important;
-
-                right: 15px !important;
-
-                left: auto !important;
-
-                top: 50% !important;
-
-                transform:
-                    translateY(-50%) !important;
-
-                width: auto !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: flex-end !important;
-
-                gap: 8px !important;
-
-                z-index: 10005 !important;
-            }
-
-
-            #satori-header .header-icon {
-
-                width: 34px !important;
-
-                height: 34px !important;
-
-                padding: 0 !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-
-                border: none !important;
-
-                background: transparent !important;
-
-                color: #111 !important;
-            }
-
-
-            #satori-header .header-icon svg {
-
-                width: 18px !important;
-
-                height: 18px !important;
-
-                stroke-width: 1.4 !important;
-            }
-
-
-            #satori-header
-            .header-icon[href="cuenta.html"] {
-
-                display: none !important;
-            }
-
-
-            /* =================================================
-               MENÚ LATERAL
-            ================================================= */
-
-            #satori-header .mobile-menu {
-
-                position: fixed !important;
-
-                top: 0 !important;
-
-                left: 0 !important;
-
-                width:
-                    min(370px, 82vw) !important;
-
-                height: 100dvh !important;
-
-                background: #fff !important;
-
-                z-index: 11000 !important;
-
-                overflow-y: auto !important;
-
-                box-shadow:
-                    8px 0 30px
-                    rgba(0,0,0,.12) !important;
-
-                border-right:
-                    1px solid #ddd !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-overlay {
-
-                position: fixed !important;
-
-                inset: 0 !important;
-
-                background:
-                    rgba(0,0,0,.50) !important;
-
-                z-index: 10999 !important;
-            }
-
-
-            /* =================================================
-               HEADER DEL MENÚ
-            ================================================= */
-
-            #satori-header
-            .mobile-menu-header {
-
-                height: 72px !important;
-
-                padding: 0 24px !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content:
-                    space-between !important;
-
-                border-bottom:
-                    1px solid #ddd !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-header
-            .satori-logo {
-
-                position: static !important;
-
-                transform:
-                    skewX(-4deg) !important;
-
-                font-size: 29px !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-header button {
-
-                width: 34px !important;
-
-                height: 34px !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content: center !important;
-
-                padding: 0 !important;
-
-                background: transparent !important;
-
-                border: none !important;
-
-                font-size: 26px !important;
-
-                color: #111 !important;
-            }
-
-
-            /* =================================================
-               ITEMS MENÚ
-            ================================================= */
-
-            #satori-header
-            .mobile-menu-item {
-
-                position: relative !important;
-
-                width: 100% !important;
-
-                border-bottom:
-                    1px solid #ddd !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-item > button,
-            #satori-header
-            .mobile-menu-item > a {
-
-                width: 100% !important;
-
-                min-height: 60px !important;
-
-                padding: 0 24px !important;
-
-                display: flex !important;
-
-                align-items: center !important;
-
-                justify-content:
-                    space-between !important;
-
-                background: transparent !important;
-
-                border: none !important;
-
-                color: #111 !important;
-
-                font-size: 16px !important;
-
-                font-weight: 500 !important;
-
-                text-align: left !important;
-            }
-
-
-            /* =================================================
-               SUBMENÚ
-            ================================================= */
-
-            #satori-header
-            .mobile-submenu {
-
-                display: none;
-
-                padding:
-                    0 24px 10px 48px !important;
-
-                background: #fafafa !important;
-            }
-
-
-            #satori-header
-            .mobile-submenu.open {
-
-                display: block !important;
-            }
-
-
-            #satori-header
-            .mobile-submenu a {
-
-                display: block !important;
-
-                padding: 14px 0 !important;
-
-                color: #555 !important;
-
-                font-size: 15px !important;
-
-                border-bottom:
-                    1px solid #eee !important;
-            }
-
-
-            /* =================================================
-               FLECHA
-            ================================================= */
-
-            #satori-header
-            .mobile-menu-item.has-submenu
-            > button::after {
-
-                content: "↓" !important;
-
-                font-size: 16px !important;
-
-                transition:
-                    transform .2s ease !important;
-            }
-
-
-            #satori-header
-            .mobile-menu-item.has-submenu.open
-            > button::after {
-
-                transform:
-                    rotate(180deg) !important;
-            }
-
-
-            /* =================================================
-               SIGUENOS
-            ================================================= */
-
-            #satori-header
-            .mobile-social-title {
-
-                margin:
-                    38px 24px 16px !important;
-
-                color: #f5222d !important;
-
-                font-size: 12px !important;
-
-                font-weight: 700 !important;
-
-                letter-spacing: 3px !important;
-            }
-
-
-            #satori-header
-            .mobile-social-link {
-
-                margin: 0 24px !important;
-
-                color: #111 !important;
-
-                font-size: 14px !important;
-
-                font-weight: 600 !important;
-            }
-
-        }
-
-
-        /* =====================================================
-           LOGO SATORII
-        ====================================================== */
-
-        .brand-logo {
-
-            font-family: inherit !important;
-
-            font-weight: 800 !important;
-
-            font-style: italic !important;
-
-            letter-spacing: -2px !important;
-
-            line-height: 1 !important;
-
-            text-transform: uppercase !important;
-
-            transition:
-                color .25s ease,
-                transform .25s ease !important;
-        }
-
-
-        .brand-logo:hover {
-
-            color: var(--red) !important;
-
-            transform: scale(1.08) !important;
-        }
-
-
-        @media (min-width: 701px) {
-
-            .brand-logo {
-                font-size: 28px !important;
-            }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-            .brand-logo {
-
-                font-size: 30px !important;
-
-                font-weight: 800 !important;
-
-                font-style: italic !important;
-
-                letter-spacing: -2px !important;
-            }
-
-        }
-
-
-        /* =====================================================
-           FOOTER GLOBAL SATORII
-        ====================================================== */
-
-        .satori-global-footer {
-
-            width: 100%;
-
-            margin-top: 80px;
-
-            background: #0b0b0b;
-
-            color: #fff;
-
-            border-top:
-                2px solid #ed1111;
-
-            border-radius:
-                18px 18px 0 0;
-
-            overflow: hidden;
-        }
-
-
-        .satori-footer-main {
-
-            width:
-                min(1350px, calc(100% - 40px));
-
-            margin: 0 auto;
-
-            padding: 58px 0 48px;
-
-            display: grid;
-
-            grid-template-columns:
-                1.25fr
-                .8fr
-                .8fr
-                1.5fr;
-
-            gap: 50px;
-        }
-
-
-        .satori-footer-brand h3 {
-
-            margin: 0 0 10px;
-
-            font-size: 24px;
-
-            font-weight: 900;
-
-            font-style: italic;
-
-            letter-spacing: -1px;
-        }
-
-
-        .satori-footer-kanji {
-
-            display: block;
-
-            margin-bottom: 15px;
-
-            color: #ed1111;
-
-            font-size: 13px;
-
-            font-weight: 800;
-        }
-
-
-        .satori-footer-brand p {
-
-            max-width: 280px;
-
-            margin: 0;
-
-            color: #a5a5a5;
-
-            font-size: 11px;
-
-            line-height: 1.7;
-        }
-
-
-        .satori-footer-instagram {
-
-            width: 38px;
-
-            height: 38px;
-
-            margin-top: 18px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            color: #fff;
-
-            border: 1px solid #444;
-
-            border-radius: 50%;
-        }
-
-
-        .satori-footer-column h4 {
-
-            margin: 0 0 18px;
-
-            font-size: 10px;
-
-            font-weight: 900;
-
-            letter-spacing: 2px;
-        }
-
-
-        .satori-footer-column a {
-
-            display: block;
-
-            width: fit-content;
-
-            margin-bottom: 12px;
-
-            color: #999;
-
-            font-size: 11px;
-        }
-
-
-        .satori-footer-community-label {
-
-            display: block;
-
-            margin-bottom: 8px;
-
-            color: #ed1111;
-
-            font-size: 9px;
-
-            font-weight: 900;
-
-            letter-spacing: 3px;
-        }
-
-
-        .satori-footer-community h3 {
-
-            margin: 0 0 12px;
-
-            font-size:
-                clamp(28px, 3vw, 40px);
-
-            line-height: 1;
-
-            letter-spacing: -1.5px;
-
-            font-weight: 900;
-        }
-
-
-        .satori-footer-community h3 span {
-            color: #ed1111;
-        }
-
-
-        .satori-footer-community p {
-
-            max-width: 440px;
-
-            margin: 0;
-
-            color: #aaa;
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-
-        .satori-footer-newsletter {
-
-            display: flex;
-
-            width: 100%;
-
-            max-width: 500px;
-
-            height: 44px;
-
-            margin-top: 18px;
-
-            border: 1px solid #444;
-
-            border-radius: 5px;
-
-            overflow: hidden;
-
-            background: #fff;
-        }
-
-
-        .satori-footer-newsletter input {
-
-            flex: 1;
-
-            min-width: 0;
-
-            padding: 0 14px;
-
-            border: 0;
-
-            outline: none;
-
-            background: #fff;
-
-            color: #111;
-
-            font-family: inherit;
-
-            font-size: 11px;
-        }
-
-
-        .satori-footer-newsletter button {
-
-            width: 52px;
-
-            border: 0;
-
-            background: #ed1111;
-
-            color: #fff;
-
-            cursor: pointer;
-        }
-
-
-        .satori-footer-bottom {
-
-            width:
-                min(1350px, calc(100% - 40px));
-
-            margin: 0 auto;
-
-            padding: 18px 0;
-
-            border-top:
-                1px solid #292929;
-
-            display: flex;
-
-            justify-content:
-                space-between;
-
-            align-items: center;
-
-            gap: 20px;
-
-            color: #666;
-
-            font-size: 9px;
-        }
-
-
-        .satori-footer-bottom div {
-
-            display: flex;
-
-            gap: 22px;
-        }
-
-
-        @media (max-width: 1000px) {
-
-            .satori-footer-main {
-
-                grid-template-columns:
-                    1fr 1fr;
-
-                gap: 40px;
-            }
-
-
-            .satori-footer-community {
-
-                grid-column: 1 / -1;
-            }
-
-        }
-
-
-        @media (max-width: 650px) {
-
-            .satori-global-footer {
-
-                margin-top: 55px;
-            }
-
-
-            .satori-footer-main {
-
-                width:
-                    calc(100% - 40px);
-
-                padding:
-                    42px 0 35px;
-
-                grid-template-columns:
-                    1fr 1fr;
-
-                gap:
-                    35px 25px;
-            }
-
-
-            .satori-footer-brand,
-            .satori-footer-community {
-
-                grid-column:
-                    1 / -1;
-            }
-
-
-            .satori-footer-community h3 {
-
-                font-size: 30px;
-            }
-
-
-            .satori-footer-newsletter {
-
-                max-width: 100%;
-            }
-
-
-            .satori-footer-bottom {
-
-                width:
-                    calc(100% - 40px);
-
-                padding: 17px 0;
-
-                flex-direction: column;
-
-                align-items: flex-start;
-            }
-
-        }
-
-
-        @media (max-width: 420px) {
-
-            .satori-footer-main {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .satori-footer-brand,
-            .satori-footer-community {
-
-                grid-column: auto;
-            }
-
-        }
-
-
-        /* =====================================================
-           BANNER — PREPARADO PARA DESKTOP + MÓVIL
-        ====================================================== */
-
-        .hero-slide picture {
-
-            display: block;
-
-            width: 100%;
-
-            height: 100%;
-        }
-
-
-        .hero-slide picture img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            object-position: center;
-
-            user-select: none;
-
-            pointer-events: none;
-        }
-
-
-        /* =====================================================
-           MÓVIL — BANNER
-        ====================================================== */
-
-        @media (max-width: 700px) {
-
-            .hero-slide picture img {
-
-                object-position: center center;
-            }
-
-        }
-
-    </style>
 
 </head>
 
@@ -1827,23 +65,30 @@
 
     <!-- =====================================================
          HEADER GLOBAL
+         
+         Se carga automáticamente desde:
+         js/header.js
     ====================================================== -->
 
     <div id="satori-header"></div>
 
 
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
     <main>
 
 
         <!-- =================================================
-             BANNER PRINCIPAL
-             DESKTOP + MÓVIL
+             HERO / BANNER PRINCIPAL
         ================================================== -->
 
         <section
             class="hero-slider"
             id="hero-slider"
-            aria-label="Promociones SATORII"
+            aria-label="Promociones SatoriMode"
         >
 
             <div
@@ -1852,79 +97,55 @@
             >
 
 
-                <!-- =========================================
+                <!-- =========================
                      BANNER 01
-                ========================================== -->
+                ========================== -->
 
                 <article class="hero-slide">
 
-                    <picture>
-
-                        <source
-                            media="(max-width: 700px)"
-                            srcset="img/banner-01-mobile.jpg"
-                        >
-
-                        <img
-                            src="img/banner-01.jpg"
-                            alt="Bienvenido a SATORII — Anime, streetwear y cultura japonesa"
-                            draggable="false"
-                        >
-
-                    </picture>
+                    <img
+                        src="img/banner-01.jpg"
+                        alt="Nueva colección SatoriMode"
+                        draggable="false"
+                    >
 
                 </article>
 
 
-                <!-- =========================================
+
+                <!-- =========================
                      BANNER 02
-                ========================================== -->
+                ========================== -->
 
                 <article class="hero-slide">
 
-                    <picture>
-
-                        <source
-                            media="(max-width: 700px)"
-                            srcset="img/banner-02-mobile.jpg"
-                        >
-
-                        <img
-                            src="img/banner-02.jpg"
-                            alt="SATORII — Anime Streetwear"
-                            draggable="false"
-                        >
-
-                    </picture>
+                    <img
+                        src="img/banner-02.jpg"
+                        alt="SatoriMode Anime Streetwear"
+                        draggable="false"
+                    >
 
                 </article>
 
 
-                <!-- =========================================
+
+                <!-- =========================
                      BANNER 03
-                ========================================== -->
+                ========================== -->
 
                 <article class="hero-slide">
 
-                    <picture>
-
-                        <source
-                            media="(max-width: 700px)"
-                            srcset="img/banner-03-mobile.jpg"
-                        >
-
-                        <img
-                            src="img/banner-03.jpg"
-                            alt="SATORII — Cultura japonesa y streetwear"
-                            draggable="false"
-                        >
-
-                    </picture>
+                    <img
+                        src="img/banner-03.jpg"
+                        alt="Nueva colección SatoriMode"
+                        draggable="false"
+                    >
 
                 </article>
 
 
             </div>
+
 
 
             <!-- =================================================
@@ -1934,29 +155,33 @@
             <div
                 class="hero-dots"
                 id="hero-dots"
+                aria-label="Seleccionar banner"
             >
 
                 <button
+                    type="button"
                     class="hero-dot active"
                     data-slide="0"
-                    aria-label="Banner 1"
-                    type="button"
+                    aria-label="Mostrar banner 1"
+                    aria-current="true"
                 ></button>
 
 
                 <button
+                    type="button"
                     class="hero-dot"
                     data-slide="1"
-                    aria-label="Banner 2"
-                    type="button"
+                    aria-label="Mostrar banner 2"
+                    aria-current="false"
                 ></button>
 
 
                 <button
+                    type="button"
                     class="hero-dot"
                     data-slide="2"
-                    aria-label="Banner 3"
-                    type="button"
+                    aria-label="Mostrar banner 3"
+                    aria-current="false"
                 ></button>
 
             </div>
@@ -1965,16 +190,27 @@
         </section>
 
 
+
         <!-- =================================================
              BENEFICIOS
         ================================================== -->
 
-        <section class="benefits">
+        <section
+            class="benefits"
+            aria-label="Beneficios de comprar en SatoriMode"
+        >
 
+
+            <!-- =========================
+                 ENVÍOS
+            ========================== -->
 
             <div class="benefit">
 
-                <span class="benefit-icon">
+                <span
+                    class="benefit-icon"
+                    aria-hidden="true"
+                >
                     🚚
                 </span>
 
@@ -1993,9 +229,17 @@
             </div>
 
 
+
+            <!-- =========================
+                 CAMBIOS
+            ========================== -->
+
             <div class="benefit">
 
-                <span class="benefit-icon">
+                <span
+                    class="benefit-icon"
+                    aria-hidden="true"
+                >
                     ↻
                 </span>
 
@@ -2014,9 +258,17 @@
             </div>
 
 
+
+            <!-- =========================
+                 PAGOS
+            ========================== -->
+
             <div class="benefit">
 
-                <span class="benefit-icon">
+                <span
+                    class="benefit-icon"
+                    aria-hidden="true"
+                >
                     ▣
                 </span>
 
@@ -2035,9 +287,17 @@
             </div>
 
 
+
+            <!-- =========================
+                 ATENCIÓN
+            ========================== -->
+
             <div class="benefit">
 
-                <span class="benefit-icon">
+                <span
+                    class="benefit-icon"
+                    aria-hidden="true"
+                >
                     ♧
                 </span>
 
@@ -2059,19 +319,22 @@
         </section>
 
 
+
         <!-- =================================================
              COLECCIONES
         ================================================== -->
 
-        <section class="section">
+        <section
+            class="section"
+            aria-labelledby="collections-title"
+        >
 
 
             <div class="section-header">
 
-                <h2>
+                <h2 id="collections-title">
                     NUESTRAS COLECCIONES
                 </h2>
-
 
                 <a href="productos.html">
                     Ver todas
@@ -2080,12 +343,18 @@
             </div>
 
 
+
             <div class="collections-grid">
 
+
+                <!-- =========================
+                     ANIME
+                ========================== -->
 
                 <a
                     href="anime.html"
                     class="collection-card"
+                    aria-label="Ver colección Anime"
                 >
 
                     <div>
@@ -2103,9 +372,15 @@
                 </a>
 
 
+
+                <!-- =========================
+                     STREETWEAR
+                ========================== -->
+
                 <a
                     href="streetwear.html"
                     class="collection-card"
+                    aria-label="Ver colección Streetwear"
                 >
 
                     <div>
@@ -2123,9 +398,15 @@
                 </a>
 
 
+
+                <!-- =========================
+                     ACCESORIOS
+                ========================== -->
+
                 <a
                     href="accesorios.html"
                     class="collection-card"
+                    aria-label="Ver colección Accesorios"
                 >
 
                     <div>
@@ -2143,9 +424,15 @@
                 </a>
 
 
+
+                <!-- =========================
+                     TODO
+                ========================== -->
+
                 <a
                     href="productos.html"
                     class="collection-card"
+                    aria-label="Ver todos los productos"
                 >
 
                     <div>
@@ -2169,22 +456,26 @@
         </section>
 
 
+
         <!-- =================================================
              RECOMENDACIONES
+             
+             Los productos se generan automáticamente
+             desde js/products.js
         ================================================== -->
 
         <section
             class="recommendations"
             id="recommendations"
+            aria-labelledby="recommendations-title"
         >
 
 
             <div class="section-header">
 
-                <h2>
+                <h2 id="recommendations-title">
                     RECOMENDACIONES PARA TI
                 </h2>
-
 
                 <a href="productos.html">
                     Ver todos
@@ -2193,14 +484,16 @@
             </div>
 
 
+
             <div
                 class="recommendations-grid"
                 id="recommendations-grid"
+                aria-live="polite"
             >
 
                 <!--
-                    Las recomendaciones se generan
-                    automáticamente desde PRODUCTS.
+                    Los productos se insertan automáticamente
+                    mediante js/products.js
                 -->
 
             </div>
@@ -2209,12 +502,15 @@
         </section>
 
 
+
         <!-- =================================================
              SATORII PACK
         ================================================== -->
 
-        <section class="satori-pack">
-
+        <section
+            class="satori-pack"
+            aria-labelledby="satori-pack-title"
+        >
 
             <div class="satori-pack-content">
 
@@ -2224,7 +520,7 @@
                 </div>
 
 
-                <h2>
+                <h2 id="satori-pack-title">
                     SATORII <span>PACK.</span>
                 </h2>
 
@@ -2246,22 +542,26 @@
 
             </div>
 
-
         </section>
 
 
     </main>
 
 
+
     <!-- =====================================================
          FOOTER GLOBAL
+         
+         Se carga automáticamente desde:
+         js/footer.js
     ====================================================== -->
 
     <div id="satori-footer"></div>
 
 
+
     <!-- =====================================================
-         SCRIPTS
+         JAVASCRIPT GLOBAL
     ====================================================== -->
 
     <script src="js/products.js"></script>
@@ -2271,8 +571,9 @@
     <script src="js/footer.js"></script>
 
 
+
     <!-- =====================================================
-         SLIDER
+         SLIDER PRINCIPAL
     ====================================================== -->
 
     <script>
@@ -2281,39 +582,30 @@
             "DOMContentLoaded",
             () => {
 
-
                 const slider =
-                    document.getElementById(
-                        "hero-slider"
-                    );
-
+                    document.getElementById("hero-slider");
 
                 const track =
-                    document.getElementById(
-                        "hero-track"
-                    );
-
+                    document.getElementById("hero-track");
 
                 const slides =
-                    document.querySelectorAll(
-                        ".hero-slide"
-                    );
-
+                    document.querySelectorAll(".hero-slide");
 
                 const dots =
-                    document.querySelectorAll(
-                        ".hero-dot"
-                    );
+                    document.querySelectorAll(".hero-dot");
 
+
+                /*
+                 * Si alguno de los elementos principales
+                 * no existe, detenemos el script.
+                 */
 
                 if (
                     !slider ||
                     !track ||
                     slides.length === 0
                 ) {
-
                     return;
-
                 }
 
 
@@ -2328,12 +620,17 @@
                 let autoSlide = null;
 
 
+
                 /* =================================================
-                   IR A SLIDE
+                   CAMBIAR SLIDE
                 ================================================== */
 
                 function goToSlide(index) {
 
+                    /*
+                     * Si llegamos antes del primer slide,
+                     * vamos al último.
+                     */
 
                     if (index < 0) {
 
@@ -2343,9 +640,12 @@
                     }
 
 
-                    if (
-                        index >= slides.length
-                    ) {
+                    /*
+                     * Si superamos el último,
+                     * volvemos al primero.
+                     */
+
+                    if (index >= slides.length) {
 
                         index = 0;
 
@@ -2355,16 +655,36 @@
                     currentSlide = index;
 
 
+                    /*
+                     * Movemos el track.
+                     */
+
                     track.style.transform =
                         `translateX(-${index * 100}%)`;
 
 
+                    /*
+                     * Actualizamos los indicadores.
+                     */
+
                     dots.forEach(
                         (dot, i) => {
 
+                            const active =
+                                i === index;
+
+
                             dot.classList.toggle(
                                 "active",
-                                i === index
+                                active
+                            );
+
+
+                            dot.setAttribute(
+                                "aria-current",
+                                active
+                                    ? "true"
+                                    : "false"
                             );
 
                         }
@@ -2373,8 +693,9 @@
                 }
 
 
+
                 /* =================================================
-                   SIGUIENTE
+                   SIGUIENTE SLIDE
                 ================================================== */
 
                 function nextSlide() {
@@ -2386,8 +707,9 @@
                 }
 
 
+
                 /* =================================================
-                   AUTO SLIDE
+                   SLIDE AUTOMÁTICO
                 ================================================== */
 
                 function startAutoSlide() {
@@ -2406,11 +728,13 @@
                 }
 
 
+
                 function resetAutoSlide() {
 
                     startAutoSlide();
 
                 }
+
 
 
                 /* =================================================
@@ -2424,14 +748,17 @@
                             "click",
                             (event) => {
 
-
                                 event.stopPropagation();
 
 
-                                goToSlide(
+                                const index =
                                     Number(
                                         dot.dataset.slide
-                                    )
+                                    );
+
+
+                                goToSlide(
+                                    index
                                 );
 
 
@@ -2444,6 +771,7 @@
                 );
 
 
+
                 /* =================================================
                    MOUSE — INICIO
                 ================================================== */
@@ -2452,17 +780,13 @@
                     "mousedown",
                     (event) => {
 
-
                         isDragging = true;
-
 
                         startX =
                             event.clientX;
 
-
                         currentX =
                             event.clientX;
-
 
                         slider.classList.add(
                             "dragging"
@@ -2477,6 +801,7 @@
                 );
 
 
+
                 /* =================================================
                    MOUSE — MOVIMIENTO
                 ================================================== */
@@ -2485,11 +810,8 @@
                     "mousemove",
                     (event) => {
 
-
                         if (!isDragging) {
-
                             return;
-
                         }
 
 
@@ -2500,19 +822,17 @@
                 );
 
 
+
                 /* =================================================
-                   MOUSE — FINAL
+                   MOUSE — FIN
                 ================================================== */
 
                 window.addEventListener(
                     "mouseup",
                     () => {
 
-
                         if (!isDragging) {
-
                             return;
-
                         }
 
 
@@ -2528,10 +848,14 @@
                             currentX - startX;
 
 
+                        /*
+                         * Solo cambiamos de slide
+                         * si el desplazamiento fue suficiente.
+                         */
+
                         if (
                             Math.abs(distance) > 60
                         ) {
-
 
                             if (distance < 0) {
 
@@ -2554,6 +878,7 @@
                 );
 
 
+
                 /* =================================================
                    TOUCH — INICIO
                 ================================================== */
@@ -2562,11 +887,8 @@
                     "touchstart",
                     (event) => {
 
-
                         startX =
-                            event.touches[0]
-                                .clientX;
-
+                            event.touches[0].clientX;
 
                         currentX =
                             startX;
@@ -2583,6 +905,7 @@
                 );
 
 
+
                 /* =================================================
                    TOUCH — MOVIMIENTO
                 ================================================== */
@@ -2591,10 +914,8 @@
                     "touchmove",
                     (event) => {
 
-
                         currentX =
-                            event.touches[0]
-                                .clientX;
+                            event.touches[0].clientX;
 
                     },
                     {
@@ -2603,14 +924,14 @@
                 );
 
 
+
                 /* =================================================
-                   TOUCH — FINAL
+                   TOUCH — FIN
                 ================================================== */
 
                 slider.addEventListener(
                     "touchend",
                     () => {
-
 
                         const distance =
                             currentX - startX;
@@ -2619,7 +940,6 @@
                         if (
                             Math.abs(distance) > 60
                         ) {
-
 
                             if (distance < 0) {
 
@@ -2642,14 +962,14 @@
                 );
 
 
+
                 /* =================================================
-                   INICIO
+                   INICIO DEL SLIDER
                 ================================================== */
 
                 goToSlide(0);
 
                 startAutoSlide();
-
 
             }
         );
