@@ -1,11 +1,77 @@
+/* =========================================================
+   SATORII · HEADER GLOBAL
+   ---------------------------------------------------------
+   - Barra superior
+   - Instagram
+   - Header desktop
+   - Header móvil
+   - Dropdowns
+   - Buscador
+   - Menú móvil
+   - Carrito
+========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    const header = document.getElementById("satori-header");
+    /* =====================================================
+       RUTA BASE
+    ===================================================== */
 
-    if (!header) return;
+    const script = document.currentScript;
+
+    const baseUrl = script
+        ? new URL("../", script.src).href
+        : "/satorimode/";
 
 
-    header.innerHTML = `
+    function siteUrl(path = "") {
+
+        if (!path) {
+            return baseUrl;
+        }
+
+        if (/^https?:\/\//i.test(path)) {
+            return path;
+        }
+
+        return new URL(
+            path.replace(/^\/+/, ""),
+            baseUrl
+        ).href;
+
+    }
+
+
+    /* =====================================================
+       HEADER CONTAINER
+    ===================================================== */
+
+    let headerContainer =
+        document.getElementById("satori-header");
+
+
+    if (!headerContainer) {
+
+        headerContainer =
+            document.createElement("div");
+
+        headerContainer.id =
+            "satori-header";
+
+        document.body.insertBefore(
+            headerContainer,
+            document.body.firstChild
+        );
+
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    headerContainer.innerHTML = `
+
 
         <!-- =================================================
              BARRA SUPERIOR
@@ -15,6 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <div class="top-bar-inner">
 
+
+                <!-- INSTAGRAM -->
+
                 <a
                     href="https://www.instagram.com/satorimode/"
                     target="_blank"
@@ -23,7 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     aria-label="Instagram SatoriMode"
                 >
 
-                    <svg viewBox="0 0 24 24">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
 
                         <rect
                             x="3"
@@ -52,10 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 </a>
 
 
+                <!-- ENVÍOS -->
+
                 <span class="shipping-message">
                     🚚 ENVÍOS A TODO CHILE
                 </span>
 
+
+                <!-- MENSAJE DERECHO -->
 
                 <span class="top-message">
                     CULTURA JAPONESA · STREETWEAR · ANIME
@@ -76,49 +152,113 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="header-inner">
 
 
-                <!-- LOGO -->
+                <!-- =================================================
+                     MENÚ MÓVIL
+                ================================================== -->
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobile-menu-button"
+                    aria-label="Abrir menú"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+
+
+                <!-- =================================================
+                     LOGO
+                ================================================== -->
 
                 <a
-                    href="index.html"
+                    href="${siteUrl("index.html")}"
                     class="satori-logo"
+                    aria-label="SatoriMode - Inicio"
                 >
+
                     SATORII
+
                 </a>
 
 
 
-                <!-- NAVEGACIÓN DESKTOP -->
+                <!-- =================================================
+                     NAVEGACIÓN DESKTOP
+                ================================================== -->
 
-                <nav class="main-nav">
+                <nav
+                    class="main-nav"
+                    aria-label="Navegación principal"
+                >
 
-                    <a href="index.html">
+
+                    <!-- INICIO -->
+
+                    <a
+                        href="${siteUrl("index.html")}"
+                    >
                         INICIO
                     </a>
 
 
+
+                    <!-- =================================================
+                         COLECCIONES
+                    ================================================== -->
+
                     <div class="nav-dropdown">
 
-                        <a href="productos.html">
-                            COLECCIONES
-                            <span>⌄</span>
-                        </a>
+                        <button
+                            type="button"
+                            class="nav-dropdown-btn"
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                        >
 
-                        <div class="dropdown-menu">
+                            <span>
+                                COLECCIONES
+                            </span>
 
-                            <a href="anime.html">
-                                Anime
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            class="dropdown-menu"
+                            role="menu"
+                        >
+
+                            <a
+                                href="${siteUrl("anime.html")}"
+                                role="menuitem"
+                            >
+                                ANIME
                             </a>
 
-                            <a href="streetwear.html">
-                                Streetwear
+
+                            <a
+                                href="${siteUrl("streetwear.html")}"
+                                role="menuitem"
+                            >
+                                STREETWEAR
                             </a>
 
-                            <a href="accesorios.html">
-                                Accesorios
-                            </a>
 
-                            <a href="productos.html">
-                                Todo
+                            <a
+                                href="${siteUrl("accesorios.html")}"
+                                role="menuitem"
+                            >
+                                ACCESORIOS
                             </a>
 
                         </div>
@@ -126,138 +266,193 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
 
+
+                    <!-- =================================================
+                         PRODUCTOS
+                    ================================================== -->
+
                     <div class="nav-dropdown">
 
-                        <a href="productos.html">
-                            PRODUCTOS
-                            <span>⌄</span>
-                        </a>
+                        <button
+                            type="button"
+                            class="nav-dropdown-btn"
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                        >
 
-                        <div class="dropdown-menu">
+                            <span>
+                                PRODUCTOS
+                            </span>
 
-                            <a href="poleras.html">
-                                Poleras
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            class="dropdown-menu"
+                            role="menu"
+                        >
+
+
+                            <!-- SATORII PACK -->
+
+                            <a
+                                href="${siteUrl("satorii-pack.html")}"
+                                role="menuitem"
+                            >
+                                SATORII PACK
                             </a>
 
-                            <a href="polerones.html">
-                                Polerones
+
+                            <!-- MYSTERY BOX -->
+
+                            <a
+                                href="${siteUrl("mystery-box.html")}"
+                                role="menuitem"
+                            >
+                                MYSTERY BOX
                             </a>
 
-                            <a href="accesorios.html">
-                                Accesorios
+
+                            <!-- GIFT CARDS -->
+
+                            <a
+                                href="${siteUrl("gift-cards.html")}"
+                                role="menuitem"
+                            >
+                                GIFT CARDS
                             </a>
 
-                            <a href="productos.html">
-                                Todos
-                            </a>
 
                         </div>
 
                     </div>
 
 
+
+                    <!-- =================================================
+                         AYUDA
+                    ================================================== -->
+
                     <div class="nav-dropdown">
 
-                        <a href="ayuda.html">
-                            AYUDA
-                            <span>⌄</span>
-                        </a>
+                        <button
+                            type="button"
+                            class="nav-dropdown-btn"
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                        >
 
-                        <div class="dropdown-menu">
+                            <span>
+                                AYUDA
+                            </span>
 
-                            <a href="preguntas-frecuentes.html">
-                                Preguntas frecuentes
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            class="dropdown-menu"
+                            role="menu"
+                        >
+
+
+                            <a
+                                href="${siteUrl("preguntas-frecuentes.html")}"
+                                role="menuitem"
+                            >
+                                PREGUNTAS FRECUENTES
                             </a>
 
-                            <a href="envios.html">
-                                Envíos
+
+                            <a
+                                href="${siteUrl("envios.html")}"
+                                role="menuitem"
+                            >
+                                ENVÍOS
                             </a>
 
-                            <a href="cambios.html">
-                                Cambios y devoluciones
+
+                            <a
+                                href="${siteUrl("cambios.html")}"
+                                role="menuitem"
+                            >
+                                CAMBIOS Y DEVOLUCIONES
                             </a>
 
-                            <a href="guia-tallas.html">
-                                Guía de tallas
+
+                            <a
+                                href="${siteUrl("guia-tallas.html")}"
+                                role="menuitem"
+                            >
+                                GUÍA DE TALLAS
                             </a>
+
 
                         </div>
 
                     </div>
+
 
                 </nav>
 
 
 
                 <!-- =================================================
-                     ACCIONES
+                     ICONOS
                 ================================================== -->
 
-                <div class="header-actions">
-
-
-                    <!-- MENÚ MÓVIL -->
-
-                    <button
-                        class="mobile-menu-button"
-                        id="mobile-menu-button"
-                        type="button"
-                        aria-label="Abrir menú"
-                    >
-                        ☰
-                    </button>
+                <div class="header-icons">
 
 
                     <!-- BUSCADOR -->
 
-                    <div
-                        class="search-wrapper"
-                        id="search-wrapper"
+                    <button
+                        type="button"
+                        class="header-icon search-button"
+                        id="search-button"
+                        aria-label="Buscar productos"
                     >
 
-                        <button
-                            class="header-icon search-button"
-                            id="search-button"
-                            type="button"
-                            aria-label="Buscar"
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
                         >
 
-                            <svg viewBox="0 0 24 24">
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="6.5"
+                            ></circle>
 
-                                <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="6.5"
-                                ></circle>
+                            <path
+                                d="M16 16L21 21"
+                            ></path>
 
-                                <path
-                                    d="M16 16L21 21"
-                                ></path>
+                        </svg>
 
-                            </svg>
+                    </button>
 
-                        </button>
-
-
-                        <input
-                            type="search"
-                            id="search-input"
-                            class="search-input"
-                            placeholder="Buscar productos..."
-                        >
-
-                    </div>
 
 
                     <!-- CUENTA -->
 
                     <a
-                        href="cuenta.html"
+                        href="${siteUrl("cuenta.html")}"
                         class="header-icon"
-                        aria-label="Cuenta"
+                        aria-label="Mi cuenta"
                     >
 
-                        <svg viewBox="0 0 24 24">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
 
                             <circle
                                 cx="12"
@@ -274,15 +469,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
 
 
+
                     <!-- CARRITO -->
 
                     <a
-                        href="carrito.html"
+                        href="${siteUrl("carrito.html")}"
                         class="header-icon"
                         aria-label="Carrito"
                     >
 
-                        <svg viewBox="0 0 24 24">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
 
                             <path
                                 d="M4 5h2l2 11h9l3-8H7"
@@ -304,11 +503,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </a>
 
+
                 </div>
 
             </div>
 
         </header>
+
+
+
+        <!-- =================================================
+             OVERLAY MENÚ MÓVIL
+        ================================================== -->
+
+        <div
+            class="mobile-menu-overlay"
+            id="mobile-menu-overlay"
+        ></div>
 
 
 
@@ -319,142 +530,220 @@ document.addEventListener("DOMContentLoaded", () => {
         <aside
             class="mobile-menu"
             id="mobile-menu"
+            aria-hidden="true"
         >
+
+
+            <!-- HEADER DEL MENÚ -->
 
             <div class="mobile-menu-header">
 
+
                 <a
-                    href="index.html"
-                    class="satori-logo"
+                    href="${siteUrl("index.html")}"
+                    class="mobile-menu-logo"
                 >
+
                     SATORII
+
                 </a>
 
+
                 <button
-                    id="mobile-menu-close"
                     type="button"
+                    class="mobile-menu-close"
+                    id="mobile-menu-close"
                     aria-label="Cerrar menú"
                 >
+
                     ×
+
                 </button>
 
             </div>
 
 
-            <nav>
+
+            <!-- NAVEGACIÓN MÓVIL -->
+
+            <nav
+                class="mobile-nav"
+                aria-label="Navegación móvil"
+            >
 
 
-                <!-- INICIO -->
+                <!-- =================================================
+                     INICIO
+                ================================================== -->
 
                 <a
-                    class="mobile-menu-item"
-                    href="index.html"
+                    href="${siteUrl("index.html")}"
+                    class="mobile-menu-link"
                 >
-                    <span>INICIO</span>
+                    INICIO
                 </a>
 
 
-                <!-- COLECCIONES -->
+
+                <!-- =================================================
+                     COLECCIONES
+                ================================================== -->
 
                 <button
-                    class="mobile-menu-item"
                     type="button"
-                    data-submenu="mobile-collections"
+                    class="mobile-nav-button"
+                    data-mobile-submenu="mobile-collections"
+                    aria-expanded="false"
                 >
-                    <span>COLECCIONES</span>
-                    <span>→</span>
+
+                    <span>
+                        COLECCIONES
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
                 </button>
+
 
                 <div
                     class="mobile-submenu"
                     id="mobile-collections"
                 >
 
-                    <a href="anime.html">
-                        Anime
+                    <a
+                        href="${siteUrl("anime.html")}"
+                    >
+                        ANIME
                     </a>
 
-                    <a href="streetwear.html">
-                        Streetwear
+
+                    <a
+                        href="${siteUrl("streetwear.html")}"
+                    >
+                        STREETWEAR
                     </a>
 
-                    <a href="accesorios.html">
-                        Accesorios
-                    </a>
 
-                    <a href="productos.html">
-                        Todo
+                    <a
+                        href="${siteUrl("accesorios.html")}"
+                    >
+                        ACCESORIOS
                     </a>
 
                 </div>
 
 
-                <!-- PRODUCTOS -->
+
+                <!-- =================================================
+                     PRODUCTOS
+                ================================================== -->
 
                 <button
-                    class="mobile-menu-item"
                     type="button"
-                    data-submenu="mobile-products"
+                    class="mobile-nav-button"
+                    data-mobile-submenu="mobile-products"
+                    aria-expanded="false"
                 >
-                    <span>PRODUCTOS</span>
-                    <span>→</span>
+
+                    <span>
+                        PRODUCTOS
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
                 </button>
+
 
                 <div
                     class="mobile-submenu"
                     id="mobile-products"
                 >
 
-                    <a href="poleras.html">
-                        Poleras
+
+                    <a
+                        href="${siteUrl("satorii-pack.html")}"
+                    >
+                        SATORII PACK
                     </a>
 
-                    <a href="polerones.html">
-                        Polerones
+
+                    <a
+                        href="${siteUrl("mystery-box.html")}"
+                    >
+                        MYSTERY BOX
                     </a>
 
-                    <a href="accesorios.html">
-                        Accesorios
+
+                    <a
+                        href="${siteUrl("gift-cards.html")}"
+                    >
+                        GIFT CARDS
                     </a>
 
-                    <a href="productos.html">
-                        Todos
-                    </a>
 
                 </div>
 
 
-                <!-- AYUDA -->
+
+                <!-- =================================================
+                     AYUDA
+                ================================================== -->
 
                 <button
-                    class="mobile-menu-item"
                     type="button"
-                    data-submenu="mobile-help"
+                    class="mobile-nav-button"
+                    data-mobile-submenu="mobile-help"
+                    aria-expanded="false"
                 >
-                    <span>AYUDA</span>
-                    <span>→</span>
+
+                    <span>
+                        AYUDA
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
                 </button>
+
 
                 <div
                     class="mobile-submenu"
                     id="mobile-help"
                 >
 
-                    <a href="preguntas-frecuentes.html">
-                        Preguntas frecuentes
+
+                    <a
+                        href="${siteUrl("preguntas-frecuentes.html")}"
+                    >
+                        PREGUNTAS FRECUENTES
                     </a>
 
-                    <a href="envios.html">
-                        Envíos
+
+                    <a
+                        href="${siteUrl("envios.html")}"
+                    >
+                        ENVÍOS
                     </a>
 
-                    <a href="cambios.html">
-                        Cambios y devoluciones
+
+                    <a
+                        href="${siteUrl("cambios.html")}"
+                    >
+                        CAMBIOS Y DEVOLUCIONES
                     </a>
 
-                    <a href="guia-tallas.html">
-                        Guía de tallas
+
+                    <a
+                        href="${siteUrl("guia-tallas.html")}"
+                    >
+                        GUÍA DE TALLAS
                     </a>
+
 
                 </div>
 
@@ -462,11 +751,17 @@ document.addEventListener("DOMContentLoaded", () => {
             </nav>
 
 
-            <div class="mobile-instagram">
+
+            <!-- =================================================
+                 INSTAGRAM
+            ================================================== -->
+
+            <div class="mobile-social">
 
                 <span>
                     SÍGUENOS
                 </span>
+
 
                 <a
                     href="https://www.instagram.com/satorimode/"
@@ -478,41 +773,481 @@ document.addEventListener("DOMContentLoaded", () => {
 
             </div>
 
+
         </aside>
 
 
+
+        <!-- =================================================
+             BUSCADOR
+        ================================================== -->
+
         <div
-            class="mobile-overlay"
-            id="mobile-overlay"
-        ></div>
+            class="search-overlay"
+            id="search-overlay"
+            aria-hidden="true"
+        >
+
+            <div class="search-panel">
+
+
+                <div class="search-panel-header">
+
+                    <span>
+                        SATORII · BUSCAR
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="search-close"
+                        id="search-close"
+                        aria-label="Cerrar búsqueda"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="search-input-wrapper">
+
+                    <input
+                        type="search"
+                        id="product-search"
+                        placeholder="Buscar productos..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div
+                    id="search-results"
+                    class="search-results"
+                ></div>
+
+
+            </div>
+
+        </div>
 
     `;
 
 
+
+    /* =====================================================
+       DROPDOWNS DESKTOP
+    ===================================================== */
+
+    const dropdowns =
+        headerContainer.querySelectorAll(
+            ".nav-dropdown"
+        );
+
+
+    dropdowns.forEach((dropdown) => {
+
+        const button =
+            dropdown.querySelector(
+                ".nav-dropdown-btn"
+            );
+
+
+        if (!button) return;
+
+
+        button.addEventListener(
+            "click",
+            (event) => {
+
+                event.stopPropagation();
+
+
+                const isOpen =
+                    dropdown.classList.contains(
+                        "is-open"
+                    );
+
+
+                dropdowns.forEach((other) => {
+
+                    other.classList.remove(
+                        "is-open"
+                    );
+
+                    const otherButton =
+                        other.querySelector(
+                            ".nav-dropdown-btn"
+                        );
+
+                    if (otherButton) {
+
+                        otherButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                });
+
+
+                if (!isOpen) {
+
+                    dropdown.classList.add(
+                        "is-open"
+                    );
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       CERRAR DROPDOWNS AL HACER CLICK AFUERA
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        () => {
+
+            dropdowns.forEach((dropdown) => {
+
+                dropdown.classList.remove(
+                    "is-open"
+                );
+
+
+                const button =
+                    dropdown.querySelector(
+                        ".nav-dropdown-btn"
+                    );
+
+
+                if (button) {
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            });
+
+        }
+    );
+
+
+
+    /* =====================================================
+       MENÚ MÓVIL
+    ===================================================== */
+
+    const mobileMenuButton =
+        document.getElementById(
+            "mobile-menu-button"
+        );
+
+
+    const mobileMenu =
+        document.getElementById(
+            "mobile-menu"
+        );
+
+
+    const mobileMenuClose =
+        document.getElementById(
+            "mobile-menu-close"
+        );
+
+
+    const mobileMenuOverlay =
+        document.getElementById(
+            "mobile-menu-overlay"
+        );
+
+
+
+    function openMobileMenu() {
+
+        if (!mobileMenu) return;
+
+
+        mobileMenu.classList.add(
+            "active"
+        );
+
+
+        if (mobileMenuOverlay) {
+
+            mobileMenuOverlay.classList.add(
+                "active"
+            );
+
+        }
+
+
+        mobileMenu.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        if (mobileMenuButton) {
+
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+
+        document.body.classList.add(
+            "menu-open"
+        );
+
+    }
+
+
+
+    function closeMobileMenu() {
+
+        if (!mobileMenu) return;
+
+
+        mobileMenu.classList.remove(
+            "active"
+        );
+
+
+        if (mobileMenuOverlay) {
+
+            mobileMenuOverlay.classList.remove(
+                "active"
+            );
+
+        }
+
+
+        mobileMenu.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        if (mobileMenuButton) {
+
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+
+        document.body.classList.remove(
+            "menu-open"
+        );
+
+    }
+
+
+
+    if (mobileMenuButton) {
+
+        mobileMenuButton.addEventListener(
+            "click",
+            openMobileMenu
+        );
+
+    }
+
+
+    if (mobileMenuClose) {
+
+        mobileMenuClose.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+    }
+
+
+    if (mobileMenuOverlay) {
+
+        mobileMenuOverlay.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SUBMENÚS MÓVILES
+    ===================================================== */
+
+    const mobileButtons =
+        headerContainer.querySelectorAll(
+            ".mobile-nav-button"
+        );
+
+
+    mobileButtons.forEach((button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const submenuId =
+                    button.dataset.mobileSubmenu;
+
+
+                const submenu =
+                    document.getElementById(
+                        submenuId
+                    );
+
+
+                if (!submenu) return;
+
+
+                const isOpen =
+                    submenu.classList.contains(
+                        "active"
+                    );
+
+
+                /* Cerrar otros */
+
+                headerContainer
+                    .querySelectorAll(
+                        ".mobile-submenu"
+                    )
+                    .forEach((otherSubmenu) => {
+
+                        otherSubmenu.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                headerContainer
+                    .querySelectorAll(
+                        ".mobile-nav-button"
+                    )
+                    .forEach((otherButton) => {
+
+                        otherButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    });
+
+
+                /* Abrir seleccionado */
+
+                if (!isOpen) {
+
+                    submenu.classList.add(
+                        "active"
+                    );
+
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       CERRAR MENÚ CON ESC
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key === "Escape") {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+
     /* =====================================================
        BUSCADOR
-    ====================================================== */
+    ===================================================== */
 
     const searchButton =
-        document.getElementById("search-button");
+        document.getElementById(
+            "search-button"
+        );
+
+
+    const searchOverlay =
+        document.getElementById(
+            "search-overlay"
+        );
+
+
+    const searchClose =
+        document.getElementById(
+            "search-close"
+        );
+
 
     const searchInput =
-        document.getElementById("search-input");
-
-    const searchWrapper =
-        document.getElementById("search-wrapper");
-
-
-    searchButton?.addEventListener("click", (event) => {
-
-        event.stopPropagation();
-
-        searchWrapper.classList.toggle("active");
+        document.getElementById(
+            "product-search"
+        );
 
 
-        if (
-            searchWrapper.classList.contains("active")
-        ) {
+
+    function openSearch() {
+
+        if (!searchOverlay) return;
+
+
+        searchOverlay.classList.add(
+            "active"
+        );
+
+
+        searchOverlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        if (searchInput) {
 
             setTimeout(() => {
 
@@ -522,170 +1257,92 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-    });
-
-
-    document.addEventListener("click", (event) => {
-
-        if (
-            searchWrapper &&
-            !searchWrapper.contains(event.target)
-        ) {
-
-            searchWrapper.classList.remove("active");
-
-        }
-
-    });
-
-
-    searchInput?.addEventListener(
-        "keydown",
-        (event) => {
-
-            if (event.key !== "Enter") {
-                return;
-            }
-
-
-            const query =
-                searchInput.value.trim();
-
-
-            if (!query) {
-                return;
-            }
-
-
-            window.location.href =
-                `productos.html?search=${encodeURIComponent(query)}`;
-
-        }
-    );
-
-
-    /* =====================================================
-       MENÚ MÓVIL
-    ====================================================== */
-
-    const mobileButton =
-        document.getElementById("mobile-menu-button");
-
-    const mobileMenu =
-        document.getElementById("mobile-menu");
-
-    const mobileClose =
-        document.getElementById("mobile-menu-close");
-
-    const mobileOverlay =
-        document.getElementById("mobile-overlay");
-
-
-    function openMenu() {
-
-        mobileMenu.classList.add("open");
-
-        mobileOverlay.classList.add("open");
-
-        document.body.classList.add("menu-open");
-
     }
 
 
-    function closeMenu() {
 
-        mobileMenu.classList.remove("open");
+    function closeSearch() {
 
-        mobileOverlay.classList.remove("open");
-
-        document.body.classList.remove("menu-open");
-
-    }
+        if (!searchOverlay) return;
 
 
-    mobileButton?.addEventListener(
-        "click",
-        openMenu
-    );
-
-
-    mobileClose?.addEventListener(
-        "click",
-        closeMenu
-    );
-
-
-    mobileOverlay?.addEventListener(
-        "click",
-        closeMenu
-    );
-
-
-    /* =====================================================
-       SUBMENÚS MÓVILES
-    ====================================================== */
-
-    const submenuButtons =
-        document.querySelectorAll(
-            ".mobile-menu-item[data-submenu]"
+        searchOverlay.classList.remove(
+            "active"
         );
 
 
-    submenuButtons.forEach((button) => {
+        searchOverlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
-        button.addEventListener("click", () => {
-
-            const submenuId =
-                button.dataset.submenu;
-
-            const submenu =
-                document.getElementById(submenuId);
+    }
 
 
-            if (!submenu) {
-                return;
-            }
+
+    if (searchButton) {
+
+        searchButton.addEventListener(
+            "click",
+            openSearch
+        );
+
+    }
 
 
-            const isOpen =
-                submenu.classList.contains("open");
+    if (searchClose) {
+
+        searchClose.addEventListener(
+            "click",
+            closeSearch
+        );
+
+    }
 
 
-            /* Cerrar los demás */
 
-            document
-                .querySelectorAll(".mobile-submenu")
-                .forEach((item) => {
+    /* =====================================================
+       CERRAR BUSCADOR AL HACER CLICK EN OVERLAY
+    ===================================================== */
 
-                    item.classList.remove("open");
+    if (searchOverlay) {
 
-                });
+        searchOverlay.addEventListener(
+            "click",
+            (event) => {
 
+                if (
+                    event.target === searchOverlay
+                ) {
 
-            document
-                .querySelectorAll(
-                    ".mobile-menu-item[data-submenu]"
-                )
-                .forEach((item) => {
+                    closeSearch();
 
-                    item.classList.remove("open");
-
-                });
-
-
-            /* Abrir el seleccionado */
-
-            if (!isOpen) {
-
-                submenu.classList.add("open");
-
-                button.classList.add("open");
+                }
 
             }
+        );
 
-        });
+    }
 
-    });
 
+
+    /* =====================================================
+       ESC PARA CERRAR BUSCADOR
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeSearch();
+
+            }
+
+        }
+    );
 
 });
