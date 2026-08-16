@@ -1,720 +1,521 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="SatoriMode — Anime Streetwear, cultura japonesa y diseños que representan."
+        content="SatoriMode — Anime, streetwear y cultura japonesa."
     >
 
     <title>SatoriMode | Anime Streetwear</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 
 <body>
 
-
-    <!-- =====================================================
-         HEADER GLOBAL
-    ====================================================== -->
-
+    <!-- =========================
+         HEADER
+    ========================== -->
     <div id="satori-header"></div>
 
 
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+    <main>
 
-    <!-- =====================================================
-         HOME
-    ====================================================== -->
+        <!-- =========================
+             HERO / SLIDER
+        ========================== -->
 
-    <main class="home-redesign">
+        <section class="hero-slider">
+
+            <div class="hero-track" id="hero-track">
+
+                <!-- SLIDE 1 -->
+                <article class="hero-slide">
+                    <img
+                        src="img/banner-01.jpg"
+                        alt="Nueva colección SatoriMode"
+                    >
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="hero-content">
+                        <span class="hero-label">
+                            NUEVA COLECCIÓN
+                        </span>
+
+                        <h1>
+                            SHINJUKU
+                            <span>DROP #02</span>
+                        </h1>
+
+                        <p>
+                            新しいコレクション
+                        </p>
+
+                        <a href="productos.html" class="button">
+                            VER COLECCIÓN
+                        </a>
+                    </div>
+                </article>
 
 
-        <!-- =================================================
-             HERO
-        ================================================== -->
+                <!-- SLIDE 2 -->
+                <article class="hero-slide">
+                    <img
+                        src="img/banner-02.jpg"
+                        alt="SatoriMode Streetwear"
+                    >
 
-        <section class="store-hero">
+                    <div class="hero-overlay"></div>
 
-            <div class="store-hero-copy">
+                    <div class="hero-content">
+                        <span class="hero-label">
+                            SATORII
+                        </span>
 
-                <span class="store-eyebrow">
-                    NUEVA COLECCIÓN
-                </span>
+                        <h1>
+                            ANIME
+                            <span>STREETWEAR</span>
+                        </h1>
 
+                        <p>
+                            Diseños para quienes quieren destacar.
+                        </p>
 
-                <div class="hero-number">
-                    01
-                </div>
-
-
-                <h1>
-                    SHINJUKU<br>
-                    <strong>DROP #02</strong>
-                </h1>
-
-
-                <p>
-                    新しいコレクション
-                </p>
+                        <a href="anime.html" class="button">
+                            VER ANIME
+                        </a>
+                    </div>
+                </article>
 
 
-                <a
-                    href="productos.html"
-                    class="store-button"
-                >
-                    VER COLECCIÓN
-                </a>
+                <!-- SLIDE 3 -->
+                <article class="hero-slide">
+                    <img
+                        src="img/banner-03.jpg"
+                        alt="SatoriMode nueva colección"
+                    >
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="hero-content">
+                        <span class="hero-label">
+                            SATORII
+                        </span>
+
+                        <h1>
+                            VISTE
+                            <span>DIFERENTE.</span>
+                        </h1>
+
+                        <p>
+                            Cultura japonesa llevada al streetwear.
+                        </p>
+
+                        <a href="productos.html" class="button">
+                            VER PRODUCTOS
+                        </a>
+                    </div>
+                </article>
 
             </div>
 
 
-
-            <div
-                class="store-hero-art"
-                aria-label="Campaña SatoriMode"
+            <!-- FLECHAS -->
+            <button
+                class="slider-arrow slider-prev"
+                id="slider-prev"
+                aria-label="Imagen anterior"
             >
+                ←
+            </button>
 
-                <div class="hero-red-brush"></div>
+            <button
+                class="slider-arrow slider-next"
+                id="slider-next"
+                aria-label="Imagen siguiente"
+            >
+                →
+            </button>
 
 
-                <div class="hero-art-copy">
-                    SATORII
-                </div>
-
-
-                <span>
-                    ANIME STREETWEAR
-                </span>
-
+            <!-- INDICADORES -->
+            <div class="slider-dots" id="slider-dots">
+                <button class="active" aria-label="Slide 1"></button>
+                <button aria-label="Slide 2"></button>
+                <button aria-label="Slide 3"></button>
             </div>
 
         </section>
 
 
-
-        <!-- =================================================
+        <!-- =========================
              BENEFICIOS
-        ================================================== -->
+        ========================== -->
 
-        <section class="benefits-strip store-benefits">
+        <section class="benefits">
 
-
-            <div class="benefit-item">
-
-                <span class="benefit-icon">
-                    🚚
-                </span>
+            <div class="benefit">
+                <span class="benefit-icon">🚚</span>
 
                 <div>
-
-                    <strong>
-                        ENVÍOS A TODO CHILE
-                    </strong>
-
-                    <small>
-                        Despachos a regiones y todo el país
-                    </small>
-
+                    <strong>ENVÍOS A TODO CHILE</strong>
+                    <span>Despachos a regiones y todo el país</span>
                 </div>
-
             </div>
 
 
-
-            <div class="benefit-item">
-
-                <span class="benefit-icon">
-                    ↻
-                </span>
+            <div class="benefit">
+                <span class="benefit-icon">↻</span>
 
                 <div>
-
-                    <strong>
-                        CAMBIOS Y DEVOLUCIONES
-                    </strong>
-
-                    <small>
-                        Hasta 30 días
-                    </small>
-
+                    <strong>CAMBIOS Y DEVOLUCIONES</strong>
+                    <span>Hasta 30 días</span>
                 </div>
-
             </div>
 
 
-
-            <div class="benefit-item">
-
-                <span class="benefit-icon">
-                    ▣
-                </span>
+            <div class="benefit">
+                <span class="benefit-icon">▣</span>
 
                 <div>
-
-                    <strong>
-                        PAGOS SEGUROS
-                    </strong>
-
-                    <small>
-                        Webpay + transferencia
-                    </small>
-
+                    <strong>PAGOS SEGUROS</strong>
+                    <span>Webpay + transferencia</span>
                 </div>
-
             </div>
 
 
-
-            <div class="benefit-item">
-
-                <span class="benefit-icon">
-                    ♧
-                </span>
+            <div class="benefit">
+                <span class="benefit-icon">♧</span>
 
                 <div>
-
-                    <strong>
-                        ATENCIÓN AL CLIENTE
-                    </strong>
-
-                    <small>
-                        Estamos para ayudarte
-                    </small>
-
+                    <strong>ATENCIÓN AL CLIENTE</strong>
+                    <span>Estamos para ayudarte</span>
                 </div>
-
             </div>
-
 
         </section>
 
 
-
-        <!-- =================================================
+        <!-- =========================
              COLECCIONES
-        ================================================== -->
+        ========================== -->
 
-        <section class="store-section">
+        <section class="section">
 
-
-            <div class="store-section-head">
-
-                <h2>
-                    NUESTRAS COLECCIONES
-                </h2>
-
+            <div class="section-header">
+                <h2>NUESTRAS COLECCIONES</h2>
 
                 <a href="anime.html">
                     Ver todas
                 </a>
-
             </div>
 
 
-
-            <div class="collection-showcase-grid">
-
+            <div class="collections-grid">
 
                 <a
                     href="anime.html"
-                    class="collection-showcase collection-anime"
+                    class="collection-card"
                 >
-
                     <div>
-
-                        <strong>
-                            ANIME
-                        </strong>
-
-                        <span>
-                            Ver colección
-                        </span>
-
+                        <h3>ANIME</h3>
+                        <span>Ver colección</span>
                     </div>
-
                 </a>
-
 
 
                 <a
                     href="streetwear.html"
-                    class="collection-showcase collection-streetwear"
+                    class="collection-card"
                 >
-
                     <div>
-
-                        <strong>
-                            STREETWEAR
-                        </strong>
-
-                        <span>
-                            Ver colección
-                        </span>
-
+                        <h3>STREETWEAR</h3>
+                        <span>Ver colección</span>
                     </div>
-
                 </a>
-
 
 
                 <a
                     href="accesorios.html"
-                    class="collection-showcase collection-accesorios"
+                    class="collection-card"
                 >
-
                     <div>
-
-                        <strong>
-                            ACCESORIOS
-                        </strong>
-
-                        <span>
-                            Ver colección
-                        </span>
-
+                        <h3>ACCESORIOS</h3>
+                        <span>Ver colección</span>
                     </div>
-
                 </a>
-
 
 
                 <a
                     href="productos.html"
-                    class="collection-showcase collection-shirts"
+                    class="collection-card"
                 >
-
                     <div>
-
-                        <strong>
-                            TODO
-                        </strong>
-
-                        <span>
-                            Ver colección
-                        </span>
-
+                        <h3>TODO</h3>
+                        <span>Ver colección</span>
                     </div>
-
                 </a>
-
 
             </div>
 
         </section>
 
 
-
-        <!-- =================================================
+        <!-- =========================
              MÁS VENDIDOS
-        ================================================== -->
+        ========================== -->
 
-        <section class="store-section products-showcase">
+        <section class="section">
 
-
-            <div class="store-section-head">
-
-                <h2>
-                    MÁS VENDIDOS
-                </h2>
-
+            <div class="section-header">
+                <h2>MÁS VENDIDOS</h2>
 
                 <a href="productos.html">
                     Ver todos
                 </a>
-
             </div>
 
-
             <div
-                class="store-product-grid"
+                class="product-grid"
                 id="featured-products"
             ></div>
+
+            <p
+                class="empty-products"
+                id="featured-empty"
+            >
+                Próximamente encontrarás nuevos diseños Satori.
+            </p>
 
         </section>
 
 
+        <!-- =========================
+             ÚLTIMOS ESTRENOS
+        ========================== -->
 
-        <!-- =================================================
-             PARTE INFERIOR
-        ================================================== -->
+        <section class="section">
 
-        <section class="store-lower-grid">
+            <div class="section-header">
+                <h2>ÚLTIMOS ESTRENOS</h2>
 
-
-            <!-- ÚLTIMOS ESTRENOS -->
-
-            <div class="store-latest store-section">
-
-                <div class="store-section-head">
-
-                    <h2>
-                        ÚLTIMOS ESTRENOS
-                    </h2>
-
-                    <a href="productos.html">
-                        Ver todos
-                    </a>
-
-                </div>
-
-
-                <div
-                    class="store-product-grid store-product-grid-compact"
-                    id="latest-products"
-                ></div>
-
+                <a href="productos.html">
+                    Ver todos
+                </a>
             </div>
 
+            <div
+                class="product-grid"
+                id="latest-products"
+            ></div>
+
+            <p
+                class="empty-products"
+                id="latest-empty"
+            >
+                Próximamente nuevos lanzamientos.
+            </p>
+
+        </section>
 
 
-            <!-- MARCA -->
+        <!-- =========================
+             BLOQUES DE MARCA
+        ========================== -->
 
-            <div class="store-brand-card">
+        <section class="brand-grid">
 
-                <div class="store-brand-logo">
+            <article class="brand-card brand-card-light">
+
+                <span class="small-label">
                     SATORII
-
-                    <small>
-                        悟り
-                    </small>
-                </div>
-
-
-                <strong>
-                    ANIME STREETWEAR
-                </strong>
-
-
-                <span>
-                    PARA QUIENES QUIEREN DESTACAR.
                 </span>
 
+                <h2>
+                    ANIME
+                    <span>STREETWEAR.</span>
+                </h2>
+
+                <p>
+                    Para quienes quieren destacar.
+                </p>
 
                 <a
                     href="productos.html"
-                    class="store-button"
+                    class="button"
                 >
                     CONOCE MÁS
                 </a>
 
-            </div>
+            </article>
 
 
+            <article class="brand-card brand-card-dark">
 
-            <!-- SATORII PACK -->
-
-            <div class="store-pack-mini">
-
-                <span class="store-eyebrow">
+                <span class="small-label">
                     SATORII PACK
                 </span>
 
-
-                <div class="store-brand-logo">
+                <h2>
                     SATORII
+                    <span>PACK.</span>
+                </h2>
 
-                    <small>
-                        悟り
-                    </small>
-                </div>
-
-
-                <strong>
-                    CONOCE EL SATORII PACK.
-                </strong>
-
-
-                <span>
-                    Una experiencia especial creada
-                    para acompañar tus pedidos.
-                </span>
-
+                <p>
+                    Una experiencia especial creada para acompañar tus pedidos.
+                </p>
 
                 <a
                     href="satorii-pack.html"
-                    class="store-button"
+                    class="button button-red"
                 >
                     DESCUBRIR PACK
+                </a>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+
+                <h2>SATORII</h2>
+
+                <span>悟り</span>
+
+                <p>
+                    Cultura japonesa y streetwear
+                    llevados a prendas que puedes
+                    llevar contigo.
+                </p>
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-link"
+                    aria-label="Instagram de SatoriMode"
+                >
+                    ◎
                 </a>
 
             </div>
 
 
-        </section>
+            <div class="footer-column">
 
+                <h3>COLECCIONES</h3>
 
-    </main>
-
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer class="satorii-footer">
-
-
-        <section class="footer-main">
-
-
-            <div class="footer-grid">
-
-
-                <!-- MARCA -->
-
-                <div class="footer-column footer-about">
-
-
-                    <div class="footer-logo">
-                        SATORII
-
-                        <small>
-                            悟り
-                        </small>
-                    </div>
-
-
-                    <p>
-                        Cultura japonesa y streetwear
-                        llevados a prendas que puedes
-                        llevar contigo.
-                    </p>
-
-
-                    <!-- INSTAGRAM -->
-
-                    <div class="footer-socials">
-
-                        <a
-                            href="https://www.instagram.com/satorimode/"
-                            class="footer-social"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram de SatoriMode"
-                        >
-
-                            <svg
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-
-                                <rect
-                                    x="3"
-                                    y="3"
-                                    width="18"
-                                    height="18"
-                                    rx="5"
-                                ></rect>
-
-                                <circle
-                                    cx="12"
-                                    cy="12"
-                                    r="4"
-                                ></circle>
-
-                                <circle
-                                    cx="17.5"
-                                    cy="6.5"
-                                    r="1"
-                                    fill="currentColor"
-                                    stroke="none"
-                                ></circle>
-
-                            </svg>
-
-                        </a>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- COLECCIONES -->
-
-                <div class="footer-column">
-
-                    <h3>
-                        COLECCIONES
-                    </h3>
-
-
-                    <a href="anime.html">
-                        Anime
-                    </a>
-
-
-                    <a href="streetwear.html">
-                        Streetwear
-                    </a>
-
-
-                    <a href="accesorios.html">
-                        Accesorios
-                    </a>
-
-
-                    <a href="productos.html">
-                        Poleras
-                    </a>
-
-                </div>
-
-
-
-                <!-- AYUDA -->
-
-                <div class="footer-column">
-
-                    <h3>
-                        AYUDA
-                    </h3>
-
-
-                    <a href="preguntas-frecuentes.html">
-                        Preguntas frecuentes
-                    </a>
-
-
-                    <a href="envios.html">
-                        Envíos
-                    </a>
-
-
-                    <a href="cambios.html">
-                        Cambios y devoluciones
-                    </a>
-
-
-                    <a href="guia-tallas.html">
-                        Guía de tallas
-                    </a>
-
-                </div>
-
-
-
-                <!-- CLAN -->
-
-                <div class="footer-column footer-clan">
-
-
-                    <span class="footer-eyebrow">
-                        SATORII COMMUNITY
-                    </span>
-
-
-                    <h2>
-                        ÚNETE AL
-                        <span>CLAN.</span>
-                    </h2>
-
-
-                    <p>
-                        Recibe lanzamientos exclusivos,
-                        novedades y beneficios de Satori.
-                    </p>
-
-
-                    <form
-                        class="footer-newsletter"
-                        id="footerNewsletter"
-                    >
-
-                        <input
-                            type="email"
-                            id="footerEmail"
-                            placeholder="Tu correo electrónico"
-                            aria-label="Correo electrónico"
-                            autocomplete="email"
-                            required
-                        >
-
-
-                        <button
-                            type="submit"
-                            aria-label="Suscribirse"
-                        >
-                            →
-                        </button>
-
-                    </form>
-
-
-                    <small class="footer-newsletter-note">
-                        Al registrarte aceptas recibir
-                        novedades de Satori.
-                    </small>
-
-
-                </div>
-
+                <a href="anime.html">Anime</a>
+                <a href="streetwear.html">Streetwear</a>
+                <a href="accesorios.html">Accesorios</a>
+                <a href="productos.html">Todo</a>
 
             </div>
 
 
-        </section>
+            <div class="footer-column">
+
+                <h3>AYUDA</h3>
+
+                <a href="preguntas-frecuentes.html">
+                    Preguntas frecuentes
+                </a>
+
+                <a href="envios.html">
+                    Envíos
+                </a>
+
+                <a href="cambios.html">
+                    Cambios y devoluciones
+                </a>
+
+                <a href="guia-tallas.html">
+                    Guía de tallas
+                </a>
+
+            </div>
 
 
+            <div class="footer-community">
 
-        <!-- FOOTER INFERIOR -->
+                <span class="small-label">
+                    SATORII COMMUNITY
+                </span>
 
-        <section class="footer-bottom">
+                <h2>
+                    ÚNETE AL
+                    <span>CLAN.</span>
+                </h2>
+
+                <p>
+                    Recibe lanzamientos exclusivos,
+                    novedades y beneficios de Satori.
+                </p>
+
+                <form
+                    class="newsletter"
+                    onsubmit="return false;"
+                >
+
+                    <input
+                        type="email"
+                        placeholder="Tu correo electrónico"
+                        aria-label="Tu correo electrónico"
+                    >
+
+                    <button type="submit">
+                        →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
 
             <span>
                 © 2026 SatoriMode
             </span>
 
-
-            <div class="footer-bottom-links">
-
-                <a href="privacidad.html">
-                    Privacidad
-                </a>
-
-                <a href="terminos.html">
-                    Términos
-                </a>
-
-                <a href="contacto.html">
-                    Contacto
-                </a>
-
+            <div>
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+                <a href="#">Contacto</a>
             </div>
 
-        </section>
-
+        </div>
 
     </footer>
 
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
 
     <script src="js/products.js"></script>
-
     <script src="js/header.js"></script>
-
     <script src="js/main.js"></script>
 
-
 </body>
-
 </html>
