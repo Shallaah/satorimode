@@ -60,11 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const featured = productos.filter(p => p.featured).slice(0, 5);
     const latest = productos.filter(p => p.latest).slice(0, 4);
-    const recommended = [...productos].sort(() => Math.random() - 0.5).slice(0, 5);
-
     render("featured-products", featured, "");
     render("latest-products", latest, "NUEVO");
-    render("recommended-products", recommended, "PARA TI");
 
     /* Filtros Anime */
     const animeFilterToggle = document.querySelector("#animeFilterToggle");
