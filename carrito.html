@@ -192,7 +192,7 @@
 
 
         /* =====================================================
-           IMAGEN CUADRADA
+           IMAGEN
         ====================================================== */
 
         .satori-cart-image {
@@ -755,202 +755,6 @@
 
 
         /* =====================================================
-           FOOTER
-        ====================================================== */
-
-        .satorii-footer {
-
-            width:100%;
-
-            margin-top:0;
-
-            background:#fff;
-
-            border-top:
-                1px solid #ddd;
-
-            color:#111;
-
-        }
-
-
-        .footer-inner {
-
-            width:min(
-                1400px,
-                calc(100% - 70px)
-            );
-
-            margin:0 auto;
-
-            padding:
-                70px
-                0
-                60px;
-
-            display:grid;
-
-            grid-template-columns:
-                2fr
-                1fr
-                1fr
-                1fr;
-
-            gap:60px;
-
-        }
-
-
-        /* =====================================================
-           FOOTER MARCA
-        ====================================================== */
-
-        .footer-brand h2 {
-
-            margin:
-                0
-                0
-                24px;
-
-            color:#111;
-
-            font-size:28px;
-
-            font-weight:900;
-
-            letter-spacing:-1.5px;
-
-        }
-
-
-        .footer-brand p {
-
-            max-width:320px;
-
-            margin:0;
-
-            color:#555;
-
-            font-size:14px;
-
-            line-height:1.6;
-
-        }
-
-
-        /* =====================================================
-           FOOTER COLUMNAS
-        ====================================================== */
-
-        .footer-column {
-
-            display:flex;
-
-            flex-direction:column;
-
-            align-items:flex-start;
-
-        }
-
-
-        .footer-column h3 {
-
-            margin:
-                0
-                0
-                22px;
-
-            color:#111;
-
-            font-size:13px;
-
-            font-weight:900;
-
-            letter-spacing:1px;
-
-        }
-
-
-        .footer-column a {
-
-            margin-bottom:13px;
-
-            color:#555;
-
-            font-size:13px;
-
-            text-decoration:none;
-
-            transition:
-                color .2s ease,
-                transform .2s ease;
-
-        }
-
-
-        .footer-column a:hover {
-
-            color:#f31218;
-
-            transform:
-                translateX(3px);
-
-        }
-
-
-        /* =====================================================
-           FOOTER BOTTOM
-        ====================================================== */
-
-        .footer-bottom {
-
-            width:min(
-                1400px,
-                calc(100% - 70px)
-            );
-
-            margin:0 auto;
-
-            padding:
-                22px 0;
-
-            border-top:
-                1px solid #ddd;
-
-            display:flex;
-
-            align-items:center;
-
-            justify-content:space-between;
-
-            gap:20px;
-
-            color:#777;
-
-            font-size:11px;
-
-        }
-
-
-        .footer-bottom a {
-
-            color:#111;
-
-            text-decoration:none;
-
-            font-weight:800;
-
-        }
-
-
-        .footer-bottom a:hover {
-
-            color:#f31218;
-
-        }
-
-
-        /* =====================================================
            TABLET
         ====================================================== */
 
@@ -980,25 +784,6 @@
             .satori-cart-summary {
 
                 position:static;
-
-            }
-
-
-            .footer-inner {
-
-                grid-template-columns:
-                    1fr
-                    1fr;
-
-                gap:45px 30px;
-
-            }
-
-
-            .footer-brand {
-
-                grid-column:
-                    1 / -1;
 
             }
 
@@ -1046,8 +831,6 @@
 
             }
 
-
-            /* IMAGEN CUADRADA */
 
             .satori-cart-image {
 
@@ -1105,93 +888,6 @@
 
             }
 
-
-            /* =================================================
-               FOOTER MÓVIL
-            ================================================== */
-
-            .footer-inner {
-
-                width:
-                    calc(100% - 40px);
-
-                padding:
-                    50px
-                    0
-                    40px;
-
-                grid-template-columns:
-                    1fr
-                    1fr;
-
-                gap:
-                    40px
-                    24px;
-
-            }
-
-
-            .footer-brand {
-
-                grid-column:
-                    1 / -1;
-
-            }
-
-
-            .footer-brand h2 {
-
-                font-size:25px;
-
-                margin-bottom:16px;
-
-            }
-
-
-            .footer-brand p {
-
-                font-size:13px;
-
-            }
-
-
-            .footer-column h3 {
-
-                margin-bottom:17px;
-
-                font-size:12px;
-
-            }
-
-
-            .footer-column a {
-
-                margin-bottom:11px;
-
-                font-size:12px;
-
-            }
-
-
-            .footer-bottom {
-
-                width:
-                    calc(100% - 40px);
-
-                padding:
-                    20px
-                    0;
-
-                flex-direction:column;
-
-                align-items:flex-start;
-
-                font-size:10px;
-
-                line-height:1.5;
-
-            }
-
         }
 
 
@@ -1218,21 +914,6 @@
 
             }
 
-
-            .footer-inner {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .footer-brand {
-
-                grid-column:auto;
-
-            }
-
         }
 
 
@@ -1244,7 +925,11 @@
             prefers-reduced-motion:reduce
         ) {
 
-            .footer-column a {
+            .satori-cart-quantity button,
+            .satori-cart-remove,
+            .satori-cart-checkout,
+            .satori-cart-continue,
+            .satori-cart-clear {
 
                 transition:none;
 
@@ -1261,7 +946,7 @@
 
 
     <!-- =====================================================
-         HEADER
+         HEADER GLOBAL
     ====================================================== -->
 
     <div id="satori-header"></div>
@@ -1315,179 +1000,26 @@
 
 
     <!-- =====================================================
-         FOOTER
+         FOOTER GLOBAL
+         
+         IMPORTANTE:
+         El contenido real del footer lo genera footer.js.
     ====================================================== -->
 
-    <footer class="satorii-footer">
-
-        <div class="footer-inner">
-
-
-            <!-- =================================================
-                 MARCA
-            ================================================== -->
-
-            <div class="footer-brand">
-
-                <h2>
-                    SATORIMODE
-                </h2>
-
-                <p>
-                    Anime, cultura japonesa y streetwear.
-                </p>
-
-            </div>
-
-
-            <!-- =================================================
-                 COLECCIONES
-            ================================================== -->
-
-            <div class="footer-column">
-
-                <h3>
-                    COLECCIONES
-                </h3>
-
-
-                <a
-                    href="/satorimode/anime.html"
-                >
-                    Anime
-                </a>
-
-
-                <a
-                    href="/satorimode/streetwear.html"
-                >
-                    Streetwear
-                </a>
-
-
-                <a
-                    href="/satorimode/accesorios.html"
-                >
-                    Accesorios
-                </a>
-
-
-                <a
-                    href="/satorimode/productos.html"
-                >
-                    Todo
-                </a>
-
-            </div>
-
-
-            <!-- =================================================
-                 PRODUCTOS
-            ================================================== -->
-
-            <div class="footer-column">
-
-                <h3>
-                    PRODUCTOS
-                </h3>
-
-
-                <a
-                    href="/satorimode/satorii-pack.html"
-                >
-                    Satorii Pack
-                </a>
-
-
-                <a
-                    href="/satorimode/gift-cards.html"
-                >
-                    Gift Cards
-                </a>
-
-
-                <a
-                    href="/satorimode/mystery-box.html"
-                >
-                    Mystery Box
-                </a>
-
-            </div>
-
-
-            <!-- =================================================
-                 AYUDA
-            ================================================== -->
-
-            <div class="footer-column">
-
-                <h3>
-                    AYUDA
-                </h3>
-
-
-                <a
-                    href="/satorimode/guia-tallas.html"
-                >
-                    Guía de tallas
-                </a>
-
-
-                <a
-                    href="/satorimode/envios.html"
-                >
-                    Envíos
-                </a>
-
-
-                <a
-                    href="/satorimode/preguntas-frecuentes.html"
-                >
-                    Preguntas frecuentes
-                </a>
-
-
-                <a
-                    href="/satorimode/cambios.html"
-                >
-                    Cambios y devoluciones
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             COPYRIGHT
-        ================================================== -->
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 SatoriMode. Todos los derechos reservados.
-            </span>
-
-
-            <a
-                href="https://www.instagram.com/satorimode/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Instagram ↗
-            </a>
-
-        </div>
-
-    </footer>
+    <div id="satori-footer"></div>
 
 
     <!-- =====================================================
-         SCRIPTS
+         SCRIPTS GLOBALES
     ====================================================== -->
 
     <script
         src="/satorimode/js/header.js"
+    ></script>
+
+
+    <script
+        src="/satorimode/js/footer.js"
     ></script>
 
 
@@ -1665,6 +1197,13 @@
 
         function renderPageCart() {
 
+            if (!cartContent) {
+
+                return;
+
+            }
+
+
             const cart =
                 getPageCart();
 
@@ -1728,7 +1267,7 @@
 
 
             /* =================================================
-               CALCULAR
+               CALCULAR TOTALES
             ================================================== */
 
             cart.forEach(
@@ -2011,6 +1550,7 @@
                                 PRODUCTOS
                             </span>
 
+
                             <strong>
                                 ${totalItems}
                             </strong>
@@ -2025,6 +1565,7 @@
                             <span>
                                 SUBTOTAL
                             </span>
+
 
                             <strong>
                                 ${formatPagePrice(
@@ -2253,7 +1794,7 @@
 
 
             /* =================================================
-               VACIAR
+               VACIAR CARRITO
             ================================================== */
 
             document
@@ -2308,7 +1849,7 @@
 
 
         /* =====================================================
-           INICIO
+           INICIALIZACIÓN
         ====================================================== */
 
         if (
