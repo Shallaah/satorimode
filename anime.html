@@ -366,103 +366,147 @@
         }
 
 
-        /* =====================================================
-           PACK FINAL
-        ====================================================== */
+/* =====================================================
+   PACK FINAL
+====================================================== */
 
-        .anime-pack {
+.anime-pack {
 
-            position: relative;
+    position: relative;
 
-            margin-top: 120px;
-            margin-bottom: 100px;
+    margin-top: 120px;
+    margin-bottom: 100px;
 
-            min-height: 230px;
+    min-height: 230px;
 
-            padding: 50px;
+    padding: 50px;
 
-            display: flex;
+    display: flex;
+    align-items: center;
 
-            align-items: center;
+    box-sizing: border-box;
 
-            box-sizing: border-box;
+    overflow: hidden;
 
-            overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 85% 30%,
+            #430000 0%,
+            #1d0000 40%,
+            #080000 80%
+        );
 
-            background:
-                radial-gradient(
-                    circle at 85% 30%,
-                    #430000 0%,
-                    #1d0000 40%,
-                    #080000 80%
-                );
+    color: #fff;
 
-            color: #fff;
+    /* ESQUINAS CON BORDE */
+    border: 1px solid rgba(255, 255, 255, 0.18);
 
-        }
+    border-radius: 10px;
 
-
-        .anime-pack-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 650px;
-
-        }
+}
 
 
-        .anime-pack-label {
+/* Línea decorativa superior */
 
-            margin-bottom: 8px;
+.anime-pack::before {
 
-            color: var(--red, #ff1b1b);
+    content: "";
 
-            font-size: 10px;
+    position: absolute;
 
-            font-weight: 800;
+    top: 0;
+    left: 0;
 
-            letter-spacing: 4px;
+    width: 150px;
+    height: 2px;
 
-        }
+    background: var(--red, #ff1b1b);
 
-
-        .anime-pack h2 {
-
-            margin: 0 0 12px;
-
-            font-size: clamp(
-                30px,
-                4vw,
-                52px
-            );
-
-            line-height: 1;
-
-            font-weight: 900;
-
-        }
+}
 
 
-        .anime-pack h2 span {
+/* Línea decorativa inferior */
 
-            color: var(--red, #ff1b1b);
+.anime-pack::after {
 
-        }
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    width: 150px;
+    height: 2px;
+
+    background: var(--red, #ff1b1b);
+
+}
 
 
-        .anime-pack p {
+/* CONTENIDO */
 
-            margin: 0;
+.anime-pack-content {
 
-            color: #ccc;
+    position: relative;
 
-            font-size: 14px;
+    z-index: 2;
 
-            line-height: 1.6;
+    max-width: 650px;
 
-        }
+}
+
+
+.anime-pack-label {
+
+    margin-bottom: 8px;
+
+    color: var(--red, #ff1b1b);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+.anime-pack h2 {
+
+    margin: 0 0 12px;
+
+    font-size: clamp(
+        30px,
+        4vw,
+        52px
+    );
+
+    line-height: 1;
+
+    font-weight: 900;
+
+}
+
+
+.anime-pack h2 span {
+
+    color: var(--red, #ff1b1b);
+
+}
+
+
+.anime-pack p {
+
+    margin: 0;
+
+    color: #ccc;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
 
 
         /* =====================================================
@@ -592,24 +636,36 @@
 
             .anime-pack {
 
-                margin-top: 80px;
-                margin-bottom: 60px;
+        margin-top: 80px;
+        margin-bottom: 60px;
 
-                min-height: 220px;
+        min-height: 220px;
 
-                padding: 30px 25px;
+        padding: 30px 25px;
 
-            }
+        border-radius: 8px;
 
+    }
 
-            .anime-pack h2 {
+    .anime-pack::before {
 
-                font-size: 32px;
+        width: 90px;
 
-            }
+    }
 
-        }
+    .anime-pack::after {
 
+        width: 90px;
+
+    }
+
+    .anime-pack h2 {
+
+        font-size: 32px;
+
+    }
+
+}
     </style>
 
 </head>
