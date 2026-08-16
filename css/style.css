@@ -2865,3 +2865,64 @@ body {
     }
 
 }
+
+/* =========================================================
+   SATORII — ELIMINAR ESPACIO BLANCO BAJO EL HEADER
+========================================================= */
+
+/*
+   El header ahora es STICKY, por lo que ocupa su espacio
+   normalmente dentro de la página.
+
+   El padding-top antiguo generaba una franja blanca
+   innecesaria entre el header y el banner.
+*/
+
+main {
+    padding-top: 0 !important;
+}
+
+
+/* Evita cualquier espacio superior adicional */
+
+#satori-header + main {
+    padding-top: 0 !important;
+}
+
+
+/* El banner comienza inmediatamente después del header */
+
+.hero-slider,
+.hero,
+.hero-carousel,
+#hero,
+.banner,
+.main-banner,
+.home-hero {
+    margin-top: 0 !important;
+}
+
+
+/* En móvil tampoco debe aparecer el espacio */
+
+@media (max-width: 900px) {
+
+    main {
+        padding-top: 0 !important;
+    }
+
+    #satori-header + main {
+        padding-top: 0 !important;
+    }
+
+    .hero-slider,
+    .hero,
+    .hero-carousel,
+    #hero,
+    .banner,
+    .main-banner,
+    .home-hero {
+        margin-top: 0 !important;
+    }
+
+}
