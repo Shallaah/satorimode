@@ -10,169 +10,228 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* =====================================================
-           SATORII · PRODUCTOS
-           Catálogo inspirado en la referencia enviada
-        ===================================================== */
+        /* =========================================================
+           SATORIMODE · PRODUCTOS
+           Diseño inspirado en la referencia enviada
+        ========================================================= */
 
-        .products-catalog {
-            width: 100%;
-            background: #fff;
+        :root {
+            --satori-red: #ed1111;
+            --satori-black: #111111;
+            --satori-gray: #707070;
+            --satori-light: #f5f5f5;
+            --satori-border: #e5e5e5;
         }
 
-        /* HERO */
+        body.products-page-body {
+            margin: 0;
+            background: #fff;
+            color: var(--satori-black);
+        }
 
-        .products-catalog-hero {
+        .products-page {
             width: 100%;
-            min-height: 330px;
+            overflow: hidden;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .products-hero {
+            position: relative;
+            min-height: 315px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 70px 24px;
+            padding: 65px 20px;
+            box-sizing: border-box;
             background:
-                linear-gradient(rgba(255,255,255,.82), rgba(255,255,255,.92)),
-                radial-gradient(circle at 20% 30%, #d9d9d9 0 8%, transparent 30%),
-                radial-gradient(circle at 80% 70%, #e6e6e6 0 8%, transparent 30%),
-                #f2f2f2;
-            border-bottom: 2px solid #111;
+                radial-gradient(circle at 15% 35%, rgba(0,0,0,.035), transparent 25%),
+                radial-gradient(circle at 85% 65%, rgba(0,0,0,.035), transparent 25%),
+                #fafafa;
+            border-bottom: 2px solid var(--satori-black);
         }
 
-        .products-catalog-hero-inner {
-            width: min(1000px, 100%);
+        .products-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .32;
+            background-image:
+                repeating-radial-gradient(
+                    ellipse at 20% 30%,
+                    transparent 0 24px,
+                    rgba(0,0,0,.018) 25px 27px
+                );
+            mask-image: linear-gradient(to bottom, transparent, #000 35%, transparent);
         }
 
-        .products-eyebrow {
+        .products-hero-content {
+            position: relative;
+            z-index: 1;
+            width: min(850px, 100%);
+        }
+
+        .products-hero-kicker {
             display: block;
-            margin-bottom: 14px;
-            color: #ed1111;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: .22em;
+            margin-bottom: 15px;
+            color: var(--satori-red);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 3px;
         }
 
-        .products-catalog-hero h1 {
+        .products-hero h1 {
             margin: 0;
-            font-size: clamp(42px, 6vw, 82px);
-            line-height: .92;
-            letter-spacing: -.04em;
+            font-size: clamp(45px, 6.2vw, 82px);
+            line-height: .9;
+            letter-spacing: -4px;
             font-weight: 900;
         }
 
-        .products-catalog-hero h1 span {
-            color: #ed1111;
+        .products-hero h1 span {
+            color: var(--satori-red);
         }
 
-        .products-catalog-hero p {
-            max-width: 720px;
-            margin: 24px auto 0;
+        .products-hero p {
+            max-width: 690px;
+            margin: 22px auto 0;
             color: #555;
-            font-size: 15px;
-            line-height: 1.7;
+            font-size: 14px;
+            line-height: 1.65;
         }
 
-        /* CATEGORY BAR */
+        /* =========================================================
+           CATEGORÍAS
+        ========================================================= */
 
-        .products-category-bar {
-            width: min(1200px, calc(100% - 40px));
-            margin: 34px auto 0;
+        .products-filter-wrap {
+            width: min(1350px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 30px 0 0;
+        }
+
+        .products-filter {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
+            align-items: center;
+            gap: 9px;
             flex-wrap: wrap;
         }
 
-        .products-category-button {
+        .products-filter button {
+            appearance: none;
             border: 1px solid #111;
             background: #fff;
             color: #111;
             border-radius: 999px;
-            padding: 11px 22px;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: .04em;
+            min-height: 38px;
+            padding: 0 20px;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .05em;
             cursor: pointer;
-            transition: .2s ease;
+            transition: transform .2s ease, background .2s ease, color .2s ease;
         }
 
-        .products-category-button:hover,
-        .products-category-button.active {
-            background: #111;
+        .products-filter button:hover {
+            transform: translateY(-2px);
+        }
+
+        .products-filter button.active {
             color: #fff;
-            transform: translateY(-1px);
+            background: var(--satori-red);
+            border-color: var(--satori-red);
         }
 
-        .products-category-button.active {
-            background: #ed1111;
-            border-color: #ed1111;
+        /* =========================================================
+           CATÁLOGO
+        ========================================================= */
+
+        .products-catalog {
+            width: min(1350px, calc(100% - 40px));
+            margin: 52px auto 100px;
         }
 
-        /* CATALOG HEADER */
-
-        .products-catalog-section {
-            width: min(1400px, calc(100% - 40px));
-            margin: 55px auto 100px;
-        }
-
-        .products-catalog-heading {
+        .products-heading {
             display: flex;
-            align-items: end;
             justify-content: space-between;
+            align-items: flex-end;
             gap: 20px;
             margin-bottom: 28px;
         }
 
-        .products-catalog-heading small {
+        .products-heading-kicker {
             display: block;
             margin-bottom: 8px;
-            color: #ed1111;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: .16em;
+            color: var(--satori-red);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
-        .products-catalog-heading h2 {
+        .products-heading h2 {
             margin: 0;
-            font-size: clamp(28px, 3vw, 44px);
-            line-height: 1;
-            letter-spacing: -.035em;
+            font-size: clamp(31px, 3.2vw, 46px);
+            line-height: .95;
+            letter-spacing: -2px;
             font-weight: 900;
         }
 
-        .products-count {
+        .products-total {
+            flex: 0 0 auto;
             color: #777;
-            font-size: 13px;
-            white-space: nowrap;
+            font-size: 12px;
         }
 
-        /* GRID — inspirado en la referencia */
+        /* =========================================================
+           GRID
+        ========================================================= */
 
-        .products-reference-grid {
+        .products-grid-satori {
             display: grid;
             grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 42px 20px;
+            gap: 42px 22px;
         }
 
-        .satori-product-card {
+        .satori-card {
             min-width: 0;
+            display: block;
             color: #111;
             text-decoration: none;
-            display: block;
         }
 
-        .satori-product-image {
+        .satori-card-image {
             position: relative;
             width: 100%;
             aspect-ratio: 1 / 1;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background: #f5f5f5;
+            background: #f4f4f4;
         }
 
-        .satori-product-image img {
+        .satori-card-image::after {
+            content: "VER PRODUCTO";
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            padding: 7px 10px;
+            color: #fff;
+            background: rgba(17,17,17,.88);
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: .07em;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: .25s ease;
+        }
+
+        .satori-card-image img {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -180,178 +239,386 @@
             transition: transform .35s ease;
         }
 
-        .satori-product-card:hover .satori-product-image img {
+        .satori-card:hover .satori-card-image img {
             transform: scale(1.045);
         }
 
-        .satori-product-placeholder {
-            color: #999;
-            font-size: 12px;
-            letter-spacing: .16em;
+        .satori-card:hover .satori-card-image::after {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .satori-product-info {
+        .satori-card-info {
             padding: 13px 2px 0;
         }
 
-        .satori-product-category {
+        .satori-card-category {
             display: block;
-            margin-bottom: 7px;
-            color: #ed1111;
-            font-size: 9px;
+            margin-bottom: 6px;
+            color: var(--satori-red);
+            font-size: 8px;
             font-weight: 900;
-            letter-spacing: .12em;
+            letter-spacing: 1.4px;
         }
 
-        .satori-product-name {
-            min-height: 36px;
+        .satori-card-name {
             margin: 0;
-            font-size: 13px;
+            min-height: 36px;
+            font-size: 12px;
             line-height: 1.35;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        .satori-product-price {
-            margin-top: 8px;
+        .satori-card-price {
+            margin-top: 7px;
             font-size: 13px;
             font-weight: 800;
         }
 
-        .satori-product-card:hover .satori-product-name {
-            color: #ed1111;
+        .satori-card-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            margin-top: 12px;
+            border: 1px solid var(--satori-border);
+            border-radius: 5px;
+            overflow: hidden;
         }
 
-        /* INFO STRIP */
-
-        .products-bottom-message {
-            width: 100%;
-            margin-top: 80px;
-            padding: 30px;
-            background: #111;
-            color: #fff;
+        .satori-card-meta span {
+            padding: 8px 5px;
             text-align: center;
+            color: #777;
+            background: #fff;
+            font-size: 7px;
+            line-height: 1.25;
         }
 
-        .products-bottom-message span {
+        .satori-empty {
+            grid-column: 1 / -1;
+            padding: 100px 20px;
+            text-align: center;
+            color: #777;
+        }
+
+        .satori-empty strong {
             display: block;
             margin-bottom: 8px;
-            color: #ed1111;
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: .2em;
+            color: #111;
+            font-size: 18px;
         }
 
-        .products-bottom-message h3 {
+        /* =========================================================
+           PACK / BANNER FINAL
+        ========================================================= */
+
+        .products-pack {
+            width: min(1350px, calc(100% - 40px));
+            margin: 0 auto 100px;
+            padding: 42px 48px;
+            box-sizing: border-box;
+            color: #fff;
+            background:
+                radial-gradient(circle at 90% 20%, rgba(237,17,17,.4), transparent 40%),
+                linear-gradient(110deg, #111, #230000);
+            border-radius: 8px;
+            border-bottom: 3px solid var(--satori-red);
+        }
+
+        .products-pack-label {
+            color: var(--satori-red);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .products-pack h3 {
+            margin: 10px 0 8px;
+            font-size: clamp(28px, 3.5vw, 48px);
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .products-pack h3 span {
+            color: var(--satori-red);
+        }
+
+        .products-pack p {
+            max-width: 650px;
             margin: 0;
-            font-size: clamp(25px, 3vw, 42px);
-            font-weight: 900;
-        }
-
-        .products-bottom-message p {
-            margin: 12px auto 0;
-            max-width: 600px;
-            color: #bbb;
+            color: #c7c7c7;
             font-size: 13px;
             line-height: 1.6;
         }
 
-        /* =====================================================
+        .products-pack a {
+            display: inline-flex;
+            margin-top: 20px;
+            padding: 12px 18px;
+            color: #fff;
+            background: var(--satori-red);
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .05em;
+            transition: transform .2s ease;
+        }
+
+        .products-pack a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* =========================================================
+           FOOTER DE ESTA PÁGINA
+           Se fuerza aquí para evitar que dependa de estilos
+           adicionales que puedan faltar en style.css.
+        ========================================================= */
+
+        .products-footer {
+            border-top: 2px solid #111;
+            background: #0d0d0d;
+            color: #fff;
+        }
+
+        .products-footer-main {
+            width: min(1350px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 55px 0 45px;
+            display: grid;
+            grid-template-columns: 1.3fr .8fr .8fr 1.4fr;
+            gap: 45px;
+        }
+
+        .products-footer h4 {
+            margin: 0 0 15px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .products-footer-brand h3 {
+            margin: 0 0 10px;
+            font-size: 22px;
+            font-style: italic;
+        }
+
+        .products-footer p {
+            margin: 0;
+            max-width: 280px;
+            color: #aaa;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .products-footer a {
+            display: block;
+            width: fit-content;
+            margin: 0 0 10px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 11px;
+            transition: color .2s ease;
+        }
+
+        .products-footer a:hover {
+            color: var(--satori-red);
+        }
+
+        .products-footer-clan .footer-red {
+            color: var(--satori-red);
+        }
+
+        .products-footer-clan h3 {
+            margin: 0 0 10px;
+            font-size: clamp(25px, 3vw, 38px);
+            line-height: 1;
+        }
+
+        .products-newsletter {
+            display: flex;
+            max-width: 500px;
+            margin-top: 18px;
+        }
+
+        .products-newsletter input {
+            flex: 1;
+            min-width: 0;
+            height: 42px;
+            padding: 0 13px;
+            border: 1px solid #333;
+            border-right: 0;
+            outline: none;
+            background: #fff;
+            color: #111;
+            font-size: 11px;
+        }
+
+        .products-newsletter button {
+            width: 48px;
+            border: 0;
+            background: var(--satori-red);
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .products-footer-bottom {
+            width: min(1350px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 18px 0;
+            border-top: 1px solid #292929;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #666;
+            font-size: 9px;
+        }
+
+        .products-footer-social {
+            margin-top: 17px !important;
+            color: #fff !important;
+        }
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .products-grid-satori {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .products-footer-main {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =========================================================
            MOBILE
-        ===================================================== */
+        ========================================================= */
 
-        @media (max-width: 900px) {
+        @media (max-width: 700px) {
 
-            .products-catalog-hero {
-                min-height: 270px;
-                padding: 55px 20px;
+            .products-hero {
+                min-height: 280px;
+                padding: 55px 18px;
             }
 
-            .products-catalog-hero p {
-                font-size: 13px;
+            .products-hero h1 {
+                letter-spacing: -2.5px;
             }
 
-            .products-category-bar {
+            .products-hero p {
+                font-size: 12px;
+            }
+
+            .products-filter-wrap,
+            .products-catalog,
+            .products-pack,
+            .products-footer-main,
+            .products-footer-bottom {
                 width: calc(100% - 30px);
-                margin-top: 25px;
+            }
+
+            .products-filter {
                 justify-content: flex-start;
-                overflow-x: auto;
                 flex-wrap: nowrap;
+                overflow-x: auto;
                 padding-bottom: 4px;
                 scrollbar-width: none;
             }
 
-            .products-category-bar::-webkit-scrollbar {
+            .products-filter::-webkit-scrollbar {
                 display: none;
             }
 
-            .products-category-button {
+            .products-filter button {
                 flex: 0 0 auto;
             }
 
-            .products-catalog-section {
-                width: calc(100% - 30px);
-                margin-top: 40px;
+            .products-catalog {
+                margin-top: 42px;
+                margin-bottom: 60px;
             }
 
-            .products-catalog-heading {
-                align-items: start;
+            .products-heading {
+                align-items: flex-start;
                 flex-direction: column;
-                margin-bottom: 22px;
+                margin-bottom: 24px;
             }
 
-            .products-reference-grid {
+            .products-grid-satori {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 34px 13px;
+                gap: 34px 12px;
             }
 
-            .satori-product-name {
+            .satori-card-name {
                 min-height: auto;
+                font-size: 11px;
+            }
+
+            .satori-card-price {
                 font-size: 12px;
             }
 
-            .satori-product-price {
-                font-size: 12px;
+            .satori-card-meta span {
+                font-size: 6.5px;
             }
 
-            .products-bottom-message {
-                margin-top: 55px;
-                padding: 35px 20px;
+            .products-pack {
+                margin-bottom: 60px;
+                padding: 30px 22px;
+            }
+
+            .products-footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px 25px;
+                padding: 42px 0;
+            }
+
+            .products-footer-clan {
+                grid-column: 1 / -1;
+            }
+
+            .products-footer-bottom {
+                flex-direction: column;
             }
         }
 
         @media (max-width: 430px) {
 
-            .products-reference-grid {
+            .products-grid-satori {
                 gap: 28px 10px;
             }
 
-            .satori-product-category {
-                font-size: 8px;
+            .satori-card-category {
+                font-size: 7px;
             }
 
-            .satori-product-name {
-                font-size: 11px;
+            .satori-card-name {
+                font-size: 10px;
             }
         }
     </style>
 </head>
 
-<body>
+<body class="products-page-body">
 
     <!-- HEADER GLOBAL -->
     <div id="satori-header"></div>
 
-    <main class="products-catalog">
+    <main class="products-page">
 
-        <!-- =================================================
+        <!-- =====================================================
              HERO
-        ================================================== -->
+        ====================================================== -->
 
-        <section class="products-catalog-hero">
+        <section class="products-hero">
 
-            <div class="products-catalog-hero-inner">
+            <div class="products-hero-content">
 
-                <span class="products-eyebrow">
+                <span class="products-hero-kicker">
                     SATORIMODE · CATÁLOGO
                 </span>
 
@@ -362,9 +629,8 @@
 
                 <p>
                     Explora todos los productos de SatoriMode:
-                    anime, streetwear y accesorios. Encuentra
-                    diseños creados para llevar contigo aquello
-                    que te representa.
+                    anime, streetwear y accesorios. Descubre
+                    diseños creados para formar parte de tu estilo.
                 </p>
 
             </div>
@@ -372,99 +638,111 @@
         </section>
 
 
-        <!-- =================================================
-             CATEGORÍAS
-        ================================================== -->
+        <!-- =====================================================
+             FILTROS
+        ====================================================== -->
 
-        <div class="products-category-bar">
+        <div class="products-filter-wrap">
 
-            <button
-                type="button"
-                class="products-category-button active"
-                data-category="all"
-            >
-                TODO
-            </button>
+            <div class="products-filter">
 
-            <button
-                type="button"
-                class="products-category-button"
-                data-category="anime"
-            >
-                ANIME
-            </button>
+                <button
+                    type="button"
+                    class="active"
+                    data-category="all"
+                >
+                    TODO
+                </button>
 
-            <button
-                type="button"
-                class="products-category-button"
-                data-category="streetwear"
-            >
-                STREETWEAR
-            </button>
+                <button
+                    type="button"
+                    data-category="anime"
+                >
+                    ANIME
+                </button>
 
-            <button
-                type="button"
-                class="products-category-button"
-                data-category="accesorios"
-            >
-                ACCESORIOS
-            </button>
+                <button
+                    type="button"
+                    data-category="streetwear"
+                >
+                    STREETWEAR
+                </button>
+
+                <button
+                    type="button"
+                    data-category="accesorios"
+                >
+                    ACCESORIOS
+                </button>
+
+            </div>
 
         </div>
 
 
-        <!-- =================================================
-             CATÁLOGO
-        ================================================== -->
+        <!-- =====================================================
+             PRODUCTOS
+        ====================================================== -->
 
-        <section class="products-catalog-section">
+        <section class="products-catalog">
 
-            <div class="products-catalog-heading">
+            <div class="products-heading">
 
                 <div>
-                    <small>
-                        01 / PRODUCTOS
-                    </small>
+
+                    <span class="products-heading-kicker">
+                        01 / CATÁLOGO
+                    </span>
 
                     <h2 id="products-title">
                         TODOS LOS PRODUCTOS.
                     </h2>
+
                 </div>
 
                 <span
-                    class="products-count"
-                    id="products-count"
+                    class="products-total"
+                    id="products-total"
                 >
-                    Cargando productos...
+                    Cargando...
                 </span>
 
             </div>
 
 
             <div
-                class="products-reference-grid"
-                id="products-reference-grid"
+                class="products-grid-satori"
+                id="satori-products-grid"
             >
-                <!-- Los productos se generan automáticamente -->
             </div>
 
+        </section>
 
-            <div class="products-bottom-message">
 
-                <span>
-                    SATORIMODE
-                </span>
+        <!-- =====================================================
+             SATORII PACK
+        ====================================================== -->
 
-                <h3>
-                    VISTE LO QUE REPRESENTAS.
-                </h3>
+        <section class="products-pack">
 
-                <p>
-                    Anime, streetwear y accesorios creados
-                    para formar parte de tu estilo.
-                </p>
+            <span class="products-pack-label">
+                SATORII PACK
+            </span>
 
-            </div>
+            <h3>
+                UNA EXPERIENCIA
+                <span>SATORII.</span>
+            </h3>
+
+            <p>
+                Una experiencia especial creada para acompañar
+                tus pedidos y hacer que cada compra se sienta
+                diferente.
+            </p>
+
+            <a href="satorii-pack.html">
+                DESCUBRIR SATORII PACK
+            </a>
 
         </section>
 
@@ -475,25 +753,24 @@
          FOOTER
     ====================================================== -->
 
-    <footer class="site-footer">
+    <footer class="products-footer">
 
-        <div class="footer-main">
+        <div class="products-footer-main">
 
-            <div class="footer-brand">
+            <div class="products-footer-brand">
 
                 <h3>SATORII</h3>
 
                 <p>
-                    Cultura japonesa y streetwear
-                    llevados a prendas que puedes llevar contigo.
+                    Cultura japonesa y streetwear llevados
+                    a prendas que puedes llevar contigo.
                 </p>
 
                 <a
+                    class="products-footer-social"
                     href="https://www.instagram.com/satorimode/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="instagram-link"
-                    aria-label="Instagram de SatoriMode"
                 >
                     Instagram ↗
                 </a>
@@ -501,18 +778,19 @@
             </div>
 
 
-            <div class="footer-column">
+            <div>
 
                 <h4>COLECCIONES</h4>
 
                 <a href="anime.html">Anime</a>
                 <a href="streetwear.html">Streetwear</a>
                 <a href="accesorios.html">Accesorios</a>
+                <a href="productos.html">Todo</a>
 
             </div>
 
 
-            <div class="footer-column">
+            <div>
 
                 <h4>PRODUCTOS</h4>
 
@@ -522,27 +800,16 @@
             </div>
 
 
-            <div class="footer-column">
+            <div class="products-footer-clan">
 
-                <h4>AYUDA</h4>
-
-                <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
-                <a href="envios.html">Envíos</a>
-                <a href="cambios.html">Cambios y devoluciones</a>
-                <a href="guia-tallas.html">Guía de tallas</a>
-
-            </div>
-
-
-            <div class="footer-clan">
-
-                <span class="footer-eyebrow">
+                <h4>
                     SATORII COMMUNITY
-                </span>
+                </h4>
 
-                <h2>
-                    ÚNETE AL <span>CLAN.</span>
-                </h2>
+                <h3>
+                    ÚNETE AL
+                    <span class="footer-red">CLAN.</span>
+                </h3>
 
                 <p>
                     Recibe lanzamientos exclusivos,
@@ -550,14 +817,14 @@
                 </p>
 
                 <form
-                    class="footer-newsletter"
-                    id="footerNewsletter"
+                    class="products-newsletter"
+                    id="products-newsletter"
                 >
+
                     <input
                         type="email"
-                        id="footerEmail"
-                        placeholder="Ingresa tu correo electrónico"
-                        aria-label="Correo electrónico"
+                        id="products-email"
+                        placeholder="Tu correo electrónico"
                         autocomplete="email"
                         required
                     >
@@ -568,6 +835,7 @@
                     >
                         →
                     </button>
+
                 </form>
 
             </div>
@@ -575,19 +843,15 @@
         </div>
 
 
-        <div class="footer-bottom">
+        <div class="products-footer-bottom">
 
             <span>
                 © 2026 SatoriMode
             </span>
 
-            <div class="footer-bottom-links">
-
-                <a href="privacidad.html">Privacidad</a>
-                <a href="terminos.html">Términos</a>
-                <a href="contacto.html">Contacto</a>
-
-            </div>
+            <span>
+                Privacidad · Términos · Contacto
+            </span>
 
         </div>
 
@@ -595,7 +859,7 @@
 
 
     <!-- =====================================================
-         JAVASCRIPT
+         SCRIPTS
     ====================================================== -->
 
     <script src="js/products.js"></script>
@@ -606,27 +870,34 @@
         document.addEventListener("DOMContentLoaded", function () {
 
             const grid =
-                document.getElementById("products-reference-grid");
+                document.getElementById("satori-products-grid");
 
-            const count =
-                document.getElementById("products-count");
+            const total =
+                document.getElementById("products-total");
 
             const title =
                 document.getElementById("products-title");
 
-            const buttons =
+            const filterButtons =
                 document.querySelectorAll(
-                    ".products-category-button"
+                    ".products-filter button"
                 );
 
-            const products =
-                Array.isArray(window.PRODUCTS)
-                    ? window.PRODUCTS
+            /*
+             * IMPORTANTE:
+             * products.js define PRODUCTS como variable global.
+             * No usamos window.PRODUCTS porque una declaración
+             * const/let no siempre aparece como propiedad de window.
+             */
+            const productData =
+                typeof PRODUCTS !== "undefined" &&
+                Array.isArray(PRODUCTS)
+                    ? PRODUCTS
                     : [];
 
-            function normalizeCategory(category) {
+            function normalize(value) {
 
-                return String(category || "")
+                return String(value || "")
                     .normalize("NFD")
                     .replace(/[\u0300-\u036f]/g, "")
                     .toLowerCase()
@@ -634,15 +905,42 @@
 
             }
 
-            function formatPrice(price) {
+            function escapeHTML(value) {
+
+                return String(value ?? "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+
+            }
+
+            function price(value) {
 
                 return "$" +
-                    Number(price || 0)
+                    Number(value || 0)
                         .toLocaleString("es-CL");
 
             }
 
+            function getCategory(product) {
+
+                return normalize(
+                    product.collection ||
+                    product.category ||
+                    ""
+                );
+
+            }
+
             function getImage(product) {
+
+                if (
+                    product.image
+                ) {
+                    return product.image;
+                }
 
                 if (
                     Array.isArray(product.images) &&
@@ -651,40 +949,128 @@
                     return product.images[0];
                 }
 
-                return product.image || "";
+                return "";
+
             }
 
-            function getProductUrl(product) {
+            function getUrl(product) {
+
+                /*
+                 * products.js ya contiene la URL correcta
+                 * de cada producto. La usamos primero.
+                 */
 
                 if (product.url) {
                     return product.url;
                 }
 
-                const category =
-                    normalizeCategory(
-                        product.category
-                    ) || "otros";
+                /*
+                 * Respaldo para productos nuevos.
+                 */
 
-                const id =
-                    String(
+                const category =
+                    getCategory(product) || "otros";
+
+                const slug =
+                    normalize(
                         product.id ||
                         product.name ||
-                        ""
+                        "producto"
                     )
-                    .normalize("NFD")
-                    .replace(/[\u0300-\u036f]/g, "")
-                    .toLowerCase()
-                    .trim()
                     .replace(/[^a-z0-9]+/g, "-")
                     .replace(/^-+|-+$/g, "");
 
-                return "productos/" + category + "/" + id + ".html";
+                return "productos/" +
+                    category +
+                    "/" +
+                    slug +
+                    ".html";
+
             }
 
-            function renderProducts(category) {
+            function createCard(product) {
 
-                let visibleProducts =
-                    products.filter(function (product) {
+                const image =
+                    getImage(product);
+
+                const category =
+                    getCategory(product) ||
+                    "satorimode";
+
+                const card =
+                    document.createElement("a");
+
+                card.className =
+                    "satori-card";
+
+                card.href =
+                    getUrl(product);
+
+                card.innerHTML = `
+
+                    <div class="satori-card-image">
+
+                        ${
+                            image
+                                ? `
+                                    <img
+                                        src="${escapeHTML(image)}"
+                                        alt="${escapeHTML(product.name || "Producto Satori")}"
+                                        loading="lazy"
+                                    >
+                                  `
+                                : `
+                                    <span>
+                                        SATORII
+                                    </span>
+                                  `
+                        }
+
+                    </div>
+
+                    <div class="satori-card-info">
+
+                        <span class="satori-card-category">
+                            ${escapeHTML(category.toUpperCase())}
+                        </span>
+
+                        <h3 class="satori-card-name">
+                            ${escapeHTML(
+                                product.name ||
+                                "Producto Satori"
+                            )}
+                        </h3>
+
+                        <div class="satori-card-price">
+                            ${price(product.price)}
+                        </div>
+
+                        <div class="satori-card-meta">
+
+                            <span>
+                                ↻ CAMBIOS
+                            </span>
+
+                            <span>
+                                ✓ ENVÍOS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                return card;
+
+            }
+
+            function render(category = "all") {
+
+                grid.innerHTML = "";
+
+                let visible =
+                    productData.filter(function (product) {
 
                         return (
                             product &&
@@ -695,121 +1081,67 @@
 
                 if (category !== "all") {
 
-                    visibleProducts =
-                        visibleProducts.filter(
-                            function (product) {
+                    visible =
+                        visible.filter(function (product) {
 
-                                return normalizeCategory(
-                                    product.category ||
-                                    product.collection
-                                ) === category;
+                            return (
+                                getCategory(product) ===
+                                category
+                            );
 
-                            }
-                        );
+                        });
 
                 }
 
-                grid.innerHTML = "";
-
-                if (!visibleProducts.length) {
+                if (!visible.length) {
 
                     grid.innerHTML = `
-                        <div style="
-                            grid-column:1/-1;
-                            padding:70px 20px;
-                            text-align:center;
-                            color:#888;
-                        ">
-                            Próximamente encontrarás productos
-                            en esta categoría.
-                        </div>
-                    `;
 
-                    count.textContent =
-                        "0 productos";
+                        <div class="satori-empty">
 
-                    return;
-                }
-
-                visibleProducts.forEach(function (product) {
-
-                    const image =
-                        getImage(product);
-
-                    const categoryName =
-                        normalizeCategory(
-                            product.category ||
-                            product.collection
-                        ) || "satorimode";
-
-                    const card =
-                        document.createElement("a");
-
-                    card.className =
-                        "satori-product-card";
-
-                    card.href =
-                        getProductUrl(product);
-
-                    card.innerHTML = `
-
-                        <div class="satori-product-image">
+                            <strong>
+                                Próximamente.
+                            </strong>
 
                             ${
-                                image
-                                    ? `
-                                        <img
-                                            src="${image}"
-                                            alt="${product.name || "Producto Satori"}"
-                                            loading="lazy"
-                                        >
-                                      `
-                                    : `
-                                        <span class="satori-product-placeholder">
-                                            SATORII
-                                        </span>
-                                      `
+                                productData.length
+                                    ? "No hay productos disponibles en esta categoría."
+                                    : "No se pudieron cargar los productos desde products.js."
                             }
 
                         </div>
 
-                        <div class="satori-product-info">
-
-                            <span class="satori-product-category">
-                                ${categoryName.toUpperCase()}
-                            </span>
-
-                            <h3 class="satori-product-name">
-                                ${product.name || "Producto Satori"}
-                            </h3>
-
-                            <div class="satori-product-price">
-                                ${formatPrice(product.price)}
-                            </div>
-
-                        </div>
                     `;
 
-                    grid.appendChild(card);
+                } else {
 
-                });
+                    visible.forEach(function (product) {
 
-                count.textContent =
-                    visibleProducts.length +
+                        grid.appendChild(
+                            createCard(product)
+                        );
+
+                    });
+
+                }
+
+                total.textContent =
+                    visible.length +
                     (
-                        visibleProducts.length === 1
+                        visible.length === 1
                             ? " producto"
                             : " productos"
                     );
+
             }
 
-            buttons.forEach(function (button) {
+            filterButtons.forEach(function (button) {
 
                 button.addEventListener(
                     "click",
                     function () {
 
-                        buttons.forEach(
+                        filterButtons.forEach(
                             function (item) {
                                 item.classList.remove("active");
                             }
@@ -820,66 +1152,112 @@
                         const category =
                             button.dataset.category;
 
-                        if (category === "all") {
+                        title.textContent =
+                            category === "all"
+                                ? "TODOS LOS PRODUCTOS."
+                                : category.toUpperCase() + ".";
 
-                            title.textContent =
-                                "TODOS LOS PRODUCTOS.";
-
-                        } else {
-
-                            title.textContent =
-                                category.toUpperCase() + ".";
-
-                        }
-
-                        renderProducts(category);
-
-                        window.scrollTo({
-                            top:
-                                document.querySelector(
-                                    ".products-catalog-section"
-                                ).offsetTop - 80,
-                            behavior: "smooth"
-                        });
+                        render(category);
 
                     }
                 );
 
             });
 
-            renderProducts("all");
+            /*
+             * Búsqueda desde el buscador del header:
+             * productos.html?search=goku
+             */
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            const search =
+                normalize(
+                    params.get("search")
+                );
+
+            if (search) {
+
+                const results =
+                    productData.filter(function (product) {
+
+                        const text =
+                            normalize(
+                                [
+                                    product.name,
+                                    product.category,
+                                    product.collection,
+                                    product.description
+                                ].join(" ")
+                            );
+
+                        return text.includes(search);
+
+                    });
+
+                grid.innerHTML = "";
+
+                results.forEach(function (product) {
+
+                    grid.appendChild(
+                        createCard(product)
+                    );
+
+                });
+
+                total.textContent =
+                    results.length +
+                    (
+                        results.length === 1
+                            ? " resultado"
+                            : " resultados"
+                    );
+
+                title.textContent =
+                    'RESULTADOS PARA "' +
+                    search.toUpperCase() +
+                    '".';
+
+            } else {
+
+                render("all");
+
+            }
 
 
             /* Newsletter */
 
-            const newsletter =
-                document.getElementById(
-                    "footerNewsletter"
-                );
+            document
+                .getElementById("products-newsletter")
+                ?.addEventListener(
+                    "submit",
+                    function (event) {
 
-            newsletter?.addEventListener(
-                "submit",
-                function (event) {
+                        event.preventDefault();
 
-                    event.preventDefault();
+                        const input =
+                            document.getElementById(
+                                "products-email"
+                            );
 
-                    const input =
-                        document.getElementById(
-                            "footerEmail"
-                        );
+                        if (
+                            input &&
+                            input.value.trim()
+                        ) {
 
-                    if (input && input.value.trim()) {
+                            alert(
+                                "¡Gracias por unirte al Clan Satori!"
+                            );
 
-                        alert(
-                            "¡Gracias por unirte al Clan Satori!"
-                        );
+                            input.value = "";
 
-                        input.value = "";
+                        }
 
                     }
-
-                }
-            );
+                );
 
         });
     </script>
