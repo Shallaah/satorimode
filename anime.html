@@ -10,13 +10,605 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>SatoriMode | Anime</title>
+    <meta
+        name="description"
+        content="SatoriMode Anime — Poleras y prendas inspiradas en anime y cultura japonesa."
+    >
+
+    <title>Anime | SatoriMode</title>
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
 
+
+    <style>
+
+        /* =====================================================
+           ANIME — ESTRUCTURA DE PÁGINA
+        ====================================================== */
+
+        .anime-page {
+
+            width: min(
+                var(--satori-content-width, 1800px),
+                calc(100% - (var(--satori-side-space, 30px) * 2))
+            );
+
+            margin-left: auto;
+            margin-right: auto;
+
+            box-sizing: border-box;
+
+        }
+
+
+        /* =====================================================
+           CABECERA DE COLECCIÓN
+        ====================================================== */
+
+        .anime-intro {
+
+            padding-top: 110px;
+            padding-bottom: 70px;
+
+            text-align: center;
+
+        }
+
+
+        .anime-intro-label {
+
+            margin-bottom: 16px;
+
+            color: var(--red, #ff1b1b);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .anime-intro h1 {
+
+            margin: 0;
+
+            font-size: clamp(
+                48px,
+                6vw,
+                88px
+            );
+
+            line-height: .95;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+
+            color: #111;
+
+        }
+
+
+        .anime-intro h1 span {
+
+            color: var(--red, #ff1b1b);
+
+        }
+
+
+        .anime-intro p {
+
+            max-width: 650px;
+
+            margin: 25px auto 0;
+
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           BARRA DE CATEGORÍA
+        ====================================================== */
+
+        .anime-category-bar {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 45px;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+        .anime-category-title {
+
+            margin: 0;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .anime-product-count {
+
+            color: #777;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           GRID
+           
+           5 × 340px = 1700px
+           Esto permite mantener el mismo ancho global.
+        ====================================================== */
+
+        .anime-products-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+
+            column-gap: 22px;
+
+            row-gap: 75px;
+
+            width: 100%;
+
+        }
+
+
+        /* =====================================================
+           PRODUCTO
+        ====================================================== */
+
+        .anime-product {
+
+            display: block;
+
+            min-width: 0;
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        /* =====================================================
+           IMÁGENES
+        ====================================================== */
+
+        .anime-product-image {
+
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            background: #f7f7f7;
+
+        }
+
+
+        .anime-product-image img {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                opacity .35s ease,
+                transform .45s ease;
+
+        }
+
+
+        .anime-product-image .image-primary {
+
+            opacity: 1;
+
+        }
+
+
+        .anime-product-image .image-secondary {
+
+            opacity: 0;
+
+        }
+
+
+        /* Hover */
+
+        .anime-product:hover
+        .anime-product-image
+        .image-primary {
+
+            opacity: 0;
+
+        }
+
+
+        .anime-product:hover
+        .anime-product-image
+        .image-secondary {
+
+            opacity: 1;
+
+        }
+
+
+        .anime-product:hover
+        .anime-product-image img {
+
+            transform: scale(1.025);
+
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ====================================================== */
+
+        .anime-product-info {
+
+            padding-top: 16px;
+
+        }
+
+
+        .anime-product-category {
+
+            margin-bottom: 6px;
+
+            color: var(--red, #ff1b1b);
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .anime-product-name {
+
+            margin: 0;
+
+            color: #111;
+
+            font-size: 14px;
+
+            line-height: 1.3;
+
+            font-weight: 600;
+
+        }
+
+
+        .anime-product-price {
+
+            margin-top: 7px;
+
+            color: #111;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           SIN PRODUCTOS
+        ====================================================== */
+
+        .anime-empty {
+
+            grid-column: 1 / -1;
+
+            padding: 100px 20px;
+
+            text-align: center;
+
+            color: #777;
+
+        }
+
+
+        .anime-empty strong {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #111;
+
+            font-size: 20px;
+
+        }
+
+
+        /* =====================================================
+           PACK FINAL
+        ====================================================== */
+
+        .anime-pack {
+
+            position: relative;
+
+            margin-top: 120px;
+            margin-bottom: 100px;
+
+            min-height: 230px;
+
+            padding: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            box-sizing: border-box;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 30%,
+                    #430000 0%,
+                    #1d0000 40%,
+                    #080000 80%
+                );
+
+            color: #fff;
+
+        }
+
+
+        .anime-pack-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 650px;
+
+        }
+
+
+        .anime-pack-label {
+
+            margin-bottom: 8px;
+
+            color: var(--red, #ff1b1b);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .anime-pack h2 {
+
+            margin: 0 0 12px;
+
+            font-size: clamp(
+                30px,
+                4vw,
+                52px
+            );
+
+            line-height: 1;
+
+            font-weight: 900;
+
+        }
+
+
+        .anime-pack h2 span {
+
+            color: var(--red, #ff1b1b);
+
+        }
+
+
+        .anime-pack p {
+
+            margin: 0;
+
+            color: #ccc;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1400px) {
+
+            .anime-products-grid {
+
+                grid-template-columns:
+                    repeat(4, minmax(0, 1fr));
+
+            }
+
+        }
+
+
+        @media (max-width: 1050px) {
+
+            .anime-products-grid {
+
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+
+                column-gap: 18px;
+
+                row-gap: 55px;
+
+            }
+
+            .anime-intro {
+
+                padding-top: 90px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .anime-page {
+
+                width: calc(100% - 30px);
+
+            }
+
+
+            .anime-intro {
+
+                padding-top: 95px;
+
+                padding-bottom: 50px;
+
+            }
+
+
+            .anime-intro h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .anime-intro p {
+
+                font-size: 13px;
+
+            }
+
+
+            .anime-category-bar {
+
+                margin-bottom: 30px;
+
+            }
+
+
+            .anime-products-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                column-gap: 14px;
+
+                row-gap: 45px;
+
+            }
+
+
+            .anime-product-info {
+
+                padding-top: 11px;
+
+            }
+
+
+            .anime-product-category {
+
+                font-size: 8px;
+
+            }
+
+
+            .anime-product-name {
+
+                font-size: 12px;
+
+            }
+
+
+            .anime-product-price {
+
+                font-size: 12px;
+
+                margin-top: 5px;
+
+            }
+
+
+            .anime-pack {
+
+                margin-top: 80px;
+                margin-bottom: 60px;
+
+                min-height: 220px;
+
+                padding: 30px 25px;
+
+            }
+
+
+            .anime-pack h2 {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -25,955 +617,342 @@
 
 
     <!-- =====================================================
-         BARRA SUPERIOR
+         HEADER GLOBAL
     ====================================================== -->
 
-    <div class="shipping-bar">
+    <div id="satori-header"></div>
 
-        ENVÍOS A TODO CHILE · SATORIMODE
-
-    </div>
-
-
-
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
-
-    <header class="site-header">
-
-        <div class="header-inner">
-
-
-            <!-- =================================================
-                 MENÚ MÓVIL
-            ================================================== -->
-
-            <button
-                class="mobile-menu-button"
-                type="button"
-                aria-label="Abrir menú"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-
-
-            <!-- =================================================
-                 LOGO
-            ================================================== -->
-
-            <a
-                href="index.html"
-                class="brand-logo"
-                aria-label="SatoriMode - Inicio"
-            >
-
-                <img
-                    src="logo.png"
-                    alt="SatoriMode"
-                >
-
-            </a>
-
-
-
-            <!-- =================================================
-                 NAVEGACIÓN DESKTOP
-            ================================================== -->
-
-            <nav
-                class="main-nav"
-                aria-label="Navegación principal"
-            >
-
-
-                <!-- INICIO -->
-
-                <a
-                    href="index.html"
-                    class="nav-link"
-                >
-                    INICIO
-                </a>
-
-
-
-                <!-- =================================================
-                     COLECCIONES
-                ================================================== -->
-
-                <div
-                    class="nav-dropdown is-open-page"
-                    data-dropdown="colecciones"
-                >
-
-                    <button
-                        class="nav-dropdown-btn"
-                        type="button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
-
-                        <span>
-                            COLECCIONES
-                        </span>
-
-                        <span
-                            class="arrow"
-                            aria-hidden="true"
-                        >
-                            ↓
-                        </span>
-
-                    </button>
-
-
-                    <div
-                        class="dropdown-menu"
-                        role="menu"
-                    >
-
-                        <a
-                            href="anime.html"
-                            role="menuitem"
-                        >
-                            ANIME
-                        </a>
-
-                        <a
-                            href="streetwear.html"
-                            role="menuitem"
-                        >
-                            STREETWEAR
-                        </a>
-
-                        <a
-                            href="accesorios.html"
-                            role="menuitem"
-                        >
-                            ACCESORIOS
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     PRODUCTOS
-                ================================================== -->
-
-                <div
-                    class="nav-dropdown"
-                    data-dropdown="productos"
-                >
-
-                    <button
-                        class="nav-dropdown-btn"
-                        type="button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
-
-                        <span>
-                            PRODUCTOS
-                        </span>
-
-                        <span
-                            class="arrow"
-                            aria-hidden="true"
-                        >
-                            ↓
-                        </span>
-
-                    </button>
-
-
-                    <div
-                        class="dropdown-menu"
-                        role="menu"
-                    >
-
-                        <a
-                            href="productos.html"
-                            role="menuitem"
-                        >
-                            TODAS LAS POLERAS
-                        </a>
-
-                        <a
-                            href="satorii-pack.html"
-                            role="menuitem"
-                        >
-                            SATORII PACK
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     AYUDA
-                ================================================== -->
-
-                <div
-                    class="nav-dropdown"
-                    data-dropdown="ayuda"
-                >
-
-                    <button
-                        class="nav-dropdown-btn"
-                        type="button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
-
-                        <span>
-                            AYUDA
-                        </span>
-
-                        <span
-                            class="arrow"
-                            aria-hidden="true"
-                        >
-                            ↓
-                        </span>
-
-                    </button>
-
-
-                    <div
-                        class="dropdown-menu"
-                        role="menu"
-                    >
-
-                        <a
-                            href="guia-tallas.html"
-                            role="menuitem"
-                        >
-                            GUÍA DE TALLAS
-                        </a>
-
-                        <a
-                            href="envios.html"
-                            role="menuitem"
-                        >
-                            ENVÍOS
-                        </a>
-
-                        <a
-                            href="preguntas-frecuentes.html"
-                            role="menuitem"
-                        >
-                            PREGUNTAS FRECUENTES
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </nav>
-
-
-
-            <!-- =================================================
-                 ICONOS HEADER
-            ================================================== -->
-
-            <div class="header-icons">
-
-                <a
-                    href="buscar.html"
-                    class="header-icon"
-                    aria-label="Buscar"
-                    title="Buscar"
-                >
-
-                    <span aria-hidden="true">
-                        ⌕
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="iniciar-sesion.html"
-                    class="header-icon"
-                    aria-label="Iniciar sesión"
-                    title="Iniciar sesión"
-                >
-
-                    <span aria-hidden="true">
-                        ♙
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="carrito.html"
-                    class="header-icon"
-                    aria-label="Carrito de compras"
-                    title="Carrito"
-                >
-
-                    <span aria-hidden="true">
-                        🛒
-                    </span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =====================================================
-         MENÚ MÓVIL
-    ====================================================== -->
-
-    <div
-        class="mobile-menu-overlay"
-        aria-hidden="true"
-    >
-    </div>
-
-
-    <aside
-        id="mobile-menu"
-        class="mobile-menu"
-        aria-hidden="true"
-    >
-
-        <div class="mobile-menu-header">
-
-            <a
-                href="index.html"
-                class="mobile-menu-logo"
-                aria-label="SatoriMode - Inicio"
-            >
-
-                <img
-                    src="logo.png"
-                    alt="SatoriMode"
-                >
-
-            </a>
-
-
-            <button
-                class="mobile-menu-close"
-                type="button"
-                aria-label="Cerrar menú"
-            >
-
-                ×
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             NAVEGACIÓN MÓVIL
-        ================================================== -->
-
-        <nav
-            class="mobile-nav"
-            aria-label="Navegación móvil"
-        >
-
-
-            <a href="index.html">
-                INICIO
-            </a>
-
-
-
-            <button
-                class="mobile-nav-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobile-collections"
-            >
-
-                <span>
-                    COLECCIONES
-                </span>
-
-                <span
-                    class="mobile-arrow"
-                    aria-hidden="true"
-                >
-                    ↓
-                </span>
-
-            </button>
-
-
-            <div
-                id="mobile-collections"
-                class="mobile-submenu"
-            >
-
-                <a href="anime.html">
-                    ANIME
-                </a>
-
-                <a href="streetwear.html">
-                    STREETWEAR
-                </a>
-
-                <a href="accesorios.html">
-                    ACCESORIOS
-                </a>
-
-            </div>
-
-
-
-            <button
-                class="mobile-nav-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobile-products"
-            >
-
-                <span>
-                    PRODUCTOS
-                </span>
-
-                <span
-                    class="mobile-arrow"
-                    aria-hidden="true"
-                >
-                    ↓
-                </span>
-
-            </button>
-
-
-            <div
-                id="mobile-products"
-                class="mobile-submenu"
-            >
-
-                <a href="productos.html">
-                    TODAS LAS POLERAS
-                </a>
-
-                <a href="satorii-pack.html">
-                    SATORII PACK
-                </a>
-
-            </div>
-
-
-
-            <button
-                class="mobile-nav-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobile-help"
-            >
-
-                <span>
-                    AYUDA
-                </span>
-
-                <span
-                    class="mobile-arrow"
-                    aria-hidden="true"
-                >
-                    ↓
-                </span>
-
-            </button>
-
-
-            <div
-                id="mobile-help"
-                class="mobile-submenu"
-            >
-
-                <a href="guia-tallas.html">
-                    GUÍA DE TALLAS
-                </a>
-
-                <a href="envios.html">
-                    ENVÍOS
-                </a>
-
-                <a href="preguntas-frecuentes.html">
-                    PREGUNTAS FRECUENTES
-                </a>
-
-            </div>
-
-        <!-- =================================================
-             INSTAGRAM · MENÚ MÓVIL
-        ================================================== -->
-
-       <div class="mobile-social">
-
-    <span>
-        SÍGUENOS
-    </span>
-
-    <a
-        href="https://www.instagram.com/satorimode/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram SatoriMode"
-    >
-        INSTAGRAM
-    </a>
-
-</div>
-        </nav>
-
-    </aside>
-
-
-
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-    ====================================================== -->
 
     <main>
 
 
-        <!-- =================================================
-             HERO ANIME
-        ================================================== -->
+        <div class="anime-page">
 
-        <section class="home-hero">
 
-            <div class="home-hero-content">
+            <!-- =================================================
+                 INTRO
+            ================================================== -->
 
-                <span class="hero-kicker">
-                    ANIME
-                </span>
+            <section class="anime-intro">
 
+                <div class="anime-intro-label">
+                    SATORIMODE · ANIME
+                </div>
 
                 <h1>
-
-                    DISEÑOS QUE
-
-                    <span>
-                        NACEN DEL ANIME.
-                    </span>
-
+                    ANIME <span>MODE.</span>
                 </h1>
 
-
                 <p>
-
-                    Diseños inspirados en anime, manga
-                    y personajes que forman parte de
-                    aquello que nos apasiona.
-
+                    Diseños inspirados en anime, manga y cultura
+                    japonesa para llevar tus personajes y universos
+                    favoritos contigo.
                 </p>
 
-            </div>
-
-        </section>
+            </section>
 
 
+            <!-- =================================================
+                 CATEGORÍA
+            ================================================== -->
 
-        <!-- =================================================
-             PRODUCTOS ANIME
-        ================================================== -->
+            <div class="anime-category-bar">
 
-        <section class="products-section">
-
-
-            <div class="section-heading">
-
-                <span>
-                    01 / ANIME
-                </span>
-
-
-                <h2>
-
-                    NUESTRA COLECCIÓN
-
-                    <strong>
-                        ANIME.
-                    </strong>
-
+                <h2 class="anime-category-title">
+                    COLECCIÓN ANIME
                 </h2>
 
-
-                <p>
-                    Explora nuestras prendas inspiradas
-                    en el mundo del anime.
-                </p>
+                <span
+                    class="anime-product-count"
+                    id="anime-product-count"
+                >
+                    0 productos
+                </span>
 
             </div>
 
-
-
-<!-- =================================================
-     FILTROS ANIME
-================================================= -->
-
-<div class="anime-filters-wrapper">
-
-    <button
-        type="button"
-        class="anime-filter-toggle"
-        id="animeFilterToggle"
-        aria-expanded="false"
-        aria-controls="animeFilters"
-    >
-        ☷ MOSTRAR FILTROS
-    </button>
-
-
-    <div
-        class="anime-filters"
-        id="animeFilters"
-    >
-
-        <!-- TALLA -->
-
-        <div class="anime-filter-group">
-
-            <span class="anime-filter-title">
-                TALLA
-            </span>
-
-            <div class="anime-filter-options">
-
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="size"
-                    data-value="M"
-                >
-                    M
-                </button>
-
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="size"
-                    data-value="L"
-                >
-                    L
-                </button>
-
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="size"
-                    data-value="XL"
-                >
-                    XL
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- COLOR -->
-
-        <div class="anime-filter-group">
-
-            <span class="anime-filter-title">
-                COLOR
-            </span>
-
-            <div class="anime-filter-options">
-
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="color"
-                    data-value="blanco"
-                >
-                    BLANCO
-                </button>
-
-                <button
-                    type="button"
-                    class="anime-filter"
-                    data-filter="color"
-                    data-value="negro"
-                >
-                    NEGRO
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
             <!-- =================================================
                  PRODUCTOS
-                 Se generan automáticamente desde js/products.js
             ================================================== -->
 
-            <div
-                class="products-grid"
-                id="animeProductsGrid"
-                data-category="anime"
+            <section
+                class="anime-products-grid"
+                id="anime-products-grid"
             >
-                <!-- Los productos con category: "anime" aparecen aquí -->
-            </div>
-
-            </div>
-
-        </section>
+            </section>
 
 
+            <!-- =================================================
+                 PACK
+            ================================================== -->
 
-        <!-- =================================================
-             SATORII PACK
-        ================================================== -->
+            <section class="anime-pack">
 
-        <section class="pack-section">
+                <div class="anime-pack-content">
 
-            <div class="pack-content">
+                    <div class="anime-pack-label">
+                        SATORII
+                    </div>
 
-                <span class="hero-kicker">
-                    SATORII PACK
-                </span>
+                    <h2>
+                        LLEVA TU <span>UNIVERSO.</span>
+                    </h2>
 
+                    <p>
+                        Descubre más diseños y encuentra la prenda
+                        que represente tu estilo.
+                    </p>
 
-                <h2>
+                </div>
 
-                    CONOCE EL
-
-                    <strong>
-                        SATORII PACK.
-                    </strong>
-
-                </h2>
-
-
-                <p>
-
-                    Una experiencia especial de SatoriMode
-                    creada para acompañar tus pedidos.
-
-                </p>
+            </section>
 
 
-                <a
-                    href="satorii-pack.html"
-                    class="button button-red"
-                >
-                    DESCUBRIR SATORII PACK
-                </a>
-
-            </div>
-
-        </section>
+        </div>
 
     </main>
 
 
-
-     <!-- =====================================================
-         FOOTER
+    <!-- =====================================================
+         FOOTER GLOBAL
     ====================================================== -->
 
-    <footer class="site-footer">
-
-
-        <div class="footer-main">
-
-
-            <!-- MARCA -->
-
-            <div class="footer-brand">
-
-                <h3>
-                    SATORIMODE
-                </h3>
-
-                <p>
-                    Anime, cultura japonesa y streetwear.
-                </p>
-
-            </div>
-
-            <div class="footer-column footer-social">
-
-    <h4>SÍGUENOS</h4>
-
-    <a
-        href="https://www.instagram.com/satorimode/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="instagram-link"
-        aria-label="Instagram de SatoriMode"
-    >
-
-        <svg
-            class="instagram-icon"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-        >
-
-            <rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="5"
-                ry="5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            />
-
-            <circle
-                cx="12"
-                cy="12"
-                r="4"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            />
-
-            <circle
-                cx="17.5"
-                cy="6.5"
-                r="1"
-                fill="currentColor"
-            />
-
-        </svg>
-
-        <span>Instagram</span>
-
-    </a>
-
-</div>
-
-
-            <!-- COLECCIONES -->
-
-            <div class="footer-column">
-
-                <h4>
-                    COLECCIONES
-                </h4>
-
-                <a href="anime.html">
-                    Anime
-                </a>
-
-                <a href="streetwear.html">
-                    Streetwear
-                </a>
-
-                <a href="accesorios.html">
-                    Accsesorios
-                </a>
-
-            </div>
-
-
-
-            <!-- PRODUCTOS -->
-
-            <div class="footer-column">
-
-                <h4>
-                    PRODUCTOS
-                </h4>
-
-                <a href="productos.html">
-                    Todas las poleras
-                </a>
-
-                <a href="satorii-pack.html">
-                    Satorii Pack
-                </a>
-
-            </div>
-
-
-
-            <!-- AYUDA -->
-
-            <div class="footer-column">
-
-                <h4>
-                    AYUDA
-                </h4>
-
-                <a href="guia-tallas.html">
-                    Guía de tallas
-                </a>
-
-                <a href="envios.html">
-                    Envíos
-                </a>
-
-                <a href="preguntas-frecuentes.html">
-                    Preguntas frecuentes
-                </a>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =================================================
-             FOOTER INFERIOR
-        ================================================== -->
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 SatoriMode
-            </span>
-
-            <span>
-                Todos los derechos reservados.
-            </span>
-
-        </div>
-
-    </footer>
-
+    <div id="satori-footer"></div>
 
 
     <!-- =====================================================
-         JAVASCRIPT
+         PRODUCTOS
     ====================================================== -->
 
-    <!-- Catálogo central de productos -->
     <script src="js/products.js"></script>
-    <script src="js/products-page.js"></script>
-    <script src="js/main.js"></script>
 
-   
+    <script src="js/header.js"></script>
+
+    <script src="js/footer.js"></script>
+
+
+    <!-- =====================================================
+         GENERADOR DE PRODUCTOS
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const grid =
+                    document.getElementById(
+                        "anime-products-grid"
+                    );
+
+                const count =
+                    document.getElementById(
+                        "anime-product-count"
+                    );
+
+
+                if (!grid) {
+                    return;
+                }
+
+
+                /* ==========================================
+                   COMPROBAR CATÁLOGO
+                ========================================== */
+
+                if (
+                    typeof PRODUCTS === "undefined" ||
+                    !Array.isArray(PRODUCTS)
+                ) {
+
+                    grid.innerHTML = `
+                        <div class="anime-empty">
+                            <strong>
+                                No se pudo cargar el catálogo.
+                            </strong>
+                            Revisa que js/products.js esté disponible.
+                        </div>
+                    `;
+
+                    return;
+
+                }
+
+
+                /* ==========================================
+                   FILTRAR ANIME
+                ========================================== */
+
+                const animeProducts =
+                    PRODUCTS.filter(
+                        product =>
+                            String(
+                                product.category || ""
+                            ).toLowerCase() === "anime"
+                    );
+
+
+                /* ==========================================
+                   CONTADOR
+                ========================================== */
+
+                count.textContent =
+                    `${animeProducts.length} ${
+                        animeProducts.length === 1
+                            ? "producto"
+                            : "productos"
+                    }`;
+
+
+                /* ==========================================
+                   SIN PRODUCTOS
+                ========================================== */
+
+                if (animeProducts.length === 0) {
+
+                    grid.innerHTML = `
+                        <div class="anime-empty">
+                            <strong>
+                                Próximamente
+                            </strong>
+                            Estamos preparando nuevos diseños de anime.
+                        </div>
+                    `;
+
+                    return;
+
+                }
+
+
+                /* ==========================================
+                   CREAR PRODUCTOS
+                ========================================== */
+
+                animeProducts.forEach(
+                    product => {
+
+
+                        /* ----------------------------------
+                           IMAGEN PRINCIPAL
+                        ---------------------------------- */
+
+                        const primaryImage =
+                            product.images?.[0] ||
+                            product.image ||
+                            "";
+
+
+                        /* ----------------------------------
+                           SEGUNDA IMAGEN
+                        ---------------------------------- */
+
+                        const secondaryImage =
+                            product.images?.[1] ||
+                            primaryImage;
+
+
+                        /* ----------------------------------
+                           URL
+                        ---------------------------------- */
+
+                        const productUrl =
+                            product.url ||
+                            "#";
+
+
+                        /* ----------------------------------
+                           PRECIO
+                        ---------------------------------- */
+
+                        let price = "";
+
+                        if (
+                            product.price !== undefined &&
+                            product.price !== null
+                        ) {
+
+                            price =
+                                new Intl.NumberFormat(
+                                    "es-CL",
+                                    {
+                                        style: "currency",
+                                        currency: "CLP",
+                                        maximumFractionDigits: 0
+                                    }
+                                ).format(
+                                    Number(product.price)
+                                );
+
+                        }
+
+
+                        /* ----------------------------------
+                           TARJETA
+                        ---------------------------------- */
+
+                        const card =
+                            document.createElement("a");
+
+                        card.className =
+                            "anime-product";
+
+                        card.href =
+                            productUrl;
+
+
+                        card.innerHTML = `
+
+                            <div class="anime-product-image">
+
+                                <img
+                                    class="image-primary"
+                                    src="${primaryImage}"
+                                    alt="${product.name || "Producto SatoriMode"}"
+                                    loading="lazy"
+                                >
+
+                                <img
+                                    class="image-secondary"
+                                    src="${secondaryImage}"
+                                    alt="${product.name || "Producto SatoriMode"}"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+
+                            <div class="anime-product-info">
+
+                                <div class="anime-product-category">
+                                    ANIME
+                                </div>
+
+                                <h3 class="anime-product-name">
+                                    ${product.name || "Producto"}
+                                </h3>
+
+                                <div class="anime-product-price">
+                                    ${price}
+                                </div>
+
+                            </div>
+
+                        `;
+
+
+                        grid.appendChild(card);
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
 </body>
 
 </html>
