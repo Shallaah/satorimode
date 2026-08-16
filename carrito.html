@@ -148,10 +148,6 @@
         }
 
 
-        /* =====================================================
-           LISTA
-        ====================================================== */
-
         .cart-items {
 
             width: 100%;
@@ -218,10 +214,6 @@
         }
 
 
-        /* =====================================================
-           IMAGEN
-        ====================================================== */
-
         .cart-item-image {
 
             width: 120px;
@@ -249,10 +241,6 @@
 
         }
 
-
-        /* =====================================================
-           INFORMACIÓN
-        ====================================================== */
 
         .cart-item-info {
 
@@ -1090,16 +1078,12 @@
          SCRIPTS
     ====================================================== -->
 
-    <!-- PRODUCTOS PRIMERO -->
     <script src="js/products.js"></script>
 
-    <!-- CARRITO DESPUÉS -->
     <script src="js/cart.js"></script>
 
-    <!-- HEADER -->
     <script src="js/header.js"></script>
 
-    <!-- FOOTER -->
     <script src="js/footer.js"></script>
 
 
@@ -1113,30 +1097,40 @@
             "DOMContentLoaded",
             function () {
 
+
+                /* =================================================
+                   ELEMENTOS
+                ================================================== */
+
                 const layout =
                     document.getElementById(
                         "cart-layout"
                     );
+
 
                 const empty =
                     document.getElementById(
                         "cart-empty"
                     );
 
+
                 const list =
                     document.getElementById(
                         "cart-items-list"
                     );
+
 
                 const count =
                     document.getElementById(
                         "cart-items-count"
                     );
 
+
                 const subtotal =
                     document.getElementById(
                         "cart-subtotal"
                     );
+
 
                 const total =
                     document.getElementById(
@@ -1145,15 +1139,103 @@
 
 
                 /* =================================================
-                   RENDERIZAR
+                   FORMATO DE PRECIO
                 ================================================== */
 
-                function renderCart() {
+                function formatPrice(
+                    price
+                ) {
 
-                    if (!window.SatoriCart) {
+                    return new Intl.NumberFormat(
+                        "es-CL",
+                        {
+                            style:"currency",
+                            currency:"CLP",
+                            maximumFractionDigits:0
+                        }
+                    ).format(
+                        Number(price) || 0
+                    );
+
+                }
+
+
+                /* =================================================
+                   OBTENER CARRITO
+                ================================================== */
+
+                function getCart() {
+
+                    if (
+                        window.SatoriCart &&
+                        typeof SatoriCart.get ===
+                            "function"
+                    ) {
+
+                        return SatoriCart.get();
+
+                    }
+
+
+                    try {
+
+                        const saved =
+                            localStorage.getItem(
+                                "satorimode_cart"
+                            );
+
+
+                        if (!saved) {
+
+                            return [];
+
+                        }
+
+
+                        const parsed =
+                            JSON.parse(
+                                saved
+                            );
+
+
+                        return Array.isArray(
+                            parsed
+                        )
+                            ? parsed
+                            : [];
+
+                    }
+
+                    catch (error) {
 
                         console.error(
-                            "SatoriMode · SatoriCart no está disponible."
+                            "SatoriMode · Error leyendo carrito:",
+                            error
+                        );
+
+                        return [];
+
+                    }
+
+                }
+
+
+                /* =================================================
+                   GUARDAR CARRITO
+                ================================================== */
+
+                function saveCart(
+                    cart
+                ) {
+
+                    if (
+                        window.SatoriCart &&
+                        typeof SatoriCart.save ===
+                            "function"
+                    ) {
+
+                        SatoriCart.save(
+                            cart
                         );
 
                         return;
@@ -1161,71 +1243,141 @@
                     }
 
 
+                    localStorage.setItem(
+                        "satorimode_cart",
+                        JSON.stringify(
+                            cart
+                        )
+                    );
+
+
+                    document.dispatchEvent(
+                        new CustomEvent(
+                            "satorii:cart-updated"
+                        )
+                    );
+
+                }
+
+
+                /* =================================================
+                   CLAVE ÚNICA DEL PRODUCTO
+                ================================================== */
+
+                function sameProduct(
+                    a,
+                    b
+                ) {
+
+                    return (
+
+                        String(
+                            a.id || ""
+                        ) ===
+                        String(
+                            b.id || ""
+                        )
+
+                        &&
+
+                        String(
+                            a.size || ""
+                        ) ===
+                        String(
+                            b.size || ""
+                        )
+
+                        &&
+
+                        String(
+                            a.color || ""
+                        ) ===
+                        String(
+                            b.color || ""
+                        )
+
+                    );
+
+                }
+
+
+                /* =================================================
+                   CARRITO VACÍO
+                ================================================== */
+
+                function showEmpty() {
+
+                    if (layout) {
+
+                        layout.style.display =
+                            "none";
+
+                    }
+
+
+                    if (empty) {
+
+                        empty.style.display =
+                            "block";
+
+                    }
+
+
+                    if (count) {
+
+                        count.textContent =
+                            "0 productos";
+
+                    }
+
+
+                    if (subtotal) {
+
+                        subtotal.textContent =
+                            "$0";
+
+                    }
+
+
+                    if (total) {
+
+                        total.textContent =
+                            "$0";
+
+                    }
+
+                }
+
+
+                /* =================================================
+                   RENDERIZAR
+                ================================================== */
+
+                function renderCart() {
+
                     const cart =
-                        SatoriCart.getCart();
+                        getCart();
 
 
-                    const products =
-                        SatoriCart.getCartProducts();
-
-
-                    /* =================================================
-                       CARRITO VACÍO
-                    ================================================== */
+                    /*
+                     * Si está vacío.
+                     */
 
                     if (
-                        cart.length === 0 ||
-                        products.length === 0
+                        !cart ||
+                        cart.length === 0
                     ) {
 
-                        if (layout) {
-
-                            layout.style.display =
-                                "none";
-
-                        }
-
-
-                        if (empty) {
-
-                            empty.style.display =
-                                "block";
-
-                        }
-
-
-                        if (count) {
-
-                            count.textContent =
-                                "0 productos";
-
-                        }
-
-
-                        if (subtotal) {
-
-                            subtotal.textContent =
-                                "$0";
-
-                        }
-
-
-                        if (total) {
-
-                            total.textContent =
-                                "$0";
-
-                        }
-
+                        showEmpty();
 
                         return;
 
                     }
 
 
-                    /* =================================================
-                       CARRITO CON PRODUCTOS
-                    ================================================== */
+                    /*
+                     * Mostrar contenido.
+                     */
 
                     if (layout) {
 
@@ -1243,305 +1395,431 @@
                     }
 
 
-                    /* =================================================
-                       LISTA DE PRODUCTOS
-                    ================================================== */
+                    /*
+                     * Limpiar lista.
+                     */
 
                     if (list) {
 
-                        list.innerHTML = "";
+                        list.innerHTML =
+                            "";
+
+                    }
 
 
-                        products.forEach(
-                            function (product) {
-
-                                const item =
-                                    document.createElement(
-                                        "article"
-                                    );
+                    let subtotalValue =
+                        0;
 
 
-                                item.className =
-                                    "cart-item";
+                    let totalProducts =
+                        0;
 
 
-                                const quantity =
+                    /* =================================================
+                       PRODUCTOS
+                    ================================================== */
+
+                    cart.forEach(
+                        function (
+                            product,
+                            index
+                        ) {
+
+
+                            const quantity =
+                                Math.max(
+                                    1,
                                     Number(
-                                        product.quantity || 0
-                                    );
+                                        product.quantity ||
+                                        1
+                                    )
+                                );
 
 
-                                const price =
-                                    Number(
-                                        product.price || 0
-                                    );
+                            const price =
+                                Number(
+                                    product.price ||
+                                    0
+                                );
 
 
-                                const itemTotal =
-                                    price * quantity;
+                            const itemTotal =
+                                price *
+                                quantity;
 
 
-                                const image =
-                                    product.image ||
-                                    "img/placeholder.jpg";
+                            subtotalValue +=
+                                itemTotal;
 
 
-                                const category =
-                                    product.collection ||
-                                    product.category ||
-                                    "SATORII";
+                            totalProducts +=
+                                quantity;
 
 
-                                const productName =
-                                    product.name ||
-                                    "Producto SatoriII";
+                            const image =
+                                product.image ||
+                                "img/placeholder.jpg";
 
 
-                                item.innerHTML = `
+                            const productName =
+                                product.name ||
+                                "Producto SatoriII";
 
-                                    <div
-                                        class="cart-item-image"
+
+                            const size =
+                                product.size ||
+                                "";
+
+
+                            const color =
+                                product.color ||
+                                "";
+
+
+                            const item =
+                                document.createElement(
+                                    "article"
+                                );
+
+
+                            item.className =
+                                "cart-item";
+
+
+                            item.innerHTML = `
+
+                                <div
+                                    class="cart-item-image"
+                                >
+
+                                    <img
+                                        src="${image}"
+                                        alt="${productName}"
+                                        loading="lazy"
                                     >
 
-                                        <img
-                                            src="${image}"
-                                            alt="${productName}"
-                                            loading="lazy"
-                                        >
+                                </div>
 
+
+                                <div
+                                    class="cart-item-info"
+                                >
+
+                                    <div
+                                        class="cart-item-category"
+                                    >
+                                        SATORII
                                     </div>
 
 
-                                    <div
-                                        class="cart-item-info"
+                                    <h3
+                                        class="cart-item-name"
                                     >
-
-                                        <div
-                                            class="cart-item-category"
-                                        >
-                                            ${category}
-                                        </div>
+                                        ${productName}
+                                    </h3>
 
 
-                                        <h3
-                                            class="cart-item-name"
-                                        >
-                                            ${productName}
-                                        </h3>
+                                    ${
+                                        size
+                                            ? `
+                                                <div
+                                                    class="cart-item-option"
+                                                >
+                                                    Talla:
+                                                    <strong>
+                                                        ${size}
+                                                    </strong>
+                                                </div>
+                                            `
+                                            : ""
+                                    }
 
 
-                                        ${
-                                            product.selectedSize
-                                                ? `
-                                                    <div
-                                                        class="cart-item-option"
-                                                    >
-                                                        Talla:
-                                                        <strong>
-                                                            ${product.selectedSize}
-                                                        </strong>
-                                                    </div>
-                                                `
-                                                : ""
-                                        }
-
-
-                                        ${
-                                            product.selectedColor
-                                                ? `
-                                                    <div
-                                                        class="cart-item-option"
-                                                    >
-                                                        Color:
-                                                        <strong>
-                                                            ${product.selectedColor}
-                                                        </strong>
-                                                    </div>
-                                                `
-                                                : ""
-                                        }
-
-
-                                        <div
-                                            class="cart-item-quantity"
-                                        >
-
-                                            <button
-                                                type="button"
-                                                class="cart-quantity-button"
-                                                data-action="decrease"
-                                                aria-label="Disminuir cantidad"
-                                            >
-                                                −
-                                            </button>
-
-
-                                            <span
-                                                class="cart-quantity-value"
-                                            >
-                                                ${quantity}
-                                            </span>
-
-
-                                            <button
-                                                type="button"
-                                                class="cart-quantity-button"
-                                                data-action="increase"
-                                                aria-label="Aumentar cantidad"
-                                            >
-                                                +
-                                            </button>
-
-                                        </div>
-
-                                    </div>
+                                    ${
+                                        color
+                                            ? `
+                                                <div
+                                                    class="cart-item-option"
+                                                >
+                                                    Color:
+                                                    <strong>
+                                                        ${color}
+                                                    </strong>
+                                                </div>
+                                            `
+                                            : ""
+                                    }
 
 
                                     <div
-                                        class="cart-item-price"
+                                        class="cart-item-quantity"
                                     >
 
-                                        <div
-                                            class="cart-item-total"
+                                        <button
+                                            type="button"
+                                            class="cart-quantity-button"
+                                            data-action="decrease"
+                                            aria-label="Disminuir cantidad"
                                         >
-                                            ${
-                                                SatoriCart.formatPrice(
-                                                    itemTotal
-                                                )
-                                            }
-                                        </div>
+                                            −
+                                        </button>
+
+
+                                        <span
+                                            class="cart-quantity-value"
+                                        >
+                                            ${quantity}
+                                        </span>
 
 
                                         <button
                                             type="button"
-                                            class="cart-item-remove"
-                                            aria-label="Eliminar ${productName}"
+                                            class="cart-quantity-button"
+                                            data-action="increase"
+                                            aria-label="Aumentar cantidad"
                                         >
-                                            ELIMINAR
+                                            +
                                         </button>
 
                                     </div>
 
-                                `;
+                                </div>
 
 
-                                /* =================================================
-                                   DISMINUIR
-                                ================================================== */
+                                <div
+                                    class="cart-item-price"
+                                >
 
-                                const decrease =
-                                    item.querySelector(
-                                        '[data-action="decrease"]'
-                                    );
+                                    <div
+                                        class="cart-item-total"
+                                    >
+                                        ${formatPrice(itemTotal)}
+                                    </div>
 
 
-                                if (decrease) {
+                                    <button
+                                        type="button"
+                                        class="cart-item-remove"
+                                        aria-label="Eliminar ${productName}"
+                                    >
+                                        ELIMINAR
+                                    </button>
 
-                                    decrease.addEventListener(
-                                        "click",
-                                        function () {
+                                </div>
 
-                                            SatoriCart.updateCartQuantity(
+                            `;
 
-                                                product.id,
 
-                                                quantity - 1,
+                            /* =================================================
+                               DISMINUIR
+                            ================================================== */
 
-                                                product.selectedSize,
+                            const decrease =
+                                item.querySelector(
+                                    '[data-action="decrease"]'
+                                );
 
-                                                product.selectedColor
 
+                            if (decrease) {
+
+                                decrease.addEventListener(
+                                    "click",
+                                    function () {
+
+                                        const currentCart =
+                                            getCart();
+
+
+                                        const currentIndex =
+                                            currentCart.findIndex(
+                                                function (
+                                                    cartProduct
+                                                ) {
+
+                                                    return sameProduct(
+                                                        cartProduct,
+                                                        product
+                                                    );
+
+                                                }
+                                            );
+
+
+                                        if (
+                                            currentIndex ===
+                                            -1
+                                        ) {
+
+                                            return;
+
+                                        }
+
+
+                                        const newQuantity =
+                                            Number(
+                                                currentCart[
+                                                    currentIndex
+                                                ].quantity
+                                            ) - 1;
+
+
+                                        if (
+                                            newQuantity <= 0
+                                        ) {
+
+                                            currentCart.splice(
+                                                currentIndex,
+                                                1
                                             );
 
                                         }
-                                    );
 
-                                }
+                                        else {
 
-
-                                /* =================================================
-                                   AUMENTAR
-                                ================================================== */
-
-                                const increase =
-                                    item.querySelector(
-                                        '[data-action="increase"]'
-                                    );
-
-
-                                if (increase) {
-
-                                    increase.addEventListener(
-                                        "click",
-                                        function () {
-
-                                            SatoriCart.updateCartQuantity(
-
-                                                product.id,
-
-                                                quantity + 1,
-
-                                                product.selectedSize,
-
-                                                product.selectedColor
-
-                                            );
+                                            currentCart[
+                                                currentIndex
+                                            ].quantity =
+                                                newQuantity;
 
                                         }
-                                    );
-
-                                }
 
 
-                                /* =================================================
-                                   ELIMINAR
-                                ================================================== */
+                                        saveCart(
+                                            currentCart
+                                        );
 
-                                const remove =
-                                    item.querySelector(
-                                        ".cart-item-remove"
-                                    );
+                                    }
+                                );
+
+                            }
 
 
-                                if (remove) {
+                            /* =================================================
+                               AUMENTAR
+                            ================================================== */
 
-                                    remove.addEventListener(
-                                        "click",
-                                        function () {
+                            const increase =
+                                item.querySelector(
+                                    '[data-action="increase"]'
+                                );
 
-                                            SatoriCart.removeFromCart(
 
-                                                product.id,
+                            if (increase) {
 
-                                                product.selectedSize,
+                                increase.addEventListener(
+                                    "click",
+                                    function () {
 
-                                                product.selectedColor
+                                        const currentCart =
+                                            getCart();
 
+
+                                        const currentIndex =
+                                            currentCart.findIndex(
+                                                function (
+                                                    cartProduct
+                                                ) {
+
+                                                    return sameProduct(
+                                                        cartProduct,
+                                                        product
+                                                    );
+
+                                                }
                                             );
 
+
+                                        if (
+                                            currentIndex ===
+                                            -1
+                                        ) {
+
+                                            return;
+
                                         }
-                                    );
 
-                                }
 
+                                        currentCart[
+                                            currentIndex
+                                        ].quantity =
+                                            Number(
+                                                currentCart[
+                                                    currentIndex
+                                                ].quantity ||
+                                                1
+                                            ) + 1;
+
+
+                                        saveCart(
+                                            currentCart
+                                        );
+
+                                    }
+                                );
+
+                            }
+
+
+                            /* =================================================
+                               ELIMINAR
+                            ================================================== */
+
+                            const remove =
+                                item.querySelector(
+                                    ".cart-item-remove"
+                                );
+
+
+                            if (remove) {
+
+                                remove.addEventListener(
+                                    "click",
+                                    function () {
+
+                                        const currentCart =
+                                            getCart();
+
+
+                                        const newCart =
+                                            currentCart.filter(
+                                                function (
+                                                    cartProduct
+                                                ) {
+
+                                                    return !sameProduct(
+                                                        cartProduct,
+                                                        product
+                                                    );
+
+                                                }
+                                            );
+
+
+                                        saveCart(
+                                            newCart
+                                        );
+
+                                    }
+                                );
+
+                            }
+
+
+                            if (list) {
 
                                 list.appendChild(
                                     item
                                 );
 
                             }
-                        );
 
-                    }
+                        }
+                    );
 
 
                     /* =================================================
                        CANTIDAD TOTAL
                     ================================================== */
-
-                    const totalProducts =
-                        SatoriCart.getCartCount();
-
 
                     if (count) {
 
@@ -1557,15 +1835,11 @@
                        SUBTOTAL
                     ================================================== */
 
-                    const cartSubtotal =
-                        SatoriCart.getCartSubtotal();
-
-
                     if (subtotal) {
 
                         subtotal.textContent =
-                            SatoriCart.formatPrice(
-                                cartSubtotal
+                            formatPrice(
+                                subtotalValue
                             );
 
                     }
@@ -1578,8 +1852,8 @@
                     if (total) {
 
                         total.textContent =
-                            SatoriCart.formatPrice(
-                                cartSubtotal
+                            formatPrice(
+                                subtotalValue
                             );
 
                     }
@@ -1595,7 +1869,7 @@
 
 
                 /* =================================================
-                   CAMBIOS DEL CARRITO
+                   ACTUALIZACIÓN DEL CARRITO
                 ================================================== */
 
                 document.addEventListener(
@@ -1609,16 +1883,18 @@
 
 
                 /* =================================================
-                   CAMBIOS DESDE OTRA PESTAÑA
+                   STORAGE
                 ================================================== */
 
                 window.addEventListener(
                     "storage",
-                    function (event) {
+                    function (
+                        event
+                    ) {
 
                         if (
                             event.key ===
-                            "satorii_cart"
+                            "satorimode_cart"
                         ) {
 
                             renderCart();
@@ -1627,6 +1903,58 @@
 
                     }
                 );
+
+
+                /* =================================================
+                   BOTÓN CHECKOUT
+                ================================================== */
+
+                const checkoutButton =
+                    document.getElementById(
+                        "cart-checkout-button"
+                    );
+
+
+                if (checkoutButton) {
+
+                    checkoutButton.addEventListener(
+                        "click",
+                        function () {
+
+                            const cart =
+                                getCart();
+
+
+                            if (
+                                !cart.length
+                            ) {
+
+                                alert(
+                                    "Tu carrito está vacío."
+                                );
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * Por ahora no enviamos
+                             * a ningún sistema de pago.
+                             *
+                             * Dejamos preparado el botón
+                             * para implementar checkout
+                             * posteriormente.
+                             */
+
+                            alert(
+                                "El sistema de compra estará disponible próximamente."
+                            );
+
+                        }
+                    );
+
+                }
 
             }
 
