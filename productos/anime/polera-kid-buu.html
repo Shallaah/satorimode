@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Polera Kid Buu | SatoriMode"
+        content="Polera Kid Buu — SatoriMode."
     >
 
     <meta
@@ -43,6 +43,7 @@
             box-sizing: border-box;
         }
 
+
         html,
         body {
 
@@ -65,16 +66,14 @@
 
             width: 100%;
 
-            padding:
-                70px 30px 0;
+            padding: 70px 30px 0;
 
         }
 
 
         .product-page-container {
 
-            width:
-                min(1180px, 100%);
+            width: min(1180px, 100%);
 
             margin: 0 auto;
 
@@ -179,16 +178,14 @@
 
         .product-thumbnail:hover {
 
-            transform:
-                translateY(-2px);
+            transform: translateY(-2px);
 
         }
 
 
         .product-thumbnail.active {
 
-            border:
-                2px solid #ed1111;
+            border: 2px solid #ed1111;
 
         }
 
@@ -240,11 +237,13 @@
 
         .product-page-info h1 {
 
-            margin:
-                0 0 24px;
+            margin: 0 0 24px;
 
-            font-size:
-                clamp(48px, 5vw, 78px);
+            font-size: clamp(
+                48px,
+                5vw,
+                78px
+            );
 
             line-height: .9;
 
@@ -274,8 +273,7 @@
 
             max-width: 600px;
 
-            margin:
-                0 0 30px;
+            margin: 0 0 30px;
 
             color: #666;
 
@@ -294,8 +292,7 @@
 
             padding: 24px 0;
 
-            border-top:
-                1px solid #e5e5e5;
+            border-top: 1px solid #e5e5e5;
 
         }
 
@@ -359,6 +356,17 @@
            COLOR
         ====================================================== */
 
+        .product-colors {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+        }
+
+
         .product-color-button {
 
             display: inline-flex;
@@ -367,17 +375,15 @@
 
             gap: 9px;
 
-            padding:
-                11px 16px;
+            padding: 11px 16px;
 
-            border:
-                1px solid #ed1111;
+            border: 1px solid #ddd;
 
             border-radius: 999px;
 
             background: white;
 
-            color: #ed1111;
+            color: #111;
 
             font-size: 10px;
 
@@ -386,6 +392,31 @@
             letter-spacing: 1px;
 
             text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease,
+                color .2s ease;
+
+        }
+
+
+        .product-color-button:hover {
+
+            border-color: #ed1111;
+
+        }
+
+
+        .product-color-button.active {
+
+            border-color: #ed1111;
+
+            background: #ed1111;
+
+            color: white;
 
         }
 
@@ -400,15 +431,7 @@
 
             border-radius: 50%;
 
-        }
-
-
-        .color-white {
-
-            background: #fff;
-
-            border:
-                1px solid #bbb;
+            border: 1px solid #ccc;
 
         }
 
@@ -416,6 +439,13 @@
         .color-black {
 
             background: #080808;
+
+        }
+
+
+        .color-white {
+
+            background: #fff;
 
         }
 
@@ -428,8 +458,6 @@
 
             display: flex;
 
-            flex-wrap: wrap;
-
             gap: 9px;
 
         }
@@ -441,8 +469,7 @@
 
             height: 48px;
 
-            border:
-                1px solid #ddd;
+            border: 1px solid #ddd;
 
             border-radius: 8px;
 
@@ -466,19 +493,16 @@
 
         .product-size:hover {
 
-            border-color:
-                #ed1111;
+            border-color: #ed1111;
 
         }
 
 
         .product-size.active {
 
-            border-color:
-                #ed1111;
+            border-color: #ed1111;
 
-            background:
-                #ed1111;
+            background: #ed1111;
 
             color: white;
 
@@ -501,8 +525,7 @@
 
             justify-content: space-between;
 
-            border:
-                1px solid #ddd;
+            border: 1px solid #ddd;
 
             border-radius: 8px;
 
@@ -532,8 +555,7 @@
 
         .quantity-selector button:hover {
 
-            background:
-                #f5f5f5;
+            background: #f5f5f5;
 
         }
 
@@ -563,8 +585,7 @@
 
             border-radius: 7px;
 
-            background:
-                #ed1111;
+            background: #ed1111;
 
             color: white;
 
@@ -585,19 +606,20 @@
 
         .add-to-cart-button:hover {
 
-            background:
-                #c90000;
+            background: #c90000;
 
-            transform:
-                translateY(-1px);
+            transform: translateY(-1px);
 
         }
 
 
-        .add-to-cart-button.added {
+        .add-to-cart-button:disabled {
 
-            background:
-                #111;
+            opacity: .7;
+
+            cursor: not-allowed;
+
+            transform: none;
 
         }
 
@@ -615,11 +637,9 @@
 
         .product-information-item {
 
-            padding:
-                24px 0;
+            padding: 24px 0;
 
-            border-top:
-                1px solid #e5e5e5;
+            border-top: 1px solid #e5e5e5;
 
         }
 
@@ -641,8 +661,7 @@
 
         .product-information-item p {
 
-            margin:
-                0 0 10px;
+            margin: 0 0 10px;
 
             color: #666;
 
@@ -676,19 +695,16 @@
 
             width: 100%;
 
-            padding:
-                90px 30px 75px;
+            padding: 90px 30px 75px;
 
         }
 
 
         .product-description-container {
 
-            width:
-                min(1180px, 100%);
+            width: min(1180px, 100%);
 
-            margin:
-                0 auto;
+            margin: 0 auto;
 
             text-align: center;
 
@@ -701,8 +717,7 @@
 
             margin-bottom: 14px;
 
-            color:
-                #ed1111;
+            color: #ed1111;
 
             font-size: 10px;
 
@@ -719,11 +734,15 @@
 
             max-width: 900px;
 
-            margin:
-                0 auto;
+            margin: 0 auto;
 
-            font-size:
-                clamp(45px, 6vw, 82px);
+            text-align: center;
+
+            font-size: clamp(
+                45px,
+                6vw,
+                82px
+            );
 
             line-height: .95;
 
@@ -736,8 +755,7 @@
 
         .product-description-container h2 span {
 
-            color:
-                #ed1111;
+            color: #ed1111;
 
         }
 
@@ -746,8 +764,9 @@
 
             max-width: 650px;
 
-            margin:
-                20px auto 0;
+            margin: 20px auto 0;
+
+            text-align: center;
 
             color: #aaa;
 
@@ -766,22 +785,18 @@
 
             width: 100%;
 
-            padding:
-                100px 30px 120px;
+            padding: 100px 30px 120px;
 
-            background:
-                #f8f8f8;
+            background: #f8f8f8;
 
         }
 
 
         .recommended-products-container {
 
-            width:
-                min(1180px, 100%);
+            width: min(1180px, 100%);
 
-            margin:
-                0 auto;
+            margin: 0 auto;
 
         }
 
@@ -790,8 +805,11 @@
 
             margin: 0;
 
-            font-size:
-                clamp(42px, 5vw, 70px);
+            font-size: clamp(
+                42px,
+                5vw,
+                70px
+            );
 
             line-height: .95;
 
@@ -804,8 +822,7 @@
 
         .recommended-products-container h2 span {
 
-            color:
-                #ed1111;
+            color: #ed1111;
 
         }
 
@@ -856,8 +873,7 @@
 
             border-radius: 14px;
 
-            background:
-                #f0f0f0;
+            background: #f0f0f0;
 
         }
 
@@ -881,8 +897,7 @@
         .recommended-card:hover
         .recommended-card-image img {
 
-            transform:
-                scale(1.04);
+            transform: scale(1.04);
 
         }
 
@@ -900,8 +915,7 @@
 
             margin-bottom: 7px;
 
-            color:
-                #ed1111;
+            color: #ed1111;
 
             font-size: 9px;
 
@@ -925,8 +939,7 @@
 
         .recommended-card-info p {
 
-            margin:
-                7px 0 0;
+            margin: 7px 0 0;
 
             font-size: 15px;
 
@@ -947,15 +960,16 @@
 
             bottom: 24px;
 
-            width:
-                min(360px, calc(100% - 32px));
+            width: min(
+                360px,
+                calc(100% - 32px)
+            );
 
             padding: 20px;
 
             border-radius: 12px;
 
-            background:
-                #080808;
+            background: #080808;
 
             color: white;
 
@@ -967,15 +981,14 @@
 
             visibility: hidden;
 
-            transform:
-                translateY(20px);
+            transform: translateY(20px);
 
             transition:
                 opacity .25s ease,
                 visibility .25s ease,
                 transform .25s ease;
 
-            z-index: 999999;
+            z-index: 120000;
 
         }
 
@@ -986,8 +999,7 @@
 
             visibility: visible;
 
-            transform:
-                translateY(0);
+            transform: translateY(0);
 
         }
 
@@ -1023,8 +1035,7 @@
 
             border-radius: 50%;
 
-            background:
-                #ed1111;
+            background: #ed1111;
 
             font-size: 11px;
 
@@ -1048,7 +1059,15 @@
 
             margin-top: 14px;
 
+            padding: 0;
+
+            border: 0;
+
+            background: transparent;
+
             color: white;
+
+            font-family: inherit;
 
             font-size: 10px;
 
@@ -1058,13 +1077,14 @@
 
             text-decoration: none;
 
+            cursor: pointer;
+
         }
 
 
         .cart-toast-link:hover {
 
-            color:
-                #ed1111;
+            color: #ed1111;
 
         }
 
@@ -1077,16 +1097,14 @@
 
             .product-page {
 
-                padding:
-                    45px 20px 0;
+                padding: 45px 20px 0;
 
             }
 
 
             .product-page-container {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
                 gap: 45px;
 
@@ -1111,24 +1129,25 @@
 
             .product-page-info h1 {
 
-                font-size:
-                    clamp(45px, 9vw, 70px);
+                font-size: clamp(
+                    45px,
+                    9vw,
+                    70px
+                );
 
             }
 
 
             .product-description-section {
 
-                padding:
-                    50px 20px 50px;
+                padding: 50px 20px 50px;
 
             }
 
 
             .recommended-products {
 
-                padding:
-                    80px 20px 100px;
+                padding: 80px 20px 100px;
 
             }
 
@@ -1151,8 +1170,7 @@
 
             .product-page {
 
-                padding:
-                    25px 12px 0;
+                padding: 25px 12px 0;
 
             }
 
@@ -1191,14 +1209,15 @@
 
             .product-page-info h1 {
 
-                margin-bottom:
-                    18px;
+                margin-bottom: 18px;
 
-                font-size:
-                    clamp(38px, 12vw, 55px);
+                font-size: clamp(
+                    38px,
+                    12vw,
+                    55px
+                );
 
-                letter-spacing:
-                    -2px;
+                letter-spacing: -2px;
 
             }
 
@@ -1219,8 +1238,7 @@
 
             .product-option {
 
-                padding:
-                    20px 0;
+                padding: 20px 0;
 
             }
 
@@ -1236,38 +1254,40 @@
 
             .product-description-section {
 
-                padding:
-                    40px 12px 45px;
+                padding: 40px 12px 45px;
 
             }
 
 
             .product-description-container h2 {
 
-                font-size:
-                    clamp(40px, 11vw, 58px);
+                font-size: clamp(
+                    40px,
+                    11vw,
+                    58px
+                );
 
-                letter-spacing:
-                    -2px;
+                letter-spacing: -2px;
 
             }
 
 
             .recommended-products {
 
-                padding:
-                    65px 12px 80px;
+                padding: 65px 12px 80px;
 
             }
 
 
             .recommended-products-container h2 {
 
-                font-size:
-                    clamp(38px, 10vw, 54px);
+                font-size: clamp(
+                    38px,
+                    10vw,
+                    54px
+                );
 
-                letter-spacing:
-                    -2px;
+                letter-spacing: -2px;
 
             }
 
@@ -1279,24 +1299,21 @@
 
                 gap: 10px;
 
-                margin-top:
-                    28px;
+                margin-top: 28px;
 
             }
 
 
             .recommended-card-info h3 {
 
-                font-size:
-                    14px;
+                font-size: 14px;
 
             }
 
 
             .recommended-card-info p {
 
-                font-size:
-                    13px;
+                font-size: 13px;
 
             }
 
@@ -1335,6 +1352,7 @@
 
     <main>
 
+
         <section class="product-page">
 
             <div class="product-page-container">
@@ -1345,6 +1363,7 @@
                 ================================================== -->
 
                 <div class="product-gallery">
+
 
                     <div class="product-main-image">
 
@@ -1360,9 +1379,8 @@
                     <div
                         class="product-thumbnails"
                         id="productThumbnails"
-                    >
+                    ></div>
 
-                    </div>
 
                 </div>
 
@@ -1373,11 +1391,12 @@
 
                 <div class="product-page-info">
 
+
                     <span
                         class="product-page-category"
                         id="productCategory"
                     >
-                        ANIME · SATORII
+                        ANIME · SATORIMODE
                     </span>
 
 
@@ -1397,15 +1416,15 @@
                     <p
                         class="product-page-description"
                         id="productDescription"
-                    >
-                        Polera inspirada en Kid Buu, diseñada
-                        para nuestra colección Anime de SatoriMode.
-                    </p>
+                    ></p>
 
 
                     <!-- COLOR -->
 
-                    <div class="product-option">
+                    <div
+                        class="product-option"
+                        id="colorOption"
+                    >
 
                         <span class="product-option-title">
                             COLOR
@@ -1413,18 +1432,19 @@
 
 
                         <div
-                            class="product-color"
+                            class="product-colors"
                             id="productColors"
-                        >
-
-                        </div>
+                        ></div>
 
                     </div>
 
 
                     <!-- TALLA -->
 
-                    <div class="product-option">
+                    <div
+                        class="product-option"
+                        id="sizeOption"
+                    >
 
                         <div class="product-option-header">
 
@@ -1433,7 +1453,9 @@
                             </span>
 
 
-                            <a href="../../guia-tallas.html">
+                            <a
+                                href="../../guia-tallas.html"
+                            >
                                 GUÍA DE TALLAS
                             </a>
 
@@ -1443,9 +1465,7 @@
                         <div
                             class="product-sizes"
                             id="productSizes"
-                        >
-
-                        </div>
+                        ></div>
 
                     </div>
 
@@ -1510,7 +1530,7 @@
                                 ENVÍOS
                             </strong>
 
-                            <p>
+                            <p id="shippingText">
                                 Enviamos a todo Chile.
                             </p>
 
@@ -1557,7 +1577,7 @@
             <div class="product-description-container">
 
                 <span class="section-label">
-                    SATORII · ANIME
+                    SATORIMODE · ANIME
                 </span>
 
 
@@ -1570,12 +1590,10 @@
 
 
                 <p id="longDescription">
-
                     Una pieza inspirada en uno de los
                     personajes más reconocibles de
                     Dragon Ball, llevada a una estética
                     streetwear pensada para el día a día.
-
                 </p>
 
             </div>
@@ -1592,7 +1610,7 @@
             <div class="recommended-products-container">
 
                 <span class="section-label">
-                    SATORII · DESCUBRE MÁS
+                    SATORIMODE · DESCUBRE MÁS
                 </span>
 
 
@@ -1612,22 +1630,13 @@
                 <div
                     class="recommended-products-grid"
                     id="recommendedProducts"
-                >
-
-                </div>
+                ></div>
 
             </div>
 
         </section>
 
     </main>
-
-
-    <!-- =====================================================
-         FOOTER GLOBAL
-    ====================================================== -->
-
-    <div id="satori-footer"></div>
 
 
     <!-- =====================================================
@@ -1657,23 +1666,36 @@
         <div
             class="cart-toast-product"
             id="cartToastProduct"
-        >
-            Polera Kid Buu
-        </div>
+        ></div>
 
 
-        <a
-            href="../../carrito.html"
+        <button
+            type="button"
             class="cart-toast-link"
+            id="goToCart"
         >
             VER CARRITO →
-        </a>
+        </button>
 
     </div>
 
 
     <!-- =====================================================
-         JAVASCRIPT GLOBAL
+         FOOTER GLOBAL
+    ====================================================== -->
+
+    <div id="satori-footer"></div>
+
+
+    <!-- =====================================================
+         SCRIPTS
+         
+         IMPORTANTE:
+         Esta página está en:
+         
+         productos/anime/
+         
+         por eso usamos ../../
     ====================================================== -->
 
     <script src="../../js/products.js"></script>
@@ -1697,19 +1719,17 @@
 
 
                 /* =================================================
-                   PRODUCTO ACTUAL
+                   PRODUCTO
                 ================================================== */
 
                 const product =
-                    typeof getProductById === "function"
-                        ? getProductById("kid-buu")
-                        : null;
+                    getProductById("kid-buu");
 
 
                 if (!product) {
 
                     console.error(
-                        "SatoriMode: No se encontró el producto kid-buu."
+                        "SatoriMode: no se encontró el producto kid-buu."
                     );
 
                     return;
@@ -1726,35 +1746,42 @@
                         "mainProductImage"
                     );
 
+
                 const thumbnails =
                     document.getElementById(
                         "productThumbnails"
                     );
+
 
                 const productName =
                     document.getElementById(
                         "productName"
                     );
 
-                const productPrice =
-                    document.getElementById(
-                        "productPrice"
-                    );
 
                 const productCategory =
                     document.getElementById(
                         "productCategory"
                     );
 
+
+                const productPrice =
+                    document.getElementById(
+                        "productPrice"
+                    );
+
+
                 const productDescription =
                     document.getElementById(
                         "productDescription"
                     );
 
+
                 const productSizes =
                     document.getElementById(
                         "productSizes"
                     );
+
 
                 const productColors =
                     document.getElementById(
@@ -1762,62 +1789,86 @@
                     );
 
 
+                const shippingText =
+                    document.getElementById(
+                        "shippingText"
+                    );
+
+
+                const quantityValue =
+                    document.getElementById(
+                        "quantityValue"
+                    );
+
+
+                const quantityMinus =
+                    document.getElementById(
+                        "quantityMinus"
+                    );
+
+
+                const quantityPlus =
+                    document.getElementById(
+                        "quantityPlus"
+                    );
+
+
+                const addToCart =
+                    document.getElementById(
+                        "addToCart"
+                    );
+
+
+                const toast =
+                    document.getElementById(
+                        "cartToast"
+                    );
+
+
+                const toastProduct =
+                    document.getElementById(
+                        "cartToastProduct"
+                    );
+
+
+                const goToCart =
+                    document.getElementById(
+                        "goToCart"
+                    );
+
+
+                const recommendedProducts =
+                    document.getElementById(
+                        "recommendedProducts"
+                    );
+
+
                 /* =================================================
-                   RUTAS DE IMÁGENES
-                ================================================== */
-
-                function resolveImagePath(path) {
-
-                    if (!path) return "";
-
-                    if (
-                        path.startsWith(
-                            "productos/"
-                        )
-                    ) {
-
-                        return "../../" + path;
-
-                    }
-
-                    return path;
-
-                }
-
-
-                /* =================================================
-                   INFORMACIÓN
+                   DATOS
                 ================================================== */
 
                 productName.textContent =
                     product.name.toUpperCase();
 
 
-                productPrice.textContent =
-                    new Intl.NumberFormat(
-                        "es-CL",
-                        {
-                            style: "currency",
-                            currency: "CLP",
-                            maximumFractionDigits: 0
-                        }
-                    ).format(
-                        product.price
-                    );
-
-
                 productCategory.textContent =
-                    `${product.collection} · SATORII`;
+                    `${product.collection.toUpperCase()} · SATORIMODE`;
+
+
+                productPrice.textContent =
+                    formatPrice(product.price);
 
 
                 productDescription.textContent =
-                    product.details?.description ||
-                    product.description ||
-                    "";
+                    product.details.description;
+
+
+                shippingText.textContent =
+                    product.details.shipping;
 
 
                 /* =================================================
-                   IMAGEN PRINCIPAL
+                   GALERÍA
                 ================================================== */
 
                 const productImages =
@@ -1827,20 +1878,6 @@
                         : [product.image];
 
 
-                mainImage.src =
-                    resolveImagePath(
-                        productImages[0]
-                    );
-
-
-                mainImage.alt =
-                    product.name;
-
-
-                /* =================================================
-                   MINIATURAS
-                ================================================== */
-
                 productImages.forEach(
                     function (image, index) {
 
@@ -1849,11 +1886,14 @@
                                 "button"
                             );
 
+
                         button.type =
                             "button";
 
+
                         button.className =
                             "product-thumbnail";
+
 
                         if (index === 0) {
 
@@ -1865,9 +1905,7 @@
 
 
                         button.dataset.image =
-                            resolveImagePath(
-                                image
-                            );
+                            image;
 
 
                         button.setAttribute(
@@ -1879,8 +1917,9 @@
                         button.innerHTML = `
 
                             <img
-                                src="${resolveImagePath(image)}"
-                                alt="${product.name} - imagen ${index + 1}"
+                                src="${image}"
+                                alt="${product.name}"
+                                loading="lazy"
                             >
 
                         `;
@@ -1891,7 +1930,7 @@
                             function () {
 
                                 mainImage.src =
-                                    button.dataset.image;
+                                    image;
 
 
                                 thumbnails
@@ -1929,103 +1968,117 @@
                    COLORES
                 ================================================== */
 
-                const colors =
-                    product.colors || [];
+                let selectedColor =
+                    product.colors &&
+                    product.colors.length
+                        ? product.colors[0]
+                        : null;
 
 
-                colors.forEach(
-                    function (color, index) {
+                if (
+                    !product.colors ||
+                    product.colors.length === 0
+                ) {
 
-                        const button =
-                            document.createElement(
-                                "button"
-                            );
+                    document.getElementById(
+                        "colorOption"
+                    ).style.display =
+                        "none";
 
+                } else {
 
-                        button.type =
-                            "button";
+                    product.colors.forEach(
+                        function (color, index) {
 
-                        button.className =
-                            "product-color-button";
-
-
-                        button.dataset.color =
-                            color;
-
-
-                        const normalized =
-                            color.toLowerCase();
+                            const button =
+                                document.createElement(
+                                    "button"
+                                );
 
 
-                        let colorClass =
-                            "color-white";
+                            button.type =
+                                "button";
 
 
-                        if (
-                            normalized.includes(
-                                "negro"
-                            )
-                        ) {
-
-                            colorClass =
-                                "color-black";
-
-                        }
+                            button.className =
+                                "product-color-button";
 
 
-                        if (index === 0) {
-
-                            button.classList.add(
-                                "active"
-                            );
-
-                        }
-
-
-                        button.innerHTML = `
-
-                            <span
-                                class="color-dot ${colorClass}"
-                            ></span>
-
-                            ${color}
-
-                        `;
-
-
-                        button.addEventListener(
-                            "click",
-                            function () {
-
-                                productColors
-                                    .querySelectorAll(
-                                        ".product-color-button"
-                                    )
-                                    .forEach(
-                                        function (item) {
-
-                                            item.classList.remove(
-                                                "active"
-                                            );
-
-                                        }
-                                    );
-
+                            if (index === 0) {
 
                                 button.classList.add(
                                     "active"
                                 );
 
                             }
-                        );
 
 
-                        productColors.appendChild(
-                            button
-                        );
+                            let dotClass =
+                                "color-white";
 
-                    }
-                );
+
+                            if (
+                                color
+                                    .toLowerCase()
+                                    .includes("negro")
+                            ) {
+
+                                dotClass =
+                                    "color-black";
+
+                            }
+
+
+                            button.innerHTML = `
+
+                                <span
+                                    class="color-dot ${dotClass}"
+                                ></span>
+
+                                ${color}
+
+                            `;
+
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    selectedColor =
+                                        color;
+
+
+                                    productColors
+                                        .querySelectorAll(
+                                            ".product-color-button"
+                                        )
+                                        .forEach(
+                                            function (item) {
+
+                                                item.classList.remove(
+                                                    "active"
+                                                );
+
+                                            }
+                                        );
+
+
+                                    button.classList.add(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                            productColors.appendChild(
+                                button
+                            );
+
+                        }
+                    );
+
+                }
 
 
                 /* =================================================
@@ -2036,67 +2089,82 @@
                     null;
 
 
-                (product.sizes || []).forEach(
-                    function (size) {
+                if (
+                    !product.sizes ||
+                    product.sizes.length === 0
+                ) {
 
-                        const button =
-                            document.createElement(
-                                "button"
-                            );
+                    document.getElementById(
+                        "sizeOption"
+                    ).style.display =
+                        "none";
 
+                } else {
 
-                        button.type =
-                            "button";
+                    product.sizes.forEach(
+                        function (size) {
 
-                        button.className =
-                            "product-size";
-
-
-                        button.dataset.size =
-                            size;
-
-
-                        button.textContent =
-                            size;
-
-
-                        button.addEventListener(
-                            "click",
-                            function () {
-
-                                productSizes
-                                    .querySelectorAll(
-                                        ".product-size"
-                                    )
-                                    .forEach(
-                                        function (item) {
-
-                                            item.classList.remove(
-                                                "active"
-                                            );
-
-                                        }
-                                    );
-
-
-                                button.classList.add(
-                                    "active"
+                            const button =
+                                document.createElement(
+                                    "button"
                                 );
 
 
-                                selectedSize =
-                                    size;
-
-                            }
-                        );
+                            button.type =
+                                "button";
 
 
-                        productSizes.appendChild(
-                            button
-                        );
+                            button.className =
+                                "product-size";
 
-                    }
-                );
+
+                            button.dataset.size =
+                                size;
+
+
+                            button.textContent =
+                                size;
+
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    selectedSize =
+                                        size;
+
+
+                                    productSizes
+                                        .querySelectorAll(
+                                            ".product-size"
+                                        )
+                                        .forEach(
+                                            function (item) {
+
+                                                item.classList.remove(
+                                                    "active"
+                                                );
+
+                                            }
+                                        );
+
+
+                                    button.classList.add(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                            productSizes.appendChild(
+                                button
+                            );
+
+                        }
+                    );
+
+                }
 
 
                 /* =================================================
@@ -2106,68 +2174,59 @@
                 let quantity = 1;
 
 
-                const quantityValue =
-                    document.getElementById(
-                        "quantityValue"
-                    );
+                function updateQuantity() {
+
+                    quantityValue.textContent =
+                        quantity;
+
+                }
 
 
-                document
-                    .getElementById(
-                        "quantityMinus"
-                    )
-                    .addEventListener(
-                        "click",
-                        function () {
+                quantityMinus.addEventListener(
+                    "click",
+                    function () {
 
-                            if (quantity > 1) {
+                        if (quantity > 1) {
 
-                                quantity--;
+                            quantity--;
 
-                                quantityValue.textContent =
-                                    quantity;
-
-                            }
+                            updateQuantity();
 
                         }
-                    );
+
+                    }
+                );
 
 
-                document
-                    .getElementById(
-                        "quantityPlus"
-                    )
-                    .addEventListener(
-                        "click",
-                        function () {
+                quantityPlus.addEventListener(
+                    "click",
+                    function () {
 
-                            quantity++;
+                        quantity++;
 
-                            quantityValue.textContent =
-                                quantity;
+                        updateQuantity();
 
-                        }
-                    );
+                    }
+                );
 
 
                 /* =================================================
                    AGREGAR AL CARRITO
                 ================================================== */
 
-                const addButton =
-                    document.getElementById(
-                        "addToCart"
-                    );
-
-
-                addButton.addEventListener(
+                addToCart.addEventListener(
                     "click",
                     function () {
 
-                        if (!selectedSize) {
+
+                        if (
+                            product.sizes &&
+                            product.sizes.length > 0 &&
+                            !selectedSize
+                        ) {
 
                             alert(
-                                "Selecciona una talla antes de agregar el producto al carrito."
+                                "Selecciona una talla antes de continuar."
                             );
 
                             return;
@@ -2175,257 +2234,117 @@
                         }
 
 
-                        const selectedColorButton =
-                            productColors.querySelector(
-                                ".product-color-button.active"
+                        if (
+                            product.colors &&
+                            product.colors.length > 0 &&
+                            !selectedColor
+                        ) {
+
+                            alert(
+                                "Selecciona un color antes de continuar."
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (
+                            !window.SatoriCart ||
+                            typeof
+                            window.SatoriCart.addToCart !==
+                            "function"
+                        ) {
+
+                            console.error(
+                                "SatoriMode: cart.js no está disponible."
                             );
 
 
-                        const selectedColor =
-                            selectedColorButton
-                                ? selectedColorButton.dataset.color
-                                : (
-                                    product.colors &&
-                                    product.colors[0]
-                                );
+                            alert(
+                                "No se pudo conectar con el carrito."
+                            );
 
 
-                        /*
-                         * Estructura estándar
-                         * que utilizará nuestro carrito.
-                         */
+                            return;
 
-                        const cartItem = {
+                        }
 
-                            id:
+
+                        const result =
+                            window.SatoriCart.addToCart(
                                 product.id,
-
-                            name:
-                                product.name,
-
-                            price:
-                                product.price,
-
-                            image:
-                                product.image,
-
-                            size:
+                                quantity,
                                 selectedSize,
-
-                            color:
-                                selectedColor,
-
-                            quantity:
-                                quantity
-
-                        };
-
-
-                        /*
-                         * Guardamos el carrito
-                         * en localStorage.
-                         */
-
-                        const storageKey =
-                            "satorii-cart";
-
-
-                        let cart = [];
-
-
-                        try {
-
-                            cart =
-                                JSON.parse(
-                                    localStorage.getItem(
-                                        storageKey
-                                    )
-                                ) || [];
-
-                        } catch (error) {
-
-                            cart = [];
-
-                        }
-
-
-                        /*
-                         * Si existe el mismo producto,
-                         * talla y color, sumamos cantidad.
-                         */
-
-                        const existingItem =
-                            cart.find(
-                                function (item) {
-
-                                    return (
-
-                                        item.id ===
-                                        cartItem.id &&
-
-                                        item.size ===
-                                        cartItem.size &&
-
-                                        item.color ===
-                                        cartItem.color
-
-                                    );
-
-                                }
+                                selectedColor
                             );
 
 
-                        if (existingItem) {
+                        if (!result) {
 
-                            existingItem.quantity +=
-                                quantity;
-
-                        } else {
-
-                            cart.push(
-                                cartItem
+                            console.error(
+                                "SatoriMode: no se pudo agregar el producto."
                             );
 
+                            return;
+
                         }
-
-
-                        localStorage.setItem(
-                            storageKey,
-                            JSON.stringify(cart)
-                        );
-
-
-                        /* =================================================
-                           ACTUALIZAR EVENTO GLOBAL
-                        ================================================== */
-
-                        window.dispatchEvent(
-                            new CustomEvent(
-                                "satoriiCartUpdated"
-                            )
-                        );
 
 
                         /* =================================================
                            TOAST
                         ================================================== */
 
-                        showToast(
-                            product.name,
-                            selectedSize,
-                            selectedColor,
-                            quantity
+                        toastProduct.textContent =
+                            `${product.name} · ${selectedColor || ""}${selectedSize ? ` · Talla ${selectedSize}` : ""} · Cantidad ${quantity}`;
+
+
+                        toast.classList.add(
+                            "is-visible"
                         );
 
 
-                        /*
-                         * Pequeña confirmación visual.
-                         */
-
-                        addButton.classList.add(
-                            "added"
+                        clearTimeout(
+                            window.satoriToastTimer
                         );
 
 
-                        addButton.textContent =
-                            "AGREGADO AL CARRITO ✓";
+                        window.satoriToastTimer =
+                            setTimeout(
+                                function () {
 
+                                    toast.classList.remove(
+                                        "is-visible"
+                                    );
 
-                        setTimeout(
-                            function () {
-
-                                addButton.classList.remove(
-                                    "added"
-                                );
-
-                                addButton.textContent =
-                                    "AGREGAR AL CARRITO";
-
-                            },
-                            1800
-                        );
+                                },
+                                5000
+                            );
 
                     }
                 );
 
 
                 /* =================================================
-                   TOAST
+                   IR AL CARRITO
                 ================================================== */
 
-                function showToast(
-                    name,
-                    size,
-                    color,
-                    quantity
-                ) {
+                goToCart.addEventListener(
+                    "click",
+                    function () {
 
-                    const toast =
-                        document.getElementById(
-                            "cartToast"
-                        );
-
-
-                    const toastProduct =
-                        document.getElementById(
-                            "cartToastProduct"
-                        );
-
-
-                    if (
-                        !toast ||
-                        !toastProduct
-                    ) {
-
-                        return;
+                        window.location.href =
+                            "../../carrito.html";
 
                     }
-
-
-                    toastProduct.textContent =
-                        `${name} · ${color} · Talla ${size} · Cantidad ${quantity}`;
-
-
-                    toast.classList.add(
-                        "is-visible"
-                    );
-
-
-                    clearTimeout(
-                        window.satoriToastTimer
-                    );
-
-
-                    window.satoriToastTimer =
-                        setTimeout(
-                            function () {
-
-                                toast.classList.remove(
-                                    "is-visible"
-                                );
-
-                            },
-                            4500
-                        );
-
-                }
+                );
 
 
                 /* =================================================
-                   RECOMENDADOS
+                   PRODUCTOS RECOMENDADOS
                 ================================================== */
 
-                const recommended =
-                    document.getElementById(
-                        "recommendedProducts"
-                    );
-
-
-                if (
-                    recommended &&
-                    typeof getRelatedProducts ===
-                        "function"
-                ) {
+                if (recommendedProducts) {
 
                     const related =
                         getRelatedProducts(
@@ -2448,50 +2367,8 @@
                                 "recommended-card";
 
 
-                            /*
-                             * Como estamos dentro de
-                             * productos/anime/, la URL
-                             * del producto se adapta.
-                             */
-
-                            let itemUrl =
-                                item.url || "";
-
-
-                            if (
-                                itemUrl.startsWith(
-                                    "productos/"
-                                )
-                            ) {
-
-                                itemUrl =
-                                    "../../" +
-                                    itemUrl;
-
-                            }
-
-
                             card.href =
-                                itemUrl;
-
-
-                            const image =
-                                resolveImagePath(
-                                    item.image
-                                );
-
-
-                            const price =
-                                new Intl.NumberFormat(
-                                    "es-CL",
-                                    {
-                                        style: "currency",
-                                        currency: "CLP",
-                                        maximumFractionDigits: 0
-                                    }
-                                ).format(
-                                    item.price
-                                );
+                                item.url;
 
 
                             card.innerHTML = `
@@ -2501,7 +2378,7 @@
                                 >
 
                                     <img
-                                        src="${image}"
+                                        src="${item.image}"
                                         alt="${item.name}"
                                         loading="lazy"
                                     >
@@ -2514,7 +2391,7 @@
                                 >
 
                                     <span>
-                                        ${item.collection || "SATORII"}
+                                        ${item.collection}
                                     </span>
 
 
@@ -2524,7 +2401,7 @@
 
 
                                     <p>
-                                        ${price}
+                                        ${formatPrice(item.price)}
                                     </p>
 
                                 </div>
@@ -2532,7 +2409,7 @@
                             `;
 
 
-                            recommended.appendChild(
+                            recommendedProducts.appendChild(
                                 card
                             );
 
@@ -2542,6 +2419,7 @@
                 }
 
             }
+
         );
 
     </script>
