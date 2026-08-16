@@ -1,142 +1,153 @@
 /* =========================================================
-   SATORIMODE
-   MAIN.JS
+   SATORIMODE · MAIN.JS
    =========================================================
 
-   FUNCIONES:
+   RESPONSABILIDADES:
 
-   - Dropdowns desktop
-   - Menú móvil
-   - Submenús móviles
-   - Buscador
-   - Productos de la Home
+   - Productos destacados de la Home
    - Más vendidos
    - Últimos estrenos
    - Newsletter / Únete al Clan
-   - Cierre con ESC
 
    IMPORTANTE:
-   products.js debe cargarse antes que main.js
-   para utilizar PRODUCTS.
+   products.js debe cargarse antes que main.js.
+
+   header.js se encarga de:
+   - Header
+   - Barra superior
+   - Dropdowns
+   - Menú móvil
+   - Buscador
+   - Carrito
 ========================================================= */
 
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded", () => {
 
 
-        /* =====================================================
-           RUTA BASE DEL SITIO
-        ====================================================== */
+    /* =====================================================
+       RUTA BASE
+    ====================================================== */
 
-        const currentScript =
-            document.currentScript;
+    const currentScript = document.currentScript;
 
-
-        const baseUrl =
-            currentScript
-                ? new URL(
-                    "../",
-                    currentScript.src
-                ).href
-                : "/";
+    const baseUrl = currentScript
+        ? new URL("../", currentScript.src).href
+        : "/satorimode/";
 
 
-        function siteUrl(path) {
+    function siteUrl(path = "") {
 
-            if (!path) {
-                return baseUrl;
-            }
+        if (!path) {
+            return baseUrl;
+        }
 
-            return new URL(
-                path.replace(/^\/+/, ""),
-                baseUrl
-            ).href;
+        if (/^https?:\/\//i.test(path)) {
+            return path;
+        }
+
+        return new URL(
+            path.replace(/^\/+/, ""),
+            baseUrl
+        ).href;
+
+    }
+
+
+
+    /* =====================================================
+       PRODUCTOS
+    ====================================================== */
+
+    const products = Array.isArray(window.PRODUCTS)
+        ? window.PRODUCTS
+        : [];
+
+
+
+    /* =====================================================
+       UTILIDADES DE PRODUCTOS
+    ====================================================== */
+
+    function getProductImage(product) {
+
+        if (!product) {
+            return "";
+        }
+
+
+        if (
+            Array.isArray(product.images) &&
+            product.images.length
+        ) {
+
+            return product.images[0];
 
         }
 
 
+        return (
+            product.image ||
+            product.imagen ||
+            ""
+        );
 
-        /* =====================================================
-           PRODUCTOS
-        ====================================================== */
-
-        const products =
-            Array.isArray(window.PRODUCTS)
-                ? window.PRODUCTS
-                : [];
+    }
 
 
-        function getProductImage(product) {
 
-            if (!product) {
-                return "";
-            }
+    function getProductCategory(product) {
 
-
-            if (
-                Array.isArray(product.images) &&
-                product.images.length
-            ) {
-
-                return product.images[0];
-
-            }
+        if (!product) {
+            return "SATORIMODE";
+        }
 
 
-            return product.image || "";
+        return String(
+            product.collection ||
+            product.category ||
+            product.categoria ||
+            "SATORIMODE"
+        ).trim();
+
+    }
+
+
+
+    function normalizeCategory(category) {
+
+        const value = String(
+            category || "otros"
+        )
+        .normalize("NFD")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+        .toLowerCase()
+        .trim();
+
+
+        if (
+            value === "anime" ||
+            value === "streetwear" ||
+            value === "accesorios"
+        ) {
+
+            return value;
 
         }
 
 
-        function getProductCategory(product) {
+        return "otros";
 
-            return String(
-                product.collection ||
-                product.category ||
-                "SATORIMODE"
-            ).trim();
-
-        }
+    }
 
 
-        function normalizeCategory(category) {
 
-            const value =
-                String(
-                    category || "otros"
-                )
-                .normalize("NFD")
-                .replace(
-                    /[\u0300-\u036f]/g,
-                    ""
-                )
-                .toLowerCase()
-                .trim();
+    function slugify(value) {
 
-
-            if (
-                value === "anime" ||
-                value === "streetwear" ||
-                value === "accesorios"
-            ) {
-
-                return value;
-
-            }
-
-
-            return "otros";
-
-        }
-
-
-        function slugify(value) {
-
-            return String(
-                value || ""
-            )
+        return String(value || "")
             .normalize("NFD")
             .replace(
                 /[\u0300-\u036f]/g,
@@ -152,1508 +163,674 @@ document.addEventListener(
                 /^-+|-+$/g,
                 "");
 
+    }
+
+
+
+    function getProductUrl(product) {
+
+        if (!product) {
+            return "#";
         }
 
 
-        function getProductUrl(product) {
+        if (product.url) {
 
-            if (!product) {
-                return "#";
-            }
-
-
-            if (product.url) {
-
-                if (
-                    /^https?:\/\//i.test(
-                        product.url
-                    )
-                ) {
-
-                    return product.url;
-
-                }
-
-
-                return siteUrl(
+            if (
+                /^https?:\/\//i.test(
                     product.url
-                );
+                )
+            ) {
+
+                return product.url;
 
             }
-
-
-            const category =
-                normalizeCategory(
-                    product.category
-                );
-
-
-            const slug =
-                slugify(
-                    product.id ||
-                    product.name
-                );
 
 
             return siteUrl(
-                `productos/${category}/${slug}.html`
+                product.url
             );
 
         }
 
 
-        function formatPrice(price) {
-
-            return "$" +
-                Number(
-                    price || 0
-                ).toLocaleString(
-                    "es-CL"
-                );
-
-        }
-
-
-
-        /* =====================================================
-           DROPDOWNS DESKTOP
-        ====================================================== */
-
-        const dropdowns =
-            document.querySelectorAll(
-                ".nav-dropdown"
+        const category =
+            normalizeCategory(
+                product.category ||
+                product.collection
             );
 
 
-        function closeAllDropdowns() {
-
-            dropdowns.forEach(
-                function (dropdown) {
-
-                    dropdown.classList.remove(
-                        "active"
-                    );
-
-
-                    const button =
-                        dropdown.querySelector(
-                            ".nav-dropdown-btn"
-                        );
-
-
-                    if (button) {
-
-                        button.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                    }
-
-                }
+        const slug =
+            slugify(
+                product.id ||
+                product.name ||
+                product.nombre
             );
 
-        }
 
-
-        dropdowns.forEach(
-            function (dropdown) {
-
-                const button =
-                    dropdown.querySelector(
-                        ".nav-dropdown-btn"
-                    );
-
-
-                if (!button) {
-                    return;
-                }
-
-
-                button.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                button.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.preventDefault();
-                        event.stopPropagation();
-
-
-                        const wasOpen =
-                            dropdown.classList.contains(
-                                "active"
-                            );
-
-
-                        closeAllDropdowns();
-
-
-                        if (!wasOpen) {
-
-                            dropdown.classList.add(
-                                "active"
-                            );
-
-
-                            button.setAttribute(
-                                "aria-expanded",
-                                "true"
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
+        return siteUrl(
+            `productos/${category}/${slug}.html`
         );
 
+    }
 
-        document.addEventListener(
-            "click",
-            function (event) {
 
-                if (
-                    !event.target.closest(
-                        ".nav-dropdown"
-                    )
-                ) {
 
-                    closeAllDropdowns();
+    function formatPrice(price) {
 
-                }
-
-            }
-        );
-
-
-        document
-            .querySelectorAll(
-                ".dropdown-menu a"
-            )
-            .forEach(
-                function (link) {
-
-                    link.addEventListener(
-                        "click",
-                        function () {
-
-                            closeAllDropdowns();
-
-                        }
-                    );
-
-                }
-            );
-
-
-
-        /* =====================================================
-           MENÚ MÓVIL
-        ====================================================== */
-
-        const mobileButton =
-            document.querySelector(
-                ".mobile-menu-button"
-            );
-
-
-        const mobileMenu =
-            document.querySelector(
-                ".mobile-menu"
-            );
-
-
-        const mobileClose =
-            document.querySelector(
-                ".mobile-menu-close"
-            );
-
-
-        const mobileOverlay =
-            document.querySelector(
-                ".mobile-menu-overlay"
-            );
-
-
-        function openMobileMenu() {
-
-            if (!mobileMenu) {
-                return;
-            }
-
-
-            mobileMenu.classList.add(
-                "is-open"
-            );
-
-
-            mobileMenu.classList.add(
-                "active"
-            );
-
-
-            if (mobileOverlay) {
-
-                mobileOverlay.classList.add(
-                    "is-open"
-                );
-
-                mobileOverlay.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            if (mobileButton) {
-
-                mobileButton.classList.add(
-                    "is-open"
-                );
-
-
-                mobileButton.classList.add(
-                    "active"
-                );
-
-
-                mobileButton.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-            }
-
-
-            mobileMenu.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.style.overflow =
-                "hidden";
-
-        }
-
-
-        function closeMobileMenu() {
-
-            if (!mobileMenu) {
-                return;
-            }
-
-
-            mobileMenu.classList.remove(
-                "is-open"
-            );
-
-
-            mobileMenu.classList.remove(
-                "active"
-            );
-
-
-            if (mobileOverlay) {
-
-                mobileOverlay.classList.remove(
-                    "is-open"
-                );
-
-                mobileOverlay.classList.remove(
-                    "active"
-                );
-
-            }
-
-
-            if (mobileButton) {
-
-                mobileButton.classList.remove(
-                    "is-open"
-                );
-
-
-                mobileButton.classList.remove(
-                    "active"
-                );
-
-
-                mobileButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
-
-            mobileMenu.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-
-        if (mobileButton) {
-
-            mobileButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-
-            mobileButton.addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-                    event.stopPropagation();
-
-
-                    const isOpen =
-                        mobileMenu &&
-                        (
-                            mobileMenu.classList.contains(
-                                "is-open"
-                            ) ||
-                            mobileMenu.classList.contains(
-                                "active"
-                            )
-                        );
-
-
-                    if (isOpen) {
-
-                        closeMobileMenu();
-
-                    } else {
-
-                        openMobileMenu();
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        if (mobileClose) {
-
-            mobileClose.addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-
-                    closeMobileMenu();
-
-                }
-            );
-
-        }
-
-
-        if (mobileOverlay) {
-
-            mobileOverlay.addEventListener(
-                "click",
-                function () {
-
-                    closeMobileMenu();
-
-                }
-            );
-
-        }
-
-
-
-        /* =====================================================
-           SUBMENÚS MÓVILES
-        ====================================================== */
-
-        const mobileButtons =
-            document.querySelectorAll(
-                ".mobile-nav-button"
-            );
-
-
-        mobileButtons.forEach(
-            function (button) {
-
-                button.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                button.addEventListener(
-                    "click",
-                    function (event) {
-
-                        event.preventDefault();
-                        event.stopPropagation();
-
-
-                        const submenu =
-                            button.nextElementSibling;
-
-
-                        if (
-                            !submenu ||
-                            !submenu.classList.contains(
-                                "mobile-submenu"
-                            )
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const wasOpen =
-                            submenu.classList.contains(
-                                "is-open"
-                            ) ||
-                            submenu.classList.contains(
-                                "active"
-                            );
-
-
-                        document
-                            .querySelectorAll(
-                                ".mobile-submenu"
-                            )
-                            .forEach(
-                                function (menu) {
-
-                                    menu.classList.remove(
-                                        "is-open"
-                                    );
-
-                                    menu.classList.remove(
-                                        "active"
-                                    );
-
-                                }
-                            );
-
-
-                        document
-                            .querySelectorAll(
-                                ".mobile-nav-button"
-                            )
-                            .forEach(
-                                function (otherButton) {
-
-                                    otherButton.setAttribute(
-                                        "aria-expanded",
-                                        "false"
-                                    );
-
-
-                                    otherButton.classList.remove(
-                                        "is-open"
-                                    );
-
-
-                                    otherButton.classList.remove(
-                                        "active"
-                                    );
-
-                                }
-                            );
-
-
-                        if (!wasOpen) {
-
-                            submenu.classList.add(
-                                "is-open"
-                            );
-
-
-                            submenu.classList.add(
-                                "active"
-                            );
-
-
-                            button.setAttribute(
-                                "aria-expanded",
-                                "true"
-                            );
-
-
-                            button.classList.add(
-                                "is-open"
-                            );
-
-
-                            button.classList.add(
-                                "active"
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-
-        document
-            .querySelectorAll(
-                ".mobile-menu a"
-            )
-            .forEach(
-                function (link) {
-
-                    link.addEventListener(
-                        "click",
-                        function () {
-
-                            closeMobileMenu();
-
-                        }
-                    );
-
-                }
-            );
-
-
-
-        /* =====================================================
-           BUSCADOR
-        ====================================================== */
-
-        const searchButton =
-            document.querySelector(
-                ".search-button, .search-trigger"
-            );
-
-
-        const searchOverlay =
-            document.querySelector(
-                ".search-overlay"
-            );
-
-
-        const searchClose =
-            document.querySelector(
-                ".search-close"
-            );
-
-
-        const searchInput =
-            document.querySelector(
-                "#product-search"
-            );
-
-
-        const searchResults =
-            document.querySelector(
-                "#search-results"
-            );
-
-
-        function renderSearchMessage(
-            message
+        if (
+            typeof price === "string" &&
+            price.includes("$")
         ) {
 
-            if (!searchResults) {
-                return;
+            return price;
+
+        }
+
+
+        return "$" +
+            Number(
+                price || 0
+            ).toLocaleString(
+                "es-CL"
+            );
+
+    }
+
+
+
+    /* =====================================================
+       PRODUCTOS DISPONIBLES
+    ====================================================== */
+
+    function getAvailableProducts() {
+
+        return products.filter(
+            product => {
+
+                return (
+                    product &&
+                    product.available !== false
+                );
+
             }
+        );
+
+    }
 
 
-            searchResults.innerHTML = `
-                <p class="search-empty">
-                    ${message}
+
+    /* =====================================================
+       CREAR TARJETA DE PRODUCTO
+    ====================================================== */
+
+    function createHomeProductCard(
+        product,
+        options = {}
+    ) {
+
+        if (!product) {
+            return "";
+        }
+
+
+        const image =
+            getProductImage(
+                product
+            );
+
+
+        const category =
+            getProductCategory(
+                product
+            );
+
+
+        const url =
+            getProductUrl(
+                product
+            );
+
+
+        const name =
+            product.name ||
+            product.nombre ||
+            "Producto Satorii";
+
+
+        const tag =
+            options.tag ||
+            product.badge ||
+            product.tag ||
+            "";
+
+
+        return `
+
+            <a
+                href="${url}"
+                class="store-product-card"
+            >
+
+                <div
+                    class="store-product-image"
+                >
+
+                    ${
+                        tag
+                            ? `
+                                <span
+                                    class="store-product-tag"
+                                >
+                                    ${tag}
+                                </span>
+                              `
+                            : ""
+                    }
+
+
+                    <button
+                        type="button"
+                        class="store-product-fav"
+                        aria-label="Agregar a favoritos"
+                        onclick="
+                            event.preventDefault();
+                            event.stopPropagation();
+                        "
+                    >
+                        ♡
+                    </button>
+
+
+                    ${
+                        image
+                            ? `
+                                <img
+                                    src="${siteUrl(image)}"
+                                    alt="${name}"
+                                    loading="lazy"
+                                >
+                              `
+                            : `
+                                <div
+                                    class="store-product-placeholder"
+                                >
+                                    SATORII
+                                </div>
+                              `
+                    }
+
+                </div>
+
+
+                <div
+                    class="store-product-info"
+                >
+
+                    <span>
+                        ${category.toUpperCase()}
+                    </span>
+
+
+                    <h3>
+                        ${name}
+                    </h3>
+
+
+                    <strong>
+                        ${formatPrice(
+                            product.price
+                        )}
+                    </strong>
+
+                </div>
+
+            </a>
+
+        `;
+
+    }
+
+
+
+    /* =====================================================
+       MÁS VENDIDOS
+    ====================================================== */
+
+    function getFeaturedProducts() {
+
+        const available =
+            getAvailableProducts();
+
+
+        if (!available.length) {
+            return [];
+        }
+
+
+        /*
+         * Primero buscamos productos marcados
+         * específicamente como destacados.
+         */
+
+        const featured =
+            available.filter(
+                product => {
+
+                    return (
+                        product.featured === true ||
+                        product.isFeatured === true ||
+                        product.bestSeller === true ||
+                        product.bestseller === true
+                    );
+
+                }
+            );
+
+
+        if (featured.length) {
+
+            return featured.slice(0, 5);
+
+        }
+
+
+        /*
+         * Si todavía no tienes productos marcados
+         * como destacados, mostramos los primeros
+         * disponibles.
+         */
+
+        return available.slice(0, 5);
+
+    }
+
+
+
+    function renderFeaturedProducts() {
+
+        const container =
+            document.getElementById(
+                "featured-products"
+            );
+
+
+        if (!container) {
+            return;
+        }
+
+
+        const featured =
+            getFeaturedProducts();
+
+
+        if (!featured.length) {
+
+            container.innerHTML = `
+
+                <p class="store-product-empty">
+                    Próximamente encontrarás
+                    nuevos diseños Satorii.
                 </p>
+
             `;
 
-        }
-
-
-        function closeSearch() {
-
-            if (!searchOverlay) {
-                return;
-            }
-
-
-            searchOverlay.classList.remove(
-                "active"
-            );
-
-
-            searchOverlay.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            if (searchButton) {
-
-                searchButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
-
-            if (searchInput) {
-
-                searchInput.value = "";
-
-            }
-
-
-            renderSearchMessage(
-                "Busca tu próxima polera Satorii."
-            );
+            return;
 
         }
 
 
-        function openSearch() {
-
-            if (!searchOverlay) {
-                return;
-            }
-
-
-            searchOverlay.classList.add(
-                "active"
-            );
-
-
-            searchOverlay.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            if (searchButton) {
-
-                searchButton.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-            }
-
-
-            if (searchInput) {
-
-                setTimeout(
-                    function () {
-
-                        searchInput.focus();
-
-                    },
-                    150
-                );
-
-            }
-
-        }
-
-
-        if (
-            searchButton &&
-            searchOverlay
-        ) {
-
-            searchButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-
-            searchButton.addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    openSearch();
-
-                }
-            );
-
-        }
-
-
-        if (searchClose) {
-
-            searchClose.addEventListener(
-                "click",
-                function () {
-
-                    closeSearch();
-
-                }
-            );
-
-        }
-
-
-        if (searchOverlay) {
-
-            searchOverlay.addEventListener(
-                "click",
-                function (event) {
-
-                    if (
-                        event.target ===
-                        searchOverlay
-                    ) {
-
-                        closeSearch();
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        if (
-            searchInput &&
-            searchResults
-        ) {
-
-            searchInput.addEventListener(
-                "input",
-                function () {
-
-                    const query =
-                        searchInput.value
-                            .trim()
-                            .toLowerCase();
-
-
-                    if (!query) {
-
-                        renderSearchMessage(
-                            "Busca tu próxima polera Satorii."
-                        );
-
-                        return;
-
-                    }
-
-
-                    const results =
-                        products.filter(
-                            function (product) {
-
-                                if (
-                                    !product ||
-                                    product.available === false
-                                ) {
-
-                                    return false;
-
-                                }
-
-
-                                const name =
-                                    String(
-                                        product.name ||
-                                        ""
-                                    ).toLowerCase();
-
-
-                                const category =
-                                    getProductCategory(
-                                        product
-                                    ).toLowerCase();
-
-
-                                const collection =
-                                    String(
-                                        product.collection ||
-                                        ""
-                                    ).toLowerCase();
-
-
-                                const id =
-                                    String(
-                                        product.id ||
-                                        ""
-                                    ).toLowerCase();
-
-
-                                return (
-                                    name.includes(
-                                        query
-                                    ) ||
-                                    category.includes(
-                                        query
-                                    ) ||
-                                    collection.includes(
-                                        query
-                                    ) ||
-                                    id.includes(
-                                        query
-                                    )
-                                );
-
+        container.innerHTML =
+            featured
+                .map(
+                    product => {
+
+                        const isBestSeller =
+                            product.bestSeller === true ||
+                            product.bestseller === true;
+
+
+                        return createHomeProductCard(
+                            product,
+                            {
+                                tag:
+                                    isBestSeller
+                                        ? "MÁS VENDIDO"
+                                        : ""
                             }
                         );
 
-
-                    if (!results.length) {
-
-                        renderSearchMessage(
-                            `No encontramos productos para "${query}".`
-                        );
-
-                        return;
-
                     }
+                )
+                .join("");
+
+    }
 
 
-                    searchResults.innerHTML =
-                        results
-                            .slice(0, 8)
-                            .map(
-                                function (product) {
 
-                                    const image =
-                                        getProductImage(
-                                            product
-                                        );
+    /* =====================================================
+       ÚLTIMOS ESTRENOS
+    ====================================================== */
 
+    function getLatestProducts() {
 
-                                    return `
-                                        <a
-                                            href="${getProductUrl(product)}"
-                                            class="search-result-item"
-                                        >
-
-                                            ${
-                                                image
-                                                    ? `
-                                                        <img
-                                                            src="${siteUrl(image)}"
-                                                            alt="${product.name || "Producto Satorii"}"
-                                                            class="search-result-image"
-                                                        >
-                                                      `
-                                                    : ""
-                                            }
+        const available =
+            getAvailableProducts();
 
 
-                                            <div
-                                                class="search-result-info"
-                                            >
-
-                                                <span
-                                                    class="search-result-category"
-                                                >
-                                                    ${getProductCategory(product).toUpperCase()}
-                                                </span>
+        if (!available.length) {
+            return [];
+        }
 
 
-                                                <span
-                                                    class="search-result-name"
-                                                >
-                                                    ${product.name || "Producto Satorii"}
-                                                </span>
+        /*
+         * Si tienes productos marcados como nuevos,
+         * usamos esos primero.
+         */
 
+        const latest =
+            available.filter(
+                product => {
 
-                                                <span
-                                                    class="search-result-price"
-                                                >
-                                                    ${formatPrice(product.price)}
-                                                </span>
-
-                                            </div>
-
-                                        </a>
-                                    `;
-
-                                }
-                            )
-                            .join("");
+                    return (
+                        product.latest === true ||
+                        product.isNew === true ||
+                        product.new === true
+                    );
 
                 }
             );
 
+
+        if (latest.length) {
+
+            return latest.slice(0, 4);
+
         }
 
 
+        /*
+         * Si todavía no tienes productos marcados
+         * como nuevos, usamos los últimos productos
+         * del catálogo.
+         */
 
-        /* =====================================================
-           TARJETA DE PRODUCTO PARA LA HOME
-        ====================================================== */
+        return available
+            .slice(-4)
+            .reverse();
 
-        function createHomeProductCard(
-            product,
-            options = {}
-        ) {
-
-            if (!product) {
-                return "";
-            }
+    }
 
 
-            const image =
-                getProductImage(
-                    product
-                );
+
+    function renderLatestProducts() {
+
+        const container =
+            document.getElementById(
+                "latest-products"
+            );
 
 
-            const category =
-                getProductCategory(
-                    product
-                );
+        if (!container) {
+            return;
+        }
 
 
-            const url =
-                getProductUrl(
-                    product
-                );
+        const latest =
+            getLatestProducts();
 
 
-            const tag =
-                options.tag ||
-                product.badge ||
-                product.tag ||
-                "";
+        if (!latest.length) {
 
+            container.innerHTML = `
 
-            return `
-                <a
-                    href="${url}"
-                    class="store-product-card"
-                >
+                <p class="store-product-empty">
+                    Próximamente nuevos lanzamientos.
+                </p>
 
-                    <div
-                        class="store-product-image"
-                    >
-
-                        ${
-                            tag
-                                ? `
-                                    <span
-                                        class="store-product-tag"
-                                    >
-                                        ${tag}
-                                    </span>
-                                  `
-                                : ""
-                        }
-
-
-                        <button
-                            type="button"
-                            class="store-product-fav"
-                            aria-label="Agregar a favoritos"
-                            onclick="event.preventDefault(); event.stopPropagation();"
-                        >
-                            ♡
-                        </button>
-
-
-                        ${
-                            image
-                                ? `
-                                    <img
-                                        src="${siteUrl(image)}"
-                                        alt="${product.name || "Producto Satorii"}"
-                                        loading="lazy"
-                                    >
-                                  `
-                                : `
-                                    <div
-                                        class="store-product-placeholder"
-                                    >
-                                        SATORII
-                                    </div>
-                                  `
-                        }
-
-                    </div>
-
-
-                    <div
-                        class="store-product-info"
-                    >
-
-                        <span>
-                            ${category.toUpperCase()}
-                        </span>
-
-
-                        <h3>
-                            ${product.name || "Producto Satorii"}
-                        </h3>
-
-
-                        <strong>
-                            ${formatPrice(product.price)}
-                        </strong>
-
-                    </div>
-
-                </a>
             `;
 
-        }
-
-
-
-        /* =====================================================
-           SELECCIÓN DE PRODUCTOS DESTACADOS
-        ====================================================== */
-
-        function getFeaturedProducts() {
-
-            const available =
-                products.filter(
-                    function (product) {
-
-                        return (
-                            product &&
-                            product.available !== false
-                        );
-
-                    }
-                );
-
-
-            if (!available.length) {
-                return [];
-            }
-
-
-            const marked =
-                available.filter(
-                    function (product) {
-
-                        return (
-                            product.featured === true ||
-                            product.bestSeller === true ||
-                            product.bestseller === true ||
-                            product.isFeatured === true
-                        );
-
-                    }
-                );
-
-
-            if (marked.length) {
-
-                return marked.slice(0, 5);
-
-            }
-
-
-            return available.slice(0, 5);
+            return;
 
         }
 
 
+        container.innerHTML =
+            latest
+                .map(
+                    product => {
 
-        /* =====================================================
-           SELECCIÓN DE ÚLTIMOS PRODUCTOS
-        ====================================================== */
-
-        function getLatestProducts() {
-
-            const available =
-                products.filter(
-                    function (product) {
-
-                        return (
-                            product &&
-                            product.available !== false
-                        );
-
-                    }
-                );
-
-
-            if (!available.length) {
-                return [];
-            }
-
-
-            const marked =
-                available.filter(
-                    function (product) {
-
-                        return (
+                        const isNew =
                             product.latest === true ||
                             product.isNew === true ||
-                            product.new === true
+                            product.new === true;
+
+
+                        return createHomeProductCard(
+                            product,
+                            {
+                                tag:
+                                    isNew
+                                        ? "NUEVO"
+                                        : ""
+                            }
                         );
 
                     }
-                );
+                )
+                .join("");
 
+    }
 
-            if (marked.length) {
 
-                return marked.slice(0, 4);
 
-            }
+    /* =====================================================
+       NEWSLETTER · ÚNETE AL CLAN
+       =====================================================
 
+       Compatible con:
 
-            /*
-             * Si no existe una marca de "nuevo",
-             * usamos los últimos productos del catálogo.
-             */
+       <form id="footerNewsletter">
 
-            return available
-                .slice(-4)
-                .reverse();
+       o simplemente:
 
-        }
+       <form class="newsletter-form">
 
+       Por eso funcionará con el HTML que
+       tenemos actualmente.
+    ====================================================== */
 
+    const newsletter =
+        document.getElementById(
+            "footerNewsletter"
+        ) ||
+        document.querySelector(
+            ".newsletter-form"
+        );
 
-        /* =====================================================
-           RENDER · MÁS VENDIDOS
-        ====================================================== */
 
-        function renderFeaturedProducts() {
+    if (newsletter) {
 
-            const container =
-                document.getElementById(
-                    "featured-products"
-                );
+        newsletter.addEventListener(
+            "submit",
+            event => {
 
+                event.preventDefault();
 
-            if (!container) {
-                return;
-            }
 
-
-            const featured =
-                getFeaturedProducts();
-
-
-            if (!featured.length) {
-
-                container.innerHTML = `
-                    <p class="store-product-empty">
-                        Próximamente encontrarás
-                        nuevos diseños Satorii.
-                    </p>
-                `;
-
-                return;
-
-            }
-
-
-            container.innerHTML =
-                featured
-                    .map(
-                        function (product) {
-
-                            return createHomeProductCard(
-                                product,
-                                {
-                                    tag:
-                                        product.bestSeller ||
-                                        product.bestseller
-                                            ? "MÁS VENDIDO"
-                                            : ""
-                                }
-                            );
-
-                        }
-                    )
-                    .join("");
-
-        }
-
-
-
-        /* =====================================================
-           RENDER · ÚLTIMOS ESTRENOS
-        ====================================================== */
-
-        function renderLatestProducts() {
-
-            const container =
-                document.getElementById(
-                    "latest-products"
-                );
-
-
-            if (!container) {
-                return;
-            }
-
-
-            const latest =
-                getLatestProducts();
-
-
-            if (!latest.length) {
-
-                container.innerHTML = `
-                    <p class="store-product-empty">
-                        Próximamente nuevos lanzamientos.
-                    </p>
-                `;
-
-                return;
-
-            }
-
-
-            container.innerHTML =
-                latest
-                    .map(
-                        function (product) {
-
-                            return createHomeProductCard(
-                                product,
-                                {
-                                    tag:
-                                        product.latest ||
-                                        product.isNew ||
-                                        product.new
-                                            ? "NUEVO"
-                                            : ""
-                                }
-                            );
-
-                        }
-                    )
-                    .join("");
-
-        }
-
-
-
-        /* =====================================================
-           NEWSLETTER · ÚNETE AL CLAN
-        ====================================================== */
-
-        const newsletter =
-            document.getElementById(
-                "footerNewsletter"
-            );
-
-
-        if (newsletter) {
-
-            newsletter.addEventListener(
-                "submit",
-                function (event) {
-
-                    event.preventDefault();
-
-
-                    const emailInput =
-                        document.getElementById(
-                            "footerEmail"
-                        );
-
-
-                    if (!emailInput) {
-                        return;
-                    }
-
-
-                    const email =
-                        emailInput.value
-                            .trim();
-
-
-                    if (!email) {
-                        return;
-                    }
-
-
-                    if (
-                        !emailInput.checkValidity()
-                    ) {
-
-                        emailInput.reportValidity();
-
-                        return;
-
-                    }
-
-
-                    let subscribers = [];
-
-
-                    try {
-
-                        subscribers =
-                            JSON.parse(
-                                localStorage.getItem(
-                                    "satoriiSubscribers"
-                                ) || "[]"
-                            );
-
-                    } catch (error) {
-
-                        subscribers = [];
-
-                    }
-
-
-                    if (
-                        !subscribers.includes(
-                            email
-                        )
-                    ) {
-
-                        subscribers.push(
-                            email
-                        );
-
-                    }
-
-
-                    localStorage.setItem(
-                        "satoriiSubscribers",
-                        JSON.stringify(
-                            subscribers
-                        )
+                const emailInput =
+                    newsletter.querySelector(
+                        'input[type="email"]'
                     );
 
 
-                    emailInput.value = "";
-
-
-                    showNewsletterMessage(
-                        "¡Bienvenido al Clan Satorii! 🔴"
-                    );
-
-                }
-            );
-
-        }
-
-
-        function showNewsletterMessage(
-            message
-        ) {
-
-            let messageElement =
-                document.getElementById(
-                    "newsletterMessage"
-                );
-
-
-            if (!messageElement) {
-
-                messageElement =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                messageElement.id =
-                    "newsletterMessage";
-
-
-                messageElement.style.marginTop =
-                    "10px";
-
-
-                messageElement.style.color =
-                    "#ed1111";
-
-
-                messageElement.style.fontSize =
-                    "11px";
-
-
-                messageElement.style.fontWeight =
-                    "700";
-
-
-                const form =
-                    document.getElementById(
-                        "footerNewsletter"
-                    );
-
-
-                if (
-                    form &&
-                    form.parentNode
-                ) {
-
-                    form.parentNode.appendChild(
-                        messageElement
-                    );
-
+                if (!emailInput) {
+                    return;
                 }
 
-            }
+
+                const email =
+                    emailInput.value.trim();
 
 
-            messageElement.textContent =
-                message;
+                if (!email) {
 
-        }
-
-
-
-        /* =====================================================
-           ESC · CERRAR TODO
-        ====================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key !== "Escape"
-                ) {
+                    emailInput.reportValidity();
 
                     return;
 
                 }
 
 
-                closeAllDropdowns();
+                if (
+                    !emailInput.checkValidity()
+                ) {
 
-                closeMobileMenu();
+                    emailInput.reportValidity();
 
-                closeSearch();
+                    return;
+
+                }
+
+
+
+                /* =========================================
+                   GUARDAR EMAIL LOCALMENTE
+                   ========================================= */
+
+                let subscribers = [];
+
+
+                try {
+
+                    subscribers =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "satoriiSubscribers"
+                            ) || "[]"
+                        );
+
+                } catch {
+
+                    subscribers = [];
+
+                }
+
+
+                if (
+                    !subscribers.includes(
+                        email
+                    )
+                ) {
+
+                    subscribers.push(
+                        email
+                    );
+
+                }
+
+
+                localStorage.setItem(
+                    "satoriiSubscribers",
+                    JSON.stringify(
+                        subscribers
+                    )
+                );
+
+
+
+                /* =========================================
+                   LIMPIAR INPUT
+                   ========================================= */
+
+                emailInput.value = "";
+
+
+
+                /* =========================================
+                   MENSAJE
+                   ========================================= */
+
+                showNewsletterMessage(
+                    newsletter,
+                    "¡Bienvenido al Clan Satorii! 🔴"
+                );
 
             }
         );
 
+    }
 
 
-        /* =====================================================
-           INICIALIZACIÓN HOME
-        ====================================================== */
 
-        renderFeaturedProducts();
+    function showNewsletterMessage(
+        form,
+        message
+    ) {
 
-        renderLatestProducts();
+        let messageElement =
+            form.querySelector(
+                ".newsletter-message"
+            );
 
+
+        if (!messageElement) {
+
+            messageElement =
+                document.createElement(
+                    "div"
+                );
+
+
+            messageElement.className =
+                "newsletter-message";
+
+
+            form.appendChild(
+                messageElement
+            );
+
+        }
+
+
+        messageElement.textContent =
+            message;
+
+
+        /*
+         * Eliminamos el mensaje después
+         * de unos segundos para mantener
+         * limpio el footer.
+         */
+
+        clearTimeout(
+            messageElement._timer
+        );
+
+
+        messageElement._timer =
+            setTimeout(
+                () => {
+
+                    messageElement.textContent =
+                        "";
+
+                },
+                5000
+            );
 
     }
-);
+
+
+
+    /* =====================================================
+       INICIALIZAR HOME
+    ====================================================== */
+
+    renderFeaturedProducts();
+
+    renderLatestProducts();
+
+
+});
