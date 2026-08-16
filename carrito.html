@@ -740,22 +740,22 @@
            RESPONSIVE
         ====================================================== */
 
-        @media (max-width: 1000px) {
+        @media (max-width:1000px) {
 
             .cart-layout {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:1fr;
 
-                gap: 40px;
+                gap:40px;
 
             }
 
 
             .cart-summary {
 
-                position: relative;
+                position:relative;
 
-                top: auto;
+                top:auto;
 
             }
 
@@ -766,38 +766,38 @@
            MÓVIL
         ====================================================== */
 
-        @media (max-width: 700px) {
+        @media (max-width:700px) {
 
             .cart-page {
 
-                width: calc(100% - 30px);
+                width:calc(100% - 30px);
 
-                padding-top: 65px;
+                padding-top:65px;
 
-                padding-bottom: 70px;
+                padding-bottom:70px;
 
             }
 
 
             .cart-header {
 
-                margin-bottom: 40px;
+                margin-bottom:40px;
 
             }
 
 
             .cart-title {
 
-                font-size: 48px;
+                font-size:48px;
 
-                letter-spacing: -2px;
+                letter-spacing:-2px;
 
             }
 
 
             .cart-description {
 
-                font-size: 13px;
+                font-size:13px;
 
             }
 
@@ -806,78 +806,78 @@
 
                 grid-template-columns:
                     85px
-                    minmax(0, 1fr);
+                    minmax(0,1fr);
 
-                gap: 13px;
+                gap:13px;
 
             }
 
 
             .cart-item-image {
 
-                width: 85px;
+                width:85px;
 
             }
 
 
             .cart-item-name {
 
-                font-size: 14px;
+                font-size:14px;
 
             }
 
 
             .cart-item-price {
 
-                grid-column: 2;
+                grid-column:2;
 
-                min-width: 0;
+                min-width:0;
 
-                padding-top: 0;
+                padding-top:0;
 
-                text-align: left;
+                text-align:left;
 
             }
 
 
             .cart-item-total {
 
-                font-size: 14px;
+                font-size:14px;
 
             }
 
 
             .cart-item-remove {
 
-                margin-left: 0;
+                margin-left:0;
 
             }
 
 
             .cart-item-quantity {
 
-                margin-top: 12px;
+                margin-top:12px;
 
             }
 
 
             .cart-summary {
 
-                padding: 22px;
+                padding:22px;
 
             }
 
 
             .cart-empty {
 
-                padding: 70px 15px;
+                padding:70px 15px;
 
             }
 
 
             .cart-empty h2 {
 
-                font-size: 27px;
+                font-size:27px;
 
             }
 
@@ -938,8 +938,6 @@
                 id="cart-layout"
             >
 
-                <!-- LISTA -->
-
                 <section class="cart-items">
 
                     <div class="cart-items-header">
@@ -965,7 +963,9 @@
                 </section>
 
 
-                <!-- RESUMEN -->
+                <!-- =================================================
+                     RESUMEN
+                ================================================== -->
 
                 <aside class="cart-summary">
 
@@ -1150,9 +1150,7 @@
 
                 function renderCart() {
 
-                    if (
-                        !window.SatoriCart
-                    ) {
+                    if (!window.SatoriCart) {
 
                         console.error(
                             "SatoriMode · SatoriCart no está disponible."
@@ -1171,9 +1169,9 @@
                         SatoriCart.getCartProducts();
 
 
-                    /* =============================================
+                    /* =================================================
                        CARRITO VACÍO
-                    ============================================= */
+                    ================================================== */
 
                     if (
                         cart.length === 0 ||
@@ -1225,9 +1223,9 @@
                     }
 
 
-                    /* =============================================
+                    /* =================================================
                        CARRITO CON PRODUCTOS
-                    ============================================= */
+                    ================================================== */
 
                     if (layout) {
 
@@ -1245,9 +1243,9 @@
                     }
 
 
-                    /* =============================================
-                       LISTA
-                    ============================================= */
+                    /* =================================================
+                       LISTA DE PRODUCTOS
+                    ================================================== */
 
                     if (list) {
 
@@ -1267,9 +1265,36 @@
                                     "cart-item";
 
 
+                                const quantity =
+                                    Number(
+                                        product.quantity || 0
+                                    );
+
+
+                                const price =
+                                    Number(
+                                        product.price || 0
+                                    );
+
+
                                 const itemTotal =
-                                    product.price *
-                                    product.quantity;
+                                    price * quantity;
+
+
+                                const image =
+                                    product.image ||
+                                    "img/placeholder.jpg";
+
+
+                                const category =
+                                    product.collection ||
+                                    product.category ||
+                                    "SATORII";
+
+
+                                const productName =
+                                    product.name ||
+                                    "Producto SatoriII";
 
 
                                 item.innerHTML = `
@@ -1279,8 +1304,9 @@
                                     >
 
                                         <img
-                                            src="${product.image}"
-                                            alt="${product.name}"
+                                            src="${image}"
+                                            alt="${productName}"
+                                            loading="lazy"
                                         >
 
                                     </div>
@@ -1293,49 +1319,46 @@
                                         <div
                                             class="cart-item-category"
                                         >
-                                            ${
-                                                product.collection ||
-                                                product.category
-                                            }
+                                            ${category}
                                         </div>
 
 
                                         <h3
                                             class="cart-item-name"
                                         >
-                                            ${product.name}
+                                            ${productName}
                                         </h3>
 
 
                                         ${
                                             product.selectedSize
-                                            ? `
-                                                <div
-                                                    class="cart-item-option"
-                                                >
-                                                    Talla:
-                                                    <strong>
-                                                        ${product.selectedSize}
-                                                    </strong>
-                                                </div>
-                                            `
-                                            : ""
+                                                ? `
+                                                    <div
+                                                        class="cart-item-option"
+                                                    >
+                                                        Talla:
+                                                        <strong>
+                                                            ${product.selectedSize}
+                                                        </strong>
+                                                    </div>
+                                                `
+                                                : ""
                                         }
 
 
                                         ${
                                             product.selectedColor
-                                            ? `
-                                                <div
-                                                    class="cart-item-option"
-                                                >
-                                                    Color:
-                                                    <strong>
-                                                        ${product.selectedColor}
-                                                    </strong>
-                                                </div>
-                                            `
-                                            : ""
+                                                ? `
+                                                    <div
+                                                        class="cart-item-option"
+                                                    >
+                                                        Color:
+                                                        <strong>
+                                                            ${product.selectedColor}
+                                                        </strong>
+                                                    </div>
+                                                `
+                                                : ""
                                         }
 
 
@@ -1347,6 +1370,7 @@
                                                 type="button"
                                                 class="cart-quantity-button"
                                                 data-action="decrease"
+                                                aria-label="Disminuir cantidad"
                                             >
                                                 −
                                             </button>
@@ -1355,7 +1379,7 @@
                                             <span
                                                 class="cart-quantity-value"
                                             >
-                                                ${product.quantity}
+                                                ${quantity}
                                             </span>
 
 
@@ -1363,6 +1387,7 @@
                                                 type="button"
                                                 class="cart-quantity-button"
                                                 data-action="increase"
+                                                aria-label="Aumentar cantidad"
                                             >
                                                 +
                                             </button>
@@ -1379,13 +1404,18 @@
                                         <div
                                             class="cart-item-total"
                                         >
-                                            ${SatoriCart.formatPrice(itemTotal)}
+                                            ${
+                                                SatoriCart.formatPrice(
+                                                    itemTotal
+                                                )
+                                            }
                                         </div>
 
 
                                         <button
                                             type="button"
                                             class="cart-item-remove"
+                                            aria-label="Eliminar ${productName}"
                                         >
                                             ELIMINAR
                                         </button>
@@ -1395,9 +1425,9 @@
                                 `;
 
 
-                                /* =================================
-                                   MENOS
-                                ================================= */
+                                /* =================================================
+                                   DISMINUIR
+                                ================================================== */
 
                                 const decrease =
                                     item.querySelector(
@@ -1415,7 +1445,7 @@
 
                                                 product.id,
 
-                                                product.quantity - 1,
+                                                quantity - 1,
 
                                                 product.selectedSize,
 
@@ -1429,9 +1459,9 @@
                                 }
 
 
-                                /* =================================
-                                   MÁS
-                                ================================= */
+                                /* =================================================
+                                   AUMENTAR
+                                ================================================== */
 
                                 const increase =
                                     item.querySelector(
@@ -1449,7 +1479,7 @@
 
                                                 product.id,
 
-                                                product.quantity + 1,
+                                                quantity + 1,
 
                                                 product.selectedSize,
 
@@ -1463,9 +1493,9 @@
                                 }
 
 
-                                /* =================================
+                                /* =================================================
                                    ELIMINAR
-                                ================================= */
+                                ================================================== */
 
                                 const remove =
                                     item.querySelector(
@@ -1505,9 +1535,9 @@
                     }
 
 
-                    /* =============================================
-                       CANTIDAD
-                    ============================================= */
+                    /* =================================================
+                       CANTIDAD TOTAL
+                    ================================================== */
 
                     const totalProducts =
                         SatoriCart.getCartCount();
@@ -1523,9 +1553,9 @@
                     }
 
 
-                    /* =============================================
+                    /* =================================================
                        SUBTOTAL
-                    ============================================= */
+                    ================================================== */
 
                     const cartSubtotal =
                         SatoriCart.getCartSubtotal();
@@ -1541,9 +1571,9 @@
                     }
 
 
-                    /* =============================================
+                    /* =================================================
                        TOTAL
-                    ============================================= */
+                    ================================================== */
 
                     if (total) {
 
@@ -1565,12 +1595,37 @@
 
 
                 /* =================================================
-                   ACTUALIZAR AUTOMÁTICAMENTE
+                   CAMBIOS DEL CARRITO
                 ================================================== */
 
                 document.addEventListener(
                     "satorii:cart-updated",
-                    renderCart
+                    function () {
+
+                        renderCart();
+
+                    }
+                );
+
+
+                /* =================================================
+                   CAMBIOS DESDE OTRA PESTAÑA
+                ================================================== */
+
+                window.addEventListener(
+                    "storage",
+                    function (event) {
+
+                        if (
+                            event.key ===
+                            "satorii_cart"
+                        ) {
+
+                            renderCart();
+
+                        }
+
+                    }
                 );
 
             }
