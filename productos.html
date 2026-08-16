@@ -381,16 +381,19 @@
         ====================================================== */
 
         .satori-product-card {
+    display: block;
 
-            display: block;
+    min-width: 0;
 
-            min-width: 0;
+    color: #111;
 
-            color: #111;
+    text-decoration: none;
 
-            text-decoration: none;
+    border: none !important;
+    border-radius: 0 !important;
 
-        }
+    background: transparent;
+}
 
 
         /* =====================================================
@@ -401,121 +404,86 @@
            CUADRADA
         ====================================================== */
 
-        .satori-product-image {
+       .satori-product-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
 
-            position: relative;
+    /* SIN BORDES */
+    border: none !important;
+    border-radius: 0 !important;
 
-            width: 100%;
-
-            aspect-ratio: 1 / 1;
-
-            overflow: hidden;
-
-            background:
-                #f4f4f4;
-
-            border-radius: 0;
-
-        }
+    background: transparent;
+}
 
 
-        .satori-product-image img {
+/* IMÁGENES */
 
-            position: absolute;
+.satori-product-image img {
+    position: absolute;
+    inset: 0;
 
-            inset: 0;
+    width: 100%;
+    height: 100%;
 
-            display: block;
+    display: block;
 
-            width: 100%;
+    object-fit: cover;
 
-            height: 100%;
+    /* SIN BORDES */
+    border: none !important;
+    border-radius: 0 !important;
 
-            object-fit: cover;
-
-            border-radius: 0;
-
-        }
-
-
-        /* =====================================================
-           PRIMERA IMAGEN
-        ====================================================== */
-
-        .product-image-primary {
-
-            z-index: 2;
-
-            opacity: 1;
-
-            transition:
-                opacity .35s ease;
-
-        }
+    transition:
+        opacity .35s ease;
+}
 
 
-        /* =====================================================
-           SEGUNDA IMAGEN
-        ====================================================== */
+/* PRIMERA IMAGEN */
 
-        .product-image-secondary {
-
-            z-index: 1;
-
-            opacity: 0;
-
-            transition:
-                opacity .35s ease;
-
-        }
+.product-image-primary {
+    z-index: 2;
+    opacity: 1;
+}
 
 
-        /* =====================================================
-           HOVER
+/* SEGUNDA IMAGEN */
 
-           LA SEGUNDA IMAGEN APARECE
-        ====================================================== */
-
-        .satori-product-card:hover
-        .product-image-primary {
-
-            opacity: 0;
-
-        }
+.product-image-secondary {
+    z-index: 1;
+    opacity: 0;
+}
 
 
-        .satori-product-card:hover
-        .product-image-secondary {
+/* CAMBIO DE IMAGEN AL PASAR EL MOUSE */
 
-            opacity: 1;
+.satori-product-card:hover
+.product-image-primary {
+    opacity: 0;
+}
 
-        }
-
-
-        /* =====================================================
-           SI NO EXISTE SEGUNDA IMAGEN
-        ====================================================== */
-
-        .satori-product-card.no-secondary:hover
-        .product-image-primary {
-
-            opacity: 1;
-
-        }
+.satori-product-card:hover
+.product-image-secondary {
+    opacity: 1;
+}
 
 
+/* SI SOLO HAY UNA IMAGEN */
+
+.satori-product-card.no-secondary:hover
+.product-image-primary {
+    opacity: 1;
+}
         /* =====================================================
            INFORMACIÓN
         ====================================================== */
 
         .satori-product-info {
-
-            padding:
-                13px
-                2px
-                0;
-
-        }
+    padding: 13px 2px 0;
+    border: none !important;
+    background: transparent;
+}
 
 
         .satori-product-category {
