@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     header.innerHTML = `
 
-        <!-- BARRA SUPERIOR -->
+        <!-- ================================
+             BARRA SUPERIOR
+        ================================= -->
+
         <div class="top-bar">
 
             <div class="top-bar-inner">
@@ -18,12 +21,38 @@ document.addEventListener("DOMContentLoaded", () => {
                     class="top-instagram"
                     aria-label="Instagram SatoriMode"
                 >
-                    ◎
+
+                    <svg viewBox="0 0 24 24">
+
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="5"
+                        ></rect>
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4"
+                        ></circle>
+
+                        <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                        ></circle>
+
+                    </svg>
+
                 </a>
+
 
                 <span class="shipping-message">
                     🚚 ENVÍOS A TODO CHILE
                 </span>
+
 
                 <span class="top-message">
                     CULTURA JAPONESA · STREETWEAR · ANIME
@@ -34,13 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
 
-        <!-- HEADER PRINCIPAL -->
+
+        <!-- ================================
+             HEADER
+        ================================= -->
+
         <header class="main-header">
 
             <div class="header-inner">
 
 
                 <!-- LOGO -->
+
                 <a
                     href="index.html"
                     class="satori-logo"
@@ -49,16 +83,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 </a>
 
 
+
                 <!-- NAVEGACIÓN -->
+
                 <nav class="main-nav">
 
                     <a href="index.html">
                         INICIO
                     </a>
 
+
                     <div class="nav-dropdown">
 
-                        <a href="anime.html">
+                        <a href="productos.html">
                             COLECCIONES
                             <span>⌄</span>
                         </a>
@@ -84,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
 
                     </div>
+
 
 
                     <div class="nav-dropdown">
@@ -114,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
 
                     </div>
+
 
 
                     <div class="nav-dropdown">
@@ -148,11 +187,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 </nav>
 
 
+
                 <!-- ACCIONES -->
+
                 <div class="header-actions">
 
 
                     <!-- BUSCADOR -->
+
                     <div
                         class="search-wrapper"
                         id="search-wrapper"
@@ -161,14 +203,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <button
                             class="header-icon search-button"
                             id="search-button"
-                            aria-label="Buscar"
                             type="button"
+                            aria-label="Buscar"
                         >
 
-                            <svg
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
+                            <svg viewBox="0 0 24 24">
+
                                 <circle
                                     cx="11"
                                     cy="11"
@@ -189,23 +229,21 @@ document.addEventListener("DOMContentLoaded", () => {
                             id="search-input"
                             class="search-input"
                             placeholder="Buscar productos..."
-                            autocomplete="off"
                         >
 
                     </div>
 
 
+
                     <!-- CUENTA -->
+
                     <a
                         href="cuenta.html"
                         class="header-icon"
-                        aria-label="Mi cuenta"
+                        aria-label="Cuenta"
                     >
 
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
+                        <svg viewBox="0 0 24 24">
 
                             <circle
                                 cx="12"
@@ -222,17 +260,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
 
 
+
                     <!-- CARRITO -->
+
                     <a
                         href="carrito.html"
                         class="header-icon"
                         aria-label="Carrito"
                     >
 
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
+                        <svg viewBox="0 0 24 24">
 
                             <path
                                 d="M4 5h2l2 11h9l3-8H7"
@@ -255,12 +292,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
 
 
+
                     <!-- MENÚ MÓVIL -->
+
                     <button
                         class="mobile-menu-button"
                         id="mobile-menu-button"
-                        aria-label="Abrir menú"
                         type="button"
+                        aria-label="Abrir menú"
                     >
                         ☰
                     </button>
@@ -272,7 +311,11 @@ document.addEventListener("DOMContentLoaded", () => {
         </header>
 
 
-        <!-- MENÚ MÓVIL -->
+
+        <!-- ================================
+             MENÚ MÓVIL
+        ================================= -->
+
         <aside
             class="mobile-menu"
             id="mobile-menu"
@@ -303,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     INICIO
                 </a>
 
-                <a href="anime.html">
+                <a href="productos.html">
                     COLECCIONES
                     <span>→</span>
                 </a>
@@ -348,9 +391,10 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
 
-    /* =====================================================
+
+    /* ==========================================
        BUSCADOR
-    ===================================================== */
+    ========================================== */
 
     const searchButton =
         document.getElementById("search-button");
@@ -362,13 +406,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("search-wrapper");
 
 
-    searchButton?.addEventListener("click", (event) => {
+    searchButton.addEventListener("click", (event) => {
 
         event.stopPropagation();
 
         searchWrapper.classList.toggle("active");
 
-        if (searchWrapper.classList.contains("active")) {
+        if (
+            searchWrapper.classList.contains("active")
+        ) {
 
             setTimeout(() => {
                 searchInput.focus();
@@ -382,7 +428,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (event) => {
 
         if (
-            searchWrapper &&
             !searchWrapper.contains(event.target)
         ) {
 
@@ -393,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    searchInput?.addEventListener("keydown", (event) => {
+    searchInput.addEventListener("keydown", (event) => {
 
         if (event.key === "Enter") {
 
@@ -410,24 +455,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =====================================================
-       MENÚ MÓVIL
-    ===================================================== */
 
-    const mobileMenuButton =
+    /* ==========================================
+       MENÚ MÓVIL
+    ========================================== */
+
+    const mobileButton =
         document.getElementById("mobile-menu-button");
 
     const mobileMenu =
         document.getElementById("mobile-menu");
 
-    const mobileMenuClose =
+    const mobileClose =
         document.getElementById("mobile-menu-close");
 
     const mobileOverlay =
         document.getElementById("mobile-overlay");
 
 
-    function openMobileMenu() {
+    function openMenu() {
 
         mobileMenu.classList.add("open");
 
@@ -438,7 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function closeMobileMenu() {
+    function closeMenu() {
 
         mobileMenu.classList.remove("open");
 
@@ -449,22 +495,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    mobileMenuButton?.addEventListener(
+    mobileButton?.addEventListener(
         "click",
-        openMobileMenu
+        openMenu
     );
 
 
-    mobileMenuClose?.addEventListener(
+    mobileClose?.addEventListener(
         "click",
-        closeMobileMenu
+        closeMenu
     );
 
 
     mobileOverlay?.addEventListener(
         "click",
-        closeMobileMenu
+        closeMenu
     );
-
 
 });
