@@ -1,0 +1,5 @@
+ productos/
+        ├── recomendacion-01.jpg
+        ├── recomendacion-02.jpg
+        ├── recomendacion-03.jpg
+        └── recomendacion-04.jpg
