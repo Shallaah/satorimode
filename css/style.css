@@ -1980,3 +1980,133 @@ main > section:last-child,
 
     font-style: italic;
 }
+
+/* =========================================================
+   SATORII · AJUSTES FINALES
+   1) BANNER: borde SOLO ABAJO
+   2) FOOTER: borde SOLO ARRIBA
+   3) HEADER: reserva espacio y evita que se monte
+========================================================= */
+
+/* ---------- BANNER PRINCIPAL ---------- */
+
+.hero,
+.hero-slider,
+.hero-carousel,
+#hero,
+.banner,
+.main-banner,
+.home-hero {
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 3px solid #d9d9d9 !important;
+    box-shadow: none !important;
+}
+
+.hero-slide,
+.hero-slide.active {
+    border: none !important;
+}
+
+/* ---------- BLOQUE FINAL NEGRO / FOOTER ---------- */
+
+footer,
+.site-footer,
+.main-footer,
+#footer {
+    border: none !important;
+    border-top: 3px solid #1f1f1f !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+footer::before,
+footer::after {
+    border-bottom: none !important;
+}
+
+/* ---------- HEADER ---------- */
+
+#satori-header {
+    position: relative;
+    z-index: 9000;
+    width: 100%;
+}
+
+#satori-header .top-bar {
+    position: relative !important;
+}
+
+#satori-header .main-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9001 !important;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#satori-header .main-header,
+#satori-header .top-bar {
+    box-sizing: border-box;
+}
+
+/* ---------- DESKTOP ---------- */
+
+@media (min-width: 901px) {
+
+    #satori-header .header-inner,
+    #satori-header .top-bar-inner {
+        width: min(1400px, calc(100% - 40px)) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #satori-header .main-header {
+        height: 70px !important;
+        background: #fff !important;
+        border-bottom: 1px solid #e6e6e6 !important;
+    }
+
+    #satori-header .satori-logo {
+        font-weight: 500 !important;
+    }
+
+    #satori-header .main-nav > a,
+    #satori-header .nav-dropdown-btn {
+        font-weight: 500 !important;
+    }
+}
+
+/* ---------- MÓVIL ---------- */
+
+@media (max-width: 900px) {
+
+    #satori-header .main-header {
+        height: 64px !important;
+        background: #fff !important;
+    }
+
+    #satori-header .header-inner {
+        width: calc(100% - 14px) !important;
+        grid-template-columns: 1fr auto 1fr !important;
+    }
+
+    #satori-header .mobile-menu-button {
+        grid-column: 1 !important;
+        justify-self: start !important;
+        display: flex !important;
+    }
+
+    #satori-header .satori-logo {
+        grid-column: 2 !important;
+        justify-self: center !important;
+        font-weight: 500 !important;
+    }
+
+    #satori-header .header-icons {
+        grid-column: 3 !important;
+        justify-self: end !important;
+    }
+}
