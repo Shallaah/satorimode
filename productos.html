@@ -1366,13 +1366,43 @@
 
 
                 /* ==========================================
-                   INICIO
-                ========================================== */
+   INICIO
+========================================== */
 
-                renderProducts("all");
+const urlParams =
+    new URLSearchParams(
+        window.location.search
+    );
 
-            }
-        );
+const searchQuery =
+    urlParams.get("search");
+
+
+/*
+ * Si existe una búsqueda en la URL,
+ * mostramos solamente los productos
+ * que coincidan.
+ */
+
+if (searchQuery && searchQuery.trim()) {
+
+    const results =
+        searchProducts(searchQuery);
+
+
+    renderProducts(
+        "all",
+        results,
+        searchQuery
+    );
+
+} else {
+
+    renderProducts("all");
+
+}
+
+);
 
     </script>
 
