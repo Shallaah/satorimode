@@ -2478,3 +2478,390 @@ body {
         text-decoration: none !important;
     }
 }
+
+/* =========================================================
+   SATORII — MENÚ MÓVIL FINAL
+   Diseño minimalista
+========================================================= */
+
+@media (max-width: 900px) {
+
+    /* -----------------------------------------------------
+       BOTÓN HAMBURGUESA
+    ----------------------------------------------------- */
+
+    #satori-header .mobile-menu-button {
+
+        position: absolute !important;
+
+        left: 18px !important;
+        top: 50% !important;
+
+        transform: translateY(-50%) !important;
+
+        width: 34px !important;
+        height: 34px !important;
+
+        margin: 0 !important;
+        padding: 5px !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: flex-start !important;
+        justify-content: center !important;
+
+        gap: 5px !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        outline: none !important;
+
+        cursor: pointer !important;
+
+        z-index: 10005 !important;
+
+        font-size: 0 !important;
+        line-height: 0 !important;
+    }
+
+
+    /* -----------------------------------------------------
+       ELIMINAR EL ☰ ANTIGUO
+    ----------------------------------------------------- */
+
+    #satori-header .mobile-menu-button::before,
+    #satori-header .mobile-menu-button::after {
+
+        content: none !important;
+
+        display: none !important;
+    }
+
+
+    /* -----------------------------------------------------
+       LAS 3 LÍNEAS
+    ----------------------------------------------------- */
+
+    #satori-header .mobile-menu-button span,
+    #satori-header .mobile-menu-button .line {
+
+        display: block !important;
+
+        height: 1.5px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        background: #111 !important;
+
+        border: none !important;
+
+        border-radius: 2px !important;
+
+        transform: none !important;
+
+        transition:
+            width .2s ease,
+            background-color .2s ease !important;
+    }
+
+
+    /* Primera línea */
+
+    #satori-header
+    .mobile-menu-button span:nth-child(1),
+    #satori-header
+    .mobile-menu-button .line:nth-child(1) {
+
+        width: 24px !important;
+    }
+
+
+    /* Segunda línea */
+
+    #satori-header
+    .mobile-menu-button span:nth-child(2),
+    #satori-header
+    .mobile-menu-button .line:nth-child(2) {
+
+        width: 17px !important;
+    }
+
+
+    /* Tercera línea */
+
+    #satori-header
+    .mobile-menu-button span:nth-child(3),
+    #satori-header
+    .mobile-menu-button .line:nth-child(3) {
+
+        width: 24px !important;
+    }
+
+
+    /* -----------------------------------------------------
+       EFECTO AL TOCAR / PASAR
+    ----------------------------------------------------- */
+
+    #satori-header
+    .mobile-menu-button:hover span,
+    #satori-header
+    .mobile-menu-button:hover .line {
+
+        background: #ff1616 !important;
+    }
+
+
+    #satori-header
+    .mobile-menu-button:hover span:nth-child(2),
+    #satori-header
+    .mobile-menu-button:hover .line:nth-child(2) {
+
+        width: 24px !important;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER MÓVIL
+    ----------------------------------------------------- */
+
+    #satori-header .main-header {
+
+        height: 64px !important;
+
+        background: #fff !important;
+
+        border-bottom: 1px solid #e5e5e5 !important;
+
+        box-shadow: 0 1px 5px rgba(0,0,0,.04) !important;
+    }
+
+
+    #satori-header .header-inner {
+
+        position: relative !important;
+
+        width: 100% !important;
+
+        height: 64px !important;
+
+        padding: 0 18px !important;
+
+        margin: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+    }
+
+
+    /* -----------------------------------------------------
+       SATORII PERFECTAMENTE CENTRADO
+    ----------------------------------------------------- */
+
+    #satori-header .satori-logo {
+
+        position: absolute !important;
+
+        left: 50% !important;
+        top: 50% !important;
+
+        transform:
+            translate(-50%, -50%)
+            skewX(-4deg) !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        font-size: 29px !important;
+
+        font-weight: 500 !important;
+
+        white-space: nowrap !important;
+
+        z-index: 10004 !important;
+    }
+
+
+    /* -----------------------------------------------------
+       ICONOS DERECHA
+    ----------------------------------------------------- */
+
+    #satori-header .header-actions,
+    #satori-header .header-icons {
+
+        position: absolute !important;
+
+        right: 15px !important;
+
+        left: auto !important;
+
+        top: 50% !important;
+
+        transform: translateY(-50%) !important;
+
+        width: auto !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: flex-end !important;
+
+        gap: 8px !important;
+
+        z-index: 10005 !important;
+    }
+
+
+    #satori-header .header-icon {
+
+        width: 34px !important;
+        height: 34px !important;
+
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border: none !important;
+
+        background: transparent !important;
+
+        color: #111 !important;
+    }
+
+
+    #satori-header .header-icon svg {
+
+        width: 18px !important;
+        height: 18px !important;
+
+        stroke-width: 1.4 !important;
+    }
+
+
+    #satori-header .header-icon:hover {
+
+        color: #ff1616 !important;
+    }
+
+
+    /* Ocultar cuenta si corresponde */
+
+    #satori-header
+    .header-icon[href="cuenta.html"] {
+
+        display: none !important;
+    }
+
+}
+
+
+/* =========================================================
+   MENÚ MÓVIL — APERTURA
+========================================================= */
+
+@media (max-width: 900px) {
+
+    #satori-header .mobile-menu {
+
+        position: fixed !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: min(370px, 82vw) !important;
+
+        height: 100dvh !important;
+
+        background: #fff !important;
+
+        z-index: 11000 !important;
+
+        overflow-y: auto !important;
+
+        box-shadow: 8px 0 30px rgba(0,0,0,.12) !important;
+
+        border-right: 1px solid #ddd !important;
+    }
+
+
+    #satori-header .mobile-menu-header {
+
+        height: 72px !important;
+
+        padding: 0 24px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: space-between !important;
+
+        border-bottom: 1px solid #ddd !important;
+    }
+
+
+    #satori-header .mobile-menu-header .satori-logo {
+
+        position: static !important;
+
+        transform: skewX(-4deg) !important;
+
+        font-size: 29px !important;
+    }
+
+
+    /* Botón X */
+
+    #satori-header .mobile-menu-header button {
+
+        width: 34px !important;
+        height: 34px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 0 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        font-size: 26px !important;
+
+        color: #111 !important;
+    }
+
+
+    #satori-header .mobile-menu-header button:hover {
+
+        color: #ff1616 !important;
+    }
+
+
+    /* Fondo oscuro */
+
+    #satori-header .mobile-menu-overlay {
+
+        position: fixed !important;
+
+        inset: 0 !important;
+
+        background: rgba(0,0,0,.50) !important;
+
+        z-index: 10999 !important;
+    }
+
+}
