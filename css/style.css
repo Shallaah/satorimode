@@ -3615,3 +3615,55 @@ main {
     }
 
 }
+
+/* =========================================================
+   LOGO SATORII DEL HEADER
+   MISMO ESTILO QUE EL FOOTER
+========================================================= */
+
+.brand-logo {
+    font-family: inherit !important;
+    font-weight: 800 !important;
+    font-style: italic !important;
+    letter-spacing: -2px !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease !important;
+}
+
+/* Hover del logo */
+.brand-logo:hover {
+    color: var(--red) !important;
+    transform: scale(1.08) !important;
+}
+
+
+/* =========================================================
+   HEADER — TAMAÑO DEL LOGO
+========================================================= */
+
+@media (min-width: 701px) {
+
+    .brand-logo {
+        font-size: 28px !important;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .brand-logo {
+        font-size: 30px !important;
+        font-weight: 800 !important;
+        font-style: italic !important;
+        letter-spacing: -2px !important;
+    }
+
+}
