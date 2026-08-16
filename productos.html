@@ -346,45 +346,27 @@
         ===================================================== */
 
         .satori-card-image {
-
-            position: relative;
-
-            width: 100%;
-
-            aspect-ratio: 1 / 1;
-
-            overflow: hidden;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background: transparent;
-
-        }
-
+    position: relative;
+    width: 340px;
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
 
         .satori-card-image img {
-
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: contain;
-
-            display: block;
-
-            transition:
-                opacity .35s ease,
-                transform .35s ease;
-
-        }
+    position: absolute;
+    inset: 0;
+    width: 340px;
+    height: 340px;
+    object-fit: contain;
+    display: block;
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+}
 
 
         /* Imagen principal */
@@ -786,7 +768,17 @@
             }
 
         }
+        
+.satori-card-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
 
+.satori-card-image img {
+    width: 100%;
+    height: 100%;
+}
 
         @media (max-width: 430px) {
 
