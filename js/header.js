@@ -1559,32 +1559,50 @@
            HEADER AL HACER SCROLL
         ====================================================== */
 
-        #satori-header.scrolled .main-header {
+      #satori-header.scrolled .main-header {
 
-            position:fixed !important;
+    position:fixed !important;
 
-            top:10px !important;
+    top:8px !important;
 
-            left:12px !important;
+    left:8px !important;
 
-            width:calc(100% - 24px) !important;
+    width:calc(100% - 16px) !important;
 
-            height:70px !important;
+    height:64px !important;
 
-            background:#fff !important;
+    border:1px solid #d4d4d4 !important;
 
-            border:1px solid #d4d4d4 !important;
+    border-radius:16px !important;
 
-            border-radius:16px !important;
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.16) !important;
 
-            box-shadow:
-                0 10px 30px
-                rgba(0,0,0,.14) !important;
+    z-index:100000 !important;
 
-            z-index:999999 !important;
+}
 
-        }
+/* =====================================================
+   MENÚ MÓVIL SIEMPRE POR ENCIMA DEL HEADER FLOTANTE
+===================================================== */
 
+@media (max-width:1000px) {
+
+    #satori-header .mobile-menu-overlay {
+
+        z-index:110000 !important;
+
+    }
+
+
+    #satori-header .mobile-menu {
+
+        z-index:110001 !important;
+
+    }
+
+}
 
         /* =====================================================
            PC
@@ -2310,4 +2328,4 @@
 
     }
 
-})();
+})();d
