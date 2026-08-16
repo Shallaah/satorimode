@@ -1,0 +1,5 @@
+aqui debo agregar 
+img/
+    ├── banner-01.jpg
+    ├── banner-02.jpg
+    └── banner-03.jpg
