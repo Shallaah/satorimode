@@ -1,847 +1,136 @@
 /* =========================================================
-   SATORIMODE
-   MAIN.JS
-   HEADER + MENÚS RESPONSIVE + BUSCADOR + FILTROS
+   SATORIMODE · MAIN.JS
+   Solo lógica de página:
+   - Productos de portada
+   - Recomendaciones aleatorias
+   - Filtros Anime
+   - Sin duplicar header/buscador
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+
+    const baseUrl = new URL("./", window.location.href).href;
 
     /* =====================================================
-       DROPDOWNS DESKTOP
+       CATÁLOGO
+       Cuando agregues productos reales, los incorporamos aquí.
+       Por ahora se usa el producto existente de SatoriMode.
     ===================================================== */
 
-    const dropdowns = document.querySelectorAll(".nav-dropdown");
-
-    function closeAllDropdowns() {
-
-        dropdowns.forEach(function (dropdown) {
-
-            dropdown.classList.remove("active");
-
-            const button =
-                dropdown.querySelector(".nav-dropdown-btn");
-
-            if (button) {
-                button.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
-        });
-
-    }
-
-
-    dropdowns.forEach(function (dropdown) {
-
-        const button =
-            dropdown.querySelector(".nav-dropdown-btn");
-
-        if (!button) return;
-
-        button.addEventListener("click", function (event) {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const wasOpen =
-                dropdown.classList.contains("active");
-
-            closeAllDropdowns();
-
-            if (!wasOpen) {
-
-                dropdown.classList.add("active");
-
-                button.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-            }
-
-        });
-
-    });
-
-
-    /* =====================================================
-       CERRAR DROPDOWNS AL HACER CLICK FUERA
-    ===================================================== */
-
-    document.addEventListener("click", function (event) {
-
-        if (!event.target.closest(".nav-dropdown")) {
-            closeAllDropdowns();
-        }
-
-    });
-
-
-    /* =====================================================
-       LINKS DE DROPDOWN
-    ===================================================== */
-
-    document
-        .querySelectorAll(".dropdown-menu a")
-        .forEach(function (link) {
-
-            link.addEventListener("click", function () {
-                closeAllDropdowns();
-            });
-
-        });
-
-
-    /* =====================================================
-       MENÚ MÓVIL
-    ===================================================== */
-
-    const mobileButton =
-        document.querySelector(".mobile-menu-button");
-
-    const mobileMenu =
-        document.querySelector(".mobile-menu");
-
-    const mobileClose =
-        document.querySelector(".mobile-menu-close");
-
-    const mobileOverlay =
-        document.querySelector(".mobile-menu-overlay");
-
-
-    /* =====================================================
-       ABRIR MENÚ MÓVIL
-    ===================================================== */
-
-    function openMobileMenu() {
-
-        if (!mobileMenu) return;
-
-        mobileMenu.classList.add("is-open");
-        mobileMenu.classList.add("active");
-
-        if (mobileOverlay) {
-
-            mobileOverlay.classList.add("is-open");
-            mobileOverlay.classList.add("active");
-
-        }
-
-        if (mobileButton) {
-
-            mobileButton.classList.add("is-open");
-            mobileButton.classList.add("active");
-
-            mobileButton.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-        }
-
-        mobileMenu.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.style.overflow = "hidden";
-
-    }
-
-
-    /* =====================================================
-       CERRAR MENÚ MÓVIL
-    ===================================================== */
-
-    function closeMobileMenu() {
-
-        if (!mobileMenu) return;
-
-        mobileMenu.classList.remove("is-open");
-        mobileMenu.classList.remove("active");
-
-        if (mobileOverlay) {
-
-            mobileOverlay.classList.remove("is-open");
-            mobileOverlay.classList.remove("active");
-
-        }
-
-        if (mobileButton) {
-
-            mobileButton.classList.remove("is-open");
-            mobileButton.classList.remove("active");
-
-            mobileButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-        mobileMenu.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        document.body.style.overflow = "";
-
-    }
-
-
-    /* =====================================================
-       BOTÓN HAMBURGUESA
-    ===================================================== */
-
-    if (mobileButton) {
-
-        mobileButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const menuIsOpen =
-                mobileMenu &&
-                (
-                    mobileMenu.classList.contains("is-open") ||
-                    mobileMenu.classList.contains("active")
-                );
-
-            if (menuIsOpen) {
-
-                closeMobileMenu();
-
-            } else {
-
-                openMobileMenu();
-
-            }
-
-        });
-
-    }
-
-
-    /* =====================================================
-       BOTÓN X
-    ===================================================== */
-
-    if (mobileClose) {
-
-        mobileClose.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-
-                closeMobileMenu();
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       OVERLAY
-    ===================================================== */
-
-    if (mobileOverlay) {
-
-        mobileOverlay.addEventListener(
-            "click",
-            function () {
-
-                closeMobileMenu();
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       SUBMENÚS MÓVILES
-    ===================================================== */
-
-    const mobileButtons =
-        document.querySelectorAll(".mobile-nav-button");
-
-
-    mobileButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                const submenu =
-                    button.nextElementSibling;
-
-                if (
-                    !submenu ||
-                    !submenu.classList.contains("mobile-submenu")
-                ) {
-                    return;
-                }
-
-                const wasOpen =
-                    submenu.classList.contains("is-open") ||
-                    submenu.classList.contains("active");
-
-
-                document
-                    .querySelectorAll(".mobile-submenu")
-                    .forEach(function (menu) {
-
-                        menu.classList.remove("is-open");
-                        menu.classList.remove("active");
-
-                    });
-
-
-                document
-                    .querySelectorAll(".mobile-nav-button")
-                    .forEach(function (otherButton) {
-
-                        otherButton.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                        otherButton.classList.remove(
-                            "is-open"
-                        );
-
-                        otherButton.classList.remove(
-                            "active"
-                        );
-
-                    });
-
-
-                if (!wasOpen) {
-
-                    submenu.classList.add("is-open");
-                    submenu.classList.add("active");
-
-                    button.setAttribute(
-                        "aria-expanded",
-                        "true"
-                    );
-
-                    button.classList.add("is-open");
-                    button.classList.add("active");
-
-                }
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       CERRAR MENÚ AL ELEGIR LINK
-    ===================================================== */
-
-    document
-        .querySelectorAll(".mobile-menu a")
-        .forEach(function (link) {
-
-            link.addEventListener(
-                "click",
-                function () {
-
-                    closeMobileMenu();
-
-                }
-            );
-
-        });
-
-
-    /* =====================================================
-       BUSCADOR
-    ===================================================== */
-
-    /*
-       IMPORTANTE:
-       El header utiliza .search-trigger.
-       Antes main.js buscaba .search-button.
-    */
-
-    const searchButton =
-        document.querySelector(".search-trigger");
-
-    const searchOverlay =
-        document.querySelector(".search-overlay");
-
-    const searchClose =
-        document.querySelector(".search-close");
-
-    const searchInput =
-        document.querySelector("#product-search");
-
-    const searchResults =
-        document.querySelector("#search-results");
-
-
-    /* =====================================================
-       PRODUCTOS DEL BUSCADOR
-    ===================================================== */
-
-    const searchProducts = [
-
+    const productos = [
         {
+            id: "kid-buu",
             name: "Polera Kid Buu",
             category: "ANIME",
             price: "$18.990",
-            image: "/satorimode/productos/anime/polera-kid-buu-01.PNG",
-            url: "/satorimode/productos/anime/polera-kid-buu.html"
-        },
-
-        {
-            name: "Polera Anime 02",
-            category: "ANIME",
-            price: "$24.990",
-            image: "",
-            url: "/satorimode/anime.html"
-        },
-
-        {
-            name: "Polera Anime 03",
-            category: "ANIME",
-            price: "$24.990",
-            image: "",
-            url: "/satorimode/anime.html"
-        },
-
-        {
-            name: "Polera Streetwear",
-            category: "STREETWEAR",
-            price: "$24.990",
-            image: "",
-            url: "/satorimode/streetwear.html"
-        },
-
-        {
-            name: "Polera Satorii",
-            category: "EXCLUSIVOS",
-            price: "$26.990",
-            image: "",
-            url: "/satorimode/exclusivos.html"
+            image: "productos/anime/polera-kid-buu-01.PNG",
+            url: "productos/anime/polera-kid-buu.html",
+            tag: "DESTACADO",
+            featured: true,
+            latest: true
         }
-
     ];
 
-
     /* =====================================================
-       MENSAJE DEL BUSCADOR
+       TARJETA PRODUCTO
     ===================================================== */
 
-    function renderSearchMessage(message) {
-
-        if (!searchResults) return;
-
-        searchResults.innerHTML = `
-            <p class="search-empty">
-                ${message}
-            </p>
+    function productCard(product, tag = "") {
+        return `
+            <a href="${baseUrl}${product.url}" class="home-product-card">
+                <div class="home-product-image">
+                    ${tag ? `<span class="home-product-tag">${tag}</span>` : ""}
+                    <img
+                        src="${baseUrl}${product.image}"
+                        alt="${product.name}"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="home-product-info">
+                    <span>${product.category}</span>
+                    <h3>${product.name}</h3>
+                    <strong>${product.price}</strong>
+                </div>
+            </a>
         `;
-
     }
 
+    function renderProducts(containerId, products, tag = "") {
+        const container = document.getElementById(containerId);
+        if (!container) return;
 
-    /* =====================================================
-       ABRIR BUSCADOR
-    ===================================================== */
-
-    if (searchButton && searchOverlay) {
-
-        searchButton.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                searchOverlay.classList.add("active");
-
-                searchOverlay.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-                searchButton.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-                if (searchInput) {
-
-                    setTimeout(function () {
-
-                        searchInput.focus();
-
-                    }, 150);
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       CERRAR BUSCADOR
-    ===================================================== */
-
-    function closeSearch() {
-
-        if (!searchOverlay) return;
-
-        searchOverlay.classList.remove("active");
-
-        searchOverlay.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-        if (searchButton) {
-
-            searchButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
+        if (!products.length) {
+            container.innerHTML = `
+                <div class="home-product-empty">
+                    <strong>Estamos preparando nuevos diseños.</strong>
+                    <p>Muy pronto encontrarás más productos en SatoriMode.</p>
+                </div>
+            `;
+            return;
         }
 
-        if (searchInput) {
-
-            searchInput.value = "";
-
-        }
-
-        renderSearchMessage(
-            "Busca tu próxima polera Satorii."
-        );
-
+        container.innerHTML = products.map(product => productCard(product, tag)).join("");
     }
 
-
     /* =====================================================
-       BOTÓN CERRAR BUSCADOR
+       DESTACADOS
     ===================================================== */
 
-    if (searchClose) {
+    const featured = productos.filter(product => product.featured);
+    renderProducts("featured-products", featured, "DESTACADO");
 
-        searchClose.addEventListener(
-            "click",
-            closeSearch
-        );
+    /* =====================================================
+       RECOMENDADOS ALEATORIOS
+       Mezcla el catálogo cada vez que se carga la portada.
+    ===================================================== */
 
+    function shuffle(array) {
+        return [...array].sort(() => Math.random() - 0.5);
     }
 
+    const recommended = shuffle(productos).slice(0, Math.min(4, productos.length));
+    renderProducts("recommended-products", recommended, "PARA TI");
 
     /* =====================================================
-       CERRAR BUSCADOR HACIENDO CLICK FUERA
+       ÚLTIMOS LANZAMIENTOS
     ===================================================== */
 
-    if (searchOverlay) {
-
-        searchOverlay.addEventListener(
-            "click",
-            function (event) {
-
-                if (event.target === searchOverlay) {
-
-                    closeSearch();
-
-                }
-
-            }
-        );
-
-    }
-
+    const latest = productos.filter(product => product.latest);
+    renderProducts("latest-products", latest, "NUEVO");
 
     /* =====================================================
-       RESULTADOS DEL BUSCADOR
+       FILTROS ANIME
+       Se mantienen para anime.html.
     ===================================================== */
 
-    if (searchInput && searchResults) {
-
-        searchInput.addEventListener(
-            "input",
-            function () {
-
-                const query =
-                    searchInput.value
-                        .trim()
-                        .toLowerCase();
-
-
-                if (!query) {
-
-                    renderSearchMessage(
-                        "Busca tu próxima polera Satorii."
-                    );
-
-                    return;
-
-                }
-
-
-                const results =
-                    searchProducts.filter(
-                        function (product) {
-
-                            return (
-
-                                product.name
-                                    .toLowerCase()
-                                    .includes(query)
-
-                                ||
-
-                                product.category
-                                    .toLowerCase()
-                                    .includes(query)
-
-                            );
-
-                        }
-                    );
-
-
-                if (!results.length) {
-
-                    renderSearchMessage(
-                        `No encontramos productos para "${query}".`
-                    );
-
-                    return;
-
-                }
-
-
-                searchResults.innerHTML =
-                    results
-                        .map(function (product) {
-
-                            return `
-
-                                <a
-                                    href="${product.url}"
-                                    class="search-result-item"
-                                >
-
-                                    ${
-                                        product.image
-                                        ?
-                                        `
-                                        <img
-                                            src="${product.image}"
-                                            alt="${product.name}"
-                                            class="search-result-image"
-                                        >
-                                        `
-                                        :
-                                        ""
-                                    }
-
-                                    <div
-                                        class="search-result-info"
-                                    >
-
-                                        <span
-                                            class="search-result-category"
-                                        >
-                                            ${product.category}
-                                        </span>
-
-                                        <span
-                                            class="search-result-name"
-                                        >
-                                            ${product.name}
-                                        </span>
-
-                                        <span
-                                            class="search-result-price"
-                                        >
-                                            ${product.price}
-                                        </span>
-
-                                    </div>
-
-                                </a>
-
-                            `;
-
-                        })
-                        .join("");
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       FILTROS · ANIME
-    ===================================================== */
-
-    const animeFilterToggle =
-        document.querySelector("#animeFilterToggle");
-
-    const animeFilters =
-        document.querySelector("#animeFilters");
-
+    const animeFilterToggle = document.querySelector("#animeFilterToggle");
+    const animeFilters = document.querySelector("#animeFilters");
 
     if (animeFilterToggle && animeFilters) {
+        animeFilterToggle.addEventListener("click", event => {
+            event.preventDefault();
 
-        animeFilterToggle.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                const isOpen =
-                    animeFilters.classList.contains(
-                        "is-open"
-                    );
-
-
-                if (isOpen) {
-
-                    animeFilters.classList.remove(
-                        "is-open"
-                    );
-
-                    animeFilterToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    animeFilterToggle.textContent =
-                        "☷ MOSTRAR FILTROS";
-
-                } else {
-
-                    animeFilters.classList.add(
-                        "is-open"
-                    );
-
-                    animeFilterToggle.setAttribute(
-                        "aria-expanded",
-                        "true"
-                    );
-
-                    animeFilterToggle.textContent =
-                        "× OCULTAR FILTROS";
-
-                }
-
-            }
-        );
-
+            const isOpen = animeFilters.classList.toggle("is-open");
+            animeFilterToggle.setAttribute("aria-expanded", String(isOpen));
+            animeFilterToggle.textContent = isOpen
+                ? "× OCULTAR FILTROS"
+                : "☷ MOSTRAR FILTROS";
+        });
     }
 
+    document.querySelectorAll(".anime-filter").forEach(button => {
+        button.addEventListener("click", event => {
+            event.preventDefault();
 
-    /* =====================================================
-       SELECCIÓN DE FILTROS
-    ===================================================== */
+            const filterType = button.dataset.filter;
+            const wasActive = button.classList.contains("active");
 
-    const animeFilterButtons =
-        document.querySelectorAll(".anime-filter");
+            document
+                .querySelectorAll(`.anime-filter[data-filter="${filterType}"]`)
+                .forEach(other => other.classList.remove("active"));
 
-
-    animeFilterButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                const filterType =
-                    button.dataset.filter;
-
-                const wasActive =
-                    button.classList.contains("active");
-
-
-                if (filterType === "size") {
-
-                    document
-                        .querySelectorAll(
-                            '.anime-filter[data-filter="size"]'
-                        )
-                        .forEach(function (otherButton) {
-
-                            otherButton.classList.remove(
-                                "active"
-                            );
-
-                        });
-
-                }
-
-
-                if (filterType === "color") {
-
-                    document
-                        .querySelectorAll(
-                            '.anime-filter[data-filter="color"]'
-                        )
-                        .forEach(function (otherButton) {
-
-                            otherButton.classList.remove(
-                                "active"
-                            );
-
-                        });
-
-                }
-
-
-                if (!wasActive) {
-
-                    button.classList.add("active");
-
-                }
-
-            }
-        );
-
+            if (!wasActive) button.classList.add("active");
+        });
     });
-
-
-    /* =====================================================
-       ESC → CERRAR TODO
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (event.key !== "Escape") {
-                return;
-            }
-
-            closeAllDropdowns();
-            closeMobileMenu();
-            closeSearch();
-
-        }
-    );
 
 });
