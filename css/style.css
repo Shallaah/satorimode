@@ -6724,3 +6724,677 @@ main {
     }
 
 }
+
+/* =========================================================
+   SATORIMODE · AJUSTES HOME FINAL
+========================================================= */
+
+
+/* =========================================================
+   BARRA SUPERIOR
+========================================================= */
+
+.shipping-bar {
+    width: 100% !important;
+
+    height: 32px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    padding: 0 15px !important;
+
+    background: #ed1111 !important;
+
+    color: #ffffff !important;
+
+    text-align: center !important;
+
+    font-size: 10px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: .8px !important;
+
+    text-transform: uppercase !important;
+
+    white-space: nowrap !important;
+
+    box-sizing: border-box !important;
+}
+
+
+
+/* =========================================================
+   BUSCADOR DEL HEADER
+========================================================= */
+
+/*
+   El header muestra solamente el icono.
+   El campo de búsqueda aparece dentro del overlay.
+*/
+
+.header-icons .search-button,
+.header-icons .search-trigger {
+    width: 38px !important;
+
+    min-width: 38px !important;
+
+    height: 38px !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    background: transparent !important;
+
+    color: #111111 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    font-size: 20px !important;
+
+    position: relative !important;
+
+    cursor: pointer !important;
+}
+
+
+/* ELIMINA EL "Buscar productos..." DEL BOTÓN */
+
+.header-icons .search-button::before,
+.header-icons .search-button::after,
+.header-icons .search-trigger::before,
+.header-icons .search-trigger::after {
+    content: none !important;
+}
+
+
+/* =========================================================
+   OVERLAY DE BÚSQUEDA
+========================================================= */
+
+.search-overlay {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    z-index: 9999 !important;
+
+    display: none !important;
+
+    align-items: flex-start !important;
+
+    justify-content: center !important;
+
+    padding-top: 110px !important;
+
+    background: rgba(0, 0, 0, .55) !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transition:
+        opacity .2s ease,
+        visibility .2s ease !important;
+}
+
+
+.search-overlay.active {
+    display: flex !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+}
+
+
+.search-box {
+    width: min(700px, calc(100% - 30px)) !important;
+
+    max-height: 75vh !important;
+
+    overflow-y: auto !important;
+
+    background: #ffffff !important;
+
+    border-radius: 8px !important;
+
+    padding: 20px !important;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.25) !important;
+}
+
+
+.search-input-wrapper {
+    width: 100% !important;
+
+    min-height: 54px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 12px !important;
+
+    border: 1px solid #dddddd !important;
+
+    background: #ffffff !important;
+
+    border-radius: 5px !important;
+
+    padding: 0 14px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+.search-input-icon {
+    flex-shrink: 0 !important;
+
+    font-size: 20px !important;
+
+    color: #111111 !important;
+}
+
+
+.search-input,
+#product-search {
+    width: 100% !important;
+
+    height: 52px !important;
+
+    border: 0 !important;
+
+    outline: 0 !important;
+
+    background: transparent !important;
+
+    color: #111111 !important;
+
+    font-family: inherit !important;
+
+    font-size: 15px !important;
+
+    box-shadow: none !important;
+}
+
+
+.search-input::placeholder,
+#product-search::placeholder {
+    color: #999999 !important;
+}
+
+
+.search-close {
+    width: 34px !important;
+
+    height: 34px !important;
+
+    flex-shrink: 0 !important;
+
+    border: 0 !important;
+
+    background: transparent !important;
+
+    color: #111111 !important;
+
+    font-size: 25px !important;
+
+    cursor: pointer !important;
+}
+
+
+.search-results {
+    margin-top: 15px !important;
+}
+
+
+.search-empty {
+    margin: 20px 0 !important;
+
+    color: #777777 !important;
+
+    font-size: 13px !important;
+}
+
+
+
+/* =========================================================
+   HOME · ÚLTIMOS + SATORII + PACK
+========================================================= */
+
+.compact-home-grid {
+    display: grid !important;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr !important;
+
+    gap: 18px !important;
+
+    align-items: stretch !important;
+}
+
+
+.compact-home-grid > * {
+    min-width: 0 !important;
+}
+
+
+.compact-home-grid .store-latest {
+    width: 100% !important;
+
+    margin: 0 !important;
+}
+
+
+.compact-home-grid .store-brand-card {
+    width: 100% !important;
+
+    min-height: 260px !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* PACK PEQUEÑO */
+
+.store-pack-mini {
+    position: relative !important;
+
+    overflow: hidden !important;
+
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(237,17,17,.18),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #090909,
+            #210000
+        ) !important;
+
+    color: #ffffff !important;
+}
+
+
+.store-pack-mini::after {
+    content: "悟り";
+
+    position: absolute;
+
+    right: -15px;
+
+    bottom: -35px;
+
+    font-family: serif;
+
+    font-size: 150px;
+
+    color: rgba(237,17,17,.08);
+
+    pointer-events: none;
+}
+
+
+.store-pack-mini > * {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.store-pack-mini .store-brand-logo {
+    color: #ffffff !important;
+}
+
+
+.store-pack-mini .store-brand-logo small {
+    color: #ed1111 !important;
+}
+
+
+.store-pack-mini strong {
+    color: #ffffff !important;
+}
+
+
+.store-pack-mini > span:not(.store-eyebrow) {
+    color: rgba(255,255,255,.7) !important;
+}
+
+
+.store-pack-mini .store-button {
+    background: #ed1111 !important;
+
+    color: #ffffff !important;
+
+    border-color: #ed1111 !important;
+}
+
+
+
+/* =========================================================
+   ELIMINAR ESPACIOS EXCESIVOS
+========================================================= */
+
+.store-lower-grid {
+    margin-bottom: 35px !important;
+}
+
+
+.store-pack {
+    display: none !important;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.satorii-footer {
+    margin-top: 0 !important;
+
+    background: #080808 !important;
+
+    color: #ffffff !important;
+}
+
+
+/*
+   Eliminamos el banner gigante
+   "NO ES UNA TENDENCIA..."
+   porque ya no existe en index.
+*/
+
+
+.satorii-footer .footer-main {
+    padding-top: 55px !important;
+
+    padding-bottom: 45px !important;
+}
+
+
+.satorii-footer .footer-grid {
+    max-width: 1250px !important;
+
+    margin: 0 auto !important;
+
+    grid-template-columns:
+        1.2fr
+        .9fr
+        .9fr
+        1.6fr !important;
+
+    gap: 50px !important;
+}
+
+
+/* =========================================================
+   SOLO INSTAGRAM
+========================================================= */
+
+.footer-socials {
+    display: flex !important;
+
+    gap: 10px !important;
+}
+
+
+.footer-social {
+    width: 38px !important;
+
+    height: 38px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    border: 1px solid rgba(255,255,255,.2) !important;
+
+    border-radius: 50% !important;
+
+    color: #ffffff !important;
+
+    text-decoration: none !important;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease !important;
+}
+
+
+.footer-social:hover {
+    background: #ed1111 !important;
+
+    border-color: #ed1111 !important;
+
+    transform: translateY(-2px) !important;
+}
+
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.footer-clan h2 span {
+    color: #ed1111 !important;
+}
+
+
+.footer-newsletter {
+    width: 100% !important;
+
+    max-width: 470px !important;
+
+    display: flex !important;
+
+    overflow: hidden !important;
+
+    border-radius: 4px !important;
+
+    background: #ffffff !important;
+}
+
+
+.footer-newsletter input {
+    flex: 1 !important;
+
+    min-width: 0 !important;
+
+    height: 52px !important;
+
+    padding: 0 16px !important;
+
+    border: 0 !important;
+
+    outline: 0 !important;
+
+    background: #ffffff !important;
+
+    color: #111111 !important;
+
+    font-family: inherit !important;
+}
+
+
+.footer-newsletter button {
+    width: 56px !important;
+
+    flex-shrink: 0 !important;
+
+    border: 0 !important;
+
+    background: #ed1111 !important;
+
+    color: #ffffff !important;
+
+    font-size: 20px !important;
+
+    cursor: pointer !important;
+}
+
+
+
+/* =========================================================
+   FOOTER INFERIOR
+========================================================= */
+
+.satorii-footer .footer-bottom {
+    width: min(1250px, calc(100% - 40px)) !important;
+
+    margin: 0 auto !important;
+
+    padding: 18px 0 !important;
+
+    border-top: 1px solid rgba(255,255,255,.1) !important;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .compact-home-grid {
+        grid-template-columns:
+            1fr 1fr !important;
+    }
+
+
+    .compact-home-grid .store-latest {
+        grid-column: 1 / -1 !important;
+    }
+
+
+    .satorii-footer .footer-grid {
+        grid-template-columns:
+            1fr 1fr !important;
+    }
+
+
+    .footer-clan {
+        grid-column: 1 / -1 !important;
+    }
+
+}
+
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .shipping-bar {
+        height: 32px !important;
+
+        font-size: 9px !important;
+
+        letter-spacing: .5px !important;
+    }
+
+
+    .compact-home-grid {
+        grid-template-columns: 1fr !important;
+
+        gap: 15px !important;
+    }
+
+
+    .compact-home-grid .store-latest {
+        grid-column: auto !important;
+    }
+
+
+    .compact-home-grid .store-brand-card {
+        min-height: 220px !important;
+    }
+
+
+    .search-overlay {
+        padding-top: 80px !important;
+    }
+
+
+    .search-box {
+        width: calc(100% - 24px) !important;
+
+        padding: 14px !important;
+    }
+
+
+    .satorii-footer .footer-grid {
+        grid-template-columns: 1fr 1fr !important;
+
+        gap: 35px 25px !important;
+    }
+
+
+    .footer-about,
+    .footer-clan {
+        grid-column: 1 / -1 !important;
+    }
+
+
+    .satorii-footer .footer-main {
+        padding:
+            45px 22px 35px !important;
+    }
+
+
+    .satorii-footer .footer-bottom {
+        flex-direction: column !important;
+
+        align-items: flex-start !important;
+
+        gap: 12px !important;
+    }
+
+}
+
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .satorii-footer .footer-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+
+    .footer-about,
+    .footer-clan {
+        grid-column: auto !important;
+    }
+
+}
