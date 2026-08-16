@@ -134,7 +134,7 @@ img {
 
 
 /* =========================================================
-   HEADER
+   HEADER FIJO
 ========================================================= */
 
 .main-header {
@@ -145,8 +145,9 @@ img {
 
     border-bottom: 1px solid var(--border);
 
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
 
     z-index: 1900;
 }
@@ -160,6 +161,11 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+/* Deja espacio para el header fijo */
+main {
+    padding-top: 64px;
 }
 
 
@@ -1623,6 +1629,333 @@ main > section:last-child,
         align-items: flex-start;
 
         gap: 13px;
+    }
+
+}
+
+/* =========================================================
+   HEADER MÓVIL — AJUSTE FINAL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .main-header {
+        height: 62px;
+    }
+
+    .header-inner {
+        width: 100%;
+
+        position: relative;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* LOGO CENTRADO */
+
+    .satori-logo {
+        position: absolute;
+
+        left: 50%;
+
+        transform:
+            translateX(-50%)
+            skewX(-4deg);
+
+        font-size: 29px;
+
+        z-index: 5;
+    }
+
+
+    /* =====================================================
+       HAMBURGUESA A LA IZQUIERDA
+    ===================================================== */
+
+    .mobile-menu-button {
+
+        display: flex;
+
+        position: absolute;
+
+        left: 18px;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 34px;
+        height: 34px;
+
+        margin: 0;
+        padding: 0;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 0;
+
+        background: transparent;
+
+        color: #111;
+
+        font-size: 0;
+
+        z-index: 10;
+    }
+
+
+    .mobile-menu-button::before {
+
+        content: "☰";
+
+        font-size: 25px;
+
+        line-height: 1;
+
+        font-weight: 400;
+    }
+
+
+    /* =====================================================
+       ICONOS DERECHA
+    ===================================================== */
+
+    .header-actions {
+
+        position: absolute;
+
+        right: 16px;
+        left: auto;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: auto;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        gap: 8px;
+
+        z-index: 10;
+    }
+
+
+    .header-actions .header-icon {
+
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .header-actions .header-icon svg {
+
+        width: 19px;
+        height: 19px;
+    }
+
+
+    /* Ocultamos cuenta en móvil */
+
+    .header-actions
+    .header-icon[href="cuenta.html"] {
+
+        display: none;
+    }
+
+
+    /* =====================================================
+       BUSCADOR
+    ===================================================== */
+
+    .search-wrapper {
+
+        display: flex;
+
+        align-items: center;
+    }
+
+
+    .search-wrapper.active {
+
+        position: absolute;
+
+        right: 0;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: calc(100vw - 80px);
+
+        background: white;
+
+        z-index: 20;
+    }
+
+
+    .search-wrapper.active .search-input {
+
+        width: calc(100vw - 120px);
+
+        height: 38px;
+
+        margin-left: 5px;
+
+        padding: 0 10px;
+
+        opacity: 1;
+    }
+
+
+    /* =====================================================
+       MENÚ MÓVIL
+    ===================================================== */
+
+    .mobile-menu {
+
+        width: min(370px, 88vw);
+
+        padding-bottom: 30px;
+    }
+
+
+    .mobile-menu-header {
+
+        height: 72px;
+
+        padding: 0 24px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+
+    .mobile-menu-header .satori-logo {
+
+        position: static;
+
+        transform: skewX(-4deg);
+
+        font-size: 29px;
+    }
+
+
+    /* =====================================================
+       SUBMENÚ — NO GIRAR EL TEXTO
+    ===================================================== */
+
+    .mobile-menu-item {
+
+        position: relative;
+
+        padding: 20px 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        text-align: left;
+
+        font-size: 16px;
+
+        font-weight: 600;
+
+        color: #111;
+    }
+
+
+    /* Texto */
+
+    .mobile-menu-item > span:first-child {
+
+        font-size: 16px;
+
+        transform: none !important;
+
+        writing-mode: horizontal-tb !important;
+
+        white-space: nowrap;
+    }
+
+
+    /* Flecha */
+
+    .mobile-menu-item > span:last-child {
+
+        font-size: 17px;
+
+        transform: none;
+
+        transition: transform .2s ease;
+    }
+
+
+    /* Solo gira la flecha */
+
+    .mobile-menu-item.open
+    > span:last-child {
+
+        transform: rotate(90deg);
+    }
+
+
+    /* =====================================================
+       SUBMENÚS
+    ===================================================== */
+
+    .mobile-submenu {
+
+        max-height: 0;
+
+        overflow: hidden;
+
+        transition: max-height .3s ease;
+
+        border-bottom: 0;
+    }
+
+
+    .mobile-submenu.open {
+
+        max-height: 300px;
+
+        border-bottom: 1px solid var(--border);
+
+        padding-bottom: 5px;
+    }
+
+
+    .mobile-submenu a {
+
+        display: block;
+
+        padding: 12px 12px;
+
+        color: #555;
+
+        font-size: 15px;
+
+        font-weight: 400;
+    }
+
+
+    .mobile-submenu a:hover {
+
+        color: var(--red);
     }
 
 }
