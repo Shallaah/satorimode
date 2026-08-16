@@ -3,7 +3,7 @@
    - Barra de envíos
    - Header desktop / móvil
    - Dropdowns
-   - Buscador
+   - Buscador inline
    - Menú móvil
    - Contador del carrito
 ========================================================= */
@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${baseUrl}${String(path).replace(/^\/+/, "")}`;
     };
 
-    const headerContainer = document.getElementById("satori-header");
+    const headerContainer =
+        document.getElementById("satori-header");
 
     if (!headerContainer) return;
 
@@ -57,7 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (const candidate of candidates) {
 
-            if (Array.isArray(candidate) && candidate.length) {
+            if (
+                Array.isArray(candidate) &&
+                candidate.length
+            ) {
                 return candidate;
             }
 
@@ -73,14 +77,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     headerContainer.innerHTML = `
 
-        <!-- BARRA SUPERIOR -->
+        <!-- =================================================
+             BARRA SUPERIOR
+        ================================================== -->
 
         <div class="shipping-bar">
-            🚚 ENVÍOS A TODO CHILE
+
+            <span aria-hidden="true">🚚</span>
+
+            <strong>
+                ENVÍOS A TODO CHILE
+            </strong>
+
         </div>
 
 
-        <!-- HEADER PRINCIPAL -->
+        <!-- =================================================
+             HEADER PRINCIPAL
+        ================================================== -->
 
         <header class="site-header">
 
@@ -97,34 +111,42 @@ document.addEventListener("DOMContentLoaded", () => {
                     aria-expanded="false"
                     aria-controls="mobile-menu"
                 >
+
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </button>
 
 
-                <!-- LOGO -->
+                <!-- =================================================
+                     LOGO / MARCA
+                ================================================== -->
 
                 <a
                     href="${siteUrl("index.html")}"
                     class="brand-logo"
                     aria-label="SatoriMode - Inicio"
                 >
-                    <img
-                        src="${siteUrl("logo.png")}"
-                        alt="SatoriMode"
-                    >
+                    SATORII
                 </a>
 
 
-                <!-- NAVEGACIÓN DESKTOP -->
+                <!-- =================================================
+                     NAVEGACIÓN DESKTOP
+                ================================================== -->
 
                 <nav
                     class="main-nav"
                     aria-label="Navegación principal"
                 >
 
-                    <a href="${siteUrl("index.html")}">
+
+                    <!-- INICIO -->
+
+                    <a
+                        href="${siteUrl("index.html")}"
+                    >
                         INICIO
                     </a>
 
@@ -138,21 +160,33 @@ document.addEventListener("DOMContentLoaded", () => {
                             class="nav-dropdown-btn"
                             aria-expanded="false"
                         >
+
                             COLECCIONES
-                            <span class="arrow">⌄</span>
+
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
                         </button>
+
 
                         <div class="dropdown-menu">
 
-                            <a href="${siteUrl("anime.html")}">
+                            <a
+                                href="${siteUrl("anime.html")}"
+                            >
                                 ANIME
                             </a>
 
-                            <a href="${siteUrl("streetwear.html")}">
+                            <a
+                                href="${siteUrl("streetwear.html")}"
+                            >
                                 STREETWEAR
                             </a>
 
-                            <a href="${siteUrl("accesorios.html")}">
+                            <a
+                                href="${siteUrl("accesorios.html")}"
+                            >
                                 ACCESORIOS
                             </a>
 
@@ -170,17 +204,27 @@ document.addEventListener("DOMContentLoaded", () => {
                             class="nav-dropdown-btn"
                             aria-expanded="false"
                         >
+
                             PRODUCTOS
-                            <span class="arrow">⌄</span>
+
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
                         </button>
+
 
                         <div class="dropdown-menu">
 
-                            <a href="${siteUrl("productos.html")}">
+                            <a
+                                href="${siteUrl("productos.html")}"
+                            >
                                 TODAS LAS POLERAS
                             </a>
 
-                            <a href="${siteUrl("satorii-pack.html")}">
+                            <a
+                                href="${siteUrl("satorii-pack.html")}"
+                            >
                                 SATORII PACK
                             </a>
 
@@ -198,21 +242,33 @@ document.addEventListener("DOMContentLoaded", () => {
                             class="nav-dropdown-btn"
                             aria-expanded="false"
                         >
+
                             AYUDA
-                            <span class="arrow">⌄</span>
+
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
                         </button>
+
 
                         <div class="dropdown-menu">
 
-                            <a href="${siteUrl("guia-tallas.html")}">
+                            <a
+                                href="${siteUrl("guia-tallas.html")}"
+                            >
                                 GUÍA DE TALLAS
                             </a>
 
-                            <a href="${siteUrl("envios.html")}">
+                            <a
+                                href="${siteUrl("envios.html")}"
+                            >
                                 ENVÍOS
                             </a>
 
-                            <a href="${siteUrl("preguntas-frecuentes.html")}">
+                            <a
+                                href="${siteUrl("preguntas-frecuentes.html")}"
+                            >
                                 PREGUNTAS FRECUENTES
                             </a>
 
@@ -223,41 +279,90 @@ document.addEventListener("DOMContentLoaded", () => {
                 </nav>
 
 
-                <!-- ICONOS -->
+                <!-- =================================================
+                     ICONOS
+                ================================================== -->
 
                 <div class="header-icons">
 
 
-                    <!-- BUSCADOR -->
+                    <!-- =================================================
+                         BUSCADOR INLINE
+                    ================================================== -->
 
-                    <button
-                        type="button"
-                        class="header-icon search-button"
-                        id="search-button"
-                        aria-label="Buscar productos"
-                        aria-expanded="false"
-                    >
+                    <div class="header-search">
 
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
+
+                        <!-- LUPA -->
+
+                        <button
+                            type="button"
+                            class="header-icon search-button"
+                            id="search-button"
+                            aria-label="Buscar productos"
+                            aria-expanded="false"
                         >
-                            <circle
-                                cx="10.8"
-                                cy="10.8"
-                                r="6.2"
-                            ></circle>
 
-                            <path
-                                d="M15.5 15.5 21 21"
-                            ></path>
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
 
-                        </svg>
+                                <circle
+                                    cx="10.8"
+                                    cy="10.8"
+                                    r="6.2"
+                                ></circle>
 
-                    </button>
+                                <path
+                                    d="M15.5 15.5 21 21"
+                                ></path>
+
+                            </svg>
+
+                        </button>
 
 
-                    <!-- CUENTA -->
+                        <!-- BARRA -->
+
+                        <div
+                            class="header-search-box"
+                            id="header-search-box"
+                        >
+
+                            <input
+                                type="search"
+                                id="search-input"
+                                placeholder="Buscar productos..."
+                                autocomplete="off"
+                                aria-label="Buscar productos"
+                            >
+
+
+                            <button
+                                type="button"
+                                id="search-close"
+                                aria-label="Cerrar búsqueda"
+                            >
+                                ×
+                            </button>
+
+
+                            <!-- RESULTADOS -->
+
+                            <div
+                                class="header-search-results"
+                                id="search-results"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         CUENTA
+                    ================================================== -->
 
                     <a
                         href="${siteUrl("cuenta.html")}"
@@ -285,7 +390,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
 
 
-                    <!-- CARRITO -->
+                    <!-- =================================================
+                         CARRITO
+                    ================================================== -->
 
                     <a
                         href="${siteUrl("carrito.html")}"
@@ -316,6 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         </svg>
 
+
                         <span
                             class="cart-count"
                             id="cart-count"
@@ -330,83 +438,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
         </header>
-
-
-        <!-- =================================================
-             BUSCADOR
-        ================================================== -->
-
-        <div
-            class="search-overlay"
-            id="search-overlay"
-            aria-hidden="true"
-        >
-
-            <div
-                class="search-box"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Buscar productos"
-            >
-
-                <div class="search-input-wrapper">
-
-
-                    <svg
-                        class="search-input-icon-svg"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-
-                        <circle
-                            cx="10.8"
-                            cy="10.8"
-                            r="6.2"
-                        ></circle>
-
-                        <path
-                            d="M15.5 15.5 21 21"
-                        ></path>
-
-                    </svg>
-
-
-                    <input
-                        type="search"
-                        id="search-input"
-                        class="search-input"
-                        placeholder="Buscar productos..."
-                        autocomplete="off"
-                        aria-label="Buscar productos"
-                    >
-
-
-                    <button
-                        type="button"
-                        id="search-close"
-                        class="search-close"
-                        aria-label="Cerrar búsqueda"
-                    >
-                        ×
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="search-results"
-                    id="search-results"
-                >
-
-                    <div class="search-empty">
-                        Busca una polera, personaje o colección.
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
 
 
         <!-- =================================================
@@ -426,18 +457,16 @@ document.addEventListener("DOMContentLoaded", () => {
         >
 
 
+            <!-- CABECERA -->
+
             <div class="mobile-menu-header">
+
 
                 <a
                     href="${siteUrl("index.html")}"
                     class="mobile-menu-logo"
                 >
-
-                    <img
-                        src="${siteUrl("logo.png")}"
-                        alt="SatoriMode"
-                    >
-
+                    SATORII
                 </a>
 
 
@@ -453,17 +482,26 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
 
+            <!-- NAVEGACIÓN -->
+
             <nav
                 class="mobile-nav"
                 aria-label="Navegación móvil"
             >
 
-                <a href="${siteUrl("index.html")}">
+
+                <!-- INICIO -->
+
+                <a
+                    href="${siteUrl("index.html")}"
+                >
                     INICIO
                 </a>
 
 
-                <!-- COLECCIONES -->
+                <!-- =================================================
+                     COLECCIONES
+                ================================================== -->
 
                 <button
                     type="button"
@@ -488,22 +526,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     id="mobile-collections"
                 >
 
-                    <a href="${siteUrl("anime.html")}">
+                    <a
+                        href="${siteUrl("anime.html")}"
+                    >
                         ANIME
                     </a>
 
-                    <a href="${siteUrl("streetwear.html")}">
+                    <a
+                        href="${siteUrl("streetwear.html")}"
+                    >
                         STREETWEAR
                     </a>
 
-                    <a href="${siteUrl("accesorios.html")}">
+                    <a
+                        href="${siteUrl("accesorios.html")}"
+                    >
                         ACCESORIOS
                     </a>
 
                 </div>
 
 
-                <!-- PRODUCTOS -->
+                <!-- =================================================
+                     PRODUCTOS
+                ================================================== -->
 
                 <button
                     type="button"
@@ -528,18 +574,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     id="mobile-products"
                 >
 
-                    <a href="${siteUrl("productos.html")}">
+                    <a
+                        href="${siteUrl("productos.html")}"
+                    >
                         TODAS LAS POLERAS
                     </a>
 
-                    <a href="${siteUrl("satorii-pack.html")}">
+                    <a
+                        href="${siteUrl("satorii-pack.html")}"
+                    >
                         SATORII PACK
                     </a>
 
                 </div>
 
 
-                <!-- AYUDA -->
+                <!-- =================================================
+                     AYUDA
+                ================================================== -->
 
                 <button
                     type="button"
@@ -564,15 +616,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     id="mobile-help"
                 >
 
-                    <a href="${siteUrl("guia-tallas.html")}">
+                    <a
+                        href="${siteUrl("guia-tallas.html")}"
+                    >
                         GUÍA DE TALLAS
                     </a>
 
-                    <a href="${siteUrl("envios.html")}">
+                    <a
+                        href="${siteUrl("envios.html")}"
+                    >
                         ENVÍOS
                     </a>
 
-                    <a href="${siteUrl("preguntas-frecuentes.html")}">
+                    <a
+                        href="${siteUrl("preguntas-frecuentes.html")}"
+                    >
                         PREGUNTAS FRECUENTES
                     </a>
 
@@ -581,13 +639,16 @@ document.addEventListener("DOMContentLoaded", () => {
             </nav>
 
 
-            <!-- INSTAGRAM -->
+            <!-- =================================================
+                 INSTAGRAM
+            ================================================== -->
 
             <div class="mobile-social">
 
                 <span>
                     SÍGUENOS
                 </span>
+
 
                 <a
                     href="https://www.instagram.com/satorimode/"
@@ -620,14 +681,14 @@ document.addEventListener("DOMContentLoaded", () => {
             dropdown.classList.remove("active");
 
             const button =
-                dropdown.querySelector(".nav-dropdown-btn");
-
-            if (button) {
-                button.setAttribute(
-                    "aria-expanded",
-                    "false"
+                dropdown.querySelector(
+                    ".nav-dropdown-btn"
                 );
-            }
+
+            button?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
         });
 
@@ -637,44 +698,63 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdowns.forEach(dropdown => {
 
         const button =
-            dropdown.querySelector(".nav-dropdown-btn");
+            dropdown.querySelector(
+                ".nav-dropdown-btn"
+            );
 
         if (!button) return;
 
 
-        button.addEventListener("click", event => {
+        button.addEventListener(
+            "click",
+            event => {
 
-            event.preventDefault();
-            event.stopPropagation();
+                event.preventDefault();
+                event.stopPropagation();
 
-            const wasOpen =
-                dropdown.classList.contains("active");
 
-            closeDropdowns();
+                const wasOpen =
+                    dropdown.classList.contains(
+                        "active"
+                    );
 
-            if (!wasOpen) {
 
-                dropdown.classList.add("active");
+                closeDropdowns();
 
-                button.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
+
+                if (!wasOpen) {
+
+                    dropdown.classList.add(
+                        "active"
+                    );
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+                }
 
             }
-
-        });
+        );
 
     });
 
 
-    document.addEventListener("click", event => {
+    document.addEventListener(
+        "click",
+        event => {
 
-        if (!event.target.closest(".nav-dropdown")) {
-            closeDropdowns();
+            if (
+                !event.target.closest(
+                    ".nav-dropdown"
+                )
+            ) {
+                closeDropdowns();
+            }
+
         }
-
-    });
+    );
 
 
     /* =====================================================
@@ -682,29 +762,46 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     const searchButton =
-        document.getElementById("search-button");
+        document.getElementById(
+            "search-button"
+        );
 
-    const searchOverlay =
-        document.getElementById("search-overlay");
+
+    const searchBox =
+        document.getElementById(
+            "header-search-box"
+        );
+
 
     const searchInput =
-        document.getElementById("search-input");
+        document.getElementById(
+            "search-input"
+        );
+
 
     const searchClose =
-        document.getElementById("search-close");
+        document.getElementById(
+            "search-close"
+        );
+
 
     const searchResults =
-        document.getElementById("search-results");
+        document.getElementById(
+            "search-results"
+        );
 
 
     const renderSearchMessage = message => {
 
         if (!searchResults) return;
 
+
         searchResults.innerHTML = `
+
             <div class="search-empty">
                 ${message}
             </div>
+
         `;
 
     };
@@ -726,7 +823,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const price =
             typeof priceRaw === "number"
+
                 ? `$${priceRaw.toLocaleString("es-CL")}`
+
                 : String(priceRaw);
 
 
@@ -734,7 +833,9 @@ document.addEventListener("DOMContentLoaded", () => {
             product?.image ||
             product?.imagen ||
             (
-                Array.isArray(product?.images)
+                Array.isArray(
+                    product?.images
+                )
                     ? product.images[0]
                     : ""
             );
@@ -764,16 +865,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
             price,
 
+
             image:
+
                 image &&
                 !/^https?:\/\//i.test(image)
+
                     ? siteUrl(image)
+
                     : image,
 
+
             url:
+
                 /^https?:\/\//i.test(url)
+
                     ? url
+
                     : siteUrl(url),
+
 
             searchText:
                 `${name} ${keywords} ${category}`
@@ -786,56 +896,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const openSearch = () => {
 
-        if (!searchOverlay) return;
+        if (!searchBox) return;
 
-        searchOverlay.classList.add("is-open");
 
-        searchOverlay.setAttribute(
-            "aria-hidden",
-            "false"
+        searchBox.classList.add(
+            "is-open"
         );
+
 
         searchButton?.setAttribute(
             "aria-expanded",
             "true"
         );
 
-        document.body.style.overflow = "hidden";
 
-        setTimeout(() => {
+        renderSearchMessage(
+            "Busca una polera, personaje o colección."
+        );
 
-            searchInput?.focus();
 
-        }, 80);
+        setTimeout(
+            () => {
+                searchInput?.focus();
+            },
+            120
+        );
 
     };
 
 
     const closeSearch = () => {
 
-        if (!searchOverlay) return;
+        if (!searchBox) return;
 
-        searchOverlay.classList.remove("is-open");
 
-        searchOverlay.setAttribute(
-            "aria-hidden",
-            "true"
+        searchBox.classList.remove(
+            "is-open"
         );
+
 
         searchButton?.setAttribute(
             "aria-expanded",
             "false"
         );
 
-        document.body.style.overflow = "";
 
         if (searchInput) {
             searchInput.value = "";
         }
 
-        renderSearchMessage(
-            "Busca una polera, personaje o colección."
-        );
+
+        if (searchResults) {
+            searchResults.innerHTML = "";
+        }
 
     };
 
@@ -847,7 +960,20 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
             event.stopPropagation();
 
-            openSearch();
+
+            if (
+                searchBox.classList.contains(
+                    "is-open"
+                )
+            ) {
+
+                closeSearch();
+
+            } else {
+
+                openSearch();
+
+            }
 
         }
     );
@@ -855,16 +981,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchClose?.addEventListener(
         "click",
-        closeSearch
+        event => {
+
+            event.preventDefault();
+
+            closeSearch();
+
+        }
     );
 
 
-    searchOverlay?.addEventListener(
+    document.addEventListener(
         "click",
         event => {
 
-            if (event.target === searchOverlay) {
+            if (
+                !event.target.closest(
+                    ".header-search"
+                )
+            ) {
+
                 closeSearch();
+
             }
 
         }
@@ -888,14 +1026,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 return;
+
             }
 
 
             const results =
                 getProducts()
                     .map(normalizeProduct)
-                    .filter(product =>
-                        product.searchText.includes(query)
+                    .filter(
+                        product =>
+                            product.searchText.includes(
+                                query
+                            )
                     )
                     .slice(0, 8);
 
@@ -907,45 +1049,60 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 return;
+
             }
 
 
             searchResults.innerHTML =
                 results
-                    .map(product => `
+                    .map(
+                        product => `
 
-                        <a
-                            href="${product.url}"
-                            class="search-result"
-                        >
+                            <a
+                                href="${product.url}"
+                                class="search-result"
+                            >
 
-                            ${
-                                product.image
-                                    ? `
-                                        <img
-                                            src="${product.image}"
-                                            alt="${product.name}"
-                                            class="search-result-image"
-                                        >
-                                    `
-                                    : ""
-                            }
+                                ${
+                                    product.image
 
-                            <span class="search-result-info">
+                                        ? `
 
-                                <span class="search-result-name">
-                                    ${product.name}
+                                            <img
+                                                src="${product.image}"
+                                                alt="${product.name}"
+                                                class="search-result-image"
+                                            >
+
+                                        `
+
+                                        : ""
+                                }
+
+
+                                <span
+                                    class="search-result-info"
+                                >
+
+                                    <span
+                                        class="search-result-name"
+                                    >
+                                        ${product.name}
+                                    </span>
+
+
+                                    <span
+                                        class="search-result-price"
+                                    >
+                                        ${product.price}
+                                    </span>
+
                                 </span>
 
-                                <span class="search-result-price">
-                                    ${product.price}
-                                </span>
+                            </a>
 
-                            </span>
-
-                        </a>
-
-                    `)
+                        `
+                    )
                     .join("");
 
         }
@@ -986,9 +1143,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "is-open"
         );
 
+
         mobileOverlay?.classList.remove(
             "is-open"
         );
+
 
         mobileButton?.classList.remove(
             "is-open"
@@ -1018,9 +1177,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "is-open"
         );
 
+
         mobileOverlay?.classList.add(
             "is-open"
         );
+
 
         mobileButton?.classList.add(
             "is-open"
@@ -1050,6 +1211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event => {
 
             event.preventDefault();
+
 
             if (
                 mobileMenu?.classList.contains(
@@ -1086,7 +1248,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     document
-        .querySelectorAll(".mobile-nav-button")
+        .querySelectorAll(
+            ".mobile-nav-button"
+        )
         .forEach(button => {
 
             button.addEventListener(
@@ -1131,15 +1295,18 @@ document.addEventListener("DOMContentLoaded", () => {
                                 "is-open"
                             );
 
+
                             btn.setAttribute(
                                 "aria-expanded",
                                 "false"
                             );
 
+
                             const arrow =
                                 btn.querySelector(
                                     ".arrow"
                                 );
+
 
                             if (arrow) {
                                 arrow.textContent =
@@ -1155,9 +1322,11 @@ document.addEventListener("DOMContentLoaded", () => {
                             "is-open"
                         );
 
+
                         button.classList.add(
                             "is-open"
                         );
+
 
                         button.setAttribute(
                             "aria-expanded",
@@ -1169,6 +1338,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             button.querySelector(
                                 ".arrow"
                             );
+
 
                         if (arrow) {
                             arrow.textContent =
@@ -1184,7 +1354,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     document
-        .querySelectorAll(".mobile-menu a")
+        .querySelectorAll(
+            ".mobile-menu a"
+        )
         .forEach(link => {
 
             link.addEventListener(
@@ -1231,6 +1403,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const total =
             Array.isArray(cart)
+
                 ? cart.reduce(
                     (sum, item) =>
                         sum +
@@ -1241,6 +1414,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         ),
                     0
                 )
+
                 : 0;
 
 
@@ -1273,9 +1447,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "keydown",
         event => {
 
-            if (event.key !== "Escape") {
+            if (
+                event.key !== "Escape"
+            ) {
                 return;
             }
+
 
             closeDropdowns();
             closeSearch();
