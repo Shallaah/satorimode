@@ -3516,3 +3516,769 @@ button {
     }
 
 }
+
+/* =========================================================
+   SATORIMODE HEADER
+   ========================================================= */
+
+:root {
+    --satori-red: #ed1111;
+    --satori-black: #080808;
+    --satori-border: #dedede;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+   ========================================================= */
+
+.shipping-bar {
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--satori-red);
+    color: #fff;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: .8px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.main-header {
+    width: 100%;
+
+    background: #fff;
+
+    border-bottom: 1px solid var(--satori-border);
+
+    position: relative;
+    z-index: 1000;
+}
+
+.header-inner {
+    width: min(1100px, calc(100% - 48px));
+
+    min-height: 96px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 35px;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.satori-logo,
+.mobile-logo {
+    color: #080808;
+
+    text-decoration: none;
+
+    font-family:
+        "Teko",
+        Impact,
+        "Arial Narrow",
+        sans-serif;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    line-height: .8;
+
+    letter-spacing: -1px;
+
+    transform: skewX(-5deg);
+
+    white-space: nowrap;
+}
+
+.satori-logo:hover,
+.mobile-logo:hover {
+    color: var(--satori-red);
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+
+.desktop-nav {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 36px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+}
+
+.desktop-nav > a,
+.nav-dropdown > button {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    height: 96px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #080808;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .4px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.desktop-nav > a::after,
+.nav-dropdown > button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--satori-red);
+
+    transition: width .2s ease;
+}
+
+.desktop-nav > a:hover::after,
+.nav-dropdown > button:hover::after {
+    width: 100%;
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown > button span {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: calc(100% - 1px);
+    left: 50%;
+
+    min-width: 190px;
+
+    padding: 12px;
+
+    background: #fff;
+
+    border: 1px solid var(--satori-border);
+
+    border-radius: 0 0 8px 8px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translate(-50%, -8px);
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease,
+        visibility .2s ease;
+
+    z-index: 20;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.active .dropdown-menu {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translate(-50%, 0);
+}
+
+.dropdown-menu a {
+    display: block;
+
+    padding: 10px 12px;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    border-radius: 4px;
+}
+
+.dropdown-menu a:hover {
+    background: #f5f5f5;
+
+    color: var(--satori-red);
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.header-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   BUSCADOR
+   ========================================================= */
+
+.header-search {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    height: 40px;
+}
+
+.search-toggle {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #111;
+
+    cursor: pointer;
+}
+
+.search-toggle svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+}
+
+.search-toggle:hover {
+    color: var(--satori-red);
+}
+
+
+/*
+   La barra está oculta inicialmente.
+   Al hacer clic en la lupa aparece AL LADO.
+*/
+
+.search-form {
+    width: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    margin-left: 0;
+
+    transition:
+        width .25s ease,
+        opacity .2s ease,
+        margin .25s ease;
+}
+
+.header-search.is-open .search-form {
+    width: 210px;
+
+    opacity: 1;
+
+    margin-left: 4px;
+}
+
+.search-form input {
+    width: 100%;
+
+    height: 36px;
+
+    padding: 0 12px;
+
+    border: 1px solid #dcdcdc;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: #111;
+
+    font-family: inherit;
+
+    font-size: 11px;
+}
+
+.search-form input:focus {
+    border-color: var(--satori-red);
+}
+
+
+/* =========================================================
+   ICONOS
+   ========================================================= */
+
+.header-icon {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #111;
+
+    text-decoration: none;
+}
+
+.header-icon svg {
+    width: 21px;
+    height: 21px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+.header-icon:hover {
+    color: var(--satori-red);
+}
+
+
+/* =========================================================
+   MENÚ MÓVIL
+   ========================================================= */
+
+.mobile-menu-toggle {
+    display: none;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 5px;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+
+    width: 21px;
+    height: 2px;
+
+    margin: 4px 0;
+
+    background: #111;
+}
+
+
+/* Overlay */
+
+.mobile-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.45);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: opacity .25s ease;
+
+    z-index: 1998;
+}
+
+.mobile-overlay.is-open {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* Panel */
+
+.mobile-menu {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: min(360px, 88vw);
+    height: 100vh;
+
+    background: #fff;
+
+    z-index: 1999;
+
+    transform: translateX(-100%);
+
+    transition: transform .3s ease;
+
+    overflow-y: auto;
+
+    box-shadow: 10px 0 30px rgba(0,0,0,.12);
+}
+
+.mobile-menu.is-open {
+    transform: translateX(0);
+}
+
+
+/* Header del menú */
+
+.mobile-menu-header {
+    height: 88px;
+
+    padding: 0 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.mobile-menu-close {
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #111;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* Navegación móvil */
+
+.mobile-nav {
+    padding: 18px 24px;
+}
+
+.mobile-nav > a,
+.mobile-nav summary {
+    min-height: 56px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #ddd;
+
+    color: #111;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: .3px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.mobile-nav details a {
+    display: block;
+
+    padding: 13px 10px;
+
+    color: #666;
+
+    font-size: 12px;
+
+    text-decoration: none;
+}
+
+.mobile-nav details a:hover {
+    color: var(--satori-red);
+}
+
+.mobile-nav summary {
+    list-style: none;
+}
+
+.mobile-nav summary::-webkit-details-marker {
+    display: none;
+}
+
+
+/* Social */
+
+.mobile-social {
+    margin: 25px 24px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #ddd;
+}
+
+.mobile-social span {
+    display: block;
+
+    margin-bottom: 16px;
+
+    color: var(--satori-red);
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.mobile-social a {
+    color: #111;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+/* Evitar scroll detrás del menú */
+
+body.menu-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BORDES GENERALES
+   ========================================================= */
+
+.store-hero,
+.store-benefits,
+.collection-showcase,
+.store-brand-card,
+.store-clan-card,
+.store-pack,
+.store-latest,
+.products-showcase {
+    border: 1px solid #dedede;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .header-inner {
+        width: calc(100% - 36px);
+
+        gap: 20px;
+    }
+
+    .desktop-nav {
+        gap: 20px;
+    }
+
+    .desktop-nav > a,
+    .nav-dropdown > button {
+        font-size: 10px;
+    }
+
+    .header-actions {
+        gap: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE MÓVIL
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .shipping-bar {
+        height: 30px;
+
+        font-size: 9px;
+    }
+
+    .header-inner {
+        min-height: 70px;
+
+        width: calc(100% - 28px);
+    }
+
+    .satori-logo {
+        font-size: 27px;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .header-actions {
+        margin-left: auto;
+
+        gap: 7px;
+    }
+
+    .header-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    /*
+       En móvil la búsqueda ocupa la pantalla
+       de forma cómoda.
+    */
+
+    .header-search.is-open {
+        position: absolute;
+
+        left: 14px;
+        right: 14px;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        z-index: 10;
+
+        background: #fff;
+    }
+
+    .header-search.is-open .search-form {
+        width: calc(100vw - 100px);
+    }
+
+    .header-search.is-open .search-toggle {
+        flex-shrink: 0;
+    }
+
+    .search-form input {
+        height: 38px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .header-inner {
+        width: calc(100% - 20px);
+    }
+
+    .satori-logo {
+        font-size: 25px;
+    }
+
+    .header-icon:nth-of-type(2) {
+        display: none;
+    }
+
+}
