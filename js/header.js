@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     headerContainer.innerHTML = `
-        <div class="shipping-bar">ENVÍOS A TODO CHILE · SATORIMODE</div>
+        <div class="shipping-bar">🚚 ENVÍOS A TODO CHILE POR $2.990 · GRATIS SOBRE $60.000 <span>SEGUIMIENTO DE PEDIDO&nbsp;&nbsp; | &nbsp;&nbsp;AYUDA</span></div>
 
         <header class="site-header">
             <div class="header-inner">
@@ -355,4 +355,3 @@ document.addEventListener("DOMContentLoaded", () => {
         closeMobileMenu();
     });
 });
-
