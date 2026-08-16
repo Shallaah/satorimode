@@ -3595,3 +3595,23 @@ main {
     }
 
 }
+/* =========================================================
+   LOGO SATORII — MENÚ MÓVIL
+   MISMO ESTILO QUE EL FOOTER
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .mobile-menu .brand-logo,
+    .mobile-menu .logo,
+    .mobile-menu .mobile-logo {
+        font-family: inherit !important;
+        font-weight: 800 !important;
+        font-style: italic !important;
+        letter-spacing: -1.8px !important;
+        color: #fff !important;
+        text-transform: uppercase !important;
+        line-height: 1 !important;
+    }
+
+}
