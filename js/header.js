@@ -10,27 +10,20 @@
     const SATORIMODE_BASE = "/satorimode/";
 
 
-    /*
-     * =====================================================
-     * CLAVE PRINCIPAL DEL CARRITO
-     * =====================================================
-     *
-     * IMPORTANTE:
-     *
-     * Debe coincidir exactamente con cart.js
-     */
+    /* =====================================================
+   CLAVE PRINCIPAL DEL CARRITO
+====================================================== */
 
-    const CART_STORAGE_KEY = "satorii_cart";
+const CART_STORAGE_KEY = "satorimode_cart";
 
 
-    /*
-     * Clave utilizada en versiones anteriores.
-     *
-     * Se conserva únicamente para migración.
-     */
+/*
+ * Clave utilizada en versiones anteriores.
+ *
+ * Se conserva únicamente para migración.
+ */
 
-    const OLD_CART_STORAGE_KEY = "satorimode_cart";
-
+const OLD_CART_STORAGE_KEY = "satorii_cart";
 
     /* =====================================================
        INICIALIZACIÓN
