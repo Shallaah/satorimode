@@ -3550,3 +3550,48 @@ main {
     overflow: hidden;
     box-sizing: border-box;
 }
+
+/* =========================================================
+   MENÚ MÓVIL — SIEMPRE POR ENCIMA DEL HEADER
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* Header */
+    .site-header {
+        z-index: 4000 !important;
+    }
+
+    /* Fondo oscuro detrás del menú */
+    .mobile-menu-overlay {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 9000 !important;
+    }
+
+    /* Menú lateral */
+    .mobile-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        height: 100vh !important;
+        z-index: 10000 !important;
+
+        /* Mantiene el menú completamente encima */
+        background: #fff !important;
+    }
+
+    /* El contenido del menú también queda arriba */
+    .mobile-menu-inner,
+    .mobile-menu-content {
+        position: relative !important;
+        z-index: 10001 !important;
+    }
+
+    /* Botón hamburguesa */
+    .mobile-menu-button {
+        position: relative !important;
+        z-index: 11000 !important;
+    }
+
+}
