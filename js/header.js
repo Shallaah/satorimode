@@ -1,184 +1,512 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================================
+   SATORIMODE · HEADER GLOBAL
+   =========================================================
+   - Barra de envíos
+   - Instagram
+   - Header desktop
+   - Header responsive
+   - Menú móvil
+   - Dropdowns
+   - Buscador inline
+   - Cuenta
+   - Carrito
+========================================================= */
 
-    const headerContainer = document.getElementById("satori-header");
+document.addEventListener("DOMContentLoaded", () => {
+
+    const headerContainer =
+        document.getElementById("satori-header");
 
     if (!headerContainer) return;
 
+
+    /* =====================================================
+       RUTA BASE
+    ===================================================== */
+
+    const script = document.currentScript;
+
+    const baseUrl = script
+        ? new URL("../", script.src).href
+        : "/satorimode/";
+
+
+    function siteUrl(path = "") {
+
+        if (!path) return baseUrl;
+
+        if (/^https?:\/\//i.test(path)) {
+            return path;
+        }
+
+        return new URL(
+            String(path).replace(/^\/+/, ""),
+            baseUrl
+        ).href;
+    }
+
+
+    /* =====================================================
+       PRODUCTOS PARA EL BUSCADOR
+    ===================================================== */
+
+    const fallbackProducts = [
+        {
+            name: "Polera Kid Buu",
+            price: "$18.990",
+            image: "productos/anime/polera-kid-buu-01.PNG",
+            url: "productos/anime/polera-kid-buu.html",
+            category: "ANIME",
+            keywords: "kid buu dragon ball"
+        }
+    ];
+
+
+    function getProducts() {
+
+        const sources = [
+            window.PRODUCTS,
+            window.satoriProducts,
+            window.SATORI_PRODUCTS,
+            window.products
+        ];
+
+        for (const source of sources) {
+
+            if (
+                Array.isArray(source) &&
+                source.length
+            ) {
+                return source;
+            }
+
+        }
+
+        return fallbackProducts;
+    }
+
+
+    function productName(product) {
+
+        return String(
+            product?.name ||
+            product?.nombre ||
+            "Producto Satorii"
+        );
+    }
+
+
+    function productPrice(product) {
+
+        const price =
+            product?.price ??
+            product?.precio ??
+            0;
+
+        if (
+            typeof price === "string" &&
+            price.includes("$")
+        ) {
+            return price;
+        }
+
+        return "$" +
+            Number(price).toLocaleString("es-CL");
+    }
+
+
+    function productImage(product) {
+
+        if (
+            Array.isArray(product?.images) &&
+            product.images.length
+        ) {
+            return product.images[0];
+        }
+
+        return (
+            product?.image ||
+            product?.imagen ||
+            ""
+        );
+    }
+
+
+    function productUrl(product) {
+
+        const url =
+            product?.url ||
+            product?.href ||
+            "productos.html";
+
+        return siteUrl(url);
+    }
+
+
+    /* =====================================================
+       HTML DEL HEADER
+    ===================================================== */
+
     headerContainer.innerHTML = `
+
+        <!-- =================================================
+             BARRA SUPERIOR
+        ================================================== -->
+
         <div class="shipping-bar">
 
-    <a
-        href="https://www.instagram.com/satorimode/"
-        class="shipping-instagram"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram de SatoriMode"
-    >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="5"
-            ></rect>
+            <span class="shipping-text">
+                🚚 ENVÍOS A TODO CHILE
+            </span>
 
-            <circle
-                cx="12"
-                cy="12"
-                r="4"
-            ></circle>
+            <a
+                href="https://www.instagram.com/satorimode/"
+                class="shipping-instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram de SatoriMode"
+                title="Instagram"
+            >
 
-            <circle
-                cx="17.5"
-                cy="6.5"
-                r="1"
-                fill="currentColor"
-                stroke="none"
-            ></circle>
-        </svg>
-    </a>
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
 
-    <span>
-        🚚 ENVÍOS A TODO CHILE 🚚
-    </span>
+                    <rect
+                        x="3"
+                        y="3"
+                        width="18"
+                        height="18"
+                        rx="5"
+                    ></rect>
 
-</div>
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4"
+                    ></circle>
 
-        <header class="main-header">
+                    <circle
+                        cx="17.5"
+                        cy="6.5"
+                        r="1"
+                        fill="currentColor"
+                        stroke="none"
+                    ></circle>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             HEADER PRINCIPAL
+        ================================================== -->
+
+        <header class="site-header">
 
             <div class="header-inner">
 
+
+                <!-- MENÚ MÓVIL -->
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobile-menu-button"
+                    aria-label="Abrir menú"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+
                 <!-- LOGO -->
-                <a href="index.html" class="satori-logo">
+
+                <a
+                    href="${siteUrl("index.html")}"
+                    class="brand-logo"
+                    aria-label="SatoriMode - Inicio"
+                >
                     SATORII
                 </a>
 
-                <!-- NAVEGACIÓN PC -->
-                <nav class="desktop-nav">
 
-                    <a href="index.html">INICIO</a>
+                <!-- =================================================
+                     NAVEGACIÓN DESKTOP
+                ================================================== -->
+
+                <nav
+                    class="main-nav"
+                    aria-label="Navegación principal"
+                >
+
+                    <a href="${siteUrl("index.html")}">
+                        INICIO
+                    </a>
+
+
+                    <!-- COLECCIONES -->
 
                     <div class="nav-dropdown">
-                        <button type="button">
+
+                        <button
+                            type="button"
+                            class="nav-dropdown-btn"
+                            aria-expanded="false"
+                        >
+
                             COLECCIONES
-                            <span>⌄</span>
+
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
                         </button>
 
+
                         <div class="dropdown-menu">
-                            <a href="anime.html">Anime</a>
-                            <a href="streetwear.html">Streetwear</a>
-                            <a href="accesorios.html">Accesorios</a>
+
+                            <a href="${siteUrl("anime.html")}">
+                                ANIME
+                            </a>
+
+                            <a href="${siteUrl("streetwear.html")}">
+                                STREETWEAR
+                            </a>
+
+                            <a href="${siteUrl("accesorios.html")}">
+                                ACCESORIOS
+                            </a>
+
                         </div>
+
                     </div>
 
+
+                    <!-- PRODUCTOS -->
+
                     <div class="nav-dropdown">
-                        <button type="button">
+
+                        <button
+                            type="button"
+                            class="nav-dropdown-btn"
+                            aria-expanded="false"
+                        >
+
                             PRODUCTOS
-                            <span>⌄</span>
+
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
                         </button>
 
+
                         <div class="dropdown-menu">
-                            <a href="productos.html">Todos los productos</a>
-                            <a href="poleras.html">Poleras</a>
-                            <a href="accesorios.html">Accesorios</a>
+
+                            <a href="${siteUrl("productos.html")}">
+                                TODAS LAS POLERAS
+                            </a>
+
+                            <a href="${siteUrl("satorii-pack.html")}">
+                                SATORII PACK
+                            </a>
+
                         </div>
+
                     </div>
 
+
+                    <!-- AYUDA -->
+
                     <div class="nav-dropdown">
-                        <button type="button">
+
+                        <button
+                            type="button"
+                            class="nav-dropdown-btn"
+                            aria-expanded="false"
+                        >
+
                             AYUDA
-                            <span>⌄</span>
+
+                            <span class="arrow">
+                                ⌄
+                            </span>
+
                         </button>
 
+
                         <div class="dropdown-menu">
-                            <a href="preguntas-frecuentes.html">
-                                Preguntas frecuentes
+
+                            <a href="${siteUrl("guia-tallas.html")}">
+                                GUÍA DE TALLAS
                             </a>
-                            <a href="envios.html">
-                                Envíos
+
+                            <a href="${siteUrl("envios.html")}">
+                                ENVÍOS
                             </a>
-                            <a href="cambios.html">
-                                Cambios y devoluciones
+
+                            <a href="${siteUrl("preguntas-frecuentes.html")}">
+                                PREGUNTAS FRECUENTES
                             </a>
-                            <a href="guia-tallas.html">
-                                Guía de tallas
+
+                            <a href="${siteUrl("cambios.html")}">
+                                CAMBIOS Y DEVOLUCIONES
                             </a>
+
                         </div>
+
                     </div>
 
                 </nav>
 
-                <!-- ACCIONES -->
-                <div class="header-actions">
+
+                <!-- =================================================
+                     ACCIONES
+                ================================================== -->
+
+                <div class="header-icons">
+
 
                     <!-- BUSCADOR -->
-                    <div class="header-search">
+
+                    <div
+                        class="header-search"
+                        id="header-search"
+                    >
 
                         <button
                             type="button"
-                            class="search-toggle"
-                            aria-label="Buscar"
+                            class="header-icon search-button"
+                            id="search-button"
+                            aria-label="Buscar productos"
                             aria-expanded="false"
                         >
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <circle cx="11" cy="11" r="6.5"></circle>
-                                <path d="M16 16L21 21"></path>
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <circle
+                                    cx="10.8"
+                                    cy="10.8"
+                                    r="6.2"
+                                ></circle>
+
+                                <path
+                                    d="M15.5 15.5 21 21"
+                                ></path>
+
                             </svg>
+
                         </button>
+
 
                         <form
                             class="search-form"
-                            action="productos.html"
+                            id="search-form"
+                            action="${siteUrl("productos.html")}"
                             method="get"
                         >
+
                             <input
                                 type="search"
+                                id="search-input"
                                 name="q"
                                 placeholder="Buscar productos..."
                                 autocomplete="off"
                                 aria-label="Buscar productos"
                             >
+
                         </form>
+
+
+                        <div
+                            class="search-results"
+                            id="search-results"
+                        ></div>
 
                     </div>
 
-                    <!-- USUARIO -->
+
+                    <!-- CUENTA -->
+
                     <a
-                        href="cuenta.html"
+                        href="${siteUrl("cuenta.html")}"
                         class="header-icon"
                         aria-label="Mi cuenta"
                     >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="12" cy="8" r="3.5"></circle>
-                            <path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"></path>
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3.2"
+                            ></circle>
+
+                            <path
+                                d="M5.5 20c.8-3.7 3-5.5 6.5-5.5s5.7 1.8 6.5 5.5"
+                            ></path>
+
                         </svg>
+
                     </a>
+
 
                     <!-- CARRITO -->
+
                     <a
-                        href="carrito.html"
-                        class="header-icon"
+                        href="${siteUrl("carrito.html")}"
+                        class="header-icon cart-header-icon"
                         aria-label="Carrito"
                     >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4 5h2l1.5 10h10L20 8H7"></path>
-                            <circle cx="10" cy="19" r="1.3"></circle>
-                            <circle cx="17" cy="19" r="1.3"></circle>
-                        </svg>
-                    </a>
 
-                    <!-- MENÚ MÓVIL -->
-                    <button
-                        type="button"
-                        class="mobile-menu-toggle"
-                        aria-label="Abrir menú"
-                        aria-expanded="false"
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                d="M4 5h2l1.4 9.2a2 2 0 0 0 2 1.7h7.2a2 2 0 0 0 2-1.7L20 8H7"
+                            ></path>
+
+                            <circle
+                                cx="10"
+                                cy="19.5"
+                                r="1"
+                            ></circle>
+
+                            <circle
+                                cx="17"
+                                cy="19.5"
+                                r="1"
+                            ></circle>
+
+                        </svg>
+
+
+                        <span
+                            class="cart-count"
+                            id="cart-count"
+                        >
+                            0
+                        </span>
+
+                    </a>
 
                 </div>
 
@@ -186,21 +514,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
         </header>
 
-        <!-- MENÚ MÓVIL -->
 
-        <div class="mobile-overlay"></div>
+        <!-- =================================================
+             MENÚ MÓVIL
+        ================================================== -->
 
-        <aside class="mobile-menu">
+        <div
+            class="mobile-menu-overlay"
+            id="mobile-menu-overlay"
+        ></div>
+
+
+        <aside
+            class="mobile-menu"
+            id="mobile-menu"
+            aria-hidden="true"
+        >
 
             <div class="mobile-menu-header">
 
-                <a href="index.html" class="mobile-logo">
+                <a
+                    href="${siteUrl("index.html")}"
+                    class="mobile-menu-logo"
+                >
                     SATORII
                 </a>
+
 
                 <button
                     type="button"
                     class="mobile-menu-close"
+                    id="mobile-menu-close"
                     aria-label="Cerrar menú"
                 >
                     ×
@@ -208,63 +552,138 @@ document.addEventListener("DOMContentLoaded", function () {
 
             </div>
 
-            <nav class="mobile-nav">
 
-                <a href="index.html">
+            <nav
+                class="mobile-nav"
+                aria-label="Navegación móvil"
+            >
+
+                <a href="${siteUrl("index.html")}">
                     INICIO
                 </a>
 
-                <details>
-                    <summary>
+
+                <button
+                    type="button"
+                    class="mobile-nav-button"
+                    data-mobile-submenu="mobile-collections"
+                    aria-expanded="false"
+                >
+
+                    <span>
                         COLECCIONES
-                        <span>↓</span>
-                    </summary>
+                    </span>
 
-                    <a href="anime.html">Anime</a>
-                    <a href="streetwear.html">Streetwear</a>
-                    <a href="accesorios.html">Accesorios</a>
-                </details>
+                    <span>
+                        ↓
+                    </span>
 
-                <details>
-                    <summary>
+                </button>
+
+
+                <div
+                    class="mobile-submenu"
+                    id="mobile-collections"
+                >
+
+                    <a href="${siteUrl("anime.html")}">
+                        ANIME
+                    </a>
+
+                    <a href="${siteUrl("streetwear.html")}">
+                        STREETWEAR
+                    </a>
+
+                    <a href="${siteUrl("accesorios.html")}">
+                        ACCESORIOS
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="mobile-nav-button"
+                    data-mobile-submenu="mobile-products"
+                    aria-expanded="false"
+                >
+
+                    <span>
                         PRODUCTOS
-                        <span>↓</span>
-                    </summary>
+                    </span>
 
-                    <a href="productos.html">Todos los productos</a>
-                    <a href="poleras.html">Poleras</a>
-                    <a href="accesorios.html">Accesorios</a>
-                </details>
+                    <span>
+                        ↓
+                    </span>
 
-                <details>
-                    <summary>
+                </button>
+
+
+                <div
+                    class="mobile-submenu"
+                    id="mobile-products"
+                >
+
+                    <a href="${siteUrl("productos.html")}">
+                        TODAS LAS POLERAS
+                    </a>
+
+                    <a href="${siteUrl("satorii-pack.html")}">
+                        SATORII PACK
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="mobile-nav-button"
+                    data-mobile-submenu="mobile-help"
+                    aria-expanded="false"
+                >
+
+                    <span>
                         AYUDA
-                        <span>↓</span>
-                    </summary>
+                    </span>
 
-                    <a href="preguntas-frecuentes.html">
-                        Preguntas frecuentes
+                    <span>
+                        ↓
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="mobile-submenu"
+                    id="mobile-help"
+                >
+
+                    <a href="${siteUrl("guia-tallas.html")}">
+                        GUÍA DE TALLAS
                     </a>
 
-                    <a href="envios.html">
-                        Envíos
+                    <a href="${siteUrl("envios.html")}">
+                        ENVÍOS
                     </a>
 
-                    <a href="cambios.html">
-                        Cambios y devoluciones
+                    <a href="${siteUrl("preguntas-frecuentes.html")}">
+                        PREGUNTAS FRECUENTES
                     </a>
 
-                    <a href="guia-tallas.html">
-                        Guía de tallas
+                    <a href="${siteUrl("cambios.html")}">
+                        CAMBIOS Y DEVOLUCIONES
                     </a>
 
-                </details>
+                </div>
 
             </nav>
 
+
             <div class="mobile-social">
 
-                <span>SÍGUENOS</span>
+                <span>
+                    SÍGUENOS
+                </span>
 
                 <a
                     href="https://www.instagram.com/satorimode/"
@@ -277,848 +696,613 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
         </aside>
+
     `;
 
 
     /* =====================================================
-       BUSCADOR
-       ===================================================== */
+       DROPDOWNS
+    ===================================================== */
 
-    const searchBox = headerContainer.querySelector(".header-search");
-    const searchToggle = headerContainer.querySelector(".search-toggle");
-    const searchInput = headerContainer.querySelector(".search-form input");
-
-    searchToggle.addEventListener("click", function (event) {
-
-        event.stopPropagation();
-
-        const isOpen = searchBox.classList.toggle("is-open");
-
-        searchToggle.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-
-        if (isOpen) {
-            setTimeout(() => {
-                searchInput.focus();
-            }, 100);
-        }
-
-    });
+    const dropdowns =
+        [
+            ...headerContainer.querySelectorAll(
+                ".nav-dropdown"
+            )
+        ];
 
 
-    /* Cerrar buscador al hacer clic afuera */
+    function closeDropdowns() {
 
-    document.addEventListener("click", function (event) {
+        dropdowns.forEach(dropdown => {
 
-        if (!searchBox.contains(event.target)) {
+            dropdown.classList.remove("active");
 
-            searchBox.classList.remove("is-open");
+            const button =
+                dropdown.querySelector(
+                    ".nav-dropdown-btn"
+                );
 
-            searchToggle.setAttribute(
+            button?.setAttribute(
                 "aria-expanded",
                 "false"
             );
 
-        }
+        });
+
+    }
+
+
+    dropdowns.forEach(dropdown => {
+
+        const button =
+            dropdown.querySelector(
+                ".nav-dropdown-btn"
+            );
+
+        if (!button) return;
+
+
+        button.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                const open =
+                    dropdown.classList.contains(
+                        "active"
+                    );
+
+                closeDropdowns();
+
+                if (!open) {
+
+                    dropdown.classList.add(
+                        "active"
+                    );
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+                }
+
+            }
+        );
 
     });
 
 
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                !event.target.closest(
+                    ".nav-dropdown"
+                )
+            ) {
+
+                closeDropdowns();
+
+            }
+
+        }
+    );
+
+
     /* =====================================================
-       MENÚ MÓVIL
-       ===================================================== */
+       BUSCADOR
+    ===================================================== */
 
-    const mobileToggle =
-        headerContainer.querySelector(".mobile-menu-toggle");
+    const searchBox =
+        document.getElementById(
+            "header-search"
+        );
 
-    const mobileMenu =
-        headerContainer.querySelector(".mobile-menu");
+    const searchButton =
+        document.getElementById(
+            "search-button"
+        );
 
-    const mobileOverlay =
-        headerContainer.querySelector(".mobile-overlay");
+    const searchInput =
+        document.getElementById(
+            "search-input"
+        );
 
-    const mobileClose =
-        headerContainer.querySelector(".mobile-menu-close");
+    const searchResults =
+        document.getElementById(
+            "search-results"
+        );
 
 
-    function openMobileMenu() {
+    function openSearch() {
 
-        mobileMenu.classList.add("is-open");
-        mobileOverlay.classList.add("is-open");
+        if (!searchBox) return;
 
-        mobileToggle.setAttribute(
+        searchBox.classList.add(
+            "is-open"
+        );
+
+        searchButton?.setAttribute(
             "aria-expanded",
             "true"
         );
 
-        document.body.classList.add("menu-open");
+
+        setTimeout(
+            () => {
+                searchInput?.focus();
+            },
+            100
+        );
+
+    }
+
+
+    function closeSearch() {
+
+        if (!searchBox) return;
+
+        searchBox.classList.remove(
+            "is-open"
+        );
+
+        searchButton?.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        if (searchInput) {
+            searchInput.value = "";
+        }
+
+        if (searchResults) {
+            searchResults.innerHTML = "";
+        }
+
+    }
+
+
+    searchButton?.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (
+                searchBox.classList.contains(
+                    "is-open"
+                )
+            ) {
+
+                closeSearch();
+
+            } else {
+
+                openSearch();
+
+            }
+
+        }
+    );
+
+
+    searchInput?.addEventListener(
+        "input",
+        () => {
+
+            const query =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!query) {
+
+                searchResults.innerHTML = "";
+
+                return;
+
+            }
+
+
+            const results =
+                getProducts()
+                    .filter(product => {
+
+                        const name =
+                            productName(
+                                product
+                            ).toLowerCase();
+
+                        const category =
+                            String(
+                                product?.category ||
+                                product?.collection ||
+                                product?.categoria ||
+                                ""
+                            ).toLowerCase();
+
+                        const keywords =
+                            String(
+                                product?.keywords ||
+                                product?.palabras ||
+                                ""
+                            ).toLowerCase();
+
+                        return (
+                            name.includes(query) ||
+                            category.includes(query) ||
+                            keywords.includes(query)
+                        );
+
+                    })
+                    .slice(0, 6);
+
+
+            if (!results.length) {
+
+                searchResults.innerHTML = `
+
+                    <div class="search-empty">
+                        No encontramos productos para
+                        "${query}".
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            searchResults.innerHTML =
+                results
+                    .map(product => {
+
+                        const image =
+                            productImage(
+                                product
+                            );
+
+
+                        return `
+
+                            <a
+                                href="${productUrl(product)}"
+                                class="search-result"
+                            >
+
+                                ${
+                                    image
+                                        ? `
+                                            <img
+                                                src="${siteUrl(image)}"
+                                                alt="${productName(product)}"
+                                            >
+                                          `
+                                        : ""
+                                }
+
+                                <span>
+
+                                    <strong>
+                                        ${productName(product)}
+                                    </strong>
+
+                                    <small>
+                                        ${productPrice(product)}
+                                    </small>
+
+                                </span>
+
+                            </a>
+
+                        `;
+
+                    })
+                    .join("");
+
+        }
+    );
+
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                !event.target.closest(
+                    ".header-search"
+                )
+            ) {
+
+                closeSearch();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       MENÚ MÓVIL
+    ===================================================== */
+
+    const mobileButton =
+        document.getElementById(
+            "mobile-menu-button"
+        );
+
+    const mobileMenu =
+        document.getElementById(
+            "mobile-menu"
+        );
+
+    const mobileClose =
+        document.getElementById(
+            "mobile-menu-close"
+        );
+
+    const mobileOverlay =
+        document.getElementById(
+            "mobile-menu-overlay"
+        );
+
+
+    function openMobileMenu() {
+
+        mobileMenu?.classList.add(
+            "is-open"
+        );
+
+        mobileOverlay?.classList.add(
+            "is-open"
+        );
+
+        mobileButton?.classList.add(
+            "is-open"
+        );
+
+        mobileButton?.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        mobileMenu?.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.classList.add(
+            "menu-open"
+        );
 
     }
 
 
     function closeMobileMenu() {
 
-        mobileMenu.classList.remove("is-open");
-        mobileOverlay.classList.remove("is-open");
+        mobileMenu?.classList.remove(
+            "is-open"
+        );
 
-        mobileToggle.setAttribute(
+        mobileOverlay?.classList.remove(
+            "is-open"
+        );
+
+        mobileButton?.classList.remove(
+            "is-open"
+        );
+
+        mobileButton?.setAttribute(
             "aria-expanded",
             "false"
         );
 
-        document.body.classList.remove("menu-open");
+        mobileMenu?.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.classList.remove(
+            "menu-open"
+        );
 
     }
 
 
-    mobileToggle.addEventListener(
+    mobileButton?.addEventListener(
         "click",
-        openMobileMenu
+        event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (
+                mobileMenu?.classList.contains(
+                    "is-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+
+            }
+
+        }
     );
 
-    mobileClose.addEventListener(
+
+    mobileClose?.addEventListener(
         "click",
         closeMobileMenu
     );
 
-    mobileOverlay.addEventListener(
+
+    mobileOverlay?.addEventListener(
         "click",
         closeMobileMenu
     );
-
-
-    /* Cerrar menú cuando se selecciona un enlace */
-
-    mobileMenu
-        .querySelectorAll("a")
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                closeMobileMenu
-            );
-
-        });
 
 
     /* =====================================================
-       DROPDOWNS PC
-       ===================================================== */
+       SUBMENÚS MÓVILES
+    ===================================================== */
 
-    document
-        .querySelectorAll(".nav-dropdown > button")
-        .forEach(button => {
+    const mobileButtons =
+        headerContainer.querySelectorAll(
+            ".mobile-nav-button"
+        );
 
-            button.addEventListener("click", function () {
 
-                const dropdown =
-                    this.parentElement;
+    mobileButtons.forEach(button => {
 
-                document
-                    .querySelectorAll(".nav-dropdown")
-                    .forEach(item => {
+        button.addEventListener(
+            "click",
+            () => {
 
-                        if (item !== dropdown) {
-                            item.classList.remove("active");
-                        }
+                const submenu =
+                    document.getElementById(
+                        button.dataset.mobileSubmenu
+                    );
+
+                if (!submenu) return;
+
+
+                const wasOpen =
+                    submenu.classList.contains(
+                        "is-open"
+                    );
+
+
+                headerContainer
+                    .querySelectorAll(
+                        ".mobile-submenu"
+                    )
+                    .forEach(menu => {
+
+                        menu.classList.remove(
+                            "is-open"
+                        );
 
                     });
 
-                dropdown.classList.toggle("active");
 
-            });
+                headerContainer
+                    .querySelectorAll(
+                        ".mobile-nav-button"
+                    )
+                    .forEach(other => {
 
-        });
+                        other.classList.remove(
+                            "is-open"
+                        );
+
+                        other.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    });
 
 
-    /* Cerrar dropdown al hacer clic afuera */
+                if (!wasOpen) {
 
-    document.addEventListener("click", function (event) {
+                    submenu.classList.add(
+                        "is-open"
+                    );
 
-        if (!event.target.closest(".nav-dropdown")) {
+                    button.classList.add(
+                        "is-open"
+                    );
 
-            document
-                .querySelectorAll(".nav-dropdown")
-                .forEach(item => {
-                    item.classList.remove("active");
-                });
+                    button.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
 
-        }
+                }
+
+            }
+        );
 
     });
 
+
+    /* =====================================================
+       CONTADOR CARRITO
+    ===================================================== */
+
+    const cartCount =
+        document.getElementById(
+            "cart-count"
+        );
+
+
+    function updateCartCount() {
+
+        if (!cartCount) return;
+
+
+        let cart = [];
+
+        try {
+
+            cart =
+                JSON.parse(
+                    localStorage.getItem(
+                        "satoriCart"
+                    ) || "[]"
+                );
+
+        } catch {
+
+            cart = [];
+
+        }
+
+
+        const total =
+            cart.reduce(
+                (sum, item) => {
+
+                    return sum +
+                        Number(
+                            item.quantity || 1
+                        );
+
+                },
+                0
+            );
+
+
+        cartCount.textContent =
+            total;
+
+
+        cartCount.style.display =
+            total > 0
+                ? "flex"
+                : "none";
+
+    }
+
+
+    updateCartCount();
+
+
+    window.addEventListener(
+        "storage",
+        updateCartCount
+    );
+
 });
-
-/* =========================================================
-   SATORIMODE - AJUSTE FINAL HEADER + FOOTER + ESCALA
-   ========================================================= */
-
-
-/* =========================================================
-   HEADER MÁS BAJO
-   ========================================================= */
-
-.main-header {
-    height: 64px;
-}
-
-.header-inner {
-    min-height: 64px;
-    height: 64px;
-
-    width: min(1200px, calc(100% - 48px));
-
-    margin: 0 auto;
-}
-
-
-/* LOGO */
-
-.satori-logo {
-    font-size: 30px;
-}
-
-
-/* NAVEGACIÓN */
-
-.desktop-nav {
-    gap: 38px;
-}
-
-.desktop-nav > a,
-.nav-dropdown > button {
-    height: 64px;
-
-    font-size: 12px;
-}
-
-
-/* ICONOS */
-
-.header-actions {
-    gap: 17px;
-}
-
-.header-icon {
-    width: 27px;
-    height: 27px;
-}
-
-.header-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-
-/* BUSCADOR */
-
-.search-toggle {
-    width: 34px;
-    height: 34px;
-}
-
-.search-toggle svg {
-    width: 20px;
-    height: 20px;
-}
-
-
-/* =========================================================
-   ANCHO GENERAL DE LA TIENDA
-   ========================================================= */
-
-.home-redesign {
-    width: min(1200px, calc(100% - 48px));
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.store-hero {
-    width: 100%;
-
-    border: 1px solid #d8d8d8;
-
-    border-radius: 0 0 6px 6px;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   BENEFICIOS
-   ========================================================= */
-
-.store-benefits {
-    width: 100%;
-
-    border: 1px solid #d8d8d8;
-
-    border-top: 0;
-
-    border-radius: 0 0 6px 6px;
-}
-
-
-/* =========================================================
-   SECCIONES
-   ========================================================= */
-
-.store-section {
-    width: 100%;
-}
-
-
-/* Títulos un poco más grandes */
-
-.store-section-head h2 {
-    font-size: 18px;
-    letter-spacing: -.2px;
-}
-
-.store-section-head a {
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   COLECCIONES
-   ========================================================= */
-
-.collection-showcase-grid {
-    gap: 8px;
-}
-
-.collection-showcase {
-    min-height: 210px;
-
-    border: 1px solid #d0d0d0;
-
-    border-radius: 5px;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   PRODUCTOS
-   ========================================================= */
-
-.store-product-grid {
-    gap: 14px;
-}
-
-
-/* =========================================================
-   BLOQUE INFERIOR
-   ========================================================= */
-
-.store-lower-grid {
-    gap: 10px;
-}
-
-.store-latest,
-.store-brand-card,
-.store-clan-card {
-    border: 1px solid #d8d8d8;
-
-    border-radius: 5px;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   FOOTER COMPLETO
-   ========================================================= */
-
-.site-footer {
-    width: 100%;
-
-    margin-top: 55px;
-
-    background: #080808;
-
-    color: #fff;
-
-    border-top: 1px solid #151515;
-}
-
-
-/* CONTENEDOR PRINCIPAL DEL FOOTER */
-
-.footer-main {
-    width: min(1200px, calc(100% - 48px));
-
-    margin: 0 auto;
-
-    padding: 58px 0 50px;
-
-    display: grid;
-
-    grid-template-columns:
-        1.35fr
-        1fr
-        1fr
-        1.65fr;
-
-    column-gap: 70px;
-
-    align-items: start;
-}
-
-
-/* =========================================================
-   MARCA FOOTER
-   ========================================================= */
-
-.footer-brand {
-    min-width: 0;
-}
-
-.footer-brand h3 {
-    margin: 0 0 18px;
-
-    color: #fff;
-
-    font-size: 25px;
-
-    font-weight: 800;
-
-    letter-spacing: -.5px;
-}
-
-.footer-brand p {
-    max-width: 260px;
-
-    margin: 0;
-
-    color: #aaa;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   COLUMNAS
-   ========================================================= */
-
-.footer-column {
-    min-width: 0;
-}
-
-.footer-column h4 {
-    margin: 0 0 22px;
-
-    color: #fff;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-}
-
-.footer-column a {
-    display: block;
-
-    width: fit-content;
-
-    margin-bottom: 14px;
-
-    color: #aaa;
-
-    font-size: 11px;
-
-    line-height: 1.4;
-
-    text-decoration: none;
-
-    transition:
-        color .2s ease,
-        transform .2s ease;
-}
-
-.footer-column a:hover {
-    color: #fff;
-
-    transform: translateX(3px);
-}
-
-
-/* =========================================================
-   INSTAGRAM
-   ========================================================= */
-
-.footer-social {
-    display: flex;
-
-    flex-direction: column;
-}
-
-.footer-instagram {
-    width: 44px;
-    height: 44px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 2px;
-
-    border: 1px solid #555;
-
-    border-radius: 50%;
-
-    color: #fff;
-
-    text-decoration: none;
-
-    transition:
-        border-color .2s ease,
-        background .2s ease;
-}
-
-.footer-instagram:hover {
-    border-color: #fff;
-
-    background: #151515;
-}
-
-.footer-instagram svg {
-    width: 20px;
-    height: 20px;
-
-    fill: none;
-
-    stroke: currentColor;
-
-    stroke-width: 1.5;
-}
-
-
-/* =========================================================
-   CLAN / NEWSLETTER
-   ========================================================= */
-
-.footer-community {
-    min-width: 0;
-}
-
-.footer-community .store-eyebrow {
-    display: block;
-
-    margin-bottom: 10px;
-
-    color: #ff1717;
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: 3px;
-}
-
-.footer-community h2 {
-    margin: 0 0 12px;
-
-    color: #fff;
-
-    font-size: 25px;
-
-    line-height: 1.05;
-
-    font-weight: 900;
-}
-
-.footer-community h2 strong {
-    color: #ff1717;
-}
-
-.footer-community p {
-    max-width: 380px;
-
-    margin: 0 0 20px;
-
-    color: #aaa;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   FORMULARIO FOOTER
-   ========================================================= */
-
-.footer-newsletter {
-    width: 100%;
-
-    max-width: 390px;
-
-    display: flex;
-
-    align-items: stretch;
-}
-
-.footer-newsletter input {
-    flex: 1;
-
-    min-width: 0;
-
-    height: 44px;
-
-    padding: 0 14px;
-
-    border: 1px solid #ddd;
-
-    border-right: 0;
-
-    border-radius: 4px 0 0 4px;
-
-    outline: none;
-
-    background: #fff;
-
-    color: #111;
-
-    font-family: inherit;
-
-    font-size: 11px;
-}
-
-.footer-newsletter input:focus {
-    border-color: #ff1717;
-}
-
-.footer-newsletter button {
-    width: 50px;
-
-    height: 44px;
-
-    border: 0;
-
-    border-radius: 0 4px 4px 0;
-
-    background: #ff1717;
-
-    color: #fff;
-
-    font-size: 18px;
-
-    cursor: pointer;
-
-    transition: background .2s ease;
-}
-
-.footer-newsletter button:hover {
-    background: #d90000;
-}
-
-
-/* =========================================================
-   FOOTER INFERIOR
-   ========================================================= */
-
-.footer-bottom {
-    width: min(1200px, calc(100% - 48px));
-
-    margin: 0 auto;
-
-    padding: 18px 0 24px;
-
-    border-top: 1px solid #242424;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    color: #777;
-
-    font-size: 9px;
-}
-
-.footer-bottom span:last-child {
-    text-align: right;
-}
-
-
-/* =========================================================
-   BORDES / ESQUINAS
-   ========================================================= */
-
-.store-hero,
-.store-benefits,
-.collection-showcase,
-.store-latest,
-.store-brand-card,
-.store-clan-card,
-.store-pack {
-    border: 1px solid #d8d8d8;
-
-    border-radius: 5px;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 950px) {
-
-    .header-inner {
-        width: calc(100% - 36px);
-    }
-
-    .home-redesign {
-        width: calc(100% - 36px);
-    }
-
-    .footer-main {
-        width: calc(100% - 36px);
-
-        grid-template-columns:
-            1fr
-            1fr;
-
-        gap: 45px;
-    }
-
-    .footer-bottom {
-        width: calc(100% - 36px);
-    }
-
-}
-
-
-/* =========================================================
-   MÓVIL
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .main-header {
-        height: 64px;
-    }
-
-    .header-inner {
-        height: 64px;
-
-        min-height: 64px;
-
-        width: calc(100% - 24px);
-    }
-
-    .satori-logo {
-        font-size: 27px;
-    }
-
-    .home-redesign {
-        width: calc(100% - 20px);
-    }
-
-
-    /* Colecciones */
-
-    .collection-showcase-grid {
-        grid-template-columns: 1fr 1fr;
-
-        gap: 7px;
-    }
-
-    .collection-showcase {
-        min-height: 170px;
-    }
-
-
-    /* Footer */
-
-    .footer-main {
-        width: calc(100% - 40px);
-
-        padding: 45px 0 35px;
-
-        grid-template-columns: 1fr;
-
-        gap: 38px;
-    }
-
-    .footer-brand p {
-        max-width: 320px;
-    }
-
-    .footer-community h2 {
-        font-size: 23px;
-    }
-
-    .footer-newsletter {
-        max-width: 100%;
-    }
-
-    .footer-bottom {
-        width: calc(100% - 40px);
-
-        padding: 18px 0 22px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 8px;
-    }
-
-    .footer-bottom span:last-child {
-        text-align: left;
-    }
-
-}
-
-
-/* =========================================================
-   MÓVIL PEQUEÑO
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .shipping-bar {
-        font-size: 8px;
-    }
-
-    .home-redesign {
-        width: calc(100% - 16px);
-    }
-
-    .collection-showcase-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .collection-showcase {
-        min-height: 180px;
-    }
-
-    .footer-main {
-        width: calc(100% - 28px);
-    }
-
-    .footer-bottom {
-        width: calc(100% - 28px);
-    }
-
-}
