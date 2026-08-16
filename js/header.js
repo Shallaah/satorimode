@@ -414,3 +414,675 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+/* =========================================================
+   SATORIMODE - AJUSTE FINAL HEADER + FOOTER + ESCALA
+   ========================================================= */
+
+
+/* =========================================================
+   HEADER MÁS BAJO
+   ========================================================= */
+
+.main-header {
+    height: 64px;
+}
+
+.header-inner {
+    min-height: 64px;
+    height: 64px;
+
+    width: min(1200px, calc(100% - 48px));
+
+    margin: 0 auto;
+}
+
+
+/* LOGO */
+
+.satori-logo {
+    font-size: 30px;
+}
+
+
+/* NAVEGACIÓN */
+
+.desktop-nav {
+    gap: 38px;
+}
+
+.desktop-nav > a,
+.nav-dropdown > button {
+    height: 64px;
+
+    font-size: 12px;
+}
+
+
+/* ICONOS */
+
+.header-actions {
+    gap: 17px;
+}
+
+.header-icon {
+    width: 27px;
+    height: 27px;
+}
+
+.header-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* BUSCADOR */
+
+.search-toggle {
+    width: 34px;
+    height: 34px;
+}
+
+.search-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* =========================================================
+   ANCHO GENERAL DE LA TIENDA
+   ========================================================= */
+
+.home-redesign {
+    width: min(1200px, calc(100% - 48px));
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.store-hero {
+    width: 100%;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 0 0 6px 6px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BENEFICIOS
+   ========================================================= */
+
+.store-benefits {
+    width: 100%;
+
+    border: 1px solid #d8d8d8;
+
+    border-top: 0;
+
+    border-radius: 0 0 6px 6px;
+}
+
+
+/* =========================================================
+   SECCIONES
+   ========================================================= */
+
+.store-section {
+    width: 100%;
+}
+
+
+/* Títulos un poco más grandes */
+
+.store-section-head h2 {
+    font-size: 18px;
+    letter-spacing: -.2px;
+}
+
+.store-section-head a {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   COLECCIONES
+   ========================================================= */
+
+.collection-showcase-grid {
+    gap: 8px;
+}
+
+.collection-showcase {
+    min-height: 210px;
+
+    border: 1px solid #d0d0d0;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PRODUCTOS
+   ========================================================= */
+
+.store-product-grid {
+    gap: 14px;
+}
+
+
+/* =========================================================
+   BLOQUE INFERIOR
+   ========================================================= */
+
+.store-lower-grid {
+    gap: 10px;
+}
+
+.store-latest,
+.store-brand-card,
+.store-clan-card {
+    border: 1px solid #d8d8d8;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FOOTER COMPLETO
+   ========================================================= */
+
+.site-footer {
+    width: 100%;
+
+    margin-top: 55px;
+
+    background: #080808;
+
+    color: #fff;
+
+    border-top: 1px solid #151515;
+}
+
+
+/* CONTENEDOR PRINCIPAL DEL FOOTER */
+
+.footer-main {
+    width: min(1200px, calc(100% - 48px));
+
+    margin: 0 auto;
+
+    padding: 58px 0 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.35fr
+        1fr
+        1fr
+        1.65fr;
+
+    column-gap: 70px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   MARCA FOOTER
+   ========================================================= */
+
+.footer-brand {
+    min-width: 0;
+}
+
+.footer-brand h3 {
+    margin: 0 0 18px;
+
+    color: #fff;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    letter-spacing: -.5px;
+}
+
+.footer-brand p {
+    max-width: 260px;
+
+    margin: 0;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   COLUMNAS
+   ========================================================= */
+
+.footer-column {
+    min-width: 0;
+}
+
+.footer-column h4 {
+    margin: 0 0 22px;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.footer-column a {
+    display: block;
+
+    width: fit-content;
+
+    margin-bottom: 14px;
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+.footer-column a:hover {
+    color: #fff;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   INSTAGRAM
+   ========================================================= */
+
+.footer-social {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.footer-instagram {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 2px;
+
+    border: 1px solid #555;
+
+    border-radius: 50%;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.footer-instagram:hover {
+    border-color: #fff;
+
+    background: #151515;
+}
+
+.footer-instagram svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+}
+
+
+/* =========================================================
+   CLAN / NEWSLETTER
+   ========================================================= */
+
+.footer-community {
+    min-width: 0;
+}
+
+.footer-community .store-eyebrow {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #ff1717;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.footer-community h2 {
+    margin: 0 0 12px;
+
+    color: #fff;
+
+    font-size: 25px;
+
+    line-height: 1.05;
+
+    font-weight: 900;
+}
+
+.footer-community h2 strong {
+    color: #ff1717;
+}
+
+.footer-community p {
+    max-width: 380px;
+
+    margin: 0 0 20px;
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FORMULARIO FOOTER
+   ========================================================= */
+
+.footer-newsletter {
+    width: 100%;
+
+    max-width: 390px;
+
+    display: flex;
+
+    align-items: stretch;
+}
+
+.footer-newsletter input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    border: 1px solid #ddd;
+
+    border-right: 0;
+
+    border-radius: 4px 0 0 4px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: #111;
+
+    font-family: inherit;
+
+    font-size: 11px;
+}
+
+.footer-newsletter input:focus {
+    border-color: #ff1717;
+}
+
+.footer-newsletter button {
+    width: 50px;
+
+    height: 44px;
+
+    border: 0;
+
+    border-radius: 0 4px 4px 0;
+
+    background: #ff1717;
+
+    color: #fff;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: background .2s ease;
+}
+
+.footer-newsletter button:hover {
+    background: #d90000;
+}
+
+
+/* =========================================================
+   FOOTER INFERIOR
+   ========================================================= */
+
+.footer-bottom {
+    width: min(1200px, calc(100% - 48px));
+
+    margin: 0 auto;
+
+    padding: 18px 0 24px;
+
+    border-top: 1px solid #242424;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #777;
+
+    font-size: 9px;
+}
+
+.footer-bottom span:last-child {
+    text-align: right;
+}
+
+
+/* =========================================================
+   BORDES / ESQUINAS
+   ========================================================= */
+
+.store-hero,
+.store-benefits,
+.collection-showcase,
+.store-latest,
+.store-brand-card,
+.store-clan-card,
+.store-pack {
+    border: 1px solid #d8d8d8;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .header-inner {
+        width: calc(100% - 36px);
+    }
+
+    .home-redesign {
+        width: calc(100% - 36px);
+    }
+
+    .footer-main {
+        width: calc(100% - 36px);
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        gap: 45px;
+    }
+
+    .footer-bottom {
+        width: calc(100% - 36px);
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .main-header {
+        height: 64px;
+    }
+
+    .header-inner {
+        height: 64px;
+
+        min-height: 64px;
+
+        width: calc(100% - 24px);
+    }
+
+    .satori-logo {
+        font-size: 27px;
+    }
+
+    .home-redesign {
+        width: calc(100% - 20px);
+    }
+
+
+    /* Colecciones */
+
+    .collection-showcase-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 7px;
+    }
+
+    .collection-showcase {
+        min-height: 170px;
+    }
+
+
+    /* Footer */
+
+    .footer-main {
+        width: calc(100% - 40px);
+
+        padding: 45px 0 35px;
+
+        grid-template-columns: 1fr;
+
+        gap: 38px;
+    }
+
+    .footer-brand p {
+        max-width: 320px;
+    }
+
+    .footer-community h2 {
+        font-size: 23px;
+    }
+
+    .footer-newsletter {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        width: calc(100% - 40px);
+
+        padding: 18px 0 22px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+    .footer-bottom span:last-child {
+        text-align: left;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .shipping-bar {
+        font-size: 8px;
+    }
+
+    .home-redesign {
+        width: calc(100% - 16px);
+    }
+
+    .collection-showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-showcase {
+        min-height: 180px;
+    }
+
+    .footer-main {
+        width: calc(100% - 28px);
+    }
+
+    .footer-bottom {
+        width: calc(100% - 28px);
+    }
+
+}
