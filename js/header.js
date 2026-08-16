@@ -3,17 +3,20 @@
     "use strict";
 
 
+    /* =====================================================
+       CONFIGURACIÓN
+    ====================================================== */
+
+    const SATORIMODE_BASE = "/satorimode/";
+
+    const CART_STORAGE_KEY = "satorii_cart";
+
+
+    /* =====================================================
+       INICIALIZACIÓN
+    ====================================================== */
+
     function initSatoriiHeader() {
-
-        /* =====================================================
-           RUTA BASE DE SATORIMODE
-
-           IMPORTANTE:
-           Todas las páginas internas utilizan esta ruta
-           para evitar problemas de rutas relativas.
-        ====================================================== */
-
-        const SATORIMODE_BASE = "/satorimode/";
 
 
         /* =====================================================
@@ -34,9 +37,11 @@
             oldHeader.remove();
         }
 
+
         if (oldStyle) {
             oldStyle.remove();
         }
+
 
         if (oldSpacer) {
             oldSpacer.remove();
@@ -49,6 +54,7 @@
 
         const root =
             document.createElement("div");
+
 
         root.id =
             "satori-header";
@@ -318,6 +324,7 @@
 
                 <div class="header-icons">
 
+
                     <!-- BUSCAR -->
 
                     <button
@@ -405,12 +412,12 @@
                         </svg>
 
 
-                        <!-- CONTADOR GLOBAL -->
+                        <!-- CONTADOR -->
 
                         <span
-                            class="satori-cart-badge is-empty"
-                            id="satori-cart-badge"
-                            aria-label="Productos en el carrito"
+                            class="cart-count"
+                            data-satori-cart-count
+                            aria-hidden="true"
                         >
                             0
                         </span>
@@ -629,6 +636,7 @@
                     SÍGUENOS
                 </span>
 
+
                 <a
                     href="https://www.instagram.com/satorimode/"
                     target="_blank"
@@ -732,18 +740,19 @@
 
 
         /* =====================================================
-           INSERTAR
+           INSERTAR HEADER
         ====================================================== */
 
         document.body.prepend(root);
 
 
         /* =====================================================
-           CSS DEL HEADER
+           CSS
         ====================================================== */
 
         const style =
             document.createElement("style");
+
 
         style.id =
             "satori-header-style";
@@ -1090,40 +1099,35 @@
 
 
         /* =====================================================
-           CONTADOR GLOBAL DEL CARRITO
+           CONTADOR DEL CARRITO
         ====================================================== */
 
-        #satori-header .cart-header-icon {
-            position:relative;
-        }
-
-
-        #satori-header .satori-cart-badge {
+        #satori-header .cart-count {
             position:absolute;
-
             top:1px;
-            right:-1px;
+            right:1px;
 
-            min-width:17px;
-            height:17px;
+            min-width:15px;
+            height:15px;
 
-            padding:0 4px;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            padding:
+                0 4px;
 
             border-radius:999px;
 
             background:#f31218;
             color:#fff;
 
-            border:2px solid #fff;
+            font-size:9px;
+            font-weight:700;
 
-            font-size:8px;
-            font-weight:900;
+            line-height:15px;
+            text-align:center;
 
-            line-height:1;
+            display:none;
+
+            align-items:center;
+            justify-content:center;
 
             white-space:nowrap;
 
@@ -1131,21 +1135,10 @@
 
             z-index:20;
 
-            transition:
-                transform .15s ease,
-                opacity .15s ease;
-        }
-
-
-        #satori-header .satori-cart-badge.is-empty {
-            display:none;
-        }
-
-
-        #satori-header
-        .cart-header-icon:hover
-        .satori-cart-badge {
-            transform:scale(1.08);
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
         }
 
 
@@ -1261,7 +1254,6 @@
             color:#111;
             font-size:29px;
             line-height:1;
-            cursor:pointer;
         }
 
 
@@ -1676,19 +1668,18 @@
             }
 
 
-            /* CONTADOR */
+            /* CONTADOR MÓVIL */
 
-            #satori-header .satori-cart-badge {
+            #satori-header .cart-count {
                 top:0;
-                right:-1px;
-                min-width:16px;
-                height:16px;
-                padding:0 4px;
-                font-size:8px;
+                right:0;
+                min-width:15px;
+                height:15px;
+                font-size:9px;
             }
 
 
-            /* MENÚ FLOTANTE */
+            /* HEADER FLOTANTE */
 
             #satori-header.scrolled .main-header {
                 top:8px;
@@ -1767,20 +1758,24 @@
 
 
         /* =====================================================
-           ESPACIADOR DEL HEADER FLOTANTE
+           ESPACIADOR HEADER FLOTANTE
         ====================================================== */
 
         const spacer =
             document.createElement("div");
 
+
         spacer.id =
             "satori-header-spacer";
+
 
         spacer.style.display =
             "none";
 
+
         spacer.style.height =
             "0px";
+
 
         root.insertAdjacentElement(
             "afterend",
@@ -1812,7 +1807,9 @@
                 spacer.style.height =
                     "64px";
 
-            } else {
+            }
+
+            else {
 
                 spacer.style.display =
                     "none";
@@ -1852,40 +1849,48 @@
                 "satori-mobile-menu"
             );
 
+
         const overlay =
             document.getElementById(
                 "satori-mobile-overlay"
             );
+
 
         const openButton =
             document.getElementById(
                 "satori-mobile-open"
             );
 
+
         const closeButton =
             document.getElementById(
                 "satori-mobile-close"
             );
+
 
         const searchButton =
             document.getElementById(
                 "satori-search"
             );
 
+
         const searchOverlay =
             document.getElementById(
                 "satori-search-overlay"
             );
+
 
         const searchClose =
             document.getElementById(
                 "satori-search-close"
             );
 
+
         const searchInput =
             document.getElementById(
                 "satori-search-input"
             );
+
 
         const searchForm =
             document.getElementById(
@@ -1894,7 +1899,134 @@
 
 
         /* =====================================================
-           SCROLL BODY
+           CONTADOR DEL CARRITO
+        ====================================================== */
+
+        function getCartCount() {
+
+            try {
+
+                const savedCart =
+                    localStorage.getItem(
+                        CART_STORAGE_KEY
+                    );
+
+
+                if (!savedCart) {
+
+                    return 0;
+
+                }
+
+
+                const cart =
+                    JSON.parse(savedCart);
+
+
+                if (!Array.isArray(cart)) {
+
+                    return 0;
+
+                }
+
+
+                return cart.reduce(
+                    (
+                        total,
+                        item
+                    ) => {
+
+                        return total +
+                            Number(
+                                item.quantity || 0
+                            );
+
+                    },
+                    0
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "SatoriMode · Error leyendo contador del carrito:",
+                    error
+                );
+
+                return 0;
+
+            }
+
+        }
+
+
+        function updateHeaderCartCount() {
+
+            const count =
+                getCartCount();
+
+
+            root.querySelectorAll(
+                "[data-satori-cart-count]"
+            ).forEach(
+                function (element) {
+
+                    element.textContent =
+                        count;
+
+
+                    element.style.display =
+                        count > 0
+                            ? "flex"
+                            : "none";
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           ACTUALIZAR CUANDO CART.JS CAMBIA
+        ====================================================== */
+
+        document.addEventListener(
+            "satorii:cart-updated",
+            updateHeaderCartCount
+        );
+
+
+        /* =====================================================
+           ACTUALIZAR ENTRE PESTAÑAS
+        ====================================================== */
+
+        window.addEventListener(
+            "storage",
+            function (event) {
+
+                if (
+                    event.key ===
+                    CART_STORAGE_KEY
+                ) {
+
+                    updateHeaderCartCount();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           ACTUALIZACIÓN INICIAL
+        ====================================================== */
+
+        updateHeaderCartCount();
+
+
+        /* =====================================================
+           BODY
         ====================================================== */
 
         function lockBody() {
@@ -1914,6 +2046,7 @@
                     "open"
                 );
 
+
             const searchOpen =
                 searchOverlay &&
                 searchOverlay.classList.contains(
@@ -1921,7 +2054,10 @@
                 );
 
 
-            if (!menuOpen && !searchOpen) {
+            if (
+                !menuOpen &&
+                !searchOpen
+            ) {
 
                 document.body.classList.remove(
                     "menu-open"
@@ -1930,197 +2066,6 @@
             }
 
         }
-
-
-        /* =====================================================
-           CONTADOR GLOBAL DEL CARRITO
-        ====================================================== */
-
-        function updateSatoriCartBadge() {
-
-            const badge =
-                document.getElementById(
-                    "satori-cart-badge"
-                );
-
-
-            if (!badge) {
-                return;
-            }
-
-
-            let cart = [];
-
-
-            try {
-
-                cart =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "satorimode_cart"
-                        )
-                    ) || [];
-
-            } catch (error) {
-
-                cart = [];
-
-            }
-
-
-            let total = 0;
-
-
-            if (Array.isArray(cart)) {
-
-                total =
-                    cart.reduce(
-                        function (sum, item) {
-
-                            return sum +
-                                (
-                                    Number(
-                                        item.quantity
-                                    ) || 0
-                                );
-
-                        },
-                        0
-                    );
-
-            }
-
-
-            badge.textContent =
-                total;
-
-
-            badge.classList.toggle(
-                "is-empty",
-                total <= 0
-            );
-
-
-            /*
-             * Accesibilidad:
-             * actualiza también el texto descriptivo
-             * del botón del carrito.
-             */
-
-            const cartLink =
-                root.querySelector(
-                    ".cart-header-icon"
-                );
-
-
-            if (cartLink) {
-
-                cartLink.setAttribute(
-                    "aria-label",
-                    total > 0
-                        ? "Carrito, " + total + " productos"
-                        : "Carrito vacío"
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           ACTUALIZAR CONTADOR AL CARGAR
-        ====================================================== */
-
-        updateSatoriCartBadge();
-
-
-        /* =====================================================
-           EXPONER FUNCIÓN PARA CARRITO.JS
-           
-           Esto permite que carrito.js pueda decirle
-           inmediatamente al header que el carrito cambió.
-        ====================================================== */
-
-        window.updateSatoriCartBadge =
-            updateSatoriCartBadge;
-
-
-        /* =====================================================
-           EVENTO DEL CARRITO
-           
-           carrito.js podrá ejecutar:
-
-           window.dispatchEvent(
-               new Event("satoriCartUpdated")
-           );
-
-        ====================================================== */
-
-        window.addEventListener(
-            "satoriCartUpdated",
-            updateSatoriCartBadge
-        );
-
-
-        /* =====================================================
-           CAMBIOS DESDE OTRA PESTAÑA
-        ====================================================== */
-
-        window.addEventListener(
-            "storage",
-            function (event) {
-
-                if (
-                    event.key ===
-                    "satorimode_cart"
-                ) {
-
-                    updateSatoriCartBadge();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           SEGURIDAD EXTRA
-
-           Comprueba periódicamente el localStorage
-           por si otra función modifica el carrito
-           sin lanzar el evento.
-        ====================================================== */
-
-        let lastCartValue =
-            localStorage.getItem(
-                "satorimode_cart"
-            );
-
-
-        setInterval(
-            function () {
-
-                const currentCartValue =
-                    localStorage.getItem(
-                        "satorimode_cart"
-                    );
-
-
-                if (
-                    currentCartValue !==
-                    lastCartValue
-                ) {
-
-                    lastCartValue =
-                        currentCartValue;
-
-                    updateSatoriCartBadge();
-
-                }
-
-            },
-            500
-        );
 
 
         /* =====================================================
@@ -2161,7 +2106,7 @@
 
 
         /* =====================================================
-           CERRAR MENÚ
+           CERRAR MENÚ MÓVIL
         ====================================================== */
 
         function closeMobileMenu() {
@@ -2171,6 +2116,7 @@
                 mobileMenu.classList.remove(
                     "open"
                 );
+
 
                 mobileMenu.setAttribute(
                     "aria-hidden",
@@ -2185,6 +2131,7 @@
                 overlay.classList.remove(
                     "open"
                 );
+
 
                 overlay.setAttribute(
                     "aria-hidden",
@@ -2210,7 +2157,7 @@
 
 
         /* =====================================================
-           ABRIR MENÚ
+           ABRIR MENÚ MÓVIL
         ====================================================== */
 
         function openMobileMenu() {
@@ -2226,6 +2173,7 @@
                     "open"
                 );
 
+
                 mobileMenu.setAttribute(
                     "aria-hidden",
                     "false"
@@ -2239,6 +2187,7 @@
                 overlay.classList.add(
                     "open"
                 );
+
 
                 overlay.setAttribute(
                     "aria-hidden",
@@ -2270,6 +2219,7 @@
                 function (event) {
 
                     event.preventDefault();
+
                     event.stopPropagation();
 
                     openMobileMenu();
@@ -2287,6 +2237,7 @@
                 function (event) {
 
                     event.preventDefault();
+
                     event.stopPropagation();
 
                     closeMobileMenu();
@@ -2319,6 +2270,7 @@
                     "open"
                 );
 
+
                 searchOverlay.setAttribute(
                     "aria-hidden",
                     "true"
@@ -2350,13 +2302,16 @@
 
 
             if (!searchOverlay) {
+
                 return;
+
             }
 
 
             searchOverlay.classList.add(
                 "open"
             );
+
 
             searchOverlay.setAttribute(
                 "aria-hidden",
@@ -2400,6 +2355,7 @@
                 function (event) {
 
                     event.preventDefault();
+
                     event.stopPropagation();
 
                     openSearch();
@@ -2417,6 +2373,7 @@
                 function (event) {
 
                     event.preventDefault();
+
                     event.stopPropagation();
 
                     closeSearch();
@@ -2483,7 +2440,9 @@
                     window.location.href =
                         SATORIMODE_BASE +
                         "productos.html?search=" +
-                        encodeURIComponent(query);
+                        encodeURIComponent(
+                            query
+                        );
 
                 }
             );
@@ -2507,7 +2466,9 @@
 
 
                 if (!button) {
+
                     return;
+
                 }
 
 
@@ -2516,6 +2477,7 @@
                     function (event) {
 
                         event.preventDefault();
+
                         event.stopPropagation();
 
 
@@ -2536,6 +2498,7 @@
                             dropdown.classList.add(
                                 "open"
                             );
+
 
                             button.setAttribute(
                                 "aria-expanded",
@@ -2564,7 +2527,9 @@
                         event.target
                     )
                 ) {
+
                     return;
+
                 }
 
 
@@ -2588,18 +2553,20 @@
                     function (event) {
 
                         event.preventDefault();
+
                         event.stopPropagation();
 
 
                         const target =
-                            root.querySelector(
-                                "#" +
+                            document.getElementById(
                                 button.dataset.target
                             );
 
 
                         if (!target) {
+
                             return;
+
                         }
 
 
@@ -2655,9 +2622,11 @@
                                 "open"
                             );
 
+
                             button.classList.add(
                                 "active"
                             );
+
 
                             button.setAttribute(
                                 "aria-expanded",
@@ -2706,7 +2675,9 @@
                 if (
                     event.key !== "Escape"
                 ) {
+
                     return;
+
                 }
 
 
@@ -2750,7 +2721,8 @@
     ====================================================== */
 
     if (
-        document.readyState === "loading"
+        document.readyState ===
+        "loading"
     ) {
 
         document.addEventListener(
@@ -2758,7 +2730,9 @@
             initSatoriiHeader
         );
 
-    } else {
+    }
+
+    else {
 
         initSatoriiHeader();
 
