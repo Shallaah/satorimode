@@ -156,19 +156,25 @@ img {
 #satori-header {
     position: relative;
     z-index: 9999;
-
     width: 100%;
 }
 
+
 /*
-   La barra roja NO queda fija.
-   El header blanco sí.
+   Barra roja:
+   NO queda fija.
 */
 
 #satori-header .top-bar {
     position: relative !important;
     z-index: 10001 !important;
 }
+
+
+/*
+   Header blanco:
+   queda sticky debajo de la barra roja.
+*/
 
 .main-header,
 #satori-header .main-header {
@@ -182,6 +188,7 @@ img {
     border-bottom: 1px solid #e5e5e5;
 
     position: sticky !important;
+
     top: 0;
 
     z-index: 10000 !important;
@@ -189,15 +196,19 @@ img {
     box-shadow: 0 1px 5px rgba(0, 0, 0, .04);
 }
 
+
 .header-inner,
 #satori-header .header-inner {
     width: min(1400px, calc(100% - 40px));
+
     height: 68px;
 
     margin: 0 auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     position: relative;
@@ -205,9 +216,7 @@ img {
 
 
 /*
-   IMPORTANTE:
-   El header ahora es sticky y ocupa su espacio normal.
-   Por eso NO necesitamos padding-top en main.
+   No agregamos padding superior a main.
 */
 
 main {
@@ -228,6 +237,7 @@ main {
     font-size: 30px;
 
     font-weight: 700;
+
     font-style: italic;
 
     letter-spacing: -1.8px;
@@ -263,6 +273,7 @@ main {
     height: 100%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -275,12 +286,15 @@ main {
     height: 100%;
 
     display: flex;
+
     align-items: center;
 
     border: 0;
+
     background: transparent;
 
     font-size: 14px;
+
     font-weight: 500;
 
     white-space: nowrap;
@@ -303,6 +317,7 @@ main {
 
 .nav-dropdown {
     height: 100%;
+
     position: relative;
 }
 
@@ -324,6 +339,7 @@ main {
     position: absolute;
 
     top: calc(100% + 1px);
+
     left: 50%;
 
     width: 190px;
@@ -333,15 +349,20 @@ main {
     background: #fff;
 
     border: 1px solid var(--border);
+
     border-radius: var(--radius);
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
 
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 
-    transform: translateX(-50%) translateY(8px);
+    transform:
+        translateX(-50%)
+        translateY(8px);
 
     transition:
         opacity .2s ease,
@@ -350,10 +371,14 @@ main {
 
 .nav-dropdown:hover .dropdown-menu {
     opacity: 1;
+
     visibility: visible;
+
     pointer-events: auto;
 
-    transform: translateX(-50%) translateY(0);
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 .dropdown-menu a {
@@ -364,22 +389,25 @@ main {
     border-radius: 5px;
 
     font-size: 14px;
+
     font-weight: 500;
 }
 
 .dropdown-menu a:hover {
     background: #f5f5f5;
+
     color: var(--red);
 }
 
 
 /* =========================================================
-   ACCIONES DEL HEADER
+   ACCIONES HEADER
 ========================================================= */
 
 .header-actions,
 .header-icons {
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -392,9 +420,11 @@ main {
     padding: 0;
 
     border: 0;
+
     background: transparent;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -406,7 +436,9 @@ main {
     height: 19px;
 
     fill: none;
+
     stroke: currentColor;
+
     stroke-width: 1.5;
 }
 
@@ -421,6 +453,7 @@ main {
 
 .search-wrapper {
     display: flex;
+
     align-items: center;
 
     position: relative;
@@ -432,6 +465,7 @@ main {
 
 .search-input {
     width: 0;
+
     height: 34px;
 
     margin: 0;
@@ -441,6 +475,7 @@ main {
     opacity: 0;
 
     border: 1px solid var(--border);
+
     border-radius: 6px;
 
     outline: none;
@@ -481,9 +516,11 @@ main {
     display: none;
 
     width: 34px;
+
     height: 34px;
 
     margin: 0;
+
     padding: 5px;
 
     border: 0;
@@ -493,20 +530,19 @@ main {
     color: #111;
 
     font-size: 0;
+
     line-height: 0;
 
     flex-direction: column;
+
     align-items: flex-start;
+
     justify-content: center;
 
     gap: 5px;
 
     z-index: 10005;
 }
-
-/*
-   Si el HTML tiene spans, usamos esos.
-*/
 
 .mobile-menu-button span,
 .mobile-menu-button .line {
@@ -515,6 +551,7 @@ main {
     height: 1.5px;
 
     margin: 0;
+
     padding: 0;
 
     background: #111;
@@ -560,9 +597,11 @@ main {
     position: fixed;
 
     top: 0;
+
     left: 0;
 
     width: min(370px, 82vw);
+
     height: 100dvh;
 
     background: #fff;
@@ -573,11 +612,14 @@ main {
 
     border-right: 1px solid #ddd;
 
-    box-shadow: 8px 0 30px rgba(0, 0, 0, .12);
+    box-shadow:
+        8px 0 30px
+        rgba(0, 0, 0, .12);
 
     transform: translateX(-100%);
 
-    transition: transform .3s ease;
+    transition:
+        transform .3s ease;
 }
 
 .mobile-menu.open {
@@ -590,11 +632,13 @@ main {
 
     inset: 0;
 
-    background: rgba(0, 0, 0, .50);
+    background:
+        rgba(0, 0, 0, .50);
 
     z-index: 10999;
 
     opacity: 0;
+
     visibility: hidden;
 
     transition:
@@ -605,12 +649,13 @@ main {
 .mobile-overlay.open,
 .mobile-menu-overlay.open {
     opacity: 1;
+
     visibility: visible;
 }
 
 
 /* =========================================================
-   CABECERA DEL MENÚ
+   CABECERA MENÚ
 ========================================================= */
 
 .mobile-menu-header {
@@ -619,7 +664,9 @@ main {
     padding: 0 24px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     border-bottom: 1px solid #ddd;
@@ -635,6 +682,7 @@ main {
 
 .mobile-menu-header button {
     width: 34px;
+
     height: 34px;
 
     padding: 0;
@@ -644,10 +692,13 @@ main {
     background: transparent;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 26px;
+
     color: #111;
 }
 
@@ -672,17 +723,21 @@ main {
     padding: 0;
 
     border: 0;
+
     border-bottom: 1px solid #ddd;
 
     background: transparent;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     text-align: left;
 
     font-size: 16px;
+
     font-weight: 500;
 
     color: #111;
@@ -691,41 +746,33 @@ main {
 .mobile-menu-item > button,
 .mobile-menu-item > a {
     width: 100%;
+
     min-height: 60px;
 
     padding: 0;
 
     border: 0;
+
     background: transparent;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     color: #111;
 
     font-size: 16px;
+
     font-weight: 500;
 
     text-align: left;
 }
 
-.mobile-menu-item.home-item > button::after,
-.mobile-menu-item.home-item > a::after {
-    display: none;
-}
-
-.mobile-menu-item > span:first-child {
-    transform: none !important;
-
-    writing-mode: horizontal-tb !important;
-
-    white-space: nowrap;
-}
-
 
 /* =========================================================
-   FLECHAS MENÚ MÓVIL
+   FLECHAS MENÚ
 ========================================================= */
 
 .mobile-menu-item.has-submenu > button::after {
@@ -733,7 +780,8 @@ main {
 
     font-size: 16px;
 
-    transition: transform .2s ease;
+    transition:
+        transform .2s ease;
 }
 
 .mobile-menu-item.has-submenu.open > button::after {
@@ -748,7 +796,8 @@ main {
 .mobile-submenu {
     display: none;
 
-    padding: 0 24px 10px 24px;
+    padding:
+        0 24px 10px 24px;
 
     background: #fafafa;
 }
@@ -765,6 +814,7 @@ main {
     color: #555;
 
     font-size: 15px;
+
     font-weight: 400;
 
     border-bottom: 1px solid #eee;
@@ -780,11 +830,13 @@ main {
 ========================================================= */
 
 .mobile-social-title {
-    margin: 38px 24px 16px;
+    margin:
+        38px 24px 16px;
 
     color: var(--red);
 
     font-size: 12px;
+
     font-weight: 700;
 
     letter-spacing: 3px;
@@ -796,6 +848,7 @@ main {
     color: #111;
 
     font-size: 14px;
+
     font-weight: 600;
 }
 
@@ -809,12 +862,6 @@ main {
 
     position: sticky;
 
-    /*
-       IMPORTANTE:
-       El banner queda pegado arriba,
-       detrás del header y detrás del contenido.
-    */
-
     top: 0;
 
     z-index: 0;
@@ -824,6 +871,7 @@ main {
     background: #eee;
 
     border: none !important;
+
     border-radius: 0 !important;
 
     box-shadow: none !important;
@@ -841,7 +889,8 @@ main {
     width: 100%;
 
     transition:
-        transform .55s cubic-bezier(.22, .61, .36, 1);
+        transform .55s
+        cubic-bezier(.22, .61, .36, 1);
 }
 
 .hero-slide {
@@ -862,30 +911,44 @@ main {
     border: none !important;
 }
 
+.hero-slide picture {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+}
+
 .hero-slide img {
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
 
+    object-position: center;
+
     user-select: none;
+
     pointer-events: none;
 }
 
 
 /* =========================================================
-   DOTS DEL BANNER
+   DOTS
 ========================================================= */
 
 .hero-dots {
     position: absolute;
 
     bottom: 18px;
+
     left: 50%;
 
     transform: translateX(-50%);
 
     display: flex;
+
     align-items: center;
 
     gap: 7px;
@@ -895,14 +958,17 @@ main {
 
 .hero-dot {
     width: 8px;
+
     height: 8px;
 
     padding: 0;
 
     border: 0;
+
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .65);
+    background:
+        rgba(255, 255, 255, .65);
 
     transition: .25s ease;
 }
@@ -917,7 +983,7 @@ main {
 
 
 /* =========================================================
-   OCULTAR FLECHAS
+   FLECHAS BANNER
 ========================================================= */
 
 .hero-arrow,
@@ -933,11 +999,6 @@ main {
 /* =========================================================
    CONTENIDO SOBRE EL BANNER
 ========================================================= */
-
-/*
-   Esto es lo que permite que al bajar
-   la página vaya tapando el banner.
-*/
 
 .benefits,
 .section,
@@ -960,19 +1021,27 @@ main {
 .benefits {
     width: min(
         var(--satori-content-width),
-        calc(100% - (var(--satori-side-space) * 2))
+        calc(
+            100% -
+            (var(--satori-side-space) * 2)
+        )
     );
 
     margin: 0 auto;
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     border: 1px solid var(--border);
+
     border-top: none;
 
-    border-radius: 0 0 var(--radius) var(--radius);
+    border-radius:
+        0 0
+        var(--radius)
+        var(--radius);
 
     overflow: hidden;
 
@@ -985,11 +1054,13 @@ main {
     padding: 15px 22px;
 
     display: flex;
+
     align-items: center;
 
     gap: 13px;
 
-    border-right: 1px solid var(--border);
+    border-right:
+        1px solid var(--border);
 }
 
 .benefit:last-child {
@@ -1008,6 +1079,7 @@ main {
     margin-bottom: 3px;
 
     font-size: 14px;
+
     font-weight: 700;
 }
 
@@ -1029,10 +1101,14 @@ main {
 .satori-pack {
     width: min(
         var(--satori-content-width),
-        calc(100% - (var(--satori-side-space) * 2))
+        calc(
+            100% -
+            (var(--satori-side-space) * 2)
+        )
     );
 
     margin-left: auto;
+
     margin-right: auto;
 }
 
@@ -1048,7 +1124,9 @@ main {
     margin-bottom: 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
@@ -1056,6 +1134,7 @@ main {
     margin: 0;
 
     font-size: 24px;
+
     line-height: 1.1;
 
     font-weight: 800;
@@ -1067,6 +1146,7 @@ main {
     color: var(--red);
 
     font-size: 13px;
+
     font-weight: 700;
 }
 
@@ -1080,7 +1160,8 @@ main {
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 10px;
 }
@@ -1093,6 +1174,7 @@ main {
     overflow: hidden;
 
     display: flex;
+
     align-items: flex-end;
 
     border: 1px solid #ccc;
@@ -1149,6 +1231,7 @@ main {
     margin: 0;
 
     font-size: 19px;
+
     font-weight: 800;
 }
 
@@ -1170,7 +1253,8 @@ main {
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 14px;
 }
@@ -1192,7 +1276,9 @@ main {
 .recommendation-card:hover {
     transform: translateY(-3px);
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, .08);
 }
 
 .recommendation-image {
@@ -1207,6 +1293,7 @@ main {
 
 .recommendation-image img {
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -1222,6 +1309,7 @@ main {
     color: var(--red);
 
     font-size: 11px;
+
     font-weight: 700;
 
     letter-spacing: .7px;
@@ -1231,6 +1319,7 @@ main {
     margin-bottom: 4px;
 
     font-size: 15px;
+
     font-weight: 600;
 }
 
@@ -1240,18 +1329,15 @@ main {
     font-size: 13px;
 }
 
-
-/* =========================================================
-   PLACEHOLDER RECOMENDACIONES
-========================================================= */
-
 .recommendation-placeholder {
     width: 100%;
+
     height: 100%;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     background: #111;
@@ -1271,16 +1357,130 @@ main {
 ========================================================= */
 
 .satori-pack {
-    border: none !important;
+    position: relative;
 
-    border-radius: 10px;
+    overflow: hidden;
+
+    min-height: 250px;
+
+    margin-top: 70px;
+
+    padding: 50px 55px;
+
+    background:
+        radial-gradient(
+            circle at 82% 30%,
+            #430000 0%,
+            #1d0000 38%,
+            #080000 78%
+        ) !important;
+
+    border: 0 !important;
+
+    border-radius: 10px !important;
+
+    color: #fff;
 
     box-sizing: border-box;
 }
 
+.satori-pack::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, .05),
+            rgba(255, 20, 20, .08)
+        );
+
+    pointer-events: none;
+}
+
+.satori-pack-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 700px;
+}
+
+.satori-pack-label {
+    margin-bottom: 8px;
+
+    color: var(--red);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+}
+
+.satori-pack h2 {
+    margin: 0 0 12px;
+
+    font-size:
+        clamp(32px, 4vw, 52px);
+
+    line-height: 1;
+
+    font-weight: 800;
+}
+
+.satori-pack h2 span {
+    color: var(--red);
+}
+
+.satori-pack p {
+    max-width: 650px;
+
+    margin: 0 0 25px;
+
+    color: #ccc;
+
+    font-size: 14px;
+}
+
+.satori-pack-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 24px;
+
+    border-radius: 5px;
+
+    background: var(--red);
+
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.satori-pack-button:hover {
+    background: #d60000;
+
+    transform: translateY(-2px);
+}
+
 
 /* =========================================================
-   FOOTER ANTIGUO / COMPATIBILIDAD
+   FOOTER
 ========================================================= */
 
 .footer {
@@ -1294,13 +1494,15 @@ main {
 
     border: none !important;
 
-    border-top: 2px solid #222 !important;
+    border-top:
+        2px solid #222 !important;
 
     border-radius: 0 !important;
 }
 
 .footer-inner {
-    width: min(1500px, calc(100% - 40px));
+    width:
+        min(1500px, calc(100% - 40px));
 
     margin: 0 auto;
 
@@ -1419,6 +1621,15 @@ main {
     width: 100%;
 
     height: 46px;
+
+    border:
+        1px solid #444;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    background: #fff;
 }
 
 .newsletter input {
@@ -1433,6 +1644,10 @@ main {
     outline: none;
 
     font-size: 13px;
+
+    color: #111;
+
+    background: #fff;
 }
 
 .newsletter button {
@@ -1449,6 +1664,7 @@ main {
 
 .instagram-link {
     width: 38px;
+
     height: 38px;
 
     margin-top: 20px;
@@ -1456,27 +1672,58 @@ main {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    border: 1px solid #444;
+    border:
+        1px solid #444;
 
     border-radius: 50%;
 
     color: #fff;
+
+    transition:
+        color .2s ease,
+        border-color .2s ease;
+}
+
+.instagram-link:hover {
+    color: var(--red);
+
+    border-color: var(--red);
+}
+
+.instagram-link svg {
+    width: 18px;
+
+    height: 18px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
 }
 
 .footer-bottom {
-    width: min(1500px, calc(100% - 40px));
+    width:
+        min(1500px, calc(100% - 40px));
 
     margin: 0 auto;
 
     padding: 18px 0;
 
-    border-top: 1px solid #222;
+    border-top:
+        1px solid #222;
 
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     color: #777;
@@ -1496,372 +1743,6 @@ main {
 
 
 /* =========================================================
-   FOOTER GLOBAL SATORII
-========================================================= */
-
-.satori-global-footer {
-    width: 100%;
-
-    margin-top: 80px;
-
-    background: #0b0b0b;
-
-    color: #fff;
-
-    border-top: 2px solid #ed1111;
-
-    border-radius: 18px 18px 0 0;
-
-    overflow: hidden;
-}
-
-.satori-footer-main {
-    width: min(1350px, calc(100% - 40px));
-
-    margin: 0 auto;
-
-    padding: 58px 0 48px;
-
-    display: grid;
-
-    grid-template-columns:
-        1.25fr
-        .8fr
-        .8fr
-        1.5fr;
-
-    gap: 50px;
-}
-
-.satori-footer-brand h3 {
-    margin: 0 0 10px;
-
-    font-size: 24px;
-
-    font-weight: 900;
-
-    font-style: italic;
-
-    letter-spacing: -1px;
-
-    transition:
-        color .25s ease,
-        transform .25s ease;
-}
-
-.satori-footer-brand h3:hover {
-    color: var(--red);
-
-    transform: scale(1.05);
-}
-
-.satori-footer-kanji {
-    display: block;
-
-    margin-bottom: 15px;
-
-    color: var(--red);
-
-    font-size: 13px;
-
-    font-weight: 800;
-}
-
-.satori-footer-brand p {
-    max-width: 280px;
-
-    margin: 0;
-
-    color: #a5a5a5;
-
-    font-size: 11px;
-
-    line-height: 1.7;
-}
-
-.satori-footer-instagram {
-    width: 38px;
-    height: 38px;
-
-    margin-top: 18px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #fff;
-
-    border: 1px solid #444;
-
-    border-radius: 50%;
-
-    transition:
-        color .25s ease,
-        border-color .25s ease,
-        transform .25s ease;
-}
-
-.satori-footer-instagram svg {
-    width: 18px;
-    height: 18px;
-}
-
-.satori-footer-instagram:hover {
-    color: var(--red);
-
-    border-color: var(--red);
-
-    transform: scale(1.08);
-}
-
-.satori-footer-column h4 {
-    margin: 0 0 18px;
-
-    font-size: 10px;
-
-    font-weight: 900;
-
-    letter-spacing: 2px;
-}
-
-.satori-footer-column a {
-    display: block;
-
-    width: fit-content;
-
-    margin-bottom: 12px;
-
-    color: #999;
-
-    font-size: 11px;
-
-    transition:
-        color .2s ease,
-        transform .2s ease;
-}
-
-.satori-footer-column a:hover {
-    color: var(--red);
-
-    transform: translateX(3px);
-}
-
-.satori-footer-community-label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: var(--red);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: 3px;
-}
-
-.satori-footer-community h3 {
-    margin: 0 0 12px;
-
-    font-size: clamp(28px, 3vw, 40px);
-
-    line-height: 1;
-
-    letter-spacing: -1.5px;
-
-    font-weight: 900;
-}
-
-.satori-footer-community h3 span {
-    color: var(--red);
-}
-
-.satori-footer-community p {
-    max-width: 440px;
-
-    margin: 0;
-
-    color: #aaa;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-}
-
-.satori-footer-newsletter {
-    display: flex;
-
-    width: 100%;
-    max-width: 500px;
-
-    height: 44px;
-
-    margin-top: 18px;
-
-    overflow: hidden;
-
-    border: 1px solid #444;
-
-    border-radius: 5px;
-
-    background: #fff;
-}
-
-.satori-footer-newsletter input {
-    flex: 1;
-
-    min-width: 0;
-
-    padding: 0 14px;
-
-    border: 0;
-
-    outline: none;
-
-    background: #fff;
-
-    color: #111;
-
-    font-size: 11px;
-}
-
-.satori-footer-newsletter input::placeholder {
-    color: #888;
-}
-
-.satori-footer-newsletter button {
-    width: 52px;
-
-    border: 0;
-
-    background: var(--red);
-
-    color: #fff;
-
-    font-size: 18px;
-
-    transition:
-        background .2s ease,
-        width .2s ease;
-}
-
-.satori-footer-newsletter button:hover {
-    width: 57px;
-
-    background: #c90000;
-}
-
-.satori-footer-bottom {
-    width: min(1350px, calc(100% - 40px));
-
-    margin: 0 auto;
-
-    padding: 18px 0;
-
-    border-top: 1px solid #292929;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    color: #666;
-
-    font-size: 9px;
-}
-
-.satori-footer-bottom div {
-    display: flex;
-
-    gap: 22px;
-}
-
-.satori-footer-bottom a {
-    color: #666;
-
-    transition: color .2s ease;
-}
-
-.satori-footer-bottom a:hover {
-    color: #fff;
-}
-
-
-/* =========================================================
-   SEGURIDAD CONTRA ESTILOS ANTIGUOS
-========================================================= */
-
-.old-header-logo,
-.header-logo,
-.site-logo,
-.logo {
-    font-weight: 600 !important;
-}
-
-.best-sellers,
-.latest-releases,
-.mas-vendidos,
-.ultimos-estrenos {
-    display: none !important;
-}
-
-
-/* =========================================================
-   BANNER CATÁLOGO
-========================================================= */
-
-.catalog-banner {
-    position: relative;
-
-    overflow: hidden;
-
-    box-sizing: border-box;
-
-    border: 1.5px solid #333 !important;
-
-    border-radius: 10px !important;
-}
-
-
-/* =========================================================
-   BORDES FINALES
-========================================================= */
-
-.hero,
-.hero-slider,
-.hero-carousel,
-#hero,
-.banner,
-.main-banner,
-.home-hero {
-    border: none !important;
-
-    border-radius: 0 !important;
-
-    box-shadow: none !important;
-}
-
-.hero-slide,
-.hero-slide.active {
-    border: none !important;
-}
-
-footer,
-.site-footer,
-.main-footer,
-#footer {
-    border: none !important;
-
-    border-top: 2px solid #222 !important;
-
-    border-radius: 0 !important;
-}
-
-
-/* =========================================================
    TABLET
 ========================================================= */
 
@@ -1877,29 +1758,19 @@ footer,
 
     .collections-grid,
     .recommendations-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .footer-inner {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .satori-footer-main {
         grid-template-columns:
-            1fr
-            1fr;
-
-        gap: 40px;
-    }
-
-    .satori-footer-community {
-        grid-column: 1 / -1;
+            repeat(2, 1fr);
     }
 }
 
 
 /* =========================================================
-   MÓVIL — HASTA 900PX
+   MÓVIL
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -1915,14 +1786,18 @@ footer,
 
     .main-header,
     #satori-header .main-header {
+
         height: 64px !important;
+
         min-height: 64px !important;
 
         background: #fff !important;
     }
 
+
     .header-inner,
     #satori-header .header-inner {
+
         width: 100% !important;
 
         height: 64px !important;
@@ -1939,24 +1814,24 @@ footer,
     }
 
 
-    /* -----------------------------------------------------
-       NAVEGACIÓN DESKTOP
-    ----------------------------------------------------- */
-
     .main-nav {
         display: none !important;
     }
 
 
     /* -----------------------------------------------------
-       LOGO CENTRADO
+       LOGO
     ----------------------------------------------------- */
 
     .satori-logo,
-    #satori-header .satori-logo {
+    .brand-logo,
+    #satori-header .satori-logo,
+    #satori-header .brand-logo {
+
         position: absolute !important;
 
         left: 50% !important;
+
         top: 50% !important;
 
         transform:
@@ -1979,35 +1854,41 @@ footer,
 
     .mobile-menu-button,
     #satori-header .mobile-menu-button {
+
         display: flex !important;
 
         position: absolute !important;
 
         left: 18px !important;
+
         top: 50% !important;
 
-        transform: translateY(-50%) !important;
+        transform:
+            translateY(-50%) !important;
 
         z-index: 10005 !important;
     }
 
 
     /* -----------------------------------------------------
-       ICONOS DERECHA
+       ICONOS
     ----------------------------------------------------- */
 
     .header-actions,
     .header-icons,
     #satori-header .header-actions,
     #satori-header .header-icons {
+
         position: absolute !important;
 
         right: 15px !important;
+
         left: auto !important;
 
         top: 50% !important;
 
-        transform: translateY(-50%) !important;
+        transform:
+            translateY(-50%) !important;
 
         width: auto !important;
 
@@ -2022,22 +1903,24 @@ footer,
         z-index: 10005 !important;
     }
 
+
     .header-icon {
+
         width: 34px !important;
+
         height: 34px !important;
     }
 
+
     .header-icon svg {
+
         width: 18px !important;
+
         height: 18px !important;
 
         stroke-width: 1.4 !important;
     }
 
-
-    /*
-       Ocultar cuenta en móvil.
-    */
 
     .header-icon[href="cuenta.html"] {
         display: none !important;
@@ -2049,14 +1932,18 @@ footer,
     ----------------------------------------------------- */
 
     .search-wrapper.active {
+
         position: absolute !important;
 
         right: 0 !important;
+
         top: 50% !important;
 
-        transform: translateY(-50%) !important;
+        transform:
+            translateY(-50%) !important;
 
-        width: calc(100vw - 80px) !important;
+        width:
+            calc(100vw - 80px) !important;
 
         height: 42px;
 
@@ -2065,12 +1952,11 @@ footer,
         z-index: 10020 !important;
     }
 
-    .search-wrapper.active .search-button {
-        flex-shrink: 0;
-    }
 
     .search-wrapper.active .search-input {
-        width: calc(100vw - 120px) !important;
+
+        width:
+            calc(100vw - 120px) !important;
 
         height: 38px !important;
 
@@ -2085,21 +1971,25 @@ footer,
 
 
     /* -----------------------------------------------------
-       MENÚ LATERAL
+       MENÚ
     ----------------------------------------------------- */
 
     .mobile-menu,
     #satori-header .mobile-menu {
-        width: min(370px, 82vw) !important;
+
+        width:
+            min(370px, 82vw) !important;
 
         height: 100dvh !important;
 
         z-index: 11000 !important;
     }
 
+
     .mobile-overlay,
     .mobile-menu-overlay,
     #satori-header .mobile-menu-overlay {
+
         z-index: 10999 !important;
     }
 
@@ -2109,12 +1999,14 @@ footer,
     ----------------------------------------------------- */
 
     .hero-slide {
+
         height: 58vh;
 
         min-height: 360px;
 
         max-height: 580px;
     }
+
 
     .hero-dots {
         bottom: 12px;
@@ -2126,35 +2018,47 @@ footer,
     ----------------------------------------------------- */
 
     .benefits {
-        width: calc(100% - 30px) !important;
 
-        grid-template-columns: repeat(2, 1fr);
+        width:
+            calc(100% - 30px) !important;
+
+        grid-template-columns:
+            repeat(2, 1fr);
 
         border-top: none;
     }
 
+
     .benefit {
+
         min-height: 90px;
 
         padding: 16px;
 
-        border-right: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
+        border-right:
+            1px solid var(--border);
+
+        border-bottom:
+            1px solid var(--border);
     }
+
 
     .benefit:nth-child(2),
     .benefit:nth-child(4) {
         border-right: 0;
     }
 
+
     .benefit:nth-child(3),
     .benefit:nth-child(4) {
         border-bottom: 0;
     }
 
+
     .benefit strong {
         font-size: 12px;
     }
+
 
     .benefit span:not(.benefit-icon) {
         font-size: 11px;
@@ -2168,20 +2072,26 @@ footer,
     .section,
     .recommendations,
     .satori-pack {
-        width: calc(100% - 30px) !important;
+
+        width:
+            calc(100% - 30px) !important;
     }
+
 
     .section {
         margin-top: 38px;
     }
 
+
     .recommendations {
         margin-top: 50px;
     }
 
+
     .section-header h2 {
         font-size: 21px;
     }
+
 
     .section-header a {
         font-size: 12px;
@@ -2193,22 +2103,28 @@ footer,
     ----------------------------------------------------- */
 
     .collections-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(2, 1fr);
 
         gap: 8px;
     }
+
 
     .collection-card {
         min-height: 180px;
     }
 
+
     .collection-card > div {
         padding: 15px;
     }
 
+
     .collection-card h3 {
         font-size: 16px;
     }
+
 
     .collection-card span {
         font-size: 11px;
@@ -2220,22 +2136,28 @@ footer,
     ----------------------------------------------------- */
 
     .recommendations-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(2, 1fr);
 
         gap: 9px;
     }
+
 
     .recommendation-info {
         padding: 11px;
     }
 
+
     .recommendation-category {
         font-size: 9px;
     }
 
+
     .recommendation-name {
         font-size: 13px;
     }
+
 
     .recommendation-price {
         font-size: 11px;
@@ -2247,6 +2169,7 @@ footer,
     ----------------------------------------------------- */
 
     .satori-pack {
+
         margin-top: 50px;
 
         padding: 30px 22px;
@@ -2254,21 +2177,25 @@ footer,
         min-height: 220px;
     }
 
+
     .satori-pack h2 {
         font-size: 28px;
     }
 
 
     /* -----------------------------------------------------
-       FOOTER ANTIGUO
+       FOOTER
     ----------------------------------------------------- */
 
     .footer {
         margin-top: 50px;
     }
 
+
     .footer-inner {
-        width: calc(100% - 30px);
+
+        width:
+            calc(100% - 30px);
 
         grid-template-columns: 1fr;
 
@@ -2277,16 +2204,11 @@ footer,
         padding: 45px 0 30px;
     }
 
-    .footer-brand p {
-        max-width: 350px;
-    }
-
-    .footer-community h2 {
-        font-size: 27px;
-    }
 
     .footer-bottom {
-        width: calc(100% - 30px);
+
+        width:
+            calc(100% - 30px);
 
         flex-direction: column;
 
@@ -2295,58 +2217,6 @@ footer,
         gap: 13px;
     }
 
-
-    /* -----------------------------------------------------
-       FOOTER GLOBAL
-    ----------------------------------------------------- */
-
-    .satori-global-footer {
-        margin-top: 55px;
-
-        border-top-width: 2px;
-    }
-
-    .satori-footer-main {
-        width: calc(100% - 30px);
-
-        padding: 42px 0 35px;
-
-        grid-template-columns: 1fr 1fr;
-
-        gap: 35px 25px;
-    }
-
-    .satori-footer-brand {
-        grid-column: 1 / -1;
-    }
-
-    .satori-footer-community {
-        grid-column: 1 / -1;
-    }
-
-    .satori-footer-community h3 {
-        font-size: 30px;
-    }
-
-    .satori-footer-newsletter {
-        max-width: 100%;
-    }
-
-    .satori-footer-bottom {
-        width: calc(100% - 30px);
-
-        padding: 17px 0;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .satori-footer-bottom div {
-        gap: 15px;
-
-        flex-wrap: wrap;
-    }
 }
 
 
@@ -2357,65 +2227,46 @@ footer,
 @media (max-width: 430px) {
 
     .top-bar-inner {
-        width: calc(100% - 28px);
+        width:
+            calc(100% - 28px);
     }
+
 
     .shipping-message {
         font-size: 10px;
     }
+
 
     .top-message {
         display: none;
     }
 
 
-    /* -----------------------------------------------------
-       COLECCIONES
-    ----------------------------------------------------- */
-
     .collections-grid {
         grid-template-columns: 1fr;
     }
+
 
     .collection-card {
         min-height: 150px;
     }
 
 
-    /* -----------------------------------------------------
-       RECOMENDACIONES
-    ----------------------------------------------------- */
-
     .recommendations-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
-
-    /* -----------------------------------------------------
-       BENEFICIOS
-    ----------------------------------------------------- */
 
     .benefit {
         padding: 13px;
     }
 
+
     .benefit-icon {
         font-size: 17px;
     }
 
-
-    /* -----------------------------------------------------
-       FOOTER
-    ----------------------------------------------------- */
-
-    .satori-footer-main {
-        grid-template-columns: 1fr;
-    }
-
-    .satori-footer-brand,
-    .satori-footer-community {
-        grid-column: auto;
-    }
 }
 
 
@@ -2423,14 +2274,20 @@ footer,
    CORRECCIONES FINALES
 ========================================================= */
 
+
 /*
-   Evita cualquier espacio blanco antiguo
-   sobre el banner.
+   El banner empieza inmediatamente
+   después del header.
 */
 
 #satori-header + main {
     padding-top: 0 !important;
 }
+
+
+/*
+   Banner sin bordes.
+*/
 
 .hero-slider,
 .hero,
@@ -2439,27 +2296,32 @@ footer,
 .banner,
 .main-banner,
 .home-hero {
-    margin-top: 0 !important;
+
+    border: none !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
 }
 
 
 /*
-   El banner siempre queda debajo
-   del header y del contenido.
+   Banner debajo del header.
 */
 
 .hero-slider {
     z-index: 0 !important;
-}
 
-#satori-header {
-    z-index: 9999 !important;
+    transform: none !important;
+
+    opacity: 1 !important;
+
+    will-change: auto;
 }
 
 
 /*
-   El contenido tapa visualmente
-   el banner mientras se hace scroll.
+   Contenido tapa el banner.
 */
 
 .benefits,
@@ -2468,40 +2330,47 @@ footer,
 .satori-pack,
 .footer,
 .satori-global-footer {
+
+    position: relative;
+
     z-index: 2 !important;
+
+    background: #fff;
 }
 
 
 /*
-   No aplicar animaciones de escala/opacidad
-   al banner mientras está sticky.
+   Header siempre arriba.
 */
 
-.hero-slider {
-    transform: none !important;
-    opacity: 1 !important;
+#satori-header,
+.site-header {
 
-    will-change: auto;
+    position: relative;
+
+    z-index: 9999 !important;
 }
 
 
 /*
-   No permitir bordes heredados.
+   Evita espacios heredados.
 */
+
+.hero-slider,
+.hero,
+.hero-carousel,
+#hero,
+.banner,
+.main-banner,
+.home-hero {
+
+    margin-top: 0 !important;
+}
+
 
 .hero-slide,
 .hero-slide.active {
     border: none !important;
-}
-
-
-/*
-   Elementos antiguos que podrían
-   interferir con el diseño.
-*/
-
-.site-header {
-    z-index: 9999 !important;
 }
 
 
