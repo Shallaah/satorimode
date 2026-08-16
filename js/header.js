@@ -10,22 +10,27 @@
     const SATORIMODE_BASE = "/satorimode/";
 
     /*
+     * =====================================================
      * CLAVE ÚNICA DEL CARRITO
+     * =====================================================
      *
      * IMPORTANTE:
-     * carrito.js debe utilizar exactamente:
      *
-     * satorii_cart
+     * Esta debe ser exactamente la misma
+     * que utiliza cart.js
      */
 
-    const CART_STORAGE_KEY = "satorii_cart";
+    const CART_STORAGE_KEY = "satorimode_cart";
+
 
     /*
      * Clave antigua.
-     * Se utiliza solamente para migrar datos anteriores.
+     *
+     * Se utiliza solamente para recuperar
+     * carritos creados con versiones anteriores.
      */
 
-    const OLD_CART_STORAGE_KEY = "satorimode_cart";
+    const OLD_CART_STORAGE_KEY = "satorii_cart";
 
 
     /* =====================================================
@@ -40,13 +45,19 @@
         ================================================= */
 
         const oldHeader =
-            document.getElementById("satori-header");
+            document.getElementById(
+                "satori-header"
+            );
 
         const oldStyle =
-            document.getElementById("satori-header-style");
+            document.getElementById(
+                "satori-header-style"
+            );
 
         const oldSpacer =
-            document.getElementById("satori-header-spacer");
+            document.getElementById(
+                "satori-header-spacer"
+            );
 
 
         if (oldHeader) {
@@ -67,7 +78,9 @@
         ================================================= */
 
         const root =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         root.id =
             "satori-header";
@@ -817,7 +830,9 @@
         ====================================================== */
 
         const style =
-            document.createElement("style");
+            document.createElement(
+                "style"
+            );
 
         style.id =
             "satori-header-style";
@@ -1217,7 +1232,7 @@
 
 
         /* =====================================================
-           MENÚ MÓVIL — IZQUIERDA
+           MENÚ MÓVIL
         ====================================================== */
 
         #satori-header .mobile-menu {
@@ -1459,7 +1474,7 @@
 
 
         /* =====================================================
-           PREVIEW CARRITO — DERECHA
+           PREVIEW CARRITO
         ====================================================== */
 
         #satori-header .cart-preview {
@@ -1907,7 +1922,9 @@
         `;
 
 
-        document.head.appendChild(style);
+        document.head.appendChild(
+            style
+        );
 
 
         /* =====================================================
@@ -1915,7 +1932,9 @@
         ====================================================== */
 
         const spacer =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         spacer.id =
             "satori-header-spacer";
@@ -3138,7 +3157,9 @@
 
         function escapeHTML(value) {
 
-            return String(value ?? "")
+            return String(
+                value ?? ""
+            )
                 .replace(
                     /&/g,
                     "&amp;"
