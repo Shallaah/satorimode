@@ -1814,3 +1814,1276 @@ body.menu-open {
     }
 
 }
+
+/* ==========================================================
+   SATORII — NUEVO HEADER
+========================================================== */
+
+#satori-header {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   BARRA SUPERIOR
+========================================================== */
+
+.top-bar {
+    width: 100%;
+    height: 34px;
+
+    background: #f2161c;
+    color: #fff;
+
+    border-bottom: 1px solid #d10e13;
+}
+
+
+.top-bar-inner {
+    position: relative;
+
+    width: calc(100% - 40px);
+    max-width: 1600px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.shipping-message {
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: .04em;
+}
+
+
+.top-message {
+    position: absolute;
+    right: 0;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: .04em;
+}
+
+
+.top-instagram {
+    position: absolute;
+    left: 0;
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    border: 1px solid rgba(255,255,255,.75);
+    border-radius: 50%;
+
+    transition: .2s ease;
+}
+
+
+.top-instagram svg {
+    width: 13px;
+    height: 13px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+}
+
+
+.top-instagram:hover {
+    background: #fff;
+    color: #f2161c;
+}
+
+
+/* ==========================================================
+   HEADER PRINCIPAL
+========================================================== */
+
+.main-header {
+    position: relative;
+    z-index: 100;
+
+    width: 100%;
+    height: 62px;
+
+    background: #fff;
+
+    border-bottom: 1px solid #dedede;
+}
+
+
+.header-inner {
+    width: calc(100% - 40px);
+    max-width: 1600px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.satori-logo {
+    flex-shrink: 0;
+
+    color: #111;
+
+    /*
+       Inspirado en lettering de streetwear,
+       pero sin copiar una fuente específica.
+    */
+
+    font-family:
+        Impact,
+        "Arial Black",
+        Arial,
+        sans-serif;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    font-style: italic;
+
+    letter-spacing: -.07em;
+
+    line-height: 1;
+
+    text-decoration: none;
+}
+
+
+.satori-logo:hover {
+    color: #f2161c;
+}
+
+
+/* ==========================================================
+   NAVEGACIÓN
+========================================================== */
+
+.main-nav {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 34px;
+}
+
+
+.main-nav > a,
+.nav-dropdown > a {
+
+    position: relative;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    color: #111;
+
+    font-size: 13px;
+
+    /*
+       Ya NO tan gruesa.
+    */
+
+    font-weight: 600;
+
+    letter-spacing: .01em;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+}
+
+
+.main-nav > a::after,
+.nav-dropdown > a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 2px;
+
+    background: #f2161c;
+
+    transform: scaleX(0);
+
+    transition: transform .2s ease;
+}
+
+
+.main-nav > a:hover::after,
+.nav-dropdown > a:hover::after {
+
+    transform: scaleX(1);
+
+}
+
+
+.nav-dropdown {
+
+    position: relative;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.nav-dropdown > a span {
+    font-size: 11px;
+}
+
+
+/* ==========================================================
+   MENÚ DESPLEGABLE
+========================================================== */
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: calc(100% + 1px);
+
+    left: 50%;
+
+    min-width: 185px;
+
+    padding: 8px;
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
+
+    transform:
+        translate(-50%, 8px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        .2s ease;
+}
+
+
+.nav-dropdown:hover .dropdown-menu {
+
+    transform:
+        translate(-50%, 0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.dropdown-menu a {
+
+    display: block;
+
+    padding: 11px 13px;
+
+    color: #111;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+}
+
+
+.dropdown-menu a:hover {
+
+    background: #f5f5f5;
+
+    color: #f2161c;
+
+}
+
+
+/* ==========================================================
+   ICONOS
+========================================================== */
+
+.header-actions {
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+}
+
+
+.header-icon {
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #111;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+.header-icon svg {
+
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.header-icon:hover {
+
+    color: #f2161c;
+
+}
+
+
+/* ==========================================================
+   BUSCADOR
+========================================================== */
+
+.search-wrapper {
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.search-input {
+
+    width: 0;
+    height: 34px;
+
+    padding: 0;
+
+    border: 1px solid transparent;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    opacity: 0;
+
+    transition:
+        width .25s ease,
+        padding .25s ease,
+        opacity .2s ease,
+        border-color .2s ease;
+}
+
+
+.search-wrapper.active .search-input {
+
+    width: 210px;
+
+    padding: 0 12px;
+
+    opacity: 1;
+
+    border-color: #ccc;
+
+}
+
+
+.search-input:focus {
+
+    border-color: #111;
+
+}
+
+
+/* ==========================================================
+   HERO / BANNER FULL WIDTH
+========================================================== */
+
+.hero-slider {
+
+    position: relative;
+
+    width: 100vw !important;
+
+    max-width: none !important;
+
+    margin-left: calc(50% - 50vw) !important;
+
+    margin-right: calc(50% - 50vw) !important;
+
+    overflow: hidden;
+
+    /*
+       Bordes arriba y abajo.
+    */
+
+    border-top: 1px solid #d8d8d8;
+
+    border-bottom: 1px solid #d8d8d8;
+
+    border-left: 0;
+    border-right: 0;
+
+    border-radius: 0 !important;
+
+    touch-action: pan-y;
+
+    cursor: grab;
+
+    user-select: none;
+}
+
+
+.hero-slider.dragging {
+
+    cursor: grabbing;
+
+}
+
+
+.hero-track {
+
+    display: flex;
+
+    width: 100%;
+
+    transition:
+        transform .65s cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+.hero-slider.dragging .hero-track {
+
+    transition: none;
+
+}
+
+
+.hero-slide {
+
+    position: relative;
+
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    min-width: 100%;
+
+    height: clamp(
+        420px,
+        52vw,
+        720px
+    );
+
+    overflow: hidden;
+
+    border-radius: 0 !important;
+}
+
+
+.hero-slide img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    pointer-events: none;
+
+}
+
+
+/* ==========================================================
+   PUNTOS DEL SLIDER
+========================================================== */
+
+.hero-dots {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 7px;
+
+    z-index: 5;
+}
+
+
+.hero-dot {
+
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border: 1px solid #fff;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.35);
+
+    cursor: pointer;
+}
+
+
+.hero-dot.active {
+
+    background: #fff;
+
+}
+
+
+/* ==========================================================
+   BENEFICIOS
+========================================================== */
+
+.benefits {
+
+    width: calc(100% - 40px);
+
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    border: 1px solid #ddd;
+
+    border-top: 0;
+
+    border-radius:
+        0 0
+        9px
+        9px;
+
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   RECOMENDACIONES
+========================================================== */
+
+.recommendations {
+
+    width: calc(100% - 40px);
+
+    max-width: 1600px;
+
+    margin: 80px auto;
+
+}
+
+
+.recommendations-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+
+.recommendations-header h2 {
+
+    margin: 0;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    letter-spacing: -.02em;
+}
+
+
+.recommendations-header a {
+
+    color: #f2161c;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+.recommendations-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+.recommendation-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid #ddd;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.recommendation-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
+
+}
+
+
+.recommendation-image {
+
+    aspect-ratio: 1 / 1.15;
+
+    background:
+        linear-gradient(
+            145deg,
+            #444,
+            #111
+        );
+
+    overflow: hidden;
+}
+
+
+.recommendation-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.recommendation-info {
+
+    padding: 15px;
+
+}
+
+
+.recommendation-category {
+
+    margin-bottom: 6px;
+
+    color: #999;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+}
+
+
+.recommendation-name {
+
+    color: #111;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.recommendation-price {
+
+    margin-top: 8px;
+
+    color: #555;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   SATORII PACK
+========================================================== */
+
+.satori-pack {
+
+    width: calc(100% - 40px);
+
+    max-width: 1600px;
+
+    margin: 80px auto;
+
+    min-height: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    padding: 55px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #120000,
+            #260000
+        );
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    color: #fff;
+}
+
+
+.satori-pack-content {
+
+    max-width: 600px;
+}
+
+
+.satori-pack-label {
+
+    margin-bottom: 12px;
+
+    color: #f2161c;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+}
+
+
+.satori-pack h2 {
+
+    margin: 0 0 12px;
+
+    font-size: clamp(30px, 4vw, 52px);
+
+    line-height: 1;
+
+}
+
+
+.satori-pack p {
+
+    margin: 0 0 25px;
+
+    color: #ccc;
+
+    font-size: 14px;
+
+}
+
+
+.satori-pack-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 13px 22px;
+
+    background: #f2161c;
+
+    color: white;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.satori-pack-button:hover {
+
+    background: #fff;
+
+    color: #111;
+
+}
+
+
+/* ==========================================================
+   MENÚ MÓVIL
+========================================================== */
+
+.mobile-menu-button {
+
+    display: none;
+
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+
+.mobile-menu {
+
+    position: fixed;
+
+    z-index: 1001;
+
+    top: 0;
+    left: 0;
+
+    width: min(360px, 88vw);
+
+    height: 100vh;
+
+    padding: 24px;
+
+    background: #fff;
+
+    transform: translateX(-100%);
+
+    transition:
+        transform .3s ease;
+}
+
+
+.mobile-menu.open {
+
+    transform: translateX(0);
+
+}
+
+
+.mobile-menu-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+.mobile-menu-header button {
+
+    border: 0;
+
+    background: transparent;
+
+    font-size: 30px;
+
+}
+
+
+.mobile-menu nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.mobile-menu nav a {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid #ddd;
+
+    color: #111;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+.mobile-instagram {
+
+    margin-top: 35px;
+}
+
+
+.mobile-instagram span {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #f2161c;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .15em;
+}
+
+
+.mobile-instagram a {
+
+    color: #111;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.mobile-overlay {
+
+    position: fixed;
+
+    z-index: 1000;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.45);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .3s ease;
+}
+
+
+.mobile-overlay.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+body.menu-open {
+
+    overflow: hidden;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .main-nav {
+
+        gap: 20px;
+
+    }
+
+
+    .main-nav > a,
+    .nav-dropdown > a {
+
+        font-size: 12px;
+
+    }
+
+
+    .recommendations-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .top-message {
+
+        display: none;
+
+    }
+
+
+    .main-header {
+
+        height: 58px;
+
+    }
+
+
+    .main-nav {
+
+        display: none;
+
+    }
+
+
+    .mobile-menu-button {
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+    }
+
+
+    .satori-logo {
+
+        font-size: 25px;
+
+    }
+
+
+    .hero-slide {
+
+        height: 500px;
+
+    }
+
+
+    .recommendations {
+
+        width: calc(100% - 28px);
+
+        margin: 55px auto;
+
+    }
+
+
+    .recommendations-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+
+    }
+
+
+    .satori-pack {
+
+        width: calc(100% - 28px);
+
+        padding: 35px 25px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .top-bar {
+
+        height: 32px;
+
+    }
+
+
+    .shipping-message {
+
+        font-size: 10px;
+
+    }
+
+
+    .top-instagram {
+
+        width: 20px;
+        height: 20px;
+
+    }
+
+
+    .header-inner {
+
+        width: calc(100% - 25px);
+
+    }
+
+
+    .search-wrapper.active .search-input {
+
+        position: absolute;
+
+        top: 42px;
+
+        right: 12px;
+
+        width: calc(100vw - 24px);
+
+        background: white;
+
+        box-shadow:
+            0 10px 30px rgba(0,0,0,.12);
+
+    }
+
+
+    .hero-slide {
+
+        height: 430px;
+
+    }
+
+
+    .recommendations-header h2 {
+
+        font-size: 20px;
+
+    }
+
+
+    .recommendations-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .recommendation-info {
+
+        padding: 10px;
+
+    }
+
+
+    .recommendation-name {
+
+        font-size: 12px;
+
+    }
+
+
+    .satori-pack {
+
+        margin: 50px auto;
+
+        padding: 30px 20px;
+
+    }
+
+}
