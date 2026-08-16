@@ -114,7 +114,7 @@
 
                 <a
                     href="index.html"
-                    class="satori-logo"
+                    class="satori-logo satori-brand-logo"
                 >
                     SATORII
                 </a>
@@ -125,9 +125,6 @@
                 ================================================== -->
 
                 <nav class="main-nav">
-
-
-                    <!-- INICIO -->
 
                     <a
                         href="index.html"
@@ -267,7 +264,6 @@
 
                 <div class="header-icons">
 
-
                     <!-- BUSCAR -->
 
                     <button
@@ -382,7 +378,7 @@
 
                 <a
                     href="index.html"
-                    class="mobile-menu-logo"
+                    class="mobile-menu-logo satori-brand-logo"
                 >
                     SATORII
                 </a>
@@ -401,9 +397,6 @@
 
 
             <nav class="mobile-nav">
-
-
-                <!-- INICIO -->
 
                 <a
                     href="index.html"
@@ -638,6 +631,46 @@
 
 
         /* =====================================================
+           LOGO SATORII
+           MISMA TIPOGRAFÍA EN HEADER + MENÚ MÓVIL
+        ====================================================== */
+
+        #satori-header .satori-brand-logo {
+
+            font-family:
+                "Arial Narrow",
+                Arial,
+                Helvetica,
+                sans-serif !important;
+
+            font-weight:900 !important;
+
+            font-style:italic !important;
+
+            letter-spacing:-2.5px !important;
+
+            text-transform:uppercase;
+
+            color:#111;
+
+            text-decoration:none;
+
+            line-height:.9;
+
+            white-space:nowrap;
+
+            -webkit-font-smoothing:antialiased;
+
+            text-rendering:geometricPrecision;
+
+            transition:
+                color .2s ease,
+                transform .2s ease;
+
+        }
+
+
+        /* =====================================================
            TOP BAR
         ====================================================== */
 
@@ -683,8 +716,7 @@
 
             top:50%;
 
-            transform:
-                translateY(-50%);
+            transform:translateY(-50%);
 
             width:18px;
 
@@ -700,8 +732,7 @@
 
             text-decoration:none;
 
-            transition:
-                transform .2s ease;
+            transition:transform .2s ease;
 
         }
 
@@ -742,10 +773,6 @@
 
         }
 
-
-        /* =====================================================
-           ENVÍOS
-        ====================================================== */
 
         #satori-header .shipping-message {
 
@@ -846,7 +873,7 @@
 
 
         /* =====================================================
-           LOGO
+           LOGO PC
         ====================================================== */
 
         #satori-header .satori-logo {
@@ -855,25 +882,9 @@
 
             justify-self:start;
 
-            color:#111;
-
-            text-decoration:none;
-
             font-size:25px;
 
-            line-height:1;
-
-            font-weight:700;
-
-            font-style:italic;
-
-            letter-spacing:-2px;
-
             transform:skewX(-5deg);
-
-            transition:
-                color .2s ease,
-                transform .2s ease;
 
         }
 
@@ -956,8 +967,7 @@
 
             font-size:9px;
 
-            transition:
-                transform .2s ease;
+            transition:transform .2s ease;
 
         }
 
@@ -966,8 +976,7 @@
         .nav-dropdown.open
         .nav-arrow {
 
-            transform:
-                rotate(180deg);
+            transform:rotate(180deg);
 
         }
 
@@ -986,7 +995,7 @@
 
 
         /* =====================================================
-           DROPDOWN PC
+           DROPDOWN
         ====================================================== */
 
         #satori-header .dropdown-menu {
@@ -1023,6 +1032,8 @@
             transition:
                 opacity .2s ease,
                 transform .2s ease;
+
+            z-index:100001;
 
         }
 
@@ -1175,8 +1186,7 @@
 
             inset:0;
 
-            background:
-                rgba(0,0,0,.45);
+            background:rgba(0,0,0,.45);
 
             opacity:0;
 
@@ -1184,8 +1194,7 @@
 
             pointer-events:none;
 
-            transition:
-                opacity .2s ease;
+            transition:opacity .2s ease;
 
             z-index:110000;
 
@@ -1220,16 +1229,13 @@
 
             height:100dvh;
 
-            padding:
-                20px 24px;
+            padding:20px 24px;
 
             background:#fff;
 
-            transform:
-                translateX(-100%);
+            transform:translateX(-100%);
 
-            transition:
-                transform .25s ease;
+            transition:transform .25s ease;
 
             z-index:110001;
 
@@ -1241,8 +1247,7 @@
         #satori-header
         .mobile-menu.open {
 
-            transform:
-                translateX(0);
+            transform:translateX(0);
 
         }
 
@@ -1262,23 +1267,14 @@
         }
 
 
+        /* =====================================================
+           LOGO MENÚ MÓVIL
+           USA EXACTAMENTE EL MISMO ESTILO
+        ====================================================== */
+
         #satori-header .mobile-menu-logo {
 
-            color:#111;
-
-            text-decoration:none;
-
             font-size:25px;
-
-            font-weight:700;
-
-            font-style:italic;
-
-            letter-spacing:-2px;
-
-            transition:
-                color .2s ease,
-                transform .2s ease;
 
         }
 
@@ -1387,8 +1383,7 @@
 
             font-size:12px;
 
-            transition:
-                transform .2s ease;
+            transition:transform .2s ease;
 
         }
 
@@ -1397,8 +1392,7 @@
         .mobile-nav-button.active
         .mobile-arrow {
 
-            transform:
-                rotate(180deg);
+            transform:rotate(180deg);
 
         }
 
@@ -1463,7 +1457,7 @@
 
 
         /* =====================================================
-           SOCIAL MÓVIL
+           SOCIAL
         ====================================================== */
 
         #satori-header .mobile-social {
@@ -1508,8 +1502,7 @@
 
             font-weight:bold;
 
-            transition:
-                color .2s ease;
+            transition:color .2s ease;
 
         }
 
@@ -1574,15 +1567,13 @@
 
             left:12px !important;
 
-            width:
-                calc(100% - 24px) !important;
+            width:calc(100% - 24px) !important;
 
             height:70px !important;
 
             background:#fff !important;
 
-            border:
-                1px solid #d4d4d4 !important;
+            border:1px solid #d4d4d4 !important;
 
             border-radius:16px !important;
 
@@ -1670,9 +1661,7 @@
             }
 
 
-            /* =================================================
-               HAMBURGUESA
-            ================================================= */
+            /* HAMBURGUESA */
 
             #satori-header .mobile-menu-button {
 
@@ -1682,8 +1671,7 @@
 
                 top:50%;
 
-                transform:
-                    translateY(-50%);
+                transform:translateY(-50%);
 
                 width:36px;
 
@@ -1722,13 +1710,7 @@
 
                 height:1.5px;
 
-                margin:0;
-
-                padding:0;
-
                 background:#111;
-
-                border:0;
 
                 border-radius:0;
 
@@ -1759,9 +1741,7 @@
             }
 
 
-            /* =================================================
-               LOGO CENTRADO
-            ================================================= */
+            /* LOGO CENTRADO */
 
             #satori-header .satori-logo {
 
@@ -1779,9 +1759,9 @@
 
                 padding:0;
 
-                font-size:24px;
+                font-size:27px;
 
-                line-height:1;
+                line-height:.9;
 
                 z-index:999998;
 
@@ -1798,9 +1778,7 @@
             }
 
 
-            /* =================================================
-               OCULTAR NAV PC
-            ================================================= */
+            /* NAV PC */
 
             #satori-header .main-nav {
 
@@ -1809,9 +1787,7 @@
             }
 
 
-            /* =================================================
-               ICONOS
-            ================================================= */
+            /* ICONOS */
 
             #satori-header .header-icons {
 
@@ -1821,8 +1797,7 @@
 
                 top:50%;
 
-                transform:
-                    translateY(-50%);
+                transform:translateY(-50%);
 
                 display:flex;
 
@@ -1855,9 +1830,7 @@
             }
 
 
-            /* =================================================
-               HEADER FIJO MÓVIL
-            ================================================= */
+            /* HEADER FIJO */
 
             #satori-header.scrolled .main-header {
 
@@ -1867,13 +1840,11 @@
 
                 left:8px !important;
 
-                width:
-                    calc(100% - 16px) !important;
+                width:calc(100% - 16px) !important;
 
                 height:64px !important;
 
-                border:
-                    1px solid #d4d4d4 !important;
+                border:1px solid #d4d4d4 !important;
 
                 border-radius:16px !important;
 
@@ -1895,16 +1866,13 @@
             }
 
 
-            /* =================================================
-               MENÚ MÓVIL
-            ================================================= */
+            /* MENÚ */
 
             #satori-header .mobile-menu {
 
                 width:min(370px,88vw);
 
-                padding:
-                    20px 24px;
+                padding:20px 24px;
 
             }
 
@@ -1914,6 +1882,15 @@
                 min-height:60px;
 
                 font-size:15px;
+
+            }
+
+
+            /* LOGO DEL MENÚ */
+
+            #satori-header .mobile-menu-logo {
+
+                font-size:27px;
 
             }
 
@@ -1994,7 +1971,7 @@
 
 
         /* =====================================================
-           ELEMENTOS MENÚ MÓVIL
+           MENÚ MÓVIL
         ====================================================== */
 
         const mobileMenu =
