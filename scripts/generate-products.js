@@ -4652,52 +4652,27 @@ function generateProductJS(
                     }
 
 
-                    toast.innerHTML = `
+                   toast.innerHTML =
+    '<div class="satori-toast-title">' +
+        '<span>✓</span>' +
+        ' PRODUCTO AGREGADO' +
+    '</div>' +
 
-                        <div
-                            class="
-                                satori-toast-title
-                            "
-                        >
+    '<div class="satori-toast-product">' +
+        escapeHTML(product.name) +
 
-                            <span>
-                                ✓
-                            </span>
+        (
+            product.size
+                ? ' · Talla ' +
+                    escapeHTML(product.size)
+                : ''
+        ) +
 
-                            PRODUCTO AGREGADO
+    '</div>' +
 
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-toast-product
-                            "
-                        >
-
-                            ${escapeHTML(
-                                product.name
-                            )}
-
-                            ${
-                                product.size
-                                    ? ` · Talla ${escapeHTML(
-                                        product.size
-                                    )}`
-                                    : ""
-                            }
-
-                        </div>
-
-
-                        <a
-                            href="../../carrito.html"
-                        >
-                            VER CARRITO →
-                        </a>
-
-                    `;
-
+    '<a href="../../carrito.html">' +
+        'VER CARRITO →' +
+    '</a>';
 
                     toast.classList.add(
                         "is-visible"
@@ -4784,13 +4759,15 @@ function generateProductJS(
                                     );
 
 
-                                    document
-                                        .querySelector(
-                                            `[data-panel="${target}"]`
-                                        )
-                                        ?.classList.add(
-                                            "active"
-                                        );
+document
+    .querySelector(
+        '[data-panel="' +
+        target +
+        '"]'
+    )
+    ?.classList.add(
+        "active"
+    );
 
                                 }
                             );
