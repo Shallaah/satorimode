@@ -14,19 +14,6 @@
     productos/accesorios/...
 
  Cada producto utiliza la misma plantilla visual.
-
- Diseño:
-    - Galería grande
-    - Información lateral
-    - Tallas
-    - Colores
-    - Cantidad
-    - Carrito
-    - Información de confianza
-    - Descripción
-    - Envíos y garantía
-    - Productos relacionados
-    - Responsive para celular/tablet/PC
 =========================================================
 */
 
@@ -214,6 +201,7 @@ function getImagePath(
 
 /* =====================================================
    GALERÍA
+   MÁXIMO 3 IMÁGENES
 ===================================================== */
 
 function generateGallery(
@@ -221,13 +209,18 @@ function generateGallery(
     outputDirectory
 ) {
 
-    const images =
+    let images =
         Array.isArray(product.images) &&
         product.images.length
             ? product.images
             : product.image
                 ? [product.image]
                 : [];
+
+
+    /* Máximo 3 imágenes */
+
+    images = images.slice(0, 3);
 
 
     if (!images.length) {
@@ -538,8 +531,12 @@ function generateColors(product) {
                                     class="satori-color-dot ${colorClass}"
                                 ></span>
 
-                                <span>
-                                    ${escapeHTML(color)}
+                                <span class="satori-color-name">
+
+                                    ${escapeHTML(
+                                        color
+                                    )}
+
                                 </span>
 
                             </button>
@@ -553,87 +550,6 @@ function generateColors(product) {
 
 
         </div>
-
-    `;
-
-}
-
-
-/* =====================================================
-   INFORMACIÓN DE CONFIANZA
-===================================================== */
-
-function generateTrustBlocks() {
-
-    return `
-
-        <section class="satori-trust">
-
-
-            <div class="satori-trust-item">
-
-                <div class="satori-trust-icon">
-                    🚚
-                </div>
-
-                <div>
-
-                    <strong>
-                        ENVÍOS
-                    </strong>
-
-                    <p>
-                        Compra de forma fácil y recibe tu pedido.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="satori-trust-item">
-
-                <div class="satori-trust-icon">
-                    🔒
-                </div>
-
-                <div>
-
-                    <strong>
-                        COMPRA SEGURA
-                    </strong>
-
-                    <p>
-                        Tus datos y tu compra están protegidos.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="satori-trust-item">
-
-                <div class="satori-trust-icon">
-                    ✦
-                </div>
-
-                <div>
-
-                    <strong>
-                        CALIDAD SATORII
-                    </strong>
-
-                    <p>
-                        Productos seleccionados para nuestra comunidad.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-        </section>
 
     `;
 
@@ -770,9 +686,8 @@ function generateProductHTML(
 
     <style>
 
-
         /* =================================================
-           SATORII · PÁGINA DE PRODUCTO
+           SATORII PRODUCT PAGE
         ================================================= */
 
 
@@ -780,7 +695,7 @@ function generateProductHTML(
 
             width: 100%;
 
-            background: #ffffff;
+            background: #fff;
 
             color: #111827;
 
@@ -796,7 +711,8 @@ function generateProductHTML(
 
             margin: 0 auto;
 
-            padding: 42px 0 80px;
+            padding:
+                35px 0 55px;
 
         }
 
@@ -812,31 +728,22 @@ function generateProductHTML(
 
             align-items: center;
 
-            gap: 8px;
+            gap: 7px;
 
-            margin-bottom: 28px;
+            margin-bottom: 24px;
 
-            font-size: 13px;
+            font-size: 12px;
 
-            color: #737373;
+            color: #777;
 
         }
 
 
         .satori-breadcrumb a {
 
-            color: inherit;
+            color: #777;
 
             text-decoration: none;
-
-            transition: color .2s ease;
-
-        }
-
-
-        .satori-breadcrumb a:hover {
-
-            color: #111827;
 
         }
 
@@ -845,13 +752,13 @@ function generateProductHTML(
 
             color: #111827;
 
-            font-weight: 600;
+            font-weight: 700;
 
         }
 
 
         /* =================================================
-           PRODUCTO PRINCIPAL
+           LAYOUT
         ================================================= */
 
 
@@ -861,9 +768,9 @@ function generateProductHTML(
 
             grid-template-columns:
                 minmax(0, 1.35fr)
-                minmax(380px, .85fr);
+                minmax(350px, .85fr);
 
-            gap: 70px;
+            gap: 55px;
 
             align-items: start;
 
@@ -877,7 +784,7 @@ function generateProductHTML(
 
         .satori-gallery {
 
-            min-width: 0;
+            width: 100%;
 
         }
 
@@ -886,19 +793,19 @@ function generateProductHTML(
 
             width: 100%;
 
-            min-height: 620px;
+            aspect-ratio: 1 / 1;
+
+            background: #f7f7f7;
+
+            border-radius: 18px;
+
+            overflow: hidden;
 
             display: flex;
 
             align-items: center;
 
             justify-content: center;
-
-            background: #f7f7f7;
-
-            border-radius: 22px;
-
-            overflow: hidden;
 
         }
 
@@ -907,21 +814,21 @@ function generateProductHTML(
 
             width: 100%;
 
-            height: 620px;
+            height: 100%;
 
             object-fit: contain;
 
             display: block;
 
             transition:
-                transform .35s ease;
+                transform .3s ease;
 
         }
 
 
         .satori-main-image:hover img {
 
-            transform: scale(1.025);
+            transform: scale(1.015);
 
         }
 
@@ -930,11 +837,16 @@ function generateProductHTML(
 
             color: #999;
 
-            font-size: 14px;
+            font-size: 13px;
 
             letter-spacing: .08em;
 
         }
+
+
+        /* =================================================
+           MINIATURAS
+        ================================================= */
 
 
         .satori-thumbnails {
@@ -942,33 +854,35 @@ function generateProductHTML(
             display: grid;
 
             grid-template-columns:
-                repeat(
-                    auto-fill,
-                    minmax(82px, 1fr)
-                );
+                repeat(3, 1fr);
 
-            gap: 12px;
+            gap: 10px;
 
-            margin-top: 14px;
+            margin-top: 10px;
+
+            max-width: 330px;
 
         }
 
 
         .satori-thumbnail {
 
-            border: 1px solid #e4e4e4;
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            padding: 0;
+
+            border:
+                1px solid #dedede;
 
             background: #f7f7f7;
 
-            border-radius: 12px;
-
-            padding: 0;
+            border-radius: 10px;
 
             overflow: hidden;
 
             cursor: pointer;
-
-            aspect-ratio: 1 / 1;
 
             transition:
                 border-color .2s ease,
@@ -979,7 +893,8 @@ function generateProductHTML(
 
         .satori-thumbnail:hover {
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-1px);
 
         }
 
@@ -1014,20 +929,20 @@ function generateProductHTML(
 
             position: sticky;
 
-            top: 110px;
+            top: 100px;
 
         }
 
 
         .satori-category {
 
-            display: inline-block;
+            display: block;
 
-            margin-bottom: 12px;
+            margin-bottom: 9px;
 
-            font-size: 12px;
+            font-size: 11px;
 
-            font-weight: 700;
+            font-weight: 800;
 
             letter-spacing: .12em;
 
@@ -1045,14 +960,14 @@ function generateProductHTML(
             font-size: clamp(
                 30px,
                 3vw,
-                46px
+                44px
             );
 
             line-height: 1.05;
 
-            letter-spacing: -.035em;
+            letter-spacing: -.04em;
 
-            font-weight: 800;
+            font-weight: 850;
 
         }
 
@@ -1065,57 +980,56 @@ function generateProductHTML(
 
             gap: 8px;
 
-            margin-top: 17px;
+            margin-top: 12px;
 
-            font-size: 13px;
+            color: #777;
 
-            color: #555;
+            font-size: 11px;
 
         }
 
 
         .satori-stars {
 
-            letter-spacing: 2px;
-
             color: #111827;
+
+            letter-spacing: 1px;
 
         }
 
 
         .satori-price {
 
-            margin-top: 22px;
+            margin-top: 17px;
 
-            font-size: 28px;
+            font-size: 27px;
 
-            font-weight: 800;
-
-            color: #111827;
+            font-weight: 850;
 
         }
 
 
         .satori-price-note {
 
-            margin-top: 6px;
+            margin-top: 4px;
 
-            font-size: 12px;
+            color: #888;
 
-            color: #777;
+            font-size: 10px;
 
         }
 
 
         .satori-divider {
 
-            height: 1px;
-
             width: 100%;
 
-            background: #e8e8e8;
+            height: 1px;
 
-            margin: 28px 0;
+            margin:
+                24px 0;
+
+            background: #e8e8e8;
 
         }
 
@@ -1127,12 +1041,11 @@ function generateProductHTML(
 
         .satori-option {
 
-            margin-top: 24px;
+            margin-top: 22px;
 
         }
 
 
-        .satori-option-title,
         .satori-option-header {
 
             display: flex;
@@ -1141,13 +1054,24 @@ function generateProductHTML(
 
             justify-content: space-between;
 
-            gap: 20px;
+            margin-bottom: 10px;
 
-            margin-bottom: 12px;
+            font-size: 11px;
 
-            font-size: 13px;
+            font-weight: 850;
 
-            font-weight: 800;
+            letter-spacing: .05em;
+
+        }
+
+
+        .satori-option-title {
+
+            margin-bottom: 10px;
+
+            font-size: 11px;
+
+            font-weight: 850;
 
             letter-spacing: .05em;
 
@@ -1158,14 +1082,13 @@ function generateProductHTML(
 
             color: #111827;
 
-            font-size: 12px;
+            font-size: 10px;
 
-            text-decoration:
-                underline;
-
-            font-weight: 600;
+            font-weight: 700;
 
             letter-spacing: 0;
+
+            text-decoration: underline;
 
         }
 
@@ -1176,36 +1099,34 @@ function generateProductHTML(
 
             flex-wrap: wrap;
 
-            gap: 9px;
+            gap: 8px;
 
         }
 
 
         .satori-size {
 
-            min-width: 55px;
+            min-width: 48px;
 
-            height: 48px;
+            height: 43px;
 
-            padding: 0 16px;
+            padding: 0 13px;
 
             border:
                 1px solid #d7d7d7;
 
+            border-radius: 7px;
+
             background: #fff;
 
-            border-radius: 8px;
+            font-size: 11px;
 
-            font-size: 13px;
-
-            font-weight: 700;
+            font-weight: 750;
 
             cursor: pointer;
 
             transition:
-                background .2s ease,
-                color .2s ease,
-                border-color .2s ease;
+                .2s ease;
 
         }
 
@@ -1239,23 +1160,26 @@ function generateProductHTML(
 
             flex-wrap: wrap;
 
-            gap: 10px;
+            gap: 8px;
 
         }
 
 
         .satori-color {
 
-            display: flex;
+            display: inline-flex;
 
             align-items: center;
 
-            gap: 8px;
+            gap: 7px;
 
-            padding: 9px 13px;
+            min-height: 38px;
+
+            padding:
+                0 12px;
 
             border:
-                1px solid #ddd;
+                1px solid #d8d8d8;
 
             background: #fff;
 
@@ -1263,38 +1187,46 @@ function generateProductHTML(
 
             cursor: pointer;
 
-            font-size: 12px;
+            font-size: 11px;
 
-            font-weight: 600;
+            font-weight: 700;
 
             transition:
-                border-color .2s ease,
-                box-shadow .2s ease;
+                .2s ease;
+
+        }
+
+
+        .satori-color:hover {
+
+            border-color: #111827;
 
         }
 
 
         .satori-color.active {
 
-            border-color: #111827;
+            background: #111827;
 
-            box-shadow:
-                0 0 0 1px #111827;
+            color: #fff;
+
+            border-color: #111827;
 
         }
 
 
         .satori-color-dot {
 
-            width: 18px;
+            width: 16px;
 
-            height: 18px;
+            height: 16px;
 
             border-radius: 50%;
 
-            border: 1px solid #ccc;
+            border:
+                1px solid #cfcfcf;
 
-            display: block;
+            flex-shrink: 0;
 
         }
 
@@ -1315,7 +1247,7 @@ function generateProductHTML(
 
         .color-red {
 
-            background: #e31b23;
+            background: #ff003c;
 
         }
 
@@ -1359,18 +1291,16 @@ function generateProductHTML(
 
             justify-content: space-between;
 
-            gap: 20px;
-
-            margin-top: 26px;
+            margin-top: 24px;
 
         }
 
 
         .satori-quantity-label {
 
-            font-size: 13px;
+            font-size: 11px;
 
-            font-weight: 800;
+            font-weight: 850;
 
             letter-spacing: .05em;
 
@@ -1379,16 +1309,16 @@ function generateProductHTML(
 
         .satori-quantity {
 
+            height: 42px;
+
             display: flex;
 
             align-items: center;
 
-            height: 46px;
-
             border:
-                1px solid #d9d9d9;
+                1px solid #d8d8d8;
 
-            border-radius: 8px;
+            border-radius: 7px;
 
             overflow: hidden;
 
@@ -1397,7 +1327,7 @@ function generateProductHTML(
 
         .satori-quantity button {
 
-            width: 45px;
+            width: 38px;
 
             height: 100%;
 
@@ -1405,9 +1335,9 @@ function generateProductHTML(
 
             background: #fff;
 
-            cursor: pointer;
+            font-size: 17px;
 
-            font-size: 20px;
+            cursor: pointer;
 
         }
 
@@ -1421,19 +1351,19 @@ function generateProductHTML(
 
         .satori-quantity span {
 
-            min-width: 42px;
+            width: 38px;
 
             text-align: center;
 
-            font-size: 14px;
+            font-size: 11px;
 
-            font-weight: 700;
+            font-weight: 800;
 
         }
 
 
         /* =================================================
-           BOTÓN CARRITO
+           BOTÓN ROJO SATORII
         ================================================= */
 
 
@@ -1441,21 +1371,21 @@ function generateProductHTML(
 
             width: 100%;
 
-            min-height: 58px;
+            min-height: 56px;
 
-            margin-top: 24px;
+            margin-top: 18px;
 
             border: 0;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
-            background: #111827;
+            background: #ff003c;
 
             color: #fff;
 
-            font-size: 14px;
+            font-size: 12px;
 
-            font-weight: 800;
+            font-weight: 850;
 
             letter-spacing: .04em;
 
@@ -1470,7 +1400,7 @@ function generateProductHTML(
 
         .satori-add-cart:hover {
 
-            background: #27364a;
+            background: #e60036;
 
             transform:
                 translateY(-1px);
@@ -1480,13 +1410,14 @@ function generateProductHTML(
 
         .satori-add-cart.added {
 
-            background: #16803c;
+            background: #111827;
 
         }
 
 
         /* =================================================
-           BENEFICIOS CORTOS
+           3 BENEFICIOS
+           SOLO AQUÍ
         ================================================= */
 
 
@@ -1497,12 +1428,12 @@ function generateProductHTML(
             grid-template-columns:
                 repeat(3, 1fr);
 
-            margin-top: 18px;
+            margin-top: 9px;
 
             border:
                 1px solid #e5e5e5;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
             overflow: hidden;
 
@@ -1511,7 +1442,10 @@ function generateProductHTML(
 
         .satori-mini-benefit {
 
-            padding: 16px 10px;
+            min-height: 72px;
+
+            padding:
+                10px 7px;
 
             text-align: center;
 
@@ -1530,9 +1464,9 @@ function generateProductHTML(
 
         .satori-mini-benefit-icon {
 
-            font-size: 18px;
+            font-size: 14px;
 
-            margin-bottom: 7px;
+            margin-bottom: 5px;
 
         }
 
@@ -1541,9 +1475,9 @@ function generateProductHTML(
 
             display: block;
 
-            font-size: 10px;
+            font-size: 9px;
 
-            letter-spacing: .04em;
+            font-weight: 850;
 
         }
 
@@ -1552,13 +1486,11 @@ function generateProductHTML(
 
             display: block;
 
-            margin-top: 3px;
+            margin-top: 2px;
 
-            color: #777;
+            color: #888;
 
-            font-size: 9px;
-
-            line-height: 1.35;
+            font-size: 8px;
 
         }
 
@@ -1570,12 +1502,12 @@ function generateProductHTML(
 
         .satori-info-box {
 
-            margin-top: 25px;
+            margin-top: 10px;
 
             border:
                 1px solid #e5e5e5;
 
-            border-radius: 14px;
+            border-radius: 8px;
 
             overflow: hidden;
 
@@ -1587,7 +1519,7 @@ function generateProductHTML(
             display: grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                1fr 1fr;
 
             border-bottom:
                 1px solid #e5e5e5;
@@ -1597,15 +1529,16 @@ function generateProductHTML(
 
         .satori-info-tab {
 
+            padding:
+                13px 8px;
+
             border: 0;
 
             background: #f7f7f7;
 
-            padding: 16px 12px;
+            font-size: 9px;
 
-            font-size: 11px;
-
-            font-weight: 800;
+            font-weight: 850;
 
             cursor: pointer;
 
@@ -1631,7 +1564,7 @@ function generateProductHTML(
 
             display: none;
 
-            padding: 23px;
+            padding: 18px;
 
         }
 
@@ -1646,11 +1579,9 @@ function generateProductHTML(
         .satori-info-content h3 {
 
             margin:
-                0 0 12px;
+                0 0 9px;
 
-            font-size: 15px;
-
-            line-height: 1.5;
+            font-size: 12px;
 
         }
 
@@ -1661,9 +1592,9 @@ function generateProductHTML(
 
             color: #555;
 
-            font-size: 14px;
+            font-size: 10px;
 
-            line-height: 1.7;
+            line-height: 1.65;
 
         }
 
@@ -1671,7 +1602,7 @@ function generateProductHTML(
         .satori-shipping-item {
 
             padding:
-                14px 0;
+                11px 0;
 
             border-bottom:
                 1px solid #eee;
@@ -1699,105 +1630,9 @@ function generateProductHTML(
 
             display: block;
 
-            margin-bottom: 5px;
+            margin-bottom: 4px;
 
-            font-size: 12px;
-
-        }
-
-
-        /* =================================================
-           SECCIÓN DE CONFIANZA
-        ================================================= */
-
-
-        .satori-trust-section {
-
-            width: min(
-                1400px,
-                calc(100% - 48px)
-            );
-
-            margin:
-                0 auto;
-
-            padding:
-                0 0 75px;
-
-        }
-
-
-        .satori-trust {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 16px;
-
-        }
-
-
-        .satori-trust-item {
-
-            display: flex;
-
-            gap: 15px;
-
-            padding: 25px;
-
-            background: #f7f7f7;
-
-            border-radius: 14px;
-
-        }
-
-
-        .satori-trust-icon {
-
-            flex:
-                0 0 38px;
-
-            width: 38px;
-
-            height: 38px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background: #fff;
-
-            border-radius: 50%;
-
-            font-size: 16px;
-
-        }
-
-
-        .satori-trust-item strong {
-
-            display: block;
-
-            font-size: 13px;
-
-            margin-bottom: 5px;
-
-        }
-
-
-        .satori-trust-item p {
-
-            margin: 0;
-
-            color: #666;
-
-            font-size: 12px;
-
-            line-height: 1.5;
+            font-size: 10px;
 
         }
 
@@ -1814,11 +1649,10 @@ function generateProductHTML(
                 calc(100% - 48px)
             );
 
-            margin:
-                0 auto;
+            margin: 0 auto;
 
             padding:
-                65px 0 90px;
+                45px 0 70px;
 
             border-top:
                 1px solid #eee;
@@ -1828,7 +1662,7 @@ function generateProductHTML(
 
         .satori-related-heading {
 
-            margin-bottom: 30px;
+            margin-bottom: 18px;
 
         }
 
@@ -1837,13 +1671,13 @@ function generateProductHTML(
 
             display: block;
 
-            margin-bottom: 8px;
+            margin-bottom: 5px;
 
             color: #777;
 
-            font-size: 11px;
+            font-size: 9px;
 
-            font-weight: 800;
+            font-weight: 850;
 
             letter-spacing: .13em;
 
@@ -1854,14 +1688,11 @@ function generateProductHTML(
 
             margin: 0;
 
-            font-size: clamp(
-                27px,
-                3vw,
-                40px
-            );
+            font-size: 25px;
 
-            letter-spacing:
-                -.035em;
+            line-height: 1.05;
+
+            letter-spacing: -.035em;
 
         }
 
@@ -1869,11 +1700,200 @@ function generateProductHTML(
         .satori-related-heading p {
 
             margin:
-                8px 0 0;
+                5px 0 0;
 
-            color: #666;
+            color: #777;
 
-            font-size: 14px;
+            font-size: 10px;
+
+        }
+
+
+        /* =================================================
+           LIMITAR PRODUCTOS RELACIONADOS
+        ================================================= */
+
+
+        #relatedProductsGrid {
+
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 18px;
+
+            align-items: start;
+
+        }
+
+
+        #relatedProductsGrid > * {
+
+            min-width: 0;
+
+        }
+
+
+        #relatedProductsGrid img {
+
+            width: 100% !important;
+
+            height: auto !important;
+
+            max-height: 280px !important;
+
+            object-fit: contain !important;
+
+            display: block;
+
+        }
+
+
+        #relatedProductsGrid .product-card {
+
+            overflow: hidden;
+
+        }
+
+
+        /* =================================================
+           FOOTER
+        ================================================= */
+
+
+        .site-footer {
+
+            width: 100%;
+
+            margin-top: 0;
+
+            background: #111827;
+
+            color: #fff;
+
+        }
+
+
+        .footer-main {
+
+            width: min(
+                1400px,
+                calc(100% - 48px)
+            );
+
+            margin: 0 auto;
+
+            padding:
+                45px 0;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
+
+            gap: 50px;
+
+        }
+
+
+        .footer-brand h3 {
+
+            margin: 0 0 8px;
+
+            font-size: 21px;
+
+            letter-spacing: -.02em;
+
+        }
+
+
+        .footer-brand p {
+
+            margin: 0;
+
+            color: #cbd0d8;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .footer-column {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .footer-column h4 {
+
+            margin:
+                0 0 7px;
+
+            font-size: 10px;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .footer-column a {
+
+            color: #cbd0d8;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            transition:
+                color .2s ease;
+
+        }
+
+
+        .footer-column a:hover {
+
+            color: #ff003c;
+
+        }
+
+
+        .footer-bottom {
+
+            width: min(
+                1400px,
+                calc(100% - 48px)
+            );
+
+            margin: 0 auto;
+
+            padding:
+                17px 0;
+
+            border-top:
+                1px solid rgba(
+                    255,
+                    255,
+                    255,
+                    .1
+                );
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #9ca3af;
+
+            font-size: 9px;
 
         }
 
@@ -1890,7 +1910,7 @@ function generateProductHTML(
                 grid-template-columns:
                     1fr;
 
-                gap: 45px;
+                gap: 38px;
 
             }
 
@@ -1901,27 +1921,12 @@ function generateProductHTML(
 
             }
 
-
-            .satori-main-image {
-
-                min-height: 560px;
-
-            }
-
-
-            .satori-main-image img {
-
-                height: 560px;
-
-            }
-
         }
 
 
         @media (max-width: 750px) {
 
             .satori-product-container,
-            .satori-trust-section,
             .satori-related {
 
                 width:
@@ -1932,94 +1937,71 @@ function generateProductHTML(
 
             .satori-product-container {
 
-                padding-top: 25px;
-
-            }
-
-
-            .satori-breadcrumb {
-
-                margin-bottom: 18px;
-
-                font-size: 11px;
-
-            }
-
-
-            .satori-main-image {
-
-                min-height:
-                    min(
-                        105vw,
-                        520px
-                    );
-
-                border-radius: 16px;
-
-            }
-
-
-            .satori-main-image img {
-
-                height:
-                    min(
-                        105vw,
-                        520px
-                    );
+                padding-top: 22px;
 
             }
 
 
             .satori-product-title {
 
-                font-size: 31px;
+                font-size: 30px;
 
             }
 
 
-            .satori-price {
+            .satori-main-image {
 
-                font-size: 25px;
+                border-radius: 14px;
 
             }
 
 
-            .satori-trust {
+            #relatedProductsGrid {
 
                 grid-template-columns:
-                    1fr;
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 12px;
 
             }
 
 
-            .satori-mini-benefits {
+            #relatedProductsGrid img {
+
+                max-height: 210px !important;
+
+            }
+
+
+            .footer-main {
+
+                width:
+                    calc(100% - 28px);
 
                 grid-template-columns:
-                    1fr;
+                    1fr 1fr;
+
+                gap: 30px;
 
             }
 
 
-            .satori-mini-benefit {
+            .footer-brand {
 
-                border-right: 0;
-
-                border-bottom:
-                    1px solid #e5e5e5;
+                grid-column:
+                    1 / -1;
 
             }
 
 
-            .satori-mini-benefit:last-child {
+            .footer-bottom {
 
-                border-bottom: 0;
+                width:
+                    calc(100% - 28px);
 
-            }
+                flex-direction: column;
 
-
-            .satori-related {
-
-                padding-bottom: 55px;
+                gap: 5px;
 
             }
 
@@ -2028,34 +2010,50 @@ function generateProductHTML(
 
         @media (max-width: 480px) {
 
-            .satori-size {
+            .satori-mini-benefit {
 
-                min-width: 48px;
+                min-height: 68px;
 
-                height: 44px;
-
-                padding: 0 12px;
-
-            }
-
-
-            .satori-product-info {
-
-                width: 100%;
+                padding:
+                    9px 4px;
 
             }
 
 
-            .satori-info-content {
+            .satori-mini-benefit strong {
 
-                padding: 18px;
+                font-size: 8px;
 
             }
 
 
-            .satori-trust-item {
+            .satori-mini-benefit span {
 
-                padding: 19px;
+                font-size: 7px;
+
+            }
+
+
+            #relatedProductsGrid {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            .footer-main {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .footer-brand {
+
+                grid-column:
+                    auto;
 
             }
 
@@ -2101,17 +2099,13 @@ function generateProductHTML(
                     Inicio
                 </a>
 
-                <span>
-                    /
-                </span>
+                <span>/</span>
 
                 <a href="../../productos.html">
                     Productos
                 </a>
 
-                <span>
-                    /
-                </span>
+                <span>/</span>
 
                 <span class="satori-breadcrumb-current">
                     ${name}
@@ -2121,25 +2115,19 @@ function generateProductHTML(
 
 
             <!-- =========================================
-                 PRODUCTO
+                 PRODUCTO PRINCIPAL
             ========================================== -->
 
 
             <div class="satori-product-layout">
 
 
-                <!-- =====================================
-                     GALERÍA
-                ====================================== -->
-
+                <!-- GALERÍA -->
 
                 ${gallery}
 
 
-                <!-- =====================================
-                     INFORMACIÓN
-                ====================================== -->
-
+                <!-- INFORMACIÓN -->
 
                 <div class="satori-product-info">
 
@@ -2194,15 +2182,16 @@ function generateProductHTML(
                     ${sizes}
 
 
-                    <!-- =================================
-                         CANTIDAD
-                    ================================== -->
+                    <!-- CANTIDAD -->
 
 
                     <div class="satori-quantity-row">
 
+
                         <span class="satori-quantity-label">
+
                             CANTIDAD
+
                         </span>
 
 
@@ -2212,7 +2201,6 @@ function generateProductHTML(
                             <button
                                 type="button"
                                 id="quantityMinus"
-                                aria-label="Disminuir cantidad"
                             >
                                 −
                             </button>
@@ -2226,7 +2214,6 @@ function generateProductHTML(
                             <button
                                 type="button"
                                 id="quantityPlus"
-                                aria-label="Aumentar cantidad"
                             >
                                 +
                             </button>
@@ -2234,12 +2221,11 @@ function generateProductHTML(
 
                         </div>
 
+
                     </div>
 
 
-                    <!-- =================================
-                         CARRITO
-                    ================================== -->
+                    <!-- CARRITO -->
 
 
                     <button
@@ -2256,9 +2242,7 @@ function generateProductHTML(
                     </button>
 
 
-                    <!-- =================================
-                         BENEFICIOS
-                    ================================== -->
+                    <!-- SOLO UN BLOQUE DE BENEFICIOS -->
 
 
                     <div class="satori-mini-benefits">
@@ -2288,7 +2272,7 @@ function generateProductHTML(
                             </div>
 
                             <strong>
-                                PAGO SEGURO
+                                COMPRA SEGURA
                             </strong>
 
                             <span>
@@ -2305,7 +2289,7 @@ function generateProductHTML(
                             </div>
 
                             <strong>
-                                SATORII
+                                CALIDAD SATORII
                             </strong>
 
                             <span>
@@ -2318,9 +2302,7 @@ function generateProductHTML(
                     </div>
 
 
-                    <!-- =================================
-                         INFORMACIÓN
-                    ================================== -->
+                    <!-- INFORMACIÓN -->
 
 
                     <div class="satori-info-box">
@@ -2354,11 +2336,6 @@ function generateProductHTML(
                         </div>
 
 
-                        <!-- =================================
-                             DESCRIPCIÓN
-                        ================================== -->
-
-
                         <div
                             class="satori-info-content active"
                             data-content="description"
@@ -2371,7 +2348,9 @@ function generateProductHTML(
 
 
                             <p>
-                                ${escapeHTML(description)}
+                                ${escapeHTML(
+                                    description
+                                )}
                             </p>
 
 
@@ -2380,13 +2359,18 @@ function generateProductHTML(
                                     ? `
                                         <p
                                             style="
-                                                margin-top:14px;
+                                                margin-top:12px;
                                             "
                                         >
+
                                             <strong>
                                                 Cuidados:
                                             </strong>
-                                            ${escapeHTML(care)}
+
+                                            ${escapeHTML(
+                                                care
+                                            )}
+
                                         </p>
                                       `
                                     : ""
@@ -2394,11 +2378,6 @@ function generateProductHTML(
 
 
                         </div>
-
-
-                        <!-- =================================
-                             ENVÍOS
-                        ================================== -->
 
 
                         <div
@@ -2414,7 +2393,9 @@ function generateProductHTML(
                                 </strong>
 
                                 <p>
-                                    ${escapeHTML(shipping)}
+                                    ${escapeHTML(
+                                        shipping
+                                    )}
                                 </p>
 
                             </div>
@@ -2427,7 +2408,9 @@ function generateProductHTML(
                                 </strong>
 
                                 <p>
-                                    ${escapeHTML(warranty)}
+                                    ${escapeHTML(
+                                        warranty
+                                    )}
                                 </p>
 
                             </div>
@@ -2444,18 +2427,6 @@ function generateProductHTML(
 
             </div>
 
-
-        </section>
-
-
-        <!-- =================================================
-             CONFIANZA
-        ================================================== -->
-
-
-        <section class="satori-trust-section">
-
-            ${generateTrustBlocks()}
 
         </section>
 
@@ -2487,7 +2458,7 @@ function generateProductHTML(
 
                 <p>
 
-                    Descubre otros productos que podrían gustarte.
+                    Descubre otros diseños que podrían gustarte.
 
                 </p>
 
@@ -2581,13 +2552,16 @@ function generateProductHTML(
 
         <div class="footer-bottom">
 
+
             <span>
                 © 2026 SATORII
             </span>
 
+
             <span>
                 Todos los derechos reservados.
             </span>
+
 
         </div>
 
@@ -2596,7 +2570,7 @@ function generateProductHTML(
 
 
     <!-- =================================================
-         JAVASCRIPT GENERAL
+         JAVASCRIPT
     ================================================== -->
 
 
@@ -2609,11 +2583,6 @@ function generateProductHTML(
     <script src="../../js/products-page.js"></script>
 
 
-    <!-- =================================================
-         FUNCIONES DE LA PÁGINA
-    ================================================== -->
-
-
     <script>
 
 
@@ -2623,7 +2592,7 @@ function generateProductHTML(
 
 
                 /* =====================================
-                   PRODUCTO
+                   VARIABLES
                 ====================================== */
 
 
@@ -2733,6 +2702,11 @@ function generateProductHTML(
                                 );
 
 
+                                /*
+                                 * El color seleccionado
+                                 * se vuelve negro.
+                                 */
+
                                 this.classList.add(
                                     "active"
                                 );
@@ -2806,7 +2780,7 @@ function generateProductHTML(
 
 
                 /* =====================================
-                   AGREGAR AL CARRITO
+                   CARRITO
                 ====================================== */
 
 
@@ -2847,6 +2821,7 @@ function generateProductHTML(
                                     function (item) {
 
                                         return (
+
                                             item.productId ===
                                                 productId &&
 
@@ -2855,6 +2830,7 @@ function generateProductHTML(
 
                                             item.color ===
                                                 selectedColor
+
                                         );
 
                                     }
@@ -2906,16 +2882,83 @@ function generateProductHTML(
                             }
 
 
+                            /*
+                             * GUARDAR
+                             */
+
                             localStorage.setItem(
                                 "satorimode-cart",
                                 JSON.stringify(cart)
                             );
 
 
-                            /* =================================
-                               CONFIRMACIÓN
-                            ================================== */
+                            /*
+                             * Avisar al resto
+                             * de la página.
+                             */
 
+                            window.dispatchEvent(
+                                new CustomEvent(
+                                    "satoriCartUpdated",
+                                    {
+                                        detail: {
+                                            cart: cart
+                                        }
+                                    }
+                                )
+                            );
+
+
+                            window.dispatchEvent(
+                                new Event(
+                                    "storage"
+                                )
+                            );
+
+
+                            /*
+                             * Actualizar contadores
+                             */
+
+                            const totalItems =
+                                cart.reduce(
+                                    function (
+                                        total,
+                                        item
+                                    ) {
+
+                                        return (
+                                            total +
+                                            Number(
+                                                item.quantity ||
+                                                0
+                                            )
+                                        );
+
+                                    },
+                                    0
+                                );
+
+
+                            document
+                                .querySelectorAll(
+                                    "[data-cart-count], .cart-count, .cart-counter"
+                                )
+                                .forEach(
+                                    function (
+                                        counter
+                                    ) {
+
+                                        counter.textContent =
+                                            totalItems;
+
+                                    }
+                                );
+
+
+                            /*
+                             * Confirmación
+                             */
 
                             const originalText =
                                 addToCart.textContent;
@@ -2985,6 +3028,7 @@ function generateProductHTML(
                         tab.addEventListener(
                             "click",
                             function () {
+
 
                                 const selectedTab =
                                     this.dataset.tab;
@@ -3060,6 +3104,7 @@ function generateProductHTML(
                             "click",
                             function () {
 
+
                                 const image =
                                     this.dataset.image;
 
@@ -3089,6 +3134,7 @@ function generateProductHTML(
                                 this.classList.add(
                                     "active"
                                 );
+
 
                             }
                         );
