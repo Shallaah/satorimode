@@ -107,12 +107,6 @@ function generateClothingHTML(
     allProducts
 ) {
 
-function generateClothingHTML(
-    product,
-    outputDirectory,
-    allProducts
-) {
-
     const name =
         escapeHTML(
             product.name
@@ -220,10 +214,18 @@ function generateClothingHTML(
 >
 
 
+    <!-- =================================================
+         HEADER
+    ================================================= -->
+
     <div
         id="satori-header"
     ></div>
 
+
+    <!-- =================================================
+         CONTENIDO
+    ================================================= -->
 
     <main>
 
@@ -232,11 +234,19 @@ function generateClothingHTML(
         >
 
 
+            <!-- =================================================
+                 PRODUCTO
+            ================================================= -->
+
             <section
                 class="satori-product-layout"
                 id="producto"
             >
 
+
+                <!-- =================================================
+                     GALERÍA
+                ================================================= -->
 
                 <div
                     class="satori-product-gallery"
@@ -250,14 +260,26 @@ function generateClothingHTML(
                 </div>
 
 
+                <!-- =================================================
+                     INFORMACIÓN
+                ================================================= -->
+
                 <div
                     class="satori-product-info"
+
                     data-product
+
                     data-product-id="${escapeHTML(product.id)}"
+
                     data-product-name="${name}"
+
                     data-product-price="${escapeHTML(product.price)}"
+
                     data-product-image="${escapeHTML(mainImage)}"
                 >
+
+
+                    <!-- CATEGORÍA -->
 
                     <span
                         class="satori-product-category"
@@ -266,10 +288,14 @@ function generateClothingHTML(
                     </span>
 
 
+                    <!-- NOMBRE -->
+
                     <h1>
                         ${name}
                     </h1>
 
+
+                    <!-- PRECIO -->
 
                     <div
                         class="satori-product-price"
@@ -283,15 +309,23 @@ function generateClothingHTML(
                     ></div>
 
 
+                    <!-- COLOR -->
+
                     ${generateColors(
                         product
                     )}
 
 
+                    <!-- TALLA -->
+
                     ${generateSizes(
                         product
                     )}
 
+
+                    <!-- =================================================
+                         CANTIDAD
+                    ================================================= -->
 
                     <div
                         class="satori-quantity-row"
@@ -342,111 +376,130 @@ function generateClothingHTML(
                     </div>
 
 
-               <button
-    type="button"
-    id="addToCart"
-    class="
-        satori-add-to-cart
-        add-to-cart
-        add-to-cart-button
-    "
-    data-add-to-cart
-    data-product-id="${escapeHTML(product.id)}"
->
+                    <!-- =================================================
+                         AGREGAR AL CARRITO
+                    ================================================= -->
 
-    AGREGAR AL CARRITO · ${price}
+                    <button
+                        type="button"
+                        id="addToCart"
 
-</button>
+                        class="
+                            satori-add-to-cart
+                            add-to-cart
+                            add-to-cart-button
+                        "
 
-<button
-    type="button"
-    id="addToCart"
-    class="
-        satori-add-to-cart
-        add-to-cart
-        add-to-cart-button
-    "
-    data-add-to-cart
-    data-product-id="${escapeHTML(product.id)}"
->
+                        data-add-to-cart
 
-    AGREGAR AL CARRITO · ${price}
+                        data-product-id="${escapeHTML(product.id)}"
+                    >
 
-</button>
+                        AGREGAR AL CARRITO · ${price}
+
+                    </button>
 
 
-${generateTrustBlocks(
-    product
-)}
+                    <!-- =================================================
+                         CONFIANZA
+                    ================================================= -->
+
+                    ${generateTrustBlocks(
+                        product
+                    )}
 
 
-${generateDescription(
-    product,
-    "clothing"
-)}
+                    <!-- =================================================
+                         DESCRIPCIÓN / ENVÍOS
+                    ================================================= -->
 
-</div>
+                    ${generateDescription(
+                        product,
+                        "clothing"
+                    )}
 
-</section>
+                </div>
 
-
-${generateCareBanner(
-    product,
-    outputDirectory,
-    "clothing"
-)}
+            </section>
 
 
-${generateRecommendations(
-    product,
-    allProducts,
-    outputDirectory,
-    "clothing"
-)}
+            <!-- =================================================
+                 CUIDA TU SATORII
+            ================================================= -->
+
+            ${generateCareBanner(
+                product,
+                outputDirectory,
+                "clothing"
+            )}
 
 
-${generateEditorialBanner(
-    product,
-    outputDirectory,
-    "clothing"
-)}
+            <!-- =================================================
+                 RECOMENDACIONES
+            ================================================= -->
 
-</div>
-
-</main>
-
-
-<div
-    id="satori-footer"
-></div>
+            ${generateRecommendations(
+                product,
+                allProducts,
+                outputDirectory,
+                "clothing"
+            )}
 
 
-<script
-    src="../../js/products.js"
-></script>
+            <!-- =================================================
+                 BANNER EDITORIAL
+            ================================================= -->
+
+            ${generateEditorialBanner(
+                product,
+                outputDirectory,
+                "clothing"
+            )}
+
+        </div>
+
+    </main>
 
 
-<script
-    src="../../js/main.js"
-></script>
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
+
+    <div
+        id="satori-footer"
+    ></div>
 
 
-<script
-    src="../../js/header.js"
-></script>
+    <!-- =================================================
+         SCRIPTS
+    ================================================= -->
+
+    <script
+        src="../../js/products.js"
+    ></script>
 
 
-<script
-    src="../../js/footer.js"
-></script>
+    <script
+        src="../../js/main.js"
+    ></script>
 
 
-<script
-    src="../../js/cart.js"
-></script>
+    <script
+        src="../../js/header.js"
+    ></script>
 
 
-${generateProductJS()}
+    <script
+        src="../../js/footer.js"
+    ></script>
+
+
+    <script
+        src="../../js/cart.js"
+    ></script>
+
+
+    ${generateProductJS()}
 
 
 </body>
