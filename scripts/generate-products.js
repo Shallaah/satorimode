@@ -3498,12 +3498,12 @@ function generateProductJS() {
 
 
                                     document
-                                        .querySelector(
-                                            `[data-panel="${target}"]`
-                                        )
-                                        ?.classList.add(
-                                            "active"
-                                        );
+    .querySelector(
+        '[data-panel="' + target + '"]'
+    )
+    ?.classList.add(
+        "active"
+    );
 
                                 }
                             );
