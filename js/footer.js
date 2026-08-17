@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </a>
 
                     <div class="satori-footer-kanji">
-                        悟り
+                        悟
                     </div>
 
                     <p>
