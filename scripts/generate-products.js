@@ -18,8 +18,8 @@ CARACTERÍSTICAS:
 - Diseño responsive
 - Color / talla / cantidad
 - Carrito integrado con cart.js
-- Banner editorial automático
-- Banner "LLEVA TU ESTILO"
+- Botón de carrito con estado temporal
+- Banner de cuidado automático
 - Recomendaciones
 - Historia del diseño
 - Guía de cuidado
@@ -58,15 +58,18 @@ const OUTPUT_DIR = path.join(
 function loadProducts() {
 
     if (!fs.existsSync(PRODUCTS_FILE)) {
+
         throw new Error(
             "No se encontró js/products.js"
         );
+
     }
 
-    const source = fs.readFileSync(
-        PRODUCTS_FILE,
-        "utf8"
-    );
+    const source =
+        fs.readFileSync(
+            PRODUCTS_FILE,
+            "utf8"
+        );
 
     const context = {
         console
@@ -85,9 +88,11 @@ function loadProducts() {
             context.__SATORII_PRODUCTS__
         )
     ) {
+
         throw new Error(
             "PRODUCTS no es un arreglo válido."
         );
+
     }
 
     return context.__SATORII_PRODUCTS__;
@@ -104,7 +109,9 @@ function escapeHTML(value) {
         value === undefined ||
         value === null
     ) {
+
         return "";
+
     }
 
     return String(value)
@@ -113,6 +120,7 @@ function escapeHTML(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
 
@@ -125,6 +133,7 @@ function formatPrice(value) {
     return "$" +
         Number(value || 0)
             .toLocaleString("es-CL");
+
 }
 
 
@@ -141,6 +150,7 @@ function slugify(value) {
         .trim()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-+|-+$/g, "");
+
 }
 
 
@@ -150,23 +160,25 @@ function slugify(value) {
 
 function normalizeCategory(category) {
 
-    const value = String(
-        category || "otros"
-    )
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase()
-        .trim();
+    const value =
+        String(category || "otros")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .trim();
 
     if (
         value === "anime" ||
         value === "streetwear" ||
         value === "accesorios"
     ) {
+
         return value;
+
     }
 
     return "otros";
+
 }
 
 
@@ -194,6 +206,7 @@ function getImages(product) {
     }
 
     return [];
+
 }
 
 
@@ -207,22 +220,27 @@ function getImagePath(
 ) {
 
     if (!image) {
+
         return "";
+
     }
 
-    const absolute = path.resolve(
-        ROOT,
-        String(image)
-    );
+    const absolute =
+        path.resolve(
+            ROOT,
+            String(image)
+        );
 
-    const relative = path.relative(
-        outputDirectory,
-        absolute
-    );
+    const relative =
+        path.relative(
+            outputDirectory,
+            absolute
+        );
 
     return relative
         .split(path.sep)
         .join("/");
+
 }
 
 
@@ -232,42 +250,50 @@ function getImagePath(
 
 function getColorClass(color) {
 
-    const value = String(
-        color || ""
-    )
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase();
+    const value =
+        String(color || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
 
     if (
         value.includes("blanco") ||
         value.includes("white")
     ) {
+
         return "satori-color-white";
+
     }
 
     if (
         value.includes("rojo") ||
         value.includes("red")
     ) {
+
         return "satori-color-red";
+
     }
 
     if (
         value.includes("azul") ||
         value.includes("blue")
     ) {
+
         return "satori-color-blue";
+
     }
 
     if (
         value.includes("verde") ||
         value.includes("green")
     ) {
+
         return "satori-color-green";
+
     }
 
     return "satori-color-black";
+
 }
 
 
@@ -280,7 +306,8 @@ function generateGallery(
     outputDirectory
 ) {
 
-    const images = getImages(product);
+    const images =
+        getImages(product);
 
     if (!images.length) {
 
@@ -294,51 +321,64 @@ function generateGallery(
 
     }
 
-    const prepared = images.map(
-        image =>
-            getImagePath(
-                image,
-                outputDirectory
-            )
-    );
+    const prepared =
+        images.map(
+            image =>
+                getImagePath(
+                    image,
+                    outputDirectory
+                )
+        );
 
-    const main = prepared[0];
+    const main =
+        prepared[0];
 
-    const thumbnails = prepared
-        .map(
-            (image, index) => `
-                <button
-                    type="button"
-                    class="
-                        satori-thumbnail
-                        ${index === 0 ? "active" : ""}
-                    "
-                    data-image="${escapeHTML(image)}"
-                    aria-label="Imagen ${index + 1}"
-                >
-                    <img
-                        src="${escapeHTML(image)}"
-                        alt="${escapeHTML(product.name)}"
-                        loading="${index === 0 ? "eager" : "lazy"}"
+    const thumbnails =
+        prepared
+            .map(
+                (image, index) => `
+                    <button
+                        type="button"
+                        class="
+                            satori-thumbnail
+                            ${index === 0 ? "active" : ""}
+                        "
+                        data-image="${escapeHTML(image)}"
+                        aria-label="Imagen ${index + 1}"
                     >
-                </button>
-            `
-        )
-        .join("");
+
+                        <img
+                            src="${escapeHTML(image)}"
+                            alt="${escapeHTML(product.name)}"
+                            loading="${index === 0 ? "eager" : "lazy"}"
+                        >
+
+                    </button>
+                `
+            )
+            .join("");
 
     return `
+
         <div class="satori-main-image">
+
             <img
                 id="satoriMainImage"
                 src="${escapeHTML(main)}"
                 alt="${escapeHTML(product.name)}"
             >
+
         </div>
 
+
         <div class="satori-thumbnails">
+
             ${thumbnails}
+
         </div>
+
     `;
+
 }
 
 
@@ -352,21 +392,30 @@ function generateColors(product) {
         !Array.isArray(product.colors) ||
         !product.colors.length
     ) {
+
         return "";
+
     }
 
     return `
+
         <section class="satori-option">
 
             <div class="satori-option-header">
-                <span>COLOR</span>
+
+                <span>
+                    COLOR
+                </span>
+
             </div>
+
 
             <div class="satori-color-options">
 
                 ${product.colors
                     .map(
                         (color, index) => `
+
                             <button
                                 type="button"
                                 class="
@@ -388,6 +437,7 @@ function generateColors(product) {
                                 </span>
 
                             </button>
+
                         `
                     )
                     .join("")}
@@ -395,7 +445,9 @@ function generateColors(product) {
             </div>
 
         </section>
+
     `;
+
 }
 
 
@@ -409,10 +461,13 @@ function generateSizes(product) {
         !Array.isArray(product.sizes) ||
         !product.sizes.length
     ) {
+
         return "";
+
     }
 
     return `
+
         <section class="satori-option">
 
             <div class="satori-option-header">
@@ -427,11 +482,13 @@ function generateSizes(product) {
 
             </div>
 
+
             <div class="satori-size-options">
 
                 ${product.sizes
                     .map(
                         (size, index) => `
+
                             <button
                                 type="button"
                                 class="
@@ -443,6 +500,7 @@ function generateSizes(product) {
                             >
                                 ${escapeHTML(size)}
                             </button>
+
                         `
                     )
                     .join("")}
@@ -450,7 +508,9 @@ function generateSizes(product) {
             </div>
 
         </section>
+
     `;
+
 }
 
 
@@ -472,54 +532,75 @@ function generateTrustBlocks(product) {
         "Compra protegida.";
 
     return `
+
         <div class="satori-trust-grid">
 
             <div class="satori-trust-item">
+
                 <div class="satori-trust-icon">
                     ↗
                 </div>
 
                 <div>
-                    <strong>ENVÍOS</strong>
+
+                    <strong>
+                        ENVÍOS
+                    </strong>
 
                     <span>
                         ${escapeHTML(shipping)}
                     </span>
+
                 </div>
+
             </div>
 
 
             <div class="satori-trust-item">
+
                 <div class="satori-trust-icon">
                     ✓
                 </div>
 
                 <div>
-                    <strong>COMPRA SEGURA</strong>
+
+                    <strong>
+                        COMPRA SEGURA
+                    </strong>
 
                     <span>
                         Compra protegida.
                     </span>
+
                 </div>
+
             </div>
 
 
             <div class="satori-trust-item">
+
                 <div class="satori-trust-icon">
                     ★
                 </div>
 
                 <div>
-                    <strong>CALIDAD SATORII</strong>
+
+                    <strong>
+                        CALIDAD SATORII
+                    </strong>
 
                     <span>
                         ${escapeHTML(warranty)}
                     </span>
+
                 </div>
+
             </div>
 
         </div>
+
     `;
+
 }
 
 
@@ -547,9 +628,10 @@ function generateDetails(product) {
 
     const care =
         details.care ||
-        "";
+        "Lavar con agua fría. No planchar directamente sobre el estampado.";
 
     return `
+
         <section class="satori-details">
 
             <div class="satori-tabs">
@@ -561,6 +643,7 @@ function generateDetails(product) {
                 >
                     DESCRIPCIÓN
                 </button>
+
 
                 <button
                     type="button"
@@ -586,16 +669,16 @@ function generateDetails(product) {
                     ${escapeHTML(description)}
                 </p>
 
-                ${
-                    care
-                        ? `
-                            <p class="satori-product-care">
-                                <strong>Cuidados:</strong>
-                                ${escapeHTML(care)}
-                            </p>
-                        `
-                        : ""
-                }
+
+                <p class="satori-product-care">
+
+                    <strong>
+                        Cuidados:
+                    </strong>
+
+                    ${escapeHTML(care)}
+
+                </p>
 
             </div>
 
@@ -633,17 +716,20 @@ function generateDetails(product) {
             </div>
 
         </section>
+
     `;
+
 }
 
 
 /* =====================================================
-   RECOMENDACIONES
+   SHUFFLE
 ===================================================== */
 
 function shuffle(array) {
 
-    const result = array.slice();
+    const result =
+        array.slice();
 
     for (
         let i = result.length - 1;
@@ -664,11 +750,17 @@ function shuffle(array) {
             result[j],
             result[i]
         ];
+
     }
 
     return result;
+
 }
 
+
+/* =====================================================
+   RECOMENDACIONES
+===================================================== */
 
 function generateRecommendations(
     currentProduct,
@@ -708,15 +800,23 @@ function generateRecommendations(
                 ) !== currentCategory
         );
 
+    /*
+       Ahora mostramos hasta 5 productos.
+       El CSS los hace más pequeños para que
+       se vean como una verdadera fila de tienda.
+    */
+
     const related =
         shuffle(sameCategory)
             .concat(
                 shuffle(otherCategory)
             )
-            .slice(0, 4);
+            .slice(0, 5);
 
     if (!related.length) {
+
         return "";
+
     }
 
     const cards =
@@ -749,6 +849,7 @@ function generateRecommendations(
                     `../${categoryPath}/${filename}`;
 
                 return `
+
                     <a
                         href="${escapeHTML(url)}"
                         class="satori-related-card"
@@ -766,7 +867,9 @@ function generateRecommendations(
                                         >
                                     `
                                     : `
-                                        <span>SATORII</span>
+                                        <span>
+                                            SATORII
+                                        </span>
                                     `
                             }
 
@@ -789,9 +892,11 @@ function generateRecommendations(
                                 )}
                             </span>
 
+
                             <h3>
                                 ${escapeHTML(item.name)}
                             </h3>
+
 
                             <strong>
                                 ${formatPrice(item.price)}
@@ -800,11 +905,14 @@ function generateRecommendations(
                         </div>
 
                     </a>
+
                 `;
+
             })
             .join("");
 
     return `
+
         <section class="satori-related">
 
             <div class="satori-related-heading">
@@ -813,10 +921,12 @@ function generateRecommendations(
                     SATORII · DESCUBRE MÁS
                 </span>
 
+
                 <h2>
                     TAMBIÉN TE PUEDE
                     <em>GUSTAR.</em>
                 </h2>
+
 
                 <p>
                     Descubre otros diseños que podrían
@@ -827,16 +937,20 @@ function generateRecommendations(
 
 
             <div class="satori-related-grid">
+
                 ${cards}
+
             </div>
 
         </section>
+
     `;
+
 }
 
 
 /* =====================================================
-   BANNER LLEVA TU ESTILO
+   BANNER DE CUIDADO
 ===================================================== */
 
 function generateStyleBanner(
@@ -846,6 +960,12 @@ function generateStyleBanner(
 
     const images =
         getImages(product);
+
+    /*
+       Preferimos la segunda imagen.
+       En la mayoría de productos corresponde
+       al acercamiento del diseño.
+    */
 
     const secondImage =
         images[1] ||
@@ -861,27 +981,31 @@ function generateStyleBanner(
             : "";
 
     return `
+
         <section class="satori-style-banner">
 
             <div class="satori-style-content">
 
                 <span>
-                    SATORII · ANIME
+                    SATORII · CUIDADO
                 </span>
 
+
                 <h2>
-                    LLEVA TU
-                    <em>ESTILO.</em>
+                    CUIDA TU
+                    <em>SATORII.</em>
                 </h2>
 
+
                 <p>
-                    Una pieza creada para acompañarte,
-                    representar lo que te gusta y formar
-                    parte de tu universo.
+                    Una buena prenda merece durar.
+                    Aprende a cuidar el estampado, el tejido
+                    y la apariencia de tu SATORII.
                 </p>
 
-                <a href="#producto">
-                    VER DETALLES →
+
+                <a href="../../cuidado.html">
+                    VER GUÍA DE CUIDADO →
                 </a>
 
             </div>
@@ -894,7 +1018,7 @@ function generateStyleBanner(
                         ? `
                             <img
                                 src="${escapeHTML(image)}"
-                                alt="${escapeHTML(product.name)}"
+                                alt="Detalle de ${escapeHTML(product.name)}"
                             >
                         `
                         : ""
@@ -903,7 +1027,9 @@ function generateStyleBanner(
             </div>
 
         </section>
+
     `;
+
 }
 
 
@@ -917,6 +1043,7 @@ function generateEditorialBanner(
 ) {
 
     return `
+
         <section class="satori-editorial">
 
             <div class="satori-editorial-content">
@@ -931,6 +1058,7 @@ function generateEditorialBanner(
                     )}
                 </span>
 
+
                 <h2>
                     NO VISTAS UN
                     <em>PERSONAJE.</em>
@@ -939,11 +1067,13 @@ function generateEditorialBanner(
                     <strong>UNIVERSO.</strong>
                 </h2>
 
+
                 <p>
                     Tu estilo no necesita explicaciones.
                     Es una forma de mostrar aquello que
                     realmente te representa.
                 </p>
+
 
                 <a href="#producto">
                     EXPLORAR COLECCIÓN →
@@ -968,7 +1098,9 @@ function generateEditorialBanner(
             </div>
 
         </section>
+
     `;
+
 }
 
 
@@ -978,14 +1110,8 @@ function generateEditorialBanner(
 
 function generateBrandDetails(product) {
 
-    const details =
-        product.details || {};
-
-    const care =
-        details.care ||
-        "Lavar con agua fría y cuidar directamente el estampado.";
-
     return `
+
         <section class="satori-story">
 
             <div class="satori-section-heading">
@@ -994,10 +1120,12 @@ function generateBrandDetails(product) {
                     SATORII · DETRÁS DEL DISEÑO
                 </span>
 
+
                 <h2>
                     LA HISTORIA
                     <em>DETRÁS DEL DISEÑO.</em>
                 </h2>
+
 
                 <p>
                     Cada pieza nace para que puedas llevar
@@ -1010,7 +1138,10 @@ function generateBrandDetails(product) {
             <div class="satori-story-grid">
 
                 <article>
-                    <span>01</span>
+
+                    <span>
+                        01
+                    </span>
 
                     <h3>
                         INSPIRACIÓN
@@ -1020,11 +1151,15 @@ function generateBrandDetails(product) {
                         Diseños inspirados en anime,
                         cultura japonesa y streetwear.
                     </p>
+
                 </article>
 
 
                 <article>
-                    <span>02</span>
+
+                    <span>
+                        02
+                    </span>
 
                     <h3>
                         DISEÑO
@@ -1034,25 +1169,34 @@ function generateBrandDetails(product) {
                         Una composición pensada para que
                         el gráfico sea protagonista.
                     </p>
+
                 </article>
 
 
                 <article>
-                    <span>03</span>
+
+                    <span>
+                        03
+                    </span>
 
                     <h3>
                         SATORII
                     </h3>
 
                     <p>
-                        ${escapeHTML(care)}
+                        Piezas creadas para que puedas
+                        expresar aquello que forma parte
+                        de tu universo.
                     </p>
+
                 </article>
 
             </div>
 
         </section>
+
     `;
+
 }
 
 
@@ -1062,7 +1206,13 @@ function generateBrandDetails(product) {
 
 function generateCareGuide() {
 
+    /*
+       Este bloque queda como acceso independiente
+       a la guía completa.
+    */
+
     return `
+
         <section class="satori-care-guide">
 
             <div>
@@ -1071,10 +1221,12 @@ function generateCareGuide() {
                     SATORII · CUIDADO
                 </span>
 
+
                 <h2>
                     CUIDA TU
                     <em>SATORII.</em>
                 </h2>
+
 
                 <p>
                     Aprende cómo cuidar tus prendas para
@@ -1093,7 +1245,9 @@ function generateCareGuide() {
             </a>
 
         </section>
+
     `;
+
 }
 
 
@@ -1104,28 +1258,34 @@ function generateCareGuide() {
 function generateFinalBanner() {
 
     return `
+
         <section class="satori-final-banner">
 
             <span>
                 SATORII · TU UNIVERSO
             </span>
 
+
             <h2>
                 ENCUENTRA TU
                 <em>UNIVERSO.</em>
             </h2>
+
 
             <p>
                 Explora más diseños y encuentra la próxima
                 pieza que te represente.
             </p>
 
+
             <a href="../../productos.html">
                 VER TODA LA COLECCIÓN →
             </a>
 
         </section>
+
     `;
+
 }
 
 
@@ -1171,6 +1331,12 @@ function generateProductCSS() {
                 Arial,
                 Helvetica,
                 sans-serif;
+
+            /*
+               Tipografía base ligeramente mayor
+               para evitar que el usuario tenga que
+               hacer zoom.
+            */
 
             font-size: 16px;
 
@@ -1225,7 +1391,7 @@ function generateProductCSS() {
                 );
 
             padding:
-                58px 0 72px;
+                58px 0 55px;
 
             align-items:
                 start;
@@ -1241,8 +1407,13 @@ function generateProductCSS() {
 
             width: 100%;
 
+            /*
+               Evita que la imagen principal se
+               coma demasiado espacio vertical.
+            */
+
             max-width:
-                760px;
+                620px;
 
         }
 
@@ -1296,8 +1467,10 @@ function generateProductCSS() {
 
 
         .satori-main-image:hover img {
+
             transform:
                 scale(1.018);
+
         }
 
 
@@ -1320,14 +1493,17 @@ function generateProductCSS() {
 
         .satori-thumbnail {
 
-            width: 100%;
+            width:
+                100%;
 
             aspect-ratio:
                 1 / 1;
 
-            padding: 0;
+            padding:
+                0;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             background:
                 #f7f7f7;
@@ -1386,7 +1562,8 @@ function generateProductCSS() {
 
         .satori-product-info {
 
-            width: 100%;
+            width:
+                100%;
 
             max-width:
                 720px;
@@ -1447,7 +1624,7 @@ function generateProductCSS() {
                 18px;
 
             font-size:
-                26px;
+                28px;
 
             font-weight:
                 900;
@@ -1851,10 +2028,14 @@ function generateProductCSS() {
         }
 
 
+        /*
+           Estado temporal después de agregar.
+        */
+
         .satori-add-to-cart.added {
 
             background:
-                var(--satori-red);
+                var(--satori-red) !important;
 
             color:
                 #fff;
@@ -2019,7 +2200,7 @@ function generateProductCSS() {
         .satori-tab {
 
             min-height:
-                44px;
+                48px;
 
             border:
                 0;
@@ -2028,7 +2209,7 @@ function generateProductCSS() {
                 #fff;
 
             font-size:
-                10px;
+                11px;
 
             font-weight:
                 900;
@@ -2053,7 +2234,7 @@ function generateProductCSS() {
                 none;
 
             padding:
-                22px;
+                23px;
 
         }
 
@@ -2069,13 +2250,17 @@ function generateProductCSS() {
         .satori-panel h3 {
 
             margin:
-                0 0 9px;
+                0 0 10px;
 
             font-size:
-                14px;
+                16px;
 
         }
 
+
+        /*
+           Texto más grande y respirable.
+        */
 
         .satori-panel p {
 
@@ -2086,10 +2271,10 @@ function generateProductCSS() {
                 #666;
 
             font-size:
-                13px;
+                14px;
 
             line-height:
-                1.7;
+                1.75;
 
         }
 
@@ -2097,7 +2282,7 @@ function generateProductCSS() {
         .satori-product-care {
 
             margin-top:
-                15px !important;
+                17px !important;
 
         }
 
@@ -2106,7 +2291,7 @@ function generateProductCSS() {
         .satori-detail-item {
 
             margin-top:
-                18px;
+                20px;
 
         }
 
@@ -2114,7 +2299,7 @@ function generateProductCSS() {
         .satori-detail-item strong {
 
             font-size:
-                11px;
+                12px;
 
             font-weight:
                 900;
@@ -2125,13 +2310,13 @@ function generateProductCSS() {
         .satori-detail-item p {
 
             margin-top:
-                5px;
+                6px;
 
         }
 
 
         /* =================================================
-           BANNER ESTILO
+           BANNER CUIDA TU SATORII
         ================================================= */
 
         .satori-style-banner {
@@ -2140,7 +2325,7 @@ function generateProductCSS() {
                 100%;
 
             min-height:
-                165px;
+                170px;
 
             display:
                 grid;
@@ -2149,7 +2334,7 @@ function generateProductCSS() {
                 1fr 1fr;
 
             margin:
-                5px 0 70px;
+                5px 0 65px;
 
             overflow:
                 hidden;
@@ -2173,7 +2358,7 @@ function generateProductCSS() {
         .satori-style-content {
 
             padding:
-                30px 42px;
+                32px 42px;
 
             display:
                 flex;
@@ -2199,7 +2384,7 @@ function generateProductCSS() {
                 var(--satori-red);
 
             font-size:
-                9px;
+                10px;
 
             font-weight:
                 900;
@@ -2251,16 +2436,16 @@ function generateProductCSS() {
                 540px;
 
             margin:
-                8px 0 13px;
+                9px 0 13px;
 
             color:
                 #d0d0d0;
 
             font-size:
-                12px;
+                13px;
 
             line-height:
-                1.5;
+                1.55;
 
         }
 
@@ -2297,7 +2482,7 @@ function generateProductCSS() {
                 relative;
 
             min-height:
-                165px;
+                170px;
 
             overflow:
                 hidden;
@@ -2305,22 +2490,28 @@ function generateProductCSS() {
         }
 
 
+        /*
+           ZOOM AGRESIVO:
+           la segunda imagen queda recortada
+           para mostrar principalmente el diseño.
+        */
+
         .satori-style-image img {
 
             position:
                 absolute;
 
             width:
-                120%;
+                150%;
 
             height:
-                120%;
+                150%;
 
             right:
-                -12%;
+                -27%;
 
             top:
-                -15%;
+                -25%;
 
             object-fit:
                 contain;
@@ -2329,10 +2520,10 @@ function generateProductCSS() {
                 center;
 
             transform:
-                scale(1.65);
+                scale(2.15);
 
             transform-origin:
-                center;
+                center center;
 
             filter:
                 saturate(.95);
@@ -2347,7 +2538,7 @@ function generateProductCSS() {
         .satori-related {
 
             padding:
-                0 0 70px;
+                0 0 65px;
 
         }
 
@@ -2355,7 +2546,7 @@ function generateProductCSS() {
         .satori-related-heading {
 
             margin-bottom:
-                25px;
+                24px;
 
         }
 
@@ -2373,7 +2564,7 @@ function generateProductCSS() {
                 var(--satori-red);
 
             font-size:
-                9px;
+                10px;
 
             font-weight:
                 900;
@@ -2428,10 +2619,16 @@ function generateProductCSS() {
                 #777;
 
             font-size:
-                13px;
+                14px;
 
         }
 
+
+        /*
+           5 productos en escritorio.
+           Esto hace las tarjetas aproximadamente
+           25% más pequeñas que antes.
+        */
 
         .satori-related-grid {
 
@@ -2439,10 +2636,10 @@ function generateProductCSS() {
                 grid;
 
             grid-template-columns:
-                repeat(4, 1fr);
+                repeat(5, 1fr);
 
             gap:
-                18px;
+                16px;
 
         }
 
@@ -2519,7 +2716,7 @@ function generateProductCSS() {
                 auto 0 0 0;
 
             padding:
-                10px;
+                9px;
 
             background:
                 rgba(
@@ -2562,7 +2759,7 @@ function generateProductCSS() {
         .satori-related-info {
 
             padding-top:
-                10px;
+                9px;
 
         }
 
@@ -2573,13 +2770,13 @@ function generateProductCSS() {
                 #888;
 
             font-size:
-                9px;
+                8px;
 
             font-weight:
                 900;
 
             letter-spacing:
-                1.3px;
+                1.2px;
 
         }
 
@@ -2590,7 +2787,10 @@ function generateProductCSS() {
                 3px 0;
 
             font-size:
-                14px;
+                12px;
+
+            line-height:
+                1.25;
 
             font-weight:
                 800;
@@ -2601,7 +2801,7 @@ function generateProductCSS() {
         .satori-related-info strong {
 
             font-size:
-                13px;
+                12px;
 
         }
 
@@ -2622,7 +2822,7 @@ function generateProductCSS() {
                 470px;
 
             margin:
-                0 0 75px;
+                0 0 70px;
 
             overflow:
                 hidden;
@@ -2662,7 +2862,7 @@ function generateProductCSS() {
                 var(--satori-red);
 
             font-size:
-                9px;
+                10px;
 
             font-weight:
                 900;
@@ -2728,7 +2928,7 @@ function generateProductCSS() {
                 #c9c9c9;
 
             font-size:
-                13px;
+                14px;
 
         }
 
@@ -2807,7 +3007,7 @@ function generateProductCSS() {
         .satori-story {
 
             padding:
-                0 0 70px;
+                0 0 65px;
 
             border-top:
                 1px solid #e5e5e5;
@@ -2868,7 +3068,7 @@ function generateProductCSS() {
                 #777;
 
             font-size:
-                13px;
+                14px;
 
         }
 
@@ -2913,7 +3113,7 @@ function generateProductCSS() {
                 var(--satori-red);
 
             font-size:
-                9px;
+                10px;
 
             font-weight:
                 900;
@@ -2927,7 +3127,7 @@ function generateProductCSS() {
                 8px 0 5px;
 
             font-size:
-                12px;
+                13px;
 
             font-weight:
                 900;
@@ -2944,7 +3144,7 @@ function generateProductCSS() {
                 #777;
 
             font-size:
-                12px;
+                13px;
 
             line-height:
                 1.6;
@@ -2994,7 +3194,7 @@ function generateProductCSS() {
                 var(--satori-red);
 
             font-size:
-                9px;
+                10px;
 
             font-weight:
                 900;
@@ -3045,7 +3245,7 @@ function generateProductCSS() {
                 #777;
 
             font-size:
-                12px;
+                13px;
 
         }
 
@@ -3139,7 +3339,7 @@ function generateProductCSS() {
                 var(--satori-red);
 
             font-size:
-                9px;
+                10px;
 
             font-weight:
                 900;
@@ -3191,7 +3391,7 @@ function generateProductCSS() {
                 #c9c9c9;
 
             font-size:
-                12px;
+                13px;
 
         }
 
@@ -3248,6 +3448,14 @@ function generateProductCSS() {
 
                 max-width:
                     none;
+
+            }
+
+
+            .satori-related-grid {
+
+                grid-template-columns:
+                    repeat(4, 1fr);
 
             }
 
@@ -3327,7 +3535,7 @@ function generateProductCSS() {
             .satori-product-layout {
 
                 padding:
-                    35px 0 55px;
+                    35px 0 50px;
 
             }
 
@@ -3421,6 +3629,7 @@ function generateProductCSS() {
         }
 
     `;
+
 }
 
 
@@ -3437,6 +3646,7 @@ function generateProductJS() {
         document.addEventListener(
             "DOMContentLoaded",
             function () {
+
 
                 /* =========================================
                    GALERÍA
@@ -3522,6 +3732,7 @@ function generateProductJS() {
                                                 )
                                         );
 
+
                                     this.classList.add(
                                         "active"
                                     );
@@ -3559,6 +3770,7 @@ function generateProductJS() {
                                                 )
                                         );
 
+
                                     this.classList.add(
                                         "active"
                                     );
@@ -3576,20 +3788,24 @@ function generateProductJS() {
 
                 let quantity = 1;
 
+
                 const quantityDisplay =
                     document.getElementById(
                         "satoriQuantity"
                     );
+
 
                 const quantityInput =
                     document.getElementById(
                         "quantity"
                     );
 
+
                 const minus =
                     document.getElementById(
                         "satoriQuantityMinus"
                     );
+
 
                 const plus =
                     document.getElementById(
@@ -3605,6 +3821,7 @@ function generateProductJS() {
                             quantity;
 
                     }
+
 
                     if (quantityInput) {
 
@@ -3648,15 +3865,17 @@ function generateProductJS() {
 
 
                 /* =========================================
-                   BOTÓN CARRITO
+                   CARRITO
 
-                   IMPORTANTE:
-                   cart.js es el encargado de guardar
-                   realmente el producto.
+                   El botón cambia inmediatamente a rojo
+                   cuando el usuario lo pulsa.
 
-                   Aquí solamente cambiamos la apariencia
-                   después de que cart.js haya procesado
-                   el clic.
+                   Después de 1.8 segundos vuelve al
+                   estado original.
+
+                   Esto es independiente del evento de
+                   cart.js, por lo que el texto no queda
+                   permanentemente en "AGREGADO".
                 ========================================== */
 
                 const addButton =
@@ -3667,16 +3886,77 @@ function generateProductJS() {
 
                 if (addButton) {
 
+                    const originalText =
+                        addButton.textContent.trim();
+
+
+                    let cartResetTimer = null;
+
+
+                    function showAddedState() {
+
+                        addButton.classList.add(
+                            "added"
+                        );
+
+
+                        addButton.textContent =
+                            "✓ AGREGADO AL CARRITO";
+
+
+                        if (cartResetTimer) {
+
+                            clearTimeout(
+                                cartResetTimer
+                            );
+
+                        }
+
+
+                        cartResetTimer =
+                            setTimeout(
+                                function () {
+
+                                    addButton.classList.remove(
+                                        "added"
+                                    );
+
+
+                                    addButton.textContent =
+                                        originalText;
+
+                                },
+                                1800
+                            );
+
+                    }
+
+
+                    /*
+                       Escuchamos el clic sin impedir
+                       que cart.js procese el producto.
+                    */
+
+                    addButton.addEventListener(
+                        "click",
+                        function () {
+
+                            showAddedState();
+
+                        }
+                    );
+
+
+                    /*
+                       También escuchamos el evento
+                       personalizado si cart.js lo utiliza.
+                    */
+
                     document.addEventListener(
                         "satorii:cart-updated",
                         function () {
 
-                            addButton.classList.add(
-                                "added"
-                            );
-
-                            addButton.textContent =
-                                "✓ AGREGADO AL CARRITO";
+                            showAddedState();
 
                         }
                     );
@@ -3760,6 +4040,7 @@ function generateProductJS() {
         </script>
 
     `;
+
 }
 
 
@@ -3778,6 +4059,7 @@ function generateProductHTML(
             product.name
         );
 
+
     const category =
         escapeHTML(
             String(
@@ -3787,18 +4069,22 @@ function generateProductHTML(
             ).toUpperCase()
         );
 
+
     const price =
         formatPrice(
             product.price
         );
+
 
     const description =
         product.details?.description ||
         product.description ||
         `${product.name} · SATORII`;
 
+
     const images =
         getImages(product);
+
 
     const mainImage =
         images.length
@@ -3808,23 +4094,37 @@ function generateProductHTML(
             )
             : "";
 
+
     const gallery =
         generateGallery(
             product,
             outputDirectory
         );
 
+
     const colors =
-        generateColors(product);
+        generateColors(
+            product
+        );
+
 
     const sizes =
-        generateSizes(product);
+        generateSizes(
+            product
+        );
+
 
     const trust =
-        generateTrustBlocks(product);
+        generateTrustBlocks(
+            product
+        );
+
 
     const details =
-        generateDetails(product);
+        generateDetails(
+            product
+        );
+
 
     const recommendations =
         generateRecommendations(
@@ -3833,11 +4133,13 @@ function generateProductHTML(
             outputDirectory
         );
 
+
     const styleBanner =
         generateStyleBanner(
             product,
             outputDirectory
         );
+
 
     const editorial =
         generateEditorialBanner(
@@ -3845,16 +4147,20 @@ function generateProductHTML(
             mainImage
         );
 
+
     const story =
         generateBrandDetails(
             product
         );
 
+
     const careGuide =
         generateCareGuide();
 
+
     const finalBanner =
         generateFinalBanner();
+
 
     const javascript =
         generateProductJS();
@@ -3868,15 +4174,18 @@ function generateProductHTML(
 
     <meta charset="UTF-8">
 
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
+
     <meta
         name="description"
         content="${escapeHTML(description)}"
     >
+
 
     <title>
         ${name} | SATORII
@@ -4085,7 +4394,7 @@ function generateProductHTML(
 
 
             <!-- =========================================
-                 BANNER
+                 CUIDADO DE LA PRENDA
             ========================================== -->
 
             ${styleBanner}
@@ -4113,7 +4422,7 @@ function generateProductHTML(
 
 
             <!-- =========================================
-                 CUIDADO
+                 GUÍA DE CUIDADO
             ========================================== -->
 
             ${careGuide}
@@ -4160,11 +4469,6 @@ function generateProductHTML(
     ></script>
 
 
-    <!--
-        cart.js debe cargarse después
-        de los elementos del producto.
-    -->
-
     <script
         src="../../js/cart.js"
     ></script>
@@ -4178,6 +4482,7 @@ function generateProductHTML(
 </body>
 
 </html>`;
+
 }
 
 
@@ -4191,9 +4496,11 @@ function generateProducts() {
         "========================================"
     );
 
+
     console.log(
         "SATORII · GENERADOR DE PRODUCTOS"
     );
+
 
     console.log(
         "========================================"
@@ -4289,9 +4596,11 @@ function generateProducts() {
         "========================================"
     );
 
+
     console.log(
         "SATORII · generación completada."
     );
+
 
     console.log(
         "========================================"
@@ -4315,15 +4624,19 @@ catch (error) {
         "========================================"
     );
 
+
     console.error(
         "SATORII · ERROR"
     );
 
+
     console.error(error);
+
 
     console.error(
         "========================================"
     );
+
 
     process.exit(1);
 
