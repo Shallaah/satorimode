@@ -2,8 +2,13 @@
 <html lang="es">
 
 <head>
-    <link rel="icon" type="image/png" href="img/logo.png">
-    
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
     <meta charset="UTF-8">
 
     <meta
@@ -13,10 +18,10 @@
 
     <meta
         name="description"
-        content="SatoriMode Anime — Poleras y prendas inspiradas en anime y cultura japonesa."
+        content="SatoriMode Streetwear — Poleras y prendas inspiradas en el estilo urbano."
     >
 
-    <title>Anime | SatoriMode</title>
+    <title>Streetwear | SATORII</title>
 
     <link
         rel="stylesheet"
@@ -27,14 +32,19 @@
     <style>
 
         /* =====================================================
-           ANIME — ESTRUCTURA DE PÁGINA
+           STREETWEAR — ESTRUCTURA
         ====================================================== */
 
-        .anime-page {
+        .streetwear-page {
 
             width: min(
                 var(--satori-content-width, 1800px),
-                calc(100% - (var(--satori-side-space, 30px) * 2))
+                calc(
+                    100% -
+                    (
+                        var(--satori-side-space, 30px) * 2
+                    )
+                )
             );
 
             margin-left: auto;
@@ -46,10 +56,10 @@
 
 
         /* =====================================================
-           CABECERA DE COLECCIÓN
+           INTRO
         ====================================================== */
 
-        .anime-intro {
+        .streetwear-intro {
 
             padding-top: 110px;
             padding-bottom: 70px;
@@ -59,13 +69,17 @@
         }
 
 
-        .anime-intro-label {
+        .streetwear-intro-label {
 
             margin-bottom: 16px;
 
-            color: var(--red, #ff1b1b);
+            color: var(
+                --red,
+                #ff1b1b
+            );
 
             font-size: 11px;
+
             font-weight: 800;
 
             letter-spacing: 4px;
@@ -73,7 +87,7 @@
         }
 
 
-        .anime-intro h1 {
+        .streetwear-intro h1 {
 
             margin: 0;
 
@@ -94,14 +108,17 @@
         }
 
 
-        .anime-intro h1 span {
+        .streetwear-intro h1 span {
 
-            color: var(--red, #ff1b1b);
+            color: var(
+                --red,
+                #ff1b1b
+            );
 
         }
 
 
-        .anime-intro p {
+        .streetwear-intro p {
 
             max-width: 650px;
 
@@ -120,11 +137,12 @@
            BARRA DE CATEGORÍA
         ====================================================== */
 
-        .anime-category-bar {
+        .streetwear-category-bar {
 
             display: flex;
 
             align-items: center;
+
             justify-content: space-between;
 
             margin-bottom: 45px;
@@ -136,7 +154,7 @@
         }
 
 
-        .anime-category-title {
+        .streetwear-category-title {
 
             margin: 0;
 
@@ -149,7 +167,7 @@
         }
 
 
-        .anime-product-count {
+        .streetwear-product-count {
 
             color: #777;
 
@@ -160,17 +178,17 @@
 
         /* =====================================================
            GRID
-           
-           5 × 340px = 1700px
-           Esto permite mantener el mismo ancho global.
         ====================================================== */
 
-        .anime-products-grid {
+        .streetwear-products-grid {
 
             display: grid;
 
             grid-template-columns:
-                repeat(5, minmax(0, 1fr));
+                repeat(
+                    5,
+                    minmax(0, 1fr)
+                );
 
             column-gap: 22px;
 
@@ -185,7 +203,7 @@
            PRODUCTO
         ====================================================== */
 
-        .anime-product {
+        .streetwear-product {
 
             display: block;
 
@@ -202,30 +220,31 @@
            IMÁGENES
         ====================================================== */
 
-        .anime-product-image {
+        .streetwear-product-image {
 
-    position: relative;
+            position: relative;
 
-    width: 100%;
+            width: 100%;
 
-    aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 1;
 
-    overflow: hidden;
+            overflow: hidden;
 
-    background: #f7f7f7;
+            background: #f7f7f7;
 
-    border-radius: 8px;
+            border-radius: 8px;
 
-}
+        }
 
 
-        .anime-product-image img {
+        .streetwear-product-image img {
 
             position: absolute;
 
             inset: 0;
 
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -239,24 +258,28 @@
         }
 
 
-        .anime-product-image .image-primary {
+        .streetwear-product-image
+        .image-primary {
 
             opacity: 1;
 
         }
 
 
-        .anime-product-image .image-secondary {
+        .streetwear-product-image
+        .image-secondary {
 
             opacity: 0;
 
         }
 
 
-        /* Hover */
+        /* =====================================================
+           HOVER
+        ====================================================== */
 
-        .anime-product:hover
-        .anime-product-image
+        .streetwear-product:hover
+        .streetwear-product-image
         .image-primary {
 
             opacity: 0;
@@ -264,8 +287,8 @@
         }
 
 
-        .anime-product:hover
-        .anime-product-image
+        .streetwear-product:hover
+        .streetwear-product-image
         .image-secondary {
 
             opacity: 1;
@@ -273,10 +296,12 @@
         }
 
 
-        .anime-product:hover
-        .anime-product-image img {
+        .streetwear-product:hover
+        .streetwear-product-image img {
 
-            transform: scale(1.025);
+            transform: scale(
+                1.025
+            );
 
         }
 
@@ -285,18 +310,21 @@
            INFORMACIÓN
         ====================================================== */
 
-        .anime-product-info {
+        .streetwear-product-info {
 
             padding-top: 16px;
 
         }
 
 
-        .anime-product-category {
+        .streetwear-product-category {
 
             margin-bottom: 6px;
 
-            color: var(--red, #ff1b1b);
+            color: var(
+                --red,
+                #ff1b1b
+            );
 
             font-size: 9px;
 
@@ -309,7 +337,7 @@
         }
 
 
-        .anime-product-name {
+        .streetwear-product-name {
 
             margin: 0;
 
@@ -324,7 +352,7 @@
         }
 
 
-        .anime-product-price {
+        .streetwear-product-price {
 
             margin-top: 7px;
 
@@ -341,7 +369,7 @@
            SIN PRODUCTOS
         ====================================================== */
 
-        .anime-empty {
+        .streetwear-empty {
 
             grid-column: 1 / -1;
 
@@ -354,7 +382,7 @@
         }
 
 
-        .anime-empty strong {
+        .streetwear-empty strong {
 
             display: block;
 
@@ -367,147 +395,167 @@
         }
 
 
-/* =====================================================
-   PACK FINAL
-====================================================== */
+        /* =====================================================
+           PACK FINAL
+        ====================================================== */
 
-.anime-pack {
+        .streetwear-pack {
 
-    position: relative;
+            position: relative;
 
-    margin-top: 120px;
-    margin-bottom: 100px;
+            margin-top: 120px;
 
-    min-height: 230px;
+            margin-bottom: 100px;
 
-    padding: 50px;
+            min-height: 230px;
 
-    display: flex;
-    align-items: center;
+            padding: 50px;
 
-    box-sizing: border-box;
+            display: flex;
 
-    overflow: hidden;
+            align-items: center;
 
-    background:
-        radial-gradient(
-            circle at 85% 30%,
-            #430000 0%,
-            #1d0000 40%,
-            #080000 80%
-        );
+            box-sizing: border-box;
 
-    color: #fff;
+            overflow: hidden;
 
-    /* ESQUINAS CON BORDE */
-    border: 1px solid rgba(255, 255, 255, 0.18);
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827 0%,
+                    #090d15 100%
+                );
 
-    border-radius: 10px;
+            color: #fff;
 
-}
+            border: 1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .18
+                );
 
+            border-radius: 10px;
 
-/* Línea decorativa superior */
+        }
 
-.anime-pack::before {
 
-    content: "";
+        .streetwear-pack::before {
 
-    position: absolute;
+            content: "";
 
-    top: 0;
-    left: 0;
+            position: absolute;
 
-    width: 150px;
-    height: 2px;
+            top: 0;
 
-    background: var(--red, #ff1b1b);
+            left: 0;
 
-}
+            width: 150px;
 
+            height: 2px;
 
-/* Línea decorativa inferior */
+            background:
+                var(
+                    --red,
+                    #ff1b1b
+                );
 
-.anime-pack::after {
+        }
 
-    content: "";
 
-    position: absolute;
+        .streetwear-pack::after {
 
-    bottom: 0;
-    right: 0;
+            content: "";
 
-    width: 150px;
-    height: 2px;
+            position: absolute;
 
-    background: var(--red, #ff1b1b);
+            bottom: 0;
 
-}
+            right: 0;
 
+            width: 150px;
 
-/* CONTENIDO */
+            height: 2px;
 
-.anime-pack-content {
+            background:
+                var(
+                    --red,
+                    #ff1b1b
+                );
 
-    position: relative;
+        }
 
-    z-index: 2;
 
-    max-width: 650px;
+        .streetwear-pack-content {
 
-}
+            position: relative;
 
+            z-index: 2;
 
-.anime-pack-label {
+            max-width: 650px;
 
-    margin-bottom: 8px;
+        }
 
-    color: var(--red, #ff1b1b);
 
-    font-size: 10px;
+        .streetwear-pack-label {
 
-    font-weight: 800;
+            margin-bottom: 8px;
 
-    letter-spacing: 4px;
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
 
-}
+            font-size: 10px;
 
+            font-weight: 800;
 
-.anime-pack h2 {
+            letter-spacing: 4px;
 
-    margin: 0 0 12px;
+        }
 
-    font-size: clamp(
-        30px,
-        4vw,
-        52px
-    );
 
-    line-height: 1;
+        .streetwear-pack h2 {
 
-    font-weight: 900;
+            margin: 0 0 12px;
 
-}
+            font-size: clamp(
+                30px,
+                4vw,
+                52px
+            );
 
+            line-height: 1;
 
-.anime-pack h2 span {
+            font-weight: 900;
 
-    color: var(--red, #ff1b1b);
+        }
 
-}
 
+        .streetwear-pack h2 span {
 
-.anime-pack p {
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
 
-    margin: 0;
+        }
 
-    color: #ccc;
 
-    font-size: 14px;
+        .streetwear-pack p {
 
-    line-height: 1.6;
+            margin: 0;
 
-}
+            color: #ccc;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
 
 
         /* =====================================================
@@ -516,10 +564,13 @@
 
         @media (max-width: 1400px) {
 
-            .anime-products-grid {
+            .streetwear-products-grid {
 
                 grid-template-columns:
-                    repeat(4, minmax(0, 1fr));
+                    repeat(
+                        4,
+                        minmax(0, 1fr)
+                    );
 
             }
 
@@ -528,10 +579,13 @@
 
         @media (max-width: 1050px) {
 
-            .anime-products-grid {
+            .streetwear-products-grid {
 
                 grid-template-columns:
-                    repeat(3, minmax(0, 1fr));
+                    repeat(
+                        3,
+                        minmax(0, 1fr)
+                    );
 
                 column-gap: 18px;
 
@@ -539,7 +593,8 @@
 
             }
 
-            .anime-intro {
+
+            .streetwear-intro {
 
                 padding-top: 90px;
 
@@ -554,14 +609,17 @@
 
         @media (max-width: 700px) {
 
-            .anime-page {
+            .streetwear-page {
 
-                width: calc(100% - 30px);
+                width:
+                    calc(
+                        100% - 30px
+                    );
 
             }
 
 
-            .anime-intro {
+            .streetwear-intro {
 
                 padding-top: 95px;
 
@@ -570,7 +628,7 @@
             }
 
 
-            .anime-intro h1 {
+            .streetwear-intro h1 {
 
                 font-size: 48px;
 
@@ -579,24 +637,27 @@
             }
 
 
-            .anime-intro p {
+            .streetwear-intro p {
 
                 font-size: 13px;
 
             }
 
 
-            .anime-category-bar {
+            .streetwear-category-bar {
 
                 margin-bottom: 30px;
 
             }
 
 
-            .anime-products-grid {
+            .streetwear-products-grid {
 
                 grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
 
                 column-gap: 14px;
 
@@ -605,28 +666,28 @@
             }
 
 
-            .anime-product-info {
+            .streetwear-product-info {
 
                 padding-top: 11px;
 
             }
 
 
-            .anime-product-category {
+            .streetwear-product-category {
 
                 font-size: 8px;
 
             }
 
 
-            .anime-product-name {
+            .streetwear-product-name {
 
                 font-size: 12px;
 
             }
 
 
-            .anime-product-price {
+            .streetwear-product-price {
 
                 font-size: 12px;
 
@@ -635,38 +696,43 @@
             }
 
 
-            .anime-pack {
+            .streetwear-pack {
 
-        margin-top: 80px;
-        margin-bottom: 60px;
+                margin-top: 80px;
 
-        min-height: 220px;
+                margin-bottom: 60px;
 
-        padding: 30px 25px;
+                min-height: 220px;
 
-        border-radius: 8px;
+                padding: 30px 25px;
 
-    }
+                border-radius: 8px;
 
-    .anime-pack::before {
+            }
 
-        width: 90px;
 
-    }
+            .streetwear-pack::before {
 
-    .anime-pack::after {
+                width: 90px;
 
-        width: 90px;
+            }
 
-    }
 
-    .anime-pack h2 {
+            .streetwear-pack::after {
 
-        font-size: 32px;
+                width: 90px;
 
-    }
+            }
 
-}
+
+            .streetwear-pack h2 {
+
+                font-size: 32px;
+
+            }
+
+        }
+
     </style>
 
 </head>
@@ -676,7 +742,7 @@
 
 
     <!-- =====================================================
-         HEADER GLOBAL
+         HEADER
     ====================================================== -->
 
     <div id="satori-header"></div>
@@ -685,27 +751,29 @@
     <main>
 
 
-        <div class="anime-page">
+        <div class="streetwear-page">
 
 
             <!-- =================================================
                  INTRO
             ================================================== -->
 
-            <section class="anime-intro">
+            <section class="streetwear-intro">
 
-                <div class="anime-intro-label">
-                    SATORIMODE · ANIME
+                <div class="streetwear-intro-label">
+                    SATORII · STREETWEAR
                 </div>
 
+
                 <h1>
-                    ANIME <span>MODE.</span>
+                    STREET <span>MODE.</span>
                 </h1>
 
+
                 <p>
-                    Diseños inspirados en anime, manga y cultura
-                    japonesa para llevar tus personajes y universos
-                    favoritos contigo.
+                    Prendas inspiradas en la cultura urbana,
+                    el anime y la identidad de quienes crean
+                    su propio estilo.
                 </p>
 
             </section>
@@ -715,15 +783,16 @@
                  CATEGORÍA
             ================================================== -->
 
-            <div class="anime-category-bar">
+            <div class="streetwear-category-bar">
 
-                <h2 class="anime-category-title">
-                    COLECCIÓN ANIME
+                <h2 class="streetwear-category-title">
+                    COLECCIÓN STREETWEAR
                 </h2>
 
+
                 <span
-                    class="anime-product-count"
-                    id="anime-product-count"
+                    class="streetwear-product-count"
+                    id="streetwear-product-count"
                 >
                     0 productos
                 </span>
@@ -736,31 +805,34 @@
             ================================================== -->
 
             <section
-                class="anime-products-grid"
-                id="anime-products-grid"
+                class="streetwear-products-grid"
+                id="streetwear-products-grid"
             >
             </section>
 
 
             <!-- =================================================
-                 PACK
+                 PACK FINAL
             ================================================== -->
 
-            <section class="anime-pack">
+            <section class="streetwear-pack">
 
-                <div class="anime-pack-content">
+                <div class="streetwear-pack-content">
 
-                    <div class="anime-pack-label">
+                    <div class="streetwear-pack-label">
                         SATORII
                     </div>
 
+
                     <h2>
-                        LLEVA TU <span>UNIVERSO.</span>
+                        CREA TU
+                        <span>ESTILO.</span>
                     </h2>
 
+
                     <p>
-                        Descubre más diseños y encuentra la prenda
-                        que represente tu estilo.
+                        Descubre nuestras prendas y encuentra
+                        piezas que representen tu forma de vestir.
                     </p>
 
                 </div>
@@ -774,14 +846,14 @@
 
 
     <!-- =====================================================
-         FOOTER GLOBAL
+         FOOTER
     ====================================================== -->
 
     <div id="satori-footer"></div>
 
 
     <!-- =====================================================
-         PRODUCTOS
+         SCRIPTS
     ====================================================== -->
 
     <script src="js/products.js"></script>
@@ -791,29 +863,29 @@
     <script src="js/footer.js"></script>
 
 
-    <!-- =====================================================
-         GENERADOR DE PRODUCTOS
-    ====================================================== -->
-
     <script>
 
         document.addEventListener(
             "DOMContentLoaded",
-            () => {
+            function () {
+
 
                 const grid =
                     document.getElementById(
-                        "anime-products-grid"
+                        "streetwear-products-grid"
                     );
+
 
                 const count =
                     document.getElementById(
-                        "anime-product-count"
+                        "streetwear-product-count"
                     );
 
 
                 if (!grid) {
+
                     return;
+
                 }
 
 
@@ -827,12 +899,19 @@
                 ) {
 
                     grid.innerHTML = `
-                        <div class="anime-empty">
+
+                        <div class="streetwear-empty">
+
                             <strong>
                                 No se pudo cargar el catálogo.
                             </strong>
-                            Revisa que js/products.js esté disponible.
+
+                            Revisa que
+                            js/products.js
+                            esté disponible.
+
                         </div>
+
                     `;
 
                     return;
@@ -841,15 +920,20 @@
 
 
                 /* ==========================================
-                   FILTRAR ANIME
+                   FILTRAR STREETWEAR
                 ========================================== */
 
-                const animeProducts =
+                const streetwearProducts =
                     PRODUCTS.filter(
-                        product =>
-                            String(
+                        function (product) {
+
+                            return String(
                                 product.category || ""
-                            ).toLowerCase() === "anime"
+                            )
+                            .toLowerCase()
+                            .trim() === "streetwear";
+
+                        }
                     );
 
 
@@ -858,8 +942,8 @@
                 ========================================== */
 
                 count.textContent =
-                    `${animeProducts.length} ${
-                        animeProducts.length === 1
+                    `${streetwearProducts.length} ${
+                        streetwearProducts.length === 1
                             ? "producto"
                             : "productos"
                     }`;
@@ -869,15 +953,23 @@
                    SIN PRODUCTOS
                 ========================================== */
 
-                if (animeProducts.length === 0) {
+                if (
+                    streetwearProducts.length === 0
+                ) {
 
                     grid.innerHTML = `
-                        <div class="anime-empty">
+
+                        <div class="streetwear-empty">
+
                             <strong>
                                 Próximamente
                             </strong>
-                            Estamos preparando nuevos diseños de anime.
+
+                            Estamos preparando
+                            nuevos diseños streetwear.
+
                         </div>
+
                     `;
 
                     return;
@@ -889,12 +981,12 @@
                    CREAR PRODUCTOS
                 ========================================== */
 
-                animeProducts.forEach(
-                    product => {
+                streetwearProducts.forEach(
+                    function (product) {
 
 
                         /* ----------------------------------
-                           IMAGEN PRINCIPAL
+                           IMÁGENES
                         ---------------------------------- */
 
                         const primaryImage =
@@ -903,22 +995,58 @@
                             "";
 
 
-                        /* ----------------------------------
-                           SEGUNDA IMAGEN
-                        ---------------------------------- */
-
                         const secondaryImage =
                             product.images?.[1] ||
                             primaryImage;
 
 
                         /* ----------------------------------
-                           URL
+                           URL AUTOMÁTICA
                         ---------------------------------- */
 
+                        const productId =
+                            String(
+                                product.id ||
+                                product.name ||
+                                ""
+                            )
+                            .normalize("NFD")
+                            .replace(
+                                /[\u0300-\u036f]/g,
+                                ""
+                            )
+                            .toLowerCase()
+                            .trim()
+                            .replace(
+                                /[^a-z0-9]+/g,
+                                "-"
+                            )
+                            .replace(
+                                /^-+|-+$/g,
+                                ""
+                            );
+
+
+                        const productCategory =
+                            String(
+                                product.category ||
+                                "otros"
+                            )
+                            .normalize("NFD")
+                            .replace(
+                                /[\u0300-\u036f]/g,
+                                ""
+                            )
+                            .toLowerCase()
+                            .trim();
+
+
                         const productUrl =
-                            product.url ||
-                            "#";
+                            "productos/" +
+                            productCategory +
+                            "/" +
+                            productId +
+                            ".html";
 
 
                         /* ----------------------------------
@@ -926,6 +1054,7 @@
                         ---------------------------------- */
 
                         let price = "";
+
 
                         if (
                             product.price !== undefined &&
@@ -936,12 +1065,20 @@
                                 new Intl.NumberFormat(
                                     "es-CL",
                                     {
-                                        style: "currency",
-                                        currency: "CLP",
-                                        maximumFractionDigits: 0
+                                        style:
+                                            "currency",
+
+                                        currency:
+                                            "CLP",
+
+                                        maximumFractionDigits:
+                                            0
                                     }
-                                ).format(
-                                    Number(product.price)
+                                )
+                                .format(
+                                    Number(
+                                        product.price
+                                    )
                                 );
 
                         }
@@ -952,10 +1089,14 @@
                         ---------------------------------- */
 
                         const card =
-                            document.createElement("a");
+                            document.createElement(
+                                "a"
+                            );
+
 
                         card.className =
-                            "anime-product";
+                            "streetwear-product";
+
 
                         card.href =
                             productUrl;
@@ -963,36 +1104,68 @@
 
                         card.innerHTML = `
 
-                            <div class="anime-product-image">
+                            <div
+                                class="
+                                    streetwear-product-image
+                                "
+                            >
 
                                 <img
                                     class="image-primary"
                                     src="${primaryImage}"
-                                    alt="${product.name || "Producto SatoriMode"}"
+                                    alt="${
+                                        product.name ||
+                                        "Producto SATORII"
+                                    }"
                                     loading="lazy"
                                 >
+
 
                                 <img
                                     class="image-secondary"
                                     src="${secondaryImage}"
-                                    alt="${product.name || "Producto SatoriMode"}"
+                                    alt="${
+                                        product.name ||
+                                        "Producto SATORII"
+                                    }"
                                     loading="lazy"
                                 >
 
                             </div>
 
 
-                            <div class="anime-product-info">
+                            <div
+                                class="
+                                    streetwear-product-info
+                                "
+                            >
 
-                                <div class="anime-product-category">
-                                    ANIME
+                                <div
+                                    class="
+                                        streetwear-product-category
+                                    "
+                                >
+                                    STREETWEAR
                                 </div>
 
-                                <h3 class="anime-product-name">
-                                    ${product.name || "Producto"}
+
+                                <h3
+                                    class="
+                                        streetwear-product-name
+                                    "
+                                >
+                                    ${
+                                        product.name ||
+                                        "Producto"
+                                    }
                                 </h3>
 
-                                <div class="anime-product-price">
+
+                                <div
+                                    class="
+                                        streetwear-product-price
+                                    "
+                                >
                                     ${price}
                                 </div>
 
@@ -1001,7 +1174,9 @@
                         `;
 
 
-                        grid.appendChild(card);
+                        grid.appendChild(
+                            card
+                        );
 
                     }
                 );
