@@ -11,19 +11,22 @@
 
 
     /* =====================================================
-   CLAVE PRINCIPAL DEL CARRITO
-====================================================== */
+       CLAVE PRINCIPAL DEL CARRITO
+    ====================================================== */
 
-const CART_STORAGE_KEY = "satorimode_cart";
+    const CART_STORAGE_KEY =
+        "satorimode_cart";
 
 
-/*
- * Clave utilizada en versiones anteriores.
- *
- * Se conserva únicamente para migración.
- */
+    /*
+     * Clave utilizada en versiones anteriores.
+     *
+     * Se conserva únicamente para migración.
+     */
 
-const OLD_CART_STORAGE_KEY = "satorii_cart";
+    const OLD_CART_STORAGE_KEY =
+        "satorii_cart";
+
 
     /* =====================================================
        INICIALIZACIÓN
@@ -34,7 +37,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         /* =================================================
            EVITAR DUPLICADOS
-        ================================================= */
+        ================================================== */
 
         const oldHeader =
             document.getElementById(
@@ -53,26 +56,35 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
 
         if (oldHeader) {
+
             oldHeader.remove();
+
         }
+
 
         if (oldStyle) {
+
             oldStyle.remove();
+
         }
 
+
         if (oldSpacer) {
+
             oldSpacer.remove();
+
         }
 
 
         /* =================================================
            ROOT
-        ================================================= */
+        ================================================== */
 
         const root =
             document.createElement(
                 "div"
             );
+
 
         root.id =
             "satori-header";
@@ -80,7 +92,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         /* =================================================
            HTML
-        ================================================= */
+        ================================================== */
 
         root.innerHTML = `
 
@@ -219,19 +231,27 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
                         <div class="dropdown-menu">
 
-                            <a href="${SATORIMODE_BASE}anime.html">
+                            <a
+                                href="${SATORIMODE_BASE}anime.html"
+                            >
                                 Anime
                             </a>
 
-                            <a href="${SATORIMODE_BASE}streetwear.html">
+                            <a
+                                href="${SATORIMODE_BASE}streetwear.html"
+                            >
                                 Streetwear
                             </a>
 
-                            <a href="${SATORIMODE_BASE}accesorios.html">
+                            <a
+                                href="${SATORIMODE_BASE}accesorios.html"
+                            >
                                 Accesorios
                             </a>
 
-                            <a href="${SATORIMODE_BASE}productos.html">
+                            <a
+                                href="${SATORIMODE_BASE}productos.html"
+                            >
                                 Todo
                             </a>
 
@@ -262,15 +282,21 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
                         <div class="dropdown-menu">
 
-                            <a href="${SATORIMODE_BASE}satorii-pack.html">
+                            <a
+                                href="${SATORIMODE_BASE}satorii-pack.html"
+                            >
                                 Satorii Pack
                             </a>
 
-                            <a href="${SATORIMODE_BASE}gift-cards.html">
+                            <a
+                                href="${SATORIMODE_BASE}gift-cards.html"
+                            >
                                 Gift Cards
                             </a>
 
-                            <a href="${SATORIMODE_BASE}mystery-box.html">
+                            <a
+                                href="${SATORIMODE_BASE}mystery-box.html"
+                            >
                                 Mystery Box
                             </a>
 
@@ -301,19 +327,27 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
                         <div class="dropdown-menu">
 
-                            <a href="${SATORIMODE_BASE}preguntas-frecuentes.html">
+                            <a
+                                href="${SATORIMODE_BASE}preguntas-frecuentes.html"
+                            >
                                 Preguntas frecuentes
                             </a>
 
-                            <a href="${SATORIMODE_BASE}envios.html">
+                            <a
+                                href="${SATORIMODE_BASE}envios.html"
+                            >
                                 Envíos
                             </a>
 
-                            <a href="${SATORIMODE_BASE}cambios.html">
+                            <a
+                                href="${SATORIMODE_BASE}cambios.html"
+                            >
                                 Cambios y devoluciones
                             </a>
 
-                            <a href="${SATORIMODE_BASE}guia-tallas.html">
+                            <a
+                                href="${SATORIMODE_BASE}guia-tallas.html"
+                            >
                                 Guía de tallas
                             </a>
 
@@ -513,19 +547,27 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                     id="mobile-collections"
                 >
 
-                    <a href="${SATORIMODE_BASE}anime.html">
+                    <a
+                        href="${SATORIMODE_BASE}anime.html"
+                    >
                         Anime
                     </a>
 
-                    <a href="${SATORIMODE_BASE}streetwear.html">
+                    <a
+                        href="${SATORIMODE_BASE}streetwear.html"
+                    >
                         Streetwear
                     </a>
 
-                    <a href="${SATORIMODE_BASE}accesorios.html">
+                    <a
+                        href="${SATORIMODE_BASE}accesorios.html"
+                    >
                         Accesorios
                     </a>
 
-                    <a href="${SATORIMODE_BASE}productos.html">
+                    <a
+                        href="${SATORIMODE_BASE}productos.html"
+                    >
                         Todo
                     </a>
 
@@ -553,15 +595,21 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                     id="mobile-products"
                 >
 
-                    <a href="${SATORIMODE_BASE}satorii-pack.html">
+                    <a
+                        href="${SATORIMODE_BASE}satorii-pack.html"
+                    >
                         Satorii Pack
                     </a>
 
-                    <a href="${SATORIMODE_BASE}gift-cards.html">
+                    <a
+                        href="${SATORIMODE_BASE}gift-cards.html"
+                    >
                         Gift Cards
                     </a>
 
-                    <a href="${SATORIMODE_BASE}mystery-box.html">
+                    <a
+                        href="${SATORIMODE_BASE}mystery-box.html"
+                    >
                         Mystery Box
                     </a>
 
@@ -589,19 +637,27 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                     id="mobile-help"
                 >
 
-                    <a href="${SATORIMODE_BASE}preguntas-frecuentes.html">
+                    <a
+                        href="${SATORIMODE_BASE}preguntas-frecuentes.html"
+                    >
                         Preguntas frecuentes
                     </a>
 
-                    <a href="${SATORIMODE_BASE}envios.html">
+                    <a
+                        href="${SATORIMODE_BASE}envios.html"
+                    >
                         Envíos
                     </a>
 
-                    <a href="${SATORIMODE_BASE}cambios.html">
+                    <a
+                        href="${SATORIMODE_BASE}cambios.html"
+                    >
                         Cambios y devoluciones
                     </a>
 
-                    <a href="${SATORIMODE_BASE}guia-tallas.html">
+                    <a
+                        href="${SATORIMODE_BASE}guia-tallas.html"
+                    >
                         Guía de tallas
                     </a>
 
@@ -788,39 +844,55 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                 </div>
 
 
-               <div class="cart-preview-actions">
+                <!-- =================================================
+                     ACCIONES DEL CARRITO
+                ================================================== -->
 
-    <a
-        href="${SATORIMODE_BASE}carrito.html"
-        class="cart-preview-button cart-preview-view"
-    >
-        VER CARRITO
-    </a>
+                <div class="cart-preview-actions">
 
-
-    <a
-        href="${SATORIMODE_BASE}checkout.html"
-        class="cart-preview-button cart-preview-checkout"
-    >
-        FINALIZAR PEDIDO
-    </a>
-
-</div>
+                    <a
+                        href="${SATORIMODE_BASE}carrito.html"
+                        class="cart-preview-button cart-preview-view"
+                    >
+                        VER CARRITO
+                    </a>
 
 
-<a
-    href="${SATORIMODE_BASE}productos.html"
-    class="cart-preview-continue"
->
-    ← Seguir comprando
-</a>
+                    <a
+                        href="${SATORIMODE_BASE}checkout.html"
+                        class="cart-preview-button cart-preview-checkout"
+                    >
+                        FINALIZAR PEDIDO
+                    </a>
+
+                </div>
+
+
+                <!-- =================================================
+                     SEGUIR COMPRANDO
+                ================================================== -->
+
+                <a
+                    href="${SATORIMODE_BASE}productos.html"
+                    class="cart-preview-continue"
+                >
+                    ← Seguir comprando
+                </a>
+
+            </div>
+
+        </aside>
+
+        `;
 
 
         /* =====================================================
            INSERTAR
         ====================================================== */
 
-        document.body.prepend(root);
+        document.body.prepend(
+            root
+        );
 
 
         /* =====================================================
@@ -831,6 +903,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             document.createElement(
                 "style"
             );
+
 
         style.id =
             "satori-header-style";
@@ -977,13 +1050,6 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             line-height:.9;
             white-space:nowrap;
 
-            /*
-             * IMPORTANTE:
-             * No aplicamos transform aquí.
-             * En móvil el transform se controla
-             * exclusivamente dentro del media query.
-             */
-
             transition:
                 color .2s ease;
         }
@@ -995,13 +1061,6 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             transform:skewX(-5deg);
         }
 
-
-        /*
-         * HOVER SOLAMENTE EN ESCRITORIO
-         *
-         * Evita que Safari/iOS interprete el :hover
-         * al tocar el logo en dispositivos móviles.
-         */
 
         @media (min-width:1001px) {
 
@@ -1753,137 +1812,138 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             font-weight:900;
         }
 
- /* =====================================================
-   ACCIONES DEL CARRITO
-===================================================== */
 
-#satori-header .cart-preview-actions {
+        /* =====================================================
+           ACCIONES DEL CARRITO
+        ====================================================== */
 
-    display:grid;
+        #satori-header .cart-preview-actions {
 
-    grid-template-columns:
-        1fr
-        1fr;
+            display:grid;
 
-    gap:10px;
+            grid-template-columns:
+                1fr
+                1fr;
 
-    width:100%;
+            gap:10px;
 
-}
+            width:100%;
 
-
-/* =====================================================
-   BOTONES
-===================================================== */
-
-#satori-header .cart-preview-button {
-
-    width:100%;
-
-    min-height:48px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:0 10px;
-
-    text-decoration:none;
-
-    font-size:10px;
-
-    font-weight:800;
-
-    letter-spacing:.8px;
-
-    border-radius:5px;
-
-    transition:
-        background .2s ease,
-        color .2s ease,
-        border-color .2s ease;
-
-}
+        }
 
 
-/* =====================================================
-   VER CARRITO
-===================================================== */
+        /* =====================================================
+           BOTONES
+        ====================================================== */
 
-#satori-header .cart-preview-view {
+        #satori-header .cart-preview-button {
 
-    background:#fff;
+            width:100%;
 
-    color:#111;
+            min-height:48px;
 
-    border:1px solid #111;
+            display:flex;
 
-}
+            align-items:center;
 
+            justify-content:center;
 
-#satori-header .cart-preview-view:hover {
+            padding:0 10px;
 
-    background:#111;
+            text-decoration:none;
 
-    color:#fff;
+            font-size:10px;
 
-}
+            font-weight:800;
 
+            letter-spacing:.8px;
 
-/* =====================================================
-   FINALIZAR PEDIDO
-===================================================== */
+            border-radius:5px;
 
-#satori-header .cart-preview-checkout {
+            transition:
+                background .2s ease,
+                color .2s ease,
+                border-color .2s ease;
 
-    background:#f31218;
-
-    color:#fff;
-
-    border:1px solid #f31218;
-
-}
+        }
 
 
-#satori-header .cart-preview-checkout:hover {
+        /* =====================================================
+           VER CARRITO
+        ====================================================== */
 
-    background:#111;
+        #satori-header .cart-preview-view {
 
-    border-color:#111;
+            background:#fff;
 
-}
+            color:#111;
 
+            border:1px solid #111;
 
-/* =====================================================
-   SEGUIR COMPRANDO
-===================================================== */
-
-#satori-header .cart-preview-continue {
-
-    display:block;
-
-    margin-top:13px;
-
-    text-align:center;
-
-    color:#555;
-
-    text-decoration:none;
-
-    font-size:10px;
-
-    font-weight:700;
-
-}
+        }
 
 
-#satori-header .cart-preview-continue:hover {
+        #satori-header .cart-preview-view:hover {
 
-    color:#f31218;
+            background:#111;
 
-}
+            color:#fff;
+
+        }
+
+
+        /* =====================================================
+           FINALIZAR PEDIDO
+        ====================================================== */
+
+        #satori-header .cart-preview-checkout {
+
+            background:#f31218;
+
+            color:#fff;
+
+            border:1px solid #f31218;
+
+        }
+
+
+        #satori-header .cart-preview-checkout:hover {
+
+            background:#111;
+
+            border-color:#111;
+
+        }
+
+
+        /* =====================================================
+           SEGUIR COMPRANDO
+        ====================================================== */
+
+        #satori-header .cart-preview-continue {
+
+            display:block;
+
+            margin-top:13px;
+
+            text-align:center;
+
+            color:#555;
+
+            text-decoration:none;
+
+            font-size:10px;
+
+            font-weight:700;
+
+        }
+
+
+        #satori-header .cart-preview-continue:hover {
+
+            color:#f31218;
+
+        }
 
 
         /* =====================================================
@@ -1946,7 +2006,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
             /* =================================================
                LOGO MÓVIL
-               ================================================= */
+            ================================================== */
 
             #satori-header .satori-logo,
             #satori-header .satori-logo:hover,
@@ -1968,11 +2028,6 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
                 color:#111;
 
-                /*
-                 * Evita cualquier transformación
-                 * accidental al tocar el logo.
-                 */
-
                 transition:
                     color .2s ease;
 
@@ -1980,15 +2035,12 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             }
 
 
-            /*
-             * Cuando se toca el logo en móvil,
-             * no permitimos cambio de posición.
-             */
-
             #satori-header .satori-logo:active {
+
                 transform:
                     translate(-50%,-50%)
                     skewX(-5deg);
+
             }
 
 
@@ -2094,7 +2146,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             #satori-header *,
             #satori-header *::before,
             #satori-header *::after {
+
                 transition:none !important;
+
             }
 
         }
@@ -2116,14 +2170,18 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                 "div"
             );
 
+
         spacer.id =
             "satori-header-spacer";
+
 
         spacer.style.display =
             "none";
 
+
         spacer.style.height =
             "0px";
+
 
         root.insertAdjacentElement(
             "afterend",
@@ -2304,6 +2362,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                         old
                     );
 
+
                     console.info(
                         "SatoriMode · Carrito antiguo migrado."
                     );
@@ -2331,7 +2390,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
            PRECIO
         ====================================================== */
 
-        function formatPrice(price) {
+        function formatPrice(
+            price
+        ) {
 
             return new Intl.NumberFormat(
                 "es-CL",
@@ -2362,7 +2423,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
 
                 if (!saved) {
+
                     return [];
+
                 }
 
 
@@ -2371,7 +2434,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
 
                 if (!Array.isArray(cart)) {
+
                     return [];
+
                 }
 
 
@@ -2397,13 +2462,17 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
            GUARDAR CARRITO
         ====================================================== */
 
-        function saveCart(cart) {
+        function saveCart(
+            cart
+        ) {
 
             try {
 
                 localStorage.setItem(
                     CART_STORAGE_KEY,
-                    JSON.stringify(cart)
+                    JSON.stringify(
+                        cart
+                    )
                 );
 
             }
@@ -2450,10 +2519,13 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             root.querySelectorAll(
                 "[data-satori-cart-count]"
             ).forEach(
-                function (element) {
+                function (
+                    element
+                ) {
 
                     element.textContent =
                         count;
+
 
                     element.style.display =
                         count > 0
@@ -2475,7 +2547,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             root.querySelectorAll(
                 ".nav-dropdown"
             ).forEach(
-                function (dropdown) {
+                function (
+                    dropdown
+                ) {
 
                     dropdown.classList.remove(
                         "open"
@@ -2546,10 +2620,12 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                 "open"
             );
 
+
             searchOverlay?.setAttribute(
                 "aria-hidden",
                 "true"
             );
+
 
             searchButton?.setAttribute(
                 "aria-expanded",
@@ -2572,6 +2648,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             cartOverlay?.classList.remove(
                 "open"
             );
+
 
             cartPreview?.setAttribute(
                 "aria-hidden",
@@ -2601,9 +2678,17 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         function updateBodyLock() {
 
             const open =
-                mobileMenu?.classList.contains("open") ||
-                searchOverlay?.classList.contains("open") ||
-                cartPreview?.classList.contains("open");
+                mobileMenu?.classList.contains(
+                    "open"
+                ) ||
+
+                searchOverlay?.classList.contains(
+                    "open"
+                ) ||
+
+                cartPreview?.classList.contains(
+                    "open"
+                );
 
 
             document.body.style.overflow =
@@ -2621,7 +2706,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         function openMobileMenu() {
 
             closeSearch();
+
             closeCartPreview();
+
             closeDropdowns();
 
 
@@ -2662,7 +2749,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         function openSearch() {
 
             closeMobileMenu();
+
             closeCartPreview();
+
             closeDropdowns();
 
 
@@ -2703,7 +2792,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         function openCartPreview() {
 
             closeMobileMenu();
+
             closeSearch();
+
             closeDropdowns();
 
 
@@ -2746,9 +2837,12 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         mobileOpen?.addEventListener(
             "click",
-            function (event) {
+            function (
+                event
+            ) {
 
                 event.preventDefault();
+
                 event.stopPropagation();
 
                 openMobileMenu();
@@ -2762,6 +2856,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             function () {
 
                 closeMobileMenu();
+
                 updateBodyLock();
 
             }
@@ -2773,6 +2868,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             function () {
 
                 closeMobileMenu();
+
                 updateBodyLock();
 
             }
@@ -2785,9 +2881,12 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         searchButton?.addEventListener(
             "click",
-            function (event) {
+            function (
+                event
+            ) {
 
                 event.preventDefault();
+
                 event.stopPropagation();
 
                 openSearch();
@@ -2801,6 +2900,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             function () {
 
                 closeSearch();
+
                 updateBodyLock();
 
             }
@@ -2809,7 +2909,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         searchOverlay?.addEventListener(
             "click",
-            function (event) {
+            function (
+                event
+            ) {
 
                 if (
                     event.target ===
@@ -2817,6 +2919,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                 ) {
 
                     closeSearch();
+
                     updateBodyLock();
 
                 }
@@ -2831,9 +2934,12 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         cartButton?.addEventListener(
             "click",
-            function (event) {
+            function (
+                event
+            ) {
 
                 event.preventDefault();
+
                 event.stopPropagation();
 
                 openCartPreview();
@@ -2868,7 +2974,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         searchForm?.addEventListener(
             "submit",
-            function (event) {
+            function (
+                event
+            ) {
 
                 event.preventDefault();
 
@@ -2904,7 +3012,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         root.querySelectorAll(
             ".nav-dropdown"
         ).forEach(
-            function (dropdown) {
+            function (
+                dropdown
+            ) {
 
                 const button =
                     dropdown.querySelector(
@@ -2914,13 +3024,17 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
                 button?.addEventListener(
                     "click",
-                    function (event) {
+                    function (
+                        event
+                    ) {
 
                         event.preventDefault();
+
                         event.stopPropagation();
 
 
                         closeSearch();
+
                         closeCartPreview();
 
 
@@ -2938,6 +3052,7 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                             dropdown.classList.add(
                                 "open"
                             );
+
 
                             button.setAttribute(
                                 "aria-expanded",
@@ -2960,13 +3075,18 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         root.querySelectorAll(
             ".mobile-nav-button[data-target]"
         ).forEach(
-            function (button) {
+            function (
+                button
+            ) {
 
                 button.addEventListener(
                     "click",
-                    function (event) {
+                    function (
+                        event
+                    ) {
 
                         event.preventDefault();
+
                         event.stopPropagation();
 
 
@@ -2977,7 +3097,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
 
                         if (!target) {
+
                             return;
+
                         }
 
 
@@ -2990,7 +3112,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                         root.querySelectorAll(
                             ".mobile-submenu"
                         ).forEach(
-                            function (submenu) {
+                            function (
+                                submenu
+                            ) {
 
                                 submenu.classList.remove(
                                     "open"
@@ -3003,11 +3127,14 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                         root.querySelectorAll(
                             ".mobile-nav-button"
                         ).forEach(
-                            function (navButton) {
+                            function (
+                                navButton
+                            ) {
 
                                 navButton.classList.remove(
                                     "active"
                                 );
+
 
                                 navButton.setAttribute(
                                     "aria-expanded",
@@ -3024,9 +3151,11 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                                 "open"
                             );
 
+
                             button.classList.add(
                                 "active"
                             );
+
 
                             button.setAttribute(
                                 "aria-expanded",
@@ -3049,7 +3178,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         function renderCartPreview() {
 
             if (!cartContent) {
+
                 return;
+
             }
 
 
@@ -3059,27 +3190,36 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
             /* =================================================
                VACÍO
-            ================================================= */
+            ================================================== */
 
-            if (cart.length === 0) {
+            if (
+                cart.length === 0
+            ) {
 
                 cartContent.innerHTML = `
 
-                    <div class="cart-preview-empty">
+                    <div
+                        class="cart-preview-empty"
+                    >
 
-                        <div class="cart-preview-empty-label">
+                        <div
+                            class="cart-preview-empty-label"
+                        >
                             SATORII · CARRITO
                         </div>
+
 
                         <h3>
                             TU CARRITO ESTÁ VACÍO.
                         </h3>
+
 
                         <p>
                             Explora nuestras colecciones
                             y encuentra algo que sea parte
                             de tu estilo.
                         </p>
+
 
                         <a
                             href="${SATORIMODE_BASE}productos.html"
@@ -3113,14 +3253,19 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             }
 
 
-            let subtotal = 0;
+            let subtotal =
+                0;
 
 
-            cartContent.innerHTML = "";
+            cartContent.innerHTML =
+                "";
 
 
             cart.forEach(
-                function (product, index) {
+                function (
+                    product,
+                    index
+                ) {
 
                     const quantity =
                         Math.max(
@@ -3138,7 +3283,8 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
 
                     const itemTotal =
-                        price * quantity;
+                        price *
+                        quantity;
 
 
                     subtotal +=
@@ -3155,10 +3301,13 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                         "cart-preview-item";
 
 
-                    const options = [];
+                    const options =
+                        [];
 
 
-                    if (product.size) {
+                    if (
+                        product.size
+                    ) {
 
                         options.push(
                             "Talla: " +
@@ -3168,7 +3317,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                     }
 
 
-                    if (product.color) {
+                    if (
+                        product.color
+                    ) {
 
                         options.push(
                             "Color: " +
@@ -3180,7 +3331,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
                     item.innerHTML = `
 
-                        <div class="cart-preview-image">
+                        <div
+                            class="cart-preview-image"
+                        >
 
                             <img
                                 src="${escapeHTML(
@@ -3195,9 +3348,13 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                         </div>
 
 
-                        <div class="cart-preview-info">
+                        <div
+                            class="cart-preview-info"
+                        >
 
-                            <h3 class="cart-preview-name">
+                            <h3
+                                class="cart-preview-name"
+                            >
                                 ${escapeHTML(
                                     product.name ||
                                     "Producto"
@@ -3208,7 +3365,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                             ${
                                 options.length
                                     ? `
-                                        <div class="cart-preview-options">
+                                        <div
+                                            class="cart-preview-options"
+                                        >
                                             ${options
                                                 .map(
                                                     escapeHTML
@@ -3220,14 +3379,22 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                             }
 
 
-                            <div class="cart-preview-price">
-                                ${formatPrice(itemTotal)}
+                            <div
+                                class="cart-preview-price"
+                            >
+                                ${formatPrice(
+                                    itemTotal
+                                )}
                             </div>
 
 
-                            <div class="cart-preview-controls">
+                            <div
+                                class="cart-preview-controls"
+                            >
 
-                                <div class="cart-preview-quantity">
+                                <div
+                                    class="cart-preview-quantity"
+                                >
 
                                     <button
                                         type="button"
@@ -3237,9 +3404,11 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                                         −
                                     </button>
 
+
                                     <span>
                                         ${quantity}
                                     </span>
+
 
                                     <button
                                         type="button"
@@ -3334,7 +3503,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
            ESCAPE HTML
         ====================================================== */
 
-        function escapeHTML(value) {
+        function escapeHTML(
+            value
+        ) {
 
             return String(
                 value ?? ""
@@ -3486,7 +3657,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         window.addEventListener(
             "storage",
-            function (event) {
+            function (
+                event
+            ) {
 
                 if (
                     event.key ===
@@ -3509,7 +3682,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         document.addEventListener(
             "click",
-            function (event) {
+            function (
+                event
+            ) {
 
                 if (
                     root.contains(
@@ -3535,7 +3710,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
         root.querySelectorAll(
             ".mobile-nav a"
         ).forEach(
-            function (link) {
+            function (
+                link
+            ) {
 
                 link.addEventListener(
                     "click",
@@ -3558,7 +3735,9 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
 
         document.addEventListener(
             "keydown",
-            function (event) {
+            function (
+                event
+            ) {
 
                 if (
                     event.key !==
