@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         SATORII
                     </a>
 
+                    <div class="satori-footer-kanji">
+                        悟
+                    </div>
+
                     <p>
                         Anime, cultura japonesa y streetwear.
                     </p>
@@ -163,6 +167,15 @@ document.addEventListener("DOMContentLoaded", function () {
     style.textContent = `
 
         /* =================================================
+           IMPORTAR TIPOGRAFÍA DE MARCA
+        ================================================= */
+
+        @import url(
+            'https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap'
+        );
+
+
+        /* =================================================
            FOOTER PRINCIPAL
         ================================================= */
 
@@ -218,6 +231,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
+        /*
+         * SATORII
+         *
+         * Tipografía más condensada y fuerte,
+         * inspirada en la estética de la marca.
+         */
+
         .satori-footer-logo {
 
             display: inline-block;
@@ -226,13 +246,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
             text-decoration: none;
 
-            font-size: 24px;
+            font-family:
+                'Oswald',
+                'Arial Narrow',
+                Arial,
+                sans-serif;
+
+            font-size: 27px;
+
+            line-height: .95;
+
+            font-weight: 700;
+
+            letter-spacing: -.045em;
+
+        }
+
+
+        /*
+         * KANJI
+         */
+
+        .satori-footer-kanji {
+
+            margin-top: 8px;
+
+            color: #ff003c;
+
+            font-family:
+                Arial,
+                'Noto Sans JP',
+                sans-serif;
+
+            font-size: 14px;
 
             line-height: 1;
 
-            font-weight: 850;
-
-            letter-spacing: -.045em;
+            font-weight: 700;
 
         }
 
@@ -240,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .satori-footer-brand p {
 
             margin:
-                13px 0 0;
+                15px 0 0;
 
             color: #c7ccd4;
 
