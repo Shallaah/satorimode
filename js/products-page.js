@@ -1,28 +1,274 @@
 /* =========================================================
-   SATORIMODE · GENERADOR DE PRODUCTOS
+   SATORII · CATÁLOGO DE PRODUCTOS
    =========================================================
 
-   Funciona automáticamente en:
+   Este archivo controla:
 
-   - productos.html
-   - anime.html
-   - streetwear.html
-   - accesorios.html
-   - páginas individuales de productos
+   - Catálogos
+   - Categorías
+   - Filtros
+   - Tarjetas
+   - Recomendaciones
 
-   También genera correctamente:
-
-   - tarjetas de productos
-   - imágenes
-   - enlaces
-   - recomendaciones aleatorias
-   - filtros
+   products.js se carga automáticamente si es necesario.
 ========================================================= */
 
+(function () {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    "use strict";
+
+
+    /* =====================================================
+       CARGAR PRODUCTS.JS
+    ===================================================== */
+
+    function loadProductsScript(callback) {
+
+        /*
+         * Si PRODUCTS ya existe, no necesitamos
+         * cargar nada.
+         */
+
+        if (
+            typeof PRODUCTS !== "undefined"
+        ) {
+
+            callback();
+
+            return;
+
+        }
+
+
+        /*
+         * Buscar si products.js ya está siendo
+         * cargado por otro script.
+         */
+
+        const existingScript =
+            document.querySelector(
+                'script[src$="/js/products.js"], script[src="js/products.js"], script[src="../../js/products.js"]'
+            );
+
+
+        if (
+            existingScript
+        ) {
+
+            /*
+             * Esperar a que termine de cargar.
+             */
+
+            existingScript.addEventListener(
+                "load",
+                function () {
+
+                    callback();
+
+                },
+                {
+                    once: true
+                }
+            );
+
+
+            existingScript.addEventListener(
+                "error",
+                function () {
+
+                    showCatalogError();
+
+                },
+                {
+                    once: true
+                }
+            );
+
+
+            /*
+             * Si el script ya terminó pero PRODUCTS
+             * sigue sin existir, dejamos que el
+             * callback compruebe el estado.
+             */
+
+            setTimeout(
+                function () {
+
+                    if (
+                        typeof PRODUCTS !== "undefined"
+                    ) {
+
+                        callback();
+
+                    }
+
+                },
+                100
+            );
+
+
+            return;
+
+        }
+
+
+        /*
+         * Determinar la ruta correcta según
+         * la página actual.
+         */
+
+        const pathname =
+            window.location.pathname;
+
+
+        let productsPath =
+            "js/products.js";
+
+
+        /*
+         * Las páginas dentro de /productos/
+         * necesitan ../../js/products.js
+         */
+
+        if (
+            pathname.includes("/productos/")
+        ) {
+
+            productsPath =
+                "../../js/products.js";
+
+        }
+
+
+        /*
+         * Crear el script.
+         */
+
+        const script =
+            document.createElement(
+                "script"
+            );
+
+
+        script.src =
+            productsPath;
+
+
+        script.onload =
+            function () {
+
+                if (
+                    typeof PRODUCTS === "undefined"
+                ) {
+
+                    showCatalogError();
+
+                    return;
+
+                }
+
+
+                callback();
+
+            };
+
+
+        script.onerror =
+            function () {
+
+                console.error(
+                    "SatoriMode: no se pudo cargar:",
+                    productsPath
+                );
+
+
+                showCatalogError();
+
+            };
+
+
+        document.head.appendChild(
+            script
+        );
+
+    }
+
+
+    /* =====================================================
+       ERROR DE CATÁLOGO
+    ===================================================== */
+
+    function showCatalogError() {
+
+        const productsGrid =
+            document.querySelector(
+                ".products-grid[data-category], #all-products-grid, #animeProductsGrid, #streetwearProductsGrid, #accesoriosProductsGrid"
+            );
+
+
+        if (
+            !productsGrid
+        ) {
+
+            return;
+
+        }
+
+
+        productsGrid.innerHTML = `
+
+            <div class="products-empty">
+
+                <strong>
+                    NO SE PUDO CARGAR EL CATÁLOGO.
+                </strong>
+
+                <p>
+                    Revisa que js/products.js esté disponible.
+                </p>
+
+            </div>
+
+        `;
+
+
+        console.error(
+            "SatoriMode: products.js no está disponible."
+        );
+
+    }
+
+
+    /* =====================================================
+       INICIALIZAR CATÁLOGO
+    ===================================================== */
+
+    function initProductsPage() {
+
+
+        /*
+         * Comprobación final.
+         */
+
+        if (
+            typeof PRODUCTS === "undefined"
+        ) {
+
+            console.error(
+                "SatoriMode: PRODUCTS no está definido."
+            );
+
+
+            showCatalogError();
+
+            return;
+
+        }
+
+
+        console.log(
+            `SatoriMode · ${PRODUCTS.length} producto(s) cargado(s).`
+        );
 
 
         /* =================================================
@@ -41,12 +287,12 @@ document.addEventListener(
 
 
         /*
-            Detecta si estamos dentro de:
+         * Detecta si estamos dentro de:
 
-            /productos/anime/
-            /productos/streetwear/
-            /productos/accesorios/
-        */
+         /productos/anime/
+         /productos/streetwear/
+         /productos/accesorios/
+         */
 
         function isProductPage() {
 
@@ -57,62 +303,54 @@ document.addEventListener(
 
 
         /*
-            Convierte una ruta de products.js en
-            una ruta correcta para la página actual.
-        */
+         * Convierte una ruta de imagen de
+         * products.js a una ruta correcta.
+         */
 
-        function getAssetPath(path) {
+        function getAssetPath(assetPath) {
 
-            if (!path) {
+            if (
+                !assetPath
+            ) {
 
                 return "";
 
             }
 
 
-            /*
-                Página individual:
+            if (
+                isProductPage()
+            ) {
 
-                /productos/anime/goku.html
-
-                ../../productos/anime/imagen.PNG
-            */
-
-            if (isProductPage()) {
-
-                return "../../" + path;
+                return "../../" + assetPath;
 
             }
 
 
-            /*
-                Página normal:
-
-                /anime.html
-
-                productos/anime/imagen.PNG
-            */
-
-            return path;
+            return assetPath;
 
         }
 
 
         /*
-            Convierte la URL del producto para que
-            funcione desde cualquier página.
-        */
+         * Convierte la URL de un producto.
+         */
 
         function getProductUrl(product) {
 
-            if (!product || !product.url) {
+            if (
+                !product ||
+                !product.url
+            ) {
 
                 return "#";
 
             }
 
 
-            if (isProductPage()) {
+            if (
+                isProductPage()
+            ) {
 
                 return "../../" + product.url;
 
@@ -125,30 +363,15 @@ document.addEventListener(
 
 
         /* =================================================
-           COMPROBAR PRODUCTS.JS
-        ================================================= */
-
-        if (
-            typeof PRODUCTS === "undefined"
-        ) {
-
-            console.error(
-                "SatoriMode: products.js no está cargado."
-            );
-
-            return;
-
-        }
-
-
-        /* =================================================
-           CREAR TARJETA DE PRODUCTO
+           CREAR TARJETA
         ================================================= */
 
         function createProductCard(product) {
 
             const card =
-                document.createElement("a");
+                document.createElement(
+                    "a"
+                );
 
 
             card.className =
@@ -156,20 +379,46 @@ document.addEventListener(
 
 
             card.href =
-                getProductUrl(product);
+                getProductUrl(
+                    product
+                );
 
 
             const image =
                 product.image ||
                 (
-                    product.images &&
-                    product.images[0]
+                    Array.isArray(
+                        product.images
+                    )
+                        ? product.images[0]
+                        : ""
                 ) ||
                 "";
 
 
             const imagePath =
-                getAssetPath(image);
+                getAssetPath(
+                    image
+                );
+
+
+            const collection =
+                (
+                    product.collection ||
+                    product.category ||
+                    ""
+                ).toUpperCase();
+
+
+            const sizes =
+                Array.isArray(
+                    product.sizes
+                ) &&
+                product.sizes.length
+                    ? product.sizes.join(
+                        " · "
+                    )
+                    : "Consultar";
 
 
             card.innerHTML = `
@@ -179,23 +428,23 @@ document.addEventListener(
                     ${
                         imagePath
 
-                        ?
+                            ? `
 
-                        `
-                        <img
-                            src="${imagePath}"
-                            alt="${product.name || ""}"
-                            loading="lazy"
-                        >
-                        `
+                                <img
+                                    src="${imagePath}"
+                                    alt="${product.name || ""}"
+                                    loading="lazy"
+                                >
 
-                        :
+                            `
 
-                        `
-                        <div class="image-placeholder">
-                            SIN IMAGEN
-                        </div>
-                        `
+                            : `
+
+                                <div class="image-placeholder">
+                                    SIN IMAGEN
+                                </div>
+
+                            `
                     }
 
                 </div>
@@ -204,13 +453,7 @@ document.addEventListener(
                 <div class="product-info">
 
                     <span class="product-category">
-
-                        ${(
-                            product.collection ||
-                            product.category ||
-                            ""
-                        ).toUpperCase()}
-
+                        ${collection}
                     </span>
 
 
@@ -220,29 +463,12 @@ document.addEventListener(
 
 
                     <p class="product-price">
-
                         $${formatPrice(product.price)}
-
                     </p>
 
 
                     <p class="product-details">
-
-                        Tallas
-
-                        ${
-                            Array.isArray(
-                                product.sizes
-                            ) &&
-                            product.sizes.length
-
-                                ? product.sizes.join(
-                                    " · "
-                                )
-
-                                : "Consultar"
-                        }
-
+                        Tallas ${sizes}
                     </p>
 
                 </div>
@@ -256,7 +482,7 @@ document.addEventListener(
 
 
         /* =================================================
-           BUSCAR CONTENEDOR PRINCIPAL
+           CONTENEDOR DEL CATÁLOGO
         ================================================= */
 
         const productsGrid =
@@ -265,82 +491,78 @@ document.addEventListener(
             );
 
 
-        /*
-            Si no existe un catálogo principal,
-            no interferimos con la página.
-        */
-
-        if (!productsGrid) {
+        if (
+            !productsGrid
+        ) {
 
             console.log(
-                "SatoriMode: no hay catálogo principal de productos en esta página."
+                "SatoriMode: no hay catálogo principal en esta página."
             );
+
+
+            return;
 
         }
 
 
         /* =================================================
-           DETECTAR CATEGORÍA
+           CATEGORÍA
         ================================================= */
 
         let pageCategory =
-            productsGrid
-                ? productsGrid.dataset.category || null
-                : null;
+            productsGrid.dataset.category ||
+            null;
 
-
-        /*
-            Compatibilidad con IDs antiguos.
-        */
 
         if (
             !pageCategory &&
-            productsGrid &&
-            productsGrid.id === "animeProductsGrid"
+            productsGrid.id ===
+                "animeProductsGrid"
         ) {
 
-            pageCategory = "anime";
+            pageCategory =
+                "anime";
 
         }
 
 
         if (
             !pageCategory &&
-            productsGrid &&
-            productsGrid.id === "streetwearProductsGrid"
+            productsGrid.id ===
+                "streetwearProductsGrid"
         ) {
 
-            pageCategory = "streetwear";
+            pageCategory =
+                "streetwear";
 
         }
 
 
         if (
             !pageCategory &&
-            productsGrid &&
-            productsGrid.id === "accesoriosProductsGrid"
+            productsGrid.id ===
+                "accesoriosProductsGrid"
         ) {
 
-            pageCategory = "accesorios";
+            pageCategory =
+                "accesorios";
 
         }
 
 
-        /*
-            "all" = todos los productos.
-        */
-
         if (
-            pageCategory === "all"
+            pageCategory ===
+            "all"
         ) {
 
-            pageCategory = null;
+            pageCategory =
+                null;
 
         }
 
 
         /* =================================================
-           ESTADO DE FILTROS
+           FILTROS
         ================================================= */
 
         let activeFilters = {
@@ -355,7 +577,7 @@ document.addEventListener(
 
 
         /* =================================================
-           OBTENER PRODUCTOS DE LA PÁGINA
+           OBTENER PRODUCTOS
         ================================================= */
 
         function getPageProducts() {
@@ -363,10 +585,9 @@ document.addEventListener(
             return PRODUCTS.filter(
                 function (product) {
 
-
                     /*
-                        Solo productos disponibles.
-                    */
+                     * Solo productos disponibles.
+                     */
 
                     if (
                         product.available !== true
@@ -378,12 +599,13 @@ document.addEventListener(
 
 
                     /*
-                        Filtrar por categoría.
-                    */
+                     * Categoría.
+                     */
 
                     if (
                         pageCategory &&
-                        product.category !== pageCategory
+                        product.category !==
+                            pageCategory
                     ) {
 
                         return false;
@@ -400,7 +622,7 @@ document.addEventListener(
 
 
         /* =================================================
-           APLICAR FILTROS
+           FILTROS
         ================================================= */
 
         function applyFilters(
@@ -411,14 +633,14 @@ document.addEventListener(
                 function (product) {
 
 
-                    /* -------------------------------------
-                       COLECCIÓN
-                    -------------------------------------- */
+                    /*
+                     * COLECCIÓN
+                     */
 
                     if (
                         activeFilters.collection &&
                         product.category !==
-                        activeFilters.collection
+                            activeFilters.collection
                     ) {
 
                         return false;
@@ -426,9 +648,9 @@ document.addEventListener(
                     }
 
 
-                    /* -------------------------------------
-                       TALLA
-                    -------------------------------------- */
+                    /*
+                     * TALLA
+                     */
 
                     if (
                         activeFilters.size &&
@@ -447,9 +669,9 @@ document.addEventListener(
                     }
 
 
-                    /* -------------------------------------
-                       COLOR
-                    -------------------------------------- */
+                    /*
+                     * COLOR
+                     */
 
                     if (
                         activeFilters.color &&
@@ -495,14 +717,8 @@ document.addEventListener(
 
         function renderProducts() {
 
-            if (!productsGrid) {
-
-                return;
-
-            }
-
-
-            productsGrid.innerHTML = "";
+            productsGrid.innerHTML =
+                "";
 
 
             let products =
@@ -514,10 +730,6 @@ document.addEventListener(
                     products
                 );
 
-
-            /* =============================================
-               SIN RESULTADOS
-            ============================================== */
 
             if (
                 products.length === 0
@@ -539,14 +751,11 @@ document.addEventListener(
 
                 `;
 
+
                 return;
 
             }
 
-
-            /* =============================================
-               CREAR TARJETAS
-            ============================================== */
 
             products.forEach(
                 function (product) {
@@ -564,46 +773,27 @@ document.addEventListener(
 
 
         /* =================================================
-           RECOMENDACIONES ALEATORIAS
+           RECOMENDACIONES
         ================================================= */
 
         function getRandomRecommendations(
             currentProductId,
-            limit = 3
+            limit
         ) {
 
-
-            /*
-                Tomamos TODOS los productos disponibles.
-
-                No importa si son:
-                - Anime
-                - Streetwear
-                - Accesorios
-
-                Así las recomendaciones pueden variar.
-            */
-
-            let products =
+            const products =
                 PRODUCTS.filter(
                     function (product) {
 
                         return (
                             product.available === true &&
-                            product.id !== currentProductId
+                            product.id !==
+                                currentProductId
                         );
 
                     }
                 );
 
-
-            /*
-                Mezclar aleatoriamente.
-
-                De esta manera cada vez que se
-                genere la sección puede aparecer
-                una combinación diferente.
-            */
 
             products.sort(
                 function () {
@@ -614,11 +804,6 @@ document.addEventListener(
             );
 
 
-            /*
-                Devolver solamente la cantidad
-                solicitada.
-            */
-
             return products.slice(
                 0,
                 limit
@@ -628,16 +813,10 @@ document.addEventListener(
 
 
         /* =================================================
-           OBTENER PRODUCTO ACTUAL
+           PRODUCTO ACTUAL
         ================================================= */
 
         function getCurrentProductId() {
-
-            /*
-                Opción 1:
-                el contenedor de recomendaciones
-                puede indicar el ID.
-            */
 
             const recommendationContainer =
                 document.querySelector(
@@ -650,19 +829,14 @@ document.addEventListener(
                 recommendationContainer.dataset.productId
             ) {
 
-                return recommendationContainer
-                    .dataset
-                    .productId;
+                return (
+                    recommendationContainer
+                        .dataset
+                        .productId
+                );
 
             }
 
-
-            /*
-                Opción 2:
-                intentar obtener el ID desde
-                la URL actual comparándola con
-                products.js.
-            */
 
             const currentPath =
                 window.location.pathname;
@@ -672,24 +846,38 @@ document.addEventListener(
                 PRODUCTS.find(
                     function (product) {
 
-                        if (!product.url) {
+                        if (
+                            !product.url
+                        ) {
 
                             return false;
 
                         }
 
 
-                        return (
-                            currentPath.endsWith(
-                                product.url
-                            )
+                        /*
+                         * Normalizar ambas rutas.
+                         */
+
+                        const productUrl =
+                            product.url
+                                .replace(
+                                    /^\/+/,
+                                    ""
+                                );
+
+
+                        return currentPath.endsWith(
+                            productUrl
                         );
 
                     }
                 );
 
 
-            if (currentProduct) {
+            if (
+                currentProduct
+            ) {
 
                 return currentProduct.id;
 
@@ -707,17 +895,11 @@ document.addEventListener(
 
         function renderRecommendations() {
 
-
             const recommendationContainer =
                 document.querySelector(
                     "#relatedProductsGrid, #recommendedProductsGrid"
                 );
 
-
-            /*
-                Si la página no tiene recomendaciones,
-                no hacemos nada.
-            */
 
             if (
                 !recommendationContainer
@@ -743,11 +925,6 @@ document.addEventListener(
                 "";
 
 
-            /*
-                Si no hay suficientes productos,
-                mostramos los disponibles.
-            */
-
             recommendations.forEach(
                 function (product) {
 
@@ -762,7 +939,7 @@ document.addEventListener(
 
 
             console.log(
-                "SatoriMode · Recomendaciones generadas:",
+                "SatoriMode · Recomendaciones:",
                 recommendations.map(
                     function (product) {
 
@@ -776,7 +953,7 @@ document.addEventListener(
 
 
         /* =================================================
-           FILTROS
+           FILTROS VISUALES
         ================================================= */
 
         const filterButtons =
@@ -788,11 +965,9 @@ document.addEventListener(
         filterButtons.forEach(
             function (button) {
 
-
                 button.addEventListener(
                     "click",
                     function () {
-
 
                         const filterType =
                             button.dataset.filter;
@@ -801,10 +976,6 @@ document.addEventListener(
                         const filterValue =
                             button.dataset.value;
 
-
-                        /*
-                            Ignorar filtros desconocidos.
-                        */
 
                         if (
                             !Object.prototype.hasOwnProperty.call(
@@ -818,15 +989,11 @@ document.addEventListener(
                         }
 
 
-                        /*
-                            Si ya estaba seleccionado,
-                            quitarlo.
-                        */
-
                         if (
                             activeFilters[
                                 filterType
-                            ] === filterValue
+                            ] ===
+                            filterValue
                         ) {
 
                             activeFilters[
@@ -839,14 +1006,7 @@ document.addEventListener(
                             );
 
                         }
-
                         else {
-
-
-                            /*
-                                Desactivar otros filtros
-                                del mismo grupo.
-                            */
 
                             document
                                 .querySelectorAll(
@@ -867,7 +1027,8 @@ document.addEventListener(
 
                             activeFilters[
                                 filterType
-                            ] = filterValue;
+                            ] =
+                                filterValue;
 
 
                             button.classList.add(
@@ -887,7 +1048,7 @@ document.addEventListener(
 
 
         /* =================================================
-           BOTÓN MOSTRAR FILTROS
+           BOTÓN DE FILTROS
         ================================================= */
 
         const filterToggle =
@@ -907,11 +1068,9 @@ document.addEventListener(
             filtersContainer
         ) {
 
-
             filterToggle.addEventListener(
                 "click",
                 function () {
-
 
                     filtersContainer.classList.toggle(
                         "is-open"
@@ -926,9 +1085,7 @@ document.addEventListener(
 
                     filterToggle.textContent =
                         isOpen
-
                             ? "OCULTAR FILTROS"
-
                             : "MOSTRAR FILTROS";
 
                 }
@@ -938,7 +1095,7 @@ document.addEventListener(
 
 
         /* =================================================
-           ESTILOS DE "SIN RESULTADOS"
+           ESTILOS DE ERROR / SIN RESULTADOS
         ================================================= */
 
         if (
@@ -946,7 +1103,6 @@ document.addEventListener(
                 "products-page-styles"
             )
         ) {
-
 
             const style =
                 document.createElement(
@@ -964,6 +1120,9 @@ document.addEventListener(
 
                     grid-column:
                         1 / -1;
+
+                    width:
+                        100%;
 
                     padding:
                         80px 20px;
@@ -1015,36 +1174,29 @@ document.addEventListener(
 
 
         /* =================================================
-           GENERAR CATÁLOGO
+           GENERAR
         ================================================= */
 
         renderProducts();
 
 
-        /* =================================================
-           GENERAR RECOMENDACIONES
-        ================================================= */
-
         renderRecommendations();
 
-
-        /* =================================================
-           COMPROBACIÓN
-        ================================================= */
 
         console.log(
             `SatoriMode · ${PRODUCTS.length} producto(s) cargado(s).`
         );
 
 
-        if (pageCategory) {
+        if (
+            pageCategory
+        ) {
 
             console.log(
                 `SatoriMode · Categoría: ${pageCategory}`
             );
 
         }
-
         else {
 
             console.log(
@@ -1053,7 +1205,42 @@ document.addEventListener(
 
         }
 
+    }
+
+
+    /* =====================================================
+       INICIO
+    ===================================================== */
+
+    function start() {
+
+        loadProductsScript(
+            initProductsPage
+        );
 
     }
 
-);
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            start,
+            {
+                once:
+                    true
+            }
+        );
+
+    }
+    else {
+
+        start();
+
+    }
+
+
+})();
