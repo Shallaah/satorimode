@@ -1034,32 +1034,37 @@
            LOGO
         ====================================================== */
 
-        #satori-header .satori-brand-logo {
-            font-family:
-                "Arial Narrow",
-                Arial,
-                Helvetica,
-                sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,900&display=swap");
 
-            font-weight:900;
-            font-style:italic;
-            letter-spacing:-2.5px;
-            text-transform:uppercase;
-            color:#111;
-            text-decoration:none;
-            line-height:.9;
-            white-space:nowrap;
+#satori-header .satori-brand-logo {
+    font-family:
+        "Roboto Condensed",
+        "Arial Narrow",
+        Arial,
+        Helvetica,
+        sans-serif;
 
-            transition:
-                color .2s ease;
-        }
+    font-weight:900;
+    font-style:italic;
+    letter-spacing:-1.8px;
+    text-transform:uppercase;
+    color:#111;
+    text-decoration:none;
+    line-height:.88;
+    white-space:nowrap;
 
-        #satori-header .satori-logo {
-            grid-column:1;
-            justify-self:start;
-            font-size:25px;
-            transform:skewX(-5deg);
-        }
+    transform:skewX(-3deg);
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+#satori-header .satori-logo {
+    grid-column:1;
+    justify-self:start;
+    font-size:29px;
+}
 
 
         @media (min-width:1001px) {
@@ -2017,12 +2022,11 @@
 
                 left:50%;
                 top:50%;
+transform:
+    translate(-50%,-50%)
+    skewX(-3deg);
 
-                transform:
-                    translate(-50%,-50%)
-                    skewX(-5deg);
-
-                font-size:27px;
+font-size:29px;
 
                 z-index:900001;
 
@@ -2119,7 +2123,7 @@
             #satori-header .satori-logo:active,
             #satori-header .satori-logo:focus {
 
-                font-size:26px;
+                font-size:28px;
 
                 left:50%;
                 top:50%;
