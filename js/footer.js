@@ -238,30 +238,35 @@ document.addEventListener("DOMContentLoaded", function () {
          * inspirada en la estética de la marca.
          */
 
-        .satori-footer-logo {
+       .satori-footer-logo {
 
-            display: inline-block;
+    display: inline-block;
 
-            color: #ffffff;
+    color: #ffffff;
 
-            text-decoration: none;
+    text-decoration: none;
 
-            font-family:
-                'Oswald',
-                'Arial Narrow',
-                Arial,
-                sans-serif;
+    font-family:
+        'Arial Narrow',
+        'Roboto Condensed',
+        Arial,
+        sans-serif;
 
-            font-size: 27px;
+    font-size: 27px;
 
-            line-height: .95;
+    line-height: .95;
 
-            font-weight: 700;
+    font-weight: 900;
 
-            letter-spacing: -.045em;
+    font-stretch: condensed;
 
-        }
+    letter-spacing: -.055em;
 
+    transform: scaleX(.82);
+
+    transform-origin: left center;
+
+}
 
         /*
          * KANJI
