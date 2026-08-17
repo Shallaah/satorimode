@@ -146,7 +146,8 @@ document.addEventListener("DOMContentLoaded", function () {
     /* =====================================================
        ESTILOS
     ===================================================== */
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,900;1,900&display=swap');
+    
     if (
         document.getElementById(
             "satori-footer-styles"
@@ -238,34 +239,28 @@ document.addEventListener("DOMContentLoaded", function () {
          * inspirada en la estética de la marca.
          */
 
-       .satori-footer-logo {
-
+  .satori-footer-logo {
     display: inline-block;
 
     color: #ffffff;
-
     text-decoration: none;
 
     font-family:
-        'Arial Narrow',
-        'Roboto Condensed',
+        "Roboto Condensed",
+        "Arial Narrow",
         Arial,
         sans-serif;
 
-    font-size: 27px;
-
-    line-height: .95;
+    font-size: 28px;
+    line-height: .9;
 
     font-weight: 900;
+    font-style: italic;
 
-    font-stretch: condensed;
+    letter-spacing: -0.06em;
 
-    letter-spacing: -.055em;
-
-    transform: scaleX(.82);
-
+    transform: scaleX(.88);
     transform-origin: left center;
-
 }
 
         /*
