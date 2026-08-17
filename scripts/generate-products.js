@@ -4018,8 +4018,8 @@ if (addButton) {
     function showAddedAnimation() {
 
         /*
-         * Evitamos que un segundo clic
-         * deje varios temporizadores activos.
+         * Si se vuelve a presionar el botón,
+         * cancelamos el temporizador anterior.
          */
 
         if (resetTimer) {
@@ -4032,7 +4032,9 @@ if (addButton) {
 
 
         /*
-         * Reiniciamos la animación.
+         * Reiniciamos la animación
+         * para que funcione también
+         * en clics consecutivos.
          */
 
         addButton.classList.remove(
@@ -4044,7 +4046,7 @@ if (addButton) {
 
 
         /*
-         * Activamos el estado rojo.
+         * Activamos el estado "agregado".
          */
 
         addButton.classList.add(
@@ -4058,7 +4060,7 @@ if (addButton) {
 
         /*
          * Después de 2 segundos
-         * vuelve al botón original.
+         * vuelve al texto original.
          */
 
         resetTimer =
@@ -4073,6 +4075,7 @@ if (addButton) {
                     addButton.textContent =
                         originalText;
 
+
                 },
                 2000
             );
@@ -4081,13 +4084,12 @@ if (addButton) {
 
 
     /*
-     * IMPORTANTE:
+     * No usamos preventDefault()
+     * ni stopPropagation().
      *
-     * No usamos preventDefault().
-     * No usamos stopPropagation().
-     *
-     * De esta manera cart.js puede
-     * seguir agregando el producto.
+     * Así cart.js sigue funcionando
+     * normalmente y puede agregar
+     * el producto al carrito.
      */
 
     addButton.addEventListener(
@@ -4114,6 +4116,12 @@ if (addButton) {
 
 }
 
+
+        </script>
+
+    `;
+
+}
 /* =====================================================
    HTML PRENDA
 ===================================================== */
