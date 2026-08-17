@@ -207,11 +207,7 @@ function getImagePath(
 
 function loadProducts() {
 
-    if (
-        !fs.existsSync(
-            PRODUCTS_FILE
-        )
-    ) {
+    if (!fs.existsSync(PRODUCTS_FILE)) {
 
         throw new Error(
             "No se encontró js/products.js"
@@ -220,42 +216,42 @@ function loadProducts() {
     }
 
 
-    const source =
-        fs.readFileSync(
-            PRODUCTS_FILE,
-            "utf8"
-        );
+    let products;
 
 
-    const start =
-        source.indexOf(
-            "const PRODUCTS ="
-        );
+    try {
+
+        delete require.cache[
+            require.resolve(PRODUCTS_FILE)
+        ];
 
 
-    if (start === -1) {
+        products =
+            require(PRODUCTS_FILE);
+
+    }
+    catch (error) {
 
         throw new Error(
-            "No se encontró 'const PRODUCTS =' en js/products.js"
+            "No se pudo cargar js/products.js.\n" +
+            error.message
         );
 
     }
 
 
-    const arrayStart =
-        source.indexOf(
-            "[",
-            start
-        );
-
-
-    if (arrayStart === -1) {
+    if (!Array.isArray(products)) {
 
         throw new Error(
-            "No se encontró el inicio del arreglo PRODUCTS."
+            "PRODUCTS no es un arreglo válido."
         );
 
     }
+
+
+    return products;
+
+}
 
 
     /*
