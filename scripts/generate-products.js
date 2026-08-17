@@ -93,43 +93,190 @@ function getProductType(product) {
 
 function getImages(product) {
 
-    if (
-        Array.isArray(product.images) &&
-        product.images.length
-    ) {
-        return product.images.slice(0, 3);
+    if (!product) {
+        return [];
     }
 
-    if (product.image) {
-        return [product.image];
+
+    /*
+     * =====================================================
+     * IMAGES
+     * =====================================================
+     */
+
+    if (
+        Array.isArray(product.images)
+    ) {
+
+        const images =
+            product.images
+                .filter(
+                    image =>
+                        image !== undefined &&
+                        image !== null &&
+                        String(image).trim() !== ""
+                )
+                .slice(0, 3);
+
+
+        if (images.length) {
+            return images;
+        }
+
     }
+
+
+    /*
+     * =====================================================
+     * IMAGE
+     * =====================================================
+     */
+
+    if (
+        product.image !== undefined &&
+        product.image !== null &&
+        String(product.image).trim() !== ""
+    ) {
+
+        return [
+            product.image
+        ];
+
+    }
+
 
     return [];
 }
 
-
-function getImagePath(
-    image,
-    outputDirectory
-) {
+function getImagePath(image, outputDirectory) {
 
     if (!image) {
         return "";
     }
 
+    let value = String(image).trim();
+
+    if (!value) {
+        return "";
+    }
+
+    /*
+     * =====================================================
+     * URL EXTERNA
+     * =====================================================
+     *
+     * Si la imagen viene desde internet, no intentamos
+     * convertirla en una ruta local.
+     */
+
+    if (
+        /^https?:\/\//i.test(value) ||
+        /^data:/i.test(value) ||
+        /^blob:/i.test(value)
+    ) {
+        return value;
+    }
+
+
+    /*
+     * =====================================================
+     * NORMALIZAR RUTA
+     * =====================================================
+     */
+
+    value =
+        value
+            .replace(/\\/g, "/")
+            .trim();
+
+
+    /*
+     * Eliminamos ./ inicial
+     */
+
+    value =
+        value.replace(
+            /^\.\/+/,
+            ""
+        );
+
+
+    /*
+     * Una ruta que comienza con /
+     * representa la raíz del sitio.
+     *
+     * Ejemplo:
+     *
+     * /img/logo.png
+     *
+     * pasa a:
+     *
+     * img/logo.png
+     */
+
+    value =
+        value.replace(
+            /^\/+/,
+            ""
+        );
+
+
+    /*
+     * =====================================================
+     * RUTA ABSOLUTA DEL PROYECTO
+     * =====================================================
+     */
+
     const absolute =
         path.resolve(
             ROOT,
-            String(image)
+            value
         );
 
-    return path
-        .relative(
+
+    /*
+     * =====================================================
+     * RUTA RELATIVA DESDE LA PÁGINA GENERADA
+     * =====================================================
+     *
+     * Ejemplo:
+     *
+     * ROOT:
+     * SATORII/
+     *
+     * imagen:
+     * SATORII/img/productos/goku.jpg
+     *
+     * página:
+     * SATORII/productos/anime/polera-goku.html
+     *
+     * resultado:
+     * ../../img/productos/goku.jpg
+     */
+
+    let relative =
+        path.relative(
             outputDirectory,
             absolute
-        )
-        .split(path.sep)
-        .join("/");
+        );
+
+
+    relative =
+        relative
+            .split(path.sep)
+            .join("/");
+
+
+    /*
+     * Evitamos que quede una ruta vacía.
+     */
+
+    if (!relative) {
+        return value;
+    }
+
+
+    return relative;
 }
 
 
