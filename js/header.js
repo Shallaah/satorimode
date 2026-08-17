@@ -788,26 +788,32 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
                 </div>
 
 
-                <a
-                    href="${SATORIMODE_BASE}carrito.html"
-                    class="cart-preview-button"
-                >
-                    VER CARRITO
-                </a>
+               <div class="cart-preview-actions">
+
+    <a
+        href="${SATORIMODE_BASE}carrito.html"
+        class="cart-preview-button cart-preview-view"
+    >
+        VER CARRITO
+    </a>
 
 
-                <a
-                    href="${SATORIMODE_BASE}productos.html"
-                    class="cart-preview-continue"
-                >
-                    Seguir comprando →
-                </a>
+    <a
+        href="${SATORIMODE_BASE}checkout.html"
+        class="cart-preview-button cart-preview-checkout"
+    >
+        FINALIZAR PEDIDO
+    </a>
 
-            </div>
+</div>
 
-        </aside>
 
-        `;
+<a
+    href="${SATORIMODE_BASE}productos.html"
+    class="cart-preview-continue"
+>
+    ← Seguir comprando
+</a>
 
 
         /* =====================================================
@@ -1747,30 +1753,137 @@ const OLD_CART_STORAGE_KEY = "satorii_cart";
             font-weight:900;
         }
 
-        #satori-header .cart-preview-button {
-            width:100%;
-            min-height:48px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:#f31218;
-            color:#fff;
-            text-decoration:none;
-            font-size:10px;
-            font-weight:800;
-            letter-spacing:1px;
-            border-radius:4px;
-        }
+ /* =====================================================
+   ACCIONES DEL CARRITO
+===================================================== */
 
-        #satori-header .cart-preview-continue {
-            display:block;
-            margin-top:13px;
-            text-align:center;
-            color:#555;
-            text-decoration:none;
-            font-size:10px;
-            font-weight:700;
-        }
+#satori-header .cart-preview-actions {
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:10px;
+
+    width:100%;
+
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+#satori-header .cart-preview-button {
+
+    width:100%;
+
+    min-height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0 10px;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.8px;
+
+    border-radius:5px;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+
+}
+
+
+/* =====================================================
+   VER CARRITO
+===================================================== */
+
+#satori-header .cart-preview-view {
+
+    background:#fff;
+
+    color:#111;
+
+    border:1px solid #111;
+
+}
+
+
+#satori-header .cart-preview-view:hover {
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+
+/* =====================================================
+   FINALIZAR PEDIDO
+===================================================== */
+
+#satori-header .cart-preview-checkout {
+
+    background:#f31218;
+
+    color:#fff;
+
+    border:1px solid #f31218;
+
+}
+
+
+#satori-header .cart-preview-checkout:hover {
+
+    background:#111;
+
+    border-color:#111;
+
+}
+
+
+/* =====================================================
+   SEGUIR COMPRANDO
+===================================================== */
+
+#satori-header .cart-preview-continue {
+
+    display:block;
+
+    margin-top:13px;
+
+    text-align:center;
+
+    color:#555;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+
+#satori-header .cart-preview-continue:hover {
+
+    color:#f31218;
+
+}
 
 
         /* =====================================================
