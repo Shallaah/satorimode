@@ -9,7 +9,10 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        content="
+            width=device-width,
+            initial-scale=1.0
+        "
     >
 
 
@@ -44,16 +47,19 @@
         :root {
 
             --satori-red:
-                #f31218;
+                #e50914;
 
             --satori-black:
                 #111827;
 
-            --satori-border:
-                #e5e5e5;
+            --satori-gray:
+                #707070;
 
-            --satori-muted:
-                #666;
+            --satori-border:
+                #e7e7e7;
+
+            --satori-light:
+                #fafafa;
 
         }
 
@@ -64,19 +70,13 @@
         }
 
 
-        html {
-            scroll-behavior:
-                smooth;
-        }
-
-
         body {
 
             margin:
                 0;
 
             background:
-                #fff;
+                #ffffff;
 
             color:
                 var(--satori-black);
@@ -86,48 +86,42 @@
                 Helvetica,
                 sans-serif;
 
-            font-size:
-                16px;
-
-            line-height:
-                1.65;
-
         }
 
 
         button,
-        input,
         a {
-            font-family:
-                inherit;
+
+            -webkit-tap-highlight-color:
+                transparent;
+
         }
 
 
-        a {
-            color:
-                inherit;
-        }
-
+        /* =================================================
+           PÁGINA
+        ================================================= */
 
         .satori-product-page {
 
             width:
                 min(
-                    1500px,
-                    calc(
-                        100% - 48px
-                    )
+                    100%,
+                    1500px
                 );
 
             margin:
                 0 auto;
 
+            padding:
+                42px 42px 100px;
+
         }
 
 
-        /* =============================================
-           PRODUCTO
-        ============================================= */
+        /* =================================================
+           PRODUCTO PRINCIPAL
+        ================================================= */
 
         .satori-product-layout {
 
@@ -137,22 +131,15 @@
             grid-template-columns:
                 minmax(
                     0,
-                    1.02fr
+                    1.08fr
                 )
                 minmax(
-                    470px,
-                    .98fr
+                    400px,
+                    .92fr
                 );
 
             gap:
-                clamp(
-                    42px,
-                    5vw,
-                    75px
-                );
-
-            padding:
-                58px 0 55px;
+                58px;
 
             align-items:
                 start;
@@ -160,13 +147,17 @@
         }
 
 
+        /* =================================================
+           GALERÍA
+        ================================================= */
+
         .satori-product-gallery {
 
             width:
                 100%;
 
-            max-width:
-                620px;
+            min-width:
+                0;
 
         }
 
@@ -179,23 +170,11 @@
             aspect-ratio:
                 1 / 1;
 
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
             overflow:
                 hidden;
 
             background:
-                #f7f7f7;
-
-            border-radius:
-                10px;
+                #f5f5f5;
 
         }
 
@@ -208,24 +187,43 @@
             height:
                 100%;
 
-            object-fit:
-                contain;
-
             display:
                 block;
 
-            transition:
-                transform .35s ease;
+            object-fit:
+                cover;
 
         }
 
 
-        .satori-main-image:hover img {
+        .satori-image-placeholder {
 
-            transform:
-                scale(
-                    1.018
-                );
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                #999;
+
+            font-size:
+                12px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                2px;
 
         }
 
@@ -252,6 +250,9 @@
 
         .satori-thumbnail {
 
+            position:
+                relative;
+
             width:
                 100%;
 
@@ -261,41 +262,18 @@
             padding:
                 0;
 
-            overflow:
-                hidden;
+            border:
+                1px solid
+                transparent;
 
             background:
-                #f7f7f7;
-
-            border:
-                1px solid #ddd;
-
-            border-radius:
-                7px;
+                #f5f5f5;
 
             cursor:
                 pointer;
 
-            transition:
-                .2s ease;
-
-        }
-
-
-        .satori-thumbnail.active {
-
-            border:
-                2px solid #111;
-
-        }
-
-
-        .satori-thumbnail:hover {
-
-            transform:
-                translateY(
-                    -2px
-                );
+            overflow:
+                hidden;
 
         }
 
@@ -312,14 +290,37 @@
                 block;
 
             object-fit:
-                contain;
+                cover;
+
+            transition:
+                transform
+                .3s
+                ease;
 
         }
 
 
-        /* =============================================
+        .satori-thumbnail:hover img {
+
+            transform:
+                scale(
+                    1.04
+                );
+
+        }
+
+
+        .satori-thumbnail.active {
+
+            border-color:
+                #111827;
+
+        }
+
+
+        /* =================================================
            INFORMACIÓN
-        ============================================= */
+        ================================================= */
 
         .satori-product-info {
 
@@ -327,7 +328,10 @@
                 100%;
 
             max-width:
-                720px;
+                580px;
+
+            padding-top:
+                5px;
 
         }
 
@@ -338,19 +342,19 @@
                 block;
 
             margin-bottom:
-                8px;
-
-            font-size:
                 12px;
-
-            font-weight:
-                900;
-
-            letter-spacing:
-                2px;
 
             color:
                 #777;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                1.4px;
 
         }
 
@@ -360,21 +364,24 @@
             margin:
                 0;
 
+            color:
+                #111827;
+
             font-size:
                 clamp(
-                    42px,
-                    4.5vw,
-                    68px
+                    28px,
+                    3vw,
+                    44px
                 );
 
             line-height:
-                .98;
-
-            letter-spacing:
-                -2.5px;
+                1.04;
 
             font-weight:
                 900;
+
+            letter-spacing:
+                -.8px;
 
         }
 
@@ -382,13 +389,16 @@
         .satori-product-price {
 
             margin-top:
-                18px;
+                16px;
+
+            color:
+                #111827;
 
             font-size:
-                28px;
+                20px;
 
             font-weight:
-                900;
+                800;
 
         }
 
@@ -402,22 +412,22 @@
                 1px;
 
             margin:
-                25px 0;
+                24px 0;
 
             background:
-                #e5e5e5;
+                var(--satori-border);
 
         }
 
 
-        /* =============================================
+        /* =================================================
            OPCIONES
-        ============================================= */
+        ================================================= */
 
         .satori-option {
 
-            margin-top:
-                23px;
+            margin-bottom:
+                24px;
 
         }
 
@@ -433,6 +443,9 @@
             justify-content:
                 space-between;
 
+            gap:
+                15px;
+
             margin-bottom:
                 10px;
 
@@ -441,14 +454,17 @@
 
         .satori-option-header span {
 
+            color:
+                #111827;
+
             font-size:
-                12px;
+                11px;
 
             font-weight:
                 900;
 
             letter-spacing:
-                1.5px;
+                .8px;
 
         }
 
@@ -456,22 +472,184 @@
         .satori-option-header a {
 
             color:
-                #111;
+                #777;
 
             font-size:
-                11px;
+                10px;
 
             font-weight:
                 800;
 
+            letter-spacing:
+                .4px;
+
             text-decoration:
                 underline;
+
+            text-underline-offset:
+                3px;
 
         }
 
 
-        .satori-size-options,
         .satori-color-options {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px;
+
+        }
+
+
+        .satori-color-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            min-height:
+                38px;
+
+            padding:
+                0 12px;
+
+            border:
+                1px solid
+                var(--satori-border);
+
+            border-radius:
+                4px;
+
+            background:
+                #ffffff;
+
+            color:
+                #333;
+
+            font-size:
+                11px;
+
+            cursor:
+                pointer;
+
+            transition:
+                border-color
+                .2s
+                ease,
+                background
+                .2s
+                ease,
+                transform
+                .2s
+                ease;
+
+        }
+
+
+        .satori-color-button:hover {
+
+            border-color:
+                #999;
+
+        }
+
+
+        .satori-color-button.active {
+
+            border-color:
+                #111827;
+
+            background:
+                #111827;
+
+            color:
+                #ffffff;
+
+            transform:
+                translateY(
+                    -1px
+                );
+
+        }
+
+
+        .satori-color-dot {
+
+            width:
+                15px;
+
+            height:
+                15px;
+
+            display:
+                block;
+
+            border:
+                1px solid
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .15
+                );
+
+            border-radius:
+                50%;
+
+        }
+
+
+        .color-black {
+
+            background:
+                #111111;
+
+        }
+
+
+        .color-white {
+
+            background:
+                #ffffff;
+
+        }
+
+
+        .color-red {
+
+            background:
+                #c9141b;
+
+        }
+
+
+        .color-blue {
+
+            background:
+                #1e4c9a;
+
+        }
+
+
+        .color-green {
+
+            background:
+                #315f43;
+
+        }
+
+
+        .satori-size-options {
 
             display:
                 flex;
@@ -490,32 +668,45 @@
             min-width:
                 48px;
 
-            min-height:
-                43px;
+            height:
+                40px;
 
             padding:
-                0 14px;
+                0 12px;
 
             border:
-                1px solid #ddd;
+                1px solid
+                var(--satori-border);
 
             border-radius:
-                7px;
+                4px;
 
             background:
-                #fff;
+                #ffffff;
 
             color:
-                #111827;
+                #333;
 
             font-size:
-                13px;
+                11px;
 
             font-weight:
                 800;
 
             cursor:
                 pointer;
+
+            transition:
+                .2s
+                ease;
+
+        }
+
+
+        .satori-size-button:hover {
+
+            border-color:
+                #999;
 
         }
 
@@ -529,119 +720,14 @@
                 #111827;
 
             color:
-                #fff;
+                #ffffff;
 
         }
 
 
-        .satori-color-button {
-
-            min-height:
-                43px;
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap:
-                8px;
-
-            padding:
-                0 15px;
-
-            border:
-                1px solid #ddd;
-
-            border-radius:
-                22px;
-
-            background:
-                #fff;
-
-            color:
-                #111827;
-
-            font-size:
-                13px;
-
-            font-weight:
-                700;
-
-            cursor:
-                pointer;
-
-        }
-
-
-        .satori-color-button.active {
-
-            background:
-                #111827;
-
-            border-color:
-                #111827;
-
-            color:
-                #fff;
-
-        }
-
-
-        .satori-color-dot {
-
-            width:
-                14px;
-
-            height:
-                14px;
-
-            display:
-                block;
-
-            border-radius:
-                50%;
-
-            border:
-                1px solid #aaa;
-
-        }
-
-
-        .satori-color-black {
-            background:
-                #111;
-        }
-
-
-        .satori-color-white {
-            background:
-                #fff;
-        }
-
-
-        .satori-color-red {
-            background:
-                var(--satori-red);
-        }
-
-
-        .satori-color-blue {
-            background:
-                #3568c8;
-        }
-
-
-        .satori-color-green {
-            background:
-                #3b9a5c;
-        }
-
-
-        /* =============================================
+        /* =================================================
            CANTIDAD
-        ============================================= */
+        ================================================= */
 
         .satori-quantity-row {
 
@@ -655,21 +741,35 @@
                 space-between;
 
             margin-top:
-                28px;
+                26px;
+
+            padding:
+                15px 0;
+
+            border-top:
+                1px solid
+                var(--satori-border);
+
+            border-bottom:
+                1px solid
+                var(--satori-border);
 
         }
 
 
         .satori-quantity-label {
 
+            color:
+                #111827;
+
             font-size:
-                12px;
+                11px;
 
             font-weight:
                 900;
 
             letter-spacing:
-                1.5px;
+                .8px;
 
         }
 
@@ -683,13 +783,8 @@
                 center;
 
             border:
-                1px solid #ddd;
-
-            border-radius:
-                7px;
-
-            overflow:
-                hidden;
+                1px solid
+                var(--satori-border);
 
         }
 
@@ -697,263 +792,273 @@
         .satori-quantity button {
 
             width:
-                42px;
+                38px;
 
             height:
-                42px;
+                36px;
+
+            padding:
+                0;
 
             border:
                 0;
 
             background:
-                #fff;
+                #ffffff;
+
+            color:
+                #111827;
+
+            font-size:
+                18px;
 
             cursor:
                 pointer;
-
-            font-size:
-                17px;
 
         }
 
 
         .satori-quantity span {
 
-            min-width:
+            width:
                 38px;
 
             text-align:
                 center;
 
+            color:
+                #111827;
+
             font-size:
-                13px;
+                12px;
 
             font-weight:
-                700;
+                800;
 
         }
 
 
-      /* =========================================
-   BOTÓN AGREGAR AL CARRITO
-========================================= */
+        /* =================================================
+           AGREGAR AL CARRITO
+        ================================================= */
 
-.satori-add-to-cart {
+        .satori-add-to-cart {
 
-    width:
-        100%;
+            position:
+                relative;
 
-    min-height:
-        54px;
+            overflow:
+                hidden;
 
-    margin-top:
-        22px;
+            width:
+                100%;
 
-    border:
-        0;
+            min-height:
+                56px;
 
-    border-radius:
-        6px;
+            margin-top:
+                22px;
 
-    background:
-        #111827;
+            padding:
+                0 20px;
 
-    color:
-        #fff;
+            border:
+                0;
 
-    font-size:
-        12px;
+            border-radius:
+                5px;
 
-    font-weight:
-        900;
+            background:
+                #111827;
 
-    letter-spacing:
-        .7px;
+            color:
+                #ffffff;
 
-    cursor:
-        pointer;
+            font-size:
+                12px;
 
-    position:
-        relative;
+            font-weight:
+                900;
 
-    overflow:
-        hidden;
+            letter-spacing:
+                .8px;
 
-    transform:
-        scale(1);
+            cursor:
+                pointer;
 
-    transition:
-        background-color .35s ease,
-        color .25s ease,
-        transform .18s ease,
-        box-shadow .35s ease;
+            transition:
+                background
+                .28s
+                ease,
+                transform
+                .2s
+                ease,
+                box-shadow
+                .28s
+                ease;
 
-}
+        }
 
 
-/* Al pasar el mouse */
+        .satori-add-to-cart:hover {
 
-.satori-add-to-cart:hover {
+            transform:
+                translateY(
+                    -1px
+                );
 
-    background:
-        #000;
+            box-shadow:
+                0 8px 24px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .12
+                );
 
-    transform:
-        translateY(-1px);
+        }
 
-}
 
+        .satori-add-to-cart.added {
 
-/* Efecto de presión */
+            background:
+                #e50914 !important;
 
-.satori-add-to-cart:active {
+            color:
+                #ffffff !important;
 
-    transform:
-        scale(.97);
+            box-shadow:
+                0 8px 26px
+                rgba(
+                    229,
+                    9,
+                    20,
+                    .25
+                );
 
-}
+            animation:
+                satoriCartAdded
+                .55s
+                cubic-bezier(
+                    .34,
+                    1.56,
+                    .64,
+                    1
+                );
 
+        }
 
-/* =========================================
-   ESTADO AGREGADO
-========================================= */
 
-.satori-add-to-cart.added {
+        @keyframes satoriCartAdded {
 
-    background:
-        #f31218 !important;
+            0% {
 
-    color:
-        #fff !important;
+                transform:
+                    scale(
+                        .95
+                    );
 
-    box-shadow:
-        0 8px 24px
-        rgba(
-            243,
-            18,
-            24,
-            .22
-        );
+            }
 
-    animation:
-        satoriCartAdded
-        .55s
-        cubic-bezier(
-            .34,
-            1.56,
-            .64,
-            1
-        );
+            45% {
 
-}
+                transform:
+                    scale(
+                        1.025
+                    );
 
+            }
 
-/* =========================================
-   ANIMACIÓN
-========================================= */
+            75% {
 
-@keyframes satoriCartAdded {
+                transform:
+                    scale(
+                        .99
+                    );
 
-    0% {
+            }
 
-        transform:
-            scale(.96);
+            100% {
 
-    }
+                transform:
+                    scale(
+                        1
+                    );
 
-    45% {
+            }
 
-        transform:
-            scale(1.035);
+        }
 
-    }
 
-    70% {
+        .satori-add-to-cart.added::after {
 
-        transform:
-            scale(.985);
+            content:
+                "";
 
-    }
+            position:
+                absolute;
 
-    100% {
+            top:
+                0;
 
-        transform:
-            scale(1);
+            left:
+                -120%;
 
-    }
+            width:
+                65%;
 
-}
+            height:
+                100%;
 
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .35
+                    ),
+                    transparent
+                );
 
-/* =========================================
-   BRILLO QUE PASA POR EL BOTÓN
-========================================= */
+            transform:
+                skewX(
+                    -20deg
+                );
 
-.satori-add-to-cart.added::after {
+            animation:
+                satoriCartShine
+                .65s
+                ease
+                forwards;
 
-    content:
-        "";
+        }
 
-    position:
-        absolute;
 
-    top:
-        0;
+        @keyframes satoriCartShine {
 
-    left:
-        -120%;
+            from {
 
-    width:
-        60%;
+                left:
+                    -120%;
 
-    height:
-        100%;
+            }
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(
-                255,
-                255,
-                255,
-                .28
-            ),
-            transparent
-        );
+            to {
 
-    transform:
-        skewX(-20deg);
+                left:
+                    150%;
 
-    animation:
-        satoriCartShine
-        .65s
-        ease
-        forwards;
+            }
 
-}
+        }
 
 
-@keyframes satoriCartShine {
-
-    from {
-
-        left:
-            -120%;
-
-    }
-
-    to {
-
-        left:
-            140%;
-
-    }
-
-}
-        /* =============================================
-           TRUST
-        ============================================= */
+        /* =================================================
+           CONFIANZA
+        ================================================= */
 
         .satori-trust-grid {
 
@@ -966,46 +1071,35 @@
                     1fr
                 );
 
+            gap:
+                10px;
+
             margin-top:
-                8px;
+                20px;
 
-            border:
-                1px solid #e2e2e2;
+            padding:
+                16px 0;
 
-            border-radius:
-                7px;
-
-            overflow:
-                hidden;
+            border-bottom:
+                1px solid
+                var(--satori-border);
 
         }
 
 
         .satori-trust-item {
 
-            min-height:
-                74px;
-
             display:
                 flex;
 
             align-items:
-                center;
+                flex-start;
 
             gap:
                 9px;
 
-            padding:
-                12px;
-
-        }
-
-
-        .satori-trust-item
-        + .satori-trust-item {
-
-            border-left:
-                1px solid #e5e5e5;
+            min-width:
+                0;
 
         }
 
@@ -1013,10 +1107,13 @@
         .satori-trust-icon {
 
             width:
-                24px;
+                30px;
 
             height:
-                24px;
+                30px;
+
+            min-width:
+                30px;
 
             display:
                 flex;
@@ -1028,13 +1125,20 @@
                 center;
 
             border:
-                1px solid #ddd;
+                1px solid
+                #e1e1e1;
 
             border-radius:
                 50%;
 
+            background:
+                #fafafa;
+
             font-size:
-                11px;
+                14px;
+
+            line-height:
+                1;
 
         }
 
@@ -1044,11 +1148,17 @@
             display:
                 block;
 
+            color:
+                #111827;
+
             font-size:
                 10px;
 
             font-weight:
                 900;
+
+            letter-spacing:
+                .3px;
 
         }
 
@@ -1059,37 +1169,28 @@
                 block;
 
             margin-top:
-                2px;
+                3px;
 
             color:
                 #777;
 
             font-size:
-                10px;
+                9px;
 
             line-height:
-                1.35;
+                1.4;
 
         }
 
 
-        /* =============================================
-           DESCRIPCIÓN
-        ============================================= */
+        /* =================================================
+           DETALLES
+        ================================================= */
 
         .satori-details {
 
             margin-top:
-                10px;
-
-            border:
-                1px solid #ddd;
-
-            border-radius:
-                7px;
-
-            overflow:
-                hidden;
+                24px;
 
         }
 
@@ -1100,33 +1201,104 @@
                 grid;
 
             grid-template-columns:
-                1fr 1fr;
+                repeat(
+                    2,
+                    1fr
+                );
 
             border-bottom:
-                1px solid #ddd;
+                1px solid
+                var(--satori-border);
 
         }
 
 
         .satori-tab {
 
+            position:
+                relative;
+
             min-height:
                 48px;
+
+            padding:
+                0 12px;
 
             border:
                 0;
 
             background:
-                #fff;
+                #ffffff;
+
+            color:
+                #777;
 
             font-size:
-                11px;
+                10px;
 
             font-weight:
                 900;
 
+            letter-spacing:
+                .6px;
+
             cursor:
                 pointer;
+
+            transition:
+                color
+                .2s
+                ease,
+                background
+                .2s
+                ease;
+
+        }
+
+
+        .satori-tab::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                18%;
+
+            right:
+                18%;
+
+            bottom:
+                0;
+
+            height:
+                2px;
+
+            background:
+                transparent;
+
+            transform:
+                scaleX(
+                    .35
+                );
+
+            transition:
+                background
+                .2s
+                ease,
+                transform
+                .2s
+                ease;
+
+        }
+
+
+        .satori-tab:hover {
+
+            background:
+                #fafafa;
 
         }
 
@@ -1135,6 +1307,22 @@
 
             background:
                 #fafafa;
+
+            color:
+                #111827;
+
+        }
+
+
+        .satori-tab.active::after {
+
+            background:
+                var(--satori-red);
+
+            transform:
+                scaleX(
+                    1
+                );
 
         }
 
@@ -1145,7 +1333,7 @@
                 none;
 
             padding:
-                23px;
+                24px 2px 0;
 
         }
 
@@ -1155,6 +1343,40 @@
             display:
                 block;
 
+            animation:
+                satoriPanelIn
+                .25s
+                ease;
+
+        }
+
+
+        @keyframes satoriPanelIn {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(
+                        5px
+                    );
+
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(
+                        0
+                    );
+
+            }
+
         }
 
 
@@ -1163,50 +1385,11 @@
             margin:
                 0 0 10px;
 
-            font-size:
-                16px;
-
-        }
-
-
-        .satori-panel p {
-
-            margin:
-                0;
-
             color:
-                #666;
+                #111827;
 
             font-size:
-                14px;
-
-            line-height:
-                1.75;
-
-        }
-
-
-        .satori-product-care {
-
-            margin-top:
-                17px !important;
-
-        }
-
-
-        .satori-detail-item
-        + .satori-detail-item {
-
-            margin-top:
-                20px;
-
-        }
-
-
-        .satori-detail-item strong {
-
-            font-size:
-                12px;
+                15px;
 
             font-weight:
                 900;
@@ -1214,61 +1397,110 @@
         }
 
 
-        .satori-detail-item p {
+        .satori-panel p {
 
-            margin-top:
-                6px;
+            margin:
+                0 0 14px;
+
+            color:
+                #555;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
 
         }
 
 
-        /* =============================================
-           CUIDA TU SATORII
-        ============================================= */
+        .satori-product-care {
 
-        .satori-care-banner {
+            padding-top:
+                5px;
 
-            width:
-                100%;
+        }
 
-            min-height:
-                190px;
+
+        .satori-detail-item {
+
+            padding:
+                0 0 18px;
+
+        }
+
+
+        .satori-detail-item strong {
 
             display:
-                flex;
+                block;
 
-            align-items:
-                stretch;
+            margin-bottom:
+                6px;
+
+            color:
+                #111827;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                .8px;
+
+        }
+
+
+        .satori-detail-item p {
 
             margin:
-                5px 0 65px;
+                0;
+
+        }
+
+
+        /* =================================================
+           BANNER CUIDA TU SATORII
+        ================================================= */
+
+        .satori-style-banner {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr;
+
+            min-height:
+                250px;
+
+            margin-top:
+                70px;
 
             overflow:
                 hidden;
 
-            border-radius:
-                7px;
-
             background:
-                linear-gradient(
-                    100deg,
-                    #090909,
-                    #230407
-                );
+                #111827;
 
             color:
-                #fff;
+                #ffffff;
 
         }
 
 
-        .satori-care-content {
+        .satori-style-banner.has-image {
 
-            flex:
-                1;
+            grid-template-columns:
+                1fr
+                .72fr;
 
-            padding:
-                36px 45px;
+        }
+
+
+        .satori-style-content {
 
             display:
                 flex;
@@ -1279,19 +1511,94 @@
             justify-content:
                 center;
 
-            position:
-                relative;
-
-            z-index:
-                2;
+            padding:
+                42px 50px;
 
         }
 
 
-        .satori-care-content span {
+        .satori-style-content > span {
+
+            margin-bottom:
+                10px;
 
             color:
-                var(--satori-red);
+                #bdbdbd;
+
+            font-size:
+                9px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1.4px;
+
+        }
+
+
+        .satori-style-content h2 {
+
+            margin:
+                0;
+
+            font-size:
+                clamp(
+                    27px,
+                    3vw,
+                    42px
+                );
+
+            line-height:
+                .98;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -1px;
+
+        }
+
+
+        .satori-style-content h2 em {
+
+            color:
+                #e50914;
+
+            font-style:
+                normal;
+
+        }
+
+
+        .satori-style-content p {
+
+            max-width:
+                570px;
+
+            margin:
+                18px 0;
+
+            color:
+                #cfcfcf;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.65;
+
+        }
+
+
+        .satori-style-content a {
+
+            align-self:
+                flex-start;
+
+            color:
+                #ffffff;
 
             font-size:
                 10px;
@@ -1300,99 +1607,18 @@
                 900;
 
             letter-spacing:
-                2.5px;
-
-        }
-
-
-        .satori-care-content h2 {
-
-            margin:
-                4px 0;
-
-            font-size:
-                clamp(
-                    30px,
-                    3.5vw,
-                    48px
-                );
-
-            line-height:
-                .9;
-
-            letter-spacing:
-                -2px;
-
-            font-weight:
-                900;
-
-        }
-
-
-        .satori-care-content h2 em {
-
-            color:
-                var(--satori-red);
-
-            font-style:
-                normal;
-
-        }
-
-
-        .satori-care-content p {
-
-            max-width:
-                650px;
-
-            margin:
-                10px 0 15px;
-
-            color:
-                #d0d0d0;
-
-            font-size:
-                13px;
-
-            line-height:
-                1.55;
-
-        }
-
-
-        .satori-care-content a {
-
-            width:
-                max-content;
-
-            padding:
-                9px 13px;
-
-            background:
-                var(--satori-red);
-
-            color:
-                #fff;
+                .7px;
 
             text-decoration:
                 none;
 
-            font-size:
-                9px;
-
-            font-weight:
-                900;
-
         }
 
 
-        .satori-care-image {
-
-            width:
-                38%;
+        .satori-style-image {
 
             min-height:
-                190px;
+                250px;
 
             overflow:
                 hidden;
@@ -1400,7 +1626,7 @@
         }
 
 
-        .satori-care-image img {
+        .satori-style-image img {
 
             width:
                 100%;
@@ -1417,75 +1643,77 @@
         }
 
 
-        /* =============================================
-           ESPECIFICACIONES ACCESORIOS
-        ============================================= */
+        /* =================================================
+           RECOMENDACIONES
+        ================================================= */
 
-        .satori-accessory-info {
+        .satori-related {
 
-            margin:
-                5px 0 65px;
-
-            padding:
-                45px;
-
-            border:
-                1px solid #e5e5e5;
-
-            border-radius:
-                7px;
-
-            background:
-                #fafafa;
+            margin-top:
+                80px;
 
         }
 
 
-        .satori-section-label {
+        .satori-related-heading {
+
+            max-width:
+                600px;
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        .satori-related-heading > span {
 
             color:
-                var(--satori-red);
+                #777;
 
             font-size:
-                10px;
+                9px;
 
             font-weight:
                 900;
 
             letter-spacing:
-                2.5px;
+                1.3px;
 
         }
 
 
-        .satori-accessory-info h2 {
+        .satori-related-heading h2 {
 
             margin:
-                6px 0 12px;
+                8px 0;
+
+            color:
+                #111827;
 
             font-size:
                 clamp(
-                    34px,
-                    4vw,
-                    52px
+                    26px,
+                    3vw,
+                    38px
                 );
 
             line-height:
-                .9;
-
-            letter-spacing:
-                -2px;
+                1;
 
             font-weight:
                 900;
 
+            letter-spacing:
+                -1px;
+
         }
 
 
-        .satori-accessory-info h2 em {
+        .satori-related-heading h2 em {
 
             color:
-                var(--satori-red);
+                #e50914;
 
             font-style:
                 normal;
@@ -1493,19 +1721,249 @@
         }
 
 
-        .satori-accessory-info > p {
-
-            max-width:
-                650px;
+        .satori-related-heading p {
 
             margin:
                 0;
 
             color:
+                #777;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .satori-related-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    5,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+
+            gap:
+                16px;
+
+        }
+
+
+        .satori-related-card {
+
+            min-width:
+                0;
+
+            color:
+                inherit;
+
+            text-decoration:
+                none;
+
+        }
+
+
+        .satori-related-image {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                1 / 1.08;
+
+            overflow:
+                hidden;
+
+            background:
+                #f5f5f5;
+
+        }
+
+
+        .satori-related-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                block;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform
+                .35s
+                ease;
+
+        }
+
+
+        .satori-related-card:hover
+        .satori-related-image img {
+
+            transform:
+                scale(
+                    1.035
+                );
+
+        }
+
+
+        .satori-related-info {
+
+            padding:
+                10px 1px 0;
+
+        }
+
+
+        .satori-related-info span {
+
+            color:
+                #888;
+
+            font-size:
+                8px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                .9px;
+
+        }
+
+
+        .satori-related-info h3 {
+
+            margin:
+                5px 0;
+
+            color:
+                #111827;
+
+            font-size:
+                12px;
+
+            font-weight:
+                900;
+
+            line-height:
+                1.2;
+
+        }
+
+
+        .satori-related-info strong {
+
+            color:
+                #111827;
+
+            font-size:
+                11px;
+
+        }
+
+
+        /* =================================================
+           ACCESORIOS
+        ================================================= */
+
+        .satori-accessory-info {
+
+            margin-top:
+                60px;
+
+            padding:
+                45px;
+
+            background:
+                #f7f7f7;
+
+        }
+
+
+        .satori-section-label {
+
+            margin-bottom:
+                10px;
+
+            color:
+                #777;
+
+            font-size:
+                9px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1.3px;
+
+        }
+
+
+        .satori-accessory-info h2 {
+
+            margin:
+                0 0 25px;
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    46px
+                );
+
+            line-height:
+                .95;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -1.2px;
+
+        }
+
+
+        .satori-accessory-info h2 em {
+
+            color:
+                #e50914;
+
+            font-style:
+                normal;
+
+        }
+
+
+        .satori-accessory-info p {
+
+            max-width:
+                620px;
+
+            color:
                 #666;
 
             font-size:
-                14px;
+                13px;
+
+            line-height:
+                1.7;
 
         }
 
@@ -1525,41 +1983,33 @@
                 10px;
 
             margin-top:
-                28px;
+                25px;
 
         }
 
 
         .satori-spec {
 
-            min-height:
-                105px;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                space-between;
-
             padding:
-                17px;
+                18px;
 
             background:
-                #fff;
+                #ffffff;
 
             border:
-                1px solid #e5e5e5;
-
-            border-radius:
-                6px;
+                1px solid
+                #e8e8e8;
 
         }
 
 
         .satori-spec span {
+
+            display:
+                block;
+
+            margin-bottom:
+                8px;
 
             color:
                 #888;
@@ -1568,10 +2018,7 @@
                 9px;
 
             font-weight:
-                900;
-
-            letter-spacing:
-                1.2px;
+                800;
 
             text-transform:
                 uppercase;
@@ -1581,232 +2028,8 @@
 
         .satori-spec strong {
 
-            font-size:
-                14px;
-
-            line-height:
-                1.3;
-
-        }
-
-
-        /* =============================================
-           RECOMENDACIONES
-        ============================================= */
-
-        .satori-related {
-
-            padding:
-                0 0 65px;
-
-        }
-
-
-        .satori-related-heading {
-
-            margin-bottom:
-                24px;
-
-        }
-
-
-        .satori-related-heading > span {
-
-            display:
-                block;
-
-            margin-bottom:
-                5px;
-
             color:
-                var(--satori-red);
-
-            font-size:
-                10px;
-
-            font-weight:
-                900;
-
-            letter-spacing:
-                2.2px;
-
-        }
-
-
-        .satori-related-heading h2 {
-
-            margin:
-                0;
-
-            font-size:
-                clamp(
-                    30px,
-                    3.8vw,
-                    46px
-                );
-
-            line-height:
-                .95;
-
-            letter-spacing:
-                -2px;
-
-            font-weight:
-                900;
-
-        }
-
-
-        .satori-related-heading h2 em {
-
-            color:
-                var(--satori-red);
-
-            font-style:
-                normal;
-
-        }
-
-
-        .satori-related-heading p {
-
-            margin:
-                9px 0 0;
-
-            color:
-                #777;
-
-            font-size:
-                14px;
-
-        }
-
-
-        .satori-related-grid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(
-                    5,
-                    1fr
-                );
-
-            gap:
-                16px;
-
-        }
-
-
-        .satori-related-card {
-
-            text-decoration:
-                none;
-
-            color:
-                #111;
-
-        }
-
-
-        .satori-related-image {
-
-            width:
-                100%;
-
-            aspect-ratio:
-                1 / 1;
-
-            overflow:
-                hidden;
-
-            background:
-                #f6f6f6;
-
-            border-radius:
-                6px;
-
-            position:
-                relative;
-
-        }
-
-
-        .satori-related-image img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            display:
-                block;
-
-            object-fit:
-                contain;
-
-            transition:
-                transform .3s ease;
-
-        }
-
-
-        .satori-related-card:hover
-        .satori-related-image img {
-
-            transform:
-                scale(
-                    1.04
-                );
-
-        }
-
-
-        .satori-related-info {
-
-            padding-top:
-                9px;
-
-        }
-
-
-        .satori-related-info span {
-
-            color:
-                #888;
-
-            font-size:
-                8px;
-
-            font-weight:
-                900;
-
-            letter-spacing:
-                1.2px;
-
-        }
-
-
-        .satori-related-info h3 {
-
-            margin:
-                3px 0;
-
-            font-size:
-                12px;
-
-            line-height:
-                1.25;
-
-            font-weight:
-                800;
-
-        }
-
-
-        .satori-related-info strong {
+                #111827;
 
             font-size:
                 12px;
@@ -1814,9 +2037,9 @@
         }
 
 
-        /* =============================================
-           BANNER EDITORIAL
-        ============================================= */
+        /* =================================================
+           EDITORIAL PRENDA
+        ================================================= */
 
         .satori-editorial {
 
@@ -1824,25 +2047,20 @@
                 grid;
 
             grid-template-columns:
-                1fr 1fr;
+                .85fr
+                1.15fr;
 
             min-height:
-                470px;
+                390px;
 
-            margin:
-                0 0 70px;
+            margin-top:
+                80px;
 
             overflow:
                 hidden;
 
-            border-radius:
-                7px;
-
             background:
-                #090909;
-
-            color:
-                #fff;
+                #f3f3f3;
 
         }
 
@@ -1859,15 +2077,104 @@
                 center;
 
             padding:
-                55px;
+                50px;
 
         }
 
 
-        .satori-editorial-content span {
+        .satori-editorial-content > span {
+
+            margin-bottom:
+                12px;
 
             color:
-                var(--satori-red);
+                #777;
+
+            font-size:
+                9px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1.4px;
+
+        }
+
+
+        .satori-editorial-content h2 {
+
+            margin:
+                0;
+
+            color:
+                #111827;
+
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    55px
+                );
+
+            line-height:
+                .93;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -1.5px;
+
+        }
+
+
+        .satori-editorial-content h2 em {
+
+            color:
+                #e50914;
+
+            font-style:
+                normal;
+
+        }
+
+
+        .satori-editorial-content h2 strong {
+
+            color:
+                #111827;
+
+        }
+
+
+        .satori-editorial-content p {
+
+            max-width:
+                480px;
+
+            margin:
+                22px 0;
+
+            color:
+                #666;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.65;
+
+        }
+
+
+        .satori-editorial-content a {
+
+            align-self:
+                flex-start;
+
+            color:
+                #111827;
 
             font-size:
                 10px;
@@ -1876,114 +2183,21 @@
                 900;
 
             letter-spacing:
-                2.5px;
-
-        }
-
-
-        .satori-editorial h2 {
-
-            margin:
-                10px 0;
-
-            font-size:
-                clamp(
-                    42px,
-                    5vw,
-                    72px
-                );
-
-            line-height:
-                .88;
-
-            letter-spacing:
-                -3px;
-
-            font-weight:
-                900;
-
-        }
-
-
-        .satori-editorial h2 em {
-
-            color:
-                var(--satori-red);
-
-            font-style:
-                normal;
-
-        }
-
-
-        .satori-editorial h2 strong {
-
-            color:
-                #fff;
-
-        }
-
-
-        .satori-editorial-content p {
-
-            max-width:
-                470px;
-
-            margin:
-                10px 0 20px;
-
-            color:
-                #c9c9c9;
-
-            font-size:
-                14px;
-
-        }
-
-
-        .satori-editorial-content a {
-
-            width:
-                max-content;
-
-            padding:
-                10px 14px;
-
-            background:
-                var(--satori-red);
-
-            color:
-                #fff;
+                .7px;
 
             text-decoration:
                 none;
-
-            font-size:
-                9px;
-
-            font-weight:
-                900;
 
         }
 
 
         .satori-editorial-image {
 
-            position:
-                relative;
-
             min-height:
-                470px;
+                390px;
 
             overflow:
                 hidden;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #35090c,
-                    #090909 70%
-                );
 
         }
 
@@ -2000,17 +2214,54 @@
                 block;
 
             object-fit:
-                contain;
-
-            transform:
-                scale(
-                    1.08
-                );
+                cover;
 
         }
 
 
-        .satori-editorial-placeholder {
+        /* =================================================
+           EDITORIAL ACCESORIOS
+        ================================================= */
+
+        .satori-accessory-editorial {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.05fr
+                .95fr;
+
+            min-height:
+                360px;
+
+            margin-top:
+                70px;
+
+            overflow:
+                hidden;
+
+            background:
+                #111827;
+
+            color:
+                #ffffff;
+
+        }
+
+
+        .satori-accessory-editorial-image {
+
+            min-height:
+                360px;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .satori-accessory-editorial-image img {
 
             width:
                 100%;
@@ -2019,37 +2270,129 @@
                 100%;
 
             display:
+                block;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .satori-accessory-editorial-content {
+
+            display:
                 flex;
 
-            align-items:
-                center;
+            flex-direction:
+                column;
 
             justify-content:
                 center;
 
+            padding:
+                45px;
+
+        }
+
+
+        .satori-accessory-editorial-content > span {
+
             color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .15
-                );
+                #aaa;
 
             font-size:
-                50px;
+                9px;
 
             font-weight:
                 900;
 
             letter-spacing:
-                5px;
+                1.3px;
 
         }
 
 
-        /* =============================================
+        .satori-accessory-editorial-content h2 {
+
+            margin:
+                12px 0;
+
+            color:
+                #ffffff;
+
+            font-size:
+                clamp(
+                    28px,
+                    3vw,
+                    45px
+                );
+
+            line-height:
+                .95;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -1px;
+
+        }
+
+
+        .satori-accessory-editorial-content h2 em {
+
+            color:
+                #e50914;
+
+            font-style:
+                normal;
+
+        }
+
+
+        .satori-accessory-editorial-content p {
+
+            max-width:
+                460px;
+
+            color:
+                #c8c8c8;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.65;
+
+        }
+
+
+        .satori-accessory-editorial-content a {
+
+            margin-top:
+                10px;
+
+            color:
+                #ffffff;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                .7px;
+
+            text-decoration:
+                none;
+
+        }
+
+
+        /* =================================================
            RESPONSIVE
-        ============================================= */
+        ================================================= */
 
         @media (
             max-width: 1100px
@@ -2058,15 +2401,11 @@
             .satori-product-layout {
 
                 grid-template-columns:
+                    1fr
                     1fr;
 
-            }
-
-
-            .satori-product-gallery {
-
-                max-width:
-                    none;
+                gap:
+                    35px;
 
             }
 
@@ -2089,31 +2428,44 @@
 
             }
 
-
-            .satori-spec-grid {
-
-                grid-template-columns:
-                    repeat(
-                        2,
-                        1fr
-                    );
-
-            }
-
         }
 
 
         @media (
-            max-width: 850px
+            max-width: 800px
         ) {
 
-            .satori-related-grid {
+            .satori-product-page {
+
+                padding:
+                    25px 20px 70px;
+
+            }
+
+
+            .satori-product-layout {
 
                 grid-template-columns:
-                    repeat(
-                        3,
-                        1fr
-                    );
+                    1fr;
+
+                gap:
+                    35px;
+
+            }
+
+
+            .satori-style-banner.has-image {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .satori-style-image {
+
+                min-height:
+                    230px;
 
             }
 
@@ -2129,63 +2481,15 @@
             .satori-editorial-image {
 
                 min-height:
-                    350px;
+                    300px;
+
+                order:
+                    -1;
 
             }
 
 
-            .satori-care-banner {
-
-                display:
-                    block;
-
-            }
-
-
-            .satori-care-image {
-
-                width:
-                    100%;
-
-                min-height:
-                    230px;
-
-            }
-
-        }
-
-
-        @media (
-            max-width: 650px
-        ) {
-
-            .satori-product-page {
-
-                width:
-                    calc(
-                        100% - 22px
-                    );
-
-            }
-
-
-            .satori-product-layout {
-
-                padding:
-                    35px 0 50px;
-
-            }
-
-
-            .satori-product-info h1 {
-
-                font-size:
-                    38px;
-
-            }
-
-
-            .satori-trust-grid {
+            .satori-accessory-editorial {
 
                 grid-template-columns:
                     1fr;
@@ -2193,14 +2497,10 @@
             }
 
 
-            .satori-trust-item
-            + .satori-trust-item {
+            .satori-accessory-editorial-image {
 
-                border-left:
-                    0;
-
-                border-top:
-                    1px solid #e5e5e5;
+                min-height:
+                    300px;
 
             }
 
@@ -2213,32 +2513,83 @@
                         1fr
                     );
 
-                gap:
-                    14px;
-
             }
 
 
-            .satori-editorial-content {
+            .satori-spec-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 520px
+        ) {
+
+            .satori-product-page {
 
                 padding:
-                    38px 25px;
+                    18px 14px 55px;
 
             }
 
 
-            .satori-editorial h2 {
+            .satori-product-info h1 {
 
                 font-size:
-                    42px;
+                    30px;
 
             }
 
 
-            .satori-care-content {
+            .satori-trust-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    13px;
+
+            }
+
+
+            .satori-trust-item {
+
+                align-items:
+                    center;
+
+            }
+
+
+            .satori-style-content,
+            .satori-editorial-content,
+            .satori-accessory-editorial-content {
 
                 padding:
-                    30px 25px;
+                    32px 25px;
+
+            }
+
+
+            .satori-related-grid {
+
+                gap:
+                    12px;
+
+            }
+
+
+            .satori-spec-grid {
+
+                grid-template-columns:
+                    1fr;
 
             }
 
@@ -2247,14 +2598,6 @@
 
                 padding:
                     30px 22px;
-
-            }
-
-
-            .satori-spec-grid {
-
-                grid-template-columns:
-                    1fr 1fr;
 
             }
 
@@ -2280,6 +2623,10 @@
 >
 
 
+    <!-- =================================================
+         HEADER
+    ================================================= -->
+
     <div
         id="satori-header"
     ></div>
@@ -2292,18 +2639,23 @@
         >
 
 
+            <!-- =================================================
+                 PRODUCTO
+            ================================================= -->
+
             <section
                 class="satori-product-layout"
                 id="producto"
             >
 
 
+                <!-- GALERÍA -->
+
                 <div
                     class="satori-product-gallery"
                 >
 
                     
-
         <div class="satori-main-image">
 
             <img
@@ -2314,89 +2666,88 @@
 
         </div>
 
-
         <div class="satori-thumbnails">
 
             
 
-                    <button
-                        type="button"
-                        class="
-                            satori-thumbnail
-                            active
-                        "
-                        data-image="polera-kid-buu-01.PNG"
-                        aria-label="Imagen 1"
+                <button
+                    type="button"
+                    class="satori-thumbnail active"
+                    data-image="polera-kid-buu-01.PNG"
+                    aria-label="Imagen 1"
+                >
+
+                    <img
+                        src="polera-kid-buu-01.PNG"
+                        alt="Polera Kid Buu"
+                        loading="eager"
                     >
 
-                        <img
-                            src="polera-kid-buu-01.PNG"
-                            alt="Polera Kid Buu"
-                            loading="eager"
-                        >
+                </button>
 
-                    </button>
+            
 
-                
+                <button
+                    type="button"
+                    class="satori-thumbnail "
+                    data-image="polera-kid-buu-02.PNG"
+                    aria-label="Imagen 2"
+                >
 
-                    <button
-                        type="button"
-                        class="
-                            satori-thumbnail
-                            
-                        "
-                        data-image="polera-kid-buu-02.PNG"
-                        aria-label="Imagen 2"
+                    <img
+                        src="polera-kid-buu-02.PNG"
+                        alt="Polera Kid Buu"
+                        loading="lazy"
                     >
 
-                        <img
-                            src="polera-kid-buu-02.PNG"
-                            alt="Polera Kid Buu"
-                            loading="lazy"
-                        >
+                </button>
 
-                    </button>
+            
 
-                
+                <button
+                    type="button"
+                    class="satori-thumbnail "
+                    data-image="polera-kid-buu-03.PNG"
+                    aria-label="Imagen 3"
+                >
 
-                    <button
-                        type="button"
-                        class="
-                            satori-thumbnail
-                            
-                        "
-                        data-image="polera-kid-buu-03.PNG"
-                        aria-label="Imagen 3"
+                    <img
+                        src="polera-kid-buu-03.PNG"
+                        alt="Polera Kid Buu"
+                        loading="lazy"
                     >
 
-                        <img
-                            src="polera-kid-buu-03.PNG"
-                            alt="Polera Kid Buu"
-                            loading="lazy"
-                        >
+                </button>
 
-                    </button>
-
-                
+            
 
         </div>
-
     
 
                 </div>
 
 
+                <!-- INFORMACIÓN -->
+
                 <div
                     class="satori-product-info"
+
                     data-product
+
                     data-product-id="kid-buu"
+
                     data-product-name="Polera Kid Buu"
+
                     data-product-price="18990"
+
                     data-product-image="polera-kid-buu-01.PNG"
                 >
 
+
                     <span
-                        class="satori-product-category"
+                        class="
+                            satori-product-category
+                        "
                     >
                         ANIME
                     </span>
@@ -2408,19 +2759,24 @@
 
 
                     <div
-                        class="satori-product-price"
+                        class="
+                            satori-product-price
+                        "
                     >
                         $18.990
                     </div>
 
 
                     <div
-                        class="satori-product-divider"
+                        class="
+                            satori-product-divider
+                        "
                     ></div>
 
 
-                    
+                    <!-- COLOR -->
 
+                    
         <section class="satori-option">
 
             <div class="satori-option-header">
@@ -2431,44 +2787,40 @@
 
             </div>
 
-
             <div class="satori-color-options">
 
                 
 
-                            <button
-                                type="button"
-                                class="
-                                    satori-color-button
-                                    active
-                                "
-                                data-color="Blanco"
-                            >
+                    <button
+                        type="button"
+                        class="satori-color-button active"
+                        data-color="Blanco"
+                    >
 
-                                <span
-                                    class="
-                                        satori-color-dot
-                                        satori-color-white
-                                    "
-                                ></span>
+                        <span
+                            class="
+                                satori-color-dot
+                                color-white
+                            "
+                        ></span>
 
-                                <span>
-                                    Blanco
-                                </span>
+                        <span>
+                            Blanco
+                        </span>
 
-                            </button>
+                    </button>
 
-                        
+                
 
             </div>
 
         </section>
-
     
 
 
-                    
+                    <!-- TALLA -->
 
+                    
         <section class="satori-option">
 
             <div class="satori-option-header">
@@ -2477,85 +2829,86 @@
                     TALLA
                 </span>
 
-                <a href="../../guia-tallas.html">
+                <a
+                    href="../../guia-tallas.html"
+                >
                     GUÍA DE TALLAS
                 </a>
 
             </div>
 
-
             <div class="satori-size-options">
 
                 
 
-                            <button
-                                type="button"
-                                class="
-                                    satori-size-button
-                                    product-size
-                                    active
-                                "
-                                data-size="M"
-                            >
-                                M
-                            </button>
+                    <button
+                        type="button"
+                        class="satori-size-button active"
+                        data-size="M"
+                    >
 
-                        
+                        M
 
-                            <button
-                                type="button"
-                                class="
-                                    satori-size-button
-                                    product-size
-                                    
-                                "
-                                data-size="L"
-                            >
-                                L
-                            </button>
+                    </button>
 
-                        
+                
 
-                            <button
-                                type="button"
-                                class="
-                                    satori-size-button
-                                    product-size
-                                    
-                                "
-                                data-size="XL"
-                            >
-                                XL
-                            </button>
+                    <button
+                        type="button"
+                        class="satori-size-button "
+                        data-size="L"
+                    >
 
-                        
+                        L
+
+                    </button>
+
+                
+
+                    <button
+                        type="button"
+                        class="satori-size-button "
+                        data-size="XL"
+                    >
+
+                        XL
+
+                    </button>
+
+                
 
             </div>
 
         </section>
-
     
 
 
+                    <!-- CANTIDAD -->
+
                     <div
-                        class="satori-quantity-row"
+                        class="
+                            satori-quantity-row
+                        "
                     >
 
                         <span
-                            class="satori-quantity-label"
+                            class="
+                                satori-quantity-label
+                            "
                         >
                             CANTIDAD
                         </span>
 
 
                         <div
-                            class="satori-quantity"
+                            class="
+                                satori-quantity
+                            "
                         >
 
                             <button
                                 type="button"
                                 id="satoriQuantityMinus"
-                                aria-label="Disminuir cantidad"
                             >
                                 −
                             </button>
@@ -2571,7 +2924,6 @@
                             <button
                                 type="button"
                                 id="satoriQuantityPlus"
-                                aria-label="Aumentar cantidad"
                             >
                                 +
                             </button>
@@ -2582,25 +2934,46 @@
                         <input
                             type="hidden"
                             id="quantity"
-                            class="quantity-input"
                             value="1"
                         >
 
                     </div>
 
 
+                    <!-- =================================================
+                         BOTÓN CARRITO
+                    ================================================= -->
+
                     <button
                         type="button"
+
                         id="addToCart"
+
                         class="
                             satori-add-to-cart
                             add-to-cart
                             add-to-cart-button
                         "
+
+                        data-add-to-cart
+
+                        data-product-id="kid-buu"
+
+                        data-product-name="Polera Kid Buu"
+
+                        data-product-price="18990"
+
+                        data-product-image="polera-kid-buu-01.PNG"
                     >
+
                         AGREGAR AL CARRITO · $18.990
+
                     </button>
 
+
+                    <!-- =================================================
+                         CONFIANZA
+                    ================================================= -->
 
                     
 
@@ -2608,8 +2981,11 @@
 
             <div class="satori-trust-item">
 
-                <div class="satori-trust-icon">
-                    ↗
+                <div
+                    class="satori-trust-icon"
+                    aria-hidden="true"
+                >
+                    🚚
                 </div>
 
                 <div>
@@ -2629,8 +3005,11 @@
 
             <div class="satori-trust-item">
 
-                <div class="satori-trust-icon">
-                    ✓
+                <div
+                    class="satori-trust-icon"
+                    aria-hidden="true"
+                >
+                    🔒
                 </div>
 
                 <div>
@@ -2650,8 +3029,11 @@
 
             <div class="satori-trust-item">
 
-                <div class="satori-trust-icon">
-                    ★
+                <div
+                    class="satori-trust-icon"
+                    aria-hidden="true"
+                >
+                    ✦
                 </div>
 
                 <div>
@@ -2673,6 +3055,10 @@
     
 
 
+                    <!-- =================================================
+                         DESCRIPCIÓN
+                    ================================================= -->
+
                     
 
         <section class="satori-details">
@@ -2681,7 +3067,10 @@
 
                 <button
                     type="button"
-                    class="satori-tab active"
+                    class="
+                        satori-tab
+                        active
+                    "
                     data-tab="description"
                 >
                     DESCRIPCIÓN
@@ -2700,7 +3089,10 @@
 
 
             <div
-                class="satori-panel active"
+                class="
+                    satori-panel
+                    active
+                "
                 data-panel="description"
             >
 
@@ -2713,7 +3105,9 @@
                 </p>
 
 
-                <p class="satori-product-care">
+                <p
+                    class="satori-product-care"
+                >
 
                     <strong>
                         Cuidados:
@@ -2731,7 +3125,9 @@
                 data-panel="shipping"
             >
 
-                <div class="satori-detail-item">
+                <div
+                    class="satori-detail-item"
+                >
 
                     <strong>
                         ENVÍOS
@@ -2744,7 +3140,9 @@
                 </div>
 
 
-                <div class="satori-detail-item">
+                <div
+                    class="satori-detail-item"
+                >
 
                     <strong>
                         GARANTÍA
@@ -2767,16 +3165,22 @@
             </section>
 
 
+            <!-- =================================================
+                 CUIDA TU SATORII
+            ================================================= -->
+
             
 
         <section
             class="
-                satori-care-banner
+                satori-style-banner
                 no-image
             "
         >
 
-            <div class="satori-care-content">
+            <div
+                class="satori-style-content"
+            >
 
                 <span>
                     SATORII · CUIDADO
@@ -2785,15 +3189,17 @@
 
                 <h2>
                     CUIDA TU
-                    <em>SATORII.</em>
+                    <em>
+                        SATORII.
+                    </em>
                 </h2>
 
 
                 <p>
                     Una buena prenda merece durar.
-                    Aprende a cuidar correctamente el
-                    estampado y el tejido para mantener
-                    tu SATORII en las mejores condiciones.
+                    Aprende a cuidar el estampado,
+                    el tejido y la apariencia
+                    de tu SATORII.
                 </p>
 
 
@@ -2813,6 +3219,10 @@
     
 
 
+            <!-- =================================================
+                 RECOMENDACIONES
+            ================================================= -->
+
             
 
         <section
@@ -2820,7 +3230,9 @@
         >
 
             <div
-                class="satori-related-heading"
+                class="
+                    satori-related-heading
+                "
             >
 
                 <span>
@@ -2830,69 +3242,148 @@
 
                 <h2>
                     TAMBIÉN TE PUEDE
-                    <em>GUSTAR.</em>
+                    <em>
+                        GUSTAR.
+                    </em>
                 </h2>
 
 
                 <p>
-                    
-                                Descubre otras prendas
-                                para completar tu estilo.
-                            
+                    Descubre otros diseños
+                    que podrían convertirse
+                    en parte de tu universo.
                 </p>
 
             </div>
 
 
             <div
-                class="satori-related-grid"
+                class="
+                    satori-related-grid
+                "
             >
 
                 
 
-                        <a
-                            href="../anime/goku.html"
-                            class="satori-related-card"
+                    <a
+                        href="../anime/goku.html"
+                        class="satori-related-card"
+                    >
+
+                        <div
+                            class="satori-related-image"
                         >
 
-                            <div
-                                class="satori-related-image"
-                            >
+                            
+
+                                    <img
+                                        src="polera-kid-buu-01.PNG"
+                                        alt="Polera Goku"
+                                        loading="lazy"
+                                    >
 
                                 
-                                            <img
-                                                src="polera-kid-buu-01.PNG"
-                                                alt="Polera Goku"
-                                                loading="lazy"
-                                            >
-                                        
 
-                            </div>
+                        </div>
 
 
-                            <div
-                                class="satori-related-info"
-                            >
+                        <div
+                            class="
+                                satori-related-info
+                            "
+                        >
 
-                                <span>
-
-                                    ANIME
-
-                                </span>
-
-
-                                <h3>
-                                    Polera Goku
-                                </h3>
+                            <span>
+                                ANIME
+                            </span>
 
 
-                                <strong>
-                                    $19.990
-                                </strong>
+                            <h3>
+                                Polera Goku
+                            </h3>
 
-                            </div>
 
-                        </a>
+                            <strong>
+                                $19.990
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+                
+
+            </div>
+
+        </section>
+
+    
+
+
+            <!-- =================================================
+                 EDITORIAL
+            ================================================= -->
+
+            
+
+        <section
+            class="satori-editorial"
+        >
+
+            <div
+                class="
+                    satori-editorial-content
+                "
+            >
+
+                <span>
+                    SATORII · ANIME
+                </span>
+
+
+                <h2>
+                    NO VISTAS UN
+                    <em>
+                        PERSONAJE.
+                    </em>
+
+                    <br>
+
+                    VISTE TU
+                    <strong>
+                        UNIVERSO.
+                    </strong>
+                </h2>
+
+
+                <p>
+                    Tu estilo no necesita
+                    explicaciones.
+                    Es una forma de mostrar
+                    aquello que realmente
+                    te representa.
+                </p>
+
+
+                <a href="#producto">
+                    VER LA PRENDA →
+                </a>
+
+            </div>
+
+
+            <div
+                class="
+                    satori-editorial-image
+                "
+            >
+
+                
+
+                        <img
+                            src="polera-kid-buu-02.PNG"
+                            alt="Polera Kid Buu"
+                        >
 
                     
 
@@ -2902,77 +3393,23 @@
 
     
 
-
-            
-
-            <section
-                class="satori-editorial"
-            >
-
-                <div
-                    class="satori-editorial-content"
-                >
-
-                    <span>
-                        SATORII · TU ESTILO
-                    </span>
-
-
-                    <h2>
-
-                        NO VISTAS UN
-                        <em>PERSONAJE.</em>
-
-                        <br>
-
-                        VISTE TU
-                        <strong>UNIVERSO.</strong>
-
-                    </h2>
-
-
-                    <p>
-                        Tu estilo no necesita explicaciones.
-                        Es una forma de mostrar aquello que
-                        realmente te representa.
-                    </p>
-
-
-                    <a href="#producto">
-                        VER LA PRENDA →
-                    </a>
-
-                </div>
-
-
-                <div
-                    class="satori-editorial-image"
-                >
-
-                    
-                                <img
-                                    src="polera-kid-buu-01.PNG"
-                                    alt="Polera Kid Buu"
-                                    loading="lazy"
-                                >
-                            
-
-                </div>
-
-            </section>
-
-        
-
-
         </div>
 
     </main>
 
 
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
+
     <div
         id="satori-footer"
     ></div>
 
+
+    <!-- =================================================
+         SCRIPTS
+    ================================================= -->
 
     <script
         src="../../js/products.js"
@@ -3001,431 +3438,508 @@
 
     
 
-        <script>
+<script>
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
+(function () {
 
-
-                /* =========================================
-                   GALERÍA
-                ========================================= */
-
-                const mainImage =
-                    document.getElementById(
-                        "satoriMainImage"
-                    );
+    "use strict";
 
 
-                document
-                    .querySelectorAll(
-                        ".satori-thumbnail"
-                    )
-                    .forEach(
-                        function (thumbnail) {
-
-                            thumbnail.addEventListener(
-                                "click",
-                                function () {
-
-                                    const image =
-                                        this.dataset.image;
+    function initSatoriProduct() {
 
 
-                                    if (
-                                        mainImage &&
-                                        image
-                                    ) {
+        /* =================================================
+           GALERÍA
+        ================================================= */
 
-                                        mainImage.src =
-                                            image;
+        const mainImage =
+            document.getElementById(
+                "satoriMainImage"
+            );
 
-                                    }
+
+        document
+            .querySelectorAll(
+                ".satori-thumbnail"
+            )
+            .forEach(
+                function (thumbnail) {
+
+                    thumbnail.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.preventDefault();
 
 
-                                    document
-                                        .querySelectorAll(
-                                            ".satori-thumbnail"
-                                        )
-                                        .forEach(
-                                            item =>
-                                                item.classList.remove(
-                                                    "active"
-                                                )
+                            const image =
+                                this.dataset.image;
+
+
+                            if (
+                                mainImage &&
+                                image
+                            ) {
+
+                                mainImage.src =
+                                    image;
+
+                            }
+
+
+                            document
+                                .querySelectorAll(
+                                    ".satori-thumbnail"
+                                )
+                                .forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "active"
                                         );
 
+                                    }
+                                );
 
-                                    this.classList.add(
-                                        "active"
-                                    );
 
-                                }
+                            this.classList.add(
+                                "active"
                             );
 
                         }
                     );
 
+                }
+            );
 
-                /* =========================================
-                   COLORES
-                ========================================= */
+
+        /* =================================================
+           COLOR
+        ================================================= */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(
+                        ".satori-color-button"
+                    );
+
+
+                if (!button) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
 
                 document
                     .querySelectorAll(
                         ".satori-color-button"
                     )
                     .forEach(
-                        function (button) {
+                        function (item) {
 
-                            button.addEventListener(
-                                "click",
-                                function () {
-
-                                    document
-                                        .querySelectorAll(
-                                            ".satori-color-button"
-                                        )
-                                        .forEach(
-                                            item =>
-                                                item.classList.remove(
-                                                    "active"
-                                                )
-                                        );
-
-
-                                    this.classList.add(
-                                        "active"
-                                    );
-
-                                }
+                            item.classList.remove(
+                                "active"
                             );
 
                         }
                     );
 
 
-                /* =========================================
-                   TALLAS
-                ========================================= */
+                button.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           TALLA
+        ================================================= */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(
+                        ".satori-size-button"
+                    );
+
+
+                if (!button) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
 
                 document
                     .querySelectorAll(
                         ".satori-size-button"
                     )
                     .forEach(
-                        function (button) {
+                        function (item) {
 
-                            button.addEventListener(
-                                "click",
-                                function () {
-
-                                    document
-                                        .querySelectorAll(
-                                            ".satori-size-button"
-                                        )
-                                        .forEach(
-                                            item =>
-                                                item.classList.remove(
-                                                    "active"
-                                                )
-                                        );
-
-
-                                    this.classList.add(
-                                        "active"
-                                    );
-
-                                }
+                            item.classList.remove(
+                                "active"
                             );
 
                         }
                     );
 
 
-                /* =========================================
-                   CANTIDAD
-                ========================================= */
+                button.classList.add(
+                    "active"
+                );
 
-                let quantity = 1;
+            }
+        );
 
 
-                const quantityDisplay =
-                    document.getElementById(
-                        "satoriQuantity"
+        /* =================================================
+           CANTIDAD
+        ================================================= */
+
+        let quantity =
+            1;
+
+
+        const quantityDisplay =
+            document.getElementById(
+                "satoriQuantity"
+            );
+
+
+        const quantityInput =
+            document.getElementById(
+                "quantity"
+            );
+
+
+        const minusButton =
+            document.getElementById(
+                "satoriQuantityMinus"
+            );
+
+
+        const plusButton =
+            document.getElementById(
+                "satoriQuantityPlus"
+            );
+
+
+        function updateQuantity() {
+
+            if (
+                quantityDisplay
+            ) {
+
+                quantityDisplay.textContent =
+                    quantity;
+
+            }
+
+
+            if (
+                quantityInput
+            ) {
+
+                quantityInput.value =
+                    quantity;
+
+            }
+
+        }
+
+
+        if (
+            minusButton
+        ) {
+
+            minusButton.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    quantity =
+                        Math.max(
+                            1,
+                            quantity - 1
+                        );
+
+
+                    updateQuantity();
+
+                }
+            );
+
+        }
+
+
+        if (
+            plusButton
+        ) {
+
+            plusButton.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    quantity +=
+                        1;
+
+
+                    updateQuantity();
+
+                }
+            );
+
+        }
+
+
+        updateQuantity();
+
+
+        /* =================================================
+           PESTAÑAS
+        ================================================= */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const tab =
+                    event.target.closest(
+                        ".satori-tab"
                     );
 
 
-                const quantityInput =
-                    document.getElementById(
-                        "quantity"
-                    );
+                if (!tab) {
 
-
-                const minus =
-                    document.getElementById(
-                        "satoriQuantityMinus"
-                    );
-
-
-                const plus =
-                    document.getElementById(
-                        "satoriQuantityPlus"
-                    );
-
-
-                function updateQuantity() {
-
-                    if (quantityDisplay) {
-
-                        quantityDisplay.textContent =
-                            quantity;
-
-                    }
-
-
-                    if (quantityInput) {
-
-                        quantityInput.value =
-                            quantity;
-
-                    }
+                    return;
 
                 }
 
 
-                if (minus) {
+                event.preventDefault();
 
-                    minus.addEventListener(
-                        "click",
-                        function () {
 
-                            quantity =
-                                Math.max(
-                                    1,
-                                    quantity - 1
-                                );
+                const target =
+                    tab.dataset.tab;
 
-                            updateQuantity();
 
-                        }
-                    );
+                if (!target) {
+
+                    return;
 
                 }
 
-
-                if (plus) {
-
-                    plus.addEventListener(
-                        "click",
-                        function () {
-
-                            quantity += 1;
-
-                            updateQuantity();
-
-                        }
-                    );
-
-                }
-
-
-                updateQuantity();
-
-
-                /* =========================================
-                   TABS
-                ========================================= */
 
                 document
                     .querySelectorAll(
                         ".satori-tab"
                     )
                     .forEach(
-                        function (tab) {
+                        function (item) {
 
-                            tab.addEventListener(
-                                "click",
-                                function () {
-
-                                    const target =
-                                        this.dataset.tab;
-
-
-                                    document
-                                        .querySelectorAll(
-                                            ".satori-tab"
-                                        )
-                                        .forEach(
-                                            item =>
-                                                item.classList.remove(
-                                                    "active"
-                                                )
-                                        );
-
-
-                                    document
-                                        .querySelectorAll(
-                                            ".satori-panel"
-                                        )
-                                        .forEach(
-                                            panel =>
-                                                panel.classList.remove(
-                                                    "active"
-                                                )
-                                        );
-
-
-                                    this.classList.add(
-                                        "active"
-                                    );
-
-
-                                    const panel =
-                                        document.querySelector(
-                                            '[data-panel="' +
-                                            target +
-                                            '"]'
-                                        );
-
-
-                                    if (panel) {
-
-                                        panel.classList.add(
-                                            "active"
-                                        );
-
-                                    }
-
-                                }
+                            item.classList.remove(
+                                "active"
                             );
 
                         }
                     );
 
 
-/* =========================================
-   CARRITO · ANIMACIÓN
-========================================= */
+                document
+                    .querySelectorAll(
+                        ".satori-panel"
+                    )
+                    .forEach(
+                        function (panel) {
 
-const addButton =
-    document.getElementById(
-        "addToCart"
-    );
+                            panel.classList.remove(
+                                "active"
+                            );
 
-
-if (addButton) {
-
-    const originalText =
-        addButton.textContent.trim();
-
-
-    let resetTimer = null;
-
-
-    function showAddedAnimation() {
-
-        /*
-         * Si se vuelve a presionar el botón,
-         * cancelamos el temporizador anterior.
-         */
-
-        if (resetTimer) {
-
-            clearTimeout(
-                resetTimer
-            );
-
-        }
-
-
-        /*
-         * Reiniciamos la animación
-         * para que funcione también
-         * en clics consecutivos.
-         */
-
-        addButton.classList.remove(
-            "added"
-        );
-
-
-        void addButton.offsetWidth;
-
-
-        /*
-         * Activamos el estado "agregado".
-         */
-
-        addButton.classList.add(
-            "added"
-        );
-
-
-        addButton.textContent =
-            "✓ AGREGADO AL CARRITO";
-
-
-        /*
-         * Después de 2 segundos
-         * vuelve al texto original.
-         */
-
-        resetTimer =
-            setTimeout(
-                function () {
-
-                    addButton.classList.remove(
-                        "added"
+                        }
                     );
 
 
-                    addButton.textContent =
-                        originalText;
+                tab.classList.add(
+                    "active"
+                );
 
 
-                },
-                2000
+                const selectedPanel =
+                    document.querySelector(
+                        '.satori-panel[data-panel="' +
+                        target +
+                        '"]'
+                    );
+
+
+                if (
+                    selectedPanel
+                ) {
+
+                    selectedPanel.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           BOTÓN AGREGAR AL CARRITO
+        ================================================= */
+
+        const addButton =
+            document.getElementById(
+                "addToCart"
             );
+
+
+        let cartResetTimer =
+            null;
+
+
+        if (
+            addButton
+        ) {
+
+            const originalText =
+                addButton.textContent.trim();
+
+
+            function showAddedState() {
+
+                if (
+                    cartResetTimer
+                ) {
+
+                    clearTimeout(
+                        cartResetTimer
+                    );
+
+                }
+
+
+                addButton.classList.remove(
+                    "added"
+                );
+
+
+                void addButton.offsetWidth;
+
+
+                addButton.classList.add(
+                    "added"
+                );
+
+
+                addButton.textContent =
+                    "✓ AGREGADO AL CARRITO";
+
+
+                cartResetTimer =
+                    setTimeout(
+                        function () {
+
+                            addButton.classList.remove(
+                                "added"
+                            );
+
+
+                            addButton.textContent =
+                                originalText;
+
+                        },
+                        2200
+                    );
+
+            }
+
+
+            /*
+             * cart.js continúa manejando
+             * la lógica real del carrito.
+             *
+             * Este listener únicamente
+             * controla el efecto visual.
+             */
+
+            addButton.addEventListener(
+                "click",
+                function () {
+
+                    showAddedState();
+
+                }
+            );
+
+
+            /*
+             * Compatibilidad con el evento
+             * que emite cart.js.
+             */
+
+            document.addEventListener(
+                "satorii:cart-updated",
+                function () {
+
+                    showAddedState();
+
+                }
+            );
+
+        }
 
     }
 
 
-    /*
-     * No usamos preventDefault()
-     * ni stopPropagation().
-     *
-     * Así cart.js sigue funcionando
-     * normalmente y puede agregar
-     * el producto al carrito.
-     */
+    if (
+        document.readyState ===
+        "loading"
+    ) {
 
-    addButton.addEventListener(
-        "click",
-        function () {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initSatoriProduct,
+            {
+                once:
+                    true
+            }
+        );
 
-            /*
-             * Esperamos un instante para
-             * que cart.js procese primero
-             * el producto.
-             */
+    }
+    else {
 
-            setTimeout(
-                function () {
+        initSatoriProduct();
 
-                    showAddedAnimation();
-
-                },
-                80
-            );
-
-        }
-    );
-
-}
+    }
 
 
-        </script>
+})();
+
+</script>
 
     
 
