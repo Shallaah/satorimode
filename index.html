@@ -411,47 +411,298 @@
         </section>
 
 
-        <!-- =================================================
-             SATORII PACK
-        ================================================== -->
+/* =====================================================
+   SATORII PACK
+====================================================== */
 
-        <section
-            class="satori-pack"
-            aria-labelledby="satori-pack-title"
-        >
+.satori-pack {
 
-            <div class="satori-pack-content">
+    position: relative;
 
-                <div class="satori-pack-label">
-                    SATORII PACK
-                </div>
+    /* ESPACIO SUPERIOR E INFERIOR */
+    margin-top: 120px;
+    margin-bottom: 100px;
 
-                <h2 id="satori-pack-title">
-                    SATORII <span>PACK.</span>
-                </h2>
+    min-height: 230px;
 
-                <p>
-                    Una experiencia especial creada para acompañar
-                    tus pedidos y hacer que cada compra se sienta
-                    diferente.
-                </p>
+    padding: 50px;
 
-                <a
-                    href="satorii-pack.html"
-                    class="satori-pack-button"
-                >
-                    DESCUBRIR PACK
-                </a>
+    display: flex;
+    align-items: center;
 
-                </div>
+    box-sizing: border-box;
 
-            </section>
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 30%,
+            #430000 0%,
+            #1d0000 40%,
+            #080000 80%
+        );
+
+    color: #fff;
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.18
+    );
+
+    border-radius: 10px;
+
+}
 
 
-        </div>
+/* =====================================================
+   LÍNEA DECORATIVA SUPERIOR
+====================================================== */
 
-    </main>
+.satori-pack::before {
 
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 150px;
+    height: 2px;
+
+    background:
+        var(--red, #ff1b1b);
+
+}
+
+
+/* =====================================================
+   LÍNEA DECORATIVA INFERIOR
+====================================================== */
+
+.satori-pack::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    width: 150px;
+    height: 2px;
+
+    background:
+        var(--red, #ff1b1b);
+
+}
+
+
+/* =====================================================
+   CONTENIDO
+====================================================== */
+
+.satori-pack-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+}
+
+
+/* =====================================================
+   ETIQUETA
+====================================================== */
+
+.satori-pack-label {
+
+    margin-bottom: 8px;
+
+    color:
+        var(--red, #ff1b1b);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =====================================================
+   TÍTULO
+====================================================== */
+
+.satori-pack h2 {
+
+    margin: 0 0 12px;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            52px
+        );
+
+    line-height: 1;
+
+    font-weight: 900;
+
+}
+
+
+.satori-pack h2 span {
+
+    color:
+        var(--red, #ff1b1b);
+
+}
+
+
+/* =====================================================
+   DESCRIPCIÓN
+====================================================== */
+
+.satori-pack p {
+
+    margin: 0;
+
+    color: #ccc;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   BOTÓN
+====================================================== */
+
+.satori-pack-button {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 24px;
+
+    padding: 13px 22px;
+
+    background:
+        var(--red, #ff1b1b);
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .3px;
+
+    border-radius: 5px;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+
+.satori-pack-button:hover {
+
+    background: #d90000;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =====================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 1050px) {
+
+    .satori-pack {
+
+        margin-top: 100px;
+
+        margin-bottom: 80px;
+
+    }
+
+}
+
+
+/* =====================================================
+   MÓVIL
+====================================================== */
+
+@media (max-width: 700px) {
+
+    .satori-pack {
+
+        margin-top: 80px;
+
+        margin-bottom: 60px;
+
+        min-height: 220px;
+
+        padding: 30px 25px;
+
+        border-radius: 8px;
+
+    }
+
+
+    .satori-pack::before {
+
+        width: 90px;
+
+    }
+
+
+    .satori-pack::after {
+
+        width: 90px;
+
+    }
+
+
+    .satori-pack h2 {
+
+        font-size: 32px;
+
+    }
+
+
+    .satori-pack p {
+
+        font-size: 13px;
+
+    }
+
+
+    .satori-pack-button {
+
+        margin-top: 20px;
+
+        padding: 12px 18px;
+
+    }
+
+}
 
     <!-- =====================================================
          FOOTER GLOBAL
