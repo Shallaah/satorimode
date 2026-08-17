@@ -2155,106 +2155,223 @@ function generateProductCSS() {
         }
 
 
-        /* =============================================
-           BOTÓN CARRITO
-        ============================================= */
+      /* =========================================
+   BOTÓN AGREGAR AL CARRITO
+========================================= */
 
-        .satori-add-to-cart {
+.satori-add-to-cart {
 
-            width:
-                100%;
+    width:
+        100%;
 
-            min-height:
-                54px;
+    min-height:
+        54px;
 
-            margin-top:
-                22px;
+    margin-top:
+        22px;
 
-            border:
-                0;
+    border:
+        0;
 
-            border-radius:
-                6px;
+    border-radius:
+        6px;
 
-            background:
-                #111827;
+    background:
+        #111827;
 
-            color:
-                #fff;
+    color:
+        #fff;
 
-            font-size:
-                12px;
+    font-size:
+        12px;
 
-            font-weight:
-                900;
+    font-weight:
+        900;
 
-            letter-spacing:
-                .7px;
+    letter-spacing:
+        .7px;
 
-            cursor:
-                pointer;
+    cursor:
+        pointer;
 
-            transition:
-                background .2s ease,
-                color .2s ease,
-                transform .2s ease;
+    position:
+        relative;
 
-        }
+    overflow:
+        hidden;
 
+    transform:
+        scale(1);
 
-        .satori-add-to-cart:hover {
+    transition:
+        background-color .35s ease,
+        color .25s ease,
+        transform .18s ease,
+        box-shadow .35s ease;
 
-            background:
-                #000;
-
-            transform:
-                translateY(
-                    -1px
-                );
-
-        }
+}
 
 
-        /*
-         * ESTADO DESPUÉS DE AGREGAR
-         *
-         * !important es intencional.
-         * cart.js puede modificar clases
-         * o estilos del botón.
-         */
+/* Al pasar el mouse */
 
-        .satori-add-to-cart.added,
-        .satori-add-to-cart.cart-added,
-        .satori-add-to-cart.is-added {
+.satori-add-to-cart:hover {
 
-            background:
-                #f31218 !important;
+    background:
+        #000;
 
-            border-color:
-                #f31218 !important;
+    transform:
+        translateY(-1px);
 
-            color:
-                #fff !important;
-
-            transform:
-                none;
-
-        }
+}
 
 
-        .satori-add-to-cart.added:hover,
-        .satori-add-to-cart.cart-added:hover,
-        .satori-add-to-cart.is-added:hover {
+/* Efecto de presión */
 
-            background:
-                #d90f15 !important;
+.satori-add-to-cart:active {
 
-            border-color:
-                #d90f15 !important;
+    transform:
+        scale(.97);
 
-        }
+}
 
 
+/* =========================================
+   ESTADO AGREGADO
+========================================= */
+
+.satori-add-to-cart.added {
+
+    background:
+        #f31218 !important;
+
+    color:
+        #fff !important;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            243,
+            18,
+            24,
+            .22
+        );
+
+    animation:
+        satoriCartAdded
+        .55s
+        cubic-bezier(
+            .34,
+            1.56,
+            .64,
+            1
+        );
+
+}
+
+
+/* =========================================
+   ANIMACIÓN
+========================================= */
+
+@keyframes satoriCartAdded {
+
+    0% {
+
+        transform:
+            scale(.96);
+
+    }
+
+    45% {
+
+        transform:
+            scale(1.035);
+
+    }
+
+    70% {
+
+        transform:
+            scale(.985);
+
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   BRILLO QUE PASA POR EL BOTÓN
+========================================= */
+
+.satori-add-to-cart.added::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        -120%;
+
+    width:
+        60%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(
+                255,
+                255,
+                255,
+                .28
+            ),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    animation:
+        satoriCartShine
+        .65s
+        ease
+        forwards;
+
+}
+
+
+@keyframes satoriCartShine {
+
+    from {
+
+        left:
+            -120%;
+
+    }
+
+    to {
+
+        left:
+            140%;
+
+    }
+
+}
         /* =============================================
            TRUST
         ============================================= */
@@ -3879,199 +3996,123 @@ function generateProductJS() {
                     );
 
 
-                /* =========================================
-                   CARRITO
-                ========================================= */
+/* =========================================
+   CARRITO · ANIMACIÓN
+========================================= */
 
-                const addButton =
-                    document.getElementById(
-                        "addToCart"
-                    );
-
-
-                if (addButton) {
-
-                    const originalText =
-                        addButton.textContent.trim();
+const addButton =
+    document.getElementById(
+        "addToCart"
+    );
 
 
-                    let resetTimer = null;
+if (addButton) {
+
+    const originalText =
+        addButton.textContent.trim();
 
 
-                    function showAddedState() {
-
-                        if (resetTimer) {
-
-                            clearTimeout(
-                                resetTimer
-                            );
-
-                        }
+    let resetTimer = null;
 
 
-                        addButton.classList.add(
-                            "added"
-                        );
+    function showAddedAnimation() {
+
+        /*
+         * Evitamos que un segundo clic
+         * deje varios temporizadores activos.
+         */
+
+        if (resetTimer) {
+
+            clearTimeout(
+                resetTimer
+            );
+
+        }
 
 
-                        addButton.classList.add(
-                            "cart-added"
-                        );
+        /*
+         * Reiniciamos la animación.
+         */
 
-
-                        addButton.classList.add(
-                            "is-added"
-                        );
-
-
-                        addButton.style.setProperty(
-                            "background",
-                            "#f31218",
-                            "important"
-                        );
-
-
-                        addButton.style.setProperty(
-                            "border-color",
-                            "#f31218",
-                            "important"
-                        );
-
-
-                        addButton.style.setProperty(
-                            "color",
-                            "#ffffff",
-                            "important"
-                        );
-
-
-                        addButton.textContent =
-                            "✓ AGREGADO AL CARRITO";
-
-
-                        resetTimer =
-                            setTimeout(
-                                function () {
-
-                                    addButton.classList.remove(
-                                        "added"
-                                    );
-
-
-                                    addButton.classList.remove(
-                                        "cart-added"
-                                    );
-
-
-                                    addButton.classList.remove(
-                                        "is-added"
-                                    );
-
-
-                                    addButton.style.removeProperty(
-                                        "background"
-                                    );
-
-
-                                    addButton.style.removeProperty(
-                                        "border-color"
-                                    );
-
-
-                                    addButton.style.removeProperty(
-                                        "color"
-                                    );
-
-
-                                    addButton.textContent =
-                                        originalText;
-
-                                },
-                                1800
-                            );
-
-                    }
-
-
-                    /*
-                     * IMPORTANTE:
-                     *
-                     * No reemplazamos el comportamiento
-                     * original del botón.
-                     *
-                     * Dejamos que cart.js haga su trabajo
-                     * y solamente cambiamos la apariencia.
-                     *
-                     * setTimeout permite que primero se
-                     * ejecute el carrito.
-                     */
-
-                    addButton.addEventListener(
-                        "click",
-                        function () {
-
-                            setTimeout(
-                                showAddedState,
-                                50
-                            );
-
-                        }
-                    );
-
-
-                    /*
-                     * También escuchamos cambios realizados
-                     * por otros scripts.
-                     */
-
-                    const observer =
-                        new MutationObserver(
-                            function () {
-
-                                if (
-                                    addButton.classList.contains(
-                                        "added"
-                                    ) ||
-                                    addButton.classList.contains(
-                                        "cart-added"
-                                    ) ||
-                                    addButton.classList.contains(
-                                        "is-added"
-                                    )
-                                ) {
-
-                                    showAddedState();
-
-                                }
-
-                            }
-                        );
-
-
-                    observer.observe(
-                        addButton,
-                        {
-                            attributes:
-                                true,
-                            attributeFilter:
-                                [
-                                    "class"
-                                ]
-                        }
-                    );
-
-                }
-
-
-            }
+        addButton.classList.remove(
+            "added"
         );
 
-        </script>
 
-    `;
+        void addButton.offsetWidth;
+
+
+        /*
+         * Activamos el estado rojo.
+         */
+
+        addButton.classList.add(
+            "added"
+        );
+
+
+        addButton.textContent =
+            "✓ AGREGADO AL CARRITO";
+
+
+        /*
+         * Después de 2 segundos
+         * vuelve al botón original.
+         */
+
+        resetTimer =
+            setTimeout(
+                function () {
+
+                    addButton.classList.remove(
+                        "added"
+                    );
+
+
+                    addButton.textContent =
+                        originalText;
+
+                },
+                2000
+            );
+
+    }
+
+
+    /*
+     * IMPORTANTE:
+     *
+     * No usamos preventDefault().
+     * No usamos stopPropagation().
+     *
+     * De esta manera cart.js puede
+     * seguir agregando el producto.
+     */
+
+    addButton.addEventListener(
+        "click",
+        function () {
+
+            /*
+             * Esperamos un instante para
+             * que cart.js procese primero
+             * el producto.
+             */
+
+            setTimeout(
+                function () {
+
+                    showAddedAnimation();
+
+                },
+                80
+            );
+
+        }
+    );
 
 }
-
 
 /* =====================================================
    HTML PRENDA
