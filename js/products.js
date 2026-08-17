@@ -3,7 +3,6 @@ const path = require("path");
 const vm = require("vm");
 
 const ROOT = path.resolve(__dirname, "..");
-const PRODUCTS_FILE = path.join(ROOT, "js", "products.js");
 const OUTPUT_DIR = path.join(ROOT, "productos");
 
 
@@ -393,28 +392,89 @@ function getImagePath(
 
 function loadProducts() {
 
-    if (
-        !fs.existsSync(
-            PRODUCTS_FILE
-        )
+    /*
+     * Buscamos products.js en las ubicaciones
+     * posibles del proyecto.
+     */
+
+    const possibleFiles = [
+
+        path.join(ROOT, "js", "products.js"),
+
+        path.join(ROOT, "scripts", "products.js"),
+
+        path.join(ROOT, "products.js")
+
+    ];
+
+
+    let productsFile = null;
+
+
+    for (
+        const file of possibleFiles
     ) {
 
+        if (
+            fs.existsSync(file)
+        ) {
+
+            productsFile = file;
+
+            break;
+
+        }
+
+    }
+
+
+    if (!productsFile) {
+
         throw new Error(
-            "No se encontró js/products.js"
+            "No se encontró products.js. " +
+            "Buscado en: " +
+            possibleFiles.join(", ")
         );
 
     }
 
 
+    console.log(
+        `Cargando productos desde: ${productsFile}`
+    );
+
+
     const source =
         fs.readFileSync(
-            PRODUCTS_FILE,
+            productsFile,
             "utf8"
         );
 
 
+    /*
+     * Protección importante:
+     *
+     * Nos aseguramos de que realmente
+     * sea products.js y no otro archivo.
+     */
+
+    if (
+        !source.includes(
+            "const PRODUCTS"
+        )
+    ) {
+
+        throw new Error(
+            `El archivo encontrado no parece ser products.js: ${productsFile}`
+        );
+
+    }
+
+
     const context = {
+
         console
+
     };
 
 
@@ -423,10 +483,21 @@ function loadProducts() {
     );
 
 
+    /*
+     * Ejecutamos únicamente products.js.
+     */
+
     vm.runInContext(
+
         source +
         "\n;globalThis.__SATORII_PRODUCTS__ = PRODUCTS;",
-        context
+
+        context,
+        {
+            filename:
+                productsFile
+        }
+
     );
 
 
@@ -437,7 +508,8 @@ function loadProducts() {
     ) {
 
         throw new Error(
-            "PRODUCTS no es un arreglo válido."
+            "PRODUCTS no es un arreglo válido en " +
+            productsFile
         );
 
     }
