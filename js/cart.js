@@ -1,348 +1,628 @@
+/* =====================================================
+   SATORII
+   CARRITO GLOBAL
+===================================================== */
+
 (function () {
 
     "use strict";
 
 
-    /* =====================================================
+    /* =================================================
        CONFIGURACIÓN
-    ====================================================== */
+    ================================================= */
 
-    const CART_KEY = "satorimode_cart";
+    const CART_KEY =
+        "satorimode_cart";
 
 
-    /* =====================================================
-       UTILIDADES
-    ====================================================== */
+    const OLD_CART_KEY =
+        "satoriCart";
 
-    function safeParse(value) {
 
-        try {
+    const LEGACY_CART_KEY =
+        "satorimode-cart";
 
-            const parsed =
-                JSON.parse(value);
 
-            return Array.isArray(parsed)
-                ? parsed
-                : [];
+    /* =================================================
+       ESTILOS DEL CARRITO
+    ================================================= */
+
+    const style =
+        document.createElement(
+            "style"
+        );
+
+
+    style.textContent = `
+
+        /* =============================================
+           BOTÓN AGREGAR AL CARRITO
+        ============================================= */
+
+        .satori-add-to-cart.added,
+        #addToCart.added,
+        .add-to-cart.added {
+
+            background:
+                #f31218 !important;
+
+            border-color:
+                #f31218 !important;
+
+            color:
+                #ffffff !important;
+
+            transform:
+                scale(1.015);
+
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    243,
+                    18,
+                    24,
+                    .22
+                );
+
+            animation:
+                satoriCartButton
+                .55s
+                cubic-bezier(
+                    .34,
+                    1.56,
+                    .64,
+                    1
+                );
 
         }
 
-        catch (error) {
+
+        @keyframes satoriCartButton {
+
+            0% {
+
+                transform:
+                    scale(.94);
+
+            }
+
+            45% {
+
+                transform:
+                    scale(1.04);
+
+            }
+
+            70% {
+
+                transform:
+                    scale(.985);
+
+            }
+
+            100% {
+
+                transform:
+                    scale(1.015);
+
+            }
+
+        }
+
+
+        /* =============================================
+           BRILLO DEL BOTÓN
+        ============================================= */
+
+        .satori-add-to-cart.added::after,
+        #addToCart.added::after,
+        .add-to-cart.added::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                0;
+
+            left:
+                -120%;
+
+            width:
+                65%;
+
+            height:
+                100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .35
+                    ),
+                    transparent
+                );
+
+            transform:
+                skewX(-20deg);
+
+            animation:
+                satoriCartShine
+                .65s
+                ease
+                forwards;
+
+        }
+
+
+        @keyframes satoriCartShine {
+
+            from {
+
+                left:
+                    -120%;
+
+            }
+
+            to {
+
+                left:
+                    150%;
+
+            }
+
+        }
+
+
+        /* =============================================
+           OPCIONES DE COLOR
+        ============================================= */
+
+        .satori-color-button {
+
+            transition:
+                .2s ease;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .satori-color-button.active {
+
+            background:
+                #111827 !important;
+
+            border-color:
+                #111827 !important;
+
+            color:
+                #ffffff !important;
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        /* =============================================
+           OPCIONES DE TALLA
+        ============================================= */
+
+        .satori-size-button {
+
+            transition:
+                .2s ease;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .satori-size-button.active {
+
+            background:
+                #111827 !important;
+
+            border-color:
+                #111827 !important;
+
+            color:
+                #ffffff !important;
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        /* =============================================
+           TOAST
+        ============================================= */
+
+        .satori-cart-toast {
+
+            position:
+                fixed;
+
+            right:
+                24px;
+
+            bottom:
+                24px;
+
+            z-index:
+                99999;
+
+            width:
+                min(
+                    360px,
+                    calc(
+                        100vw - 32px
+                    )
+                );
+
+            padding:
+                18px 20px;
+
+            background:
+                #111827;
+
+            color:
+                #ffffff;
+
+            border-radius:
+                8px;
+
+            box-shadow:
+                0 15px 45px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .25
+                );
+
+            opacity:
+                0;
+
+            transform:
+                translateY(
+                    18px
+                );
+
+            pointer-events:
+                none;
+
+            transition:
+                opacity .3s ease,
+                transform .3s ease;
+
+        }
+
+
+        .satori-cart-toast.is-visible {
+
+            opacity:
+                1;
+
+            transform:
+                translateY(
+                    0
+                );
+
+        }
+
+
+        .satori-toast-title {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            color:
+                #ffffff;
+
+            font-size:
+                11px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .satori-toast-title span {
+
+            width:
+                22px;
+
+            height:
+                22px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                #f31218;
+
+            color:
+                #ffffff;
+
+        }
+
+
+        .satori-toast-product {
+
+            margin-top:
+                8px;
+
+            color:
+                #cfcfcf;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .satori-toast-link {
+
+            display:
+                inline-block;
+
+            margin-top:
+                12px;
+
+            color:
+                #ffffff;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            text-decoration:
+                none;
+
+            letter-spacing:
+                .8px;
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
+    );
+
+
+    /* =================================================
+       LEER CARRITO
+    ================================================= */
+
+    function getCart() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    CART_KEY
+                );
+
+
+            if (
+                saved
+            ) {
+
+                const parsed =
+                    JSON.parse(
+                        saved
+                    );
+
+
+                if (
+                    Array.isArray(
+                        parsed
+                    )
+                ) {
+
+                    return parsed;
+
+                }
+
+            }
+
+        }
+        catch (
+            error
+        ) {
 
             console.error(
-                "SatoriMode · Error leyendo JSON:",
+                "SATORII · error leyendo carrito:",
                 error
             );
 
-            return [];
-
         }
+
+
+        return [];
 
     }
 
 
-    function formatPrice(price) {
-
-        return new Intl.NumberFormat(
-            "es-CL",
-            {
-                style: "currency",
-                currency: "CLP",
-                maximumFractionDigits: 0
-            }
-        ).format(
-            Number(price) || 0
-        );
-
-    }
-
-
-    /*
-     * Convierte una imagen relativa en una URL absoluta.
-     *
-     * Esto evita que una imagen guardada como:
-     *
-     * images/polera.jpg
-     *
-     * termine buscando:
-     *
-     * carrito/images/polera.jpg
-     *
-     * al abrir carrito.html.
-     */
-
-    function normalizeImageUrl(image) {
-
-        if (!image) {
-
-            return "";
-
-        }
-
-
-        try {
-
-            return new URL(
-                String(image),
-                document.baseURI
-            ).href;
-
-        }
-
-        catch (error) {
-
-            return String(image);
-
-        }
-
-    }
-
-
-    /* =====================================================
-       NORMALIZAR CARRITO
-    ====================================================== */
-
-    function normalizeCart(cart) {
-
-        if (!Array.isArray(cart)) {
-
-            return [];
-
-        }
-
-
-        return cart
-            .filter(
-                function (item) {
-
-                    return (
-                        item &&
-                        typeof item === "object"
-                    );
-
-                }
-            )
-            .map(
-                function (item) {
-
-                    const quantity =
-                        Number(
-                            item.quantity ??
-                            item.cantidad ??
-                            1
-                        );
-
-
-                    return {
-
-                        id:
-                            String(
-                                item.id ??
-                                item.productId ??
-                                ""
-                            ),
-
-
-                        name:
-                            String(
-                                item.name ??
-                                item.nombre ??
-                                "Producto"
-                            ),
-
-
-                        price:
-                            Number(
-                                item.price ??
-                                item.precio ??
-                                0
-                            ),
-
-
-                        image:
-                            item.image ??
-                            item.imagen ??
-                            "",
-
-
-                        size:
-                            String(
-                                item.size ??
-                                item.talla ??
-                                ""
-                            ),
-
-
-                        color:
-                            String(
-                                item.color ??
-                                item.colorName ??
-                                ""
-                            ),
-
-
-                        quantity:
-                            Number.isFinite(quantity) &&
-                            quantity > 0
-                                ? Math.floor(quantity)
-                                : 1
-
-                    };
-
-                }
-            );
-
-    }
-
-
-    /* =====================================================
-       LEER CARRITO
-    ====================================================== */
-
-    function readCart() {
-
-        const saved =
-            localStorage.getItem(
-                CART_KEY
-            );
-
-
-        if (!saved) {
-
-            return [];
-
-        }
-
-
-        return normalizeCart(
-            safeParse(saved)
-        );
-
-    }
-
-
-    /* =====================================================
+    /* =================================================
        GUARDAR CARRITO
-    ====================================================== */
+    ================================================= */
 
-    function saveCart(cart) {
+    function saveCart(
+        cart
+    ) {
 
-        const normalized =
-            normalizeCart(
+        const json =
+            JSON.stringify(
                 cart
             );
 
 
-        try {
+        /*
+         * Clave principal.
+         */
 
-            localStorage.setItem(
-                CART_KEY,
-                JSON.stringify(
-                    normalized
-                )
-            );
+        localStorage.setItem(
+            CART_KEY,
+            json
+        );
 
-        }
 
-        catch (error) {
+        /*
+         * Compatibilidad con versiones
+         * anteriores del carrito.
+         */
 
-            console.error(
-                "SatoriMode · Error guardando carrito:",
-                error
-            );
+        localStorage.setItem(
+            OLD_CART_KEY,
+            json
+        );
 
-            return;
 
-        }
+        localStorage.setItem(
+            LEGACY_CART_KEY,
+            json
+        );
 
+
+        /*
+         * Actualizar contador del header.
+         */
 
         updateBadge();
 
 
         /*
-         * IMPORTANTE:
-         *
-         * Este evento permite que el header,
-         * carrito.html y otros componentes
-         * sepan que el carrito cambió.
+         * Avisar al resto de SATORII.
          */
 
         document.dispatchEvent(
             new CustomEvent(
-                "satorii:cart-updated"
+                "satorii:cart-updated",
+                {
+                    detail: {
+                        cart:
+                            cart
+                    }
+                }
             )
         );
 
     }
 
 
-    /* =====================================================
-       CONTADOR
-    ====================================================== */
-
-    function getCartCount() {
-
-        return readCart().reduce(
-            function (
-                total,
-                item
-            ) {
-
-                return total +
-                    Number(
-                        item.quantity || 0
-                    );
-
-            },
-            0
-        );
-
-    }
-
+    /* =================================================
+       CONTADOR HEADER
+    ================================================= */
 
     function updateBadge() {
 
+        const cart =
+            getCart();
+
+
         const count =
-            getCartCount();
+            cart.reduce(
+                function (
+                    total,
+                    product
+                ) {
 
+                    return (
+                        total +
+                        Number(
+                            product.quantity ||
+                            0
+                        )
+                    );
 
-        /*
-         * Contador del header nuevo.
-         */
-
-        document
-            .querySelectorAll(
-                "[data-satori-cart-count]"
-            )
-            .forEach(
-                function (badge) {
-
-                    badge.textContent =
-                        count;
-
-
-                    badge.style.display =
-                        count > 0
-                            ? "flex"
-                            : "none";
-
-                }
+                },
+                0
             );
 
 
-        /*
-         * Compatibilidad con badge antiguo.
-         */
-
         document
             .querySelectorAll(
-                ".satori-cart-badge"
+                ".header-cart, .cart-icon, [data-cart-icon], a[href*='carrito.html']"
             )
             .forEach(
-                function (badge) {
+                function (element) {
+
+                    element.classList.add(
+                        "satori-cart-wrapper"
+                    );
+
+
+                    let badge =
+                        element.querySelector(
+                            ".satori-cart-badge"
+                        );
+
+
+                    if (
+                        !badge
+                    ) {
+
+                        badge =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        badge.className =
+                            "satori-cart-badge";
+
+
+                        element.appendChild(
+                            badge
+                        );
+
+                    }
+
 
                     badge.textContent =
                         count;
+
+
+                    badge.classList.toggle(
+                        "is-empty",
+                        count === 0
+                    );
 
                 }
             );
@@ -350,130 +630,105 @@
     }
 
 
-    /* =====================================================
-       OBTENER ID DEL PRODUCTO
-    ====================================================== */
+    /* =================================================
+       PRODUCTO DESDE LA PÁGINA
+    ================================================= */
 
-    function getProductId(
-        button,
-        productRoot
+    function getProduct(
+        button
     ) {
 
-        /*
-         * Primero buscamos un ID explícito.
-         */
+        const root =
+            button.closest(
+                "[data-product]"
+            ) ||
+            document.querySelector(
+                "[data-product]"
+            ) ||
+            document.body;
 
-        const id =
-            productRoot?.dataset.productId ||
-            productRoot?.dataset.id ||
-            button?.dataset.productId ||
-            button?.dataset.productId ||
+
+        /* =============================================
+           TALLA
+        ============================================= */
+
+        const activeSize =
+            document.querySelector(
+                [
+                    ".satori-size-button.active",
+                    ".product-size.active",
+                    ".product-size.selected",
+                    "[data-size].active",
+                    "[data-size].selected"
+                ].join(", ")
+            );
+
+
+        /* =============================================
+           COLOR
+        ============================================= */
+
+        const activeColor =
+            document.querySelector(
+                [
+                    ".satori-color-button.active",
+                    ".product-color.active",
+                    ".product-color.selected",
+                    "[data-color].active",
+                    "[data-color].selected"
+                ].join(", ")
+            );
+
+
+        /* =============================================
+           CANTIDAD
+        ============================================= */
+
+        const quantityInput =
+            document.querySelector(
+                "#quantity, .quantity-input"
+            );
+
+
+        const quantity =
+            Math.max(
+                1,
+                Number(
+                    quantityInput?.value ||
+                    1
+                )
+            );
+
+
+        /* =============================================
+           DATOS PRODUCTO
+        ============================================= */
+
+        const productId =
+            root.dataset.productId ||
             document.body.dataset.productId ||
-            "";
-
-
-        if (id) {
-
-            return String(id);
-
-        }
-
-
-        /*
-         * Si estamos en una página individual,
-         * utilizamos la ruta como respaldo.
-         */
-
-        const pathname =
             location.pathname;
 
 
-        if (
-            pathname &&
-            pathname !== "/" &&
-            pathname !== "/index.html"
-        ) {
-
-            return pathname;
-
-        }
-
-
-        /*
-         * Último respaldo.
-         */
-
-        return "";
-
-    }
-
-
-    /* =====================================================
-       OBTENER PRODUCTO DE LA PÁGINA
-    ====================================================== */
-
-    function getProductFromPage(button) {
-
-        /*
-         * Buscamos el contenedor más cercano.
-         */
-
-        const productRoot =
-            button.closest(
-                "[data-product]"
-            );
-
-
-        /* =================================================
-           ID
-        ================================================== */
-
-        const id =
-            getProductId(
-                button,
-                productRoot
-            );
-
-
-        /* =================================================
-           NOMBRE
-        ================================================== */
-
         const name =
-            productRoot?.dataset.productName ||
-            productRoot?.dataset.name ||
-            button.dataset.productName ||
+            root.dataset.productName ||
             document.body.dataset.productName ||
-            document.querySelector(
-                ".product-page-info h1, " +
-                ".product-title, " +
-                ".product-details h1, " +
-                ".product-info h1, " +
-                "h1"
-            )?.textContent.trim() ||
-            "Producto";
-
-
-        /* =================================================
-           PRECIO
-        ================================================== */
-
-        const priceRaw =
-            productRoot?.dataset.productPrice ||
-            productRoot?.dataset.price ||
-            button.dataset.productPrice ||
-            document.body.dataset.productPrice ||
-            document.querySelector(
-                ".product-page-price, " +
-                ".product-price-large, " +
-                ".product-price"
-            )?.textContent ||
-            "0";
+            document
+                .querySelector(
+                    ".satori-product-info h1, h1"
+                )
+                ?.textContent
+                .trim() ||
+            "Producto SATORII";
 
 
         const price =
             Number(
-                String(priceRaw)
+                String(
+                    root.dataset.productPrice ||
+                    document.body.dataset.productPrice ||
+                    0
+                )
                     .replace(
                         /[^\d]/g,
                         ""
@@ -481,175 +736,49 @@
             );
 
 
-        /* =================================================
-           IMAGEN
-        ================================================== */
-
-        let image =
-            productRoot?.dataset.productImage ||
-            productRoot?.dataset.image ||
-            button.dataset.productImage ||
+        const image =
+            root.dataset.productImage ||
             document.body.dataset.productImage ||
+            document
+                .querySelector(
+                    ".satori-main-image img"
+                )
+                ?.src ||
             "";
-
-
-        /*
-         * Si no encontramos la imagen mediante
-         * data-product-image, buscamos una imagen.
-         */
-
-        if (!image) {
-
-            image =
-                document.querySelector(
-                    ".product-main-image img, " +
-                    "#mainProductImage, " +
-                    "#product-main-image, " +
-                    ".product-gallery img"
-                )?.getAttribute(
-                    "src"
-                ) ||
-                "";
-
-        }
-
-
-        /*
-         * Convertimos la ruta a absoluta.
-         */
-
-        image =
-            normalizeImageUrl(
-                image
-            );
-
-
-        /* =================================================
-           TALLA
-        ================================================== */
-
-        const selectedSize =
-            document.querySelector(
-                ".product-size.active, " +
-                ".product-size.selected, " +
-                ".product-size.is-active, " +
-                "[data-size].active, " +
-                "[data-size].selected"
-            );
-
-
-        const size =
-            selectedSize
-                ? (
-                    selectedSize.dataset.size ||
-                    selectedSize.textContent.trim()
-                )
-                : (
-                    productRoot?.dataset.productSize ||
-                    button.dataset.productSize ||
-                    ""
-                );
-
-
-        /* =================================================
-           COLOR
-        ================================================== */
-
-        const selectedColor =
-            document.querySelector(
-                ".product-color-button.active, " +
-                ".product-color.active, " +
-                ".product-color.selected, " +
-                "[data-color].active, " +
-                "[data-color].selected"
-            );
-
-
-        const color =
-            selectedColor
-                ? (
-                    selectedColor.dataset.color ||
-                    selectedColor.textContent.trim()
-                )
-                : (
-                    productRoot?.dataset.productColor ||
-                    button.dataset.productColor ||
-                    ""
-                );
-
-
-        /* =================================================
-           CANTIDAD
-        ================================================== */
-
-        const quantityInput =
-            document.querySelector(
-                ".quantity-input"
-            );
-
-
-        const quantityElement =
-            document.querySelector(
-                "#quantityValue, " +
-                "#quantity, " +
-                "[data-quantity]"
-            );
-
-
-        let quantity =
-            Number(
-                quantityInput?.value
-            );
-
-
-        if (
-            !quantity ||
-            quantity < 1
-        ) {
-
-            quantity =
-                Number(
-                    quantityElement?.textContent
-                );
-
-        }
-
-
-        if (
-            !quantity ||
-            quantity < 1
-        ) {
-
-            quantity = 1;
-
-        }
-
-
-        quantity =
-            Math.floor(
-                quantity
-            );
 
 
         return {
 
             id:
-                String(id),
+                productId,
+
+            productId:
+                productId,
 
             name:
-                String(name).trim(),
+                name,
 
             price:
-                Number(price) || 0,
+                price,
 
             image:
                 image,
 
             size:
-                String(size).trim(),
+                activeSize
+                    ? (
+                        activeSize.dataset.size ||
+                        activeSize.textContent.trim()
+                    )
+                    : "",
 
             color:
-                String(color).trim(),
+                activeColor
+                    ? (
+                        activeColor.dataset.color ||
+                        activeColor.textContent.trim()
+                    )
+                    : "",
 
             quantity:
                 quantity
@@ -659,251 +788,107 @@
     }
 
 
-    /* =====================================================
-       COMPARAR PRODUCTOS
-    ====================================================== */
+    /* =================================================
+       ANIMACIÓN DEL BOTÓN
+    ================================================= */
 
-    function sameProduct(
-        itemA,
-        itemB
+    function animateButton(
+        button
     ) {
 
-        return (
-
-            String(itemA.id) ===
-                String(itemB.id)
-
-            &&
-
-            String(itemA.size || "") ===
-                String(itemB.size || "")
-
-            &&
-
-            String(itemA.color || "") ===
-                String(itemB.color || "")
-
-        );
-
-    }
-
-
-    /* =====================================================
-       AGREGAR PRODUCTO
-    ====================================================== */
-
-    function addProduct(product) {
-
-        if (!product) {
+        if (
+            !button
+        ) {
 
             return;
 
         }
 
 
-        if (!product.id) {
+        /*
+         * Guardamos el texto original.
+         */
 
-            console.error(
-                "SatoriMode · Producto sin ID.",
-                product
-            );
+        if (
+            !button.dataset.originalText
+        ) {
 
-            return;
+            button.dataset.originalText =
+                button.textContent.trim();
 
         }
 
 
-        const cart =
-            readCart();
+        /*
+         * Reiniciamos la animación.
+         */
+
+        button.classList.remove(
+            "added"
+        );
 
 
-        const existing =
-            cart.find(
-                function (item) {
+        void button.offsetWidth;
 
-                    return sameProduct(
-                        item,
-                        product
+
+        /*
+         * Estado rojo.
+         */
+
+        button.classList.add(
+            "added"
+        );
+
+
+        button.textContent =
+            "✓ AGREGADO AL CARRITO";
+
+
+        /*
+         * Limpiar temporizador anterior.
+         */
+
+        if (
+            button._satoriResetTimer
+        ) {
+
+            clearTimeout(
+                button._satoriResetTimer
+            );
+
+        }
+
+
+        /*
+         * Volver al estado original.
+         */
+
+        button._satoriResetTimer =
+            setTimeout(
+                function () {
+
+                    button.classList.remove(
+                        "added"
                     );
 
-                }
+
+                    button.textContent =
+                        button.dataset.originalText;
+
+                },
+                2200
             );
-
-
-        if (existing) {
-
-            existing.quantity +=
-                product.quantity;
-
-
-            /*
-             * Si el producto anterior no tenía
-             * imagen, aprovechamos la nueva.
-             */
-
-            if (
-                !existing.image &&
-                product.image
-            ) {
-
-                existing.image =
-                    product.image;
-
-            }
-
-        }
-
-        else {
-
-            cart.push(
-                {
-                    id:
-                        product.id,
-
-                    name:
-                        product.name,
-
-                    price:
-                        product.price,
-
-                    image:
-                        product.image,
-
-                    size:
-                        product.size,
-
-                    color:
-                        product.color,
-
-                    quantity:
-                        product.quantity
-                }
-            );
-
-        }
-
-
-        saveCart(
-            cart
-        );
-
-
-        showToast(
-            product
-        );
 
     }
 
 
-    /* =====================================================
-       DETECTAR BOTÓN AGREGAR
-    ====================================================== */
-
-    document.addEventListener(
-        "click",
-        function (event) {
-
-            const button =
-                event.target.closest(
-                    "#addToCart, " +
-                    ".add-to-cart, " +
-                    ".add-to-cart-button, " +
-                    "[data-add-to-cart]"
-                );
-
-
-            if (!button) {
-
-                return;
-
-            }
-
-
-            /* =================================================
-               VERIFICAR TALLA
-            ================================================== */
-
-            const sizeButtons =
-                document.querySelectorAll(
-                    ".product-size, " +
-                    "[data-size]"
-                );
-
-
-            if (
-                sizeButtons.length > 0
-            ) {
-
-                const selected =
-                    document.querySelector(
-                        ".product-size.active, " +
-                        ".product-size.selected, " +
-                        ".product-size.is-active, " +
-                        "[data-size].active, " +
-                        "[data-size].selected"
-                    );
-
-
-                if (!selected) {
-
-                    event.preventDefault();
-
-                    event.stopImmediatePropagation();
-
-
-                    alert(
-                        "Selecciona una talla antes de continuar."
-                    );
-
-
-                    return;
-
-                }
-
-            }
-
-
-            /*
-             * Evitamos que otro listener
-             * agregue el producto nuevamente.
-             */
-
-            event.preventDefault();
-
-            event.stopImmediatePropagation();
-
-
-            const product =
-                getProductFromPage(
-                    button
-                );
-
-
-            if (!product.id) {
-
-                console.error(
-                    "SatoriMode · No se pudo identificar el producto."
-                );
-
-                return;
-
-            }
-
-
-            addProduct(
-                product
-            );
-
-        },
-        true
-    );
-
-
-    /* =====================================================
+    /* =================================================
        TOAST
-    ====================================================== */
+    ================================================= */
 
-    function showToast(product) {
+    function showToast(
+        product
+    ) {
 
         let toast =
             document.querySelector(
@@ -911,7 +896,9 @@
             );
 
 
-        if (!toast) {
+        if (
+            !toast
+        ) {
 
             toast =
                 document.createElement(
@@ -923,235 +910,71 @@
                 "satori-cart-toast";
 
 
-            toast.innerHTML = `
-
-                <div
-                    class="satori-toast-title"
-                >
-
-                    <span>
-                        ✓
-                    </span>
-
-                    PRODUCTO AGREGADO
-
-                </div>
-
-
-                <div
-                    class="satori-toast-product"
-                ></div>
-
-
-                <a
-                    href="/satorimode/carrito.html"
-                    class="satori-toast-link"
-                >
-                    VER CARRITO →
-                </a>
-
-            `;
-
-
             document.body.appendChild(
                 toast
             );
 
-
-            const style =
-                document.createElement(
-                    "style"
-                );
-
-
-            style.id =
-                "satori-cart-toast-style";
-
-
-            style.textContent = `
-
-                .satori-cart-toast {
-
-                    position:fixed;
-
-                    right:20px;
-
-                    bottom:20px;
-
-                    width:min(
-                        360px,
-                        calc(100% - 40px)
-                    );
-
-                    padding:18px;
-
-                    background:#fff;
-
-                    border:1px solid #ddd;
-
-                    border-radius:8px;
-
-                    box-shadow:
-                        0 15px 40px
-                        rgba(0,0,0,.18);
-
-                    z-index:9999999;
-
-                    transform:
-                        translateY(20px);
-
-                    opacity:0;
-
-                    pointer-events:none;
-
-                    transition:
-                        opacity .25s ease,
-                        transform .25s ease;
-
-                    font-family:
-                        Arial,
-                        Helvetica,
-                        sans-serif;
-
-                }
-
-
-                .satori-cart-toast.is-visible {
-
-                    transform:
-                        translateY(0);
-
-                    opacity:1;
-
-                    pointer-events:auto;
-
-                }
-
-
-                .satori-toast-title {
-
-                    display:flex;
-
-                    align-items:center;
-
-                    gap:8px;
-
-                    color:#f31218;
-
-                    font-size:10px;
-
-                    font-weight:800;
-
-                    letter-spacing:1.5px;
-
-                }
-
-
-                .satori-toast-title span {
-
-                    font-size:15px;
-
-                }
-
-
-                .satori-toast-product {
-
-                    margin-top:8px;
-
-                    color:#111;
-
-                    font-size:13px;
-
-                    font-weight:700;
-
-                    line-height:1.4;
-
-                }
-
-
-                .satori-toast-link {
-
-                    display:block;
-
-                    margin-top:12px;
-
-                    color:#111;
-
-                    font-size:10px;
-
-                    font-weight:800;
-
-                    text-decoration:none;
-
-                }
-
-
-                .satori-toast-link:hover {
-
-                    color:#f31218;
-
-                }
-
-
-                @media (max-width:600px) {
-
-                    .satori-cart-toast {
-
-                        right:12px;
-
-                        bottom:12px;
-
-                        width:
-                            calc(100% - 24px);
-
-                    }
-
-                }
-
-            `;
-
-
-            document.head.appendChild(
-                style
-            );
-
         }
 
 
-        const productText =
-            toast.querySelector(
-                ".satori-toast-product"
-            );
+        const sizeText =
+            product.size
+                ? " · Talla " +
+                  product.size
+                : "";
 
 
-        if (productText) {
-
-            let text =
-                product.name;
-
-
-            if (product.size) {
-
-                text +=
-                    " · Talla " +
-                    product.size;
-
-            }
+        const colorText =
+            product.color
+                ? " · " +
+                  product.color
+                : "";
 
 
-            if (product.color) {
+        toast.innerHTML = `
 
-                text +=
-                    " · " +
-                    product.color;
+            <div
+                class="satori-toast-title"
+            >
 
-            }
+                <span>
+                    ✓
+                </span>
+
+                PRODUCTO AGREGADO
+
+            </div>
 
 
-            productText.textContent =
-                text;
+            <div
+                class="satori-toast-product"
+            >
 
-        }
+                ${escapeHTML(
+                    product.name
+                )}
+
+                ${escapeHTML(
+                    sizeText
+                )}
+
+                ${escapeHTML(
+                    colorText
+                )}
+
+            </div>
+
+
+            <a
+                href="carrito.html"
+                class="satori-toast-link"
+            >
+
+                VER CARRITO →
+
+            </a>
+
+        `;
 
 
         requestAnimationFrame(
@@ -1185,79 +1008,438 @@
     }
 
 
-    /* =====================================================
-       INICIALIZACIÓN
-    ====================================================== */
-
-    function init() {
-
-        /*
-         * Solo usamos la clave definitiva.
-         */
-
-        const cart =
-            readCart();
-
-
-        /*
-         * Normalizamos lo que ya exista.
-         */
-
-        if (cart.length) {
-
-            try {
-
-                localStorage.setItem(
-                    CART_KEY,
-                    JSON.stringify(
-                        cart
-                    )
-                );
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "SatoriMode · Error normalizando carrito:",
-                    error
-                );
-
-            }
-
-        }
-
-
-        updateBadge();
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
-
-    }
-
-    else {
-
-        init();
-
-    }
-
-
-    /* =====================================================
-       SINCRONIZACIÓN INTERNA
-    ====================================================== */
+    /* =================================================
+       SELECCIÓN DE TALLAS
+    ================================================= */
 
     document.addEventListener(
-        "satorii:cart-updated",
+        "click",
+        function (
+            event
+        ) {
+
+            const sizeButton =
+                event.target.closest(
+                    ".satori-size-button, .product-size, [data-size]"
+                );
+
+
+            if (
+                !sizeButton
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+             * No interferimos si es otra
+             * cosa que tenga data-size.
+             */
+
+            const allSizes =
+                document.querySelectorAll(
+                    ".satori-size-button, .product-size, [data-size]"
+                );
+
+
+            allSizes.forEach(
+                function (
+                    item
+                ) {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                }
+            );
+
+
+            sizeButton.classList.add(
+                "active"
+            );
+
+
+            sizeButton.classList.add(
+                "selected"
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       SELECCIÓN DE COLOR
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        function (
+            event
+        ) {
+
+            const colorButton =
+                event.target.closest(
+                    ".satori-color-button, .product-color, [data-color]"
+                );
+
+
+            if (
+                !colorButton
+            ) {
+
+                return;
+
+            }
+
+
+            const allColors =
+                document.querySelectorAll(
+                    ".satori-color-button, .product-color, [data-color]"
+                );
+
+
+            allColors.forEach(
+                function (
+                    item
+                ) {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                }
+            );
+
+
+            colorButton.classList.add(
+                "active"
+            );
+
+
+            colorButton.classList.add(
+                "selected"
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       CARRITO
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        function (
+            event
+        ) {
+
+            const button =
+                event.target.closest(
+                    "#addToCart, #satoriAddToCart, .add-to-cart, [data-add-to-cart]"
+                );
+
+
+            if (
+                !button
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+             * IMPORTANTE:
+             *
+             * Aquí sí detenemos el comportamiento
+             * predeterminado porque NOSOTROS somos
+             * el sistema del carrito.
+             */
+
+            event.preventDefault();
+
+
+            const product =
+                getProduct(
+                    button
+                );
+
+
+            /*
+             * Si existen tallas, obligamos
+             * a seleccionar una.
+             */
+
+            const sizeButtons =
+                document.querySelectorAll(
+                    ".satori-size-button, .product-size, [data-size]"
+                );
+
+
+            if (
+                sizeButtons.length
+            ) {
+
+                const selectedSize =
+                    document.querySelector(
+                        [
+                            ".satori-size-button.active",
+                            ".satori-size-button.selected",
+                            ".product-size.active",
+                            ".product-size.selected",
+                            "[data-size].active",
+                            "[data-size].selected"
+                        ].join(", ")
+                    );
+
+
+                if (
+                    !selectedSize
+                ) {
+
+                    /*
+                     * No agregamos.
+                     */
+
+                    alert(
+                        "Selecciona una talla antes de continuar."
+                    );
+
+
+                    return;
+
+                }
+
+            }
+
+
+            const cart =
+                getCart();
+
+
+            /*
+             * Buscar misma variante.
+             */
+
+            const existing =
+                cart.find(
+                    function (
+                        item
+                    ) {
+
+                        return (
+
+                            (
+                                item.id ||
+                                item.productId
+                            ) ===
+                                product.id &&
+
+                            (
+                                item.size ||
+                                ""
+                            ) ===
+                                product.size &&
+
+                            (
+                                item.color ||
+                                ""
+                            ) ===
+                                product.color
+
+                        );
+
+                    }
+                );
+
+
+            if (
+                existing
+            ) {
+
+                existing.quantity =
+                    Number(
+                        existing.quantity ||
+                        0
+                    ) +
+                    Number(
+                        product.quantity
+                    );
+
+            }
+            else {
+
+                cart.push(
+                    product
+                );
+
+            }
+
+
+            /*
+             * Guardar.
+             */
+
+            saveCart(
+                cart
+            );
+
+
+            /*
+             * Animación.
+             */
+
+            animateButton(
+                button
+            );
+
+
+            /*
+             * Toast.
+
+             */
+
+            showToast(
+                product
+            );
+
+
+            console.log(
+                "SATORII · producto agregado:",
+                product
+            );
+
+        },
+        true
+    );
+
+
+    /* =================================================
+       CANTIDAD
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        function (
+            event
+        ) {
+
+            const minus =
+                event.target.closest(
+                    "#satoriQuantityMinus, #quantityMinus, [data-quantity-minus]"
+                );
+
+
+            const plus =
+                event.target.closest(
+                    "#satoriQuantityPlus, #quantityPlus, [data-quantity-plus]"
+                );
+
+
+            if (
+                !minus &&
+                !plus
+            ) {
+
+                return;
+
+            }
+
+
+            const input =
+                document.querySelector(
+                    "#quantity, .quantity-input"
+                );
+
+
+            const display =
+                document.querySelector(
+                    "#satoriQuantity, #quantityValue, [data-quantity]"
+                );
+
+
+            if (
+                !input &&
+                !display
+            ) {
+
+                return;
+
+            }
+
+
+            let value =
+                Number(
+                    input?.value ||
+                    display?.textContent ||
+                    1
+                );
+
+
+            if (
+                minus
+            ) {
+
+                value =
+                    Math.max(
+                        1,
+                        value - 1
+                    );
+
+            }
+
+
+            if (
+                plus
+            ) {
+
+                value += 1;
+
+            }
+
+
+            if (
+                input
+            ) {
+
+                input.value =
+                    value;
+
+            }
+
+
+            if (
+                display
+            ) {
+
+                display.textContent =
+                    value;
+
+            }
+
+        },
+        true
+    );
+
+
+    /* =================================================
+       INICIALIZAR
+    ================================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
         function () {
 
             updateBadge();
@@ -1266,61 +1448,91 @@
     );
 
 
-    /* =====================================================
-       SINCRONIZACIÓN ENTRE PESTAÑAS
-    ====================================================== */
-
     window.addEventListener(
         "storage",
-        function (event) {
-
-            if (
-                event.key !== CART_KEY
-            ) {
-
-                return;
-
-            }
-
+        function () {
 
             updateBadge();
-
-
-            document.dispatchEvent(
-                new CustomEvent(
-                    "satorii:cart-updated"
-                )
-            );
 
         }
     );
 
 
-    /* =====================================================
+    /* =================================================
        API GLOBAL
-    ====================================================== */
+    ================================================= */
 
     window.SatoriCart = {
 
         get:
-            readCart,
+            getCart,
 
         save:
             saveCart,
 
-        add:
-            addProduct,
-
         count:
-            getCartCount,
+            function () {
+
+                return getCart()
+                    .reduce(
+                        function (
+                            total,
+                            product
+                        ) {
+
+                            return (
+                                total +
+                                Number(
+                                    product.quantity ||
+                                    0
+                                )
+                            );
+
+                        },
+                        0
+                    );
+
+            },
 
         updateBadge:
-            updateBadge,
-
-        formatPrice:
-            formatPrice
+            updateBadge
 
     };
+
+
+    /* =================================================
+       ESCAPE HTML
+    ================================================= */
+
+    function escapeHTML(
+        value
+    ) {
+
+        return String(
+            value ?? ""
+        )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
 
 
 })();
