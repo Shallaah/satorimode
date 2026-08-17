@@ -5794,8 +5794,13 @@ function main() {
     );
 
     console.log(
-        "SATORII · GENERADOR DE PRODUCTOS"
-    );
+    `SatoriMode · ${PRODUCTS.length} producto(s) cargado(s).`
+);
+
+
+if (typeof module !== "undefined") {
+    module.exports = PRODUCTS;
+}
 
     console.log(
         "========================================"
