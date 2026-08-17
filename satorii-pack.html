@@ -18,7 +18,7 @@
 
     <meta
         name="description"
-        content="Satori Pack | Packs especiales de SATORII con productos seleccionados y sorpresas."
+        content="Satori Pack — Cajas llenas de sorpresas, anime, cultura asiática y productos para coleccionar."
     >
 
     <title>Satori Pack | SATORII</title>
@@ -32,7 +32,8 @@
     <style>
 
         /* =====================================================
-           SATORII PACK — ESTRUCTURA
+           SATORII PACK
+           ESTILO MANGA / KAWAII / EDITORIAL
         ====================================================== */
 
         .satorii-pack-page {
@@ -52,6 +53,44 @@
 
             box-sizing: border-box;
 
+            color: #111;
+
+        }
+
+
+        /* =====================================================
+           TEXTURA GENERAL
+        ====================================================== */
+
+        .satorii-pack-page {
+
+            position: relative;
+
+        }
+
+
+        .satorii-pack-page::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            opacity: .035;
+
+            z-index: -1;
+
+            background-image:
+                radial-gradient(
+                    #111 0.7px,
+                    transparent 0.7px
+                );
+
+            background-size: 7px 7px;
+
         }
 
 
@@ -63,12 +102,13 @@
 
             position: relative;
 
-            min-height: 560px;
+            min-height: 600px;
 
-            margin-top: 80px;
-            margin-bottom: 100px;
+            margin-top: 65px;
 
-            padding: 70px;
+            margin-bottom: 75px;
+
+            padding: 65px;
 
             display: flex;
 
@@ -79,19 +119,31 @@
             box-sizing: border-box;
 
             background:
-                linear-gradient(
-                    135deg,
-                    #111 0%,
-                    #191919 55%,
-                    #0b0b0b 100%
-                );
 
-            color: #fff;
+                radial-gradient(
+                    circle at 82% 35%,
+                    rgba(124, 77, 160, .18),
+                    transparent 25%
+                ),
 
-            border-radius: 10px;
+                radial-gradient(
+                    circle at 15% 85%,
+                    rgba(255, 27, 27, .10),
+                    transparent 25%
+                ),
+
+                #f3eee4;
+
+            border: 2px solid #111;
+
+            border-radius: 4px;
 
         }
 
+
+        /* =====================================================
+           HERO — MANCHAS
+        ====================================================== */
 
         .satorii-pack-hero::before {
 
@@ -99,19 +151,25 @@
 
             position: absolute;
 
-            top: 0;
+            width: 650px;
 
-            left: 0;
+            height: 650px;
 
-            width: 220px;
+            right: -100px;
 
-            height: 3px;
+            top: -120px;
 
             background:
-                var(
-                    --red,
-                    #ff1b1b
+                radial-gradient(
+                    circle,
+                    rgba(125, 75, 160, .16) 0%,
+                    rgba(125, 75, 160, .06) 40%,
+                    transparent 70%
                 );
+
+            border-radius: 50%;
+
+            transform: rotate(-12deg);
 
         }
 
@@ -122,23 +180,22 @@
 
             position: absolute;
 
-            right: -120px;
+            bottom: 25px;
 
-            bottom: -160px;
+            right: 40px;
 
-            width: 450px;
+            width: 220px;
 
-            height: 450px;
+            height: 220px;
 
-            border: 1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .08
-                );
+            border:
+
+                7px solid
+                rgba(125, 75, 160, .18);
 
             border-radius: 50%;
+
+            transform: rotate(18deg);
 
         }
 
@@ -151,28 +208,34 @@
 
             position: relative;
 
-            z-index: 2;
+            z-index: 3;
+
+            width: 48%;
 
             max-width: 700px;
 
         }
 
 
-        .satorii-pack-label {
+        .satorii-pack-small-label {
+
+            display: inline-block;
 
             margin-bottom: 18px;
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            padding: 7px 12px;
 
-            font-size: 11px;
+            background: #111;
 
-            font-weight: 800;
+            color: #fff;
 
-            letter-spacing: 5px;
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            transform: rotate(-2deg);
 
         }
 
@@ -181,134 +244,467 @@
 
             margin: 0;
 
+            font-family:
+                Arial Black,
+                Impact,
+                sans-serif;
+
             font-size: clamp(
                 55px,
                 8vw,
-                105px
+                115px
             );
 
-            line-height: .9;
+            line-height: .78;
 
-            font-weight: 900;
+            letter-spacing: -6px;
 
-            letter-spacing: -5px;
+            text-transform: uppercase;
 
         }
 
 
-        .satorii-pack-hero h1 span {
+        .satorii-pack-hero h1 .black {
 
             display: block;
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            color: #111;
 
         }
 
 
-        .satorii-pack-hero p {
+        .satorii-pack-hero h1 .purple {
 
-            max-width: 590px;
+            display: block;
 
-            margin: 30px 0 0;
+            color: #7b4aa0;
 
-            color: #ccc;
+            margin-left: 35px;
+
+        }
+
+
+        .satorii-pack-hero-description {
+
+            max-width: 520px;
+
+            margin-top: 30px;
+
+            color: #333;
 
             font-size: 15px;
 
-            line-height: 1.7;
+            line-height: 1.65;
+
+            font-weight: 500;
 
         }
 
 
         /* =====================================================
-           INFORMACIÓN
+           BOTÓN
         ====================================================== */
 
-        .satorii-pack-info {
+        .satorii-pack-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-top: 28px;
+
+            padding: 15px 24px;
+
+            background: #7b4aa0;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            border: 2px solid #111;
+
+            box-shadow:
+                5px 5px 0 #111;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .satorii-pack-button:hover {
+
+            transform:
+                translate(
+                    3px,
+                    3px
+                );
+
+            box-shadow:
+                2px 2px 0 #111;
+
+        }
+
+
+        /* =====================================================
+           PACK / CAJA
+        ====================================================== */
+
+        .satorii-pack-box {
+
+            position: absolute;
+
+            z-index: 3;
+
+            right: 7%;
+
+            top: 50%;
+
+            width: min(
+                420px,
+                38%
+            );
+
+            transform:
+                translateY(-50%)
+                rotate(5deg);
+
+            filter:
+                drop-shadow(
+                    20px 25px 20px
+                    rgba(0,0,0,.20)
+                );
+
+        }
+
+
+        .satorii-pack-box img {
+
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            object-fit: contain;
+
+        }
+
+
+        /* =====================================================
+           CAJA PLACEHOLDER
+           Se muestra si todavía no hay imagen
+        ====================================================== */
+
+        .satorii-pack-box-placeholder {
+
+            width: 100%;
+
+            aspect-ratio: 1 / .75;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #222,
+                    #090909
+                );
+
+            border: 4px solid #111;
+
+            box-shadow:
+                inset 0 0 0 3px #7b4aa0;
+
+            color: #fff;
+
+            font-family:
+                Arial Black,
+                Impact,
+                sans-serif;
+
+            font-size: clamp(
+                30px,
+                5vw,
+                60px
+            );
+
+            line-height: .8;
+
+            text-align: center;
+
+            transform:
+                perspective(700px)
+                rotateY(-8deg);
+
+        }
+
+
+        .satorii-pack-box-placeholder span {
+
+            display: block;
+
+            color: #7b4aa0;
+
+        }
+
+
+        /* =====================================================
+           STICKERS
+        ====================================================== */
+
+        .satori-sticker {
+
+            position: absolute;
+
+            z-index: 5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family:
+                Arial Black,
+                Impact,
+                sans-serif;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            pointer-events: none;
+
+        }
+
+
+        .sticker-wow {
+
+            top: 55px;
+
+            right: 42%;
+
+            width: 95px;
+
+            height: 75px;
+
+            background: #f5b5e8;
+
+            color: #111;
+
+            border: 3px solid #111;
+
+            clip-path:
+                polygon(
+                    50% 0%,
+                    61% 13%,
+                    75% 5%,
+                    79% 20%,
+                    96% 19%,
+                    91% 35%,
+                    100% 50%,
+                    88% 59%,
+                    96% 76%,
+                    78% 78%,
+                    73% 96%,
+                    58% 87%,
+                    45% 100%,
+                    35% 87%,
+                    19% 95%,
+                    19% 78%,
+                    2% 74%,
+                    10% 58%,
+                    0% 46%,
+                    13% 36%,
+                    7% 19%,
+                    24% 20%,
+                    30% 5%,
+                    42% 13%
+                );
+
+            transform:
+                rotate(10deg);
+
+            font-size: 18px;
+
+        }
+
+
+        .sticker-question {
+
+            right: 4%;
+
+            top: 20%;
+
+            width: 75px;
+
+            height: 75px;
+
+            background: #fff;
+
+            color: #7b4aa0;
+
+            border: 3px solid #111;
+
+            border-radius: 50%;
+
+            transform:
+                rotate(14deg);
+
+            font-size: 50px;
+
+        }
+
+
+        .sticker-arrow {
+
+            left: 52%;
+
+            bottom: 18%;
+
+            color: #7b4aa0;
+
+            font-size: 55px;
+
+            transform:
+                rotate(
+                    -20deg
+                );
+
+        }
+
+
+        .sticker-exclamation {
+
+            left: 43%;
+
+            top: 20%;
+
+            color: #ff1b1b;
+
+            font-size: 45px;
+
+            transform:
+                rotate(
+                    -10deg
+                );
+
+        }
+
+
+        /* =====================================================
+           BENEFICIOS
+        ====================================================== */
+
+        .satorii-pack-benefits {
 
             display: grid;
 
             grid-template-columns:
                 repeat(
-                    3,
+                    4,
                     minmax(0, 1fr)
                 );
 
-            gap: 22px;
+            margin-bottom: 95px;
 
-            margin-bottom: 120px;
+            background: #111;
+
+            border: 2px solid #111;
 
         }
 
 
-        .satorii-pack-info-card {
+        .satorii-pack-benefit {
 
-            padding: 35px;
+            min-height: 130px;
 
-            background: #f7f7f7;
+            padding: 25px;
 
-            border: 1px solid #e5e5e5;
+            display: flex;
 
-            border-radius: 8px;
+            flex-direction: column;
+
+            justify-content: center;
 
             box-sizing: border-box;
 
+            border-right:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .18
+                );
+
+            color: #fff;
+
         }
 
 
-        .satorii-pack-info-number {
+        .satorii-pack-benefit:last-child {
 
-            margin-bottom: 18px;
+            border-right: none;
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+        }
 
-            font-size: 11px;
+
+        .satorii-pack-benefit-icon {
+
+            margin-bottom: 8px;
+
+            color: #c58ee5;
+
+            font-size: 25px;
 
             font-weight: 900;
 
-            letter-spacing: 3px;
+        }
+
+
+        .satorii-pack-benefit h3 {
+
+            margin: 0 0 5px;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
 
         }
 
 
-        .satorii-pack-info-card h2 {
-
-            margin: 0 0 12px;
-
-            color: #111;
-
-            font-size: 21px;
-
-            line-height: 1.2;
-
-            font-weight: 800;
-
-        }
-
-
-        .satorii-pack-info-card p {
+        .satorii-pack-benefit p {
 
             margin: 0;
 
-            color: #666;
+            color: #bbb;
 
-            font-size: 13px;
+            font-size: 11px;
 
-            line-height: 1.7;
+            line-height: 1.4;
 
         }
 
 
         /* =====================================================
-           TÍTULO PRODUCTOS
+           ENCABEZADO PACKS
         ====================================================== */
 
         .satorii-pack-section-header {
@@ -319,28 +715,24 @@
 
             justify-content: space-between;
 
-            margin-bottom: 45px;
+            margin-bottom: 35px;
 
-            padding-bottom: 18px;
+            padding-bottom: 15px;
 
-            border-bottom: 1px solid #ddd;
+            border-bottom: 3px solid #111;
 
         }
 
 
         .satorii-pack-section-label {
 
-            margin-bottom: 8px;
+            margin-bottom: 5px;
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            color: #7b4aa0;
 
             font-size: 10px;
 
-            font-weight: 800;
+            font-weight: 900;
 
             letter-spacing: 3px;
 
@@ -351,22 +743,33 @@
 
             margin: 0;
 
-            color: #111;
+            font-family:
+                Arial Black,
+                Impact,
+                sans-serif;
 
-            font-size: 28px;
+            font-size: clamp(
+                28px,
+                4vw,
+                45px
+            );
 
-            font-weight: 900;
+            line-height: .9;
 
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+
+            text-transform: uppercase;
 
         }
 
 
         .satorii-pack-product-count {
 
-            color: #777;
+            font-size: 11px;
 
-            font-size: 12px;
+            font-weight: 800;
+
+            color: #666;
 
         }
 
@@ -385,11 +788,7 @@
                     minmax(0, 1fr)
                 );
 
-            column-gap: 22px;
-
-            row-gap: 65px;
-
-            width: 100%;
+            gap: 20px;
 
         }
 
@@ -402,14 +801,55 @@
 
             display: block;
 
-            min-width: 0;
+            color: inherit;
 
             text-decoration: none;
 
-            color: inherit;
+            background: #fff;
+
+            border: 2px solid #111;
+
+            box-shadow:
+                5px 5px 0 #111;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
 
         }
 
+
+        .satorii-pack-product:nth-child(2n) {
+
+            transform:
+                rotate(-1deg);
+
+        }
+
+
+        .satorii-pack-product:nth-child(3n) {
+
+            transform:
+                rotate(1deg);
+
+        }
+
+
+        .satorii-pack-product:hover {
+
+            transform:
+                translateY(-6px)
+                rotate(0deg);
+
+            box-shadow:
+                8px 8px 0 #7b4aa0;
+
+        }
+
+
+        /* =====================================================
+           IMAGEN
+        ====================================================== */
 
         .satorii-pack-product-image {
 
@@ -421,9 +861,10 @@
 
             overflow: hidden;
 
-            background: #f7f7f7;
+            background: #eee;
 
-            border-radius: 8px;
+            border-bottom:
+                2px solid #111;
 
         }
 
@@ -438,13 +879,13 @@
 
             height: 100%;
 
-            object-fit: cover;
-
             display: block;
 
+            object-fit: cover;
+
             transition:
-                opacity .35s ease,
-                transform .45s ease;
+                opacity .3s ease,
+                transform .4s ease;
 
         }
 
@@ -481,11 +922,11 @@
         }
 
 
-        .satorii-pack-product:hover img {
+        .satorii-pack-product:hover
+        img {
 
-            transform: scale(
-                1.025
-            );
+            transform:
+                scale(1.04);
 
         }
 
@@ -496,7 +937,7 @@
 
         .satorii-pack-product-info {
 
-            padding-top: 16px;
+            padding: 17px;
 
         }
 
@@ -505,19 +946,13 @@
 
             margin-bottom: 6px;
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            color: #7b4aa0;
 
-            font-size: 9px;
+            font-size: 8px;
 
-            font-weight: 800;
+            font-weight: 900;
 
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
+            letter-spacing: 2px;
 
         }
 
@@ -526,26 +961,22 @@
 
             margin: 0;
 
-            color: #111;
-
             font-size: 14px;
 
             line-height: 1.3;
 
-            font-weight: 600;
+            font-weight: 800;
 
         }
 
 
         .satorii-pack-product-price {
 
-            margin-top: 7px;
-
-            color: #111;
+            margin-top: 8px;
 
             font-size: 14px;
 
-            font-weight: 700;
+            font-weight: 900;
 
         }
 
@@ -558,11 +989,14 @@
 
             grid-column: 1 / -1;
 
-            padding: 100px 20px;
+            padding: 80px 20px;
 
             text-align: center;
 
-            color: #777;
+            background: #fff;
+
+            border:
+                2px dashed #111;
 
         }
 
@@ -571,11 +1005,23 @@
 
             display: block;
 
-            margin-bottom: 10px;
+            margin-bottom: 8px;
 
-            color: #111;
+            font-family:
+                Arial Black,
+                Impact,
+                sans-serif;
 
-            font-size: 20px;
+            font-size: 25px;
+
+        }
+
+
+        .satorii-pack-empty {
+
+            color: #666;
+
+            font-size: 13px;
 
         }
 
@@ -588,72 +1034,67 @@
 
             position: relative;
 
-            margin-top: 120px;
+            margin-top: 100px;
 
-            margin-bottom: 100px;
+            margin-bottom: 90px;
 
-            padding: 60px 50px;
+            padding: 55px;
 
             overflow: hidden;
 
-            background: #111;
+            background: #7b4aa0;
 
             color: #fff;
 
-            border-radius: 10px;
+            border:
+                3px solid #111;
 
-            box-sizing: border-box;
+            box-shadow:
+                9px 9px 0 #111;
 
         }
 
 
         .satorii-pack-final::before {
 
-            content: "";
+            content: "?!";
 
             position: absolute;
 
-            top: 0;
+            right: 40px;
 
-            left: 0;
+            top: -35px;
 
-            width: 150px;
+            font-family:
+                Arial Black,
+                Impact,
+                sans-serif;
 
-            height: 2px;
+            font-size: 150px;
 
-            background:
-                var(
-                    --red,
-                    #ff1b1b
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .12
                 );
 
-        }
-
-
-        .satorii-pack-final-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 700px;
+            transform:
+                rotate(10deg);
 
         }
 
 
         .satorii-pack-final-label {
 
-            margin-bottom: 10px;
+            margin-bottom: 8px;
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            color: #f4b9ec;
 
             font-size: 10px;
 
-            font-weight: 800;
+            font-weight: 900;
 
             letter-spacing: 4px;
 
@@ -662,43 +1103,47 @@
 
         .satorii-pack-final h2 {
 
+            position: relative;
+
+            z-index: 2;
+
             margin: 0 0 15px;
 
+            font-family:
+                Arial Black,
+                Impact,
+                sans-serif;
+
             font-size: clamp(
-                32px,
-                5vw,
-                58px
+                35px,
+                6vw,
+                65px
             );
 
-            line-height: .95;
+            line-height: .9;
 
-            font-weight: 900;
+            letter-spacing: -3px;
 
-            letter-spacing: -2px;
-
-        }
-
-
-        .satorii-pack-final h2 span {
-
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            text-transform: uppercase;
 
         }
 
 
         .satorii-pack-final p {
 
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 650px;
+
             margin: 0;
 
-            color: #ccc;
+            color: #eee;
 
             font-size: 14px;
 
-            line-height: 1.7;
+            line-height: 1.6;
 
         }
 
@@ -707,7 +1152,16 @@
            TABLET
         ====================================================== */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1100px) {
+
+            .satorii-pack-hero {
+
+                min-height: 540px;
+
+                padding: 50px;
+
+            }
+
 
             .satorii-pack-products-grid {
 
@@ -717,29 +1171,37 @@
                         minmax(0, 1fr)
                     );
 
-                column-gap: 18px;
-
-                row-gap: 55px;
-
             }
 
 
-            .satorii-pack-info {
+            .satorii-pack-benefits {
 
                 grid-template-columns:
                     repeat(
-                        3,
+                        2,
                         minmax(0, 1fr)
                     );
 
             }
 
 
-            .satorii-pack-hero {
+            .satorii-pack-benefit:nth-child(2) {
 
-                min-height: 500px;
+                border-right: none;
 
-                padding: 55px;
+            }
+
+
+            .satorii-pack-benefit:nth-child(-n+2) {
+
+                border-bottom:
+                    1px solid
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .18
+                    );
 
             }
 
@@ -762,80 +1224,218 @@
             }
 
 
+            /* HERO */
+
             .satorii-pack-hero {
 
-                min-height: 480px;
+                min-height: 650px;
 
-                margin-top: 55px;
+                margin-top: 35px;
 
-                margin-bottom: 70px;
+                margin-bottom: 55px;
 
-                padding: 35px 25px;
+                padding:
+                    35px 22px;
 
-                border-radius: 8px;
+                align-items:
+                    flex-start;
+
+                border-width: 2px;
 
             }
 
 
-            .satorii-pack-hero::before {
+            .satorii-pack-hero-content {
 
-                width: 100px;
+                width: 100%;
 
             }
 
 
             .satorii-pack-hero h1 {
 
-                font-size: 58px;
+                font-size: 65px;
 
-                letter-spacing: -3px;
+                letter-spacing: -4px;
 
             }
 
 
-            .satorii-pack-hero p {
+            .satorii-pack-hero h1 .purple {
 
-                margin-top: 24px;
+                margin-left: 15px;
+
+            }
+
+
+            .satorii-pack-hero-description {
+
+                max-width: 100%;
 
                 font-size: 13px;
 
+                margin-top: 24px;
+
             }
 
 
-            .satorii-pack-info {
+            .satorii-pack-button {
+
+                margin-top: 22px;
+
+                padding:
+                    13px 20px;
+
+                font-size: 11px;
+
+            }
+
+
+            /* CAJA */
+
+            .satorii-pack-box {
+
+                width: 72%;
+
+                max-width: 320px;
+
+                right: 50%;
+
+                top: auto;
+
+                bottom: 35px;
+
+                transform:
+                    translateX(50%)
+                    rotate(4deg);
+
+            }
+
+
+            .satorii-pack-box-placeholder {
+
+                font-size: 40px;
+
+            }
+
+
+            /* STICKERS */
+
+            .sticker-wow {
+
+                top: 310px;
+
+                right: 10%;
+
+                width: 75px;
+
+                height: 60px;
+
+                font-size: 14px;
+
+            }
+
+
+            .sticker-question {
+
+                top: 47%;
+
+                right: 3%;
+
+                width: 55px;
+
+                height: 55px;
+
+                font-size: 35px;
+
+            }
+
+
+            .sticker-arrow {
+
+                left: 8%;
+
+                bottom: 15%;
+
+                font-size: 40px;
+
+            }
+
+
+            .sticker-exclamation {
+
+                left: 5%;
+
+                top: 36%;
+
+                font-size: 35px;
+
+            }
+
+
+            /* BENEFICIOS */
+
+            .satorii-pack-benefits {
 
                 grid-template-columns:
                     1fr;
 
-                gap: 12px;
-
-                margin-bottom: 80px;
+                margin-bottom: 65px;
 
             }
 
 
-            .satorii-pack-info-card {
+            .satorii-pack-benefit {
 
-                padding: 28px;
+                min-height: 105px;
+
+                border-right: none;
+
+                border-bottom:
+                    1px solid
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .18
+                    );
 
             }
 
+
+            .satorii-pack-benefit:last-child {
+
+                border-bottom: none;
+
+            }
+
+
+            /* HEADER */
 
             .satorii-pack-section-header {
 
-                margin-bottom: 30px;
-
                 align-items: center;
+
+                margin-bottom: 28px;
 
             }
 
 
             .satorii-pack-section-header h2 {
 
-                font-size: 21px;
+                font-size: 28px;
 
             }
 
+
+            .satorii-pack-product-count {
+
+                font-size: 10px;
+
+            }
+
+
+            /* PRODUCTOS */
 
             .satorii-pack-products-grid {
 
@@ -845,23 +1445,39 @@
                         minmax(0, 1fr)
                     );
 
-                column-gap: 14px;
+                gap: 14px;
 
-                row-gap: 45px;
+            }
+
+
+            .satorii-pack-product {
+
+                box-shadow:
+                    3px 3px 0 #111;
+
+            }
+
+
+            .satorii-pack-product:hover {
+
+                box-shadow:
+                    5px 5px 0 #7b4aa0;
 
             }
 
 
             .satorii-pack-product-info {
 
-                padding-top: 11px;
+                padding: 12px;
 
             }
 
 
             .satorii-pack-product-category {
 
-                font-size: 8px;
+                font-size: 7px;
+
+                letter-spacing: 1px;
 
             }
 
@@ -877,27 +1493,42 @@
 
                 font-size: 12px;
 
-                margin-top: 5px;
-
             }
 
 
+            /* FINAL */
+
             .satorii-pack-final {
 
-                margin-top: 80px;
+                margin-top: 75px;
 
-                margin-bottom: 60px;
+                margin-bottom: 55px;
 
-                padding: 40px 25px;
+                padding:
+                    40px 25px;
 
-                border-radius: 8px;
+                box-shadow:
+                    6px 6px 0 #111;
 
             }
 
 
             .satorii-pack-final h2 {
 
-                font-size: 35px;
+                font-size: 40px;
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .satorii-pack-final::before {
+
+                right: -10px;
+
+                top: 5px;
+
+                font-size: 100px;
 
             }
 
@@ -930,95 +1561,263 @@
 
             <section class="satorii-pack-hero">
 
-                <div class="satorii-pack-hero-content">
 
-                    <div class="satorii-pack-label">
-                        SATORII · EXCLUSIVE
+                <div
+                    class="
+                        satorii-pack-hero-content
+                    "
+                >
+
+
+                    <div
+                        class="
+                            satorii-pack-small-label
+                        "
+                    >
+                        SATORII · PACK
                     </div>
 
 
                     <h1>
-                        SATORII
-                        <span>PACK.</span>
+
+                        <span class="black">
+                            SATORII
+                        </span>
+
+                        <span class="purple">
+                            PACK!!!
+                        </span>
+
                     </h1>
 
 
-                    <p>
-                        Una selección especial de productos
-                        creada para descubrir, coleccionar
-                        y disfrutar de la esencia de SATORII.
+                    <p
+                        class="
+                            satorii-pack-hero-description
+                        "
+                    >
+                        Cajas llenas de sorpresas.
+                        Anime, cultura asiática,
+                        accesorios y mucho más.
+                        No sabes qué hay dentro...
+                        pero sabes que quieres abrirla.
                     </p>
+
+
+                    <a
+                        href="#packs-disponibles"
+                        class="
+                            satorii-pack-button
+                        "
+                    >
+                        VER PACKS
+                    </a>
+
 
                 </div>
 
+
+                <!-- ==========================================
+                     CAJA
+                =========================================== -->
+
+                <div class="satorii-pack-box">
+
+
+                    <!--
+                        Cuando tengas la imagen principal
+                        del Satori Pack, puedes reemplazar
+                        este bloque por:
+
+                        <img
+                            src="img/productos/satorii-pack/satori-pack.png"
+                            alt="Satori Pack"
+                        >
+                    -->
+
+                    <div
+                        class="
+                            satorii-pack-box-placeholder
+                        "
+                    >
+
+                        SATORII
+
+                        <span>
+                            PACK
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ==========================================
+                     STICKERS
+                =========================================== -->
+
+                <div
+                    class="
+                        satori-sticker
+                        sticker-wow
+                    "
+                >
+                    WOW!
+                </div>
+
+
+                <div
+                    class="
+                        satori-sticker
+                        sticker-question
+                    "
+                >
+                    ?
+                </div>
+
+
+                <div
+                    class="
+                        satori-sticker
+                        sticker-arrow
+                    "
+                >
+                    ↘
+                </div>
+
+
+                <div
+                    class="
+                        satori-sticker
+                        sticker-exclamation
+                    "
+                >
+                    !!!
+                </div>
+
+
             </section>
 
 
             <!-- =================================================
-                 INFORMACIÓN
+                 BENEFICIOS
             ================================================== -->
 
-            <section class="satorii-pack-info">
+            <section
+                class="
+                    satorii-pack-benefits
+                "
+            >
 
 
-                <article class="satorii-pack-info-card">
+                <article
+                    class="
+                        satorii-pack-benefit
+                    "
+                >
 
-                    <div class="satorii-pack-info-number">
-                        01
+                    <div
+                        class="
+                            satorii-pack-benefit-icon
+                        "
+                    >
+                        ?
                     </div>
 
 
-                    <h2>
-                        PRODUCTOS SELECCIONADOS
-                    </h2>
+                    <h3>
+                        SORPRESA TOTAL
+                    </h3>
 
 
                     <p>
-                        Cada pack reúne productos escogidos
-                        especialmente para crear una experiencia
-                        diferente en cada compra.
+                        Nunca sabes exactamente
+                        qué encontrarás dentro.
                     </p>
 
                 </article>
 
 
-                <article class="satorii-pack-info-card">
+                <article
+                    class="
+                        satorii-pack-benefit
+                    "
+                >
 
-                    <div class="satorii-pack-info-number">
-                        02
+                    <div
+                        class="
+                            satorii-pack-benefit-icon
+                        "
+                    >
+                        ★
                     </div>
 
 
-                    <h2>
-                        DESCUBRE ALGO NUEVO
-                    </h2>
+                    <h3>
+                        PRODUCTOS DE CALIDAD
+                    </h3>
 
 
                     <p>
-                        Los contenidos pueden variar, haciendo
-                        que cada Satori Pack sea una oportunidad
-                        para descubrir nuevos productos.
+                        Artículos seleccionados
+                        para fans y coleccionistas.
                     </p>
 
                 </article>
 
 
-                <article class="satorii-pack-info-card">
+                <article
+                    class="
+                        satorii-pack-benefit
+                    "
+                >
 
-                    <div class="satorii-pack-info-number">
-                        03
+                    <div
+                        class="
+                            satorii-pack-benefit-icon
+                        "
+                    >
+                        ✦
                     </div>
 
 
-                    <h2>
-                        HECHO PARA COLECCIONAR
-                    </h2>
+                    <h3>
+                        PARA COLECCIONISTAS
+                    </h3>
 
 
                     <p>
-                        Anime, cultura asiática, accesorios y
-                        productos especiales pueden formar parte
-                        de nuestras distintas ediciones.
+                        Encuentra productos que
+                        quieras conservar.
+                    </p>
+
+                </article>
+
+
+                <article
+                    class="
+                        satorii-pack-benefit
+                    "
+                >
+
+                    <div
+                        class="
+                            satorii-pack-benefit-icon
+                        "
+                    >
+                        🎁
+                    </div>
+
+
+                    <h3>
+                        IDEAL PARA REGALAR
+                    </h3>
+
+
+                    <p>
+                        Una forma diferente de
+                        sorprender a alguien.
                     </p>
 
                 </article>
@@ -1028,18 +1827,30 @@
 
 
             <!-- =================================================
-                 PRODUCTOS
+                 PACKS DISPONIBLES
             ================================================== -->
 
-            <section>
+            <section
+                id="packs-disponibles"
+            >
 
 
-                <div class="satorii-pack-section-header">
+                <div
+                    class="
+                        satorii-pack-section-header
+                    "
+                >
+
 
                     <div>
 
-                        <div class="satorii-pack-section-label">
-                            SATORII PACK
+
+                        <div
+                            class="
+                                satorii-pack-section-label
+                            "
+                        >
+                            SATORII · COLLECTION
                         </div>
 
 
@@ -1047,22 +1858,32 @@
                             PACKS DISPONIBLES
                         </h2>
 
+
                     </div>
 
 
                     <span
-                        class="satorii-pack-product-count"
-                        id="satorii-pack-product-count"
+                        class="
+                            satorii-pack-product-count
+                        "
+                        id="
+                            satorii-pack-product-count
+                        "
                     >
                         0 productos
                     </span>
+
 
                 </div>
 
 
                 <div
-                    class="satorii-pack-products-grid"
-                    id="satorii-pack-products-grid"
+                    class="
+                        satorii-pack-products-grid
+                    "
+                    id="
+                        satorii-pack-products-grid
+                    "
                 >
                 </div>
 
@@ -1074,29 +1895,35 @@
                  CTA FINAL
             ================================================== -->
 
-            <section class="satorii-pack-final">
-
-                <div class="satorii-pack-final-content">
-
-                    <div class="satorii-pack-final-label">
-                        SATORII
-                    </div>
+            <section
+                class="
+                    satorii-pack-final
+                "
+            >
 
 
-                    <h2>
-                        DESCUBRE TU
-                        <span>PACK.</span>
-                    </h2>
-
-
-                    <p>
-                        Cada edición está pensada para
-                        sorprenderte con una selección única
-                        de productos. Encuentra tu próximo
-                        Satori Pack.
-                    </p>
-
+                <div
+                    class="
+                        satorii-pack-final-label
+                    "
+                >
+                    SATORII PACK
                 </div>
+
+
+                <h2>
+                    ¿QUÉ HABRÁ
+                    <br>
+                    <span>DENTRO?</span>
+                </h2>
+
+
+                <p>
+                    Una cosa es segura:
+                    siempre habrá algo nuevo
+                    por descubrir.
+                </p>
+
 
             </section>
 
@@ -1151,7 +1978,7 @@
 
 
                 /* ==========================================
-                   COMPROBAR CATÁLOGO
+                   COMPROBAR PRODUCTOS
                 ========================================== */
 
                 if (
@@ -1161,15 +1988,18 @@
 
                     grid.innerHTML = `
 
-                        <div class="satorii-pack-empty">
+                        <div
+                            class="
+                                satorii-pack-empty
+                            "
+                        >
 
                             <strong>
-                                No se pudo cargar el catálogo.
+                                OOPS!
                             </strong>
 
-                            Revisa que
-                            js/products.js
-                            esté disponible.
+                            No se pudo cargar
+                            el catálogo.
 
                         </div>
 
@@ -1192,7 +2022,8 @@
                                 product.category || ""
                             )
                             .toLowerCase()
-                            .trim() === "satorii-pack";
+                            .trim() ===
+                            "satorii-pack";
 
                         }
                     );
@@ -1220,14 +2051,19 @@
 
                     grid.innerHTML = `
 
-                        <div class="satorii-pack-empty">
+                        <div
+                            class="
+                                satorii-pack-empty
+                            "
+                        >
 
                             <strong>
-                                Próximamente
+                                PRÓXIMAMENTE...
                             </strong>
 
                             Estamos preparando
-                            nuestros primeros Satori Packs.
+                            nuestros primeros
+                            Satori Packs.
 
                         </div>
 
