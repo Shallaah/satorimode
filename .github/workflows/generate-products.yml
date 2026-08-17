@@ -6,13 +6,16 @@ on:
       - "js/products.js"
       - "scripts/generate-products.js"
       - ".github/workflows/generate-products.yml"
+
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
+
   generate:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -27,12 +30,29 @@ jobs:
           git config user.name "SatoriMode Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Verificar generate-products.js
+        run: |
+          echo "========================================"
+          echo "Verificando generate-products.js"
+          echo "========================================"
+
+          node --version
+
+          node --check scripts/generate-products.js
+
+          echo "✓ generate-products.js tiene sintaxis válida."
+
       - name: Generar páginas
         run: |
+          echo "========================================"
+          echo "Generando páginas de productos"
+          echo "========================================"
+
           node scripts/generate-products.js
 
       - name: Guardar páginas generadas
         run: |
+
           git add productos
 
           if git diff --cached --quiet; then
