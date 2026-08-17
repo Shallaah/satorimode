@@ -45,18 +45,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       FOOTER
+       FOOTER HTML
     ===================================================== */
 
     footerContainer.innerHTML = `
 
         <footer class="satori-footer">
 
-
             <div class="satori-footer-main">
 
 
-                <!-- MARCA -->
+                <!-- =====================================
+                     SATORII
+                ====================================== -->
 
                 <div class="satori-footer-brand">
 
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </a>
 
                     <div class="satori-footer-kanji">
-                        悟
+                        悟り
                     </div>
 
                     <p>
@@ -78,7 +79,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
 
-                <!-- COLECCIONES -->
+                <!-- =====================================
+                     COLECCIONES
+                ====================================== -->
 
                 <div class="satori-footer-column">
 
@@ -101,7 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
 
-                <!-- PRODUCTOS -->
+                <!-- =====================================
+                     PRODUCTOS
+                ====================================== -->
 
                 <div class="satori-footer-column">
 
@@ -123,7 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
 
-            <!-- BARRA INFERIOR -->
+            <!-- =========================================
+                 PARTE INFERIOR
+            ========================================== -->
 
             <div class="satori-footer-bottom">
 
@@ -146,8 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* =====================================================
        ESTILOS
     ===================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,900;1,900&display=swap');
-    
+
     if (
         document.getElementById(
             "satori-footer-styles"
@@ -168,16 +174,16 @@ document.addEventListener("DOMContentLoaded", function () {
     style.textContent = `
 
         /* =================================================
-           IMPORTAR TIPOGRAFÍA DE MARCA
+           FUENTE DEL LOGO
         ================================================= */
 
         @import url(
-            'https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap'
+            'https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,900;1,900&display=swap'
         );
 
 
         /* =================================================
-           FOOTER PRINCIPAL
+           FOOTER
         ================================================= */
 
         .satori-footer {
@@ -194,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =================================================
-           CONTENIDO
+           CONTENIDO PRINCIPAL
         ================================================= */
 
         .satori-footer-main {
@@ -232,50 +238,61 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        /*
-         * SATORII
-         *
-         * Tipografía más condensada y fuerte,
-         * inspirada en la estética de la marca.
-         */
+        /* =================================================
+           LOGO SATORII
 
-  .satori-footer-logo {
-    display: inline-block;
+           Condensado
+           Extra Bold
+           Itálico
+           Compacto
+        ================================================= */
 
-    color: #ffffff;
-    text-decoration: none;
+        .satori-footer-logo {
 
-    font-family:
-        "Roboto Condensed",
-        "Arial Narrow",
-        Arial,
-        sans-serif;
+            display: inline-block;
 
-    font-size: 28px;
-    line-height: .9;
+            color: #ffffff;
 
-    font-weight: 900;
-    font-style: italic;
+            text-decoration: none;
 
-    letter-spacing: -0.06em;
+            font-family:
+                "Roboto Condensed",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
 
-    transform: scaleX(.88);
-    transform-origin: left center;
-}
+            font-size: 29px;
 
-        /*
-         * KANJI
-         */
+            line-height: .88;
+
+            font-weight: 900;
+
+            font-style: italic;
+
+            letter-spacing: -.075em;
+
+            transform:
+                scaleX(.88);
+
+            transform-origin:
+                left center;
+
+        }
+
+
+        /* =================================================
+           KANJI
+        ================================================= */
 
         .satori-footer-kanji {
 
-            margin-top: 8px;
+            margin-top: 9px;
 
             color: #ff003c;
 
             font-family:
                 Arial,
-                'Noto Sans JP',
+                "Noto Sans JP",
                 sans-serif;
 
             font-size: 14px;
@@ -286,6 +303,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+
+        /* =================================================
+           DESCRIPCIÓN
+        ================================================= */
 
         .satori-footer-brand p {
 
@@ -452,9 +473,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 width:
                     calc(100% - 28px);
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: flex-start;
+                align-items:
+                    flex-start;
 
                 gap: 8px;
 
