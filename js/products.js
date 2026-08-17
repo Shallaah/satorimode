@@ -5793,28 +5793,20 @@ function main() {
         "========================================"
     );
 
+    const products =
+        loadProducts();
+
     console.log(
-    `SatoriMode · ${PRODUCTS.length} producto(s) cargado(s).`
-);
-
-
-if (typeof module !== "undefined") {
-    module.exports = PRODUCTS;
-}
+        `SatoriMode · ${products.length} producto(s) cargado(s).`
+    );
 
     console.log(
         "========================================"
     );
 
-
-    const products =
-        loadProducts();
-
-
     console.log(
         `Productos encontrados: ${products.length}`
     );
-
 
     /*
      * Primero comprobamos las imágenes.
@@ -5824,7 +5816,6 @@ if (typeof module !== "undefined") {
         products
     );
 
-
     fs.mkdirSync(
         OUTPUT_DIR,
         {
@@ -5833,17 +5824,14 @@ if (typeof module !== "undefined") {
         }
     );
 
-
     /*
      * Eliminamos las páginas anteriores.
      */
 
     cleanGeneratedProducts();
 
-
     let generated =
         0;
-
 
     products.forEach(
         function (product) {
@@ -5857,7 +5845,6 @@ if (typeof module !== "undefined") {
 
             }
 
-
             try {
 
                 const output =
@@ -5866,10 +5853,8 @@ if (typeof module !== "undefined") {
                         products
                     );
 
-
                 generated +=
                     1;
-
 
                 console.log(
                     `✓ ${output}`
@@ -5888,7 +5873,6 @@ if (typeof module !== "undefined") {
                     }`
                 );
 
-
                 throw error;
 
             }
@@ -5896,22 +5880,17 @@ if (typeof module !== "undefined") {
         }
     );
 
-
     console.log(
         "========================================"
     );
 
-
     console.log(
         `Páginas generadas: ${generated}`
     );
-
 
     console.log(
         "========================================"
     );
 
 }
-
-
 main();
