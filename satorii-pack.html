@@ -18,10 +18,10 @@
 
     <meta
         name="description"
-        content="SATORII PACK — Descubre, sorpréndete y colecciona."
+        content="SATORII PACK — Una experiencia para descubrir, sorprenderte y coleccionar."
     >
 
-    <title>Satorii Pack | SATORII</title>
+    <title>SATORII PACK | SATORII</title>
 
     <link
         rel="stylesheet"
@@ -35,7 +35,7 @@
            SATORII PACK
         ====================================================== */
 
-        .satorii-pack-page {
+        .satori-pack-page {
 
             width: min(
                 var(--satori-content-width, 1800px),
@@ -59,34 +59,35 @@
            HERO
         ====================================================== */
 
-        .satorii-pack-hero {
-
-            min-height: 650px;
+        .satori-pack-hero {
 
             display: grid;
 
             grid-template-columns:
-                1fr 1fr;
+                minmax(0, .9fr)
+                minmax(0, 1.1fr);
 
             align-items: center;
 
-            gap: 60px;
+            min-height: 650px;
 
-            padding: 90px 30px 80px;
+            gap: 70px;
+
+            padding: 80px 30px;
 
             box-sizing: border-box;
 
         }
 
 
-        .satorii-pack-hero-content {
+        .satori-pack-hero-content {
 
-            max-width: 650px;
+            max-width: 620px;
 
         }
 
 
-        .satorii-pack-label {
+        .satori-pack-eyebrow {
 
             margin-bottom: 22px;
 
@@ -98,26 +99,26 @@
 
             font-size: 10px;
 
-            font-weight: 800;
+            font-weight: 900;
 
             letter-spacing: 4px;
 
         }
 
 
-        .satorii-pack-hero h1 {
+        .satori-pack-hero h1 {
 
             margin: 0;
 
             color: #111;
 
             font-size: clamp(
-                52px,
+                55px,
                 7vw,
-                92px
+                100px
             );
 
-            line-height: .9;
+            line-height: .86;
 
             font-weight: 900;
 
@@ -126,7 +127,7 @@
         }
 
 
-        .satorii-pack-hero h1 span {
+        .satori-pack-hero h1 span {
 
             display: block;
 
@@ -139,32 +140,32 @@
         }
 
 
-        .satorii-pack-hero-text {
+        .satori-pack-hero-description {
 
-            max-width: 530px;
+            max-width: 500px;
 
-            margin-top: 30px;
+            margin: 30px 0 0;
 
             color: #666;
 
-            font-size: 15px;
+            font-size: 14px;
 
-            line-height: 1.75;
+            line-height: 1.8;
 
         }
 
 
-        .satorii-pack-hero-button {
+        .satori-pack-hero-button {
 
             display: inline-flex;
 
             align-items: center;
 
-            justify-content: center;
+            gap: 15px;
 
-            margin-top: 32px;
+            margin-top: 30px;
 
-            padding: 14px 25px;
+            padding: 15px 23px;
 
             background: #111;
 
@@ -172,7 +173,7 @@
 
             text-decoration: none;
 
-            font-size: 11px;
+            font-size: 10px;
 
             font-weight: 800;
 
@@ -185,7 +186,16 @@
         }
 
 
-        .satorii-pack-hero-button:hover {
+        .satori-pack-hero-button::after {
+
+            content: "↓";
+
+            font-size: 14px;
+
+        }
+
+
+        .satori-pack-hero-button:hover {
 
             background:
                 var(
@@ -199,31 +209,34 @@
 
 
         /* =====================================================
-           IMAGEN HERO
+           HERO IMAGEN
         ====================================================== */
 
-        .satorii-pack-hero-image {
+        .satori-pack-hero-visual {
 
             position: relative;
 
             width: 100%;
 
-            aspect-ratio: 1 / 1;
+        }
 
-            display: flex;
 
-            align-items: center;
+        .satori-pack-hero-image {
 
-            justify-content: center;
+            position: relative;
 
-            background: #f5f5f5;
+            width: 100%;
+
+            aspect-ratio: 1.15 / 1;
 
             overflow: hidden;
+
+            background: #f4f4f4;
 
         }
 
 
-        .satorii-pack-hero-image::before {
+        .satori-pack-hero-image::before {
 
             content: "";
 
@@ -233,9 +246,11 @@
 
             left: 0;
 
-            width: 90px;
+            z-index: 2;
 
-            height: 2px;
+            width: 100px;
+
+            height: 3px;
 
             background:
                 var(
@@ -246,45 +261,229 @@
         }
 
 
-        .satorii-pack-hero-image img {
+        .satori-pack-hero-image img {
 
             width: 100%;
 
             height: 100%;
 
+            display: block;
+
             object-fit: cover;
 
-            display: block;
+            transition:
+                transform .6s ease;
+
+        }
+
+
+        .satori-pack-hero-image:hover img {
+
+            transform: scale(1.02);
+
+        }
+
+
+        .satori-pack-hero-number {
+
+            position: absolute;
+
+            right: 18px;
+
+            bottom: 14px;
+
+            z-index: 3;
+
+            color: rgba(
+                255,
+                255,
+                255,
+                .9
+            );
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
 
         }
 
 
         /* =====================================================
-           BENEFICIOS
+           FRASE DE MARCA
         ====================================================== */
 
-        .satorii-pack-benefits {
+        .satori-pack-statement {
 
-            display: grid;
+            padding: 75px 30px;
 
-            grid-template-columns:
-                repeat(
-                    4,
-                    minmax(0, 1fr)
-                );
+            background: #111;
 
-            border-top: 1px solid #ddd;
+            color: #fff;
 
-            border-bottom: 1px solid #ddd;
+            text-align: center;
 
         }
 
 
-        .satorii-pack-benefit {
+        .satori-pack-statement p {
 
-            min-height: 150px;
+            max-width: 900px;
 
-            padding: 30px 25px;
+            margin: 0 auto;
+
+            font-size: clamp(
+                25px,
+                4vw,
+                48px
+            );
+
+            line-height: 1.05;
+
+            font-weight: 900;
+
+            letter-spacing: -2px;
+
+        }
+
+
+        .satori-pack-statement span {
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+        }
+
+
+        /* =====================================================
+           INTRO
+        ====================================================== */
+
+        .satori-pack-intro {
+
+            padding: 125px 30px 75px;
+
+        }
+
+
+        .satori-pack-intro-label {
+
+            margin-bottom: 15px;
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .satori-pack-intro h2 {
+
+            max-width: 800px;
+
+            margin: 0;
+
+            color: #111;
+
+            font-size: clamp(
+                42px,
+                6vw,
+                75px
+            );
+
+            line-height: .92;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+
+        }
+
+
+        .satori-pack-intro h2 span {
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+        }
+
+
+        .satori-pack-intro p {
+
+            max-width: 620px;
+
+            margin: 28px 0 0;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.75;
+
+        }
+
+
+        /* =====================================================
+           CONTENIDO DEL PACK
+        ====================================================== */
+
+        .satori-pack-content {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.2fr)
+                minmax(300px, .8fr);
+
+            gap: 50px;
+
+            align-items: stretch;
+
+            padding: 0 30px 125px;
+
+        }
+
+
+        .satori-pack-content-image {
+
+            min-height: 600px;
+
+            overflow: hidden;
+
+            background: #f4f4f4;
+
+        }
+
+
+        .satori-pack-content-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+        }
+
+
+        .satori-pack-content-list {
 
             display: flex;
 
@@ -292,23 +491,28 @@
 
             justify-content: center;
 
-            box-sizing: border-box;
+        }
 
-            border-right: 1px solid #ddd;
+
+        .satori-pack-content-item {
+
+            padding: 28px 0;
+
+            border-top: 1px solid #ddd;
 
         }
 
 
-        .satorii-pack-benefit:last-child {
+        .satori-pack-content-item:last-child {
 
-            border-right: none;
+            border-bottom: 1px solid #ddd;
 
         }
 
 
-        .satorii-pack-benefit-number {
+        .satori-pack-content-number {
 
-            margin-bottom: 12px;
+            margin-bottom: 10px;
 
             color:
                 var(
@@ -325,57 +529,65 @@
         }
 
 
-        .satorii-pack-benefit h2 {
+        .satori-pack-content-item h3 {
 
             margin: 0 0 8px;
 
             color: #111;
 
-            font-size: 14px;
+            font-size: 19px;
 
-            font-weight: 800;
+            font-weight: 900;
 
         }
 
 
-        .satorii-pack-benefit p {
+        .satori-pack-content-item p {
+
+            max-width: 430px;
 
             margin: 0;
 
             color: #777;
 
-            font-size: 11px;
+            font-size: 12px;
 
-            line-height: 1.6;
+            line-height: 1.7;
 
         }
 
 
         /* =====================================================
-           SECCIÓN CONTENIDO
+           SECCIÓN "QUÉ PUEDES ENCONTRAR"
         ====================================================== */
 
-        .satorii-pack-content {
+        .satori-pack-discover {
 
-            padding-top: 130px;
-
-            padding-bottom: 130px;
+            padding: 0 30px 125px;
 
         }
 
 
-        .satorii-pack-section-intro {
+        .satori-pack-discover-header {
 
-            max-width: 700px;
+            display: flex;
 
-            margin-bottom: 70px;
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            margin-bottom: 40px;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #ddd;
 
         }
 
 
-        .satorii-pack-section-label {
+        .satori-pack-discover-label {
 
-            margin-bottom: 15px;
+            margin-bottom: 8px;
 
             color:
                 var(
@@ -385,65 +597,38 @@
 
             font-size: 10px;
 
-            font-weight: 800;
+            font-weight: 900;
 
-            letter-spacing: 4px;
+            letter-spacing: 3px;
 
         }
 
 
-        .satorii-pack-section-intro h2 {
+        .satori-pack-discover-header h2 {
 
             margin: 0;
 
             color: #111;
 
-            font-size: clamp(
-                38px,
-                5vw,
-                65px
-            );
-
-            line-height: .95;
+            font-size: 28px;
 
             font-weight: 900;
 
-            letter-spacing: -3px;
+            letter-spacing: -1px;
 
         }
 
 
-        .satorii-pack-section-intro h2 span {
+        .satori-pack-discover-note {
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            color: #888;
+
+            font-size: 11px;
 
         }
 
 
-        .satorii-pack-section-intro p {
-
-            max-width: 600px;
-
-            margin: 25px 0 0;
-
-            color: #666;
-
-            font-size: 14px;
-
-            line-height: 1.7;
-
-        }
-
-
-        /* =====================================================
-           CONTENIDO DEL PACK
-        ====================================================== */
-
-        .satorii-pack-items {
+        .satori-pack-discover-grid {
 
             display: grid;
 
@@ -453,24 +638,24 @@
                     minmax(0, 1fr)
                 );
 
-            gap: 18px;
+            gap: 15px;
 
         }
 
 
-        .satorii-pack-item {
+        .satori-pack-discover-card {
 
-            min-height: 300px;
+            min-height: 270px;
 
-            padding: 30px;
+            padding: 28px;
 
             display: flex;
 
             flex-direction: column;
 
-            justify-content: flex-end;
+            justify-content: space-between;
 
-            background: #f6f6f6;
+            background: #f5f5f5;
 
             box-sizing: border-box;
 
@@ -481,18 +666,16 @@
         }
 
 
-        .satorii-pack-item:hover {
+        .satori-pack-discover-card:hover {
 
-            transform: translateY(-5px);
+            transform: translateY(-4px);
 
-            background: #f0f0f0;
+            background: #eeeeee;
 
         }
 
 
-        .satorii-pack-item-number {
-
-            margin-bottom: auto;
+        .satori-pack-discover-card-number {
 
             color: #bbb;
 
@@ -503,26 +686,26 @@
         }
 
 
-        .satorii-pack-item h3 {
+        .satori-pack-discover-card h3 {
 
             margin: 0 0 10px;
 
             color: #111;
 
-            font-size: 18px;
+            font-size: 17px;
 
-            font-weight: 800;
+            font-weight: 900;
 
         }
 
 
-        .satorii-pack-item p {
+        .satori-pack-discover-card p {
 
             margin: 0;
 
             color: #666;
 
-            font-size: 12px;
+            font-size: 11px;
 
             line-height: 1.65;
 
@@ -533,45 +716,43 @@
            EXPERIENCIA
         ====================================================== */
 
-        .satorii-pack-experience {
+        .satori-pack-experience {
 
             display: grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            min-height: 500px;
+            min-height: 570px;
 
-            margin-bottom: 130px;
+            margin-bottom: 125px;
 
         }
 
 
-        .satorii-pack-experience-image {
-
-            min-height: 500px;
-
-            background: #f3f3f3;
+        .satori-pack-experience-image {
 
             overflow: hidden;
 
+            background: #eee;
+
         }
 
 
-        .satorii-pack-experience-image img {
+        .satori-pack-experience-image img {
 
             width: 100%;
 
             height: 100%;
 
-            object-fit: cover;
-
             display: block;
+
+            object-fit: cover;
 
         }
 
 
-        .satorii-pack-experience-content {
+        .satori-pack-experience-content {
 
             padding: 70px;
 
@@ -590,9 +771,9 @@
         }
 
 
-        .satorii-pack-experience-label {
+        .satori-pack-experience-label {
 
-            margin-bottom: 15px;
+            margin-bottom: 18px;
 
             color:
                 var(
@@ -601,106 +782,25 @@
                 );
 
             font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 4px;
-
-        }
-
-
-        .satorii-pack-experience-content h2 {
-
-            margin: 0;
-
-            font-size: clamp(
-                38px,
-                5vw,
-                65px
-            );
-
-            line-height: .95;
 
             font-weight: 900;
 
-            letter-spacing: -3px;
-
-        }
-
-
-        .satorii-pack-experience-content h2 span {
-
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
-
-        }
-
-
-        .satorii-pack-experience-content p {
-
-            max-width: 500px;
-
-            margin: 25px 0 0;
-
-            color: #bbb;
-
-            font-size: 14px;
-
-            line-height: 1.75;
-
-        }
-
-
-        /* =====================================================
-           FINAL
-        ====================================================== */
-
-        .satorii-pack-final {
-
-            padding: 100px 30px;
-
-            text-align: center;
-
-            border-top: 1px solid #ddd;
-
-        }
-
-
-        .satorii-pack-final-label {
-
-            margin-bottom: 15px;
-
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
-
-            font-size: 10px;
-
-            font-weight: 800;
-
             letter-spacing: 4px;
 
         }
 
 
-        .satorii-pack-final h2 {
+        .satori-pack-experience-content h2 {
 
             margin: 0;
 
-            color: #111;
-
             font-size: clamp(
                 40px,
-                6vw,
-                78px
+                5vw,
+                68px
             );
 
-            line-height: .95;
+            line-height: .92;
 
             font-weight: 900;
 
@@ -709,7 +809,9 @@
         }
 
 
-        .satorii-pack-final h2 span {
+        .satori-pack-experience-content h2 span {
+
+            display: block;
 
             color:
                 var(
@@ -720,15 +822,94 @@
         }
 
 
-        .satorii-pack-final p {
+        .satori-pack-experience-content p {
 
-            max-width: 560px;
+            max-width: 500px;
+
+            margin: 28px 0 0;
+
+            color: #bbb;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           FINAL
+        ====================================================== */
+
+        .satori-pack-final {
+
+            padding: 0 30px 125px;
+
+            text-align: center;
+
+        }
+
+
+        .satori-pack-final-line {
+
+            width: 60px;
+
+            height: 2px;
+
+            margin: 0 auto 25px;
+
+            background:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+        }
+
+
+        .satori-pack-final h2 {
+
+            max-width: 950px;
+
+            margin: 0 auto;
+
+            color: #111;
+
+            font-size: clamp(
+                42px,
+                6vw,
+                80px
+            );
+
+            line-height: .9;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+
+        }
+
+
+        .satori-pack-final h2 span {
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+        }
+
+
+        .satori-pack-final p {
+
+            max-width: 550px;
 
             margin: 25px auto 0;
 
             color: #666;
 
-            font-size: 14px;
+            font-size: 13px;
 
             line-height: 1.7;
 
@@ -741,69 +922,26 @@
 
         @media (max-width: 1000px) {
 
-            .satorii-pack-hero {
+            .satori-pack-hero {
 
                 grid-template-columns:
                     1fr;
 
                 gap: 45px;
 
-                padding-top: 70px;
+                min-height: auto;
 
             }
 
 
-            .satorii-pack-hero-content {
+            .satori-pack-hero-content {
 
                 max-width: 700px;
 
             }
 
 
-            .satorii-pack-hero-image {
-
-                max-width: 650px;
-
-            }
-
-
-            .satorii-pack-benefits {
-
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0, 1fr)
-                    );
-
-            }
-
-
-            .satorii-pack-benefit:nth-child(2) {
-
-                border-right: none;
-
-            }
-
-
-            .satorii-pack-benefit:nth-child(-n+2) {
-
-                border-bottom: 1px solid #ddd;
-
-            }
-
-
-            .satorii-pack-items {
-
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0, 1fr)
-                    );
-
-            }
-
-
-            .satorii-pack-experience {
+            .satori-pack-content {
 
                 grid-template-columns:
                     1fr;
@@ -811,7 +949,33 @@
             }
 
 
-            .satorii-pack-experience-image {
+            .satori-pack-content-image {
+
+                min-height: 500px;
+
+            }
+
+
+            .satori-pack-discover-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+
+            }
+
+
+            .satori-pack-experience {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .satori-pack-experience-image {
 
                 min-height: 450px;
 
@@ -826,7 +990,7 @@
 
         @media (max-width: 700px) {
 
-            .satorii-pack-page {
+            .satori-pack-page {
 
                 width:
                     calc(
@@ -836,106 +1000,116 @@
             }
 
 
-            .satorii-pack-hero {
+            .satori-pack-hero {
 
-                min-height: auto;
-
-                padding: 70px 0 60px;
+                padding: 70px 0 55px;
 
                 gap: 35px;
 
             }
 
 
-            .satorii-pack-hero h1 {
+            .satori-pack-hero h1 {
 
-                font-size: 58px;
+                font-size: 57px;
 
                 letter-spacing: -3px;
 
             }
 
 
-            .satorii-pack-hero-text {
+            .satori-pack-hero-description {
 
                 font-size: 13px;
 
             }
 
 
-            .satorii-pack-hero-image {
+            .satori-pack-hero-image {
 
                 aspect-ratio: 1 / 1;
 
             }
 
 
-            .satorii-pack-benefits {
+            .satori-pack-statement {
 
-                grid-template-columns:
-                    1fr;
+                margin-left: -15px;
 
-            }
+                margin-right: -15px;
 
-
-            .satorii-pack-benefit {
-
-                min-height: 125px;
-
-                border-right: none;
-
-                border-bottom: 1px solid #ddd;
+                padding: 55px 25px;
 
             }
 
 
-            .satorii-pack-benefit:last-child {
+            .satori-pack-statement p {
 
-                border-bottom: none;
+                font-size: 28px;
 
-            }
-
-
-            .satorii-pack-benefit:nth-child(2) {
-
-                border-right: none;
+                letter-spacing: -1px;
 
             }
 
 
-            .satorii-pack-benefit:nth-child(-n+2) {
+            .satori-pack-intro {
 
-                border-bottom: 1px solid #ddd;
-
-            }
-
-
-            .satorii-pack-content {
-
-                padding-top: 90px;
-
-                padding-bottom: 90px;
+                padding: 85px 0 50px;
 
             }
 
 
-            .satorii-pack-section-intro {
+            .satori-pack-intro h2 {
 
-                margin-bottom: 45px;
-
-            }
-
-
-            .satorii-pack-section-intro h2 {
-
-                font-size: 42px;
+                font-size: 43px;
 
                 letter-spacing: -2px;
 
             }
 
 
-            .satorii-pack-items {
+            .satori-pack-content {
+
+                padding: 0 0 85px;
+
+                gap: 35px;
+
+            }
+
+
+            .satori-pack-content-image {
+
+                min-height: 350px;
+
+            }
+
+
+            .satori-pack-content-item {
+
+                padding: 24px 0;
+
+            }
+
+
+            .satori-pack-discover {
+
+                padding: 0 0 85px;
+
+            }
+
+
+            .satori-pack-discover-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 8px;
+
+            }
+
+
+            .satori-pack-discover-grid {
 
                 grid-template-columns:
                     1fr 1fr;
@@ -945,69 +1119,73 @@
             }
 
 
-            .satorii-pack-item {
+            .satori-pack-discover-card {
 
-                min-height: 240px;
+                min-height: 230px;
 
-                padding: 22px;
-
-            }
-
-
-            .satorii-pack-item h3 {
-
-                font-size: 15px;
+                padding: 20px;
 
             }
 
 
-            .satorii-pack-item p {
+            .satori-pack-discover-card h3 {
 
-                font-size: 11px;
-
-            }
-
-
-            .satorii-pack-experience {
-
-                margin-bottom: 90px;
+                font-size: 14px;
 
             }
 
 
-            .satorii-pack-experience-image {
+            .satori-pack-discover-card p {
+
+                font-size: 10px;
+
+            }
+
+
+            .satori-pack-experience {
+
+                margin-left: -15px;
+
+                margin-right: -15px;
+
+                margin-bottom: 85px;
+
+            }
+
+
+            .satori-pack-experience-image {
 
                 min-height: 330px;
 
             }
 
 
-            .satorii-pack-experience-content {
+            .satori-pack-experience-content {
 
-                padding: 45px 25px;
+                padding: 50px 25px;
 
             }
 
 
-            .satorii-pack-experience-content h2 {
+            .satori-pack-experience-content h2 {
 
-                font-size: 42px;
+                font-size: 43px;
 
                 letter-spacing: -2px;
 
             }
 
 
-            .satorii-pack-final {
+            .satori-pack-final {
 
-                padding: 75px 0;
+                padding: 0 0 85px;
 
             }
 
 
-            .satorii-pack-final h2 {
+            .satori-pack-final h2 {
 
-                font-size: 45px;
+                font-size: 46px;
 
                 letter-spacing: -2px;
 
@@ -1032,58 +1210,78 @@
 
     <main>
 
-        <div class="satorii-pack-page">
+
+        <div class="satori-pack-page">
 
 
             <!-- =================================================
                  HERO
             ================================================== -->
 
-            <section class="satorii-pack-hero">
+            <section class="satori-pack-hero">
 
 
-                <div class="satorii-pack-hero-content">
+                <div class="satori-pack-hero-content">
 
 
-                    <div class="satorii-pack-label">
+                    <div class="satori-pack-eyebrow">
                         SATORII · SPECIAL EXPERIENCE
                     </div>
 
 
                     <h1>
+
                         Descubre.
-                        <span>Sorpréndete.</span>
+
+                        <span>
+                            Sorpréndete.
+                        </span>
+
                         Colecciona.
+
                     </h1>
 
 
-                    <p class="satorii-pack-hero-text">
+                    <p class="satori-pack-hero-description">
 
-                        SATORII PACK es una experiencia creada
-                        para descubrir productos seleccionados,
-                        accesorios, coleccionables y sorpresas
-                        inspiradas en el anime y la cultura asiática.
+                        SATORII PACK nace para convertir
+                        una compra en una experiencia.
+
+                        Una selección de productos,
+                        accesorios y sorpresas inspiradas
+                        en el anime, la cultura asiática
+                        y todo aquello que nos apasiona.
 
                     </p>
 
 
                     <a
                         href="#contenido"
-                        class="satorii-pack-hero-button"
+                        class="satori-pack-hero-button"
                     >
-                        CONOCE EL PACK
+                        DESCUBRE QUÉ HAY DENTRO
                     </a>
 
 
                 </div>
 
 
-                <div class="satorii-pack-hero-image">
+                <div class="satori-pack-hero-visual">
 
-                    <img
-                        src="img/productos/satorii-pack/hero.jpg"
-                        alt="SATORII PACK"
-                    >
+
+                    <div class="satori-pack-hero-image">
+
+                        <img
+                            src="img/productos/satorii-pack/hero.jpg"
+                            alt="SATORII PACK"
+                        >
+
+                        <div class="satori-pack-hero-number">
+                            SATORII / 01
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -1092,82 +1290,55 @@
 
 
             <!-- =================================================
-                 BENEFICIOS
+                 STATEMENT
             ================================================== -->
 
-            <section class="satorii-pack-benefits">
+            <section class="satori-pack-statement">
+
+                <p>
+
+                    NO ES SOLO LO QUE
+                    HAY DENTRO.
+
+                    <span>
+                        ES LA EXPERIENCIA
+                        DE DESCUBRIRLO.
+                    </span>
+
+                </p>
+
+            </section>
 
 
-                <article class="satorii-pack-benefit">
+            <!-- =================================================
+                 INTRO
+            ================================================== -->
 
-                    <div class="satorii-pack-benefit-number">
-                        01
-                    </div>
-
-                    <h2>
-                        PRODUCTOS SELECCIONADOS
-                    </h2>
-
-                    <p>
-                        Una selección pensada especialmente
-                        para cada experiencia SATORII PACK.
-                    </p>
-
-                </article>
+            <section class="satori-pack-intro">
 
 
-                <article class="satorii-pack-benefit">
-
-                    <div class="satorii-pack-benefit-number">
-                        02
-                    </div>
-
-                    <h2>
-                        SIEMPRE HAY MÁS
-                    </h2>
-
-                    <p>
-                        Cada edición puede traer diferentes
-                        productos y temáticas.
-                    </p>
-
-                </article>
+                <div class="satori-pack-intro-label">
+                    SATORII PACK
+                </div>
 
 
-                <article class="satorii-pack-benefit">
+                <h2>
 
-                    <div class="satorii-pack-benefit-number">
-                        03
-                    </div>
+                    ¿QUÉ PUEDES
+                    <span>ENCONTRAR?</span>
 
-                    <h2>
-                        PARA COLECCIONAR
-                    </h2>
-
-                    <p>
-                        Productos y accesorios pensados para
-                        quienes disfrutan coleccionar.
-                    </p>
-
-                </article>
+                </h2>
 
 
-                <article class="satorii-pack-benefit">
+                <p>
 
-                    <div class="satorii-pack-benefit-number">
-                        04
-                    </div>
+                    Cada SATORII PACK puede reunir diferentes
+                    productos según su temática y edición.
+                    La idea es que cada apertura sea una nueva
+                    oportunidad para descubrir algo que quieras
+                    conservar.
 
-                    <h2>
-                        UNA EXPERIENCIA
-                    </h2>
-
-                    <p>
-                        Porque abrir un SATORII PACK también
-                        es parte de la diversión.
-                    </p>
-
-                </article>
+                </p>
 
 
             </section>
@@ -1178,39 +1349,169 @@
             ================================================== -->
 
             <section
-                class="satorii-pack-content"
+                class="satori-pack-content"
                 id="contenido"
             >
 
 
-                <div class="satorii-pack-section-intro">
+                <div class="satori-pack-content-image">
 
-                    <div class="satorii-pack-section-label">
-                        ¿QUÉ CONTIENE?
-                    </div>
-
-
-                    <h2>
-                        TODO LO QUE
-                        <span>PUEDES DESCUBRIR.</span>
-                    </h2>
-
-
-                    <p>
-                        Cada SATORII PACK está pensado para
-                        combinar diferentes tipos de productos
-                        y crear una experiencia única al abrirlo.
-                    </p>
+                    <img
+                        src="img/productos/satorii-pack/content.jpg"
+                        alt="Contenido del SATORII PACK"
+                        loading="lazy"
+                    >
 
                 </div>
 
 
-                <div class="satorii-pack-items">
+                <div class="satori-pack-content-list">
 
 
-                    <article class="satorii-pack-item">
+                    <article class="satori-pack-content-item">
 
-                        <div class="satorii-pack-item-number">
+
+                        <div class="satori-pack-content-number">
+                            01
+                        </div>
+
+
+                        <h3>
+                            PRODUCTOS SELECCIONADOS
+                        </h3>
+
+
+                        <p>
+
+                            Artículos escogidos de acuerdo
+                            con la temática de cada edición.
+
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="satori-pack-content-item">
+
+
+                        <div class="satori-pack-content-number">
+                            02
+                        </div>
+
+
+                        <h3>
+                            ACCESORIOS
+                        </h3>
+
+
+                        <p>
+
+                            Llaveros, pequeños artículos,
+                            papelería y otros detalles que
+                            pueden acompañar tu colección.
+
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="satori-pack-content-item">
+
+
+                        <div class="satori-pack-content-number">
+                            03
+                        </div>
+
+
+                        <h3>
+                            COLECCIONABLES
+                        </h3>
+
+
+                        <p>
+
+                            Piezas pensadas para quienes
+                            disfrutan encontrar algo especial
+                            para guardar.
+
+                        </p>
+
+
+                    </article>
+
+
+                    <article class="satori-pack-content-item">
+
+
+                        <div class="satori-pack-content-number">
+                            04
+                        </div>
+
+
+                        <h3>
+                            UNA SORPRESA
+                        </h3>
+
+
+                        <p>
+
+                            Porque no todo tiene que estar
+                            revelado. Parte de SATORII PACK
+                            es descubrir qué hay dentro.
+
+                        </p>
+
+
+                    </article>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 QUÉ PUEDES ENCONTRAR
+            ================================================== -->
+
+            <section class="satori-pack-discover">
+
+
+                <div class="satori-pack-discover-header">
+
+
+                    <div>
+
+                        <div class="satori-pack-discover-label">
+                            DENTRO DEL PACK
+                        </div>
+
+
+                        <h2>
+                            CADA EDICIÓN ES DIFERENTE.
+                        </h2>
+
+                    </div>
+
+
+                    <div class="satori-pack-discover-note">
+                        EL CONTENIDO PUEDE VARIAR
+                    </div>
+
+
+                </div>
+
+
+                <div class="satori-pack-discover-grid">
+
+
+                    <article class="satori-pack-discover-card">
+
+
+                        <div class="satori-pack-discover-card-number">
                             01
                         </div>
 
@@ -1218,23 +1519,28 @@
                         <div>
 
                             <h3>
-                                PRODUCTO PRINCIPAL
+                                ANIME
                             </h3>
 
 
                             <p>
-                                Una pieza protagonista relacionada
-                                con la temática de la edición.
+
+                                Productos inspirados en
+                                algunas de las series y
+                                personajes que más nos gustan.
+
                             </p>
 
                         </div>
 
+
                     </article>
 
 
-                    <article class="satorii-pack-item">
+                    <article class="satori-pack-discover-card">
 
-                        <div class="satorii-pack-item-number">
+
+                        <div class="satori-pack-discover-card-number">
                             02
                         </div>
 
@@ -1242,23 +1548,28 @@
                         <div>
 
                             <h3>
-                                ACCESORIOS
+                                CULTURA ASIÁTICA
                             </h3>
 
 
                             <p>
-                                Llaveros, accesorios, papelería
-                                u otros artículos seleccionados.
+
+                                Artículos relacionados con
+                                Japón, China y otras expresiones
+                                de la cultura asiática.
+
                             </p>
 
                         </div>
 
+
                     </article>
 
 
-                    <article class="satorii-pack-item">
+                    <article class="satori-pack-discover-card">
 
-                        <div class="satorii-pack-item-number">
+
+                        <div class="satori-pack-discover-card-number">
                             03
                         </div>
 
@@ -1266,23 +1577,28 @@
                         <div>
 
                             <h3>
-                                COLECCIONABLE
+                                COLECCIONABLES
                             </h3>
 
 
                             <p>
-                                Una pieza especial pensada para
-                                quienes disfrutan coleccionar.
+
+                                Figuras, pequeños objetos,
+                                accesorios y piezas pensadas
+                                para coleccionar.
+
                             </p>
 
                         </div>
 
+
                     </article>
 
 
-                    <article class="satorii-pack-item">
+                    <article class="satori-pack-discover-card">
 
-                        <div class="satorii-pack-item-number">
+
+                        <div class="satori-pack-discover-card-number">
                             04
                         </div>
 
@@ -1290,21 +1606,26 @@
                         <div>
 
                             <h3>
-                                SORPRESA
+                                SORPRESAS
                             </h3>
 
 
                             <p>
-                                Un detalle especial que descubrirás
-                                solamente al abrir tu pack.
+
+                                Detalles inesperados que hacen
+                                que abrir cada pack sea parte
+                                de la experiencia.
+
                             </p>
 
                         </div>
+
 
                     </article>
 
 
                 </div>
+
 
             </section>
 
@@ -1313,44 +1634,55 @@
                  EXPERIENCIA
             ================================================== -->
 
-            <section class="satorii-pack-experience">
+            <section class="satori-pack-experience">
 
 
-                <div class="satorii-pack-experience-image">
+                <div class="satori-pack-experience-image">
 
                     <img
-                        src="img/productos/satorii-pack/content.jpg"
-                        alt="Contenido SATORII PACK"
+                        src="img/productos/satorii-pack/open-pack.jpg"
+                        alt="Abriendo un SATORII PACK"
+                        loading="lazy"
                     >
 
                 </div>
 
 
-                <div class="satorii-pack-experience-content">
+                <div class="satori-pack-experience-content">
 
 
-                    <div class="satorii-pack-experience-label">
-                        MÁS QUE UN PACK
+                    <div class="satori-pack-experience-label">
+                        LA EXPERIENCIA
                     </div>
 
 
                     <h2>
+
                         ABRIRLO
-                        <span>ES PARTE</span>
+
+                        <span>
+                            ES PARTE
+                        </span>
+
                         DE LA EXPERIENCIA.
+
                     </h2>
 
 
                     <p>
-                        Queremos que recibir un SATORII PACK
-                        sea diferente a comprar cualquier otro
-                        producto. Desde el momento en que llega
-                        hasta descubrir qué contiene, cada detalle
-                        forma parte de la experiencia SATORII.
+
+                        Queremos que SATORII PACK sea más
+                        que una caja con productos.
+
+                        Desde recibirlo hasta descubrir cada
+                        elemento, buscamos crear una experiencia
+                        que quieras repetir y compartir.
+
                     </p>
 
 
                 </div>
+
 
             </section>
 
@@ -1359,23 +1691,29 @@
                  FINAL
             ================================================== -->
 
-            <section class="satorii-pack-final">
+            <section class="satori-pack-final">
 
 
-                <div class="satorii-pack-final-label">
-                    SATORII PACK
-                </div>
+                <div class="satori-pack-final-line"></div>
 
 
                 <h2>
-                    DESCUBRE.
-                    <span>COLECCIONA.</span>
+
+                    NO SABES EXACTAMENTE
+                    QUÉ ENCONTRARÁS.
+
+                    <span>
+                        PERO SABES QUE SERÁ SATORII.
+                    </span>
+
                 </h2>
 
 
                 <p>
-                    Una caja. Una experiencia.
-                    Una nueva forma de descubrir SATORII.
+
+                    Descubre una nueva forma de disfrutar
+                    tus productos favoritos.
+
                 </p>
 
 
