@@ -244,9 +244,9 @@
                             </a>
 
                             <a
-                                href="${SATORIMODE_BASE}accesorios.html"
+                                href="${SATORIMODE_BASE}anime-goods.html"
                             >
-                                Accesorios
+                                Anime Goods
                             </a>
 
                             <a
@@ -572,9 +572,9 @@
                     </a>
 
                     <a
-                        href="${SATORIMODE_BASE}accesorios.html"
+                        href="${SATORIMODE_BASE}anime-goods.html"
                     >
-                        Accesorios
+                        Anime Goods
                     </a>
 
                     <a
