@@ -365,6 +365,24 @@
                 <div class="header-icons">
 
 
+                    <!-- BUSCADOR INLINE -->
+
+                    <form
+                        class="header-search-inline"
+                        id="satori-search-inline"
+                    >
+
+                        <input
+                            type="search"
+                            id="satori-search-inline-input"
+                            placeholder="¿Qué estás buscando?"
+                            autocomplete="off"
+                            aria-label="Buscar productos"
+                        >
+
+                    </form>
+
+
                     <!-- BUSCAR -->
 
                     <button
@@ -1187,6 +1205,52 @@
             display:flex;
             align-items:center;
             gap:3px;
+        }
+
+        /* =====================================================
+           BUSCADOR INLINE
+        ====================================================== */
+
+        #satori-header .header-search-inline {
+            display:flex;
+            align-items:center;
+            width:0;
+            max-width:0;
+            opacity:0;
+            overflow:hidden;
+            transition:
+                width .25s ease,
+                max-width .25s ease,
+                opacity .2s ease,
+                margin .25s ease;
+            margin-right:0;
+        }
+
+        #satori-header .header-search-inline.open {
+            width:220px;
+            max-width:220px;
+            opacity:1;
+            margin-right:2px;
+        }
+
+        #satori-header .header-search-inline input {
+            width:100%;
+            height:34px;
+            padding:0 10px;
+            border:0;
+            border-bottom:1px solid rgba(255,255,255,.65);
+            outline:none;
+            background:transparent;
+            color:#fff;
+            font-size:12px;
+        }
+
+        #satori-header .header-search-inline input::placeholder {
+            color:rgba(255,255,255,.65);
+        }
+
+        #satori-header .header-search-inline button {
+            display:none;
         }
 
         #satori-header .header-icon {
@@ -2030,7 +2094,7 @@ font-size:29px;
 
                 z-index:900001;
 
-                color:#111;
+                color:#fff;
 
                 transition:
                     color .2s ease;
@@ -2298,6 +2362,16 @@ font-size:29px;
         const searchForm =
             document.getElementById(
                 "satori-search-form"
+            );
+
+        const inlineSearch =
+            document.getElementById(
+                "satori-search-inline"
+            );
+
+        const inlineSearchInput =
+            document.getElementById(
+                "satori-search-inline-input"
             );
 
 
@@ -2620,6 +2694,10 @@ font-size:29px;
 
         function closeSearch() {
 
+            inlineSearch?.classList.remove(
+                "open"
+            );
+
             searchOverlay?.classList.remove(
                 "open"
             );
@@ -2759,31 +2837,18 @@ font-size:29px;
             closeDropdowns();
 
 
-            searchOverlay?.classList.add(
+            inlineSearch?.classList.add(
                 "open"
             );
-
-            searchOverlay?.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-            searchButton?.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-
-            updateBodyLock();
 
 
             setTimeout(
                 function () {
 
-                    searchInput?.focus();
+                    inlineSearchInput?.focus();
 
                 },
-                100
+                80
             );
 
         }
@@ -2893,7 +2958,21 @@ font-size:29px;
 
                 event.stopPropagation();
 
-                openSearch();
+                if (
+                    inlineSearch?.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    closeSearch();
+
+                }
+
+                else {
+
+                    openSearch();
+
+                }
 
             }
         );
@@ -3004,6 +3083,99 @@ font-size:29px;
                     encodeURIComponent(
                         query
                     );
+
+            }
+        );
+
+        /* =====================================================
+           BÚSQUEDA INLINE
+        ====================================================== */
+
+        inlineSearch?.addEventListener(
+            "submit",
+            function (
+                event
+            ) {
+
+                event.preventDefault();
+
+
+                const query =
+                    inlineSearchInput?.value.trim();
+
+
+                if (!query) {
+
+                    inlineSearchInput?.focus();
+
+                    return;
+
+                }
+
+
+                window.location.href =
+                    SATORIMODE_BASE +
+                    "productos.html?search=" +
+                    encodeURIComponent(
+                        query
+                    );
+
+            }
+        );
+
+
+        inlineSearchInput?.addEventListener(
+            "keydown",
+            function (
+                event
+            ) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeSearch();
+
+                    searchButton?.focus();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "click",
+            function (
+                event
+            ) {
+
+                if (
+                    !inlineSearch?.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    inlineSearch.contains(
+                        event.target
+                    ) ||
+                    searchButton?.contains(
+                        event.target
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                closeSearch();
 
             }
         );
