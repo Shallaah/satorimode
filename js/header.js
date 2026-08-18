@@ -322,23 +322,24 @@
                         <div class="dropdown-menu">
 
                             <a
-                                href="${SATORIMODE_BASE}preguntas-frecuentes.html"
-                            >
-                                Preguntas frecuentes
-                            </a>
-
-                            <a
-                                href="${SATORIMODE_BASE}envios.html"
-                            >
-                                Envíos
-                            </a>
-
-                            <a
                                 href="${SATORIMODE_BASE}cambios-y-devoluciones.html"
                             >
                                 Cambios y devoluciones
                             </a>
 
+                            <a
+                                href="${SATORIMODE_BASE}preguntas-frecuentes.html"
+                            >
+                                Preguntas frecuentes
+                            </a>
+
+                                                   
+                            <a
+                                href="${SATORIMODE_BASE}envios.html"
+                            >
+                                Envíos
+                            </a>
+                            
                             <a
                                 href="${SATORIMODE_BASE}guia-tallas.html"
                             >
@@ -644,6 +645,12 @@
                 >
 
                     <a
+                        href="${SATORIMODE_BASE}cambios.html"
+                    >
+                        Cambios y devoluciones
+                    </a>                    
+                    
+                    <a
                         href="${SATORIMODE_BASE}preguntas-frecuentes.html"
                     >
                         Preguntas frecuentes
@@ -655,12 +662,7 @@
                         Envíos
                     </a>
 
-                    <a
-                        href="${SATORIMODE_BASE}cambios.html"
-                    >
-                        Cambios y devoluciones
-                    </a>
-
+                   
                     <a
                         href="${SATORIMODE_BASE}guia-tallas.html"
                     >
