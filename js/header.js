@@ -294,12 +294,6 @@
                                 Regala Satorii
                             </a>
 
-                            <a
-                                href="${SATORIMODE_BASE}mystery-box.html"
-                            >
-                                Mystery Box
-                            </a>
-
                         </div>
 
                     </div>
@@ -623,12 +617,6 @@
                         href="${SATORIMODE_BASE}regala-satorii.html"
                     >
                         Regala Satorii
-                    </a>
-
-                    <a
-                        href="${SATORIMODE_BASE}mystery-box.html"
-                    >
-                        Mystery Box
                     </a>
 
                 </div>
