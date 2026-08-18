@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </h3>
 
         <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/satoriicl/"
             target="_blank"
             rel="noopener noreferrer"
             class="satori-instagram"
