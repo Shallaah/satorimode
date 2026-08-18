@@ -1848,7 +1848,7 @@ function generateProductCSS() {
             background:
                 #f5f5f5;
 
-            border: 10px solid #ddd;
+            border: none;
 
         }
 
