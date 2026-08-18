@@ -143,6 +143,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </div>
 
+</div>
+
             <!-- =========================================
                  PARTE INFERIOR
             ========================================== -->
