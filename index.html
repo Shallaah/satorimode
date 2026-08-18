@@ -87,15 +87,26 @@
                 id="hero-track"
             >
 
-                <article class="hero-slide">
+  <article class="hero-slide">
 
-                    <img
-                        src="img/banner-01.png"
-                        alt="Bienvenidos a Satorii"
-                        draggable="false"
-                    >
+    <picture>
 
-                </article>
+        <!-- 📱 VERSIÓN MÓVIL -->
+        <source
+            media="(max-width: 768px)"
+            srcset="img/banner-01-mobile.png"
+        >
+
+        <!-- 🖥️ VERSIÓN DESKTOP -->
+        <img
+            src="img/banner-01.png"
+            alt="Bienvenidos a Satorii"
+            draggable="false"
+        >
+
+    </picture>
+
+</article>
 
 
                 <article class="hero-slide">
