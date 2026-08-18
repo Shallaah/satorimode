@@ -149,114 +149,83 @@
 
         }
 
+/* =====================================================
+   KANJI DECORATIVO
+====================================================== */
 
-        /* Torii decorativo */
+.returns-kanji {
 
-        .returns-torii {
+    position: absolute;
 
-            position: absolute;
+    right: 35px;
 
-            right: 25px;
+    bottom: -45px;
 
-            bottom: -20px;
+    width: 390px;
 
-            width: 390px;
+    height: 390px;
 
-            height: 330px;
+    display: flex;
 
-            opacity: .13;
+    align-items: center;
 
-            pointer-events: none;
+    justify-content: center;
 
-        }
+    pointer-events: none;
 
+    user-select: none;
 
-        .returns-torii::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 38px;
-
-            left: 28px;
-
-            width: 334px;
-
-            height: 24px;
-
-            background: #111;
-
-            border-radius: 50%;
-
-            transform:
-                skewX(-7deg);
-
-        }
+}
 
 
-        .returns-torii::after {
+.returns-kanji span {
 
-            content: "";
+    position: relative;
 
-            position: absolute;
+    z-index: 2;
 
-            top: 62px;
+    color: #111;
 
-            left: 55px;
+    font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        Arial,
+        sans-serif;
 
-            width: 280px;
+    font-size: 330px;
 
-            height: 195px;
+    font-weight: 900;
 
-            border-left:
-                18px solid #111;
+    line-height: 1;
 
-            border-right:
-                18px solid #111;
+    opacity: .07;
 
-            border-top:
-                18px solid #111;
-
-        }
-
-
-        .returns-torii-bar {
-
-            position: absolute;
-
-            top: 115px;
-
-            left: 55px;
-
-            width: 280px;
-
-            height: 15px;
-
-            background: #111;
-
-        }
+}
 
 
-        .returns-torii-sun {
+/* Círculo rojo decorativo */
 
-            position: absolute;
+.returns-kanji-circle {
 
-            top: 0;
+    position: absolute;
 
-            right: 10px;
+    top: 35px;
 
-            width: 120px;
+    right: 5px;
 
-            height: 120px;
+    width: 125px;
 
-            background: #ff1b1b;
+    height: 125px;
 
-            border-radius: 50%;
+    background: #ff1b1b;
 
-        }
+    border-radius: 50%;
 
+    opacity: .12;
 
+}
+        
         /* =====================================================
            HELP NAV
         ====================================================== */
@@ -856,13 +825,15 @@
             }
 
 
-            .returns-torii {
+            .returns-kanji {
 
-                right: -70px;
+    right: -80px;
 
-                opacity: .08;
+    opacity: .8;
 
-            }
+    transform: scale(.85);
+
+}
 
         }
 
@@ -942,16 +913,16 @@
             }
 
 
-            .returns-torii {
+           .returns-kanji {
 
-                right: -120px;
+    right: -145px;
 
-                bottom: -10px;
+    bottom: -35px;
 
-                transform:
-                    scale(.85);
+    transform:
+        scale(.72);
 
-            }
+}
 
         }
 
@@ -1009,13 +980,13 @@
             </div>
 
 
-            <div class="returns-torii">
+            <div class="returns-kanji">
 
-                <div class="returns-torii-sun"></div>
+    <span>悟</span>
 
-                <div class="returns-torii-bar"></div>
+    <div class="returns-kanji-circle"></div>
 
-            </div>
+</div>
 
         </section>
 
