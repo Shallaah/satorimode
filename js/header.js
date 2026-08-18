@@ -238,9 +238,9 @@
                             </a>
 
                             <a
-                                href="${SATORIMODE_BASE}japan.html"
+                                href="${SATORIMODE_BASE}torii.html"
                             >
-                                Japan
+                                Torii
                             </a>
 
                             <a
@@ -554,9 +554,9 @@
                     </a>
 
                     <a
-                        href="${SATORIMODE_BASE}japan.html"
+                        href="${SATORIMODE_BASE}torii.html"
                     >
-                        Japan
+                        Torii
                     </a>
 
                     <a
@@ -604,7 +604,7 @@
                     <a
                         href="${SATORIMODE_BASE}regala-satorii.html"
                     >
-                        Gift Cards
+                        Regala Satorii
                     </a>
 
                     <a
