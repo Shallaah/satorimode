@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Preguntas frecuentes de Satorii. Encuentra respuestas sobre pedidos, productos, pagos, envíos, cambios y más."
+    >
+
+    <title>Preguntas frecuentes | Satorii</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           SATORII · PREGUNTAS FRECUENTES
+           Misma identidad visual que Cambios y Devoluciones
+        ====================================================== */
+
+        .faq-page {
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #fff 0%,
+                    #fafafa 100%
+                );
+
+            color: #111;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .faq-hero {
+
+            position: relative;
+
+            max-width: 1180px;
+
+            min-height: 420px;
+
+            margin: 0 auto;
+
+            padding:
+                105px
+                40px
+                70px;
+
+            box-sizing: border-box;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .faq-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 720px;
+
+        }
+
+
+        .faq-label {
+
+            display: inline-block;
+
+            margin-bottom: 20px;
+
+            color: #ff1b1b;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .faq-hero h1 {
+
+            margin: 0;
+
+            font-size: clamp(
+                52px,
+                7vw,
+                92px
+            );
+
+            line-height: .9;
+
+            font-weight: 900;
+
+            letter-spacing: -5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .faq-hero h1 span {
+
+            color: #ff1b1b;
+
+        }
+
+
+        .faq-hero p {
+
+            max-width: 590px;
+
+            margin: 25px 0 0;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           KANJI DECORATIVO
+        ====================================================== */
+
+        .faq-kanji {
+
+            position: absolute;
+
+            right: 35px;
+
+            bottom: -45px;
+
+            width: 390px;
+
+            height: 390px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            pointer-events: none;
+
+            user-select: none;
+
+        }
+
+
+        .faq-kanji span {
+
+            position: relative;
+
+            z-index: 2;
+
+            color: #111;
+
+            font-family:
+                "Noto Sans JP",
+                "Yu Gothic",
+                "Hiragino Kaku Gothic ProN",
+                Arial,
+                sans-serif;
+
+            font-size: 330px;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            opacity: .07;
+
+        }
+
+
+        .faq-kanji-circle {
+
+            position: absolute;
+
+            top: 35px;
+
+            right: 5px;
+
+            width: 125px;
+
+            height: 125px;
+
+            background: #ff1b1b;
+
+            border-radius: 50%;
+
+            opacity: .12;
+
+        }
+
+
+        /* =====================================================
+           NAVEGACIÓN DE AYUDA
+        ====================================================== */
+
+        .faq-nav {
+
+            max-width: 1120px;
+
+            margin: 0 auto;
+
+            padding:
+                0
+                30px
+                35px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .faq-nav-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            min-height: 78px;
+
+            padding:
+                15px
+                18px;
+
+            box-sizing: border-box;
+
+            background: #fff;
+
+            border:
+                1px solid #e7e7e7;
+
+            border-radius: 12px;
+
+            color: #222;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .035
+                );
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .faq-nav-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #ff1b1b;
+
+            box-shadow:
+                0 12px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .07
+                );
+
+        }
+
+
+        .faq-nav-card.active {
+
+            background: #111;
+
+            color: #fff;
+
+            border-color: #111;
+
+        }
+
+
+        .faq-nav-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            flex: 0 0 40px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #f5f5f5;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+
+        }
+
+
+        .faq-nav-card.active
+        .faq-nav-icon {
+
+            background: #ff1b1b;
+
+        }
+
+
+        .faq-nav-text {
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            line-height: 1.35;
+
+            text-transform: uppercase;
+
+        }
+
+
+        /* =====================================================
+           CONTENIDO
+        ====================================================== */
+
+        .faq-content-wrap {
+
+            max-width: 1120px;
+
+            margin: 0 auto;
+
+            padding:
+                35px
+                30px
+                100px;
+
+        }
+
+
+        .faq-intro {
+
+            max-width: 760px;
+
+            margin-bottom: 38px;
+
+        }
+
+
+        .faq-intro-label {
+
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: #999;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .faq-intro h2 {
+
+            margin: 0 0 14px;
+
+            font-size: 30px;
+
+            line-height: 1.05;
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .faq-intro p {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           CATEGORÍAS
+        ====================================================== */
+
+        .faq-category {
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .faq-category-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .faq-category-number {
+
+            color: #ff1b1b;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .faq-category-title {
+
+            margin: 0;
+
+            font-size: 20px;
+
+            letter-spacing: -.5px;
+
+        }
+
+
+        /* =====================================================
+           ACORDEÓN
+        ====================================================== */
+
+        .faq-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .faq-item {
+
+            background: #fff;
+
+            border:
+                1px solid #e7e7e7;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 22px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .025
+                );
+
+        }
+
+
+        .faq-question {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                20px
+                22px;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #111;
+
+            text-align: left;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+        }
+
+
+        .faq-question:hover {
+
+            color: #ff1b1b;
+
+        }
+
+
+        .faq-question-icon {
+
+            width: 28px;
+
+            height: 28px;
+
+            flex: 0 0 28px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid #e5e5e5;
+
+            border-radius: 50%;
+
+            color: #111;
+
+            font-size: 14px;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                color .25s ease;
+
+        }
+
+
+        .faq-item.open
+        .faq-question-icon {
+
+            transform:
+                rotate(45deg);
+
+            background: #ff1b1b;
+
+            color: #fff;
+
+            border-color: #ff1b1b;
+
+        }
+
+
+        .faq-answer {
+
+            display: grid;
+
+            grid-template-rows: 0fr;
+
+            transition:
+                grid-template-rows .3s ease;
+
+        }
+
+
+        .faq-answer-inner {
+
+            overflow: hidden;
+
+        }
+
+
+        .faq-answer-content {
+
+            padding:
+                0
+                22px
+                20px;
+
+            color: #666;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .faq-item.open
+        .faq-answer {
+
+            grid-template-rows: 1fr;
+
+        }
+
+
+        /* =====================================================
+           TARJETA FINAL
+        ====================================================== */
+
+        .faq-contact {
+
+            margin-top: 45px;
+
+            padding: 30px;
+
+            background: #111;
+
+            border-radius: 14px;
+
+            color: #fff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+        }
+
+
+        .faq-contact-label {
+
+            margin-bottom: 10px;
+
+            color: #ff1b1b;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .faq-contact h2 {
+
+            margin: 0 0 8px;
+
+            font-size: 22px;
+
+            letter-spacing: -.7px;
+
+        }
+
+
+        .faq-contact p {
+
+            margin: 0;
+
+            max-width: 600px;
+
+            color: #aaa;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .faq-contact a {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                12px
+                18px;
+
+            background: #ff1b1b;
+
+            color: #fff;
+
+            border-radius: 999px;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        .faq-contact a:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .faq-nav {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .faq-kanji {
+
+                right: -80px;
+
+                transform:
+                    scale(.85);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .faq-hero {
+
+                min-height: 400px;
+
+                padding:
+                    90px
+                    22px
+                    60px;
+
+            }
+
+
+            .faq-hero h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -3px;
+
+            }
+
+
+            .faq-hero p {
+
+                font-size: 12px;
+
+            }
+
+
+            .faq-nav {
+
+                padding:
+                    0
+                    16px
+                    25px;
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .faq-content-wrap {
+
+                padding:
+                    25px
+                    16px
+                    70px;
+
+            }
+
+
+            .faq-question {
+
+                padding:
+                    18px;
+
+            }
+
+
+            .faq-answer-content {
+
+                padding:
+                    0
+                    18px
+                    18px;
+
+            }
+
+
+            .faq-contact {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+            .faq-contact a {
+
+                width: 100%;
+
+                justify-content: center;
+
+            }
+
+
+            .faq-kanji {
+
+                right: -145px;
+
+                bottom: -35px;
+
+                transform:
+                    scale(.72);
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER GLOBAL
+    ====================================================== -->
+
+    <div id="satori-header"></div>
+
+
+    <main class="faq-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="faq-hero">
+
+            <div class="faq-hero-content">
+
+                <span class="faq-label">
+                    SATORII · AYUDA
+                </span>
+
+
+                <h1>
+
+                    PREGUNTAS
+
+                    <span>
+                        FRECUENTES.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Encuentra respuestas a las preguntas más
+                    comunes sobre nuestros productos, pedidos,
+                    pagos, envíos y cambios.
+
+                </p>
+
+            </div>
+
+
+            <!-- KANJI -->
+
+            <div class="faq-kanji">
+
+                <span>
+                    問
+                </span>
+
+                <div class="faq-kanji-circle"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NAVEGACIÓN DE AYUDA
+        ================================================== -->
+
+        <nav class="faq-nav">
+
+
+            <a
+                href="cambios-y-devoluciones.html"
+                class="faq-nav-card"
+            >
+
+                <span class="faq-nav-icon">
+                    🔄
+                </span>
+
+                <span class="faq-nav-text">
+                    Cambios y devoluciones
+                </span>
+
+            </a>
+
+
+            <a
+                href="preguntas-frecuentes.html"
+                class="faq-nav-card active"
+            >
+
+                <span class="faq-nav-icon">
+                    ❓
+                </span>
+
+                <span class="faq-nav-text">
+                    Preguntas frecuentes
+                </span>
+
+            </a>
+
+
+            <a
+                href="envios.html"
+                class="faq-nav-card"
+            >
+
+                <span class="faq-nav-icon">
+                    🚚
+                </span>
+
+                <span class="faq-nav-text">
+                    Envíos
+                </span>
+
+            </a>
+
+
+            <a
+                href="guia-tallas.html"
+                class="faq-nav-card"
+            >
+
+                <span class="faq-nav-icon">
+                    📏
+                </span>
+
+                <span class="faq-nav-text">
+                    Guía de tallas
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <section class="faq-content-wrap">
+
+
+            <div class="faq-intro">
+
+                <span class="faq-intro-label">
+                    PREGUNTAS FRECUENTES
+                </span>
+
+
+                <h2>
+                    Todo lo que necesitas saber.
+                </h2>
+
+
+                <p>
+
+                    Revisa las preguntas más frecuentes antes
+                    de realizar tu compra. Si no encuentras lo
+                    que buscas, puedes escribirnos directamente.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 01 / PEDIDOS
+            ================================================== -->
+
+            <section class="faq-category">
+
+
+                <div class="faq-category-header">
+
+                    <span class="faq-category-number">
+                        01 / PEDIDOS
+                    </span>
+
+                    <h2 class="faq-category-title">
+                        Sobre tu compra
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <article class="faq-item open">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Cómo puedo realizar un pedido?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Selecciona el producto que deseas,
+                                    elige la talla o variante disponible
+                                    y agrégalo al carrito. Luego podrás
+                                    revisar tu pedido y continuar con
+                                    el proceso de compra.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Cómo sé si mi pedido fue realizado correctamente?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Una vez completado el proceso de
+                                    compra, recibirás la información
+                                    correspondiente a tu pedido.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Puedo modificar mi pedido después de comprar?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Si necesitas modificar algún dato
+                                    de tu pedido, contáctanos lo antes
+                                    posible. Revisaremos si todavía es
+                                    posible realizar el cambio antes
+                                    de preparar el envío.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 02 / PRODUCTOS
+            ================================================== -->
+
+            <section class="faq-category">
+
+
+                <div class="faq-category-header">
+
+                    <span class="faq-category-number">
+                        02 / PRODUCTOS
+                    </span>
+
+                    <h2 class="faq-category-title">
+                        Sobre nuestras prendas
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Cómo puedo saber qué talla elegir?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Puedes revisar nuestra
+                                    <strong>Guía de Tallas</strong>
+                                    para comparar las medidas de
+                                    cada prenda y elegir la opción
+                                    que mejor se adapte a ti.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Los productos tienen stock disponible?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    El stock disponible se muestra
+                                    directamente en cada producto.
+                                    Si una talla o producto no aparece
+                                    disponible, significa que actualmente
+                                    no contamos con esa opción.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 03 / PAGOS
+            ================================================== -->
+
+            <section class="faq-category">
+
+
+                <div class="faq-category-header">
+
+                    <span class="faq-category-number">
+                        03 / PAGOS
+                    </span>
+
+                    <h2 class="faq-category-title">
+                        Sobre el pago
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Qué medios de pago puedo utilizar?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Los medios de pago disponibles
+                                    aparecerán durante el proceso
+                                    de compra, antes de confirmar
+                                    tu pedido.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Qué ocurre si mi pago no se completa?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Si el pago no se completa,
+                                    el pedido no quedará confirmado.
+                                    Puedes intentar nuevamente o
+                                    contactarnos si necesitas ayuda.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 04 / ENVÍOS
+            ================================================== -->
+
+            <section class="faq-category">
+
+
+                <div class="faq-category-header">
+
+                    <span class="faq-category-number">
+                        04 / ENVÍOS
+                    </span>
+
+                    <h2 class="faq-category-title">
+                        Sobre la entrega
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Realizan envíos a todo Chile?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Sí. Revisa nuestra sección
+                                    <strong>Envíos</strong> para
+                                    conocer la información disponible
+                                    sobre despacho y entrega.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Cómo puedo saber dónde está mi pedido?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    La información de seguimiento,
+                                    cuando corresponda, será
+                                    proporcionada según el método
+                                    de envío utilizado.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 05 / CAMBIOS
+            ================================================== -->
+
+            <section class="faq-category">
+
+
+                <div class="faq-category-header">
+
+                    <span class="faq-category-number">
+                        05 / CAMBIOS
+                    </span>
+
+                    <h2 class="faq-category-title">
+                        Si necesitas cambiar tu compra
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Puedo cambiar una prenda por otra talla?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Sí, puedes solicitar un cambio
+                                    de talla siempre que el producto
+                                    cumpla las condiciones establecidas
+                                    en nuestra política de Cambios y
+                                    Devoluciones y exista stock disponible.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Qué hago si recibí un producto con un defecto?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Contáctanos indicando tu número
+                                    de pedido y explicando el problema.
+                                    También puedes enviar fotografías
+                                    claras del producto para facilitar
+                                    la revisión del caso.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Dónde puedo revisar las condiciones de los cambios?
+                            </span>
+
+                            <span class="faq-question-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div class="faq-answer-inner">
+
+                                <div class="faq-answer-content">
+
+                                    Puedes revisar todos los detalles
+                                    en nuestra página de
+                                    <strong>Cambios y Devoluciones</strong>.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CONTACTO
+            ================================================== -->
+
+            <div class="faq-contact">
+
+
+                <div>
+
+                    <div class="faq-contact-label">
+                        ¿NO ENCONTRASTE LO QUE BUSCABAS?
+                    </div>
+
+
+                    <h2>
+                        Estamos para ayudarte.
+                    </h2>
+
+
+                    <p>
+
+                        Si tienes otra pregunta sobre tu pedido,
+                        nuestros productos o el proceso de compra,
+                        escríbenos directamente por Instagram.
+
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ◎ @satorimode
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <h3>
+                    SATORII
+                </h3>
+
+
+                <p>
+                    Anime, cultura japonesa y streetwear.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-column footer-social">
+
+                <h4>
+                    SÍGUENOS
+                </h4>
+
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-link"
+                >
+                    Instagram
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    COLECCIONES
+                </h4>
+
+
+                <a href="anime.html">
+                    Anime
+                </a>
+
+
+                <a href="anime-goods.html">
+                    Anime Goods
+                </a>
+
+
+                <a href="Torii.html">
+                    Torii
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    PRODUCTOS
+                </h4>
+
+
+                <a href="productos.html">
+                    Todos los productos
+                </a>
+
+
+                <a href="regala-satorii.html">
+                    Gift Cards
+                </a>
+
+
+                <a href="satorii-pack.html">
+                    Satorii Pack
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    AYUDA
+                </h4>
+
+
+                <a href="guia-tallas.html">
+                    Guía de tallas
+                </a>
+
+
+                <a href="envios.html">
+                    Envíos
+                </a>
+
+
+                <a href="preguntas-frecuentes.html">
+                    Preguntas frecuentes
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SATORII
+            </span>
+
+
+            <span>
+                Todos los derechos reservados.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/main.js"></script>
+
+    <script src="js/header.js"></script>
+
+    <script src="js/footer.js"></script>
+
+
+    <!-- =====================================================
+         FAQ JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const questions =
+                    document.querySelectorAll(
+                        ".faq-question"
+                    );
+
+
+                questions.forEach(
+                    function (question) {
+
+                        question.addEventListener(
+                            "click",
+                            function () {
+
+                                const item =
+                                    question.closest(
+                                        ".faq-item"
+                                    );
+
+
+                                const isOpen =
+                                    item.classList.contains(
+                                        "open"
+                                    );
+
+
+                                document
+                                    .querySelectorAll(
+                                        ".faq-item.open"
+                                    )
+                                    .forEach(
+                                        function (openItem) {
+
+                                            openItem
+                                                .classList
+                                                .remove(
+                                                    "open"
+                                                );
+
+                                        }
+                                    );
+
+
+                                if (!isOpen) {
+
+                                    item.classList.add(
+                                        "open"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
