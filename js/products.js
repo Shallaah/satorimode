@@ -19,7 +19,7 @@ const PRODUCTS = [
         currency: "CLP",
 
         description:
-            "Polera inspirada en Kid Buu, diseñada para nuestra colección Anime de SatoriMode.",
+            "Polera inspirada en Kid Buu, diseñada para nuestra colección Anime de Satorii.",
 
 
         /* =================================================
@@ -29,7 +29,7 @@ const PRODUCTS = [
         details: {
 
             description:
-                "Polera inspirada en Kid Buu, diseñada para nuestra colección Anime de SatoriMode.",
+                "Polera inspirada en Kid Buu, diseñada para nuestra colección Anime de Satorii.",
 
             shipping:
                 "Enviamos a todo Chile. Los pedidos se preparan y despachan según la modalidad de envío seleccionada.",
@@ -51,15 +51,15 @@ const PRODUCTS = [
            ================================================= */
 
         image:
-            "productos/anime/polera-kid-buu-01.PNG",
+            "img/productos/anime/dbz-kid-buu/01.PNG",
 
         images: [
 
-            "productos/anime/polera-kid-buu-01.PNG",
+            "img/productos/anime/dbz-kid-buu/01.PNG",
 
-            "productos/anime/polera-kid-buu-02.PNG",
+            "img/productos/anime/dbz-kid-buu/02.PNG",
 
-            "productos/anime/polera-kid-buu-03.PNG"
+            "img/productos/anime/dbz-kid-buu/03.PNG"
 
         ],
 
