@@ -1,0 +1,13 @@
+{
+    id: "luffy-001",
+    name: "Polera Luffy",
+    category: "anime",
+    price: 18990,
+
+    images: [
+        "img/productos/anime/one-piece-luffy/01.jpg",
+        "img/productos/anime/one-piece-luffy/02.jpg",
+        "img/productos/anime/one-piece-luffy/03.jpg",
+        "img/productos/anime/one-piece-luffy/04.jpg"
+    ]
+}
