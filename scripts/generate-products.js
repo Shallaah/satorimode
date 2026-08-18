@@ -835,7 +835,7 @@ function generateTrustBlocks(product) {
                     <span>
                         ${escapeHTML(
                             details.warranty ||
-                            "Calidad y atención SATORII."
+                            "Calidad y atención Satorii."
                         )}
                     </span>
 
@@ -868,8 +868,8 @@ function generateDescription(
         product.description ||
         (
             type === "clothing"
-                ? "Una prenda SATORII creada para formar parte de tu estilo."
-                : "Un producto seleccionado para formar parte del universo SATORII."
+                ? "Una prenda Satorii creada para formar parte de tu estilo."
+                : "Un producto seleccionado para formar parte del universo Satorii."
         );
 
 
@@ -1092,7 +1092,7 @@ function generateAccessorySpecs(product) {
 
 
                 <p>
-                    Cada accesorio SATORII
+                    Cada accesorio Satorii
                     puede tener características
                     diferentes. Aquí podrás
                     encontrar los detalles
@@ -1216,7 +1216,7 @@ function generateCareBanner(
                     Una buena prenda merece durar.
                     Aprende a cuidar el estampado,
                     el tejido y la apariencia
-                    de tu SATORII.
+                    de tu Satorii.
                 </p>
 
 
@@ -4681,7 +4681,7 @@ function generateClothingHTML(
 
 
     <title>
-        ${name} | SATORII
+        ${name} | Satorii
     </title>
 
 
@@ -4990,7 +4990,7 @@ function generateAccessoryHTML(
         product.description ||
         (
             product.name +
-            " · SATORII"
+            " · Satorii"
         );
 
 
@@ -5034,7 +5034,7 @@ function generateAccessoryHTML(
 
 
     <title>
-        ${name} | SATORII
+        ${name} | Satorii
     </title>
 
 
