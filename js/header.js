@@ -334,7 +334,7 @@
                             </a>
 
                             <a
-                                href="${SATORIMODE_BASE}cambios.html"
+                                href="${SATORIMODE_BASE}cambios-y-devoluciones.html"
                             >
                                 Cambios y devoluciones
                             </a>
