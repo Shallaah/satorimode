@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Cambios y devoluciones SATORII. Conoce nuestras condiciones para cambios de talla y productos con defectos."
+    >
+
+    <title>Cambios y devoluciones | SATORII</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           SATORII · CAMBIOS Y DEVOLUCIONES
+           Estilo: opción 4
+        ====================================================== */
+
+        .returns-page {
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #fff 0%,
+                    #fafafa 100%
+                );
+
+            color: #111;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .returns-hero {
+
+            position: relative;
+
+            max-width: 1180px;
+
+            min-height: 420px;
+
+            margin: 0 auto;
+
+            padding:
+                105px
+                40px
+                70px;
+
+            box-sizing: border-box;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .returns-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 720px;
+
+        }
+
+
+        .returns-label {
+
+            display: inline-block;
+
+            margin-bottom: 20px;
+
+            color: #ff1b1b;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .returns-hero h1 {
+
+            margin: 0;
+
+            font-size: clamp(
+                52px,
+                7vw,
+                92px
+            );
+
+            line-height: .9;
+
+            font-weight: 900;
+
+            letter-spacing: -5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .returns-hero h1 span {
+
+            color: #ff1b1b;
+
+        }
+
+
+        .returns-hero p {
+
+            max-width: 590px;
+
+            margin: 25px 0 0;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* Torii decorativo */
+
+        .returns-torii {
+
+            position: absolute;
+
+            right: 25px;
+
+            bottom: -20px;
+
+            width: 390px;
+
+            height: 330px;
+
+            opacity: .13;
+
+            pointer-events: none;
+
+        }
+
+
+        .returns-torii::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 38px;
+
+            left: 28px;
+
+            width: 334px;
+
+            height: 24px;
+
+            background: #111;
+
+            border-radius: 50%;
+
+            transform:
+                skewX(-7deg);
+
+        }
+
+
+        .returns-torii::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 62px;
+
+            left: 55px;
+
+            width: 280px;
+
+            height: 195px;
+
+            border-left:
+                18px solid #111;
+
+            border-right:
+                18px solid #111;
+
+            border-top:
+                18px solid #111;
+
+        }
+
+
+        .returns-torii-bar {
+
+            position: absolute;
+
+            top: 115px;
+
+            left: 55px;
+
+            width: 280px;
+
+            height: 15px;
+
+            background: #111;
+
+        }
+
+
+        .returns-torii-sun {
+
+            position: absolute;
+
+            top: 0;
+
+            right: 10px;
+
+            width: 120px;
+
+            height: 120px;
+
+            background: #ff1b1b;
+
+            border-radius: 50%;
+
+        }
+
+
+        /* =====================================================
+           HELP NAV
+        ====================================================== */
+
+        .returns-nav {
+
+            max-width: 1120px;
+
+            margin: 0 auto;
+
+            padding:
+                0
+                30px
+                35px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .returns-nav-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            min-height: 78px;
+
+            padding:
+                15px
+                18px;
+
+            box-sizing: border-box;
+
+            background: #fff;
+
+            border:
+                1px solid #e7e7e7;
+
+            border-radius: 12px;
+
+            color: #222;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .035
+                );
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .returns-nav-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #ff1b1b;
+
+            box-shadow:
+                0 12px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .07
+                );
+
+        }
+
+
+        .returns-nav-card.active {
+
+            background: #111;
+
+            color: #fff;
+
+            border-color: #111;
+
+        }
+
+
+        .returns-nav-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            flex: 0 0 40px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #f5f5f5;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+
+        }
+
+
+        .returns-nav-card.active
+        .returns-nav-icon {
+
+            background: #ff1b1b;
+
+        }
+
+
+        .returns-nav-text {
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            line-height: 1.35;
+
+            text-transform: uppercase;
+
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ====================================================== */
+
+        .returns-content-wrap {
+
+            max-width: 1120px;
+
+            margin: 0 auto;
+
+            padding:
+                35px
+                30px
+                100px;
+
+        }
+
+
+        .returns-intro {
+
+            max-width: 760px;
+
+            margin-bottom: 38px;
+
+        }
+
+
+        .returns-intro span {
+
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: #999;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .returns-intro h2 {
+
+            margin: 0 0 14px;
+
+            font-size: 30px;
+
+            line-height: 1.05;
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .returns-intro p {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           POLICY CARDS
+        ====================================================== */
+
+        .returns-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 16px;
+
+        }
+
+
+        .returns-card {
+
+            padding: 28px;
+
+            background: #fff;
+
+            border:
+                1px solid #e8e8e8;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .035
+                );
+
+        }
+
+
+        .returns-card.full {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+        .returns-card-number {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .returns-card-number span:first-child {
+
+            color: #ff1b1b;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .returns-card-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid #eee;
+
+            border-radius: 50%;
+
+            font-size: 19px;
+
+        }
+
+
+        .returns-card h2 {
+
+            margin: 0 0 12px;
+
+            font-size: 21px;
+
+            line-height: 1.15;
+
+            letter-spacing: -.5px;
+
+        }
+
+
+        .returns-card p {
+
+            margin: 0 0 11px;
+
+            color: #666;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .returns-card ul {
+
+            margin:
+                12px
+                0
+                0;
+
+            padding-left: 19px;
+
+            color: #555;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .returns-card li {
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .returns-card.accepted {
+
+            border-top:
+                3px solid #35b96b;
+
+        }
+
+
+        .returns-card.not-accepted {
+
+            border-top:
+                3px solid #ff1b1b;
+
+        }
+
+
+        .returns-card.guarantee {
+
+            border-top:
+                3px solid #111;
+
+        }
+
+
+        /* =====================================================
+           PROCESS
+        ====================================================== */
+
+        .returns-process {
+
+            margin-top: 16px;
+
+            padding: 28px;
+
+            background: #111;
+
+            border-radius: 14px;
+
+            color: #fff;
+
+        }
+
+
+        .returns-process-label {
+
+            margin-bottom: 20px;
+
+            color: #ff1b1b;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .returns-process h2 {
+
+            margin: 0 0 25px;
+
+            font-size: 24px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .returns-steps {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .returns-step {
+
+            padding: 18px;
+
+            background: #191919;
+
+            border:
+                1px solid #2a2a2a;
+
+            border-radius: 10px;
+
+        }
+
+
+        .returns-step-number {
+
+            color: #ff1b1b;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+        }
+
+
+        .returns-step h3 {
+
+            margin:
+                12px
+                0
+                8px;
+
+            font-size: 12px;
+
+        }
+
+
+        .returns-step p {
+
+            margin: 0;
+
+            color: #aaa;
+
+            font-size: 10px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ====================================================== */
+
+        .returns-contact {
+
+            margin-top: 16px;
+
+            padding: 28px;
+
+            background: #fff;
+
+            border:
+                1px solid #e8e8e8;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+        }
+
+
+        .returns-contact h2 {
+
+            margin: 0 0 8px;
+
+            font-size: 20px;
+
+        }
+
+
+        .returns-contact p {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .returns-contact a {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                12px
+                18px;
+
+            background: #ff1b1b;
+
+            color: #fff;
+
+            border-radius: 999px;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-decoration: none;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .returns-nav {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .returns-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .returns-card.full {
+
+                grid-column: auto;
+
+            }
+
+
+            .returns-steps {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .returns-torii {
+
+                right: -70px;
+
+                opacity: .08;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .returns-hero {
+
+                min-height: 400px;
+
+                padding:
+                    90px
+                    22px
+                    60px;
+
+            }
+
+
+            .returns-hero h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -3px;
+
+            }
+
+
+            .returns-hero p {
+
+                font-size: 12px;
+
+            }
+
+
+            .returns-nav {
+
+                padding:
+                    0
+                    16px
+                    25px;
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .returns-content-wrap {
+
+                padding:
+                    25px
+                    16px
+                    70px;
+
+            }
+
+
+            .returns-card {
+
+                padding: 22px;
+
+            }
+
+
+            .returns-steps {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .returns-contact {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+            .returns-torii {
+
+                right: -120px;
+
+                bottom: -10px;
+
+                transform:
+                    scale(.85);
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER GLOBAL
+    ====================================================== -->
+
+    <div id="satori-header"></div>
+
+
+    <main class="returns-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="returns-hero">
+
+            <div class="returns-hero-content">
+
+                <span class="returns-label">
+                    SATORII · AYUDA
+                </span>
+
+
+                <h1>
+
+                    CAMBIOS Y
+
+                    <span>
+                        DEVOLUCIONES.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Queremos que tu experiencia con SATORII
+                    sea simple. Revisa nuestra política para
+                    cambios de talla, productos con defectos
+                    y el proceso para solicitar ayuda.
+
+                </p>
+
+            </div>
+
+
+            <div class="returns-torii">
+
+                <div class="returns-torii-sun"></div>
+
+                <div class="returns-torii-bar"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NAVEGACIÓN DE AYUDA
+        ================================================== -->
+
+        <nav class="returns-nav">
+
+            <a
+                href="cambios-y-devoluciones.html"
+                class="returns-nav-card active"
+            >
+
+                <span class="returns-nav-icon">
+                    🔄
+                </span>
+
+                <span class="returns-nav-text">
+                    Cambios y devoluciones
+                </span>
+
+            </a>
+
+
+            <a
+                href="preguntas-frecuentes.html"
+                class="returns-nav-card"
+            >
+
+                <span class="returns-nav-icon">
+                    ❓
+                </span>
+
+                <span class="returns-nav-text">
+                    Preguntas frecuentes
+                </span>
+
+            </a>
+
+
+            <a
+                href="envios.html"
+                class="returns-nav-card"
+            >
+
+                <span class="returns-nav-icon">
+                    🚚
+                </span>
+
+                <span class="returns-nav-text">
+                    Envíos
+                </span>
+
+            </a>
+
+
+            <a
+                href="guia-tallas.html"
+                class="returns-nav-card"
+            >
+
+                <span class="returns-nav-icon">
+                    📏
+                </span>
+
+                <span class="returns-nav-text">
+                    Guía de tallas
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <section class="returns-content-wrap">
+
+
+            <div class="returns-intro">
+
+                <span>
+                    POLÍTICA SATORII
+                </span>
+
+
+                <h2>
+                    Queremos que todo salga bien. 🖤
+                </h2>
+
+
+                <p>
+
+                    Si algo no salió como esperabas, escríbenos.
+                    Revisaremos tu caso y te indicaremos cómo
+                    proceder de acuerdo con las condiciones de
+                    SATORII.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="returns-grid">
+
+
+                <!-- 01 -->
+
+                <article class="returns-card guarantee">
+
+                    <div class="returns-card-number">
+
+                        <span>
+                            01 / GARANTÍA
+                        </span>
+
+                        <span class="returns-card-icon">
+                            🛡️
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Defectos de fabricación
+                    </h2>
+
+
+                    <p>
+
+                        Si recibes una prenda con un defecto de
+                        fabricación, contáctanos para revisar el
+                        caso y buscar una solución.
+
+                    </p>
+
+
+                    <p>
+
+                        Para agilizar la revisión, envíanos
+                        fotografías claras del producto y una
+                        descripción del problema junto con los
+                        datos de tu pedido.
+
+                    </p>
+
+                </article>
+
+
+
+                <!-- 02 -->
+
+                <article class="returns-card">
+
+                    <div class="returns-card-number">
+
+                        <span>
+                            02 / TALLAS
+                        </span>
+
+                        <span class="returns-card-icon">
+                            👕
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Cambios por talla
+                    </h2>
+
+
+                    <p>
+
+                        Si la talla que elegiste no es la adecuada,
+                        puedes solicitar un cambio siempre que la
+                        prenda cumpla nuestras condiciones.
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            La prenda debe estar sin uso.
+                        </li>
+
+                        <li>
+                            No debe haber sido lavada.
+                        </li>
+
+                        <li>
+                            Debe conservar sus etiquetas.
+                        </li>
+
+                        <li>
+                            Debe mantenerse en su estado original.
+                        </li>
+
+                        <li>
+                            El cambio depende del stock disponible.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+
+                <!-- 03 -->
+
+                <article class="returns-card accepted">
+
+                    <div class="returns-card-number">
+
+                        <span>
+                            03 / ACEPTAMOS
+                        </span>
+
+                        <span class="returns-card-icon">
+                            ✓
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Cambios que sí aceptamos
+                    </h2>
+
+
+                    <ul>
+
+                        <li>
+                            Prendas sin uso.
+                        </li>
+
+                        <li>
+                            Prendas sin lavar.
+                        </li>
+
+                        <li>
+                            Productos con sus etiquetas.
+                        </li>
+
+                        <li>
+                            Productos en buen estado.
+                        </li>
+
+                        <li>
+                            Cambios sujetos a stock disponible.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+
+                <!-- 04 -->
+
+                <article class="returns-card not-accepted">
+
+                    <div class="returns-card-number">
+
+                        <span>
+                            04 / NO ACEPTAMOS
+                        </span>
+
+                        <span class="returns-card-icon">
+                            ✕
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Cambios que no aceptamos
+                    </h2>
+
+
+                    <ul>
+
+                        <li>
+                            Prendas utilizadas.
+                        </li>
+
+                        <li>
+                            Prendas lavadas.
+                        </li>
+
+                        <li>
+                            Productos con manchas u olores.
+                        </li>
+
+                        <li>
+                            Productos con daños por uso.
+                        </li>
+
+                        <li>
+                            Productos alterados o personalizados.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+
+                <!-- 05 / PROCESO -->
+
+                <div class="returns-card full">
+
+                    <div class="returns-card-number">
+
+                        <span>
+                            05 / PROCESO
+                        </span>
+
+                        <span class="returns-card-icon">
+                            🔄
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        ¿Cómo hacer un cambio?
+                    </h2>
+
+
+                    <p>
+
+                        Antes de enviar cualquier producto,
+                        contáctanos para que podamos revisar
+                        tu solicitud y darte las instrucciones.
+
+                    </p>
+
+
+                    <div class="returns-process">
+
+                        <div class="returns-process-label">
+                            PASO A PASO
+                        </div>
+
+
+                        <h2>
+                            Así funciona el proceso.
+                        </h2>
+
+
+                        <div class="returns-steps">
+
+
+                            <div class="returns-step">
+
+                                <span class="returns-step-number">
+                                    01
+                                </span>
+
+                                <h3>
+                                    Contáctanos
+                                </h3>
+
+                                <p>
+                                    Escríbenos con tu número
+                                    de pedido y el motivo
+                                    del cambio.
+                                </p>
+
+                            </div>
+
+
+                            <div class="returns-step">
+
+                                <span class="returns-step-number">
+                                    02
+                                </span>
+
+                                <h3>
+                                    Revisamos tu caso
+                                </h3>
+
+                                <p>
+                                    Verificaremos las condiciones
+                                    del producto y la solicitud.
+                                </p>
+
+                            </div>
+
+
+                            <div class="returns-step">
+
+                                <span class="returns-step-number">
+                                    03
+                                </span>
+
+                                <h3>
+                                    Te indicamos los pasos
+                                </h3>
+
+                                <p>
+                                    Si corresponde, te explicaremos
+                                    cómo realizar el cambio.
+                                </p>
+
+                            </div>
+
+
+                            <div class="returns-step">
+
+                                <span class="returns-step-number">
+                                    04
+                                </span>
+
+                                <h3>
+                                    Recibes tu nueva prenda
+                                </h3>
+
+                                <p>
+                                    Una vez aprobado el proceso,
+                                    coordinaremos el cambio.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- 06 / ENVÍO -->
+
+                <article class="returns-card full">
+
+                    <div class="returns-card-number">
+
+                        <span>
+                            06 / ENVÍO
+                        </span>
+
+                        <span class="returns-card-icon">
+                            🚚
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Envío del cambio
+                    </h2>
+
+
+                    <p>
+
+                        Una vez aprobado el cambio, te indicaremos
+                        cómo realizar el proceso según tu ubicación
+                        y disponibilidad.
+
+                    </p>
+
+
+                    <p>
+
+                        Los costos asociados al envío de un cambio
+                        por elección de talla serán informados antes
+                        de continuar con el proceso.
+
+                    </p>
+
+
+                    <p>
+
+                        Si se determina que el producto presenta
+                        un defecto de fabricación, SATORII revisará
+                        el caso y te informará la solución
+                        correspondiente.
+
+                    </p>
+
+                </article>
+
+
+
+                <!-- 07 / CONTACTO -->
+
+                <article class="returns-card full">
+
+                    <div class="returns-card-number">
+
+                        <span>
+                            07 / ¿DUDAS?
+                        </span>
+
+                        <span class="returns-card-icon">
+                            💬
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Escríbenos por Instagram
+                    </h2>
+
+
+                    <p>
+
+                        Si tienes dudas sobre un cambio,
+                        tu pedido o las condiciones de la
+                        política, nuestro equipo puede ayudarte.
+
+                    </p>
+
+
+                    <div class="returns-contact">
+
+                        <div>
+
+                            <h2>
+                                SATORII
+                            </h2>
+
+                            <p>
+                                Estamos para ayudarte.
+                                Escríbenos por nuestro Instagram oficial.
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="https://www.instagram.com/satorimode/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ◎ @satorimode
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <h3>
+                    SATORII
+                </h3>
+
+
+                <p>
+                    Anime, cultura japonesa y streetwear.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-column footer-social">
+
+                <h4>
+                    SÍGUENOS
+                </h4>
+
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-link"
+                >
+                    Instagram
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    COLECCIONES
+                </h4>
+
+
+                <a href="anime.html">
+                    Anime
+                </a>
+
+
+                <a href="anime-goods.html">
+                    Anime Goods
+                </a>
+
+
+                <a href="Torii.html">
+                    Torii
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    PRODUCTOS
+                </h4>
+
+
+                <a href="productos.html">
+                    Todos los productos
+                </a>
+
+
+                <a href="regala-satorii.html">
+                    Gift Cards
+                </a>
+
+
+                <a href="satorii-pack.html">
+                    Satorii Pack
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    AYUDA
+                </h4>
+
+
+                <a href="guia-tallas.html">
+                    Guía de tallas
+                </a>
+
+
+                <a href="envios.html">
+                    Envíos
+                </a>
+
+
+                <a href="preguntas-frecuentes.html">
+                    Preguntas frecuentes
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SATORII
+            </span>
+
+
+            <span>
+                Todos los derechos reservados.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/main.js"></script>
+    <script src="js/header.js"></script>
+
+
+</body>
+
+</html>
