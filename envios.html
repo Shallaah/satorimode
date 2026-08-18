@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Información sobre envíos de SATORII. Conoce cómo preparamos, despachamos y entregamos tus pedidos."
+    >
+
+    <title>Envíos | SATORII</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           SATORII · ENVÍOS
+           Misma identidad visual que Preguntas Frecuentes
+        ====================================================== */
+
+        .shipping-page {
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #fff 0%,
+                    #fafafa 100%
+                );
+
+            color: #111;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .shipping-hero {
+
+            position: relative;
+
+            max-width: 1180px;
+
+            min-height: 420px;
+
+            margin: 0 auto;
+
+            padding:
+                105px
+                40px
+                70px;
+
+            box-sizing: border-box;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .shipping-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 720px;
+
+        }
+
+
+        .shipping-label {
+
+            display: inline-block;
+
+            margin-bottom: 20px;
+
+            color: #ff1b1b;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .shipping-hero h1 {
+
+            margin: 0;
+
+            font-size: clamp(
+                52px,
+                7vw,
+                92px
+            );
+
+            line-height: .9;
+
+            font-weight: 900;
+
+            letter-spacing: -5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .shipping-hero h1 span {
+
+            color: #ff1b1b;
+
+        }
+
+
+        .shipping-hero p {
+
+            max-width: 590px;
+
+            margin: 25px 0 0;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           KANJI DECORATIVO
+        ====================================================== */
+
+        .shipping-kanji {
+
+            position: absolute;
+
+            right: 35px;
+
+            bottom: -45px;
+
+            width: 390px;
+
+            height: 390px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            pointer-events: none;
+
+            user-select: none;
+
+        }
+
+
+        .shipping-kanji span {
+
+            position: relative;
+
+            z-index: 2;
+
+            color: #111;
+
+            font-family:
+                "Noto Sans JP",
+                "Yu Gothic",
+                "Hiragino Kaku Gothic ProN",
+                Arial,
+                sans-serif;
+
+            font-size: 330px;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            opacity: .07;
+
+        }
+
+
+        .shipping-kanji-circle {
+
+            position: absolute;
+
+            top: 35px;
+
+            right: 5px;
+
+            width: 125px;
+
+            height: 125px;
+
+            background: #ff1b1b;
+
+            border-radius: 50%;
+
+            opacity: .12;
+
+        }
+
+
+        /* =====================================================
+           NAVEGACIÓN DE AYUDA
+        ====================================================== */
+
+        .shipping-nav {
+
+            max-width: 1120px;
+
+            margin: 0 auto;
+
+            padding:
+                0
+                30px
+                35px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .shipping-nav-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            min-height: 78px;
+
+            padding:
+                15px
+                18px;
+
+            box-sizing: border-box;
+
+            background: #fff;
+
+            border:
+                1px solid #e7e7e7;
+
+            border-radius: 12px;
+
+            color: #222;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .035
+                );
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .shipping-nav-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #ff1b1b;
+
+            box-shadow:
+                0 12px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .07
+                );
+
+        }
+
+
+        .shipping-nav-card.active {
+
+            background: #111;
+
+            color: #fff;
+
+            border-color: #111;
+
+        }
+
+
+        .shipping-nav-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            flex: 0 0 40px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #f5f5f5;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+
+        }
+
+
+        .shipping-nav-card.active
+        .shipping-nav-icon {
+
+            background: #ff1b1b;
+
+        }
+
+
+        .shipping-nav-text {
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            line-height: 1.35;
+
+            text-transform: uppercase;
+
+        }
+
+
+        /* =====================================================
+           CONTENIDO
+        ====================================================== */
+
+        .shipping-content-wrap {
+
+            max-width: 1120px;
+
+            margin: 0 auto;
+
+            padding:
+                35px
+                30px
+                100px;
+
+        }
+
+
+        .shipping-intro {
+
+            max-width: 760px;
+
+            margin-bottom: 38px;
+
+        }
+
+
+        .shipping-intro-label {
+
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: #999;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .shipping-intro h2 {
+
+            margin: 0 0 14px;
+
+            font-size: 30px;
+
+            line-height: 1.05;
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .shipping-intro p {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           PROCESO DE ENVÍO
+        ====================================================== */
+
+        .shipping-process {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 55px;
+
+        }
+
+
+        .shipping-step {
+
+            position: relative;
+
+            min-height: 180px;
+
+            padding: 24px;
+
+            box-sizing: border-box;
+
+            background: #fff;
+
+            border:
+                1px solid #e7e7e7;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 6px 22px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .025
+                );
+
+        }
+
+
+        .shipping-step-number {
+
+            display: block;
+
+            margin-bottom: 28px;
+
+            color: #ff1b1b;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .shipping-step-icon {
+
+            position: absolute;
+
+            top: 20px;
+
+            right: 20px;
+
+            width: 36px;
+
+            height: 36px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #f5f5f5;
+
+            border-radius: 50%;
+
+            font-size: 16px;
+
+        }
+
+
+        .shipping-step h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 17px;
+
+            letter-spacing: -.5px;
+
+        }
+
+
+        .shipping-step p {
+
+            margin: 0;
+
+            color: #777;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           CATEGORÍAS
+        ====================================================== */
+
+        .shipping-category {
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .shipping-category-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .shipping-category-number {
+
+            color: #ff1b1b;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .shipping-category-title {
+
+            margin: 0;
+
+            font-size: 20px;
+
+            letter-spacing: -.5px;
+
+        }
+
+
+        /* =====================================================
+           TARJETAS INFORMATIVAS
+        ====================================================== */
+
+        .shipping-info-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .shipping-info {
+
+            background: #fff;
+
+            border:
+                1px solid #e7e7e7;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 22px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .025
+                );
+
+        }
+
+
+        .shipping-info-button {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                20px
+                22px;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #111;
+
+            text-align: left;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+        }
+
+
+        .shipping-info-button:hover {
+
+            color: #ff1b1b;
+
+        }
+
+
+        .shipping-info-icon {
+
+            width: 28px;
+
+            height: 28px;
+
+            flex: 0 0 28px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid #e5e5e5;
+
+            border-radius: 50%;
+
+            color: #111;
+
+            font-size: 14px;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                color .25s ease;
+
+        }
+
+
+        .shipping-info.open
+        .shipping-info-icon {
+
+            transform:
+                rotate(45deg);
+
+            background: #ff1b1b;
+
+            color: #fff;
+
+            border-color: #ff1b1b;
+
+        }
+
+
+        .shipping-info-content {
+
+            display: grid;
+
+            grid-template-rows: 0fr;
+
+            transition:
+                grid-template-rows .3s ease;
+
+        }
+
+
+        .shipping-info-inner {
+
+            overflow: hidden;
+
+        }
+
+
+        .shipping-info-text {
+
+            padding:
+                0
+                22px
+                20px;
+
+            color: #666;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .shipping-info.open
+        .shipping-info-content {
+
+            grid-template-rows: 1fr;
+
+        }
+
+
+        /* =====================================================
+           TARJETA DESTACADA
+        ====================================================== */
+
+        .shipping-highlight {
+
+            margin-top: 45px;
+
+            padding: 32px;
+
+            background: #111;
+
+            border-radius: 14px;
+
+            color: #fff;
+
+        }
+
+
+        .shipping-highlight-label {
+
+            margin-bottom: 10px;
+
+            color: #ff1b1b;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .shipping-highlight h2 {
+
+            margin: 0 0 10px;
+
+            font-size: 25px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .shipping-highlight p {
+
+            max-width: 720px;
+
+            margin: 0;
+
+            color: #aaa;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           CONTACTO
+        ====================================================== */
+
+        .shipping-contact {
+
+            margin-top: 18px;
+
+            padding: 28px;
+
+            background: #f5f5f5;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+        }
+
+
+        .shipping-contact h2 {
+
+            margin: 0 0 8px;
+
+            font-size: 21px;
+
+            letter-spacing: -.7px;
+
+        }
+
+
+        .shipping-contact p {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .shipping-contact a {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                12px
+                18px;
+
+            background: #ff1b1b;
+
+            color: #fff;
+
+            border-radius: 999px;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        .shipping-contact a:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .shipping-nav {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .shipping-process {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .shipping-kanji {
+
+                right: -80px;
+
+                transform:
+                    scale(.85);
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .shipping-hero {
+
+                min-height: 400px;
+
+                padding:
+                    90px
+                    22px
+                    60px;
+
+            }
+
+
+            .shipping-hero h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -3px;
+
+            }
+
+
+            .shipping-hero p {
+
+                font-size: 12px;
+
+            }
+
+
+            .shipping-nav {
+
+                padding:
+                    0
+                    16px
+                    25px;
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .shipping-content-wrap {
+
+                padding:
+                    25px
+                    16px
+                    70px;
+
+            }
+
+
+            .shipping-process {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .shipping-info-button {
+
+                padding:
+                    18px;
+
+            }
+
+
+            .shipping-info-text {
+
+                padding:
+                    0
+                    18px
+                    18px;
+
+            }
+
+
+            .shipping-contact {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+            .shipping-contact a {
+
+                width: 100%;
+
+                justify-content: center;
+
+            }
+
+
+            .shipping-kanji {
+
+                right: -145px;
+
+                bottom: -35px;
+
+                transform:
+                    scale(.72);
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER GLOBAL
+    ====================================================== -->
+
+    <div id="satori-header"></div>
+
+
+    <main class="shipping-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="shipping-hero">
+
+            <div class="shipping-hero-content">
+
+                <span class="shipping-label">
+                    SATORII · AYUDA
+                </span>
+
+
+                <h1>
+
+                    ENVÍOS
+
+                    <span>
+                        A TODO CHILE.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Queremos que tu pedido llegue de forma
+                    simple y segura. Revisa cómo funciona
+                    nuestro proceso de preparación, despacho
+                    y entrega.
+
+                </p>
+
+            </div>
+
+
+            <!-- KANJI -->
+
+            <div class="shipping-kanji">
+
+                <span>
+                    送
+                </span>
+
+                <div class="shipping-kanji-circle"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NAVEGACIÓN DE AYUDA
+        ================================================== -->
+
+        <nav class="shipping-nav">
+
+
+            <a
+                href="cambios-y-devoluciones.html"
+                class="shipping-nav-card"
+            >
+
+                <span class="shipping-nav-icon">
+                    🔄
+                </span>
+
+                <span class="shipping-nav-text">
+                    Cambios y devoluciones
+                </span>
+
+            </a>
+
+
+            <a
+                href="preguntas-frecuentes.html"
+                class="shipping-nav-card"
+            >
+
+                <span class="shipping-nav-icon">
+                    ❓
+                </span>
+
+                <span class="shipping-nav-text">
+                    Preguntas frecuentes
+                </span>
+
+            </a>
+
+
+            <a
+                href="envios.html"
+                class="shipping-nav-card active"
+            >
+
+                <span class="shipping-nav-icon">
+                    🚚
+                </span>
+
+                <span class="shipping-nav-text">
+                    Envíos
+                </span>
+
+            </a>
+
+
+            <a
+                href="guia-tallas.html"
+                class="shipping-nav-card"
+            >
+
+                <span class="shipping-nav-icon">
+                    📏
+                </span>
+
+                <span class="shipping-nav-text">
+                    Guía de tallas
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =================================================
+             CONTENIDO
+        ================================================== -->
+
+        <section class="shipping-content-wrap">
+
+
+            <div class="shipping-intro">
+
+                <span class="shipping-intro-label">
+                    INFORMACIÓN DE ENVÍOS
+                </span>
+
+
+                <h2>
+                    Tu pedido, de SATORII a tus manos.
+                </h2>
+
+
+                <p>
+
+                    Queremos que tengas claridad sobre cada
+                    etapa de tu compra. Desde que confirmas
+                    tu pedido hasta que llega a destino.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PROCESO
+            ================================================== -->
+
+            <div class="shipping-process">
+
+
+                <article class="shipping-step">
+
+                    <span class="shipping-step-number">
+                        01 / PEDIDO
+                    </span>
+
+
+                    <span class="shipping-step-icon">
+                        🛒
+                    </span>
+
+
+                    <h3>
+                        Compra
+                    </h3>
+
+
+                    <p>
+
+                        Realiza tu pedido a través de nuestra
+                        tienda y completa el proceso de compra.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="shipping-step">
+
+                    <span class="shipping-step-number">
+                        02 / PREPARACIÓN
+                    </span>
+
+
+                    <span class="shipping-step-icon">
+                        📦
+                    </span>
+
+
+                    <h3>
+                        Preparamos
+                    </h3>
+
+
+                    <p>
+
+                        Revisamos y preparamos tus productos
+                        antes de realizar el despacho.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="shipping-step">
+
+                    <span class="shipping-step-number">
+                        03 / DESPACHO
+                    </span>
+
+
+                    <span class="shipping-step-icon">
+                        🚚
+                    </span>
+
+
+                    <h3>
+                        Enviamos
+                    </h3>
+
+
+                    <p>
+
+                        Una vez preparado, tu pedido pasa al
+                        proceso de despacho correspondiente.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="shipping-step">
+
+                    <span class="shipping-step-number">
+                        04 / ENTREGA
+                    </span>
+
+
+                    <span class="shipping-step-icon">
+                        🏠
+                    </span>
+
+
+                    <h3>
+                        Recibes
+                    </h3>
+
+
+                    <p>
+
+                        Tu pedido continúa su recorrido hasta
+                        llegar a la dirección indicada.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 01 / COBERTURA
+            ================================================== -->
+
+            <section class="shipping-category">
+
+
+                <div class="shipping-category-header">
+
+                    <span class="shipping-category-number">
+                        01 / COBERTURA
+                    </span>
+
+
+                    <h2 class="shipping-category-title">
+                        ¿Dónde realizamos envíos?
+                    </h2>
+
+                </div>
+
+
+                <div class="shipping-info-list">
+
+
+                    <article class="shipping-info open">
+
+                        <button
+                            class="shipping-info-button"
+                            type="button"
+                        >
+
+                            <span>
+                                Envíos a todo Chile
+                            </span>
+
+
+                            <span class="shipping-info-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="shipping-info-content">
+
+                            <div class="shipping-info-inner">
+
+                                <div class="shipping-info-text">
+
+                                    Realizamos envíos a distintas
+                                    zonas del país. La disponibilidad
+                                    y condiciones específicas pueden
+                                    depender de la dirección ingresada
+                                    durante el proceso de compra.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 02 / PREPARACIÓN
+            ================================================== -->
+
+            <section class="shipping-category">
+
+
+                <div class="shipping-category-header">
+
+                    <span class="shipping-category-number">
+                        02 / PREPARACIÓN
+                    </span>
+
+
+                    <h2 class="shipping-category-title">
+                        Antes de que tu pedido salga
+                    </h2>
+
+                </div>
+
+
+                <div class="shipping-info-list">
+
+
+                    <article class="shipping-info">
+
+                        <button
+                            class="shipping-info-button"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Qué ocurre después de comprar?
+                            </span>
+
+
+                            <span class="shipping-info-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="shipping-info-content">
+
+                            <div class="shipping-info-inner">
+
+                                <div class="shipping-info-text">
+
+                                    Una vez completada la compra,
+                                    revisaremos la información del
+                                    pedido para preparar correctamente
+                                    los productos seleccionados antes
+                                    de su despacho.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="shipping-info">
+
+                        <button
+                            class="shipping-info-button"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Qué pasa si necesito modificar mi dirección?
+                            </span>
+
+
+                            <span class="shipping-info-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="shipping-info-content">
+
+                            <div class="shipping-info-inner">
+
+                                <div class="shipping-info-text">
+
+                                    Si necesitas modificar los datos
+                                    de entrega, contáctanos lo antes
+                                    posible. Revisaremos si el pedido
+                                    aún puede ser actualizado antes
+                                    de su despacho.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 03 / SEGUIMIENTO
+            ================================================== -->
+
+            <section class="shipping-category">
+
+
+                <div class="shipping-category-header">
+
+                    <span class="shipping-category-number">
+                        03 / SEGUIMIENTO
+                    </span>
+
+
+                    <h2 class="shipping-category-title">
+                        Sigue el recorrido de tu pedido
+                    </h2>
+
+                </div>
+
+
+                <div class="shipping-info-list">
+
+
+                    <article class="shipping-info">
+
+                        <button
+                            class="shipping-info-button"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Cómo puedo saber dónde está mi pedido?
+                            </span>
+
+
+                            <span class="shipping-info-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="shipping-info-content">
+
+                            <div class="shipping-info-inner">
+
+                                <div class="shipping-info-text">
+
+                                    Cuando corresponda, la información
+                                    de seguimiento será proporcionada
+                                    según el método de envío utilizado.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="shipping-info">
+
+                        <button
+                            class="shipping-info-button"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Qué hago si mi pedido presenta un retraso?
+                            </span>
+
+
+                            <span class="shipping-info-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="shipping-info-content">
+
+                            <div class="shipping-info-inner">
+
+                                <div class="shipping-info-text">
+
+                                    Si consideras que tu pedido está
+                                    presentando un retraso, puedes
+                                    contactarnos para revisar la
+                                    situación y orientarte sobre los
+                                    siguientes pasos.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 04 / RECEPCIÓN
+            ================================================== -->
+
+            <section class="shipping-category">
+
+
+                <div class="shipping-category-header">
+
+                    <span class="shipping-category-number">
+                        04 / RECEPCIÓN
+                    </span>
+
+
+                    <h2 class="shipping-category-title">
+                        Cuando recibas tu pedido
+                    </h2>
+
+                </div>
+
+
+                <div class="shipping-info-list">
+
+
+                    <article class="shipping-info">
+
+                        <button
+                            class="shipping-info-button"
+                            type="button"
+                        >
+
+                            <span>
+                                Revisa tu pedido al recibirlo
+                            </span>
+
+
+                            <span class="shipping-info-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="shipping-info-content">
+
+                            <div class="shipping-info-inner">
+
+                                <div class="shipping-info-text">
+
+                                    Te recomendamos revisar que el
+                                    pedido corresponda a tu compra y
+                                    que los productos se encuentren
+                                    en las condiciones esperadas.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="shipping-info">
+
+                        <button
+                            class="shipping-info-button"
+                            type="button"
+                        >
+
+                            <span>
+                                ¿Tu pedido llegó con algún problema?
+                            </span>
+
+
+                            <span class="shipping-info-icon">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="shipping-info-content">
+
+                            <div class="shipping-info-inner">
+
+                                <div class="shipping-info-text">
+
+                                    Si recibiste un producto con algún
+                                    problema, revisa nuestra sección
+                                    de Cambios y Devoluciones para
+                                    conocer cómo solicitar ayuda.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DESTACADO
+            ================================================== -->
+
+            <div class="shipping-highlight">
+
+
+                <div class="shipping-highlight-label">
+                    INFORMACIÓN IMPORTANTE
+                </div>
+
+
+                <h2>
+                    Queremos que recibas tu pedido sin complicaciones.
+                </h2>
+
+
+                <p>
+
+                    Las condiciones específicas de despacho,
+                    costos, plazos y disponibilidad deben ser
+                    revisadas según la información que SATORII
+                    establezca para cada modalidad de envío.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CONTACTO
+            ================================================== -->
+
+            <div class="shipping-contact">
+
+
+                <div>
+
+                    <h2>
+                        ¿Necesitas ayuda con tu envío?
+                    </h2>
+
+
+                    <p>
+
+                        Si tienes dudas sobre tu pedido o necesitas
+                        ayuda con el proceso de despacho, puedes
+                        contactarnos directamente.
+
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://www.instagram.com/satorimode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ◎ @satorimode
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div id="satori-footer"></div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/main.js"></script>
+
+    <script src="js/header.js"></script>
+
+    <script src="js/footer.js"></script>
+
+
+    <!-- =====================================================
+         SHIPPING JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const buttons =
+                    document.querySelectorAll(
+                        ".shipping-info-button"
+                    );
+
+
+                buttons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                const item =
+                                    button.closest(
+                                        ".shipping-info"
+                                    );
+
+
+                                const isOpen =
+                                    item.classList.contains(
+                                        "open"
+                                    );
+
+
+                                document
+                                    .querySelectorAll(
+                                        ".shipping-info.open"
+                                    )
+                                    .forEach(
+                                        function (openItem) {
+
+                                            openItem
+                                                .classList
+                                                .remove(
+                                                    "open"
+                                                );
+
+                                        }
+                                    );
+
+
+                                if (!isOpen) {
+
+                                    item.classList.add(
+                                        "open"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
