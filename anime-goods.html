@@ -18,15 +18,811 @@
 
     <meta
         name="description"
-        content="Anime Goods Satorii — Peluches, figuras, llaveros y coleccionables de tus animes favoritos."
+        content="SATORII Anime Goods — Peluches, figuras, llaveros y coleccionables inspirados en anime y manga."
     >
 
-    <title>Anime Goods | Satorii</title>
+    <title>Anime Goods | SATORII</title>
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
+
+
+    <style>
+
+        /* =====================================================
+           ANIME — ESTRUCTURA
+        ====================================================== */
+
+        .goods-page {
+
+            width: min(
+                var(--satori-content-width, 1800px),
+                calc(
+                    100% -
+                    (
+                        var(--satori-side-space, 30px) * 2
+                    )
+                )
+            );
+
+            margin-left: auto;
+            margin-right: auto;
+
+            box-sizing: border-box;
+
+        }
+
+
+        /* =====================================================
+           INTRO
+        ====================================================== */
+
+        .goods-intro {
+
+            padding-top: 110px;
+            padding-bottom: 70px;
+
+            text-align: center;
+
+        }
+
+
+        .goods-intro-label {
+
+            margin-bottom: 16px;
+
+            color: var(
+                --red,
+                #ff1b1b
+            );
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .goods-intro h1 {
+
+            margin: 0;
+
+            font-size: clamp(
+                48px,
+                6vw,
+                88px
+            );
+
+            line-height: .95;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+
+            color: #111;
+
+        }
+
+
+        .goods-intro h1 span {
+
+            color: var(
+                --red,
+                #ff1b1b
+            );
+
+        }
+
+
+        .goods-intro p {
+
+            max-width: 650px;
+
+            margin: 25px auto 0;
+
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           BARRA DE CATEGORÍA
+        ====================================================== */
+
+        .goods-category-bar {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 45px;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+        .goods-category-title {
+
+            margin: 0;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .goods-product-count {
+
+            color: #777;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           GRID
+        ====================================================== */
+
+        .goods-products-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    5,
+                    minmax(0, 1fr)
+                );
+
+            column-gap: 22px;
+
+            row-gap: 75px;
+
+            width: 100%;
+
+        }
+
+
+        /* =====================================================
+           PRODUCTO
+        ====================================================== */
+
+        .goods-product {
+
+            display: block;
+
+            min-width: 0;
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        /* =====================================================
+           IMÁGENES
+        ====================================================== */
+
+        .goods-product-image {
+
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            background: #f7f7f7;
+
+            border-radius: 8px;
+
+        }
+
+
+        .goods-product-image img {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                opacity .35s ease,
+                transform .45s ease;
+
+        }
+
+
+        .goods-product-image
+        .image-primary {
+
+            opacity: 1;
+
+        }
+
+
+        .goods-product-image
+        .image-secondary {
+
+            opacity: 0;
+
+        }
+
+
+        /* =====================================================
+           HOVER
+        ====================================================== */
+
+        .goods-product:hover
+        .goods-product-image
+        .image-primary {
+
+            opacity: 0;
+
+        }
+
+
+        .goods-product:hover
+        .goods-product-image
+        .image-secondary {
+
+            opacity: 1;
+
+        }
+
+
+        .goods-product:hover
+        .goods-product-image img {
+
+            transform: scale(
+                1.025
+            );
+
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ====================================================== */
+
+        .goods-product-info {
+
+            padding-top: 16px;
+
+        }
+
+
+        .goods-product-category {
+
+            margin-bottom: 6px;
+
+            color: var(
+                --red,
+                #ff1b1b
+            );
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .goods-product-name {
+
+            margin: 0;
+
+            color: #111;
+
+            font-size: 14px;
+
+            line-height: 1.3;
+
+            font-weight: 600;
+
+        }
+
+
+        .goods-product-price {
+
+            margin-top: 7px;
+
+            color: #111;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           SIN PRODUCTOS
+        ====================================================== */
+
+        .goods-empty {
+
+            grid-column: 1 / -1;
+
+            padding: 100px 20px;
+
+            text-align: center;
+
+            color: #777;
+
+        }
+
+
+        .goods-empty strong {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #111;
+
+            font-size: 20px;
+
+        }
+
+
+        /* =====================================================
+           PACK FINAL
+        ====================================================== */
+
+        .goods-pack {
+
+            position: relative;
+
+            margin-top: 120px;
+
+            margin-bottom: 100px;
+
+            min-height: 230px;
+
+            padding: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            box-sizing: border-box;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827 0%,
+                    #090d15 100%
+                );
+
+            color: #fff;
+
+            border: 1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .18
+                );
+
+            border-radius: 10px;
+
+        }
+
+
+        .goods-pack::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 150px;
+
+            height: 2px;
+
+            background:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+        }
+
+
+        .goods-pack::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 0;
+
+            right: 0;
+
+            width: 150px;
+
+            height: 2px;
+
+            background:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+        }
+
+
+        .goods-pack-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 650px;
+
+        }
+
+
+        .goods-pack-label {
+
+            margin-bottom: 8px;
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .goods-pack h2 {
+
+            margin: 0 0 12px;
+
+            font-size: clamp(
+                30px,
+                4vw,
+                52px
+            );
+
+            line-height: 1;
+
+            font-weight: 900;
+
+        }
+
+
+        .goods-pack h2 span {
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+        }
+
+
+        .goods-pack p {
+
+            margin: 0;
+
+            color: #ccc;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           FILTROS ANIME GOODS
+        ====================================================== */
+
+        .goods-filter-row {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 16px;
+
+        }
+
+
+        .goods-filter {
+
+            padding: 9px 15px;
+
+            background: transparent;
+
+            border: 1px solid #ddd;
+
+            border-radius: 999px;
+
+            color: #666;
+
+            font-family: inherit;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                border-color .2s ease,
+                color .2s ease,
+                transform .2s ease;
+
+        }
+
+
+        .goods-filter:hover,
+        .goods-filter.active {
+
+            background: #111;
+
+            border-color: #111;
+
+            color: #fff;
+
+        }
+
+
+        .goods-product.is-hidden {
+
+            display: none;
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1400px) {
+
+            .goods-products-grid {
+
+                grid-template-columns:
+                    repeat(
+                        4,
+                        minmax(0, 1fr)
+                    );
+
+            }
+
+        }
+
+
+        @media (max-width: 1050px) {
+
+            .goods-products-grid {
+
+                grid-template-columns:
+                    repeat(
+                        3,
+                        minmax(0, 1fr)
+                    );
+
+                column-gap: 18px;
+
+                row-gap: 55px;
+
+            }
+
+
+            .goods-intro {
+
+                padding-top: 90px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .goods-page {
+
+                width:
+                    calc(
+                        100% - 30px
+                    );
+
+            }
+
+
+            .goods-intro {
+
+                padding-top: 95px;
+
+                padding-bottom: 50px;
+
+            }
+
+
+            .goods-intro h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .goods-intro p {
+
+                font-size: 13px;
+
+            }
+
+
+            .goods-category-bar {
+
+                margin-bottom: 30px;
+
+                align-items: flex-start;
+
+                gap: 18px;
+
+            }
+
+
+            .goods-filter-row {
+
+                gap: 6px;
+
+            }
+
+
+            .goods-filter {
+
+                padding: 7px 11px;
+
+                border-radius: 999px;
+
+                font-size: 8px;
+
+            }
+
+
+            .goods-products-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+
+                column-gap: 14px;
+
+                row-gap: 45px;
+
+            }
+
+
+            .goods-product-info {
+
+                padding-top: 11px;
+
+            }
+
+
+            .goods-product-category {
+
+                font-size: 8px;
+
+            }
+
+
+            .goods-product-name {
+
+                font-size: 12px;
+
+            }
+
+
+            .goods-product-price {
+
+                font-size: 12px;
+
+                margin-top: 5px;
+
+            }
+
+
+            .goods-pack {
+
+                margin-top: 80px;
+
+                margin-bottom: 60px;
+
+                min-height: 220px;
+
+                padding: 30px 25px;
+
+                border-radius: 8px;
+
+            }
+
+
+            .goods-pack::before {
+
+                width: 90px;
+
+            }
+
+
+            .goods-pack::after {
+
+                width: 90px;
+
+            }
+
+
+            .goods-pack h2 {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -35,498 +831,551 @@
 
 
     <!-- =====================================================
-         HEADER GLOBAL
-         Se genera automáticamente desde js/header.js
+         HEADER
     ====================================================== -->
 
     <div id="satori-header"></div>
 
 
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-    ====================================================== -->
-
     <main>
 
 
-        <!-- =================================================
-             HERO
-        ================================================== -->
+        <div class="goods-page">
 
-        <section class="page-hero">
 
-            <div class="page-hero-content">
+            <!-- =================================================
+                 INTRO
+            ================================================== -->
 
-                <span class="section-label">
+            <section class="goods-intro">
+
+                <div class="goods-intro-label">
                     SATORII · ANIME GOODS
-                </span>
+                </div>
 
 
                 <h1>
-
-                    DESCUBRE NUESTROS
-
-                    <span>
-                        ANIME GOODS.
-                    </span>
-
+                    ANIME <span>GOODS.</span>
                 </h1>
 
 
                 <p>
-
-                    Peluches, figuras, llaveros y
-                    coleccionables inspirados en tus
-                    animes y personajes favoritos.
-
+                    Peluches, figuras, llaveros y coleccionables
+                    inspirados en anime, manga y cultura japonesa.
                 </p>
 
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             CATÁLOGO
-        ================================================== -->
-
-        <section class="products-section">
-
-
-            <div class="section-heading">
-
-                <span>
-                    01 / ANIME GOODS
-                </span>
-
-
-                <h2>
-
-                    COLECCIONA
-
-                    <strong>
-                        LO QUE AMAS.
-                    </strong>
-
-                </h2>
-
-
-                <p>
-
-                    Descubre productos inspirados en
-                    anime, manga y cultura japonesa:
-                    peluches, figuras, llaveros,
-                    coleccionables y mucho más.
-
-                </p>
-
-            </div>
-
+            </section>
 
 
             <!-- =================================================
-                 FILTROS
+                 CATEGORÍA
             ================================================== -->
 
-            <div class="anime-filters-wrapper">
+            <div class="goods-category-bar">
 
-                <button
-                    type="button"
-                    class="anime-filter-toggle"
-                    id="products-filter-toggle"
-                >
-                    MOSTRAR FILTROS
-                </button>
+                <div>
+
+                    <h2 class="goods-category-title">
+                        COLECCIÓN ANIME GOODS
+                    </h2>
 
 
-                <div
-                    class="anime-filters"
-                    id="products-filters"
-                >
+                    <div class="goods-filter-row">
+
+                        <button
+                            type="button"
+                            class="goods-filter active"
+                            data-goods-filter="all"
+                        >
+                            TODOS
+                        </button>
 
 
-                    <!-- =================================================
-                         TIPO
-                    ================================================== -->
-
-                    <div class="anime-filter-group">
-
-                        <span class="anime-filter-title">
-                            TIPO
-                        </span>
+                        <button
+                            type="button"
+                            class="goods-filter"
+                            data-goods-filter="peluche"
+                        >
+                            PELUCHES
+                        </button>
 
 
-                        <div class="anime-filter-options">
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="type"
-                                data-value="llavero"
-                            >
-                                LLAVEROS
-                            </button>
+                        <button
+                            type="button"
+                            class="goods-filter"
+                            data-goods-filter="figura"
+                        >
+                            FIGURAS
+                        </button>
 
 
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="type"
-                                data-value="figura"
-                            >
-                                FIGURAS
-                            </button>
+                        <button
+                            type="button"
+                            class="goods-filter"
+                            data-goods-filter="llavero"
+                        >
+                            LLAVEROS
+                        </button>
 
 
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="type"
-                                data-value="peluche"
-                            >
-                                PELUCHES
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="type"
-                                data-value="coleccionable"
-                            >
-                                COLECCIONABLES
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         FRANQUICIA
-                    ================================================== -->
-
-                    <div class="anime-filter-group">
-
-                        <span class="anime-filter-title">
-                            FRANQUICIA
-                        </span>
-
-
-                        <div class="anime-filter-options">
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="franchise"
-                                data-value="pokemon"
-                            >
-                                POKÉMON
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="franchise"
-                                data-value="dragon-ball"
-                            >
-                                DRAGON BALL
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="franchise"
-                                data-value="one-piece"
-                            >
-                                ONE PIECE
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="franchise"
-                                data-value="naruto"
-                            >
-                                NARUTO
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         DISPONIBILIDAD
-                    ================================================== -->
-
-                    <div class="anime-filter-group">
-
-                        <span class="anime-filter-title">
-                            DISPONIBILIDAD
-                        </span>
-
-
-                        <div class="anime-filter-options">
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="availability"
-                                data-value="disponible"
-                            >
-                                DISPONIBLE
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="anime-filter"
-                                data-filter="availability"
-                                data-value="proximamente"
-                            >
-                                PRÓXIMAMENTE
-                            </button>
-
-                        </div>
+                        <button
+                            type="button"
+                            class="goods-filter"
+                            data-goods-filter="coleccionable"
+                        >
+                            COLECCIONABLES
+                        </button>
 
                     </div>
 
                 </div>
 
-            </div>
 
+                <span
+                    class="goods-product-count"
+                    id="anime-goods-product-count"
+                >
+                    0 productos
+                </span>
+
+            </div>
 
 
             <!-- =================================================
-                 GRID AUTOMÁTICO
+                 PRODUCTOS
             ================================================== -->
 
-            <div
-                class="products-grid"
-                id="all-products-grid"
-                data-category="anime-goods"
+            <section
+                class="goods-products-grid"
+                id="goods-products-grid"
             >
-
-                <!--
-                    Los productos se generan automáticamente
-                    desde products.js.
-                -->
-
-            </div>
+            </section>
 
 
-        </section>
+            <!-- =================================================
+                 PACK FINAL
+            ================================================== -->
+
+            <section class="goods-pack">
+
+                <div class="goods-pack-content">
+
+                    <div class="goods-pack-label">
+                        SATORII
+                    </div>
 
 
-
-        <!-- =================================================
-             SATORII PACK
-        ================================================== -->
-
-        <section class="pack-section">
-
-            <div class="pack-content">
-
-                <span class="hero-kicker">
-                    SATORII
-                </span>
+                    <h2>
+                        LLEVA TU
+                        <span>ANIME.</span>
+                    </h2>
 
 
-                <h2>
+                    <p>
+                        Descubre peluches, figuras y coleccionables de tus franquicias favoritas.
+                    </p>
 
-                    DESCUBRE EL
+                </div>
 
-                    <strong>
-                        SATORII PACK.
-                    </strong>
-
-                </h2>
+            </section>
 
 
-                <p>
-
-                    Una experiencia especial de SATORII
-                    creada para acompañar tus pedidos.
-
-                </p>
-
-
-                <a
-                    href="satorii-pack.html"
-                    class="button button-red"
-                >
-                    CONOCER SATORII PACK
-                </a>
-
-            </div>
-
-        </section>
-
+        </div>
 
     </main>
-
 
 
     <!-- =====================================================
          FOOTER
     ====================================================== -->
 
-    <footer class="site-footer">
-
-
-        <div class="footer-main">
-
-
-            <div class="footer-brand">
-
-                <h3>
-                    SATORII
-                </h3>
-
-
-                <p>
-                    Anime, cultura japonesa y streetwear.
-                </p>
-
-            </div>
-
-
-
-            <div class="footer-column footer-social">
-
-                <h4>
-                    SÍGUENOS
-                </h4>
-
-
-                <a
-                    href="https://www.instagram.com/satorimode/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="instagram-link"
-                >
-
-                    Instagram
-
-                </a>
-
-            </div>
-
-
-
-            <div class="footer-column">
-
-                <h4>
-                    COLECCIONES
-                </h4>
-
-
-                <a href="anime.html">
-                    Anime
-                </a>
-
-
-                <a href="streetwear.html">
-                    Streetwear
-                </a>
-
-
-                <a href="anime-goods.html">
-                    Anime Goods
-                </a>
-
-            </div>
-
-
-
-            <div class="footer-column">
-
-                <h4>
-                    PRODUCTOS
-                </h4>
-
-
-                <a href="productos.html">
-                    Todas las poleras
-                </a>
-
-
-                <a href="anime-goods.html">
-                    Anime Goods
-                </a>
-
-
-                <a href="satorii-pack.html">
-                    Satorii Pack
-                </a>
-
-            </div>
-
-
-
-            <div class="footer-column">
-
-                <h4>
-                    AYUDA
-                </h4>
-
-
-                <a href="guia-tallas.html">
-                    Guía de tallas
-                </a>
-
-
-                <a href="envios.html">
-                    Envíos
-                </a>
-
-
-                <a href="preguntas-frecuentes.html">
-                    Preguntas frecuentes
-                </a>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 SATORII
-            </span>
-
-
-            <span>
-                Todos los derechos reservados.
-            </span>
-
-        </div>
-
-    </footer>
-
+    <div id="satori-footer"></div>
 
 
     <!-- =====================================================
-         JAVASCRIPT
+         SCRIPTS
     ====================================================== -->
 
     <script src="js/products.js"></script>
 
-    <script src="js/main.js"></script>
-
     <script src="js/header.js"></script>
 
-    <script src="js/products-page.js"></script>
+    <script src="js/footer.js"></script>
+
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const grid =
+                    document.getElementById(
+                        "anime-goods-products-grid"
+                    );
+
+                const count =
+                    document.getElementById(
+                        "anime-goods-product-count"
+                    );
+
+                const filterButtons =
+                    document.querySelectorAll(
+                        ".goods-filter"
+                    );
+
+
+                if (!grid) {
+
+                    return;
+
+                }
+
+
+                if (
+                    typeof PRODUCTS === "undefined" ||
+                    !Array.isArray(PRODUCTS)
+                ) {
+
+                    grid.innerHTML = `
+
+                        <div class="goods-empty">
+
+                            <strong>
+                                No se pudo cargar el catálogo.
+                            </strong>
+
+                            Revisa que
+                            js/products.js
+                            esté disponible.
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                const goodsProducts =
+                    PRODUCTS.filter(
+                        function (product) {
+
+                            const category =
+                                String(
+                                    product.category || ""
+                                )
+                                .toLowerCase()
+                                .trim();
+
+                            return (
+                                category === "anime-goods" ||
+                                category === "anime goods"
+                            );
+
+                        }
+                    );
+
+
+                function getType(product) {
+
+                    return String(
+                        product.type ||
+                        product.productType ||
+                        ""
+                    )
+                    .toLowerCase()
+                    .trim();
+
+                }
+
+
+                function renderProducts(
+                    filter = "all"
+                ) {
+
+                    grid.innerHTML = "";
+
+
+                    const filtered =
+                        goodsProducts.filter(
+                            function (product) {
+
+                                return (
+                                    filter === "all" ||
+                                    getType(product) === filter
+                                );
+
+                            }
+                        );
+
+
+                    count.textContent =
+                        `${filtered.length} ${
+                            filtered.length === 1
+                                ? "producto"
+                                : "productos"
+                        }`;
+
+
+                    if (
+                        filtered.length === 0
+                    ) {
+
+                        grid.innerHTML = `
+
+                            <div class="goods-empty">
+
+                                <strong>
+                                    Próximamente
+                                </strong>
+
+                                Estamos preparando
+                                nuevos Anime Goods.
+
+                            </div>
+
+                        `;
+
+                        return;
+
+                    }
+
+
+                    filtered.forEach(
+                        function (product) {
+
+                            const primaryImage =
+                                product.images?.[0] ||
+                                product.image ||
+                                "";
+
+                            const secondaryImage =
+                                product.images?.[1] ||
+                                primaryImage;
+
+
+                            const productId =
+                                String(
+                                    product.id ||
+                                    product.name ||
+                                    ""
+                                )
+                                .normalize("NFD")
+                                .replace(
+                                    /[̀-ͯ]/g,
+                                    ""
+                                )
+                                .toLowerCase()
+                                .trim()
+                                .replace(
+                                    /[^a-z0-9]+/g,
+                                    "-"
+                                )
+                                .replace(
+                                    /^-+|-+$/g,
+                                    ""
+                                );
+
+
+                            const productUrl =
+                                "productos/" +
+                                "anime-goods/" +
+                                productId +
+                                ".html";
+
+
+                            let price = "";
+
+
+                            if (
+                                product.price !== undefined &&
+                                product.price !== null
+                            ) {
+
+                                price =
+                                    new Intl.NumberFormat(
+                                        "es-CL",
+                                        {
+                                            style:
+                                                "currency",
+
+                                            currency:
+                                                "CLP",
+
+                                            maximumFractionDigits:
+                                                0
+                                        }
+                                    )
+                                    .format(
+                                        Number(
+                                            product.price
+                                        )
+                                    );
+
+                            }
+
+
+                            const type =
+                                getType(product);
+
+
+                            const typeLabel = {
+
+                                peluche:
+                                    "PELUCHE",
+
+                                figura:
+                                    "FIGURA",
+
+                                llavero:
+                                    "LLAVERO",
+
+                                coleccionable:
+                                    "COLECCIONABLE"
+
+                            }[type] ||
+                                "ANIME GOODS";
+
+
+                            const card =
+                                document.createElement(
+                                    "a"
+                                );
+
+
+                            card.className =
+                                "goods-product";
+
+
+                            card.href =
+                                productUrl;
+
+
+                            card.innerHTML = `
+
+                                <div
+                                    class="
+                                        goods-product-image
+                                    "
+                                >
+
+                                    <img
+                                        class="image-primary"
+                                        src="${primaryImage}"
+                                        alt="${
+                                            product.name ||
+                                            "Anime Goods SATORII"
+                                        }"
+                                        loading="lazy"
+                                    >
+
+
+                                    <img
+                                        class="image-secondary"
+                                        src="${secondaryImage}"
+                                        alt="${
+                                            product.name ||
+                                            "Anime Goods SATORII"
+                                        }"
+                                        loading="lazy"
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        goods-product-info
+                                    "
+                                >
+
+                                    <div
+                                        class="
+                                            goods-product-category
+                                        "
+                                    >
+                                        ${typeLabel}
+                                    </div>
+
+
+                                    <h3
+                                        class="
+                                            goods-product-name
+                                        "
+                                    >
+                                        ${
+                                            product.name ||
+                                            "Producto"
+                                        }
+                                    </h3>
+
+
+                                    <div
+                                        class="
+                                            goods-product-price
+                                        "
+                                    >
+                                        ${price}
+                                    </div>
+
+                                </div>
+
+                            `;
+
+
+                            grid.appendChild(
+                                card
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                renderProducts();
+
+
+                filterButtons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                filterButtons
+                                    .forEach(
+                                        function (item) {
+
+                                            item.classList.remove(
+                                                "active"
+                                            );
+
+                                        }
+                                    );
+
+
+                                button.classList.add(
+                                    "active"
+                                );
+
+
+                                renderProducts(
+                                    button.dataset.goodsFilter
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
 
 
 </body>
