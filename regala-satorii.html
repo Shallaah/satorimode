@@ -18,10 +18,10 @@
 
     <meta
         name="description"
-        content="Regala Satorii — Gift Cards para elegir anime, streetwear, coleccionables y mucho más."
+        content="Regala SATORII — Gift Cards para elegir anime, streetwear, coleccionables y mucho más."
     >
 
-    <title>Regala Satorii | Satorii</title>
+    <title>Regala SATORII | SATORII</title>
 
     <link
         rel="stylesheet"
@@ -689,6 +689,44 @@
         }
 
 
+        .satori-gift-value.is-added {
+
+            transform:
+                scale(.96);
+
+            border-color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            box-shadow:
+                0 0 0 2px
+                rgba(
+                    255,
+                    27,
+                    27,
+                    .12
+                );
+
+        }
+
+
+        .satori-gift-value.is-added
+        .satori-gift-value-arrow {
+
+            background:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            transform:
+                scale(.92);
+
+        }
+
+
         .satori-gift-value-arrow {
 
             position: absolute;
@@ -753,6 +791,8 @@
 
             color: #fff;
 
+            border: 0;
+
             border-radius: 0;
 
             overflow: hidden;
@@ -764,66 +804,79 @@
         }
 
 
-        .satori-gift-ticker-center {
+        .satori-gift-ticker-window {
 
             width: min(
-                900px,
+                620px,
                 calc(100% - 40px)
             );
 
-            min-height: 42px;
+            overflow: hidden;
+
+            position: relative;
+
+        }
+
+
+        .satori-gift-ticker-track {
+
+            width: max-content;
 
             display: flex;
 
             align-items: center;
 
-            justify-content: center;
+            gap: 28px;
 
-            overflow: hidden;
+            padding: 12px 0;
 
-            text-align: center;
+            white-space: nowrap;
+
+            will-change: transform;
+
+            animation:
+                satoriGiftTickerLoop
+                11s
+                linear
+                infinite;
 
         }
 
 
-        .satori-gift-ticker-message {
+        .satori-gift-ticker-track span {
 
-            display: block;
-
-            width: 100%;
-
-            padding: 12px 20px;
-
-            box-sizing: border-box;
+            flex: 0 0 auto;
 
             font-size: 10px;
 
             font-weight: 900;
 
-            letter-spacing: 1px;
+            letter-spacing: .8px;
 
             text-transform: uppercase;
-
-            white-space: nowrap;
-
-            opacity: 1;
-
-            transform:
-                translateY(0);
-
-            transition:
-                opacity .35s ease,
-                transform .35s ease;
 
         }
 
 
-        .satori-gift-ticker-message.is-changing {
+        @keyframes satoriGiftTickerLoop {
 
-            opacity: 0;
+            from {
 
-            transform:
-                translateY(8px);
+                transform:
+                    translateX(0);
+
+            }
+
+            to {
+
+                transform:
+                    translateX(
+                        calc(
+                            -50% - 14px
+                        )
+                    );
+
+            }
 
         }
 
@@ -1318,6 +1371,31 @@
             }
 
 
+            .satori-gift-ticker-window {
+
+                width:
+                    calc(100% - 30px);
+
+            }
+
+
+            .satori-gift-ticker-track {
+
+                gap: 22px;
+
+                animation-duration:
+                    9s;
+
+            }
+
+
+            .satori-gift-ticker-track span {
+
+                font-size: 9px;
+
+            }
+
+
             .satori-gift-ticker-inner {
 
                 width:
@@ -1530,7 +1608,7 @@
 
                         La persona que recibe la Gift Card
                         puede elegir lo que más le guste
-                        dentro de Satorii.
+                        dentro de SATORII.
 
                     </p>
 
@@ -1731,7 +1809,7 @@
                         >
 
                             Equivale a 1 polera
-                            .
+                            SATORII.
 
                         </p>
 
@@ -1786,7 +1864,7 @@
                         >
 
                             Equivale a 2 poleras
-                            .
+                            SATORII.
 
                         </p>
 
@@ -1812,7 +1890,7 @@
                         data-add-to-cart
                         data-product
                         data-product-id="gift-card-3"
-                        data-product-name="Gift Card  · 3 Poleras"
+                        data-product-name="Gift Card SATORII · 3 Poleras"
                         data-product-price="56970"
                     >
 
@@ -1841,7 +1919,7 @@
                         >
 
                             Equivale a 3 poleras
-                            .
+                            SATORII.
 
                         </p>
 
@@ -1867,7 +1945,7 @@
                         data-add-to-cart
                         data-product
                         data-product-id="gift-card-4"
-                        data-product-name="Gift Card  · 4 Poleras"
+                        data-product-name="Gift Card SATORII · 4 Poleras"
                         data-product-price="75960"
                     >
 
@@ -1896,7 +1974,7 @@
                         >
 
                             Equivale a 4 poleras
-                            .
+                            SATORII.
 
                         </p>
 
@@ -1926,19 +2004,54 @@
 
             <div
                 class="satori-gift-ticker"
-                aria-label="Mensajes de Satorii"
+                aria-label="Mensajes de SATORII"
             >
 
-                <div
-                    class="satori-gift-ticker-center"
-                    aria-live="polite"
-                >
+                <div class="satori-gift-ticker-window">
 
-                    <span
-                        class="satori-gift-ticker-message"
-                    >
-                        ✦ REGALA SATORII
-                    </span>
+                    <div class="satori-gift-ticker-track">
+
+                        <span>
+                            ✦ REGALA SATORII
+                        </span>
+
+                        <span>
+                            ✦ GIFT CARDS
+                        </span>
+
+                        <span>
+                            ✦ UN REGALO
+                        </span>
+
+                        <span>
+                            ✦ MUCHAS POSIBILIDADES
+                        </span>
+
+                        <span>
+                            ✦ ELIGE SATORII
+                        </span>
+
+                        <span>
+                            ✦ REGALA SATORII
+                        </span>
+
+                        <span>
+                            ✦ GIFT CARDS
+                        </span>
+
+                        <span>
+                            ✦ UN REGALO
+                        </span>
+
+                        <span>
+                            ✦ MUCHAS POSIBILIDADES
+                        </span>
+
+                        <span>
+                            ✦ ELIGE SATORII
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -2017,7 +2130,7 @@
                     <p>
 
                         Úsala para elegir tus productos
-                        favoritos dentro de Satorii.
+                        favoritos dentro de SATORII.
 
                     </p>
 
@@ -2148,7 +2261,7 @@
                             y regala una experiencia que puede
                             convertirse en anime, streetwear,
                             accesorios o cualquier otro producto
-                            disponible en Satorii.
+                            disponible en SATORII.
 
                         </p>
 
@@ -2360,7 +2473,7 @@
                         Importante:
                     </strong>
 
-                    Las Gift Cards Satorii tienen una vigencia
+                    Las Gift Cards SATORII tienen una vigencia
                     máxima de 2 meses desde su emisión. Consulta
                     los términos y condiciones antes de adquirirla.
 
@@ -2396,69 +2509,36 @@
     <script>
 
         /* =====================================================
-           TICKER ROTATIVO SATORII
+           FEEDBACK AL AGREGAR GIFT CARD
         ====================================================== */
 
-        const
-            tickerMessage =
-                document.querySelector(
-                    ".satori-gift-ticker-message"
+        document
+            .querySelectorAll(
+                ".satori-gift-value[data-add-to-cart]"
+            )
+            .forEach((giftCard) => {
+
+                giftCard.addEventListener(
+                    "click",
+                    () => {
+
+                        giftCard.classList.add(
+                            "is-added"
+                        );
+
+
+                        setTimeout(() => {
+
+                            giftCard.classList.remove(
+                                "is-added"
+                            );
+
+                        }, 260);
+
+                    }
                 );
 
-
-        const
-            tickerMessages = [
-
-                "✦ REGALA SATORII",
-
-                "✦ GIFT CARDS",
-
-                "✦ UN REGALO · MUCHAS POSIBILIDADES",
-
-                "✦ ELIGE TU FAVORITO",
-
-                "✦ HAZLO SATORII"
-
-            ];
-
-
-        let
-            tickerIndex = 0;
-
-
-        if (tickerMessage) {
-
-            setInterval(() => {
-
-                tickerMessage.classList.add(
-                    "is-changing"
-                );
-
-
-                setTimeout(() => {
-
-                    tickerIndex =
-                        (
-                            tickerIndex + 1
-                        ) %
-                        tickerMessages.length;
-
-
-                    tickerMessage.textContent =
-                        tickerMessages[
-                            tickerIndex
-                        ];
-
-
-                    tickerMessage.classList.remove(
-                        "is-changing"
-                    );
-
-                }, 350);
-
-            }, 2600);
-
-        }
+            });
 
     </script>
 
