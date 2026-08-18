@@ -1848,7 +1848,7 @@ function generateProductCSS() {
             background:
                 #f5f5f5;
 
-            border: 1px solid #ddd;
+            border: 10px solid #ddd;
 
         }
 
@@ -2182,7 +2182,7 @@ function generateProductCSS() {
                 var(--satori-border);
 
             border-radius:
-                4px;
+                10px;
 
             background:
                 #ffffff;
