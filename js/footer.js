@@ -108,25 +108,40 @@ document.addEventListener("DOMContentLoaded", function () {
                      PRODUCTOS
                 ====================================== -->
 
-                <div class="satori-footer-column">
+ <div class="satori-footer-column">
 
-                    <h3>
-                        PRODUCTOS
-                    </h3>
+    <h3>
+        PRODUCTOS
+    </h3>
 
-                    <a href="productos.html">
-                        Todos los productos
-                    </a>
+    <a href="productos.html">
+        Todos los productos
+    </a>
 
-                    <a href="carrito.html">
-                        Carrito
-                    </a>
+    <a href="carrito.html">
+        Carrito
+    </a>
 
-                </div>
+    <div class="satori-footer-social">
 
+        <h3>
+            SÍGUENOS
+        </h3>
 
-            </div>
+        <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="satori-instagram"
+            aria-label="Instagram"
+        >
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram</span>
+        </a>
 
+    </div>
+
+</div>
 
             <!-- =========================================
                  PARTE INFERIOR
@@ -181,22 +196,29 @@ document.addEventListener("DOMContentLoaded", function () {
             'https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,900;1,900&display=swap'
         );
 
+        @import url(
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'
+);
 
         /* =================================================
            FOOTER
         ================================================= */
 
-        .satori-footer {
+.satori-footer {
 
-            width: 100%;
+    width: 100%;
 
-            background: #111827;
+    background: #111827;
 
-            color: #ffffff;
+    color: #ffffff;
 
-            margin-top: 0;
+    margin-top: 0;
 
-        }
+    border-radius: 28px 28px 0 0;
+
+    overflow: hidden;
+
+}
 
 
         /* =================================================
@@ -379,6 +401,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+/* =================================================
+   REDES SOCIALES
+================================================= */
+
+.satori-footer-social {
+
+    margin-top: 22px;
+
+}
+
+
+.satori-footer-social h3 {
+
+    margin:
+        0 0 10px;
+
+}
+
+
+.satori-instagram {
+
+    display: inline-flex !important;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #c7ccd4 !important;
+
+    font-size: 10px;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.satori-instagram i {
+
+    font-size: 17px;
+
+}
+
+
+.satori-instagram:hover {
+
+    color: #ff003c !important;
+
+    transform:
+        translateY(-2px);
+
+}
 
         /* =================================================
            PARTE INFERIOR
