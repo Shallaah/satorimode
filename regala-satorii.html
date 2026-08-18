@@ -717,6 +717,8 @@
 
             margin: 0;
 
+            padding: 0;
+
             overflow: hidden;
 
             background:
@@ -729,26 +731,41 @@
 
             white-space: nowrap;
 
+            border-radius: 0;
+
+            display: flex;
+
+            justify-content: center;
+
         }
 
 
         .satori-gift-ticker-inner {
 
-            display: inline-block;
+            width: min(
+                900px,
+                calc(100% - 40px)
+            );
+
+            overflow: hidden;
 
             padding: 12px 0;
 
-            animation:
-                satoriGiftTicker
-                22s
-                linear
-                infinite;
+            text-align: center;
 
             font-size: 10px;
 
             font-weight: 900;
 
             letter-spacing: .5px;
+
+            white-space: nowrap;
+
+            animation:
+                satoriGiftTicker
+                22s
+                linear
+                infinite;
 
         }
 
@@ -821,13 +838,35 @@
 
             margin-bottom: 15px;
 
-            color:
-                var(
-                    --red,
-                    #ff1b1b
-                );
+            font-size: 21px;
 
-            font-size: 22px;
+            line-height: 1;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            width: fit-content;
+
+            filter:
+                grayscale(100%);
+
+            transition:
+                transform .25s ease,
+                filter .25s ease;
+
+        }
+
+
+        .satori-gift-benefit:hover
+        .satori-gift-benefit-icon {
+
+            transform:
+                translateY(-2px)
+                scale(1.08);
+
+            filter:
+                grayscale(0%);
 
         }
 
@@ -1236,6 +1275,16 @@
             .satori-gift-card-value {
 
                 font-size: 20px;
+
+            }
+
+
+            .satori-gift-ticker-inner {
+
+                width:
+                    calc(100% - 30px);
+
+                font-size: 9px;
 
             }
 
@@ -1884,7 +1933,7 @@
                         "
                     >
 
-                        ◇
+                        📧
 
                     </div>
 
@@ -1918,7 +1967,7 @@
                         "
                     >
 
-                        □
+                        🛍️
 
                     </div>
 
@@ -1932,8 +1981,8 @@
 
                     <p>
 
-                        Utilízala para elegir
-                        tus productos favoritos.
+                        Úsala para elegir tus productos
+                        favoritos dentro de SATORII.
 
                     </p>
 
@@ -1952,7 +2001,7 @@
                         "
                     >
 
-                        ♢
+                        🔒
 
                     </div>
 
@@ -1966,8 +2015,8 @@
 
                     <p>
 
-                        Compra de forma
-                        rápida y protegida.
+                        Compra de forma rápida
+                        y protegida.
 
                     </p>
 
@@ -1986,22 +2035,22 @@
                         "
                     >
 
-                        ○
+                        ⏳
 
                     </div>
 
 
                     <h3>
 
-                        SIN VENCIMIENTO*
+                        VÁLIDA POR 2 MESES
 
                     </h3>
 
 
                     <p>
 
-                        Úsala cuando quieras,
-                        según nuestras condiciones.
+                        Tienes hasta 2 meses desde su
+                        emisión para utilizarla.
 
                     </p>
 
@@ -2276,10 +2325,9 @@
                         Importante:
                     </strong>
 
-                    Las Gift Cards SATORII estarán sujetas
-                    a las condiciones de uso indicadas al
-                    momento de la compra. Consulta los términos
-                    y condiciones antes de adquirirla.
+                    Las Gift Cards SATORII tienen una vigencia
+                    máxima de 2 meses desde su emisión. Consulta
+                    los términos y condiciones antes de adquirirla.
 
                 </p>
 
