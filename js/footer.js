@@ -461,39 +461,39 @@ document.addEventListener("DOMContentLoaded", function () {
            PARTE INFERIOR
         ================================================= */
 
-        .satori-footer-bottom {
+.satori-footer-bottom {
 
-            width: min(
-                1400px,
-                calc(100% - 48px)
-            );
+    width: min(
+        1400px,
+        calc(100% - 48px)
+    );
 
-            margin: 0 auto;
+    margin: 0 auto;
 
-            padding:
-                18px 0;
+    padding:
+        18px 0;
 
-            border-top:
-                1px solid rgba(
-                    255,
-                    255,
-                    255,
-                    .12
-                );
+    border-top:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            .12
+        );
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            justify-content: space-between;
+    justify-content: space-between;
 
-            gap: 20px;
+    gap: 80px;
 
-            color: #8e96a3;
+    color: #8e96a3;
 
-            font-size: 9px;
+    font-size: 9px;
 
-        }
+}
 
 
         /* =================================================
