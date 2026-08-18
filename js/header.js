@@ -106,7 +106,7 @@
 
                 <a
                     class="top-instagram"
-                    href="https://www.instagram.com/satorimode/"
+                    href="https://www.instagram.com/satoriicl/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram SatoriMode"
@@ -679,7 +679,7 @@
                 <span>SÍGUENOS</span>
 
                 <a
-                    href="https://www.instagram.com/satorimode/"
+                    href="https://www.instagram.com/satoriicl/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="mobile-instagram"
