@@ -238,9 +238,9 @@
                             </a>
 
                             <a
-                                href="${SATORIMODE_BASE}streetwear.html"
+                                href="${SATORIMODE_BASE}japan.html"
                             >
-                                Streetwear
+                                Japan
                             </a>
 
                             <a
@@ -289,9 +289,9 @@
                             </a>
 
                             <a
-                                href="${SATORIMODE_BASE}gift-cards.html"
+                                href="${SATORIMODE_BASE}regala-satorii.html"
                             >
-                                Gift Cards
+                                Regala Satorii
                             </a>
 
                             <a
@@ -554,9 +554,9 @@
                     </a>
 
                     <a
-                        href="${SATORIMODE_BASE}streetwear.html"
+                        href="${SATORIMODE_BASE}japan.html"
                     >
-                        Streetwear
+                        Japan
                     </a>
 
                     <a
@@ -602,7 +602,7 @@
                     </a>
 
                     <a
-                        href="${SATORIMODE_BASE}gift-cards.html"
+                        href="${SATORIMODE_BASE}regala-satorii.html"
                     >
                         Gift Cards
                     </a>
