@@ -187,6 +187,36 @@
         }
 
 
+        .satori-pack-hero-price {
+
+            margin-top: 24px;
+
+            color: #fff;
+
+            font-size: 30px;
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .satori-pack-hero-price small {
+
+            margin-left: 5px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+        }
+
+
         .satori-pack-hero-button {
 
             display: inline-flex;
@@ -957,6 +987,14 @@
 
             }
 
+
+            .satori-pack-buy {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
         }
 
 
@@ -1086,6 +1124,40 @@
             }
 
 
+            .satori-pack-buy {
+
+                margin-left: 0;
+
+                margin-right: 0;
+
+                padding: 15px;
+
+                gap: 20px;
+
+            }
+
+
+            .satori-pack-buy-content {
+
+                padding: 10px;
+
+            }
+
+
+            .satori-pack-buy h2 {
+
+                font-size: 36px;
+
+            }
+
+
+            .satori-pack-buy-price {
+
+                font-size: 28px;
+
+            }
+
+
             .satori-pack-gift {
 
                 margin-left: 0;
@@ -1188,6 +1260,15 @@
                         y la cultura asiática.
 
                     </p>
+
+
+                    <div class="satori-pack-hero-price">
+
+                        $29.990
+
+                        <small>CLP</small>
+
+                    </div>
 
 
                     <a
@@ -1558,6 +1639,333 @@
             </section>
 
 
+
+        /* =====================================================
+           PRECIO Y COMPRA
+        ====================================================== */
+
+        .satori-pack-buy {
+
+            display: grid;
+
+            grid-template-columns:
+                .8fr 1.2fr;
+
+            gap: 55px;
+
+            align-items: center;
+
+            margin: 0 30px 50px;
+
+            padding: 35px;
+
+            background: #f5f5f5;
+
+            border-radius: 9px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .satori-pack-buy-image {
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            border-radius: 7px;
+
+            background: #111;
+
+        }
+
+
+        .satori-pack-buy-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+        }
+
+
+        .satori-pack-buy-content {
+
+            max-width: 650px;
+
+        }
+
+
+        .satori-pack-buy-label {
+
+            margin-bottom: 10px;
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .satori-pack-buy h2 {
+
+            margin: 0;
+
+            color: #111;
+
+            font-size: clamp(
+                36px,
+                4vw,
+                55px
+            );
+
+            line-height: .95;
+
+            font-weight: 900;
+
+            letter-spacing: -2px;
+
+        }
+
+
+        .satori-pack-buy-subtitle {
+
+            margin: 14px 0 20px;
+
+            color: #555;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+        }
+
+
+        .satori-pack-buy-features {
+
+            margin: 0;
+
+            padding: 0;
+
+            list-style: none;
+
+        }
+
+
+        .satori-pack-buy-features li {
+
+            margin-bottom: 9px;
+
+            color: #555;
+
+            font-size: 11px;
+
+        }
+
+
+        .satori-pack-buy-features li::before {
+
+            content: "✓";
+
+            margin-right: 9px;
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            font-weight: 900;
+
+        }
+
+
+        .satori-pack-buy-price {
+
+            margin-top: 25px;
+
+            color:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            font-size: 32px;
+
+            font-weight: 900;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .satori-pack-buy-price small {
+
+            margin-left: 5px;
+
+            color: #777;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .satori-pack-buy-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-top: 18px;
+
+            padding: 15px 25px;
+
+            background:
+                var(
+                    --red,
+                    #ff1b1b
+                );
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+
+        }
+
+
+        .satori-pack-buy-button:hover {
+
+            transform: translateY(-2px);
+
+            background: #111;
+
+        }
+
+
+
+            <!-- =================================================
+                 PRECIO Y COMPRA
+            ================================================== -->
+
+            <section
+                class="satori-pack-buy"
+                id="comprar"
+            >
+
+                <div class="satori-pack-buy-image">
+
+                    <img
+                        src="
+                            img/productos/satorii-pack/content.jpg
+                        "
+                        alt="SATORII PACK"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="satori-pack-buy-content">
+
+                    <div class="satori-pack-buy-label">
+
+                        SATORII PACK
+
+                    </div>
+
+
+                    <h2>
+                        UNA CAJA.
+                        <br>
+                        MUCHAS SORPRESAS.
+                    </h2>
+
+
+                    <p class="satori-pack-buy-subtitle">
+
+                        El SATORII PACK es un producto independiente
+                        de las prendas y Anime Goods individuales.
+
+                    </p>
+
+
+                    <ul class="satori-pack-buy-features">
+
+                        <li>
+                            Producto principal relacionado con la temática
+                        </li>
+
+                        <li>
+                            Accesorios y Anime Goods
+                        </li>
+
+                        <li>
+                            Coleccionables y sorpresas SATORII
+                        </li>
+
+                        <li>
+                            Packaging especial SATORII
+                        </li>
+
+                    </ul>
+
+
+                    <div class="satori-pack-buy-price">
+
+                        $29.990
+
+                        <small>CLP</small>
+
+                    </div>
+
+
+                    <!-- Reemplaza # por el enlace real de tu carrito/producto -->
+
+                    <a
+                        href="#"
+                        class="satori-pack-buy-button"
+                    >
+
+                        COMPRAR SATORII PACK
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
             <!-- =================================================
                  REGALO OPCIONAL
             ================================================== -->
@@ -1575,7 +1983,7 @@
                         src="
                             img/productos/satorii-pack/gift.jpg
                         "
-                        alt="Regalo opcional SATORII"
+                        alt="Mini poster SATORII"
                         loading="lazy"
                     >
 
