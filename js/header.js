@@ -2064,7 +2064,7 @@
                 display:block;
                 width:23px;
                 height:1.5px;
-                background:#111;
+                background:#fff;
             }
 
             #satori-header
