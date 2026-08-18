@@ -1011,8 +1011,8 @@
             position:relative;
             width:100%;
             height:68px;
-            background:#fff;
-            border-bottom:1px solid #dedede;
+            background:#000;
+            border-bottom:1px solid #222;
             z-index:10000;
         }
 
@@ -1048,7 +1048,7 @@
     font-style:italic;
     letter-spacing:-1.8px;
     text-transform:uppercase;
-    color:#111;
+    color:#fff;
     text-decoration:none;
     line-height:.88;
     white-space:nowrap;
@@ -1097,7 +1097,7 @@
             padding:0;
             border:0;
             background:none;
-            color:#111;
+            color:#fff;
             font-size:12px;
             font-weight:500;
             cursor:pointer;
@@ -1195,7 +1195,7 @@
             padding:0;
             border:0;
             background:transparent;
-            color:#111;
+            color:#fff;
             text-decoration:none;
             display:flex;
             align-items:center;
@@ -1265,8 +1265,8 @@
             left:8px;
             width:calc(100% - 16px);
             height:64px;
-            background:#fff;
-            border:1px solid #d4d4d4;
+            background:#000;
+            border:1px solid #222;
             border-radius:16px;
             box-shadow:
                 0 8px 25px
