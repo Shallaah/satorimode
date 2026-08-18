@@ -18,7 +18,7 @@
 
     <meta
         name="description"
-        content="Información sobre envíos de SATORII. Conoce cómo preparamos, despachamos y entregamos tus pedidos."
+        content="Envíos SATORII. Conoce nuestros tiempos de preparación, transporte y proceso de despacho."
     >
 
     <title>Envíos | SATORII</title>
@@ -28,12 +28,11 @@
         href="css/style.css"
     >
 
-
     <style>
 
         /* =====================================================
            SATORII · ENVÍOS
-           Misma identidad visual que Preguntas Frecuentes
+           Basado en la estructura de Cambios y Devoluciones
         ====================================================== */
 
         .shipping-page {
@@ -228,7 +227,7 @@
 
 
         /* =====================================================
-           NAVEGACIÓN DE AYUDA
+           HELP NAV
         ====================================================== */
 
         .shipping-nav {
@@ -370,7 +369,7 @@
 
 
         /* =====================================================
-           CONTENIDO
+           CONTENT
         ====================================================== */
 
         .shipping-content-wrap {
@@ -396,7 +395,7 @@
         }
 
 
-        .shipping-intro-label {
+        .shipping-intro span {
 
             display: block;
 
@@ -440,7 +439,7 @@
 
 
         /* =====================================================
-           PROCESO DE ENVÍO
+           SHIPPING PROCESS
         ====================================================== */
 
         .shipping-process {
@@ -459,28 +458,22 @@
 
         .shipping-step {
 
-            position: relative;
-
-            min-height: 180px;
-
-            padding: 24px;
-
-            box-sizing: border-box;
+            padding: 26px;
 
             background: #fff;
 
             border:
-                1px solid #e7e7e7;
+                1px solid #e8e8e8;
 
-            border-radius: 12px;
+            border-radius: 14px;
 
             box-shadow:
-                0 6px 22px
+                0 8px 30px
                 rgba(
                     0,
                     0,
                     0,
-                    .025
+                    .035
                 );
 
         }
@@ -488,9 +481,13 @@
 
         .shipping-step-number {
 
-            display: block;
+            display: flex;
 
-            margin-bottom: 28px;
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
 
             color: #ff1b1b;
 
@@ -505,34 +502,33 @@
 
         .shipping-step-icon {
 
-            position: absolute;
+            width: 42px;
 
-            top: 20px;
-
-            right: 20px;
-
-            width: 36px;
-
-            height: 36px;
+            height: 42px;
 
             display: grid;
 
             place-items: center;
 
-            background: #f5f5f5;
+            margin-bottom: 18px;
+
+            border:
+                1px solid #eee;
 
             border-radius: 50%;
 
-            font-size: 16px;
+            font-size: 19px;
 
         }
 
 
-        .shipping-step h3 {
+        .shipping-step h2 {
 
             margin: 0 0 10px;
 
-            font-size: 17px;
+            font-size: 21px;
+
+            line-height: 1.15;
 
             letter-spacing: -.5px;
 
@@ -543,40 +539,67 @@
 
             margin: 0;
 
-            color: #777;
+            color: #666;
 
             font-size: 11px;
 
-            line-height: 1.7;
+            line-height: 1.8;
 
         }
 
 
         /* =====================================================
-           CATEGORÍAS
+           INFORMATION CARDS
         ====================================================== */
 
-        .shipping-category {
+        .shipping-card {
 
-            margin-bottom: 35px;
+            padding: 28px;
+
+            margin-bottom: 16px;
+
+            background: #fff;
+
+            border:
+                1px solid #e8e8e8;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .035
+                );
 
         }
 
 
-        .shipping-category-header {
+        .shipping-card.full {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .shipping-card-number {
 
             display: flex;
 
             align-items: center;
 
-            gap: 14px;
+            justify-content: space-between;
 
-            margin-bottom: 14px;
+            margin-bottom: 20px;
 
         }
 
 
-        .shipping-category-number {
+        .shipping-card-number span:first-child {
 
             color: #ff1b1b;
 
@@ -589,166 +612,42 @@
         }
 
 
-        .shipping-category-title {
+        .shipping-card-icon {
 
-            margin: 0;
+            width: 42px;
 
-            font-size: 20px;
-
-            letter-spacing: -.5px;
-
-        }
-
-
-        /* =====================================================
-           TARJETAS INFORMATIVAS
-        ====================================================== */
-
-        .shipping-info-list {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 8px;
-
-        }
-
-
-        .shipping-info {
-
-            background: #fff;
-
-            border:
-                1px solid #e7e7e7;
-
-            border-radius: 12px;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 6px 22px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .025
-                );
-
-        }
-
-
-        .shipping-info-button {
-
-            width: 100%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding:
-                20px
-                22px;
-
-            border: 0;
-
-            background: transparent;
-
-            color: #111;
-
-            text-align: left;
-
-            font-family: inherit;
-
-            font-size: 12px;
-
-            font-weight: 900;
-
-            cursor: pointer;
-
-        }
-
-
-        .shipping-info-button:hover {
-
-            color: #ff1b1b;
-
-        }
-
-
-        .shipping-info-icon {
-
-            width: 28px;
-
-            height: 28px;
-
-            flex: 0 0 28px;
+            height: 42px;
 
             display: grid;
 
             place-items: center;
 
             border:
-                1px solid #e5e5e5;
+                1px solid #eee;
 
             border-radius: 50%;
 
-            color: #111;
-
-            font-size: 14px;
-
-            transition:
-                transform .25s ease,
-                background .25s ease,
-                color .25s ease;
+            font-size: 19px;
 
         }
 
 
-        .shipping-info.open
-        .shipping-info-icon {
+        .shipping-card h2 {
 
-            transform:
-                rotate(45deg);
+            margin: 0 0 12px;
 
-            background: #ff1b1b;
+            font-size: 21px;
 
-            color: #fff;
+            line-height: 1.15;
 
-            border-color: #ff1b1b;
+            letter-spacing: -.5px;
 
         }
 
 
-        .shipping-info-content {
+        .shipping-card p {
 
-            display: grid;
-
-            grid-template-rows: 0fr;
-
-            transition:
-                grid-template-rows .3s ease;
-
-        }
-
-
-        .shipping-info-inner {
-
-            overflow: hidden;
-
-        }
-
-
-        .shipping-info-text {
-
-            padding:
-                0
-                22px
-                20px;
+            margin: 0 0 11px;
 
             color: #666;
 
@@ -759,23 +658,64 @@
         }
 
 
-        .shipping-info.open
-        .shipping-info-content {
+        .shipping-card ul {
 
-            grid-template-rows: 1fr;
+            margin:
+                12px
+                0
+                0;
+
+            padding-left: 19px;
+
+            color: #555;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .shipping-card li {
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .shipping-card.time {
+
+            border-top:
+                3px solid #111;
+
+        }
+
+
+        .shipping-card.important {
+
+            border-top:
+                3px solid #ff1b1b;
+
+        }
+
+
+        .shipping-card.info {
+
+            border-top:
+                3px solid #35b96b;
 
         }
 
 
         /* =====================================================
-           TARJETA DESTACADA
+           IMPORTANT INFORMATION
         ====================================================== */
 
-        .shipping-highlight {
+        .shipping-important {
 
-            margin-top: 45px;
+            margin-top: 16px;
 
-            padding: 32px;
+            padding: 28px;
 
             background: #111;
 
@@ -786,9 +726,9 @@
         }
 
 
-        .shipping-highlight-label {
+        .shipping-important-label {
 
-            margin-bottom: 10px;
+            margin-bottom: 20px;
 
             color: #ff1b1b;
 
@@ -801,22 +741,22 @@
         }
 
 
-        .shipping-highlight h2 {
+        .shipping-important h2 {
 
-            margin: 0 0 10px;
+            margin: 0 0 12px;
 
-            font-size: 25px;
+            font-size: 24px;
 
             letter-spacing: -1px;
 
         }
 
 
-        .shipping-highlight p {
-
-            max-width: 720px;
+        .shipping-important p {
 
             margin: 0;
+
+            max-width: 800px;
 
             color: #aaa;
 
@@ -827,17 +767,45 @@
         }
 
 
+        .shipping-important ul {
+
+            margin:
+                18px
+                0
+                0;
+
+            padding-left: 19px;
+
+            color: #aaa;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .shipping-important li {
+
+            margin-bottom: 8px;
+
+        }
+
+
         /* =====================================================
-           CONTACTO
+           CONTACT
         ====================================================== */
 
         .shipping-contact {
 
-            margin-top: 18px;
+            margin-top: 16px;
 
             padding: 28px;
 
-            background: #f5f5f5;
+            background: #fff;
+
+            border:
+                1px solid #e8e8e8;
 
             border-radius: 14px;
 
@@ -856,9 +824,7 @@
 
             margin: 0 0 8px;
 
-            font-size: 21px;
-
-            letter-spacing: -.7px;
+            font-size: 20px;
 
         }
 
@@ -942,6 +908,8 @@
 
                 right: -80px;
 
+                opacity: .8;
+
                 transform:
                     scale(.85);
 
@@ -1009,20 +977,9 @@
             }
 
 
-            .shipping-info-button {
+            .shipping-card {
 
-                padding:
-                    18px;
-
-            }
-
-
-            .shipping-info-text {
-
-                padding:
-                    0
-                    18px
-                    18px;
+                padding: 22px;
 
             }
 
@@ -1103,9 +1060,9 @@
                 <p>
 
                     Queremos que tu pedido llegue de forma
-                    simple y segura. Revisa cómo funciona
-                    nuestro proceso de preparación, despacho
-                    y entrega.
+                    simple y segura. Revisa los tiempos de
+                    preparación, transporte y las condiciones
+                    de despacho antes de realizar tu compra.
 
                 </p>
 
@@ -1212,7 +1169,7 @@
 
             <div class="shipping-intro">
 
-                <span class="shipping-intro-label">
+                <span>
                     INFORMACIÓN DE ENVÍOS
                 </span>
 
@@ -1224,9 +1181,10 @@
 
                 <p>
 
-                    Queremos que tengas claridad sobre cada
-                    etapa de tu compra. Desde que confirmas
-                    tu pedido hasta que llega a destino.
+                    Siempre podrás revisar en el banner principal
+                    y en tu carrito las fechas de despacho disponibles
+                    y los tiempos estimados reales. Esa información
+                    será la referencia más importante para tu pedido.
 
                 </p>
 
@@ -1235,33 +1193,40 @@
 
 
             <!-- =================================================
-                 PROCESO
+                 PROCESO DE ENVÍO
             ================================================== -->
 
             <div class="shipping-process">
 
 
+                <!-- 01 -->
+
                 <article class="shipping-step">
 
-                    <span class="shipping-step-number">
-                        01 / PEDIDO
-                    </span>
+                    <div class="shipping-step-number">
+
+                        <span>
+                            01 / PEDIDO
+                        </span>
+
+                    </div>
 
 
-                    <span class="shipping-step-icon">
+                    <div class="shipping-step-icon">
                         🛒
-                    </span>
+                    </div>
 
 
-                    <h3>
-                        Compra
-                    </h3>
+                    <h2>
+                        Realiza tu compra
+                    </h2>
 
 
                     <p>
 
-                        Realiza tu pedido a través de nuestra
-                        tienda y completa el proceso de compra.
+                        Selecciona tus productos y revisa las
+                        opciones de despacho disponibles antes
+                        de confirmar tu pedido.
 
                     </p>
 
@@ -1269,27 +1234,34 @@
 
 
 
+                <!-- 02 -->
+
                 <article class="shipping-step">
 
-                    <span class="shipping-step-number">
-                        02 / PREPARACIÓN
-                    </span>
+                    <div class="shipping-step-number">
+
+                        <span>
+                            02 / PREPARACIÓN
+                        </span>
+
+                    </div>
 
 
-                    <span class="shipping-step-icon">
+                    <div class="shipping-step-icon">
                         📦
-                    </span>
+                    </div>
 
 
-                    <h3>
-                        Preparamos
-                    </h3>
+                    <h2>
+                        Preparamos tu pedido
+                    </h2>
 
 
                     <p>
 
-                        Revisamos y preparamos tus productos
-                        antes de realizar el despacho.
+                        Normalmente demoramos entre
+                        <strong>4 a 7 días hábiles</strong>
+                        en preparar el pedido.
 
                     </p>
 
@@ -1297,27 +1269,35 @@
 
 
 
+                <!-- 03 -->
+
                 <article class="shipping-step">
 
-                    <span class="shipping-step-number">
-                        03 / DESPACHO
-                    </span>
+                    <div class="shipping-step-number">
+
+                        <span>
+                            03 / TRANSPORTE
+                        </span>
+
+                    </div>
 
 
-                    <span class="shipping-step-icon">
+                    <div class="shipping-step-icon">
                         🚚
-                    </span>
+                    </div>
 
 
-                    <h3>
-                        Enviamos
-                    </h3>
+                    <h2>
+                        Va en camino
+                    </h2>
 
 
                     <p>
 
-                        Una vez preparado, tu pedido pasa al
-                        proceso de despacho correspondiente.
+                        El transporte generalmente demora entre
+                        <strong>1 a 4 días hábiles</strong>,
+                        dependiendo del destino y del transporte
+                        seleccionado.
 
                     </p>
 
@@ -1325,27 +1305,34 @@
 
 
 
+                <!-- 04 -->
+
                 <article class="shipping-step">
 
-                    <span class="shipping-step-number">
-                        04 / ENTREGA
-                    </span>
+                    <div class="shipping-step-number">
+
+                        <span>
+                            04 / ENTREGA
+                        </span>
+
+                    </div>
 
 
-                    <span class="shipping-step-icon">
+                    <div class="shipping-step-icon">
                         🏠
-                    </span>
+                    </div>
 
 
-                    <h3>
-                        Recibes
-                    </h3>
+                    <h2>
+                        Recibes tu pedido
+                    </h2>
 
 
                     <p>
 
-                        Tu pedido continúa su recorrido hasta
-                        llegar a la dirección indicada.
+                        Cuando tu pedido sea entregado a la agencia
+                        de despacho, te enviaremos la información
+                        correspondiente.
 
                     </p>
 
@@ -1357,182 +1344,119 @@
 
 
             <!-- =================================================
-                 01 / COBERTURA
+                 01 / TIEMPOS
             ================================================== -->
 
-            <section class="shipping-category">
+            <article class="shipping-card time">
 
+                <div class="shipping-card-number">
 
-                <div class="shipping-category-header">
-
-                    <span class="shipping-category-number">
-                        01 / COBERTURA
+                    <span>
+                        01 / TIEMPOS DE ENVÍO
                     </span>
 
-
-                    <h2 class="shipping-category-title">
-                        ¿Dónde realizamos envíos?
-                    </h2>
-
-                </div>
-
-
-                <div class="shipping-info-list">
-
-
-                    <article class="shipping-info open">
-
-                        <button
-                            class="shipping-info-button"
-                            type="button"
-                        >
-
-                            <span>
-                                Envíos a todo Chile
-                            </span>
-
-
-                            <span class="shipping-info-icon">
-                                +
-                            </span>
-
-                        </button>
-
-
-                        <div class="shipping-info-content">
-
-                            <div class="shipping-info-inner">
-
-                                <div class="shipping-info-text">
-
-                                    Realizamos envíos a distintas
-                                    zonas del país. La disponibilidad
-                                    y condiciones específicas pueden
-                                    depender de la dirección ingresada
-                                    durante el proceso de compra.
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
+                    <span class="shipping-card-icon">
+                        ⏱️
+                    </span>
 
                 </div>
 
-            </section>
+
+                <h2>
+                    ¿Cuánto demora mi pedido?
+                </h2>
+
+
+                <p>
+
+                    El tiempo total de tu pedido se divide
+                    principalmente en dos etapas: preparación
+                    y transporte.
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+
+                        <strong>
+                            Preparación del pedido:
+                        </strong>
+
+                        normalmente entre
+                        <strong>
+                            4 a 7 días hábiles.
+                        </strong>
+
+                        No cuentan fines de semana ni feriados.
+
+                    </li>
+
+
+                    <li>
+
+                        <strong>
+                            Tiempo de transporte:
+                        </strong>
+
+                        generalmente entre
+                        <strong>
+                            1 a 4 días hábiles.
+                        </strong>
+
+                        Puede variar según la dirección de destino
+                        y la empresa de transporte seleccionada.
+
+                    </li>
+
+                </ul>
+
+            </article>
 
 
 
             <!-- =================================================
-                 02 / PREPARACIÓN
+                 02 / DESPACHO
             ================================================== -->
 
-            <section class="shipping-category">
+            <article class="shipping-card info">
 
+                <div class="shipping-card-number">
 
-                <div class="shipping-category-header">
-
-                    <span class="shipping-category-number">
-                        02 / PREPARACIÓN
+                    <span>
+                        02 / DESPACHO
                     </span>
 
-
-                    <h2 class="shipping-category-title">
-                        Antes de que tu pedido salga
-                    </h2>
-
-                </div>
-
-
-                <div class="shipping-info-list">
-
-
-                    <article class="shipping-info">
-
-                        <button
-                            class="shipping-info-button"
-                            type="button"
-                        >
-
-                            <span>
-                                ¿Qué ocurre después de comprar?
-                            </span>
-
-
-                            <span class="shipping-info-icon">
-                                +
-                            </span>
-
-                        </button>
-
-
-                        <div class="shipping-info-content">
-
-                            <div class="shipping-info-inner">
-
-                                <div class="shipping-info-text">
-
-                                    Una vez completada la compra,
-                                    revisaremos la información del
-                                    pedido para preparar correctamente
-                                    los productos seleccionados antes
-                                    de su despacho.
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="shipping-info">
-
-                        <button
-                            class="shipping-info-button"
-                            type="button"
-                        >
-
-                            <span>
-                                ¿Qué pasa si necesito modificar mi dirección?
-                            </span>
-
-
-                            <span class="shipping-info-icon">
-                                +
-                            </span>
-
-                        </button>
-
-
-                        <div class="shipping-info-content">
-
-                            <div class="shipping-info-inner">
-
-                                <div class="shipping-info-text">
-
-                                    Si necesitas modificar los datos
-                                    de entrega, contáctanos lo antes
-                                    posible. Revisaremos si el pedido
-                                    aún puede ser actualizado antes
-                                    de su despacho.
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
+                    <span class="shipping-card-icon">
+                        📦
+                    </span>
 
                 </div>
 
-            </section>
+
+                <h2>
+                    ¿Cuándo recibiré información de mi envío?
+                </h2>
+
+
+                <p>
+
+                    Cuando tu pedido sea entregado a la agencia
+                    de despachos, te enviaremos un correo con la
+                    información correspondiente.
+
+                </p>
+
+
+                <p>
+
+                    La disponibilidad de información de seguimiento
+                    dependerá de la modalidad de envío seleccionada.
+
+                </p>
+
+            </article>
 
 
 
@@ -1540,244 +1464,144 @@
                  03 / SEGUIMIENTO
             ================================================== -->
 
-            <section class="shipping-category">
+            <article class="shipping-card">
 
+                <div class="shipping-card-number">
 
-                <div class="shipping-category-header">
-
-                    <span class="shipping-category-number">
+                    <span>
                         03 / SEGUIMIENTO
                     </span>
 
-
-                    <h2 class="shipping-category-title">
-                        Sigue el recorrido de tu pedido
-                    </h2>
-
-                </div>
-
-
-                <div class="shipping-info-list">
-
-
-                    <article class="shipping-info">
-
-                        <button
-                            class="shipping-info-button"
-                            type="button"
-                        >
-
-                            <span>
-                                ¿Cómo puedo saber dónde está mi pedido?
-                            </span>
-
-
-                            <span class="shipping-info-icon">
-                                +
-                            </span>
-
-                        </button>
-
-
-                        <div class="shipping-info-content">
-
-                            <div class="shipping-info-inner">
-
-                                <div class="shipping-info-text">
-
-                                    Cuando corresponda, la información
-                                    de seguimiento será proporcionada
-                                    según el método de envío utilizado.
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="shipping-info">
-
-                        <button
-                            class="shipping-info-button"
-                            type="button"
-                        >
-
-                            <span>
-                                ¿Qué hago si mi pedido presenta un retraso?
-                            </span>
-
-
-                            <span class="shipping-info-icon">
-                                +
-                            </span>
-
-                        </button>
-
-
-                        <div class="shipping-info-content">
-
-                            <div class="shipping-info-inner">
-
-                                <div class="shipping-info-text">
-
-                                    Si consideras que tu pedido está
-                                    presentando un retraso, puedes
-                                    contactarnos para revisar la
-                                    situación y orientarte sobre los
-                                    siguientes pasos.
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 04 / RECEPCIÓN
-            ================================================== -->
-
-            <section class="shipping-category">
-
-
-                <div class="shipping-category-header">
-
-                    <span class="shipping-category-number">
-                        04 / RECEPCIÓN
+                    <span class="shipping-card-icon">
+                        🔎
                     </span>
 
-
-                    <h2 class="shipping-category-title">
-                        Cuando recibas tu pedido
-                    </h2>
-
-                </div>
-
-
-                <div class="shipping-info-list">
-
-
-                    <article class="shipping-info">
-
-                        <button
-                            class="shipping-info-button"
-                            type="button"
-                        >
-
-                            <span>
-                                Revisa tu pedido al recibirlo
-                            </span>
-
-
-                            <span class="shipping-info-icon">
-                                +
-                            </span>
-
-                        </button>
-
-
-                        <div class="shipping-info-content">
-
-                            <div class="shipping-info-inner">
-
-                                <div class="shipping-info-text">
-
-                                    Te recomendamos revisar que el
-                                    pedido corresponda a tu compra y
-                                    que los productos se encuentren
-                                    en las condiciones esperadas.
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="shipping-info">
-
-                        <button
-                            class="shipping-info-button"
-                            type="button"
-                        >
-
-                            <span>
-                                ¿Tu pedido llegó con algún problema?
-                            </span>
-
-
-                            <span class="shipping-info-icon">
-                                +
-                            </span>
-
-                        </button>
-
-
-                        <div class="shipping-info-content">
-
-                            <div class="shipping-info-inner">
-
-                                <div class="shipping-info-text">
-
-                                    Si recibiste un producto con algún
-                                    problema, revisa nuestra sección
-                                    de Cambios y Devoluciones para
-                                    conocer cómo solicitar ayuda.
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 DESTACADO
-            ================================================== -->
-
-            <div class="shipping-highlight">
-
-
-                <div class="shipping-highlight-label">
-                    INFORMACIÓN IMPORTANTE
                 </div>
 
 
                 <h2>
-                    Queremos que recibas tu pedido sin complicaciones.
+                    Información sobre el seguimiento
                 </h2>
 
 
                 <p>
 
-                    Las condiciones específicas de despacho,
-                    costos, plazos y disponibilidad deben ser
-                    revisadas según la información que SATORII
-                    establezca para cada modalidad de envío.
+                    No todas las modalidades de envío necesariamente
+                    cuentan con número de seguimiento.
 
                 </p>
 
+
+                <p>
+
+                    Si la modalidad seleccionada no dispone de
+                    seguimiento, esta condición será indicada
+                    dentro de las opciones disponibles.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 04 / IMPORTANTE
+            ================================================== -->
+
+            <article class="shipping-card important">
+
+                <div class="shipping-card-number">
+
+                    <span>
+                        04 / IMPORTANTE SABER
+                    </span>
+
+                    <span class="shipping-card-icon">
+                        💡
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Revisa siempre la información disponible.
+                </h2>
+
+
+                <p>
+
+                    El carrito de compras es siempre tu mejor
+                    referencia respecto a los tiempos y opciones
+                    de envío disponibles.
+
+                </p>
+
+
+                <p>
+
+                    Los tiempos pueden variar dependiendo de la
+                    dirección de destino y de la logística de la
+                    empresa de transporte seleccionada.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 INFORMACIÓN DESTACADA
+            ================================================== -->
+
+            <div class="shipping-important">
+
+
+                <div class="shipping-important-label">
+                    INFORMACIÓN IMPORTANTE
+                </div>
+
+
+                <h2>
+                    Queremos que recibas tu pedido sin complicaciones. 🖤
+                </h2>
+
+
+                <p>
+
+                    Trabajamos para que tu pedido llegue de forma
+                    segura y dentro de los tiempos estimados.
+                    Si ocurre algún imprevisto que pueda retrasar
+                    tu pedido, te avisaremos oportunamente.
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Revisa siempre los tiempos mostrados
+                        antes de finalizar tu compra.
+                    </li>
+
+
+                    <li>
+                        El carrito refleja las opciones de envío
+                        disponibles para tu pedido.
+                    </li>
+
+
+                    <li>
+                        Los tiempos de transporte pueden variar
+                        según el destino.
+                    </li>
+
+
+                    <li>
+                        Si existe algún imprevisto que retrase
+                        tu pedido, te avisaremos.
+                    </li>
+
+                </ul>
 
             </div>
 
@@ -1793,15 +1617,15 @@
                 <div>
 
                     <h2>
-                        ¿Necesitas ayuda con tu envío?
+                        ¿Tienes dudas sobre tu envío?
                     </h2>
 
 
                     <p>
 
-                        Si tienes dudas sobre tu pedido o necesitas
-                        ayuda con el proceso de despacho, puedes
-                        contactarnos directamente.
+                        Si tienes alguna duda sobre tu despacho,
+                        tiempos de entrega o tu pedido, escríbenos.
+                        Estamos para ayudarte.
 
                     </p>
 
@@ -1816,7 +1640,6 @@
                     ◎ @satorimode
                 </a>
 
-
             </div>
 
 
@@ -1825,11 +1648,13 @@
     </main>
 
 
+
     <!-- =====================================================
-         FOOTER
+         FOOTER GLOBAL
     ====================================================== -->
 
     <div id="satori-footer"></div>
+
 
 
     <!-- =====================================================
@@ -1841,78 +1666,6 @@
     <script src="js/header.js"></script>
 
     <script src="js/footer.js"></script>
-
-
-    <!-- =====================================================
-         SHIPPING JAVASCRIPT
-    ====================================================== -->
-
-    <script>
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-                const buttons =
-                    document.querySelectorAll(
-                        ".shipping-info-button"
-                    );
-
-
-                buttons.forEach(
-                    function (button) {
-
-                        button.addEventListener(
-                            "click",
-                            function () {
-
-                                const item =
-                                    button.closest(
-                                        ".shipping-info"
-                                    );
-
-
-                                const isOpen =
-                                    item.classList.contains(
-                                        "open"
-                                    );
-
-
-                                document
-                                    .querySelectorAll(
-                                        ".shipping-info.open"
-                                    )
-                                    .forEach(
-                                        function (openItem) {
-
-                                            openItem
-                                                .classList
-                                                .remove(
-                                                    "open"
-                                                );
-
-                                        }
-                                    );
-
-
-                                if (!isOpen) {
-
-                                    item.classList.add(
-                                        "open"
-                                    );
-
-                                }
-
-                            }
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-    </script>
 
 
 </body>
