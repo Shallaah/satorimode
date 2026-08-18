@@ -114,11 +114,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         PRODUCTOS
                     </h3>
 
-                    <a href="${BASE}productos.html">
+                    <a href="productos.html">
                         Todos los productos
                     </a>
 
-                    <a href="${BASE}carrito.html">
+                    <a href="carrito.html">
                         Carrito
                     </a>
 
