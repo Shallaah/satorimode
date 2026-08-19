@@ -2411,16 +2411,32 @@ button:hover {
 }
 
 
-/* -----------------------------------------------------
-   ELIMINAR COMPLETAMENTE EL DEGRADADO
------------------------------------------------------ */
+/* =====================================================
+   DEGRADADO SUTIL PARA EL TEXTO
+===================================================== */
 
 .collections-grid .collection-card::after {
 
-    display: none;
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.55) 0%,
+            rgba(0, 0, 0, 0.22) 28%,
+            rgba(0, 0, 0, 0.06) 55%,
+            rgba(0, 0, 0, 0) 75%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
 
 }
-
 
 /* -----------------------------------------------------
    SOMBRA DEL TEXTO
