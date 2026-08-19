@@ -2348,6 +2348,231 @@ button:hover {
    IMÁGENES DE LAS COLECCIONES
 ===================================================== */
 
+.collections-grid .collection-card {
+
+    min-height: 230px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    border:
+        1px solid #ccc;
+
+    border-radius:
+        var(--radius);
+
+    background-color: #111;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+
+}
+
+
+/* =====================================================
+   IMÁGENES
+===================================================== */
+
+.collections-grid .collection-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -8px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    transform: scale(1);
+
+    transition:
+        transform .55s cubic-bezier(.22,.61,.36,1);
+
+    z-index: 0;
+
+}
+
+
+/* =====================================================
+   IMAGEN DE CADA COLECCIÓN
+===================================================== */
+
+.collections-grid .collection-card:nth-child(1)::before {
+
+    background-image:
+        url("../img/anime-card.png");
+
+}
+
+
+.collections-grid .collection-card:nth-child(2)::before {
+
+    background-image:
+        url("../img/torii-card.png");
+
+}
+
+
+.collections-grid .collection-card:nth-child(3)::before {
+
+    background-image:
+        url("../img/anime-goods-card.png");
+
+}
+
+
+.collections-grid .collection-card:nth-child(4)::before {
+
+    background-image:
+        url("../img/todo-card.png");
+
+}
+
+
+/* =====================================================
+   DEGRADADO SUTIL
+===================================================== */
+
+.collections-grid .collection-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.55) 0%,
+            rgba(0, 0, 0, 0.22) 28%,
+            rgba(0, 0, 0, 0.06) 55%,
+            rgba(0, 0, 0, 0) 75%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.collections-grid .collection-card > div {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 20px;
+
+    color: #fff;
+
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.collections-grid .collection-card h3 {
+
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.85);
+
+    transition:
+        color .25s ease;
+
+}
+
+
+/* =====================================================
+   SUBTÍTULO
+===================================================== */
+
+.collections-grid .collection-card span {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #fff;
+
+    font-size: 12px;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.85);
+
+    transition:
+        color .25s ease;
+
+}
+
+
+/* =====================================================
+   HOVER — ZOOM DE IMAGEN
+===================================================== */
+
+.collections-grid .collection-card:hover::before {
+
+    transform:
+        scale(1.05);
+
+}
+
+
+/* =====================================================
+   HOVER — TARJETA
+===================================================== */
+
+.collections-grid .collection-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #999;
+
+}
+
+
+/* =====================================================
+   HOVER — TEXTO ROJO
+===================================================== */
+
+.collections-grid .collection-card:hover h3,
+.collections-grid .collection-card:hover span {
+
+    color:
+        var(--red);
+
+}
+
 /* -----------------------------------------------------
    ANIME
 ----------------------------------------------------- */
