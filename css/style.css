@@ -2348,49 +2348,88 @@ button:hover {
    IMÁGENES DE LAS COLECCIONES
 ===================================================== */
 
+/* -----------------------------------------------------
+   ANIME
+----------------------------------------------------- */
+
 .collections-grid .collection-card:nth-child(1) {
+
     background-image:
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.75),
-            rgba(0, 0, 0, 0.05)
-        ),
         url("../img/anime-card.png");
+
 }
+
+
+/* -----------------------------------------------------
+   TORII
+----------------------------------------------------- */
 
 .collections-grid .collection-card:nth-child(2) {
+
     background-image:
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.75),
-            rgba(0, 0, 0, 0.05)
-        ),
         url("../img/torii-card.png");
+
 }
+
+
+/* -----------------------------------------------------
+   ANIME GOODS
+----------------------------------------------------- */
 
 .collections-grid .collection-card:nth-child(3) {
+
     background-image:
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.75),
-            rgba(0, 0, 0, 0.05)
-        ),
         url("../img/anime-goods-card.png");
+
 }
+
+
+/* -----------------------------------------------------
+   TODO
+----------------------------------------------------- */
 
 .collections-grid .collection-card:nth-child(4) {
+
     background-image:
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.75),
-            rgba(0, 0, 0, 0.05)
-        ),
         url("../img/todo-card.png");
+
 }
 
 
+/* -----------------------------------------------------
+   CONFIGURACIÓN GENERAL DE LAS IMÁGENES
+----------------------------------------------------- */
+
 .collections-grid .collection-card {
+
     background-size: cover;
+
     background-position: center;
+
     background-repeat: no-repeat;
+
+}
+
+
+/* -----------------------------------------------------
+   ELIMINAR COMPLETAMENTE EL DEGRADADO
+----------------------------------------------------- */
+
+.collections-grid .collection-card::after {
+
+    display: none;
+
+}
+
+
+/* -----------------------------------------------------
+   SOMBRA DEL TEXTO
+----------------------------------------------------- */
+
+.collections-grid .collection-card h3,
+.collections-grid .collection-card span {
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.85);
+
 }
