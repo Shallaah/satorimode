@@ -1,4 +1,4 @@
- (function () {
+(function () {
 
     "use strict";
 
@@ -533,7 +533,6 @@
                 aria-label="Menú móvil"
             >
 
-
                 <a
                     href="${SATORIMODE_BASE}index.html"
                     class="mobile-nav-button mobile-home-button"
@@ -959,7 +958,7 @@
 
 
         /* =====================================================
-           CSS DEL HEADER
+           CSS
         ====================================================== */
 
         const style =
@@ -989,6 +988,17 @@
                 Arial,
                 Helvetica,
                 sans-serif;
+        }
+
+
+        /* =====================================================
+           BLOQUEAR SCROLL
+        ====================================================== */
+
+        html.satori-lock-scroll,
+        body.satori-lock-scroll {
+            overflow:hidden !important;
+            overscroll-behavior:none;
         }
 
 
@@ -1458,11 +1468,19 @@
             left:0;
             width:min(370px,88vw);
             height:100dvh;
+            height:100vh;
             padding:20px 24px;
+            padding-top:
+                max(
+                    20px,
+                    env(safe-area-inset-top)
+                );
             background:#fff;
             transform:translateX(-100%);
             transition:transform .28s ease;
             overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
+            overscroll-behavior:contain;
             z-index:1000001;
         }
 
@@ -1596,6 +1614,11 @@
         #satori-header .mobile-social {
             margin-top:35px;
             padding-top:5px;
+            padding-bottom:
+                max(
+                    10px,
+                    env(safe-area-inset-bottom)
+                );
         }
 
         #satori-header .mobile-social span {
@@ -1789,6 +1812,7 @@
             right:0;
             width:min(430px,100vw);
             height:100dvh;
+            height:100vh;
             background:#fff;
             display:flex;
             flex-direction:column;
@@ -1798,6 +1822,8 @@
                 -15px 0 45px
                 rgba(0,0,0,.15);
             z-index:1000003;
+            padding-bottom:
+                env(safe-area-inset-bottom);
         }
 
         #satori-header
@@ -1814,6 +1840,11 @@
             align-items:center;
             justify-content:space-between;
             gap:20px;
+            padding-top:
+                max(
+                    22px,
+                    env(safe-area-inset-top)
+                );
         }
 
         #satori-header .cart-preview-label {
@@ -1871,7 +1902,10 @@
 
         #satori-header .cart-preview-content {
             flex:1;
+            min-height:0;
             overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
+            overscroll-behavior:contain;
             padding:5px 25px 20px;
         }
 
@@ -1928,6 +1962,7 @@
             display:flex;
             align-items:center;
             justify-content:space-between;
+            gap:10px;
             margin-top:10px;
         }
 
@@ -1967,6 +2002,7 @@
             font-size:9px;
             font-weight:700;
             cursor:pointer;
+            white-space:nowrap;
         }
 
         #satori-header .cart-preview-remove:hover {
@@ -2042,6 +2078,14 @@
         #satori-header .cart-preview-footer {
             flex-shrink:0;
             padding:20px 25px 24px;
+            padding-bottom:
+                max(
+                    24px,
+                    calc(
+                        24px +
+                        env(safe-area-inset-bottom)
+                    )
+                );
             background:#fafafa;
             border-top:1px solid #ddd;
         }
@@ -2085,6 +2129,7 @@
             font-weight:800;
             letter-spacing:.8px;
             border-radius:5px;
+            text-align:center;
         }
 
         #satori-header .cart-preview-view {
@@ -2252,6 +2297,11 @@
             #satori-header .cart-preview-header {
                 min-height:82px;
                 padding:18px 20px;
+                padding-top:
+                    max(
+                        18px,
+                        env(safe-area-inset-top)
+                    );
             }
 
             #satori-header .cart-preview-content {
@@ -2260,23 +2310,30 @@
 
             #satori-header .cart-preview-footer {
                 padding:18px 20px 22px;
+                padding-bottom:
+                    max(
+                        22px,
+                        calc(
+                            22px +
+                            env(safe-area-inset-bottom)
+                        )
+                    );
             }
 
 
             /* BUSCADOR */
 
             #satori-header .search-overlay {
-                padding:
+                padding-top:
                     max(
                         82px,
                         calc(
                             env(safe-area-inset-top)
                             + 72px
                         )
-                    )
-                    12px
-                    20px;
-
+                    );
+                padding-left:12px;
+                padding-right:12px;
                 align-items:flex-start;
             }
 
@@ -2356,29 +2413,9 @@
                     17px;
             }
 
-        }
-
-
-        /* =====================================================
-           SAFE AREA IPHONE
-        ====================================================== */
-
-        @supports (
-            padding:max(0px)
-        ) {
-
-            @media (max-width:1000px) {
-
-                #satori-header .mobile-menu {
-
-                    padding-top:
-                        max(
-                            20px,
-                            env(safe-area-inset-top)
-                        );
-
-                }
-
+            #satori-header .cart-preview-actions {
+                grid-template-columns:1fr;
+                gap:8px;
             }
 
         }
@@ -2447,53 +2484,7 @@
 
 
         /* =====================================================
-           SCROLL
-        ====================================================== */
-
-        function updateScrollHeader() {
-
-            const scrolled =
-                window.scrollY > 50;
-
-            root.classList.toggle(
-                "scrolled",
-                scrolled
-            );
-
-            if (scrolled) {
-
-                spacer.style.display =
-                    "block";
-
-                spacer.style.height =
-                    "64px";
-
-            } else {
-
-                spacer.style.display =
-                    "none";
-
-                spacer.style.height =
-                    "0px";
-
-            }
-
-        }
-
-
-        window.addEventListener(
-            "scroll",
-            updateScrollHeader,
-            {
-                passive:true
-            }
-        );
-
-        updateScrollHeader();
-
-
-        /* =====================================================
-           ELEMENTOS MENÚ MÓVIL
+           REFERENCIAS
         ====================================================== */
 
         const mobileOpen =
@@ -2517,14 +2508,269 @@
             );
 
 
+        const searchButton =
+            root.querySelector(
+                "#satori-search"
+            );
+
+        const searchOverlay =
+            root.querySelector(
+                "#satori-search-overlay"
+            );
+
+        const searchClose =
+            root.querySelector(
+                "#satori-search-close"
+            );
+
+        const searchInput =
+            root.querySelector(
+                "#satori-search-input"
+            );
+
+        const searchForm =
+            root.querySelector(
+                "#satori-search-form"
+            );
+
+        const inlineSearch =
+            root.querySelector(
+                "#satori-search-inline"
+            );
+
+        const inlineSearchInput =
+            root.querySelector(
+                "#satori-search-inline-input"
+            );
+
+
+        const cartButton =
+            root.querySelector(
+                "#satori-cart-button"
+            );
+
+        const cartPreview =
+            root.querySelector(
+                "#satori-cart-preview"
+            );
+
+        const cartOverlay =
+            root.querySelector(
+                "#satori-cart-overlay"
+            );
+
+        const cartClose =
+            root.querySelector(
+                "#satori-cart-close"
+            );
+
+        const cartContent =
+            root.querySelector(
+                "#satori-cart-preview-content"
+            );
+
+        const cartSubtotal =
+            root.querySelector(
+                "#satori-cart-preview-subtotal"
+            );
+
+        const cartCount =
+            root.querySelector(
+                "[data-satori-cart-count]"
+            );
+
+
+        const dropdowns =
+            root.querySelectorAll(
+                ".nav-dropdown"
+            );
+
+
+        /* =====================================================
+           BLOQUEO DE SCROLL
+        ====================================================== */
+
+        function lockScroll() {
+
+            document.documentElement.classList.add(
+                "satori-lock-scroll"
+            );
+
+            document.body.classList.add(
+                "satori-lock-scroll"
+            );
+
+        }
+
+
+        function unlockScroll() {
+
+            const mobileIsOpen =
+                mobileMenu?.classList.contains(
+                    "open"
+                );
+
+            const searchIsOpen =
+                searchOverlay?.classList.contains(
+                    "open"
+                );
+
+            const cartIsOpen =
+                cartPreview?.classList.contains(
+                    "open"
+                );
+
+
+            if (
+                !mobileIsOpen &&
+                !searchIsOpen &&
+                !cartIsOpen
+            ) {
+
+                document.documentElement.classList.remove(
+                    "satori-lock-scroll"
+                );
+
+                document.body.classList.remove(
+                    "satori-lock-scroll"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SCROLL HEADER
+        ====================================================== */
+
+        function updateScrollHeader() {
+
+            const scrolled =
+                window.scrollY > 50;
+
+            root.classList.toggle(
+                "scrolled",
+                scrolled
+            );
+
+
+            if (scrolled) {
+
+                spacer.style.display =
+                    "block";
+
+                spacer.style.height =
+                    "68px";
+
+            } else {
+
+                spacer.style.display =
+                    "none";
+
+                spacer.style.height =
+                    "0px";
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateScrollHeader,
+            {
+                passive:true
+            }
+        );
+
+
+        updateScrollHeader();
+
+
+        /* =====================================================
+           CERRAR DROPDOWNS
+        ====================================================== */
+
+        function closeDropdowns() {
+
+            dropdowns.forEach(
+                function (dropdown) {
+
+                    dropdown.classList.remove(
+                        "open"
+                    );
+
+                    const button =
+                        dropdown.querySelector(
+                            ".nav-dropdown-btn"
+                        );
+
+                    button?.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           MENÚ MÓVIL — CERRAR SUBMENÚS
+        ====================================================== */
+
+        function closeMobileSubmenus() {
+
+            root
+                .querySelectorAll(
+                    ".mobile-submenu.open"
+                )
+                .forEach(
+                    function (submenu) {
+
+                        submenu.classList.remove(
+                            "open"
+                        );
+
+                        const button =
+                            root.querySelector(
+                                '[data-target="' +
+                                submenu.id +
+                                '"]'
+                            );
+
+                        button?.classList.remove(
+                            "active"
+                        );
+
+                        button?.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+        }
+
+
         /* =====================================================
            MENÚ MÓVIL — ABRIR
         ====================================================== */
 
         function openMobileMenu() {
 
+            closeSearch();
+
+            closeCart();
+
+            closeDropdowns();
+
             if (!mobileMenu)
                 return;
+
 
             mobileMenu.classList.add(
                 "open"
@@ -2533,6 +2779,7 @@
             mobileOverlay?.classList.add(
                 "open"
             );
+
 
             mobileMenu.setAttribute(
                 "aria-hidden",
@@ -2549,9 +2796,8 @@
                 "true"
             );
 
-            document.body.classList.add(
-                "menu-open"
-            );
+
+            lockScroll();
 
         }
 
@@ -2565,6 +2811,7 @@
             if (!mobileMenu)
                 return;
 
+
             mobileMenu.classList.remove(
                 "open"
             );
@@ -2572,6 +2819,7 @@
             mobileOverlay?.classList.remove(
                 "open"
             );
+
 
             mobileMenu.setAttribute(
                 "aria-hidden",
@@ -2588,22 +2836,31 @@
                 "false"
             );
 
-            document.body.classList.remove(
-                "menu-open"
-            );
+
+            closeMobileSubmenus();
+
+            unlockScroll();
 
         }
 
 
         mobileOpen?.addEventListener(
             "click",
-            openMobileMenu
+            function (event) {
+
+                event.preventDefault();
+
+                openMobileMenu();
+
+            }
         );
+
 
         mobileClose?.addEventListener(
             "click",
             closeMobileMenu
         );
+
 
         mobileOverlay?.addEventListener(
             "click",
@@ -2644,61 +2901,10 @@
                                 );
 
 
-                            root
-                                .querySelectorAll(
-                                    ".mobile-submenu.open"
-                                )
-                                .forEach(
-                                    function (other) {
-
-                                        if (
-                                            other !== submenu
-                                        ) {
-
-                                            other.classList.remove(
-                                                "open"
-                                            );
-
-                                            const otherButton =
-                                                root.querySelector(
-                                                    '[data-target="' +
-                                                    other.id +
-                                                    '"]'
-                                                );
-
-                                            otherButton
-                                                ?.classList.remove(
-                                                    "active"
-                                                );
-
-                                            otherButton
-                                                ?.setAttribute(
-                                                    "aria-expanded",
-                                                    "false"
-                                                );
-
-                                        }
-
-                                    }
-                                );
+                            closeMobileSubmenus();
 
 
-                            if (isOpen) {
-
-                                submenu.classList.remove(
-                                    "open"
-                                );
-
-                                button.classList.remove(
-                                    "active"
-                                );
-
-                                button.setAttribute(
-                                    "aria-expanded",
-                                    "false"
-                                );
-
-                            } else {
+                            if (!isOpen) {
 
                                 submenu.classList.add(
                                     "open"
@@ -2726,12 +2932,6 @@
            DROPDOWNS DESKTOP
         ====================================================== */
 
-        const dropdowns =
-            root.querySelectorAll(
-                ".nav-dropdown"
-            );
-
-
         dropdowns.forEach(
             function (dropdown) {
 
@@ -2745,6 +2945,8 @@
                     "click",
                     function (event) {
 
+                        event.preventDefault();
+
                         event.stopPropagation();
 
 
@@ -2754,26 +2956,7 @@
                             );
 
 
-                        dropdowns.forEach(
-                            function (other) {
-
-                                other.classList.remove(
-                                    "open"
-                                );
-
-                                const otherButton =
-                                    other.querySelector(
-                                        ".nav-dropdown-btn"
-                                    );
-
-                                otherButton
-                                    ?.setAttribute(
-                                        "aria-expanded",
-                                        "false"
-                                    );
-
-                            }
-                        );
+                        closeDropdowns();
 
 
                         if (!isOpen) {
@@ -2797,7 +2980,7 @@
 
 
         /* =====================================================
-           CERRAR DROPDOWNS AL HACER CLICK AFUERA
+           CLICK FUERA
         ====================================================== */
 
         document.addEventListener(
@@ -2810,25 +2993,7 @@
                     )
                 ) {
 
-                    dropdowns.forEach(
-                        function (dropdown) {
-
-                            dropdown.classList.remove(
-                                "open"
-                            );
-
-                            const button =
-                                dropdown.querySelector(
-                                    ".nav-dropdown-btn"
-                                );
-
-                            button?.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-                        }
-                    );
+                    closeDropdowns();
 
                 }
 
@@ -2837,57 +3002,26 @@
 
 
         /* =====================================================
-           BUSCADOR
-        ====================================================== */
-
-        const searchButton =
-            root.querySelector(
-                "#satori-search"
-            );
-
-        const searchOverlay =
-            root.querySelector(
-                "#satori-search-overlay"
-            );
-
-        const searchClose =
-            root.querySelector(
-                "#satori-search-close"
-            );
-
-        const searchInput =
-            root.querySelector(
-                "#satori-search-input"
-            );
-
-        const searchForm =
-            root.querySelector(
-                "#satori-search-form"
-            );
-
-        const inlineSearch =
-            root.querySelector(
-                "#satori-search-inline"
-            );
-
-        const inlineSearchInput =
-            root.querySelector(
-                "#satori-search-inline-input"
-            );
-
-
-        /* =====================================================
-           ABRIR BUSCADOR
+           BUSCADOR — ABRIR
         ====================================================== */
 
         function openSearch() {
 
+            closeMobileMenu();
+
+            closeCart();
+
+            closeDropdowns();
+
+
             if (!searchOverlay)
                 return;
+
 
             searchOverlay.classList.add(
                 "open"
             );
+
 
             searchOverlay.setAttribute(
                 "aria-hidden",
@@ -2899,12 +3033,11 @@
                 "true"
             );
 
-            document.body.classList.add(
-                "menu-open"
-            );
+
+            lockScroll();
 
 
-            setTimeout(
+            window.setTimeout(
                 function () {
 
                     searchInput?.focus();
@@ -2917,7 +3050,7 @@
 
 
         /* =====================================================
-           CERRAR BUSCADOR
+           BUSCADOR — CERRAR
         ====================================================== */
 
         function closeSearch() {
@@ -2925,9 +3058,11 @@
             if (!searchOverlay)
                 return;
 
+
             searchOverlay.classList.remove(
                 "open"
             );
+
 
             searchOverlay.setAttribute(
                 "aria-hidden",
@@ -2939,9 +3074,17 @@
                 "false"
             );
 
-            document.body.classList.remove(
-                "menu-open"
-            );
+
+            if (inlineSearch) {
+
+                inlineSearch.classList.remove(
+                    "open"
+                );
+
+            }
+
+
+            unlockScroll();
 
         }
 
@@ -2954,6 +3097,7 @@
                     searchOverlay?.classList.contains(
                         "open"
                     );
+
 
                 if (isOpen) {
 
@@ -3014,17 +3158,36 @@
 
                 if (
                     event.key ===
+                    "Escape"
+                ) {
+
+                    inlineSearchInput.blur();
+
+                    inlineSearch?.classList.remove(
+                        "open"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key ===
                     "Enter"
                 ) {
 
                     event.preventDefault();
 
+
                     const value =
                         inlineSearchInput.value
                             .trim();
 
+
                     if (!value)
                         return;
+
 
                     performSearch(
                         value
@@ -3047,6 +3210,7 @@
             const query =
                 String(value || "")
                     .trim();
+
 
             if (!query)
                 return;
@@ -3072,12 +3236,15 @@
 
                 event.preventDefault();
 
+
                 const value =
                     searchInput?.value
                         .trim();
 
+
                 if (!value)
                     return;
+
 
                 performSearch(
                     value
@@ -3088,98 +3255,13 @@
 
 
         /* =====================================================
-           ESC
-        ====================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key !==
-                    "Escape"
-                )
-                    return;
-
-
-                closeMobileMenu();
-
-                closeSearch();
-
-                closeCart();
-
-
-                dropdowns.forEach(
-                    function (dropdown) {
-
-                        dropdown.classList.remove(
-                            "open"
-                        );
-
-                        const button =
-                            dropdown.querySelector(
-                                ".nav-dropdown-btn"
-                            );
-
-                        button?.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =====================================================
            CARRITO
-        ====================================================== */
-
-        const cartButton =
-            root.querySelector(
-                "#satori-cart-button"
-            );
-
-        const cartPreview =
-            root.querySelector(
-                "#satori-cart-preview"
-            );
-
-        const cartOverlay =
-            root.querySelector(
-                "#satori-cart-overlay"
-            );
-
-        const cartClose =
-            root.querySelector(
-                "#satori-cart-close"
-            );
-
-        const cartContent =
-            root.querySelector(
-                "#satori-cart-preview-content"
-            );
-
-        const cartSubtotal =
-            root.querySelector(
-                "#satori-cart-preview-subtotal"
-            );
-
-        const cartCount =
-            root.querySelector(
-                "[data-satori-cart-count]"
-            );
-
-
-        /* =====================================================
-           LEER CARRITO
         ====================================================== */
 
         function getCart() {
 
             let cart = [];
+
 
             try {
 
@@ -3208,6 +3290,22 @@
                             old
                         );
 
+
+                    if (
+                        Array.isArray(
+                            cart
+                        )
+                    ) {
+
+                        localStorage.setItem(
+                            CART_STORAGE_KEY,
+                            JSON.stringify(
+                                cart
+                            )
+                        );
+
+                    }
+
                 }
 
             } catch (error) {
@@ -3222,8 +3320,11 @@
             }
 
 
-            if (!Array.isArray(cart))
+            if (!Array.isArray(cart)) {
+
                 cart = [];
+
+            }
 
 
             return cart;
@@ -3245,6 +3346,13 @@
                     CART_STORAGE_KEY,
                     JSON.stringify(
                         cart
+                    )
+                );
+
+
+                window.dispatchEvent(
+                    new CustomEvent(
+                        "satori-cart-updated"
                     )
                 );
 
@@ -3271,6 +3379,7 @@
             const number =
                 Number(value) || 0;
 
+
             return "$" +
                 number.toLocaleString(
                     "es-CL"
@@ -3293,13 +3402,21 @@
                     item
                 ) {
 
+                    const quantity =
+                        Number(
+                            item.quantity ??
+                            item.cantidad ??
+                            1
+                        );
+
+
                     return total +
                         (
-                            Number(
-                                item.quantity ||
-                                item.cantidad ||
-                                1
-                            ) || 0
+                            Number.isFinite(
+                                quantity
+                            )
+                                ? quantity
+                                : 1
                         );
 
                 },
@@ -3325,17 +3442,19 @@
 
                     const price =
                         Number(
-                            item.price ||
-                            item.precio ||
+                            item.price ??
+                            item.precio ??
                             0
                         ) || 0;
 
+
                     const quantity =
                         Number(
-                            item.quantity ||
-                            item.cantidad ||
+                            item.quantity ??
+                            item.cantidad ??
                             1
                         ) || 1;
+
 
                     return total +
                         (
@@ -3358,6 +3477,7 @@
 
             const cart =
                 getCart();
+
 
             const quantity =
                 getCartQuantity(
@@ -3399,7 +3519,7 @@
         ) {
 
             return String(
-                value || ""
+                value ?? ""
             )
                 .replace(
                     /&/g,
@@ -3482,24 +3602,77 @@
                                 item.nombre ||
                                 "Producto";
 
+
                             const image =
                                 item.image ||
                                 item.imagen ||
                                 "";
 
+
                             const price =
                                 Number(
-                                    item.price ||
-                                    item.precio ||
+                                    item.price ??
+                                    item.precio ??
                                     0
                                 ) || 0;
 
+
                             const quantity =
                                 Number(
-                                    item.quantity ||
-                                    item.cantidad ||
+                                    item.quantity ??
+                                    item.cantidad ??
                                     1
                                 ) || 1;
+
+
+                            const size =
+                                item.size ||
+                                item.talla ||
+                                "";
+
+
+                            const color =
+                                item.color ||
+                                "";
+
+
+                            let options = "";
+
+
+                            if (
+                                size ||
+                                color
+                            ) {
+
+                                options = `
+
+                                    <div
+                                        class="cart-preview-options"
+                                    >
+
+                                        ${
+                                            size
+                                                ? `Talla: ${escapeHtml(size)}`
+                                                : ""
+                                        }
+
+                                        ${
+                                            size && color
+                                                ? " · "
+                                                : ""
+                                        }
+
+                                        ${
+                                            color
+                                                ? `Color: ${escapeHtml(color)}`
+                                                : ""
+                                        }
+
+                                    </div>
+
+                                `;
+
+                            }
 
 
                             return `
@@ -3509,7 +3682,9 @@
                                     data-cart-index="${index}"
                                 >
 
-                                    <div class="cart-preview-image">
+                                    <div
+                                        class="cart-preview-image"
+                                    >
 
                                         ${
                                             image
@@ -3518,6 +3693,7 @@
                                                     <img
                                                         src="${escapeHtml(image)}"
                                                         alt="${escapeHtml(name)}"
+                                                        loading="lazy"
                                                     >
                                                 `
                                                 :
@@ -3527,13 +3703,18 @@
                                     </div>
 
 
-                                    <div class="cart-preview-info">
+                                    <div
+                                        class="cart-preview-info"
+                                    >
 
                                         <h3
                                             class="cart-preview-name"
                                         >
                                             ${escapeHtml(name)}
                                         </h3>
+
+
+                                        ${options}
 
 
                                         <div
@@ -3555,18 +3736,22 @@
                                                     type="button"
                                                     data-cart-action="minus"
                                                     data-cart-index="${index}"
+                                                    aria-label="Disminuir cantidad"
                                                 >
                                                     −
                                                 </button>
+
 
                                                 <span>
                                                     ${quantity}
                                                 </span>
 
+
                                                 <button
                                                     type="button"
                                                     data-cart-action="plus"
                                                     data-cart-index="${index}"
+                                                    aria-label="Aumentar cantidad"
                                                 >
                                                     +
                                                 </button>
@@ -3619,12 +3804,20 @@
 
 
         /* =====================================================
-           ABRIR CARRITO
+           CARRITO — ABRIR
         ====================================================== */
 
         function openCart() {
 
+            closeMobileMenu();
+
+            closeSearch();
+
+            closeDropdowns();
+
+
             renderCart();
+
 
             cartPreview?.classList.add(
                 "open"
@@ -3633,6 +3826,7 @@
             cartOverlay?.classList.add(
                 "open"
             );
+
 
             cartPreview?.setAttribute(
                 "aria-hidden",
@@ -3649,15 +3843,14 @@
                 "true"
             );
 
-            document.body.classList.add(
-                "menu-open"
-            );
+
+            lockScroll();
 
         }
 
 
         /* =====================================================
-           CERRAR CARRITO
+           CARRITO — CERRAR
         ====================================================== */
 
         function closeCart() {
@@ -3670,6 +3863,7 @@
                 "open"
             );
 
+
             cartPreview?.setAttribute(
                 "aria-hidden",
                 "true"
@@ -3685,9 +3879,8 @@
                 "false"
             );
 
-            document.body.classList.remove(
-                "menu-open"
-            );
+
+            unlockScroll();
 
         }
 
@@ -3700,6 +3893,7 @@
                     cartPreview?.classList.contains(
                         "open"
                     );
+
 
                 if (isOpen) {
 
@@ -3740,6 +3934,7 @@
                         "[data-cart-action]"
                     );
 
+
                 if (!button)
                     return;
 
@@ -3772,8 +3967,8 @@
 
                 const currentQuantity =
                     Number(
-                        cart[index].quantity ||
-                        cart[index].cantidad ||
+                        cart[index].quantity ??
+                        cart[index].cantidad ??
                         1
                     ) || 1;
 
@@ -3830,6 +4025,7 @@
                     cart
                 );
 
+
                 renderCart();
 
             }
@@ -3837,7 +4033,7 @@
 
 
         /* =====================================================
-           ESCUCHAR CAMBIOS DEL CARRITO
+           STORAGE
         ====================================================== */
 
         window.addEventListener(
@@ -3852,6 +4048,7 @@
                 ) {
 
                     updateCartCount();
+
 
                     if (
                         cartPreview?.classList.contains(
@@ -3879,6 +4076,7 @@
 
                 updateCartCount();
 
+
                 if (
                     cartPreview?.classList.contains(
                         "open"
@@ -3894,23 +4092,115 @@
 
 
         /* =====================================================
-           CERRAR MENÚ AL PASAR A DESKTOP
+           ESC
         ====================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key !==
+                    "Escape"
+                )
+                    return;
+
+
+                closeMobileMenu();
+
+                closeSearch();
+
+                closeCart();
+
+                closeDropdowns();
+
+            }
+        );
+
+
+        /* =====================================================
+           REDIMENSIONAMIENTO
+        ====================================================== */
+
+        let resizeTimer;
+
 
         window.addEventListener(
             "resize",
             function () {
 
-                if (
-                    window.innerWidth > 1000
-                ) {
+                clearTimeout(
+                    resizeTimer
+                );
 
-                    closeMobileMenu();
 
-                }
+                resizeTimer =
+                    setTimeout(
+                        function () {
+
+                            if (
+                                window.innerWidth >
+                                1000
+                            ) {
+
+                                closeMobileMenu();
+
+                            }
+
+                        },
+                        100
+                    );
 
             }
         );
+
+
+        /* =====================================================
+           ENLACES DEL MENÚ MÓVIL
+        ====================================================== */
+
+        root
+            .querySelectorAll(
+                ".mobile-nav a"
+            )
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            closeMobileMenu();
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           ENLACES DEL CARRITO
+        ====================================================== */
+
+        root
+            .querySelectorAll(
+                ".cart-preview a"
+            )
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            closeCart();
+
+                        }
+                    );
+
+                }
+            );
 
 
         /* =====================================================
