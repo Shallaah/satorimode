@@ -28,7 +28,6 @@
         href="css/style.css"
     >
 
-
     <style>
 
         /* =====================================================
@@ -73,7 +72,7 @@
                 1fr
                 1fr;
 
-            align-items: center;
+            align-items: stretch;
 
             overflow: hidden;
 
@@ -102,6 +101,8 @@
 
             max-width: 620px;
 
+            align-self: center;
+
         }
 
 
@@ -112,7 +113,7 @@
             color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             font-size: 10px;
@@ -154,7 +155,7 @@
             color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
         }
@@ -214,14 +215,14 @@
             background:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
         }
 
 
         /* =====================================================
-           HERO TARJETA
+           HERO — CARRUSEL DE GIFT CARDS
         ====================================================== */
 
         .satori-gift-card-area {
@@ -236,7 +237,10 @@
 
             justify-content: center;
 
-            padding: 45px;
+            padding:
+                45px
+                55px
+                62px;
 
             box-sizing: border-box;
 
@@ -250,37 +254,91 @@
         }
 
 
-        .satori-gift-card {
+        .satori-gift-carousel {
 
             position: relative;
 
-            width: min(
-                500px,
-                100%
-            );
+            width: 100%;
 
-            aspect-ratio: 1.65 / 1;
-
-            padding: 38px;
+            max-width: 620px;
 
             display: flex;
 
-            flex-direction: column;
+            align-items: center;
 
-            justify-content: space-between;
+            justify-content: center;
 
-            box-sizing: border-box;
+        }
+
+
+        .satori-gift-carousel-viewport {
+
+            width: 100%;
 
             overflow: hidden;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff 0%,
-                    #f8f8f8 100%
+            padding:
+                22px
+                10px
+                32px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .satori-gift-carousel-track {
+
+            display: flex;
+
+            width: 100%;
+
+            transition:
+                transform .55s
+                cubic-bezier(
+                    .22,
+                    .61,
+                    .36,
+                    1
                 );
 
-            border: 1px solid #ddd;
+            will-change: transform;
+
+        }
+
+
+        .satori-gift-slide {
+
+            flex:
+                0 0 100%;
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .satori-gift-card-image {
+
+            display: block;
+
+            width:
+                min(
+                    100%,
+                    540px
+                );
+
+            height: auto;
+
+            aspect-ratio:
+                1.65 / 1;
+
+            object-fit: contain;
 
             border-radius: 14px;
 
@@ -290,22 +348,24 @@
                     0,
                     0,
                     0,
-                    .13
+                    .16
                 );
 
             transform:
-                rotate(
-                    -4deg
-                );
+                rotate(-4deg);
 
             transition:
-                transform .4s ease,
-                box-shadow .4s ease;
+                transform .45s ease,
+                box-shadow .45s ease;
+
+            user-select: none;
+
+            -webkit-user-drag: none;
 
         }
 
 
-        .satori-gift-card:hover {
+        .satori-gift-card-image:hover {
 
             transform:
                 rotate(0deg)
@@ -317,146 +377,182 @@
                     0,
                     0,
                     0,
-                    .18
+                    .20
                 );
 
         }
 
 
         /* =====================================================
-           DECORACIÓN TARJETA
+           FLECHAS
         ====================================================== */
 
-        .satori-gift-card::before {
-
-            content: "";
+        .satori-gift-carousel-arrow {
 
             position: absolute;
 
-            width: 230px;
+            top: 50%;
 
-            height: 230px;
+            z-index: 5;
 
-            right: -85px;
+            width: 42px;
 
-            bottom: -95px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid #d7d7d7;
 
             border-radius: 50%;
 
             background:
-                var(
-                    --red,
-                    #ff1b1b
-                );
-
-        }
-
-
-        .satori-gift-card::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 135px;
-
-            height: 135px;
-
-            right: 45px;
-
-            bottom: 28px;
-
-            border-radius: 50%;
-
-            border: 1px solid
                 rgba(
                     255,
                     255,
                     255,
-                    .8
+                    .94
                 );
 
-        }
-
-
-        .satori-gift-card-top {
-
-            position: relative;
-
-            z-index: 3;
-
-            display: flex;
-
-            align-items: flex-start;
-
-            justify-content: space-between;
-
-        }
-
-
-        .satori-gift-card-logo {
-
             color: #111;
 
-            font-size: 29px;
+            font-size: 18px;
 
-            font-weight: 900;
+            line-height: 1;
 
-            letter-spacing: -2px;
+            cursor: pointer;
 
-            font-style: italic;
+            transform:
+                translateY(-50%);
 
-        }
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .08
+                );
 
-
-        .satori-gift-card-label {
-
-            color: #555;
-
-            font-size: 9px;
-
-            font-weight: 900;
-
-            letter-spacing: 2px;
-
-        }
-
-
-        .satori-gift-card-bottom {
-
-            position: relative;
-
-            z-index: 3;
-
-            display: flex;
-
-            align-items: flex-end;
-
-            justify-content: space-between;
+            transition:
+                background .2s ease,
+                color .2s ease,
+                border-color .2s ease,
+                transform .2s ease;
 
         }
 
 
-        .satori-gift-card-title {
+        .satori-gift-carousel-arrow:hover {
 
-            color: #111;
+            background:
+                var(
+                    --red,
+                    #EF0930
+                );
 
-            font-size: 24px;
-
-            font-weight: 900;
-
-            letter-spacing: -1px;
-
-        }
-
-
-        .satori-gift-card-value {
+            border-color:
+                var(
+                    --red,
+                    #EF0930
+                );
 
             color: #fff;
 
-            font-size: 27px;
+            transform:
+                translateY(-50%)
+                scale(1.05);
 
-            font-weight: 900;
+        }
+
+
+        .satori-gift-carousel-arrow.prev {
+
+            left: -2px;
+
+        }
+
+
+        .satori-gift-carousel-arrow.next {
+
+            right: -2px;
+
+        }
+
+
+        /* =====================================================
+           PUNTOS DEL CARRUSEL
+        ====================================================== */
+
+        .satori-gift-carousel-dots {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: 7px;
+
+            z-index: 6;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            transform:
+                translateX(-50%);
+
+        }
+
+
+        .satori-gift-carousel-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            padding: 0;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background: #c9c9c9;
+
+            cursor: pointer;
+
+            transition:
+                width .25s ease,
+                background .25s ease,
+                transform .25s ease;
+
+        }
+
+
+        .satori-gift-carousel-dot:hover {
+
+            transform:
+                scale(1.2);
+
+        }
+
+
+        .satori-gift-carousel-dot.is-active {
+
+            width: 24px;
+
+            border-radius: 10px;
+
+            background:
+                var(
+                    --red,
+                    #EF0930
+                );
 
         }
 
@@ -468,7 +564,9 @@
         .satori-gift-values-section {
 
             padding:
-                90px 30px 80px;
+                90px
+                30px
+                80px;
 
         }
 
@@ -487,7 +585,7 @@
             color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             font-size: 10px;
@@ -505,11 +603,12 @@
 
             color: #111;
 
-            font-size: clamp(
-                38px,
-                5vw,
-                62px
-            );
+            font-size:
+                clamp(
+                    38px,
+                    5vw,
+                    62px
+                );
 
             line-height: .9;
 
@@ -525,7 +624,7 @@
             color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
         }
@@ -583,7 +682,8 @@
 
             background: #fff;
 
-            border: 1px solid #dedede;
+            border:
+                1px solid #dedede;
 
             border-radius: 7px;
 
@@ -609,7 +709,8 @@
 
             width: 100%;
 
-            margin: 0 0 18px;
+            margin:
+                0 0 18px;
 
             color: #888;
 
@@ -651,9 +752,13 @@
 
             display: block;
 
-            width: calc(100% - 45px);
+            width:
+                calc(
+                    100% - 45px
+                );
 
-            margin: auto 0 0;
+            margin:
+                auto 0 0;
 
             padding-top: 18px;
 
@@ -674,7 +779,7 @@
             border-color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             box-shadow:
@@ -697,16 +802,41 @@
             border-color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             box-shadow:
                 0 0 0 2px
                 rgba(
-                    255,
-                    27,
-                    27,
+                    239,
+                    9,
+                    48,
                     .12
+                );
+
+        }
+
+
+        .satori-gift-value.is-selected {
+
+            border-color:
+                var(
+                    --red,
+                    #EF0930
+                );
+
+            box-shadow:
+                0 0 0 1px
+                var(
+                    --red,
+                    #EF0930
+                ),
+                0 12px 35px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .08
                 );
 
         }
@@ -718,7 +848,7 @@
             background:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             transform:
@@ -760,12 +890,14 @@
 
 
         .satori-gift-value:hover
+        .satori-gift-value-arrow,
+        .satori-gift-value.is-selected
         .satori-gift-value-arrow {
 
             background:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
         }
@@ -786,7 +918,7 @@
             background:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             color: #fff;
@@ -806,10 +938,13 @@
 
         .satori-gift-ticker-window {
 
-            width: min(
-                620px,
-                calc(100% - 40px)
-            );
+            width:
+                min(
+                    620px,
+                    calc(
+                        100% - 40px
+                    )
+                );
 
             overflow: hidden;
 
@@ -895,7 +1030,8 @@
                     1fr
                 );
 
-            border-bottom: 1px solid #ddd;
+            border-bottom:
+                1px solid #ddd;
 
         }
 
@@ -904,7 +1040,8 @@
 
             min-height: 145px;
 
-            padding: 28px 25px;
+            padding:
+                28px 25px;
 
             display: flex;
 
@@ -914,7 +1051,8 @@
 
             box-sizing: border-box;
 
-            border-right: 1px solid #ddd;
+            border-right:
+                1px solid #ddd;
 
         }
 
@@ -965,7 +1103,8 @@
 
         .satori-gift-benefit h3 {
 
-            margin: 0 0 7px;
+            margin:
+                0 0 7px;
 
             color: #111;
 
@@ -1024,11 +1163,12 @@
 
             color: #111;
 
-            font-size: clamp(
-                40px,
-                5vw,
-                65px
-            );
+            font-size:
+                clamp(
+                    40px,
+                    5vw,
+                    65px
+                );
 
             line-height: .9;
 
@@ -1046,7 +1186,7 @@
             color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
         }
@@ -1103,7 +1243,7 @@
             color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             font-size: 11px;
@@ -1117,7 +1257,8 @@
 
         .satori-gift-step h3 {
 
-            margin: 0 0 7px;
+            margin:
+                0 0 7px;
 
             color: #111;
 
@@ -1160,7 +1301,8 @@
 
             background: #fafafa;
 
-            border: 1px solid #e5e5e5;
+            border:
+                1px solid #e5e5e5;
 
             border-radius: 7px;
 
@@ -1176,7 +1318,7 @@
             color:
                 var(
                     --red,
-                    #ff1b1b
+                    #EF0930
                 );
 
             font-size: 24px;
@@ -1205,7 +1347,7 @@
 
 
         /* =====================================================
-           MOBILE
+           MOBILE / TABLET
         ====================================================== */
 
         @media (max-width: 1000px) {
@@ -1227,7 +1369,7 @@
 
             .satori-gift-card-area {
 
-                min-height: 400px;
+                min-height: 430px;
 
             }
 
@@ -1263,7 +1405,8 @@
 
             .satori-gift-benefit:nth-child(-n+2) {
 
-                border-bottom: 1px solid #ddd;
+                border-bottom:
+                    1px solid #ddd;
 
             }
 
@@ -1304,7 +1447,9 @@
             .satori-gift-hero-content {
 
                 padding:
-                    45px 25px 20px;
+                    45px
+                    25px
+                    20px;
 
             }
 
@@ -1327,46 +1472,82 @@
 
             .satori-gift-card-area {
 
-                min-height: 290px;
+                min-height: 300px;
 
-                padding: 25px 18px;
+                padding:
+                    18px
+                    8px
+                    52px;
 
             }
 
 
-            .satori-gift-card {
+            .satori-gift-carousel {
 
-                padding: 25px;
+                max-width: 100%;
+
+            }
+
+
+            .satori-gift-carousel-viewport {
+
+                padding:
+                    15px
+                    8px
+                    20px;
+
+            }
+
+
+            .satori-gift-card-image {
+
+                width: 100%;
 
                 border-radius: 10px;
 
-            }
-
-
-            .satori-gift-card-logo {
-
-                font-size: 22px;
+                transform:
+                    rotate(-3deg);
 
             }
 
 
-            .satori-gift-card-label {
+            .satori-gift-card-image:hover {
 
-                font-size: 8px;
-
-            }
-
-
-            .satori-gift-card-title {
-
-                font-size: 19px;
+                transform:
+                    rotate(0deg)
+                    translateY(-2px);
 
             }
 
 
-            .satori-gift-card-value {
+            .satori-gift-carousel-arrow {
 
-                font-size: 20px;
+                width: 36px;
+
+                height: 36px;
+
+                font-size: 16px;
+
+            }
+
+
+            .satori-gift-carousel-arrow.prev {
+
+                left: 0;
+
+            }
+
+
+            .satori-gift-carousel-arrow.next {
+
+                right: 0;
+
+            }
+
+
+            .satori-gift-carousel-dots {
+
+                bottom: 5px;
 
             }
 
@@ -1374,7 +1555,9 @@
             .satori-gift-ticker-window {
 
                 width:
-                    calc(100% - 30px);
+                    calc(
+                        100% - 30px
+                    );
 
             }
 
@@ -1396,20 +1579,12 @@
             }
 
 
-            .satori-gift-ticker-inner {
-
-                width:
-                    calc(100% - 30px);
-
-                font-size: 9px;
-
-            }
-
-
             .satori-gift-values-section {
 
                 padding:
-                    65px 0 60px;
+                    65px
+                    0
+                    60px;
 
             }
 
@@ -1464,7 +1639,10 @@
 
             .satori-gift-value-description {
 
-                width: calc(100% - 38px);
+                width:
+                    calc(
+                        100% - 38px
+                    );
 
                 padding-top: 14px;
 
@@ -1487,7 +1665,8 @@
                 min-height: 135px;
 
                 padding:
-                    20px 15px;
+                    20px
+                    15px;
 
             }
 
@@ -1509,7 +1688,8 @@
             .satori-gift-how {
 
                 padding:
-                    65px 0;
+                    65px
+                    0;
 
             }
 
@@ -1539,9 +1719,32 @@
             .satori-gift-notice {
 
                 margin:
-                    0 0 50px;
+                    0
+                    0
+                    50px;
 
                 padding: 20px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCIR ANIMACIONES
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .satori-gift-carousel-track,
+            .satori-gift-card-image,
+            .satori-gift-carousel-arrow,
+            .satori-gift-carousel-dot,
+            .satori-gift-ticker-track {
+
+                transition: none !important;
+
+                animation: none !important;
 
             }
 
@@ -1563,7 +1766,6 @@
 
 
     <main>
-
 
         <div class="satori-gift-page">
 
@@ -1621,6 +1823,7 @@
                     >
 
                         VER GIFT CARDS
+
                         &nbsp; →
 
                     </a>
@@ -1630,74 +1833,229 @@
 
 
                 <!-- =================================================
-                     GIFT CARD VISUAL
+                     CARRUSEL DE 4 DISEÑOS
+                     
+                     Archivos:
+                     img/gift-card-1.webp
+                     img/gift-card-2.webp
+                     img/gift-card-3.webp
+                     img/gift-card-4.webp
                 ================================================== -->
 
                 <div class="satori-gift-card-area">
 
 
-                    <div class="satori-gift-card">
+                    <div
+                        class="
+                            satori-gift-carousel
+                        "
+                        aria-label="
+                            Diseños de Gift Cards SATORII
+                        "
+                    >
+
+
+                        <button
+                            type="button"
+                            class="
+                                satori-gift-carousel-arrow
+                                prev
+                            "
+                            aria-label="
+                                Gift Card anterior
+                            "
+                        >
+
+                            ‹
+
+                        </button>
 
 
                         <div
                             class="
-                                satori-gift-card-top
+                                satori-gift-carousel-viewport
                             "
                         >
 
 
                             <div
                                 class="
-                                    satori-gift-card-logo
+                                    satori-gift-carousel-track
                                 "
                             >
 
-                                SATORII
+
+                                <div
+                                    class="
+                                        satori-gift-slide
+                                    "
+                                >
+
+                                    <img
+                                        src="
+                                            img/gift-card-1.webp
+                                        "
+                                        class="
+                                            satori-gift-card-image
+                                        "
+                                        alt="
+                                            Gift Card SATORII
+                                            diseño 1
+                                        "
+                                        draggable="false"
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-gift-slide
+                                    "
+                                >
+
+                                    <img
+                                        src="
+                                            img/gift-card-2.webp
+                                        "
+                                        class="
+                                            satori-gift-card-image
+                                        "
+                                        alt="
+                                            Gift Card SATORII
+                                            diseño 2
+                                        "
+                                        draggable="false"
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-gift-slide
+                                    "
+                                >
+
+                                    <img
+                                        src="
+                                            img/gift-card-3.webp
+                                        "
+                                        class="
+                                            satori-gift-card-image
+                                        "
+                                        alt="
+                                            Gift Card SATORII
+                                            diseño 3
+                                        "
+                                        draggable="false"
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-gift-slide
+                                    "
+                                >
+
+                                    <img
+                                        src="
+                                            img/gift-card-4.webp
+                                        "
+                                        class="
+                                            satori-gift-card-image
+                                        "
+                                        alt="
+                                            Gift Card SATORII
+                                            diseño 4
+                                        "
+                                        draggable="false"
+                                    >
+
+                                </div>
+
 
                             </div>
-
-
-                            <div
-                                class="
-                                    satori-gift-card-label
-                                "
-                            >
-
-                                GIFT CARD
-
-                            </div>
-
 
                         </div>
 
 
+                        <button
+                            type="button"
+                            class="
+                                satori-gift-carousel-arrow
+                                next
+                            "
+                            aria-label="
+                                Siguiente Gift Card
+                            "
+                        >
+
+                            ›
+
+                        </button>
+
+
                         <div
                             class="
-                                satori-gift-card-bottom
+                                satori-gift-carousel-dots
+                            "
+                            role="tablist"
+                            aria-label="
+                                Seleccionar diseño
                             "
                         >
 
 
-                            <div
+                            <button
+                                type="button"
                                 class="
-                                    satori-gift-card-title
+                                    satori-gift-carousel-dot
+                                    is-active
                                 "
-                            >
+                                aria-label="
+                                    Mostrar diseño 1
+                                "
+                                aria-selected="true"
+                            ></button>
 
-                                PARA TI.
 
-                            </div>
-
-
-                            <div
+                            <button
+                                type="button"
                                 class="
-                                    satori-gift-card-value
+                                    satori-gift-carousel-dot
                                 "
-                            >
+                                aria-label="
+                                    Mostrar diseño 2
+                                "
+                                aria-selected="false"
+                            ></button>
 
-                                $18.990
 
-                            </div>
+                            <button
+                                type="button"
+                                class="
+                                    satori-gift-carousel-dot
+                                "
+                                aria-label="
+                                    Mostrar diseño 3
+                                "
+                                aria-selected="false"
+                            ></button>
+
+
+                            <button
+                                type="button"
+                                class="
+                                    satori-gift-carousel-dot
+                                "
+                                aria-label="
+                                    Mostrar diseño 4
+                                "
+                                aria-selected="false"
+                            ></button>
 
 
                         </div>
@@ -1776,12 +2134,16 @@
                         href="#"
                         class="
                             satori-gift-value
+                            is-selected
                         "
                         data-add-to-cart
                         data-product
                         data-product-id="gift-card-1"
-                        data-product-name="Gift Card SATORII · 1 Polera"
+                        data-product-name="
+                            Gift Card SATORII · 1 Polera
+                        "
                         data-product-price="18990"
+                        data-gift-slide="0"
                     >
 
                         <div
@@ -1835,8 +2197,11 @@
                         data-add-to-cart
                         data-product
                         data-product-id="gift-card-2"
-                        data-product-name="Gift Card SATORII · 2 Poleras"
+                        data-product-name="
+                            Gift Card SATORII · 2 Poleras
+                        "
                         data-product-price="37980"
+                        data-gift-slide="1"
                     >
 
                         <div
@@ -1890,8 +2255,11 @@
                         data-add-to-cart
                         data-product
                         data-product-id="gift-card-3"
-                        data-product-name="Gift Card SATORII · 3 Poleras"
+                        data-product-name="
+                            Gift Card SATORII · 3 Poleras
+                        "
                         data-product-price="56970"
+                        data-gift-slide="2"
                     >
 
                         <div
@@ -1945,8 +2313,11 @@
                         data-add-to-cart
                         data-product
                         data-product-id="gift-card-4"
-                        data-product-name="Gift Card SATORII · 4 Poleras"
+                        data-product-name="
+                            Gift Card SATORII · 4 Poleras
+                        "
                         data-product-price="75960"
+                        data-gift-slide="3"
                     >
 
                         <div
@@ -2004,12 +2375,24 @@
 
             <div
                 class="satori-gift-ticker"
-                aria-label="Mensajes de SATORII"
+                aria-label="
+                    Mensajes de SATORII
+                "
             >
 
-                <div class="satori-gift-ticker-window">
 
-                    <div class="satori-gift-ticker-track">
+                <div
+                    class="
+                        satori-gift-ticker-window
+                    "
+                >
+
+
+                    <div
+                        class="
+                            satori-gift-ticker-track
+                        "
+                    >
 
                         <span>
                             ✦ REGALA SATORII
@@ -2030,6 +2413,7 @@
                         <span>
                             ✦ ELIGE SATORII
                         </span>
+
 
                         <span>
                             ✦ REGALA SATORII
@@ -2053,7 +2437,9 @@
 
                     </div>
 
+
                 </div>
+
 
             </div>
 
@@ -2282,7 +2668,6 @@
                             "
                         >
 
-
                             <div
                                 class="
                                     satori-gift-step-number
@@ -2321,7 +2706,6 @@
                                 satori-gift-step
                             "
                         >
-
 
                             <div
                                 class="
@@ -2362,7 +2746,6 @@
                             "
                         >
 
-
                             <div
                                 class="
                                     satori-gift-step-number
@@ -2401,7 +2784,6 @@
                                 satori-gift-step
                             "
                         >
-
 
                             <div
                                 class="
@@ -2509,36 +2891,448 @@
     <script>
 
         /* =====================================================
-           FEEDBACK AL AGREGAR GIFT CARD
+           CARRUSEL GIFT CARDS
         ====================================================== */
 
-        document
-            .querySelectorAll(
-                ".satori-gift-value[data-add-to-cart]"
-            )
-            .forEach((giftCard) => {
+        (() => {
 
-                giftCard.addEventListener(
-                    "click",
-                    () => {
 
-                        giftCard.classList.add(
-                            "is-added"
+            const track =
+                document.querySelector(
+                    ".satori-gift-carousel-track"
+                );
+
+
+            const slides =
+                document.querySelectorAll(
+                    ".satori-gift-slide"
+                );
+
+
+            const dots =
+                document.querySelectorAll(
+                    ".satori-gift-carousel-dot"
+                );
+
+
+            const prev =
+                document.querySelector(
+                    ".satori-gift-carousel-arrow.prev"
+                );
+
+
+            const next =
+                document.querySelector(
+                    ".satori-gift-carousel-arrow.next"
+                );
+
+
+            const giftCards =
+                document.querySelectorAll(
+                    ".satori-gift-value"
+                );
+
+
+            if (
+                !track ||
+                !slides.length
+            ) {
+
+                return;
+
+            }
+
+
+            let currentIndex = 0;
+
+            let autoplay = null;
+
+            const totalSlides =
+                slides.length;
+
+
+            /* =================================================
+               MOSTRAR SLIDE
+            ================================================== */
+
+            function showSlide(
+                index,
+                restartAutoplay = true
+            ) {
+
+
+                currentIndex =
+                    (
+                        index +
+                        totalSlides
+                    ) % totalSlides;
+
+
+                track.style.transform =
+                    `translateX(-${currentIndex * 100}%)`;
+
+
+                dots.forEach(
+                    (
+                        dot,
+                        dotIndex
+                    ) => {
+
+
+                        const active =
+                            dotIndex === currentIndex;
+
+
+                        dot.classList.toggle(
+                            "is-active",
+                            active
                         );
 
 
-                        setTimeout(() => {
+                        dot.setAttribute(
+                            "aria-selected",
+                            active
+                                ? "true"
+                                : "false"
+                        );
 
-                            giftCard.classList.remove(
-                                "is-added"
-                            );
-
-                        }, 260);
 
                     }
                 );
 
-            });
+
+                giftCards.forEach(
+                    (card) => {
+
+
+                        card.classList.toggle(
+                            "is-selected",
+                            Number(
+                                card.dataset.giftSlide
+                            ) === currentIndex
+                        );
+
+
+                    }
+                );
+
+
+                if (
+                    restartAutoplay
+                ) {
+
+                    startAutoplay();
+
+                }
+
+
+            }
+
+
+            /* =================================================
+               AUTOPLAY
+            ================================================== */
+
+            function startAutoplay() {
+
+
+                if (autoplay) {
+
+                    clearInterval(
+                        autoplay
+                    );
+
+                }
+
+
+                autoplay =
+                    setInterval(
+                        () => {
+
+                            showSlide(
+                                currentIndex + 1,
+                                false
+                            );
+
+                        },
+                        4500
+                    );
+
+
+            }
+
+
+            function stopAutoplay() {
+
+
+                if (autoplay) {
+
+                    clearInterval(
+                        autoplay
+                    );
+
+                    autoplay = null;
+
+                }
+
+
+            }
+
+
+            /* =================================================
+               ANTERIOR
+            ================================================== */
+
+            prev?.addEventListener(
+                "click",
+                () => {
+
+                    showSlide(
+                        currentIndex - 1
+                    );
+
+                }
+            );
+
+
+            /* =================================================
+               SIGUIENTE
+            ================================================== */
+
+            next?.addEventListener(
+                "click",
+                () => {
+
+                    showSlide(
+                        currentIndex + 1
+                    );
+
+                }
+            );
+
+
+            /* =================================================
+               PUNTOS
+            ================================================== */
+
+            dots.forEach(
+                (
+                    dot,
+                    index
+                ) => {
+
+
+                    dot.addEventListener(
+                        "click",
+                        () => {
+
+                            showSlide(
+                                index
+                            );
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+            /* =================================================
+               MONTOS → CAMBIAR TARJETA
+            ================================================== */
+
+            giftCards.forEach(
+                (card) => {
+
+
+                    card.addEventListener(
+                        "click",
+                        () => {
+
+
+                            const slide =
+                                Number(
+                                    card.dataset.giftSlide
+                                );
+
+
+                            if (
+                                Number.isFinite(
+                                    slide
+                                )
+                            ) {
+
+                                showSlide(
+                                    slide
+                                );
+
+                            }
+
+
+                            card.classList.add(
+                                "is-added"
+                            );
+
+
+                            setTimeout(
+                                () => {
+
+                                    card.classList.remove(
+                                        "is-added"
+                                    );
+
+                                },
+                                260
+                            );
+
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+            /* =================================================
+               PAUSAR AL PASAR EL MOUSE
+            ================================================== */
+
+            const carousel =
+                document.querySelector(
+                    ".satori-gift-carousel"
+                );
+
+
+            carousel?.addEventListener(
+                "mouseenter",
+                stopAutoplay
+            );
+
+
+            carousel?.addEventListener(
+                "mouseleave",
+                startAutoplay
+            );
+
+
+            carousel?.addEventListener(
+                "focusin",
+                stopAutoplay
+            );
+
+
+            carousel?.addEventListener(
+                "focusout",
+                startAutoplay
+            );
+
+
+            /* =================================================
+               SWIPE EN MÓVIL
+            ================================================== */
+
+            let touchStartX = 0;
+
+            let touchEndX = 0;
+
+
+            const viewport =
+                document.querySelector(
+                    ".satori-gift-carousel-viewport"
+                );
+
+
+            viewport?.addEventListener(
+                "touchstart",
+                (event) => {
+
+
+                    touchStartX =
+                        event
+                            .changedTouches[0]
+                            .screenX;
+
+
+                    stopAutoplay();
+
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            viewport?.addEventListener(
+                "touchend",
+                (event) => {
+
+
+                    touchEndX =
+                        event
+                            .changedTouches[0]
+                            .screenX;
+
+
+                    const difference =
+                        touchStartX -
+                        touchEndX;
+
+
+                    if (
+                        Math.abs(
+                            difference
+                        ) > 45
+                    ) {
+
+
+                        if (
+                            difference > 0
+                        ) {
+
+                            showSlide(
+                                currentIndex + 1
+                            );
+
+                        } else {
+
+                            showSlide(
+                                currentIndex - 1
+                            );
+
+                        }
+
+
+                    } else {
+
+                        startAutoplay();
+
+                    }
+
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            /* =================================================
+               INICIO
+            ================================================== */
+
+            showSlide(
+                0,
+                false
+            );
+
+
+            startAutoplay();
+
+
+        })();
 
     </script>
 
