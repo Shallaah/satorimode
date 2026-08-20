@@ -8,7 +8,7 @@
 :root {
 
     /* -----------------------------------------------------
-       COLORES PRINCIPALES
+       COLORES
     ----------------------------------------------------- */
 
     --black: #111111;
@@ -136,12 +136,19 @@ img {
 }
 
 
+/* =========================================================
+   ACCESIBILIDAD — FOCUS
+========================================================= */
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-    outline: 2px solid var(--red);
+
+    outline:
+        2px solid var(--red);
+
     outline-offset: 3px;
 }
 
@@ -186,8 +193,9 @@ select:focus-visible {
     cursor: grab;
 
     /*
-     * Permite swipe horizontal sin interferir
-     * demasiado con el scroll vertical.
+     * Permite deslizar horizontalmente
+     * sin bloquear completamente
+     * el scroll vertical en móviles.
      */
     touch-action: pan-y;
 
@@ -299,7 +307,8 @@ select:focus-visible {
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .65);
+    background:
+        rgba(255, 255, 255, .65);
 
     transition:
         width var(--transition-fast),
@@ -352,12 +361,15 @@ select:focus-visible {
 
     background: var(--white);
 
-    border: 1px solid var(--border-soft);
+    border:
+        1px solid var(--border-soft);
 
-    border-radius: var(--radius-md);
+    border-radius:
+        var(--radius-md);
 
     box-shadow:
-        0 12px 35px rgba(0, 0, 0, .08);
+        0 12px 35px
+        rgba(0, 0, 0, .08);
 
     overflow: hidden;
 }
@@ -404,7 +416,8 @@ select:focus-visible {
 
     width: 1px;
 
-    background: rgba(0, 0, 0, .10);
+    background:
+        rgba(0, 0, 0, .10);
 }
 
 
@@ -601,14 +614,18 @@ select:focus-visible {
 
     align-items: flex-end;
 
-    border: 1px solid #cccccc;
+    border:
+        1px solid #cccccc;
 
-    border-radius: var(--radius);
+    border-radius:
+        var(--radius);
 
-    background-color: var(--black);
+    background-color:
+        var(--black);
 
     box-shadow:
-        0 4px 15px rgba(0, 0, 0, .05);
+        0 4px 15px
+        rgba(0, 0, 0, .05);
 
     transition:
         transform var(--transition-normal),
@@ -722,7 +739,8 @@ select:focus-visible {
     line-height: 1;
 
     text-shadow:
-        0 2px 5px rgba(0, 0, 0, .85);
+        0 2px 5px
+        rgba(0, 0, 0, .85);
 
     transition:
         color var(--transition-fast);
@@ -740,7 +758,8 @@ select:focus-visible {
     font-size: 12px;
 
     text-shadow:
-        0 2px 5px rgba(0, 0, 0, .85);
+        0 2px 5px
+        rgba(0, 0, 0, .85);
 
     transition:
         color var(--transition-fast);
@@ -749,12 +768,15 @@ select:focus-visible {
 
 .collection-card:hover {
 
-    transform: translateY(-6px);
+    transform:
+        translateY(-6px);
 
-    border-color: #999999;
+    border-color:
+        #999999;
 
     box-shadow:
-        0 14px 30px rgba(0, 0, 0, .14);
+        0 14px 30px
+        rgba(0, 0, 0, .14);
 }
 
 
@@ -802,11 +824,14 @@ select:focus-visible {
 
     overflow: hidden;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: var(--radius);
+    border-radius:
+        var(--radius);
 
-    background: var(--white);
+    background:
+        var(--white);
 
     transition:
         transform var(--transition-normal),
@@ -817,12 +842,15 @@ select:focus-visible {
 
 .recommendation-card:hover {
 
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
-    border-color: #cccccc;
+    border-color:
+        #cccccc;
 
     box-shadow:
-        0 12px 28px rgba(0, 0, 0, .10);
+        0 12px 28px
+        rgba(0, 0, 0, .10);
 }
 
 
@@ -853,7 +881,9 @@ select:focus-visible {
 
 .recommendation-card:hover
 .recommendation-image img {
-    transform: scale(1.035);
+
+    transform:
+        scale(1.035);
 }
 
 
@@ -906,11 +936,14 @@ select:focus-visible {
     align-items: center;
     justify-content: center;
 
-    background: var(--black);
+    background:
+        var(--black);
 
-    color: var(--white);
+    color:
+        var(--white);
 
-    font-family: var(--font-logo);
+    font-family:
+        var(--font-logo);
 
     font-size: 28px;
 
@@ -918,8 +951,14 @@ select:focus-visible {
 }
 
 
+/*
+ * Oculta la sección cuando no existen
+ * productos recomendados.
+ */
+
 .recommendations:
 has(.recommendations-grid:empty) {
+
     display: none;
 }
 
@@ -952,13 +991,16 @@ has(.recommendations-grid:empty) {
 
     overflow: hidden;
 
-    background: var(--red);
+    background:
+        var(--red);
 
-    color: var(--white);
+    color:
+        var(--white);
 
     border: none;
 
-    border-radius: var(--radius-md);
+    border-radius:
+        var(--radius-md);
 
     isolation: isolate;
 }
@@ -982,7 +1024,8 @@ has(.recommendations-grid:empty) {
 
     margin-bottom: 12px;
 
-    color: var(--black);
+    color:
+        var(--black);
 
     font-size: 11px;
 
@@ -994,9 +1037,11 @@ has(.recommendations-grid:empty) {
 
 .satorii-pack h2 {
 
-    margin: 0 0 18px;
+    margin:
+        0 0 18px;
 
-    color: var(--white);
+    color:
+        var(--white);
 
     font-size:
         clamp(
@@ -1024,7 +1069,8 @@ has(.recommendations-grid:empty) {
 
     margin: 0;
 
-    color: var(--white);
+    color:
+        var(--white);
 
     font-size: 15px;
 
@@ -1044,13 +1090,17 @@ has(.recommendations-grid:empty) {
 
     margin-top: 25px;
 
-    padding: 14px 23px;
+    padding:
+        14px 23px;
 
-    background: var(--black);
+    background:
+        var(--black);
 
-    color: var(--white);
+    color:
+        var(--white);
 
-    border-radius: var(--radius-sm);
+    border-radius:
+        var(--radius-sm);
 
     font-size: 11px;
 
@@ -1072,11 +1122,14 @@ has(.recommendations-grid:empty) {
 
 .satorii-pack-button:hover {
 
-    background: var(--white);
+    background:
+        var(--white);
 
-    color: var(--black);
+    color:
+        var(--black);
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 
@@ -1102,7 +1155,8 @@ has(.recommendations-grid:empty) {
 
     gap: 9px;
 
-    color: var(--white);
+    color:
+        var(--white);
 }
 
 
@@ -1119,7 +1173,8 @@ has(.recommendations-grid:empty) {
     justify-content: center;
 
     border:
-        1px solid rgba(255, 255, 255, .85);
+        1px solid
+        rgba(255, 255, 255, .85);
 
     border-radius: 50%;
 
@@ -1137,7 +1192,8 @@ has(.recommendations-grid:empty) {
 
 .pack-feature strong {
 
-    color: var(--white);
+    color:
+        var(--white);
 
     font-size: 9px;
 
@@ -1202,7 +1258,8 @@ has(.recommendations-grid:empty) {
     background:
         rgba(255, 255, 255, .18);
 
-    filter: blur(80px);
+    filter:
+        blur(80px);
 }
 
 
@@ -1212,7 +1269,8 @@ has(.recommendations-grid:empty) {
 
     z-index: 5;
 
-    width: min(570px, 95%);
+    width:
+        min(570px, 95%);
 
     max-height: 420px;
 
@@ -1220,7 +1278,8 @@ has(.recommendations-grid:empty) {
 
     filter:
         drop-shadow(
-            0 30px 30px rgba(0, 0, 0, .45)
+            0 30px 30px
+            rgba(0, 0, 0, .45)
         );
 
     transform:
@@ -1241,7 +1300,8 @@ has(.recommendations-grid:empty) {
 
     filter:
         drop-shadow(
-            0 35px 35px rgba(0, 0, 0, .5)
+            0 35px 35px
+            rgba(0, 0, 0, .5)
         );
 }
 
@@ -1264,7 +1324,8 @@ has(.recommendations-grid:empty) {
     border-radius: 50%;
 
     border:
-        1px solid rgba(255, 255, 255, .18);
+        1px solid
+        rgba(255, 255, 255, .18);
 
     z-index: 1;
 }
@@ -1290,7 +1351,8 @@ has(.recommendations-grid:empty) {
     background:
         rgba(255, 255, 255, .10);
 
-    filter: blur(80px);
+    filter:
+        blur(80px);
 
     z-index: 1;
 }
@@ -1298,6 +1360,7 @@ has(.recommendations-grid:empty) {
 
 /* =========================================================
    FOOTER GLOBAL
+   Controlado por js/footer.js
 ========================================================= */
 
 .satori-global-footer {
@@ -1306,9 +1369,11 @@ has(.recommendations-grid:empty) {
 
     margin-top: 70px;
 
-    background: var(--black-soft);
+    background:
+        var(--black-soft);
 
-    color: var(--white);
+    color:
+        var(--white);
 
     border-top:
         2px solid #222222;
@@ -1323,9 +1388,11 @@ has(.recommendations-grid:empty) {
             calc(100% - 40px)
         );
 
-    margin: 0 auto;
+    margin:
+        0 auto;
 
-    padding: 65px 0 45px;
+    padding:
+        65px 0 45px;
 
     display: grid;
 
@@ -1338,9 +1405,11 @@ has(.recommendations-grid:empty) {
 
 .satori-footer-brand h3 {
 
-    margin: 0 0 5px;
+    margin:
+        0 0 5px;
 
-    font-family: var(--font-logo);
+    font-family:
+        var(--font-logo);
 
     font-size: 32px;
 
@@ -1358,7 +1427,8 @@ has(.recommendations-grid:empty) {
 
     margin-bottom: 18px;
 
-    color: var(--red);
+    color:
+        var(--red);
 
     font-size: 13px;
 }
@@ -1370,7 +1440,8 @@ has(.recommendations-grid:empty) {
 
     margin: 0;
 
-    color: #aaaaaa;
+    color:
+        #aaaaaa;
 
     font-size: 13px;
 
@@ -1390,11 +1461,13 @@ has(.recommendations-grid:empty) {
     align-items: center;
     justify-content: center;
 
-    border: 1px solid #444444;
+    border:
+        1px solid #444444;
 
     border-radius: 50%;
 
-    color: var(--white);
+    color:
+        var(--white);
 
     transition:
         color var(--transition-fast),
@@ -1405,11 +1478,14 @@ has(.recommendations-grid:empty) {
 
 .satori-footer-instagram:hover {
 
-    color: var(--red);
+    color:
+        var(--red);
 
-    border-color: var(--red);
+    border-color:
+        var(--red);
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 
@@ -1432,7 +1508,8 @@ has(.recommendations-grid:empty) {
 
 .satori-footer-column h4 {
 
-    margin: 0 0 8px;
+    margin:
+        0 0 8px;
 
     font-size: 12px;
 
@@ -1442,7 +1519,8 @@ has(.recommendations-grid:empty) {
 
 .satori-footer-column a {
 
-    color: #aaaaaa;
+    color:
+        #aaaaaa;
 
     font-size: 13px;
 
@@ -1452,7 +1530,8 @@ has(.recommendations-grid:empty) {
 
 
 .satori-footer-column a:hover {
-    color: var(--white);
+    color:
+        var(--white);
 }
 
 
@@ -1462,7 +1541,8 @@ has(.recommendations-grid:empty) {
 
     margin-bottom: 5px;
 
-    color: var(--red);
+    color:
+        var(--red);
 
     font-size: 11px;
 
@@ -1474,7 +1554,8 @@ has(.recommendations-grid:empty) {
 
 .satori-footer-community h3 {
 
-    margin: 0 0 10px;
+    margin:
+        0 0 10px;
 
     font-size: 30px;
 
@@ -1483,15 +1564,18 @@ has(.recommendations-grid:empty) {
 
 
 .satori-footer-community h3 span {
-    color: var(--red);
+    color:
+        var(--red);
 }
 
 
 .satori-footer-community p {
 
-    margin: 0 0 18px;
+    margin:
+        0 0 18px;
 
-    color: #aaaaaa;
+    color:
+        #aaaaaa;
 
     font-size: 13px;
 }
@@ -1514,7 +1598,8 @@ has(.recommendations-grid:empty) {
 
     overflow: hidden;
 
-    background: var(--white);
+    background:
+        var(--white);
 }
 
 
@@ -1524,15 +1609,18 @@ has(.recommendations-grid:empty) {
 
     min-width: 0;
 
-    padding: 0 14px;
+    padding:
+        0 14px;
 
     border: 0;
 
     outline: none;
 
-    color: var(--black);
+    color:
+        var(--black);
 
-    background: var(--white);
+    background:
+        var(--white);
 
     font-size: 13px;
 }
@@ -1544,9 +1632,11 @@ has(.recommendations-grid:empty) {
 
     border: 0;
 
-    background: var(--red);
+    background:
+        var(--red);
 
-    color: var(--white);
+    color:
+        var(--white);
 
     font-size: 20px;
 
@@ -1556,7 +1646,8 @@ has(.recommendations-grid:empty) {
 
 
 .satori-footer-newsletter button:hover {
-    background: var(--dark-red);
+    background:
+        var(--dark-red);
 }
 
 
@@ -1568,9 +1659,11 @@ has(.recommendations-grid:empty) {
             calc(100% - 40px)
         );
 
-    margin: 0 auto;
+    margin:
+        0 auto;
 
-    padding: 18px 0;
+    padding:
+        18px 0;
 
     border-top:
         1px solid #222222;
@@ -1581,7 +1674,8 @@ has(.recommendations-grid:empty) {
 
     justify-content: space-between;
 
-    color: #777777;
+    color:
+        #777777;
 
     font-size: 11px;
 }
@@ -1596,263 +1690,8 @@ has(.recommendations-grid:empty) {
 
 
 .satori-footer-bottom a:hover {
-    color: var(--white);
-}
-
-
-/* =========================================================
-   BUSCADOR GLOBAL
-   Controlado por js/header.js
-========================================================= */
-
-#satori-header .search-overlay {
-
-    position: fixed !important;
-
-    inset: 0 !important;
-
-    width: 100vw !important;
-    height: 100dvh !important;
-
-    display: flex !important;
-
-    align-items: flex-start !important;
-    justify-content: center !important;
-
-    padding: 90px 16px 30px !important;
-
-    background:
-        rgba(0, 0, 0, .55) !important;
-
-    opacity: 0 !important;
-
-    visibility: hidden !important;
-
-    pointer-events: none !important;
-
-    z-index: 2000000 !important;
-
-    transition:
-        opacity .2s ease,
-        visibility .2s ease !important;
-}
-
-
-#satori-header
-.search-overlay.open {
-
-    opacity: 1 !important;
-
-    visibility: visible !important;
-
-    pointer-events: auto !important;
-}
-
-
-#satori-header .search-box {
-
-    position: relative !important;
-
-    width: min(700px, 100%) !important;
-
-    max-width: 700px !important;
-
-    padding: 30px !important;
-
-    margin: 0 !important;
-
-    background: var(--white) !important;
-
-    border:
-        1px solid var(--border) !important;
-
-    border-radius:
-        var(--radius-lg) !important;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, .25) !important;
-
-    transform:
-        translateY(-15px) !important;
-
-    transition:
-        transform .2s ease !important;
-}
-
-
-#satori-header
-.search-overlay.open
-.search-box {
-
-    transform:
-        translateY(0) !important;
-}
-
-
-#satori-header .search-close {
-
-    position: absolute !important;
-
-    top: 10px !important;
-    right: 12px !important;
-
-    width: 38px !important;
-    height: 38px !important;
-
-    padding: 0 !important;
-
-    border: 0 !important;
-
-    background: transparent !important;
-
-    color: var(--black) !important;
-
-    font-size: 30px !important;
-
-    line-height: 1 !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    cursor: pointer !important;
-}
-
-
-#satori-header
-.search-close:hover {
-
-    color: var(--red) !important;
-}
-
-
-#satori-header .search-title {
-
-    margin:
-        0 45px 18px 0 !important;
-
-    color: var(--black) !important;
-
-    font-size: 14px !important;
-
-    font-weight: 800 !important;
-
-    letter-spacing: 2px !important;
-
-    line-height: 1.2 !important;
-}
-
-
-#satori-header .search-form {
-
-    width: 100% !important;
-
-    height: 52px !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    display: flex !important;
-
-    align-items: stretch !important;
-
-    border:
-        1px solid #cccccc !important;
-
-    border-radius: var(--radius-md) !important;
-
-    overflow: hidden !important;
-
-    background: var(--white) !important;
-}
-
-
-#satori-header
-.search-form input {
-
-    flex: 1 1 auto !important;
-
-    width: auto !important;
-
-    min-width: 0 !important;
-
-    height: 100% !important;
-
-    margin: 0 !important;
-
-    padding: 0 16px !important;
-
-    border: 0 !important;
-
-    outline: none !important;
-
-    background: var(--white) !important;
-
-    color: var(--black) !important;
-
-    font-family: var(--font-main) !important;
-
-    font-size: 15px !important;
-
-    opacity: 1 !important;
-
-    pointer-events: auto !important;
-
-    box-shadow: none !important;
-}
-
-
-#satori-header
-.search-form input::placeholder {
-
-    color: var(--gray-muted) !important;
-
-    opacity: 1 !important;
-}
-
-
-#satori-header
-.search-form button {
-
-    flex: 0 0 60px !important;
-
-    width: 60px !important;
-
-    height: 100% !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    border: 0 !important;
-
-    border-radius: 0 !important;
-
-    background: var(--red) !important;
-
-    color: var(--white) !important;
-
-    font-size: 24px !important;
-
-    line-height: 1 !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    cursor: pointer !important;
-
-    transition:
-        background var(--transition-fast) !important;
-}
-
-
-#satori-header
-.search-form button:hover {
-    background: var(--dark-red) !important;
+    color:
+        var(--white);
 }
 
 
@@ -1938,6 +1777,7 @@ has(.recommendations-grid:empty) {
 
     .benefit:nth-child(2),
     .benefit:nth-child(4) {
+
         border-right: 0;
     }
 
@@ -1952,98 +1792,15 @@ has(.recommendations-grid:empty) {
 
     .benefit:nth-child(3),
     .benefit:nth-child(4) {
+
         border-bottom: 0;
     }
 
 
     .benefit:nth-child(2)::after,
     .benefit:nth-child(4)::after {
+
         display: none;
-    }
-
-
-    #satori-header .search-overlay {
-        padding:
-            78px 12px 24px !important;
-    }
-
-
-    #satori-header .search-box {
-
-        width:
-            calc(100vw - 24px) !important;
-
-        max-width: none !important;
-
-        padding:
-            24px 16px !important;
-
-        border-radius:
-            14px !important;
-    }
-
-
-    #satori-header .search-title {
-
-        margin-bottom:
-            15px !important;
-
-        font-size:
-            13px !important;
-    }
-
-
-    #satori-header .search-form {
-
-        height:
-            48px !important;
-
-        border-radius:
-            9px !important;
-    }
-
-
-    #satori-header
-    .search-form input {
-
-        font-size:
-            14px !important;
-
-        padding:
-            0 13px !important;
-    }
-
-
-    #satori-header
-    .search-form button {
-
-        flex-basis:
-            52px !important;
-
-        width:
-            52px !important;
-
-        font-size:
-            22px !important;
-    }
-
-
-    #satori-header .search-close {
-
-        top:
-            8px !important;
-
-        right:
-            9px !important;
-
-        width:
-            36px !important;
-
-        height:
-            36px !important;
-
-        font-size:
-            27px !important;
     }
 
 }
@@ -2136,7 +1893,6 @@ has(.recommendations-grid:empty) {
 
 
     .section-header {
-
         margin-bottom: 16px;
     }
 
@@ -2228,7 +1984,8 @@ has(.recommendations-grid:empty) {
 
         min-height: auto;
 
-        margin: 55px auto;
+        margin:
+            55px auto;
 
         padding:
             30px 22px 0;
@@ -2408,7 +2165,8 @@ has(.recommendations-grid:empty) {
             12px;
 
         box-shadow:
-            0 10px 30px rgba(0, 0, 0, .10);
+            0 10px 30px
+            rgba(0, 0, 0, .10);
     }
 
 
@@ -2478,7 +2236,6 @@ has(.recommendations-grid:empty) {
         display: block;
 
         width: 100%;
-
         height: 100%;
     }
 
@@ -2488,7 +2245,6 @@ has(.recommendations-grid:empty) {
         display: block;
 
         width: 100%;
-
         height: 100%;
 
         object-fit: cover;
@@ -2498,6 +2254,8 @@ has(.recommendations-grid:empty) {
         user-select: none;
 
         pointer-events: none;
+
+        -webkit-user-drag: none;
     }
 
 }
@@ -2560,6 +2318,7 @@ has(.recommendations-grid:empty) {
 
 
     .recommendations-grid {
+
         grid-template-columns:
             repeat(2, 1fr);
     }
@@ -2570,35 +2329,6 @@ has(.recommendations-grid:empty) {
         flex-wrap: wrap;
 
         gap: 12px;
-    }
-
-
-    /* -----------------------------------------------------
-       BUSCADOR
-    ----------------------------------------------------- */
-
-    #satori-header .search-overlay {
-
-        padding:
-            74px 10px 20px !important;
-    }
-
-
-    #satori-header .search-box {
-
-        width:
-            calc(100vw - 20px) !important;
-
-        padding:
-            22px 13px !important;
-    }
-
-
-    #satori-header
-    .search-form input {
-
-        font-size:
-            13px !important;
     }
 
 
@@ -2653,14 +2383,17 @@ has(.recommendations-grid:empty) {
     *::before,
     *::after {
 
-        transition: none !important;
+        transition:
+            none !important;
 
-        animation: none !important;
+        animation:
+            none !important;
     }
 
 
     .hero-track {
-        transition: none !important;
+        transition:
+            none !important;
     }
 
 
