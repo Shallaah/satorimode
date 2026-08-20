@@ -2,8 +2,13 @@
 <html lang="es">
 
 <head>
-    <link rel="icon" type="image/png" href="img/logo.png">
-    
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
     <meta charset="UTF-8">
 
     <meta
@@ -13,7 +18,7 @@
 
     <meta
         name="description"
-        content="SatoriMode — Tu carrito de compras."
+        content="SATORII — Tu carrito de compras."
     >
 
     <meta
@@ -21,7 +26,7 @@
         content="#ffffff"
     >
 
-    <title>Carrito | Satorii</title>
+    <title>Carrito | SATORII</title>
 
 
     <!-- =====================================================
@@ -37,33 +42,42 @@
     <style>
 
         /* =====================================================
+           SATORII · CARRITO
+        ====================================================== */
+
+
+        /* =====================================================
            PÁGINA
         ====================================================== */
 
         .satori-cart-page {
 
-            width:100%;
+            width: 100%;
 
-            min-height:70vh;
+            min-height: 70vh;
 
             padding:
                 90px
                 30px
                 80px;
 
-            background:#fff;
+            background: #fff;
+
+            box-sizing: border-box;
 
         }
 
 
         .satori-cart-container {
 
-            width:min(
-                1200px,
-                100%
-            );
+            width:
+                min(
+                    1200px,
+                    100%
+                );
 
-            margin:0 auto;
+            margin:
+                0 auto;
 
         }
 
@@ -74,33 +88,34 @@
 
         .satori-cart-heading {
 
-            margin-bottom:55px;
+            margin-bottom: 55px;
 
         }
 
 
         .satori-cart-label {
 
-            display:block;
+            display: block;
 
-            margin-bottom:12px;
+            margin-bottom: 12px;
 
-            color:#f31218;
+            color:
+                var(--red, #EF0930);
 
-            font-size:10px;
+            font-size: 10px;
 
-            font-weight:800;
+            font-weight: 800;
 
-            letter-spacing:3px;
+            letter-spacing: 3px;
 
         }
 
 
         .satori-cart-heading h1 {
 
-            margin:0;
+            margin: 0;
 
-            color:#111;
+            color: #111;
 
             font-size:
                 clamp(
@@ -109,28 +124,27 @@
                     82px
                 );
 
-            line-height:.9;
+            line-height: .9;
 
-            font-weight:900;
+            font-weight: 900;
 
-            letter-spacing:-4px;
+            letter-spacing: -4px;
 
         }
 
 
         .satori-cart-heading p {
 
-            max-width:650px;
+            max-width: 650px;
 
             margin:
-                22px 0
-                0;
+                22px 0 0;
 
-            color:#777;
+            color: #777;
 
-            font-size:14px;
+            font-size: 14px;
 
-            line-height:1.7;
+            line-height: 1.7;
 
         }
 
@@ -141,15 +155,15 @@
 
         .satori-cart-layout {
 
-            display:grid;
+            display: grid;
 
             grid-template-columns:
-                minmax(0,1fr)
+                minmax(0, 1fr)
                 350px;
 
-            gap:60px;
+            gap: 60px;
 
-            align-items:start;
+            align-items: start;
 
         }
 
@@ -160,7 +174,7 @@
 
         .satori-cart-products {
 
-            width:100%;
+            width: 100%;
 
             border-top:
                 1px solid #ddd;
@@ -174,14 +188,14 @@
 
         .satori-cart-item {
 
-            display:grid;
+            display: grid;
 
             grid-template-columns:
                 130px
-                minmax(0,1fr)
+                minmax(0, 1fr)
                 auto;
 
-            gap:22px;
+            gap: 22px;
 
             padding:
                 24px 0;
@@ -198,32 +212,30 @@
 
         .satori-cart-image {
 
-            width:130px;
+            width: 130px;
 
-            aspect-ratio:1 / 1;
+            aspect-ratio: 1 / 1;
 
-            height:auto;
+            overflow: hidden;
 
-            overflow:hidden;
+            background: #f5f5f5;
 
-            background:#f5f5f5;
-
-            border-radius:6px;
+            border-radius: 6px;
 
         }
 
 
         .satori-cart-image img {
 
-            width:100%;
+            width: 100%;
 
-            height:100%;
+            height: 100%;
 
-            display:block;
+            display: block;
 
-            object-fit:cover;
+            object-fit: cover;
 
-            object-position:center;
+            object-position: center;
 
         }
 
@@ -234,54 +246,55 @@
 
         .satori-cart-info {
 
-            min-width:0;
+            min-width: 0;
 
-            padding-top:3px;
+            padding-top: 3px;
 
         }
 
 
         .satori-cart-category {
 
-            display:block;
+            display: block;
 
-            margin-bottom:7px;
+            margin-bottom: 7px;
 
-            color:#f31218;
+            color:
+                var(--red, #EF0930);
 
-            font-size:9px;
+            font-size: 9px;
 
-            font-weight:800;
+            font-weight: 800;
 
-            letter-spacing:2px;
+            letter-spacing: 2px;
 
         }
 
 
         .satori-cart-name {
 
-            margin:0;
+            margin: 0;
 
-            color:#111;
+            color: #111;
 
-            font-size:19px;
+            font-size: 19px;
 
-            font-weight:800;
+            font-weight: 800;
 
-            line-height:1.25;
+            line-height: 1.25;
 
         }
 
 
         .satori-cart-options {
 
-            margin-top:9px;
+            margin-top: 9px;
 
-            color:#777;
+            color: #777;
 
-            font-size:12px;
+            font-size: 12px;
 
-            line-height:1.6;
+            line-height: 1.6;
 
         }
 
@@ -292,15 +305,15 @@
 
         .satori-cart-price-mobile {
 
-            display:none;
+            display: none;
 
-            margin-top:8px;
+            margin-top: 8px;
 
-            color:#111;
+            color: #111;
 
-            font-size:14px;
+            font-size: 14px;
 
-            font-weight:900;
+            font-weight: 900;
 
         }
 
@@ -311,102 +324,109 @@
 
         .satori-cart-controls {
 
-            display:flex;
+            display: flex;
 
-            align-items:center;
+            align-items: center;
 
-            gap:16px;
+            gap: 16px;
 
-            margin-top:20px;
+            margin-top: 20px;
 
         }
 
 
         .satori-cart-quantity {
 
-            display:flex;
+            display: flex;
 
-            align-items:center;
+            align-items: center;
 
-            height:38px;
+            height: 38px;
 
             border:
                 1px solid #ccc;
 
-            border-radius:5px;
+            border-radius: 5px;
 
-            overflow:hidden;
+            overflow: hidden;
 
         }
 
 
         .satori-cart-quantity button {
 
-            width:38px;
+            width: 38px;
 
-            height:100%;
+            height: 100%;
 
-            padding:0;
+            padding: 0;
 
-            border:0;
+            border: 0;
 
-            background:#fff;
+            background: #fff;
 
-            color:#111;
+            color: #111;
 
-            font-size:18px;
+            font-size: 18px;
 
-            cursor:pointer;
+            cursor: pointer;
+
+            transition:
+                background .2s ease;
 
         }
 
 
         .satori-cart-quantity button:hover {
 
-            background:#f4f4f4;
+            background: #f4f4f4;
 
         }
 
 
         .satori-cart-quantity span {
 
-            min-width:38px;
+            min-width: 38px;
 
-            text-align:center;
+            text-align: center;
 
-            color:#111;
+            color: #111;
 
-            font-size:12px;
+            font-size: 12px;
 
-            font-weight:700;
+            font-weight: 700;
 
         }
 
 
         .satori-cart-remove {
 
-            padding:0;
+            padding: 0;
 
-            border:0;
+            border: 0;
 
-            background:transparent;
+            background: transparent;
 
-            color:#888;
+            color: #888;
 
-            font-size:9px;
+            font-size: 9px;
 
-            font-weight:800;
+            font-weight: 800;
 
-            letter-spacing:1px;
+            letter-spacing: 1px;
 
-            cursor:pointer;
+            cursor: pointer;
+
+            transition:
+                color .2s ease;
 
         }
 
 
         .satori-cart-remove:hover {
 
-            color:#f31218;
+            color:
+                var(--red, #EF0930);
 
         }
 
@@ -417,19 +437,19 @@
 
         .satori-cart-item-total {
 
-            min-width:110px;
+            min-width: 110px;
 
-            padding-top:3px;
+            padding-top: 3px;
 
-            color:#111;
+            color: #111;
 
-            font-size:16px;
+            font-size: 16px;
 
-            font-weight:900;
+            font-weight: 900;
 
-            text-align:right;
+            text-align: right;
 
-            white-space:nowrap;
+            white-space: nowrap;
 
         }
 
@@ -440,35 +460,36 @@
 
         .satori-cart-summary {
 
-            position:sticky;
+            position: sticky;
 
-            top:90px;
+            top: 90px;
 
-            padding:28px;
+            padding: 28px;
 
-            background:#f8f8f8;
+            background: #f8f8f8;
 
             border:
                 1px solid #ddd;
 
-            border-radius:7px;
+            border-radius: 7px;
 
         }
 
 
         .satori-cart-summary-label {
 
-            display:block;
+            display: block;
 
-            margin-bottom:18px;
+            margin-bottom: 18px;
 
-            color:#f31218;
+            color:
+                var(--red, #EF0930);
 
-            font-size:9px;
+            font-size: 9px;
 
-            font-weight:800;
+            font-weight: 800;
 
-            letter-spacing:2px;
+            letter-spacing: 2px;
 
         }
 
@@ -478,26 +499,26 @@
             margin:
                 0 0 25px;
 
-            color:#111;
+            color: #111;
 
-            font-size:24px;
+            font-size: 24px;
 
-            font-weight:900;
+            font-weight: 900;
 
-            letter-spacing:-1px;
+            letter-spacing: -1px;
 
         }
 
 
         .satori-cart-summary-row {
 
-            display:flex;
+            display: flex;
 
-            align-items:center;
+            align-items: center;
 
-            justify-content:space-between;
+            justify-content: space-between;
 
-            gap:20px;
+            gap: 20px;
 
             padding:
                 14px 0;
@@ -510,24 +531,24 @@
 
         .satori-cart-summary-row span {
 
-            color:#555;
+            color: #555;
 
-            font-size:11px;
+            font-size: 11px;
 
-            font-weight:700;
+            font-weight: 700;
 
-            letter-spacing:1px;
+            letter-spacing: 1px;
 
         }
 
 
         .satori-cart-summary-row strong {
 
-            color:#111;
+            color: #111;
 
-            font-size:17px;
+            font-size: 17px;
 
-            font-weight:900;
+            font-weight: 900;
 
         }
 
@@ -537,105 +558,121 @@
             margin:
                 8px 0 22px;
 
-            color:#888;
+            color: #888;
 
-            font-size:10px;
+            font-size: 10px;
 
-            line-height:1.6;
+            line-height: 1.6;
 
         }
 
 
         .satori-cart-checkout {
 
-            width:100%;
+            width: 100%;
 
-            min-height:50px;
+            min-height: 50px;
 
-            border:0;
+            border: 0;
 
-            border-radius:5px;
+            border-radius: 5px;
 
-            background:#f31218;
+            background:
+                var(--red, #EF0930);
 
-            color:#fff;
+            color: #fff;
 
-            font-size:10px;
+            font-size: 10px;
 
-            font-weight:900;
+            font-weight: 900;
 
-            letter-spacing:1px;
+            letter-spacing: 1px;
 
-            cursor:pointer;
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                transform .2s ease;
 
         }
 
 
         .satori-cart-checkout:hover {
 
-            background:#111;
+            background: #111;
+
+            transform:
+                translateY(-1px);
 
         }
 
 
         .satori-cart-continue {
 
-            display:block;
+            display: block;
 
-            margin-top:16px;
+            margin-top: 16px;
 
-            color:#555;
+            color: #555;
 
-            text-align:center;
+            text-align: center;
 
-            text-decoration:none;
+            text-decoration: none;
 
-            font-size:10px;
+            font-size: 10px;
 
-            font-weight:800;
+            font-weight: 800;
+
+            transition:
+                color .2s ease;
 
         }
 
 
         .satori-cart-continue:hover {
 
-            color:#f31218;
+            color:
+                var(--red, #EF0930);
 
         }
 
 
         .satori-cart-clear {
 
-            width:100%;
+            width: 100%;
 
-            margin-top:25px;
+            margin-top: 25px;
 
             padding:
                 13px 0;
 
-            border:0;
+            border: 0;
 
             border-top:
                 1px solid #ddd;
 
-            background:transparent;
+            background: transparent;
 
-            color:#888;
+            color: #888;
 
-            font-size:9px;
+            font-size: 9px;
 
-            font-weight:800;
+            font-weight: 800;
 
-            letter-spacing:1px;
+            letter-spacing: 1px;
 
-            cursor:pointer;
+            cursor: pointer;
+
+            transition:
+                color .2s ease;
 
         }
 
 
         .satori-cart-clear:hover {
 
-            color:#f31218;
+            color:
+                var(--red, #EF0930);
 
         }
 
@@ -646,20 +683,20 @@
 
         .satori-cart-empty {
 
-            min-height:500px;
+            min-height: 500px;
 
-            display:flex;
+            display: flex;
 
-            flex-direction:column;
+            flex-direction: column;
 
-            align-items:center;
+            align-items: center;
 
-            justify-content:center;
+            justify-content: center;
 
             padding:
                 60px 20px;
 
-            text-align:center;
+            text-align: center;
 
             border-top:
                 1px solid #ddd;
@@ -669,24 +706,25 @@
 
         .satori-cart-empty-label {
 
-            margin-bottom:12px;
+            margin-bottom: 12px;
 
-            color:#f31218;
+            color:
+                var(--red, #EF0930);
 
-            font-size:10px;
+            font-size: 10px;
 
-            font-weight:800;
+            font-weight: 800;
 
-            letter-spacing:3px;
+            letter-spacing: 3px;
 
         }
 
 
         .satori-cart-empty h2 {
 
-            margin:0;
+            margin: 0;
 
-            color:#111;
+            color: #111;
 
             font-size:
                 clamp(
@@ -695,62 +733,66 @@
                     50px
                 );
 
-            font-weight:900;
+            font-weight: 900;
 
-            letter-spacing:-2px;
+            letter-spacing: -2px;
 
         }
 
 
         .satori-cart-empty p {
 
-            max-width:480px;
+            max-width: 480px;
 
             margin:
                 18px auto 28px;
 
-            color:#777;
+            color: #777;
 
-            font-size:13px;
+            font-size: 13px;
 
-            line-height:1.7;
+            line-height: 1.7;
 
         }
 
 
         .satori-cart-empty-button {
 
-            min-height:48px;
+            min-height: 48px;
 
-            display:inline-flex;
+            display: inline-flex;
 
-            align-items:center;
+            align-items: center;
 
-            justify-content:center;
+            justify-content: center;
 
             padding:
                 0 28px;
 
-            border-radius:4px;
+            border-radius: 4px;
 
-            background:#111;
+            background: #111;
 
-            color:#fff;
+            color: #fff;
 
-            text-decoration:none;
+            text-decoration: none;
 
-            font-size:10px;
+            font-size: 10px;
 
-            font-weight:900;
+            font-weight: 900;
 
-            letter-spacing:1px;
+            letter-spacing: 1px;
+
+            transition:
+                background .2s ease;
 
         }
 
 
         .satori-cart-empty-button:hover {
 
-            background:#f31218;
+            background:
+                var(--red, #EF0930);
 
         }
 
@@ -759,9 +801,7 @@
            TABLET
         ====================================================== */
 
-        @media (
-            max-width:900px
-        ) {
+        @media (max-width: 900px) {
 
             .satori-cart-page {
 
@@ -775,16 +815,16 @@
 
             .satori-cart-layout {
 
-                grid-template-columns:1fr;
+                grid-template-columns: 1fr;
 
-                gap:45px;
+                gap: 45px;
 
             }
 
 
             .satori-cart-summary {
 
-                position:static;
+                position: static;
 
             }
 
@@ -795,29 +835,27 @@
            MÓVIL
         ====================================================== */
 
-        @media (
-            max-width:650px
-        ) {
+        @media (max-width: 650px) {
 
             .satori-cart-heading {
 
-                margin-bottom:40px;
+                margin-bottom: 40px;
 
             }
 
 
             .satori-cart-heading h1 {
 
-                font-size:52px;
+                font-size: 52px;
 
-                letter-spacing:-2px;
+                letter-spacing: -2px;
 
             }
 
 
             .satori-cart-heading p {
 
-                font-size:13px;
+                font-size: 13px;
 
             }
 
@@ -826,66 +864,62 @@
 
                 grid-template-columns:
                     100px
-                    minmax(0,1fr);
+                    minmax(0, 1fr);
 
-                gap:15px;
+                gap: 15px;
 
             }
 
 
             .satori-cart-image {
 
-                width:100px;
-
-                aspect-ratio:1 / 1;
-
-                height:auto;
+                width: 100px;
 
             }
 
 
             .satori-cart-item-total {
 
-                display:none;
+                display: none;
 
             }
 
 
             .satori-cart-price-mobile {
 
-                display:block;
+                display: block;
 
             }
 
 
             .satori-cart-name {
 
-                font-size:16px;
+                font-size: 16px;
 
             }
 
 
             .satori-cart-controls {
 
-                flex-wrap:wrap;
+                flex-wrap: wrap;
 
-                gap:10px;
+                gap: 10px;
 
-                margin-top:14px;
+                margin-top: 14px;
 
             }
 
 
             .satori-cart-summary {
 
-                padding:22px;
+                padding: 22px;
 
             }
 
 
             .satori-cart-empty {
 
-                min-height:420px;
+                min-height: 420px;
 
             }
 
@@ -896,22 +930,20 @@
            MÓVIL PEQUEÑO
         ====================================================== */
 
-        @media (
-            max-width:380px
-        ) {
+        @media (max-width: 380px) {
 
             .satori-cart-item {
 
                 grid-template-columns:
                     85px
-                    minmax(0,1fr);
+                    minmax(0, 1fr);
 
             }
 
 
             .satori-cart-image {
 
-                width:85px;
+                width: 85px;
 
             }
 
@@ -922,17 +954,16 @@
            REDUCCIÓN DE MOVIMIENTO
         ====================================================== */
 
-        @media (
-            prefers-reduced-motion:reduce
-        ) {
+        @media (prefers-reduced-motion: reduce) {
 
             .satori-cart-quantity button,
             .satori-cart-remove,
             .satori-cart-checkout,
             .satori-cart-continue,
-            .satori-cart-clear {
+            .satori-cart-clear,
+            .satori-cart-empty-button {
 
-                transition:none;
+                transition: none;
 
             }
 
@@ -947,7 +978,7 @@
 
 
     <!-- =====================================================
-         HEADER GLOBAL
+         HEADER
     ====================================================== -->
 
     <div id="satori-header"></div>
@@ -961,10 +992,6 @@
 
         <div class="satori-cart-container">
 
-
-            <!-- =================================================
-                 CABECERA
-            ================================================== -->
 
             <header class="satori-cart-heading">
 
@@ -987,10 +1014,6 @@
             </header>
 
 
-            <!-- =================================================
-                 CONTENIDO DINÁMICO
-            ================================================== -->
-
             <div
                 id="satori-cart-page-content"
             ></div>
@@ -1001,17 +1024,23 @@
 
 
     <!-- =====================================================
-         FOOTER GLOBAL
-         
-         IMPORTANTE:
-         El contenido real del footer lo genera footer.js.
+         FOOTER
     ====================================================== -->
 
     <div id="satori-footer"></div>
 
 
     <!-- =====================================================
-         SCRIPTS GLOBALES
+         PRODUCTOS
+    ====================================================== -->
+
+    <script
+        src="/satorimode/js/products.js"
+    ></script>
+
+
+    <!-- =====================================================
+         HEADER / FOOTER
     ====================================================== -->
 
     <script
@@ -1024,13 +1053,17 @@
     ></script>
 
 
+    <!-- =====================================================
+         CARRITO GLOBAL
+    ====================================================== -->
+
     <script
         src="/satorimode/js/cart.js"
     ></script>
 
 
     <!-- =====================================================
-         RENDER CARRITO
+         RENDER DEL CARRITO
     ====================================================== -->
 
     <script>
@@ -1039,7 +1072,7 @@
 
 
         /* =====================================================
-           CLAVE DEL CARRITO
+           CONFIGURACIÓN
         ====================================================== */
 
         const CART_KEY =
@@ -1074,7 +1107,9 @@
 
 
                 const cart =
-                    JSON.parse(saved);
+                    JSON.parse(
+                        saved
+                    );
 
 
                 return Array.isArray(cart)
@@ -1086,13 +1121,164 @@
             catch (error) {
 
                 console.error(
-                    "SatoriMode · Error leyendo carrito:",
+                    "SATORII · Error leyendo carrito:",
                     error
                 );
 
                 return [];
 
             }
+
+        }
+
+
+        /* =====================================================
+           BUSCAR PRODUCTO EN PRODUCTS.JS
+        ====================================================== */
+
+        function getCatalogProduct(
+            cartProduct
+        ) {
+
+            if (
+                typeof PRODUCTS ===
+                "undefined" ||
+                !Array.isArray(PRODUCTS)
+            ) {
+
+                return null;
+
+            }
+
+
+            const cartId =
+                String(
+                    cartProduct?.productId ||
+                    cartProduct?.id ||
+                    ""
+                );
+
+
+            if (!cartId) {
+
+                return null;
+
+            }
+
+
+            return (
+                PRODUCTS.find(
+                    function (product) {
+
+                        return String(
+                            product.id
+                        ) === cartId;
+
+                    }
+                ) ||
+                null
+            );
+
+        }
+
+
+        /* =====================================================
+           DATOS ACTUALES DEL PRODUCTO
+        ====================================================== */
+
+        function getCurrentProductData(
+            cartProduct
+        ) {
+
+            const catalogProduct =
+                getCatalogProduct(
+                    cartProduct
+                );
+
+
+            /*
+             * Si existe en PRODUCTS,
+             * utilizamos los datos actuales.
+             */
+
+            if (
+                catalogProduct
+            ) {
+
+                return {
+
+                    ...cartProduct,
+
+                    id:
+                        catalogProduct.id,
+
+                    productId:
+                        catalogProduct.id,
+
+                    name:
+                        catalogProduct.name ||
+                        cartProduct.name,
+
+                    price:
+                        Number(
+                            catalogProduct.price
+                        ) || 0,
+
+                    image:
+                        catalogProduct.image ||
+                        catalogProduct.images?.[0] ||
+                        cartProduct.image ||
+                        ""
+
+                };
+
+            }
+
+
+            /*
+             * Compatibilidad con productos
+             * antiguos guardados en localStorage.
+             */
+
+            return {
+
+                ...cartProduct,
+
+                price:
+                    Number(
+                        cartProduct.price
+                    ) || 0,
+
+                quantity:
+                    Math.max(
+                        1,
+                        Number(
+                            cartProduct.quantity
+                        ) || 1
+                    )
+
+            };
+
+        }
+
+
+        /* =====================================================
+           OBTENER CARRITO NORMALIZADO
+        ====================================================== */
+
+        function getNormalizedCart() {
+
+            return getPageCart().map(
+                function (
+                    product
+                ) {
+
+                    return getCurrentProductData(
+                        product
+                    );
+
+                }
+            );
 
         }
 
@@ -1108,11 +1294,17 @@
             return new Intl.NumberFormat(
                 "es-CL",
                 {
-                    style:"currency",
-                    currency:"CLP",
-                    maximumFractionDigits:0
+                    style:
+                        "currency",
+
+                    currency:
+                        "CLP",
+
+                    maximumFractionDigits:
+                        0
                 }
-            ).format(
+            )
+            .format(
                 Number(price) || 0
             );
 
@@ -1172,9 +1364,36 @@
                 );
 
 
+                /*
+                 * Mantener compatibilidad
+                 * con cart.js.
+                 */
+
+                localStorage.setItem(
+                    "satoriCart",
+                    JSON.stringify(
+                        cart
+                    )
+                );
+
+
+                localStorage.setItem(
+                    "satorimode-cart",
+                    JSON.stringify(
+                        cart
+                    )
+                );
+
+
                 document.dispatchEvent(
                     new CustomEvent(
-                        "satorii:cart-updated"
+                        "satorii:cart-updated",
+                        {
+                            detail: {
+                                cart:
+                                    cart
+                            }
+                        }
                     )
                 );
 
@@ -1183,7 +1402,7 @@
             catch (error) {
 
                 console.error(
-                    "SatoriMode · Error guardando carrito:",
+                    "SATORII · Error guardando carrito:",
                     error
                 );
 
@@ -1205,12 +1424,31 @@
             }
 
 
-            const cart =
+            const rawCart =
                 getPageCart();
 
 
+            /*
+             * Normalizamos los datos
+             * usando PRODUCTS.
+             */
+
+            const cart =
+                rawCart.map(
+                    function (
+                        product
+                    ) {
+
+                        return getCurrentProductData(
+                            product
+                        );
+
+                    }
+                );
+
+
             /* =================================================
-               VACÍO
+               CARRITO VACÍO
             ================================================== */
 
             if (
@@ -1263,12 +1501,13 @@
             let subtotal =
                 0;
 
+
             let totalItems =
                 0;
 
 
             /* =================================================
-               CALCULAR TOTALES
+               TOTALES
             ================================================== */
 
             cart.forEach(
@@ -1280,15 +1519,15 @@
                         Math.max(
                             1,
                             Number(
-                                product.quantity || 1
-                            )
+                                product.quantity
+                            ) || 1
                         );
 
 
                     const price =
                         Number(
-                            product.price || 0
-                        );
+                            product.price
+                        ) || 0;
 
 
                     subtotal +=
@@ -1321,15 +1560,15 @@
                         Math.max(
                             1,
                             Number(
-                                product.quantity || 1
-                            )
+                                product.quantity
+                            ) || 1
                         );
 
 
                     const price =
                         Number(
-                            product.price || 0
-                        );
+                            product.price
+                        ) || 0;
 
 
                     const itemTotal =
@@ -1377,6 +1616,12 @@
                     }
 
 
+                    const category =
+                        product.collection ||
+                        product.category ||
+                        "SATORII";
+
+
                     productsHTML += `
 
                         <article
@@ -1393,7 +1638,7 @@
                                     )}"
                                     alt="${escapeHTML(
                                         product.name ||
-                                        "Producto"
+                                        "Producto SATORII"
                                     )}"
                                     loading="lazy"
                                 >
@@ -1408,7 +1653,11 @@
                                 <span
                                     class="satori-cart-category"
                                 >
-                                    SATORII
+                                    ${escapeHTML(
+                                        String(
+                                            category
+                                        ).toUpperCase()
+                                    )}
                                 </span>
 
 
@@ -1425,18 +1674,26 @@
                                 ${
                                     options
                                         ? `
+
                                             <div
-                                                class="satori-cart-options"
+                                                class="
+                                                    satori-cart-options
+                                                "
                                             >
+
                                                 ${options}
+
                                             </div>
+
                                         `
                                         : ""
                                 }
 
 
                                 <div
-                                    class="satori-cart-price-mobile"
+                                    class="
+                                        satori-cart-price-mobile
+                                    "
                                 >
                                     ${formatPagePrice(
                                         itemTotal
@@ -1445,11 +1702,15 @@
 
 
                                 <div
-                                    class="satori-cart-controls"
+                                    class="
+                                        satori-cart-controls
+                                    "
                                 >
 
                                     <div
-                                        class="satori-cart-quantity"
+                                        class="
+                                            satori-cart-quantity
+                                        "
                                     >
 
                                         <button
@@ -1479,7 +1740,9 @@
 
                                     <button
                                         type="button"
-                                        class="satori-cart-remove"
+                                        class="
+                                            satori-cart-remove
+                                        "
                                         data-cart-remove="${index}"
                                     >
                                         ELIMINAR
@@ -1491,7 +1754,9 @@
 
 
                             <div
-                                class="satori-cart-item-total"
+                                class="
+                                    satori-cart-item-total
+                                "
                             >
 
                                 ${formatPagePrice(
@@ -1509,7 +1774,7 @@
 
 
             /* =================================================
-               ESTRUCTURA
+               ESTRUCTURA PRINCIPAL
             ================================================== */
 
             cartContent.innerHTML = `
@@ -1544,7 +1809,9 @@
 
 
                         <div
-                            class="satori-cart-summary-row"
+                            class="
+                                satori-cart-summary-row
+                            "
                         >
 
                             <span>
@@ -1560,7 +1827,9 @@
 
 
                         <div
-                            class="satori-cart-summary-row"
+                            class="
+                                satori-cart-summary-row
+                            "
                         >
 
                             <span>
@@ -1578,7 +1847,9 @@
 
 
                         <p
-                            class="satori-cart-shipping"
+                            class="
+                                satori-cart-shipping
+                            "
                         >
                             El envío se calculará durante
                             el proceso de compra.
@@ -1587,7 +1858,9 @@
 
                         <button
                             type="button"
-                            class="satori-cart-checkout"
+                            class="
+                                satori-cart-checkout
+                            "
                             id="satori-cart-checkout"
                         >
                             CONTINUAR CON LA COMPRA
@@ -1596,7 +1869,9 @@
 
                         <a
                             href="/satorimode/productos.html"
-                            class="satori-cart-continue"
+                            class="
+                                satori-cart-continue
+                            "
                         >
                             ← SEGUIR COMPRANDO
                         </a>
@@ -1604,7 +1879,9 @@
 
                         <button
                             type="button"
-                            class="satori-cart-clear"
+                            class="
+                                satori-cart-clear
+                            "
                             id="satori-cart-clear"
                         >
                             VACIAR CARRITO
@@ -1636,7 +1913,8 @@
 
                                 const index =
                                     Number(
-                                        button.dataset.cartDecrease
+                                        button.dataset
+                                            .cartDecrease
                                     );
 
 
@@ -1653,14 +1931,21 @@
                                 }
 
 
-                                current[index].quantity =
+                                const quantity =
                                     Number(
-                                        current[index].quantity || 1
-                                    ) - 1;
+                                        current[index]
+                                            .quantity
+                                    ) || 1;
+
+
+                                current[index]
+                                    .quantity =
+                                    quantity - 1;
 
 
                                 if (
-                                    current[index].quantity <= 0
+                                    current[index]
+                                        .quantity <= 0
                                 ) {
 
                                     current.splice(
@@ -1674,6 +1959,7 @@
                                 savePageCart(
                                     current
                                 );
+
 
                                 renderPageCart();
 
@@ -1703,7 +1989,8 @@
 
                                 const index =
                                     Number(
-                                        button.dataset.cartIncrease
+                                        button.dataset
+                                            .cartIncrease
                                     );
 
 
@@ -1720,15 +2007,22 @@
                                 }
 
 
-                                current[index].quantity =
+                                const quantity =
                                     Number(
-                                        current[index].quantity || 1
-                                    ) + 1;
+                                        current[index]
+                                            .quantity
+                                    ) || 1;
+
+
+                                current[index]
+                                    .quantity =
+                                    quantity + 1;
 
 
                                 savePageCart(
                                     current
                                 );
+
 
                                 renderPageCart();
 
@@ -1758,7 +2052,8 @@
 
                                 const index =
                                     Number(
-                                        button.dataset.cartRemove
+                                        button.dataset
+                                            .cartRemove
                                     );
 
 
@@ -1785,6 +2080,7 @@
                                     current
                                 );
 
+
                                 renderPageCart();
 
                             }
@@ -1795,7 +2091,7 @@
 
 
             /* =================================================
-               VACIAR CARRITO
+               VACIAR
             ================================================== */
 
             document
@@ -1806,10 +2102,14 @@
                     "click",
                     function () {
 
-                        if (
-                            !confirm(
+                        const confirmed =
+                            confirm(
                                 "¿Seguro que quieres vaciar el carrito?"
-                            )
+                            );
+
+
+                        if (
+                            !confirmed
                         ) {
 
                             return;
@@ -1820,6 +2120,7 @@
                         savePageCart(
                             []
                         );
+
 
                         renderPageCart();
 
@@ -1851,7 +2152,7 @@
 
         /* =====================================================
            INICIALIZACIÓN
-        ====================================================== */
+        ===================================================== */
 
         if (
             document.readyState ===
@@ -1905,6 +2206,7 @@
         );
 
     </script>
+
 
 </body>
 
