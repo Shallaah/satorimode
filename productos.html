@@ -2465,13 +2465,10 @@
     result =
         result.filter(
             product =>
-                typeof isProductNew === "function"
-                    ? isProductNew(product)
-                    : product.newProduct === true
+                isProductNew(product)
         );
 
 }
-
                     /* =============================================
                        ORDENAMIENTO
                     ============================================== */
