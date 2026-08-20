@@ -1,69 +1,123 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="SATORII PACK — Cuatro piezas exclusivas de SATORII reunidas en una sola experiencia. Mini póster, postal, stickers y tarjeta SATORII.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Satorii Pack | Satorii</title>
+    <meta
+        name="description"
+        content="SATORII PACK — Cuatro piezas exclusivas de SATORII reunidas en una sola experiencia."
+    >
 
-    <link rel="icon" type="image/png" href="img/logo.png">
-    <link rel="stylesheet" href="css/style.css">
+    <title>SATORII PACK | SATORII</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 
     <style>
 
         /* =========================================================
            SATORII PACK
-           ROJO OFICIAL SATORII: #EF0930
-           
+           =========================================================
+
+           ROJO OFICIAL SATORII:
+           #EF0930
+
            CONTENIDO:
-           🖼️ Mini póster
+           🖼️ Mini Póster
            💌 Postal
            ✨ Stickers
            🪪 Tarjeta SATORII
-        ========================================================== */
 
-        .sp-page {
-            --sp-red: #EF0930;
-            --sp-black: #101010;
-            --sp-text: #111111;
-            --sp-muted: #666666;
-            --sp-light: #f5f5f5;
-            --sp-border: #e7e7e7;
-            --sp-white: #ffffff;
+        ========================================================= */
 
-            width: min(1800px, calc(100% - 60px));
-            margin: 0 auto;
-            box-sizing: border-box;
+
+        :root {
+
+            --satorii-red: #EF0930;
+
+            --satorii-black: #111111;
+
+            --satorii-white: #FFFFFF;
+
+            --satorii-gray: #666666;
+
+            --satorii-light: #F5F5F5;
+
+            --satorii-border: #E5E5E5;
+
         }
 
-        .sp-page *,
-        .sp-page *::before,
-        .sp-page *::after {
+
+        /* =========================================================
+           BASE
+        ========================================================= */
+
+        .satoriipack-page {
+
+            width: 100%;
+
+            overflow: hidden;
+
+            color: var(--satorii-black);
+
+            background: #fff;
+
+        }
+
+
+        .satoriipack-page * {
+
             box-sizing: border-box;
+
         }
 
 
         /* =========================================================
            HERO
-        ========================================================== */
+        ========================================================= */
 
         .sp-hero {
+
             position: relative;
+
+            width: calc(100% - 60px);
+
+            max-width: 1800px;
+
             min-height: 570px;
-            margin-top: 28px;
+
+            margin: 28px auto 0;
 
             display: grid;
-            grid-template-columns: .86fr 1.14fr;
-            align-items: center;
+
+            grid-template-columns:
+                .86fr
+                1.14fr;
+
+            align-items: stretch;
 
             overflow: hidden;
-            border-radius: 10px;
+
+            border-radius: 9px;
 
             background:
+
                 linear-gradient(
                     110deg,
                     #EF0930 0%,
@@ -72,1573 +126,2194 @@
                 );
 
             color: #fff;
+
         }
+
 
         .sp-hero-content {
+
             position: relative;
+
             z-index: 2;
-            padding: 70px 55px;
-        }
 
-        .sp-eyebrow,
-        .sp-label {
-            color: var(--sp-red);
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-        }
+            display: flex;
 
-        .sp-hero .sp-eyebrow {
-            color: #fff;
-            margin-bottom: 15px;
-        }
+            flex-direction: column;
 
-        .sp-hero h1 {
-            margin: 0;
-
-            font-size: clamp(64px, 7vw, 112px);
-            line-height: .78;
-            letter-spacing: -6px;
-            font-weight: 950;
-        }
-
-        .sp-hero h1 span {
-            display: block;
-            color: #111;
-            font-style: italic;
-        }
-
-        .sp-hero-text {
-            max-width: 470px;
-            margin: 30px 0 0;
-
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .sp-price {
-            margin-top: 20px;
-
-            color: var(--sp-red);
-            font-size: 34px;
-            line-height: 1;
-            font-weight: 950;
-        }
-
-        .sp-hero .sp-price {
-            color: #fff;
-        }
-
-        .sp-price small {
-            margin-left: 5px;
-            font-size: 10px;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-
-        .sp-button {
-            display: inline-flex;
-            align-items: center;
             justify-content: center;
 
-            min-height: 46px;
-            margin-top: 24px;
-            padding: 0 24px;
+            padding: 65px 55px;
+
+        }
+
+
+        .sp-hero-eyebrow {
+
+            margin-bottom: 15px;
+
+            color: #fff;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .sp-hero-title {
+
+            margin: 0;
+
+            font-size:
+                clamp(
+                    60px,
+                    7vw,
+                    110px
+                );
+
+            line-height: .78;
+
+            letter-spacing: -6px;
+
+            font-weight: 950;
+
+        }
+
+
+        .sp-hero-title span {
+
+            display: block;
+
+            color: #111;
+
+            font-style: italic;
+
+        }
+
+
+        .sp-hero-description {
+
+            max-width: 470px;
+
+            margin: 28px 0 0;
+
+            color: #fff;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .sp-hero-price {
+
+            margin-top: 22px;
+
+            color: #fff;
+
+            font-size: 34px;
+
+            line-height: 1;
+
+            font-weight: 950;
+
+        }
+
+
+        .sp-hero-price small {
+
+            margin-left: 5px;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .sp-hero-button {
+
+            width: fit-content;
+
+            min-height: 45px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-top: 25px;
+
+            padding: 0 22px;
 
             border: 0;
+
             border-radius: 2px;
 
-            background: var(--sp-red);
+            background: #111;
+
             color: #fff;
 
             text-decoration: none;
 
-            font-size: 10px;
+            font-size: 9px;
+
             font-weight: 900;
+
             letter-spacing: 1px;
 
             text-transform: uppercase;
 
+            cursor: pointer;
+
             transition:
                 transform .2s ease,
-                background .2s ease,
-                box-shadow .2s ease;
+                background .2s ease;
+
         }
 
-        .sp-button:hover {
+
+        .sp-hero-button:hover {
+
             transform: translateY(-2px);
 
-            background: #111;
+            background: #fff;
 
-            box-shadow:
-                0 10px 25px rgba(0,0,0,.15);
+            color: #111;
+
         }
 
-        .sp-button-dark {
-            background: #111;
-        }
-
-        .sp-button-dark:hover {
-            background: var(--sp-red);
-        }
 
         .sp-hero-image {
-            height: 100%;
+
             min-height: 570px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             overflow: hidden;
+
         }
 
+
         .sp-hero-image img {
+
             width: 100%;
+
             height: 100%;
 
             display: block;
 
             object-fit: cover;
+
             object-position: center;
+
         }
 
 
         /* =========================================================
            BENEFICIOS
-        ========================================================== */
+        ========================================================= */
 
         .sp-benefits {
-            position: relative;
-            z-index: 3;
 
-            width: calc(100% - 24px);
+            position: relative;
+
+            z-index: 5;
+
+            width: calc(100% - 84px);
+
+            max-width: 1750px;
+
+            min-height: 130px;
+
             margin: -38px auto 0;
 
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border: 1px solid var(--satorii-border);
+
+            border-radius: 9px;
 
             background: #fff;
 
-            border: 1px solid var(--sp-border);
-            border-radius: 10px;
-
             box-shadow:
-                0 10px 35px rgba(0,0,0,.06);
+                0 12px 35px rgba(0,0,0,.06);
+
         }
+
 
         .sp-benefit {
+
             position: relative;
 
-            min-height: 135px;
-            padding: 28px 30px;
+            padding: 25px 28px;
+
         }
 
+
         .sp-benefit:not(:last-child)::after {
+
             content: "";
 
             position: absolute;
 
-            top: 24px;
+            top: 22px;
+
             right: 0;
-            bottom: 24px;
+
+            bottom: 22px;
 
             width: 1px;
 
-            background: var(--sp-border);
+            background:
+                var(--satorii-border);
+
         }
 
-        .sp-icon {
-            margin-bottom: 15px;
 
-            color: var(--sp-red);
+        .sp-benefit-icon {
 
-            font-size: 21px;
-            line-height: 1;
+            margin-bottom: 10px;
+
+            color: var(--satorii-red);
+
+            font-size: 18px;
+
         }
 
-        .sp-benefit h2 {
-            margin: 0 0 8px;
 
-            font-size: 11px;
-            font-weight: 950;
-        }
+        .sp-benefit-title {
 
-        .sp-benefit p {
-            max-width: 230px;
-            margin: 0;
-
-            color: var(--sp-muted);
+            margin: 0 0 7px;
 
             font-size: 10px;
-            line-height: 1.55;
+
+            font-weight: 950;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .sp-benefit-text {
+
+            max-width: 240px;
+
+            margin: 0;
+
+            color: var(--satorii-gray);
+
+            font-size: 9px;
+
+            line-height: 1.5;
+
         }
 
 
         /* =========================================================
            TICKER
-        ========================================================== */
+        ========================================================= */
 
         .sp-ticker {
+
             width: 100%;
-            margin-top: 18px;
+
+            min-height: 35px;
+
+            margin-top: 17px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
 
             overflow: hidden;
 
-            background: var(--sp-red);
+            background:
+                var(--satorii-red);
+
             color: #fff;
+
         }
 
-        .sp-ticker-inner {
-            min-height: 36px;
+
+        .sp-ticker-content {
 
             display: flex;
-            align-items: center;
-            justify-content: center;
 
-            gap: 20px;
-            padding: 0 20px;
+            align-items: center;
+
+            gap: 18px;
 
             white-space: nowrap;
 
-            overflow: hidden;
+            font-size: 8px;
 
-            font-size: 9px;
             font-weight: 900;
+
             letter-spacing: .8px;
 
             text-transform: uppercase;
+
         }
 
 
         /* =========================================================
-           INTRO
-        ========================================================== */
+           CARRUSEL
+        ========================================================= */
 
-        .sp-intro {
-            padding: 90px 20px 50px;
+        .sp-carousel-section {
+
+            width: calc(100% - 60px);
+
+            max-width: 1500px;
+
+            margin: 0 auto 90px;
+
+            padding-top: 85px;
+
+        }
+
+
+        /* =========================================================
+           TITULO CARRUSEL
+        ========================================================= */
+
+        .sp-carousel-heading {
+
+            margin-bottom: 45px;
 
             text-align: center;
-        }
 
-        .sp-intro .sp-label {
-            margin-bottom: 12px;
-        }
-
-        .sp-intro h2 {
-            max-width: 850px;
-            margin: 0 auto;
-
-            color: #111;
-
-            font-size: clamp(46px, 5vw, 76px);
-            line-height: .88;
-            letter-spacing: -4px;
-            font-weight: 950;
-        }
-
-        .sp-intro h2 span {
-            color: var(--sp-red);
-        }
-
-        .sp-intro p {
-            max-width: 620px;
-            margin: 25px auto 0;
-
-            color: var(--sp-muted);
-
-            font-size: 12px;
-            line-height: 1.7;
         }
 
 
-        /* =========================================================
-           CONTENIDO — 4 ELEMENTOS
-        ========================================================== */
-
-        .sp-items {
-            display: flex;
-            flex-direction: column;
-
-            gap: 22px;
-
-            margin: 0 20px 70px;
-        }
-
-        .sp-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            min-height: 440px;
-
-            overflow: hidden;
-
-            border-radius: 9px;
-
-            background: #f5f5f5;
-        }
-
-        .sp-item:nth-child(even) .sp-item-image {
-            order: 2;
-        }
-
-        .sp-item:nth-child(even) .sp-item-content {
-            order: 1;
-        }
-
-        .sp-item-image {
-            position: relative;
-
-            min-height: 440px;
-
-            overflow: hidden;
-
-            background: #111;
-        }
-
-        .sp-item-image img {
-            width: 100%;
-            height: 100%;
+        .sp-carousel-eyebrow {
 
             display: block;
 
-            object-fit: cover;
+            margin-bottom: 10px;
 
-            transition:
-                transform .5s ease;
+            color: var(--satorii-red);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+
         }
 
-        .sp-item:hover .sp-item-image img {
-            transform: scale(1.025);
+
+        .sp-carousel-heading h2 {
+
+            margin: 0;
+
+            color: var(--satorii-black);
+
+            font-size:
+                clamp(
+                    44px,
+                    5vw,
+                    72px
+                );
+
+            line-height: .86;
+
+            letter-spacing: -4px;
+
+            font-weight: 950;
+
         }
 
-        .sp-item-number {
-            position: absolute;
 
-            top: 22px;
-            left: 22px;
+        .sp-carousel-heading h2 span {
+
+            color:
+                var(--satorii-red);
+
+        }
+
+
+        .sp-carousel-heading p {
+
+            max-width: 540px;
+
+            margin: 17px auto 0;
+
+            color: var(--satorii-gray);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================================
+           AREA PRINCIPAL
+        ========================================================= */
+
+        .sp-carousel {
+
+            display: grid;
+
+            grid-template-columns:
+                .75fr
+                1.25fr;
+
+            min-height: 470px;
+
+            overflow: hidden;
+
+            border-radius: 8px;
+
+            background:
+                var(--satorii-light);
+
+        }
+
+
+        /* =========================================================
+           INFORMACION
+        ========================================================= */
+
+        .sp-carousel-info {
+
+            position: relative;
 
             z-index: 2;
 
             display: flex;
-            align-items: center;
-            gap: 8px;
 
-            padding: 9px 13px;
-
-            background: rgba(0,0,0,.75);
-            color: #fff;
-
-            font-size: 9px;
-            font-weight: 900;
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
-        }
-
-        .sp-item-content {
-            display: flex;
             flex-direction: column;
+
             justify-content: center;
 
             padding: 55px;
+
+            background:
+                var(--satorii-light);
+
         }
 
-        .sp-item-icon {
-            width: 54px;
-            height: 54px;
+
+        .sp-carousel-counter {
 
             display: flex;
+
             align-items: center;
-            justify-content: center;
 
-            margin-bottom: 25px;
+            gap: 7px;
 
-            border-radius: 50%;
+            margin-bottom: 28px;
 
-            background: var(--sp-red);
-            color: #fff;
+            color: #aaa;
 
-            font-size: 24px;
+            font-size: 11px;
 
-            box-shadow:
-                0 10px 25px rgba(239,9,48,.18);
+            font-weight: 800;
+
         }
 
-        .sp-item-content h3 {
-            margin: 0;
 
-            color: #111;
+        .sp-carousel-counter .current {
 
-            font-size: clamp(36px, 4vw, 58px);
-            line-height: .9;
-            letter-spacing: -3px;
+            color:
+                var(--satorii-red);
+
+            font-size: 18px;
+
             font-weight: 950;
+
         }
 
-        .sp-item-content p {
-            max-width: 510px;
-            margin: 22px 0 0;
 
-            color: var(--sp-muted);
+        .sp-carousel-counter .separator {
 
-            font-size: 12px;
-            line-height: 1.7;
-        }
+            color: #bbb;
 
-        .sp-item-tag {
-            display: inline-flex;
-
-            width: fit-content;
-
-            margin-top: 24px;
-            padding: 7px 10px;
-
-            background: #111;
-            color: #fff;
-
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
         }
 
 
         /* =========================================================
-           TARJETA SATORII
-        ========================================================== */
+           ICONO
+        ========================================================= */
 
-        .sp-card-section {
-            margin: 0 20px 70px;
-            padding: 45px;
+        .sp-carousel-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 21px;
+
+            border-radius: 50%;
+
+            background:
+                var(--satorii-red);
+
+            color: #fff;
+
+            font-size: 18px;
+
+            box-shadow:
+                0 8px 22px
+                rgba(239,9,48,.18);
+
+        }
+
+
+        /* =========================================================
+           TITULO PRODUCTO
+        ========================================================= */
+
+        .sp-carousel-title {
+
+            margin: 0;
+
+            color:
+                var(--satorii-black);
+
+            font-size:
+                clamp(
+                    38px,
+                    4vw,
+                    60px
+                );
+
+            line-height: .82;
+
+            letter-spacing: -3px;
+
+            font-weight: 950;
+
+        }
+
+
+        .sp-carousel-description {
+
+            max-width: 390px;
+
+            margin: 20px 0 0;
+
+            color:
+                var(--satorii-gray);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================================
+           FLECHAS
+        ========================================================= */
+
+        .sp-carousel-arrows {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .sp-carousel-arrow {
+
+            width: 43px;
+
+            height: 43px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: 1px solid #d5d5d5;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            color: #111;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .sp-carousel-arrow:hover {
+
+            border-color:
+                var(--satorii-red);
+
+            color:
+                var(--satorii-red);
+
+            transform:
+                translateX(-2px);
+
+        }
+
+
+        .sp-carousel-arrow.primary {
+
+            border-color:
+                var(--satorii-red);
+
+            background:
+                var(--satorii-red);
+
+            color: #fff;
+
+        }
+
+
+        .sp-carousel-arrow.primary:hover {
+
+            border-color: #111;
+
+            background: #111;
+
+            color: #fff;
+
+            transform:
+                translateX(2px);
+
+        }
+
+
+        /* =========================================================
+           PRODUCTO
+        ========================================================= */
+
+        .sp-carousel-product {
+
+            position: relative;
+
+            min-height: 470px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
 
             overflow: hidden;
 
-            border-radius: 9px;
+            background: #fff;
 
-            background: #111;
-            color: #fff;
+            touch-action: pan-y;
+
+            cursor: grab;
+
         }
 
-        .sp-card-section-inner {
+
+        .sp-carousel-product:active {
+
+            cursor: grabbing;
+
+        }
+
+
+        .sp-carousel-product img {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 68%;
+
+            height: 75%;
+
+            display: block;
+
+            object-fit: contain;
+
+            user-select: none;
+
+            pointer-events: none;
+
+            filter:
+                drop-shadow(
+                    0 25px 25px
+                    rgba(0,0,0,.12)
+                );
+
+            transition:
+                opacity .2s ease,
+                transform .35s ease;
+
+        }
+
+
+        .sp-carousel-product.is-changing img {
+
+            opacity: 0;
+
+            transform:
+                scale(.96)
+                translateY(8px);
+
+        }
+
+
+        /* =========================================================
+           SOMBRA
+        ========================================================= */
+
+        .sp-product-shadow {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: 75px;
+
+            width: 260px;
+
+            height: 35px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                rgba(0,0,0,.11);
+
+            filter:
+                blur(15px);
+
+        }
+
+
+        /* =========================================================
+           NAVEGACION
+        ========================================================= */
+
+        .sp-carousel-navigation {
+
             display: grid;
-            grid-template-columns: .8fr 1.2fr;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border-bottom:
+                1px solid
+                var(--satorii-border);
+
+        }
+
+
+        .sp-carousel-nav-item {
+
+            position: relative;
+
+            min-height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            border: 0;
+
+            border-right:
+                1px solid
+                var(--satorii-border);
+
+            background: #fff;
+
+            color: #555;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .4px;
+
+            cursor: pointer;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .sp-carousel-nav-item:last-child {
+
+            border-right: 0;
+
+        }
+
+
+        .sp-carousel-nav-item:hover {
+
+            background: #fafafa;
+
+            color:
+                var(--satorii-red);
+
+        }
+
+
+        .sp-carousel-nav-item.active {
+
+            color:
+                var(--satorii-red);
+
+        }
+
+
+        .sp-carousel-nav-item.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 15%;
+
+            right: 15%;
+
+            bottom: -1px;
+
+            height: 3px;
+
+            background:
+                var(--satorii-red);
+
+        }
+
+
+        .sp-nav-icon {
+
+            font-size: 16px;
+
+        }
+
+
+        .sp-nav-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+
+        }
+
+
+        .sp-nav-number {
+
+            color: #aaa;
+
+            font-size: 7px;
+
+        }
+
+
+        .sp-carousel-nav-item.active
+        .sp-nav-number {
+
+            color:
+                var(--satorii-red);
+
+        }
+
+
+        /* =========================================================
+           DOTS MOBILE
+        ========================================================= */
+
+        .sp-carousel-dots {
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .sp-carousel-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            padding: 0;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background: #ccc;
+
+            cursor: pointer;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .sp-carousel-dot.active {
+
+            width: 22px;
+
+            border-radius: 10px;
+
+            background:
+                var(--satorii-red);
+
+        }
+
+
+        /* =========================================================
+           TARJETA DESTACADA
+        ========================================================= */
+
+        .sp-card-section {
+
+            width: calc(100% - 60px);
+
+            max-width: 1500px;
+
+            margin: 0 auto 70px;
+
+            padding: 50px;
+
+            overflow: hidden;
+
+            border-radius: 8px;
+
+            background:
+                #111;
+
+            color: #fff;
+
+        }
+
+
+        .sp-card-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                .8fr
+                1.2fr;
 
             gap: 60px;
 
             align-items: center;
+
         }
+
 
         .sp-card-visual {
-            position: relative;
 
-            min-height: 330px;
+            min-height: 300px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
         }
 
+
         .sp-card {
+
             position: relative;
 
             width: min(360px, 90%);
 
             aspect-ratio: 1.58 / 1;
 
-            padding: 28px;
+            padding: 27px;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: space-between;
 
             overflow: hidden;
+
+            border: 1px solid
+                rgba(255,255,255,.15);
 
             border-radius: 14px;
 
             background:
                 linear-gradient(
                     135deg,
-                    #1d1d1d,
+                    #1c1c1c,
                     #080808
                 );
 
-            border: 1px solid rgba(255,255,255,.15);
-
             box-shadow:
-                0 25px 60px rgba(0,0,0,.45);
+                0 25px 60px
+                rgba(0,0,0,.45);
 
-            transform: rotate(-5deg);
+            transform:
+                rotate(-4deg);
 
             transition:
-                transform .35s ease;
+                transform .3s ease;
+
         }
+
 
         .sp-card:hover {
+
             transform:
-                rotate(-2deg)
+                rotate(-1deg)
                 translateY(-5px);
+
         }
 
+
         .sp-card::before {
+
             content: "悟";
 
             position: absolute;
 
-            right: -20px;
+            right: -15px;
+
             bottom: -40px;
 
-            color: rgba(239,9,48,.14);
+            color:
+                rgba(239,9,48,.15);
 
             font-size: 170px;
+
             font-weight: 950;
+
         }
 
+
         .sp-card-top {
+
             position: relative;
+
             z-index: 2;
 
             display: flex;
+
             justify-content: space-between;
+
         }
+
 
         .sp-card-logo {
+
             color: #fff;
 
-            font-size: 16px;
+            font-size: 15px;
+
             font-weight: 950;
-            letter-spacing: -1px;
+
         }
+
 
         .sp-card-edition {
-            color: var(--sp-red);
+
+            color:
+                var(--satorii-red);
 
             font-size: 8px;
+
             font-weight: 900;
+
             letter-spacing: 1px;
+
         }
+
 
         .sp-card-bottom {
-            position: relative;
-            z-index: 2;
-        }
 
-        .sp-card-number {
+            position: relative;
+
+            z-index: 2;
+
             color: #fff;
 
-            font-size: 13px;
+            font-size: 12px;
+
             font-weight: 900;
-            letter-spacing: 3px;
+
+            letter-spacing: 2px;
+
         }
 
-        .sp-card-section .sp-label {
-            color: var(--sp-red);
+
+        .sp-card-label {
+
+            color:
+                var(--satorii-red);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
         }
 
-        .sp-card-section h2 {
+
+        .sp-card-content h2 {
+
             margin: 8px 0 0;
 
             color: #fff;
 
-            font-size: clamp(42px, 5vw, 68px);
-            line-height: .88;
+            font-size:
+                clamp(
+                    40px,
+                    5vw,
+                    65px
+                );
+
+            line-height: .86;
+
             letter-spacing: -4px;
+
             font-weight: 950;
+
         }
 
-        .sp-card-section h2 span {
+
+        .sp-card-content h2 span {
+
             display: block;
-            color: var(--sp-red);
+
+            color:
+                var(--satorii-red);
+
         }
 
-        .sp-card-section p {
-            max-width: 540px;
-            margin: 22px 0 0;
+
+        .sp-card-content p {
+
+            max-width: 530px;
+
+            margin: 20px 0 0;
 
             color: #aaa;
 
-            font-size: 12px;
-            line-height: 1.7;
-        }
-
-        .sp-card-points {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 10px;
-
-            max-width: 550px;
-
-            margin-top: 28px;
-        }
-
-        .sp-card-point {
-            padding: 15px;
-
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 5px;
-
-            background: rgba(255,255,255,.03);
-        }
-
-        .sp-card-point strong {
-            display: block;
-
-            margin-bottom: 5px;
-
-            color: #fff;
-
             font-size: 10px;
-            font-weight: 900;
-        }
 
-        .sp-card-point span {
-            color: #888;
+            line-height: 1.7;
 
-            font-size: 9px;
-            line-height: 1.4;
         }
 
 
         /* =========================================================
-           RESUMEN DEL PACK
-        ========================================================== */
+           RESUMEN
+        ========================================================= */
 
         .sp-summary {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
 
-            gap: 55px;
+            width: calc(100% - 60px);
+
+            max-width: 1500px;
+
+            margin: 0 auto 70px;
+
+            padding: 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 45px;
 
             align-items: center;
 
-            margin: 0 20px 70px;
-            padding: 28px;
+            border-radius: 8px;
 
-            border-radius: 9px;
+            background:
+                var(--satorii-light);
 
-            background: #f5f5f5;
         }
 
+
         .sp-summary-image {
-            min-height: 430px;
+
+            min-height: 390px;
 
             overflow: hidden;
 
-            border-radius: 7px;
+            border-radius: 6px;
 
             background: #111;
+
         }
 
+
         .sp-summary-image img {
+
             width: 100%;
+
             height: 100%;
-            min-height: 430px;
+
+            min-height: 390px;
 
             display: block;
 
             object-fit: cover;
+
         }
+
 
         .sp-summary-content {
-            padding: 25px;
+
+            padding: 20px;
+
         }
 
+
+        .sp-summary-eyebrow {
+
+            color:
+                var(--satorii-red);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+        }
+
+
         .sp-summary-content h2 {
+
             margin: 8px 0 0;
 
             color: #111;
 
-            font-size: clamp(42px, 5vw, 68px);
-            line-height: .88;
+            font-size:
+                clamp(
+                    42px,
+                    5vw,
+                    65px
+                );
+
+            line-height: .86;
+
             letter-spacing: -4px;
+
             font-weight: 950;
+
         }
+
 
         .sp-summary-content h2 span {
+
             display: block;
-            color: var(--sp-red);
+
+            color:
+                var(--satorii-red);
+
         }
 
+
         .sp-summary-content p {
-            max-width: 530px;
+
+            max-width: 520px;
 
             margin: 20px 0;
 
-            color: var(--sp-muted);
+            color:
+                var(--satorii-gray);
 
-            font-size: 12px;
-            line-height: 1.65;
+            font-size: 10px;
+
+            line-height: 1.7;
+
         }
 
+
         .sp-includes {
-            margin: 25px 0 0;
+
+            margin: 22px 0 0;
+
             padding: 0;
 
             list-style: none;
+
         }
 
+
         .sp-includes li {
+
             display: flex;
+
             align-items: center;
 
             gap: 10px;
 
-            margin-bottom: 11px;
+            margin-bottom: 9px;
 
             color: #444;
 
             font-size: 10px;
+
         }
 
-        .sp-includes li span {
-            width: 25px;
-            height: 25px;
+
+        .sp-includes-icon {
+
+            width: 24px;
+
+            height: 24px;
 
             display: flex;
-            align-items: center;
-            justify-content: center;
 
-            flex: 0 0 25px;
+            align-items: center;
+
+            justify-content: center;
 
             border-radius: 50%;
 
             background: #fff;
 
-            color: var(--sp-red);
+            color:
+                var(--satorii-red);
 
-            font-size: 13px;
+        }
+
+
+        .sp-summary-price {
+
+            margin-top: 20px;
+
+            color:
+                var(--satorii-red);
+
+            font-size: 30px;
+
+            font-weight: 950;
+
+        }
+
+
+        .sp-summary-price small {
+
+            margin-left: 4px;
+
+            font-size: 8px;
+
+        }
+
+
+        .sp-buy-button {
+
+            width: fit-content;
+
+            min-height: 44px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-top: 20px;
+
+            padding: 0 22px;
+
+            background:
+                var(--satorii-red);
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .sp-buy-button:hover {
+
+            background: #111;
+
+            transform:
+                translateY(-2px);
+
         }
 
 
         /* =========================================================
-           EDICIÓN
-        ========================================================== */
+           EDICION
+        ========================================================= */
 
         .sp-edition {
-            margin: 0 20px 70px;
+
+            width: calc(100% - 60px);
+
+            max-width: 1500px;
+
+            margin: 0 auto 70px;
 
             text-align: center;
+
         }
 
-        .sp-edition .sp-label {
-            display: block;
-            margin-bottom: 10px;
+
+        .sp-edition-label {
+
+            color:
+                var(--satorii-red);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
         }
+
 
         .sp-edition h2 {
-            margin: 0;
+
+            margin: 10px 0 0;
 
             color: #111;
 
-            font-size: clamp(40px, 5vw, 64px);
+            font-size:
+                clamp(
+                    38px,
+                    5vw,
+                    62px
+                );
+
             line-height: .9;
+
             letter-spacing: -3px;
+
             font-weight: 950;
+
         }
 
+
         .sp-edition p {
+
             max-width: 600px;
 
             margin: 18px auto 0;
 
-            color: var(--sp-muted);
+            color:
+                var(--satorii-gray);
 
-            font-size: 11px;
+            font-size: 10px;
+
             line-height: 1.7;
+
         }
 
+
         .sp-edition-badge {
+
             display: inline-flex;
+
             align-items: center;
 
             gap: 8px;
 
-            margin-top: 25px;
-            padding: 10px 15px;
+            margin-top: 22px;
+
+            padding: 9px 14px;
 
             background: #111;
+
             color: #fff;
 
-            font-size: 9px;
+            font-size: 8px;
+
             font-weight: 900;
+
             letter-spacing: 1px;
 
             text-transform: uppercase;
+
         }
 
+
         .sp-edition-badge span {
-            color: var(--sp-red);
+
+            color:
+                var(--satorii-red);
+
         }
 
 
         /* =========================================================
-           CTA FINAL
-        ========================================================== */
+           CTA
+        ========================================================= */
 
         .sp-cta {
-            position: relative;
+
+            width: calc(100% - 60px);
+
+            max-width: 1500px;
+
+            min-height: 135px;
+
+            margin: 0 auto 18px;
+
+            padding: 25px 35px;
 
             display: grid;
-            grid-template-columns: 1fr auto auto;
+
+            grid-template-columns:
+                1fr
+                auto
+                auto;
+
+            gap: 30px;
 
             align-items: center;
 
-            gap: 35px;
+            border-radius: 8px;
 
-            min-height: 145px;
-
-            margin: 0 20px 18px;
-            padding: 25px 35px;
-
-            overflow: hidden;
-
-            border-radius: 9px;
-
-            background: var(--sp-red);
+            background:
+                var(--satorii-red);
 
             color: #fff;
+
         }
+
 
         .sp-cta h2 {
+
             margin: 0;
 
-            font-size: clamp(28px, 3.2vw, 46px);
+            font-size:
+                clamp(
+                    27px,
+                    3vw,
+                    44px
+                );
+
             line-height: .9;
+
             letter-spacing: -2px;
+
             font-weight: 950;
+
         }
+
 
         .sp-cta p {
+
             margin: 8px 0 0;
 
-            font-size: 10px;
+            font-size: 9px;
 
-            opacity: .9;
         }
 
-        .sp-cta-price {
-            color: #fff;
 
-            font-size: 27px;
+        .sp-cta-price {
+
+            font-size: 25px;
+
             font-weight: 950;
 
             white-space: nowrap;
+
+        }
+
+
+        .sp-cta-button {
+
+            min-height: 43px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 0 20px;
+
+            background: #111;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .sp-cta-button:hover {
+
+            background: #fff;
+
+            color: #111;
+
+            transform:
+                translateY(-2px);
+
         }
 
 
         /* =========================================================
            AVISO
-        ========================================================== */
+        ========================================================= */
 
         .sp-notice {
+
+            width: calc(100% - 60px);
+
+            max-width: 1500px;
+
+            margin: 0 auto 60px;
+
+            padding: 17px 20px;
+
             display: flex;
+
             align-items: center;
 
-            gap: 15px;
+            gap: 12px;
 
-            margin: 0 20px 65px;
-            padding: 20px;
+            border: 1px solid
+                rgba(239,9,48,.2);
 
-            border: 1px solid rgba(239,9,48,.25);
-            border-radius: 7px;
+            border-radius: 6px;
 
             background: #fff;
+
         }
+
 
         .sp-notice-icon {
-            flex: 0 0 auto;
 
-            color: var(--sp-red);
+            color:
+                var(--satorii-red);
 
-            font-size: 20px;
+            font-size: 17px;
+
         }
 
+
         .sp-notice p {
+
             margin: 0;
 
             color: #666;
 
-            font-size: 9px;
+            font-size: 8px;
+
             line-height: 1.6;
+
         }
+
 
         .sp-notice strong {
-            color: #111;
-        }
 
+            color: #111;
+
+        }
 
 
         /* =========================================================
-           CARRUSEL — CONTENIDO DEL PACK
-        ========================================================== */
+           TABLET
+        ========================================================= */
 
-        .sp-carousel-section {
-            padding: 78px 20px 70px;
+        @media (max-width: 1000px) {
+
+            .sp-hero {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .sp-hero-content {
+
+                padding-bottom: 30px;
+
+            }
+
+
+            .sp-hero-image {
+
+                min-height: 420px;
+
+            }
+
+
+            .sp-hero-image img {
+
+                min-height: 420px;
+
+            }
+
+
+            .sp-carousel {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .sp-carousel-product {
+
+                order: -1;
+
+            }
+
+
+            .sp-card-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .sp-card-visual {
+
+                min-height: 260px;
+
+            }
+
+
+            .sp-summary {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .sp-cta {
+
+                grid-template-columns:
+                    1fr
+                    auto;
+
+            }
+
+
+            .sp-cta-button {
+
+                grid-column: 2;
+
+                grid-row: 1 / span 2;
+
+            }
+
         }
 
-        .sp-carousel-heading {
-            text-align: center;
-            margin-bottom: 42px;
-        }
-
-        .sp-carousel-heading h2 {
-            margin: 7px 0 0;
-            color: #111;
-            font-size: clamp(48px, 5vw, 76px);
-            line-height: .88;
-            letter-spacing: -4px;
-            font-weight: 950;
-        }
-
-        .sp-carousel-heading h2 span {
-            color: var(--sp-red);
-            font-style: italic;
-        }
-
-        .sp-carousel-heading p {
-            margin: 14px auto 0;
-            color: var(--sp-muted);
-            font-size: 12px;
-        }
-
-        .sp-carousel-steps {
-            max-width: 1100px;
-            margin: 0 auto 28px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-        }
-
-        .sp-step {
-            position: relative;
-            border: 0;
-            border-top: 1px solid #d8d8d8;
-            background: transparent;
-            padding: 15px 12px 12px;
-            color: #999;
-            text-align: center;
-            cursor: pointer;
-            transition: color .25s ease, border-color .25s ease;
-        }
-
-        .sp-step:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            top: -1px;
-            right: 0;
-            width: 1px;
-            height: 13px;
-            background: #d8d8d8;
-        }
-
-        .sp-step strong {
-            display: block;
-            color: #111;
-            font-size: 20px;
-            line-height: 1;
-            font-weight: 950;
-        }
-
-        .sp-step span {
-            display: block;
-            margin-top: 7px;
-            font-size: 9px;
-            font-weight: 900;
-            letter-spacing: .7px;
-        }
-
-        .sp-step.is-active {
-            border-top-color: var(--sp-red);
-            color: var(--sp-red);
-        }
-
-        .sp-step.is-active strong {
-            color: var(--sp-red);
-        }
-
-        .sp-step:hover {
-            color: var(--sp-red);
-        }
-
-        .sp-carousel {
-            position: relative;
-            max-width: 1320px;
-            min-height: 520px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: .72fr 1.28fr;
-            align-items: center;
-            gap: 44px;
-            padding: 42px 62px;
-            overflow: hidden;
-            border: 1px solid #ededed;
-            border-radius: 12px;
-            background: #fafafa;
-        }
-
-        .sp-carousel-copy {
-            position: relative;
-            z-index: 2;
-            padding: 25px 0 25px 18px;
-        }
-
-        .sp-carousel-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            border-radius: 50%;
-            background: var(--sp-red);
-            color: #fff;
-            font-size: 21px;
-            box-shadow: 0 10px 25px rgba(239,9,48,.16);
-        }
-
-        .sp-carousel-counter {
-            color: #111;
-            font-size: 17px;
-            font-weight: 950;
-            letter-spacing: -.5px;
-        }
-
-        .sp-carousel-counter span {
-            color: var(--sp-red);
-        }
-
-        .sp-carousel-copy h3 {
-            margin: 8px 0 0;
-            color: #111;
-            font-size: clamp(42px, 4vw, 66px);
-            line-height: .88;
-            letter-spacing: -4px;
-            font-weight: 950;
-        }
-
-        .sp-carousel-copy h3 span {
-            color: var(--sp-red);
-        }
-
-        .sp-carousel-line {
-            width: 50px;
-            height: 3px;
-            margin: 22px 0;
-            background: var(--sp-red);
-        }
-
-        .sp-carousel-copy p {
-            max-width: 400px;
-            margin: 0;
-            color: var(--sp-muted);
-            font-size: 12px;
-            line-height: 1.75;
-        }
-
-        .sp-carousel-tag {
-            display: inline-flex;
-            margin-top: 23px;
-            padding: 8px 11px;
-            background: #111;
-            color: #fff;
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .sp-carousel-visual {
-            position: relative;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 9px;
-            background:
-                radial-gradient(circle at 50% 45%, #ffffff 0%, #f4f4f4 58%, #ececec 100%);
-        }
-
-        .sp-carousel-visual::before {
-            content: "";
-            position: absolute;
-            width: 62%;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background: rgba(239,9,48,.045);
-        }
-
-        .sp-carousel-visual img {
-            position: relative;
-            z-index: 1;
-            width: 82%;
-            height: 82%;
-            display: block;
-            object-fit: contain;
-            filter: drop-shadow(0 25px 25px rgba(0,0,0,.16));
-            transition: opacity .18s ease, transform .35s ease;
-        }
-
-        .sp-carousel-visual.is-changing img {
-            opacity: 0;
-            transform: scale(.96);
-        }
-
-        .sp-carousel-number {
-            position: absolute;
-            top: 18px;
-            left: 20px;
-            z-index: 3;
-            padding: 8px 10px;
-            background: #111;
-            color: #fff;
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .sp-carousel-number span {
-            color: var(--sp-red);
-        }
-
-        .sp-carousel-arrow {
-            position: absolute;
-            top: 50%;
-            z-index: 5;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateY(-50%);
-            border: 1px solid #e8e8e8;
-            border-radius: 50%;
-            background: #fff;
-            color: var(--sp-red);
-            font-size: 25px;
-            line-height: 1;
-            cursor: pointer;
-            box-shadow: 0 8px 22px rgba(0,0,0,.06);
-            transition: transform .2s ease, background .2s ease, color .2s ease;
-        }
-
-        .sp-carousel-arrow:hover {
-            transform: translateY(-50%) scale(1.08);
-            background: var(--sp-red);
-            color: #fff;
-        }
-
-        .sp-carousel-prev {
-            left: 15px;
-        }
-
-        .sp-carousel-next {
-            right: 15px;
-        }
-
-        .sp-carousel-tabs {
-            max-width: 1100px;
-            margin: 22px auto 0;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border: 1px solid #e7e7e7;
-            border-radius: 9px;
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,.045);
-            overflow: hidden;
-        }
-
-        .sp-tab {
-            position: relative;
-            min-height: 82px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            border: 0;
-            border-right: 1px solid #e7e7e7;
-            background: #fff;
-            color: #111;
-            cursor: pointer;
-            text-align: left;
-            transition: background .25s ease, color .25s ease;
-        }
-
-        .sp-tab:last-child {
-            border-right: 0;
-        }
-
-        .sp-tab > span {
-            font-size: 21px;
-            filter: grayscale(1);
-            transition: filter .25s ease;
-        }
-
-        .sp-tab strong,
-        .sp-tab small {
-            display: block;
-        }
-
-        .sp-tab strong {
-            font-size: 10px;
-            font-weight: 950;
-        }
-
-        .sp-tab small {
-            margin-top: 4px;
-            color: #777;
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: .6px;
-        }
-
-        .sp-tab.is-active {
-            color: var(--sp-red);
-            background: #fff;
-        }
-
-        .sp-tab.is-active::after {
-            content: "";
-            position: absolute;
-            left: 12%;
-            right: 12%;
-            bottom: 0;
-            height: 3px;
-            background: var(--sp-red);
-        }
-
-        .sp-tab.is-active > span {
-            filter: none;
-        }
-
-        .sp-tab.is-active small {
-            color: var(--sp-red);
-        }
 
         /* =========================================================
-           RESPONSIVE
-        ========================================================== */
+           MOBILE
+        ========================================================= */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 700px) {
 
-            .sp-page {
-                width: min(100% - 40px, 1800px);
+            .sp-hero {
+
+                width: calc(100% - 24px);
+
+                margin-top: 18px;
+
+                border-radius: 7px;
+
+            }
+
+
+            .sp-hero-content {
+
+                padding: 42px 25px 20px;
+
+            }
+
+
+            .sp-hero-title {
+
+                font-size: 57px;
+
+                letter-spacing: -3px;
+
+            }
+
+
+            .sp-hero-description {
+
+                font-size: 11px;
+
+            }
+
+
+            .sp-hero-image {
+
+                min-height: 290px;
+
+            }
+
+
+            .sp-hero-image img {
+
+                min-height: 290px;
+
+            }
+
+
+            .sp-benefits {
+
+                width: calc(100% - 24px);
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                margin-top: 12px;
+
+            }
+
+
+            .sp-benefit {
+
+                min-height: 125px;
+
+                padding: 19px 15px;
+
+            }
+
+
+            .sp-benefit:nth-child(1),
+            .sp-benefit:nth-child(2) {
+
+                border-bottom:
+                    1px solid
+                    var(--satorii-border);
+
+            }
+
+
+            .sp-benefit:nth-child(odd) {
+
+                border-right:
+                    1px solid
+                    var(--satorii-border);
+
+            }
+
+
+            .sp-benefit:not(:last-child)::after {
+
+                display: none;
+
+            }
+
+
+            .sp-benefit-text {
+
+                font-size: 8px;
+
+            }
+
+
+            .sp-ticker-content {
+
+                justify-content:
+                    flex-start;
+
+                padding: 0 15px;
+
+                overflow: hidden;
+
             }
 
 
             .sp-carousel-section {
-                padding: 58px 0 45px;
+
+                width: calc(100% - 24px);
+
+                padding-top: 60px;
+
             }
+
 
             .sp-carousel-heading {
-                margin-bottom: 30px;
+
+                margin-bottom: 28px;
+
             }
+
 
             .sp-carousel-heading h2 {
-                font-size: 45px;
+
+                font-size: 43px;
+
                 letter-spacing: -2px;
+
             }
 
-            .sp-carousel-steps {
-                margin-bottom: 18px;
-            }
-
-            .sp-step {
-                padding: 11px 3px;
-            }
-
-            .sp-step strong {
-                font-size: 16px;
-            }
-
-            .sp-step span {
-                font-size: 7px;
-                letter-spacing: .25px;
-            }
 
             .sp-carousel {
-                min-height: 0;
-                grid-template-columns: 1fr;
-                gap: 18px;
-                padding: 22px 16px 18px;
-                border-radius: 8px;
-            }
 
-            .sp-carousel-copy {
-                order: 2;
-                padding: 8px 20px 22px;
-            }
-
-            .sp-carousel-icon {
-                width: 42px;
-                height: 42px;
-                margin-bottom: 18px;
-                font-size: 18px;
-            }
-
-            .sp-carousel-copy h3 {
-                font-size: 42px;
-                letter-spacing: -2px;
-            }
-
-            .sp-carousel-copy p {
-                font-size: 11px;
-            }
-
-            .sp-carousel-visual {
-                order: 1;
-                min-height: 270px;
-            }
-
-            .sp-carousel-visual img {
-                width: 86%;
-                height: 86%;
-            }
-
-            .sp-carousel-arrow {
-                top: 135px;
-                width: 42px;
-                height: 42px;
-                font-size: 21px;
-            }
-
-            .sp-carousel-prev {
-                left: 8px;
-            }
-
-            .sp-carousel-next {
-                right: 8px;
-            }
-
-            .sp-carousel-tabs {
-                grid-template-columns: repeat(4, 1fr);
-                margin-top: 14px;
-            }
-
-            .sp-tab {
-                min-height: 68px;
-                gap: 0;
-                justify-content: center;
-            }
-
-            .sp-tab > span {
-                font-size: 18px;
-            }
-
-            .sp-tab div {
-                display: none;
-            }
-
-            .sp-hero {
-                grid-template-columns: 1fr;
-            }
-
-            .sp-hero-content {
-                padding-bottom: 25px;
-            }
-
-            .sp-hero-image,
-            .sp-hero-image img {
-                min-height: 420px;
-            }
-
-            .sp-item,
-            .sp-summary,
-            .sp-card-section-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .sp-item:nth-child(even) .sp-item-image,
-            .sp-item:nth-child(even) .sp-item-content {
-                order: initial;
-            }
-
-            .sp-item-image,
-            .sp-item-content {
-                min-height: 400px;
-            }
-
-            .sp-cta {
-                grid-template-columns: 1fr auto;
-            }
-
-            .sp-cta .sp-button {
-                grid-column: 2;
-                grid-row: 1 / span 2;
-            }
-        }
-
-
-        @media (max-width: 700px) {
-
-            .sp-page {
-                width: calc(100% - 24px);
-            }
-
-            .sp-hero {
-                margin-top: 18px;
                 border-radius: 7px;
+
             }
 
-            .sp-hero-content {
-                padding: 42px 25px 18px;
+
+            .sp-carousel-product {
+
+                min-height: 300px;
+
             }
 
-            .sp-hero h1 {
-                font-size: 58px;
-                letter-spacing: -3px;
+
+            .sp-carousel-product img {
+
+                width: 78%;
+
+                height: 82%;
+
             }
 
-            .sp-hero-text {
-                margin-top: 22px;
-                font-size: 12px;
+
+            .sp-product-shadow {
+
+                width: 180px;
+
+                bottom: 42px;
+
             }
 
-            .sp-hero-image,
-            .sp-hero-image img {
-                min-height: 285px;
+
+            .sp-carousel-info {
+
+                padding: 30px 22px 28px;
+
             }
 
-            .sp-benefits {
-                width: 100%;
 
-                grid-template-columns: 1fr 1fr;
+            .sp-carousel-counter {
 
-                margin-top: 12px;
+                margin-bottom: 20px;
+
             }
 
-            .sp-benefit {
-                min-height: 135px;
-                padding: 20px 15px;
-            }
 
-            .sp-benefit:nth-child(odd) {
-                border-right: 1px solid var(--sp-border);
-            }
+            .sp-carousel-title {
 
-            .sp-benefit:nth-child(-n+2) {
-                border-bottom: 1px solid var(--sp-border);
-            }
+                font-size: 40px;
 
-            .sp-benefit:not(:last-child)::after {
-                display: none;
-            }
-
-            .sp-ticker-inner {
-                justify-content: flex-start;
-                overflow-x: auto;
-            }
-
-            .sp-intro {
-                padding: 60px 5px 35px;
-            }
-
-            .sp-intro h2 {
-                font-size: 43px;
                 letter-spacing: -2px;
+
             }
 
-            .sp-items,
+
+            .sp-carousel-description {
+
+                font-size: 9px;
+
+            }
+
+
+            .sp-carousel-navigation {
+
+                display: none;
+
+            }
+
+
+            .sp-carousel-dots {
+
+                display: flex;
+
+            }
+
+
             .sp-card-section,
             .sp-summary,
             .sp-edition,
             .sp-cta,
             .sp-notice {
-                margin-left: 0;
-                margin-right: 0;
+
+                width: calc(100% - 24px);
+
             }
 
-            .sp-item {
-                border-radius: 7px;
-            }
-
-            .sp-item-image {
-                min-height: 300px;
-            }
-
-            .sp-item-content {
-                min-height: auto;
-                padding: 38px 25px 42px;
-            }
-
-            .sp-item-content h3 {
-                font-size: 40px;
-                letter-spacing: -2px;
-            }
 
             .sp-card-section {
+
                 padding: 30px 20px;
+
             }
 
-            .sp-card-section-inner {
+
+            .sp-card-grid {
+
                 gap: 30px;
+
             }
 
-            .sp-card-visual {
-                min-height: 260px;
-            }
 
             .sp-card {
+
                 width: 88%;
+
             }
 
-            .sp-card-section h2 {
+
+            .sp-card-content h2 {
+
                 font-size: 42px;
+
                 letter-spacing: -2px;
+
             }
 
-            .sp-card-points {
-                grid-template-columns: 1fr;
-            }
 
             .sp-summary {
+
                 padding: 15px;
-                gap: 15px;
+
+                gap: 20px;
+
             }
 
-            .sp-summary-image,
-            .sp-summary-image img {
+
+            .sp-summary-image {
+
                 min-height: 280px;
+
             }
+
+
+            .sp-summary-image img {
+
+                min-height: 280px;
+
+            }
+
 
             .sp-summary-content {
-                padding: 12px 5px 22px;
+
+                padding: 10px 5px 20px;
+
             }
+
 
             .sp-summary-content h2 {
+
                 font-size: 40px;
+
                 letter-spacing: -2px;
+
             }
 
+
             .sp-cta {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
 
                 gap: 12px;
 
                 padding: 25px;
+
             }
 
-            .sp-cta .sp-button {
+
+            .sp-cta-button {
+
                 grid-column: auto;
+
                 grid-row: auto;
 
-                justify-self: start;
+                width: fit-content;
 
-                margin-top: 5px;
             }
+
 
             .sp-cta-price {
-                font-size: 24px;
+
+                font-size: 23px;
+
             }
 
+
             .sp-notice {
+
                 margin-bottom: 45px;
+
             }
+
         }
 
     </style>
+
 </head>
 
 
@@ -1646,616 +2321,1452 @@
 
 
     <!-- =========================================================
-         HEADER SATORII
-    ========================================================== -->
+         HEADER
+    ========================================================= -->
 
     <div id="satori-header"></div>
 
 
-    <main>
-
-        <div class="sp-page">
+    <main class="satoriipack-page">
 
 
-            <!-- =================================================
-                 HERO
-            ================================================== -->
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
 
-            <section class="sp-hero">
+        <section class="sp-hero">
 
-                <div class="sp-hero-content">
 
-                    <div class="sp-eyebrow">
-                        SATORII · EXPERIENCIA ESPECIAL
-                    </div>
+            <div class="sp-hero-content">
 
-                    <h1>
-                        SATORII
-                        <span>PACK.</span>
-                    </h1>
 
-                    <p class="sp-hero-text">
-                        Cuatro piezas exclusivas reunidas en una sola
-                        experiencia SATORII. Diseños especiales para
-                        llevarte un pedacito de nuestra identidad.
-                    </p>
+                <div class="sp-hero-eyebrow">
 
-                    <div class="sp-price">
-                        $29.990 <small>CLP</small>
-                    </div>
-
-                    <a
-                        href="#contenido"
-                        class="sp-button sp-button-dark"
-                    >
-                        DESCUBRE EL PACK ↓
-                    </a>
+                    SATORII · EXPERIENCIA ESPECIAL
 
                 </div>
 
 
-                <div class="sp-hero-image">
+                <h1 class="sp-hero-title">
 
-                    <img
-                        src="img/productos/satorii-pack/hero.png"
-                        alt="SATORII PACK"
-                    >
+                    SATORII
 
-                </div>
+                    <span>
+                        PACK.
+                    </span>
 
-            </section>
-
-
-            <!-- =================================================
-                 CONTENIDO RESUMIDO
-            ================================================== -->
-
-            <section class="sp-benefits">
+                </h1>
 
 
-                <article class="sp-benefit">
+                <p class="sp-hero-description">
 
-                    <div class="sp-icon">
-                        🖼️
-                    </div>
+                    Cuatro piezas exclusivas reunidas en una sola
+                    experiencia SATORII. Diseños especiales para
+                    llevarte un pedacito de nuestra identidad.
 
-                    <h2>
-                        MINI PÓSTER
-                    </h2>
-
-                    <p>
-                        Una pieza exclusiva diseñada para cada edición.
-                    </p>
-
-                </article>
-
-
-                <article class="sp-benefit">
-
-                    <div class="sp-icon">
-                        💌
-                    </div>
-
-                    <h2>
-                        POSTAL
-                    </h2>
-
-                    <p>
-                        Un pequeño recuerdo para guardar o regalar.
-                    </p>
-
-                </article>
-
-
-                <article class="sp-benefit">
-
-                    <div class="sp-icon">
-                        ✨
-                    </div>
-
-                    <h2>
-                        STICKERS
-                    </h2>
-
-                    <p>
-                        Diseños SATORII para decorar tus espacios.
-                    </p>
-
-                </article>
-
-
-                <article class="sp-benefit">
-
-                    <div class="sp-icon">
-                        🪪
-                    </div>
-
-                    <h2>
-                        TARJETA SATORII
-                    </h2>
-
-                    <p>
-                        Una tarjeta exclusiva de la edición.
-                    </p>
-
-                </article>
-
-            </section>
-
-
-            <!-- =================================================
-                 TICKER
-            ================================================== -->
-
-            <div class="sp-ticker">
-
-                <div class="sp-ticker-inner">
-
-                    <span>✦ SATORII PACK</span>
-
-                    <span>•</span>
-
-                    <span>🖼️ MINI PÓSTER</span>
-
-                    <span>•</span>
-
-                    <span>💌 POSTAL</span>
-
-                    <span>•</span>
-
-                    <span>✨ STICKERS</span>
-
-                    <span>•</span>
-
-                    <span>🪪 TARJETA SATORII</span>
-
-                    <span>•</span>
-
-                    <span>✦ SATORII PACK</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 INTRO
-            ================================================== -->
-
-            <section
-                class="sp-intro"
-                id="contenido"
-            >
-
-                <div class="sp-label">
-                    📦 DENTRO DEL PACK
-                </div>
-
-                <h2>
-                    CUATRO PIEZAS.
-                    <span>UNA EXPERIENCIA.</span>
-                </h2>
-
-                <p>
-                    Todo lo que forma parte del SATORII PACK está pensado
-                    como una experiencia completa. Cada elemento puede
-                    presentar un diseño diferente según la edición.
                 </p>
 
-            </section>
 
+                <div class="sp-hero-price">
 
-            <!-- =================================================
-                 CARRUSEL — CONTENIDO DEL SATORII PACK
-            ================================================== -->
+                    $29.990
 
-            <section class="sp-carousel-section" id="contenido">
+                    <small>
+                        CLP
+                    </small>
 
-                <div class="sp-carousel-heading">
-                    <div class="sp-label">✦ LO QUE INCLUYE TU</div>
-                    <h2>SATORII <span>PACK.</span></h2>
-                    <p>Cuatro piezas exclusivas. Una experiencia SATORII.</p>
-                </div>
-
-                <div class="sp-carousel-steps" aria-label="Contenido del SATORII Pack">
-                    <button class="sp-step is-active" data-slide="0" type="button">
-                        <strong>01</strong>
-                        <span>🖼️ MINI PÓSTER</span>
-                    </button>
-                    <button class="sp-step" data-slide="1" type="button">
-                        <strong>02</strong>
-                        <span>💌 POSTAL</span>
-                    </button>
-                    <button class="sp-step" data-slide="2" type="button">
-                        <strong>03</strong>
-                        <span>✨ STICKERS</span>
-                    </button>
-                    <button class="sp-step" data-slide="3" type="button">
-                        <strong>04</strong>
-                        <span>🪪 TARJETA SATORII</span>
-                    </button>
-                </div>
-
-                <div class="sp-carousel">
-
-                    <button class="sp-carousel-arrow sp-carousel-prev" type="button" aria-label="Anterior">
-                        ←
-                    </button>
-
-                    <div class="sp-carousel-copy">
-                        <div class="sp-carousel-icon" id="spCarouselIcon">🖼️</div>
-
-                        <div class="sp-carousel-counter">
-                            <span id="spCarouselNumber">01</span> / 04
-                        </div>
-
-                        <h3 id="spCarouselTitle">MINI PÓSTER<span>.</span></h3>
-
-                        <div class="sp-carousel-line"></div>
-
-                        <p id="spCarouselText">
-                            Una pequeña pieza de arte diseñada especialmente
-                            para cada edición del SATORII PACK. Ideal para
-                            decorar tu espacio y conservar como recuerdo.
-                        </p>
-
-                        <div class="sp-carousel-tag" id="spCarouselTag">
-                            ✦ DISEÑO EXCLUSIVO
-                        </div>
-                    </div>
-
-                    <div class="sp-carousel-visual">
-                        <div class="sp-carousel-number">SATORII PACK · <span id="spVisualNumber">01</span></div>
-
-                        <img
-                            id="spCarouselImage"
-                            src="img/productos/satorii-pack/gift.jpg"
-                            alt="Mini póster SATORII"
-                        >
-                    </div>
-
-                    <button class="sp-carousel-arrow sp-carousel-next" type="button" aria-label="Siguiente">
-                        →
-                    </button>
-
-                </div>
-
-                <div class="sp-carousel-tabs">
-
-                    <button class="sp-tab is-active" data-slide="0" type="button">
-                        <span>🖼️</span>
-                        <div>
-                            <strong>01</strong>
-                            <small>MINI PÓSTER</small>
-                        </div>
-                    </button>
-
-                    <button class="sp-tab" data-slide="1" type="button">
-                        <span>💌</span>
-                        <div>
-                            <strong>02</strong>
-                            <small>POSTAL</small>
-                        </div>
-                    </button>
-
-                    <button class="sp-tab" data-slide="2" type="button">
-                        <span>✨</span>
-                        <div>
-                            <strong>03</strong>
-                            <small>STICKERS</small>
-                        </div>
-                    </button>
-
-                    <button class="sp-tab" data-slide="3" type="button">
-                        <span>🪪</span>
-                        <div>
-                            <strong>04</strong>
-                            <small>TARJETA SATORII</small>
-                        </div>
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 RESUMEN DEL PACK
-            ================================================== -->
-
-            <section
-                class="sp-summary"
-                id="comprar"
-            >
-
-
-                <div class="sp-summary-image">
-
-                    <img
-                        src="img/productos/satorii-pack/content.jpg"
-                        alt="SATORII PACK"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="sp-summary-content">
-
-                    <div class="sp-label">
-                        ✦ SATORII PACK
-                    </div>
-
-                    <h2>
-                        TODO EN
-                        <span>UNA CAJA.</span>
-                    </h2>
-
-                    <p>
-                        El SATORII PACK reúne sus cuatro piezas
-                        en una sola experiencia. Un producto diseñado
-                        para quienes quieren llevarse un pedacito
-                        de SATORII.
-                    </p>
-
-
-                    <ul class="sp-includes">
-
-                        <li>
-                            <span>🖼️</span>
-                            Mini póster
-                        </li>
-
-                        <li>
-                            <span>💌</span>
-                            Postal
-                        </li>
-
-                        <li>
-                            <span>✨</span>
-                            Stickers
-                        </li>
-
-                        <li>
-                            <span>🪪</span>
-                            Tarjeta SATORII
-                        </li>
-
-                    </ul>
-
-
-                    <div class="sp-price">
-                        $29.990 <small>CLP</small>
-                    </div>
-
-
-                    <a
-                        href="#"
-                        class="sp-button"
-                    >
-                        🛒 COMPRAR SATORII PACK
-                    </a>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 EDICIÓN
-            ================================================== -->
-
-            <section class="sp-edition">
-
-                <span class="sp-label">
-                    ✦ SATORII PACK
-                </span>
-
-                <h2>
-                    CADA EDICIÓN<br>
-                    TIENE SU PROPIA IDENTIDAD.
-                </h2>
-
-                <p>
-                    Los diseños del mini póster, postal, stickers y
-                    tarjeta SATORII pueden cambiar según la edición,
-                    manteniendo siempre la esencia de SATORII.
-                </p>
-
-                <div class="sp-edition-badge">
-                    🔴 <span>EDICIÓN 001</span>
-                    · SATORII ORIGINAL
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 CTA FINAL
-            ================================================== -->
-
-            <section class="sp-cta">
-
-                <div>
-
-                    <h2>
-                        ¿TE LLEVAS EL TUYO?
-                    </h2>
-
-                    <p>
-                        Cuatro piezas. Una experiencia SATORII.
-                    </p>
-
-                </div>
-
-
-                <div class="sp-cta-price">
-                    $29.990 <small>CLP</small>
                 </div>
 
 
                 <a
-                    href="#comprar"
-                    class="sp-button sp-button-dark"
+                    href="#contenido"
+                    class="sp-hero-button"
                 >
-                    🎁 QUIERO MI SATORII PACK
+
+                    DESCUBRE EL PACK ↓
+
                 </a>
 
-            </section>
+
+            </div>
 
 
-            <!-- =================================================
-                 AVISO
-            ================================================== -->
+            <div class="sp-hero-image">
 
-            <div class="sp-notice">
+                <img
+                    src="img/productos/satorii-pack/hero.png"
+                    alt="SATORII PACK"
+                >
 
-                <div class="sp-notice-icon">
-                    ℹ️
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             BENEFICIOS
+        ====================================================== -->
+
+        <section class="sp-benefits">
+
+
+            <article class="sp-benefit">
+
+                <div class="sp-benefit-icon">
+                    🖼️
                 </div>
 
+                <h2 class="sp-benefit-title">
+                    MINI PÓSTER
+                </h2>
+
+                <p class="sp-benefit-text">
+                    Una pieza exclusiva creada para cada edición.
+                </p>
+
+            </article>
+
+
+            <article class="sp-benefit">
+
+                <div class="sp-benefit-icon">
+                    💌
+                </div>
+
+                <h2 class="sp-benefit-title">
+                    POSTAL
+                </h2>
+
+                <p class="sp-benefit-text">
+                    Un pequeño recuerdo para guardar o compartir.
+                </p>
+
+            </article>
+
+
+            <article class="sp-benefit">
+
+                <div class="sp-benefit-icon">
+                    ✨
+                </div>
+
+                <h2 class="sp-benefit-title">
+                    STICKERS
+                </h2>
+
+                <p class="sp-benefit-text">
+                    Diseños SATORII para decorar donde quieras.
+                </p>
+
+            </article>
+
+
+            <article class="sp-benefit">
+
+                <div class="sp-benefit-icon">
+                    🪪
+                </div>
+
+                <h2 class="sp-benefit-title">
+                    TARJETA SATORII
+                </h2>
+
+                <p class="sp-benefit-text">
+                    Una tarjeta exclusiva que acompaña la edición.
+                </p>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             TICKER
+        ====================================================== -->
+
+        <div class="sp-ticker">
+
+            <div class="sp-ticker-content">
+
+                <span>
+                    ✦ SATORII PACK
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    🖼️ MINI PÓSTER
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    💌 POSTAL
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    ✨ STICKERS
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    🪪 TARJETA SATORII
+                </span>
+
+                <span>•</span>
+
+                <span>
+                    ✦ SATORII PACK
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             CARRUSEL
+        ====================================================== -->
+
+        <section
+            class="sp-carousel-section"
+            id="contenido"
+        >
+
+
+            <div class="sp-carousel-heading">
+
+                <span class="sp-carousel-eyebrow">
+
+                    LO QUE INCLUYE TU
+
+                </span>
+
+
+                <h2>
+
+                    SATORII
+                    <span>PACK.</span>
+
+                </h2>
+
+
                 <p>
-                    <strong>Sobre el contenido:</strong>
-                    El SATORII PACK incluye mini póster, postal,
-                    stickers y tarjeta SATORII. Los diseños pueden
-                    variar según la edición.
+
+                    Cuatro piezas exclusivas creadas para llevarte
+                    un pedacito de SATORII.
+
                 </p>
 
             </div>
 
 
+            <!-- ===============================================
+                 CARRUSEL PRINCIPAL
+            ================================================ -->
+
+            <div class="sp-carousel">
+
+
+                <!-- =========================================
+                     INFORMACION
+                ========================================== -->
+
+                <div class="sp-carousel-info">
+
+
+                    <div class="sp-carousel-counter">
+
+                        <span
+                            class="current"
+                            id="spCurrent"
+                        >
+                            01
+                        </span>
+
+                        <span class="separator">
+                            /
+                        </span>
+
+                        <span>
+                            04
+                        </span>
+
+                    </div>
+
+
+                    <div class="sp-carousel-copy">
+
+
+                        <div
+                            class="sp-carousel-icon"
+                            id="spIcon"
+                        >
+                            🖼️
+                        </div>
+
+
+                        <h3
+                            class="sp-carousel-title"
+                            id="spTitle"
+                        >
+
+                            MINI<br>
+                            PÓSTER.
+
+                        </h3>
+
+
+                        <p
+                            class="sp-carousel-description"
+                            id="spDescription"
+                        >
+
+                            Arte exclusivo de SATORII para decorar
+                            tu espacio y conservar como recuerdo.
+
+                        </p>
+
+
+                    </div>
+
+
+                    <div class="sp-carousel-arrows">
+
+
+                        <button
+                            type="button"
+                            class="sp-carousel-arrow"
+                            id="spPrev"
+                            aria-label="Elemento anterior"
+                        >
+                            ←
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="sp-carousel-arrow primary"
+                            id="spNext"
+                            aria-label="Siguiente elemento"
+                        >
+                            →
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     PRODUCTO
+                ========================================== -->
+
+                <div
+                    class="sp-carousel-product"
+                    id="spCarouselProduct"
+                >
+
+
+                    <div
+                        class="sp-product-shadow"
+                    ></div>
+
+
+                    <img
+                        id="spProductImage"
+                        src="img/productos/satorii-pack/mini-poster.jpg"
+                        alt="Mini póster SATORII"
+                        draggable="false"
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ===============================================
+                 NAVEGACION DESKTOP
+            ================================================ -->
+
+            <div class="sp-carousel-navigation">
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-nav-item active"
+                    data-slide="0"
+                >
+
+                    <span class="sp-nav-icon">
+                        🖼️
+                    </span>
+
+                    <span class="sp-nav-text">
+
+                        <small class="sp-nav-number">
+                            01
+                        </small>
+
+                        MINI PÓSTER
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-nav-item"
+                    data-slide="1"
+                >
+
+                    <span class="sp-nav-icon">
+                        💌
+                    </span>
+
+                    <span class="sp-nav-text">
+
+                        <small class="sp-nav-number">
+                            02
+                        </small>
+
+                        POSTAL
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-nav-item"
+                    data-slide="2"
+                >
+
+                    <span class="sp-nav-icon">
+                        ✨
+                    </span>
+
+                    <span class="sp-nav-text">
+
+                        <small class="sp-nav-number">
+                            03
+                        </small>
+
+                        STICKERS
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-nav-item"
+                    data-slide="3"
+                >
+
+                    <span class="sp-nav-icon">
+                        🪪
+                    </span>
+
+                    <span class="sp-nav-text">
+
+                        <small class="sp-nav-number">
+                            04
+                        </small>
+
+                        TARJETA SATORII
+
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+            <!-- ===============================================
+                 DOTS MOBILE
+            ================================================ -->
+
+            <div class="sp-carousel-dots">
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-dot active"
+                    data-slide="0"
+                    aria-label="Mini póster"
+                ></button>
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-dot"
+                    data-slide="1"
+                    aria-label="Postal"
+                ></button>
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-dot"
+                    data-slide="2"
+                    aria-label="Stickers"
+                ></button>
+
+
+                <button
+                    type="button"
+                    class="sp-carousel-dot"
+                    data-slide="3"
+                    aria-label="Tarjeta SATORII"
+                ></button>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             TARJETA SATORII
+        ====================================================== -->
+
+        <section class="sp-card-section">
+
+
+            <div class="sp-card-grid">
+
+
+                <div class="sp-card-visual">
+
+
+                    <div class="sp-card">
+
+
+                        <div class="sp-card-top">
+
+
+                            <div class="sp-card-logo">
+                                SATORII
+                            </div>
+
+
+                            <div class="sp-card-edition">
+                                EDITION 001
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="sp-card-bottom">
+
+                            SATORII PACK
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="sp-card-content">
+
+
+                    <div class="sp-card-label">
+
+                        🪪 TARJETA SATORII
+
+                    </div>
+
+
+                    <h2>
+
+                        UN DETALLE.
+
+                        <span>
+                            MUY SATORII.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        La tarjeta SATORII forma parte del pack
+                        y acompaña cada edición con un diseño
+                        propio. Un pequeño elemento pensado para
+                        darle identidad a la experiencia.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             RESUMEN
+        ====================================================== -->
+
+        <section
+            class="sp-summary"
+            id="comprar"
+        >
+
+
+            <div class="sp-summary-image">
+
+
+                <img
+                    src="img/productos/satorii-pack/content.jpg"
+                    alt="Contenido SATORII PACK"
+                    loading="lazy"
+                >
+
+
+            </div>
+
+
+            <div class="sp-summary-content">
+
+
+                <div class="sp-summary-eyebrow">
+
+                    ✦ SATORII PACK
+
+                </div>
+
+
+                <h2>
+
+                    TODO EN
+
+                    <span>
+                        UNA CAJA.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    El SATORII PACK reúne sus cuatro piezas
+                    en una sola experiencia. Un producto pensado
+                    para quienes quieren llevarse un pedacito
+                    de SATORII.
+
+                </p>
+
+
+                <ul class="sp-includes">
+
+
+                    <li>
+
+                        <span class="sp-includes-icon">
+                            🖼️
+                        </span>
+
+                        Mini póster
+
+                    </li>
+
+
+                    <li>
+
+                        <span class="sp-includes-icon">
+                            💌
+                        </span>
+
+                        Postal
+
+                    </li>
+
+
+                    <li>
+
+                        <span class="sp-includes-icon">
+                            ✨
+                        </span>
+
+                        Stickers
+
+                    </li>
+
+
+                    <li>
+
+                        <span class="sp-includes-icon">
+                            🪪
+                        </span>
+
+                        Tarjeta SATORII
+
+                    </li>
+
+
+                </ul>
+
+
+                <div class="sp-summary-price">
+
+                    $29.990
+
+                    <small>
+                        CLP
+                    </small>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="sp-buy-button"
+                >
+
+                    🛒 COMPRAR SATORII PACK
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             EDICION
+        ====================================================== -->
+
+        <section class="sp-edition">
+
+
+            <div class="sp-edition-label">
+
+                ✦ SATORII PACK
+
+            </div>
+
+
+            <h2>
+
+                CADA EDICIÓN<br>
+                TIENE SU PROPIA IDENTIDAD.
+
+            </h2>
+
+
+            <p>
+
+                Los diseños del mini póster, postal, stickers
+                y tarjeta SATORII pueden cambiar según la edición,
+                manteniendo siempre la esencia de SATORII.
+
+            </p>
+
+
+            <div class="sp-edition-badge">
+
+                🔴
+
+                <span>
+                    EDICIÓN 001
+                </span>
+
+                · SATORII ORIGINAL
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             CTA FINAL
+        ====================================================== -->
+
+        <section class="sp-cta">
+
+
+            <div>
+
+                <h2>
+                    ¿TE LLEVAS EL TUYO?
+                </h2>
+
+
+                <p>
+                    Cuatro piezas. Una experiencia SATORII.
+                </p>
+
+            </div>
+
+
+            <div class="sp-cta-price">
+
+                $29.990
+
+                <small>
+                    CLP
+                </small>
+
+            </div>
+
+
+            <a
+                href="#comprar"
+                class="sp-cta-button"
+            >
+
+                🎁 QUIERO MI SATORII PACK
+
+            </a>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             AVISO
+        ====================================================== -->
+
+        <div class="sp-notice">
+
+
+            <div class="sp-notice-icon">
+                ℹ️
+            </div>
+
+
+            <p>
+
+                <strong>
+                    Sobre el contenido:
+                </strong>
+
+                El SATORII PACK incluye mini póster, postal,
+                stickers y tarjeta SATORII. Los diseños pueden
+                variar según la edición.
+
+            </p>
+
+
         </div>
+
 
     </main>
 
 
     <!-- =========================================================
-         FOOTER SATORII
-    ========================================================== -->
+         FOOTER
+    ========================================================= -->
 
     <div id="satori-footer"></div>
 
+
+    <!-- =========================================================
+         HEADER / FOOTER
+    ========================================================= -->
+
     <script src="js/header.js"></script>
+
     <script src="js/footer.js"></script>
 
 
+    <!-- =========================================================
+         SATORII PACK — JAVASCRIPT
+    ========================================================= -->
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
 
-            const slides = [
-                {
-                    number: "01",
-                    icon: "🖼️",
-                    title: "MINI PÓSTER",
-                    text: "Una pequeña pieza de arte diseñada especialmente para cada edición del SATORII PACK. Ideal para decorar tu espacio y conservar como recuerdo.",
-                    tag: "✦ DISEÑO EXCLUSIVO",
-                    image: "img/productos/satorii-pack/gift.jpg",
-                    alt: "Mini póster SATORII"
-                },
-                {
-                    number: "02",
-                    icon: "💌",
-                    title: "POSTAL",
-                    text: "Una postal con un diseño especial de SATORII. Un pequeño recuerdo que puedes guardar, exhibir o compartir.",
-                    tag: "✦ DISEÑO EXCLUSIVO",
-                    image: "img/productos/satorii-pack/content.jpg",
-                    alt: "Postal SATORII"
-                },
-                {
-                    number: "03",
-                    icon: "✨",
-                    title: "STICKERS",
-                    text: "Una selección de stickers diseñados para representar la identidad de SATORII. Pégalos donde quieras o guárdalos para tu colección.",
-                    tag: "✦ DISEÑOS SATORII",
-                    image: "img/productos/satorii-pack/content.jpg",
-                    alt: "Stickers SATORII"
-                },
-                {
-                    number: "04",
-                    icon: "🪪",
-                    title: "TARJETA SATORII",
-                    text: "Una tarjeta exclusiva que identifica la edición de tu SATORII PACK. Un pequeño elemento pensado para formar parte de la experiencia.",
-                    tag: "✦ EDICIÓN SATORII",
-                    image: "img/productos/satorii-pack/content.jpg",
-                    alt: "Tarjeta SATORII"
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* =================================================
+                   DATOS DEL CARRUSEL
+                ================================================= */
+
+                const slides = [
+
+                    {
+
+                        title:
+                            "MINI<br>PÓSTER.",
+
+                        description:
+                            "Arte exclusivo de SATORII para decorar tu espacio y conservar como recuerdo.",
+
+                        icon:
+                            "🖼️",
+
+                        image:
+                            "img/productos/satorii-pack/mini-poster.jpg",
+
+                        alt:
+                            "Mini póster SATORII"
+
+                    },
+
+
+                    {
+
+                        title:
+                            "POSTAL.",
+
+                        description:
+                            "Un diseño especial creado para guardar, coleccionar o compartir.",
+
+                        icon:
+                            "💌",
+
+                        image:
+                            "img/productos/satorii-pack/postal.jpg",
+
+                        alt:
+                            "Postal SATORII"
+
+                    },
+
+
+                    {
+
+                        title:
+                            "STICKERS.",
+
+                        description:
+                            "Diseños originales de SATORII para decorar donde quieras y llevar tu identidad contigo.",
+
+                        icon:
+                            "✨",
+
+                        image:
+                            "img/productos/satorii-pack/stickers.jpg",
+
+                        alt:
+                            "Stickers SATORII"
+
+                    },
+
+
+                    {
+
+                        title:
+                            "TARJETA<br>SATORII.",
+
+                        description:
+                            "Una tarjeta exclusiva que acompaña cada edición del SATORII PACK.",
+
+                        icon:
+                            "🪪",
+
+                        image:
+                            "img/productos/satorii-pack/tarjeta.jpg",
+
+                        alt:
+                            "Tarjeta SATORII"
+
+                    }
+
+                ];
+
+
+                /* =================================================
+                   ELEMENTOS
+                ================================================= */
+
+                const product =
+                    document.getElementById(
+                        "spCarouselProduct"
+                    );
+
+
+                const image =
+                    document.getElementById(
+                        "spProductImage"
+                    );
+
+
+                const current =
+                    document.getElementById(
+                        "spCurrent"
+                    );
+
+
+                const title =
+                    document.getElementById(
+                        "spTitle"
+                    );
+
+
+                const description =
+                    document.getElementById(
+                        "spDescription"
+                    );
+
+
+                const icon =
+                    document.getElementById(
+                        "spIcon"
+                    );
+
+
+                const previous =
+                    document.getElementById(
+                        "spPrev"
+                    );
+
+
+                const next =
+                    document.getElementById(
+                        "spNext"
+                    );
+
+
+                const navItems =
+                    document.querySelectorAll(
+                        ".sp-carousel-nav-item"
+                    );
+
+
+                const dots =
+                    document.querySelectorAll(
+                        ".sp-carousel-dot"
+                    );
+
+
+                let currentSlide = 0;
+
+
+                let isAnimating = false;
+
+
+                /* =================================================
+                   MOSTRAR SLIDE
+                ================================================= */
+
+                function showSlide(index) {
+
+
+                    if (isAnimating) {
+                        return;
+                    }
+
+
+                    if (index < 0) {
+
+                        index =
+                            slides.length - 1;
+
+                    }
+
+
+                    if (index >= slides.length) {
+
+                        index = 0;
+
+                    }
+
+
+                    if (index === currentSlide &&
+                        image.src.endsWith(
+                            slides[index].image
+                        )) {
+
+                        return;
+
+                    }
+
+
+                    currentSlide = index;
+
+
+                    const slide =
+                        slides[currentSlide];
+
+
+                    isAnimating = true;
+
+
+                    /* -----------------------------------------
+                       SALIDA
+                    ----------------------------------------- */
+
+                    product.classList.add(
+                        "is-changing"
+                    );
+
+
+                    setTimeout(
+                        function () {
+
+
+                            image.src =
+                                slide.image;
+
+
+                            image.alt =
+                                slide.alt;
+
+
+                            title.innerHTML =
+                                slide.title;
+
+
+                            description.textContent =
+                                slide.description;
+
+
+                            icon.textContent =
+                                slide.icon;
+
+
+                            current.textContent =
+                                String(
+                                    currentSlide + 1
+                                ).padStart(
+                                    2,
+                                    "0"
+                                );
+
+
+                            /* -----------------------------
+                               NAVEGACIÓN
+                            ----------------------------- */
+
+                            navItems.forEach(
+                                function (
+                                    item,
+                                    i
+                                ) {
+
+                                    item.classList.toggle(
+                                        "active",
+                                        i === currentSlide
+                                    );
+
+                                }
+                            );
+
+
+                            dots.forEach(
+                                function (
+                                    dot,
+                                    i
+                                ) {
+
+                                    dot.classList.toggle(
+                                        "active",
+                                        i === currentSlide
+                                    );
+
+                                }
+                            );
+
+
+                            /* -----------------------------
+                               ENTRADA
+                            ----------------------------- */
+
+                            requestAnimationFrame(
+                                function () {
+
+                                    product.classList.remove(
+                                        "is-changing"
+                                    );
+
+                                    setTimeout(
+                                        function () {
+
+                                            isAnimating =
+                                                false;
+
+                                        },
+                                        220
+                                    );
+
+                                }
+                            );
+
+
+                        },
+                        180
+                    );
+
                 }
-            ];
 
-            let current = 0;
 
-            const icon = document.getElementById("spCarouselIcon");
-            const number = document.getElementById("spCarouselNumber");
-            const title = document.getElementById("spCarouselTitle");
-            const paragraph = document.getElementById("spCarouselText");
-            const tag = document.getElementById("spCarouselTag");
-            const image = document.getElementById("spCarouselImage");
-            const visualNumber = document.getElementById("spVisualNumber");
-            const visual = document.querySelector(".sp-carousel-visual");
+                /* =================================================
+                   SIGUIENTE
+                ================================================= */
 
-            const steps = document.querySelectorAll(".sp-step");
-            const tabs = document.querySelectorAll(".sp-tab");
+                function nextSlide() {
 
-            function updateCarousel(index) {
+                    showSlide(
+                        currentSlide + 1
+                    );
 
-                current = (index + slides.length) % slides.length;
-                const slide = slides[current];
+                }
 
-                visual.classList.add("is-changing");
 
-                setTimeout(function () {
+                /* =================================================
+                   ANTERIOR
+                ================================================= */
 
-                    icon.textContent = slide.icon;
-                    number.textContent = slide.number;
-                    visualNumber.textContent = slide.number;
+                function previousSlide() {
 
-                    title.innerHTML = slide.title + "<span>.</span>";
-                    paragraph.textContent = slide.text;
-                    tag.textContent = slide.tag;
+                    showSlide(
+                        currentSlide - 1
+                    );
 
-                    image.src = slide.image;
-                    image.alt = slide.alt;
+                }
 
-                    steps.forEach(function (step, i) {
-                        step.classList.toggle("is-active", i === current);
-                    });
 
-                    tabs.forEach(function (tab, i) {
-                        tab.classList.toggle("is-active", i === current);
-                    });
+                /* =================================================
+                   BOTONES
+                ================================================= */
 
-                    visual.classList.remove("is-changing");
+                next.addEventListener(
+                    "click",
+                    nextSlide
+                );
 
-                }, 160);
+
+                previous.addEventListener(
+                    "click",
+                    previousSlide
+                );
+
+
+                /* =================================================
+                   NAVEGACIÓN INFERIOR
+                ================================================= */
+
+                navItems.forEach(
+                    function (item) {
+
+
+                        item.addEventListener(
+                            "click",
+                            function () {
+
+
+                                const index =
+                                    Number(
+                                        this.dataset.slide
+                                    );
+
+
+                                if (
+                                    index !==
+                                    currentSlide
+                                ) {
+
+                                    showSlide(
+                                        index
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =================================================
+                   DOTS
+                ================================================= */
+
+                dots.forEach(
+                    function (dot) {
+
+
+                        dot.addEventListener(
+                            "click",
+                            function () {
+
+
+                                const index =
+                                    Number(
+                                        this.dataset.slide
+                                    );
+
+
+                                if (
+                                    index !==
+                                    currentSlide
+                                ) {
+
+                                    showSlide(
+                                        index
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =================================================
+                   TECLADO
+                ================================================= */
+
+                document.addEventListener(
+                    "keydown",
+                    function (event) {
+
+
+                        if (
+                            event.key ===
+                            "ArrowRight"
+                        ) {
+
+                            nextSlide();
+
+                        }
+
+
+                        if (
+                            event.key ===
+                            "ArrowLeft"
+                        ) {
+
+                            previousSlide();
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
+                   SWIPE
+                ================================================= */
+
+                let touchStartX = 0;
+
+                let touchEndX = 0;
+
+
+                product.addEventListener(
+                    "touchstart",
+                    function (event) {
+
+
+                        touchStartX =
+                            event
+                                .changedTouches[0]
+                                .screenX;
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                product.addEventListener(
+                    "touchend",
+                    function (event) {
+
+
+                        touchEndX =
+                            event
+                                .changedTouches[0]
+                                .screenX;
+
+
+                        const distance =
+                            touchEndX -
+                            touchStartX;
+
+
+                        if (
+                            Math.abs(distance) <
+                            50
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            distance < 0
+                        ) {
+
+                            nextSlide();
+
+                        } else {
+
+                            previousSlide();
+
+                        }
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                /* =================================================
+                   INICIALIZAR
+                ================================================= */
+
+                current.textContent = "01";
+
+                title.innerHTML =
+                    slides[0].title;
+
+                description.textContent =
+                    slides[0].description;
+
+                icon.textContent =
+                    slides[0].icon;
+
+                image.src =
+                    slides[0].image;
+
+                image.alt =
+                    slides[0].alt;
+
+
             }
+        );
 
-            document.querySelector(".sp-carousel-prev").addEventListener("click", function () {
-                updateCarousel(current - 1);
-            });
-
-            document.querySelector(".sp-carousel-next").addEventListener("click", function () {
-                updateCarousel(current + 1);
-            });
-
-            steps.forEach(function (step) {
-                step.addEventListener("click", function () {
-                    updateCarousel(Number(step.dataset.slide));
-                });
-            });
-
-            tabs.forEach(function (tab) {
-                tab.addEventListener("click", function () {
-                    updateCarousel(Number(tab.dataset.slide));
-                });
-            });
-
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "ArrowLeft") updateCarousel(current - 1);
-                if (event.key === "ArrowRight") updateCarousel(current + 1);
-            });
-
-        });
     </script>
 
+
 </body>
+
 </html>
-```
