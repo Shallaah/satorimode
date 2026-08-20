@@ -35,11 +35,6 @@
            SATORII · TORII
         ====================================================== */
 
-
-        /* =====================================================
-           ESTRUCTURA
-        ====================================================== */
-
         .torii-page {
 
             width: min(
@@ -221,6 +216,8 @@
 
             text-decoration: none;
 
+            cursor: pointer;
+
         }
 
 
@@ -266,10 +263,6 @@
         }
 
 
-        /* =====================================================
-           IMAGEN PRINCIPAL
-        ====================================================== */
-
         .torii-product-image
         .image-primary {
 
@@ -277,10 +270,6 @@
 
         }
 
-
-        /* =====================================================
-           IMAGEN SECUNDARIA
-        ====================================================== */
 
         .torii-product-image
         .image-secondary {
@@ -871,7 +860,6 @@
 
     <main>
 
-
         <div class="torii-page">
 
 
@@ -988,6 +976,10 @@
     <script src="js/footer.js"></script>
 
 
+    <!-- =====================================================
+         RENDER TORII
+    ====================================================== -->
+
     <script>
 
         document.addEventListener(
@@ -1059,6 +1051,7 @@
                         function (product) {
 
                             return (
+                                product.available === true &&
                                 String(
                                     product.category || ""
                                 )
@@ -1075,7 +1068,9 @@
                    ESCAPAR HTML
                 ================================================= */
 
-                function escapeHTML(value) {
+                function escapeHTML(
+                    value
+                ) {
 
                     return String(
                         value ?? ""
@@ -1099,6 +1094,130 @@
                     .replace(
                         /'/g,
                         "&#039;"
+                    );
+
+                }
+
+
+                /* =================================================
+                   CREAR SLUG
+                ================================================= */
+
+                function createProductSlug(
+                    product
+                ) {
+
+                    return String(
+                        product.id ||
+                        product.name ||
+                        ""
+                    )
+                    .normalize("NFD")
+                    .replace(
+                        /[\u0300-\u036f]/g,
+                        ""
+                    )
+                    .toLowerCase()
+                    .trim()
+                    .replace(
+                        /[^a-z0-9]+/g,
+                        "-"
+                    )
+                    .replace(
+                        /^-+|-+$/g,
+                        "");
+
+                }
+
+
+                /* =================================================
+                   OBTENER URL DEL PRODUCTO
+                ================================================= */
+
+                function getProductUrl(
+                    product
+                ) {
+
+                    if (!product) {
+
+                        return "#";
+
+                    }
+
+
+                    /*
+                     * URL definida en products.js.
+                     *
+                     * Ejemplo:
+                     *
+                     * productos/torii/polera-torii.html
+                     *
+                     * Resultado:
+                     *
+                     * /satorimode/productos/torii/polera-torii.html
+                     */
+
+                    if (product.url) {
+
+                        let url =
+                            String(
+                                product.url
+                            )
+                            .trim();
+
+
+                        /*
+                         * Eliminar barras iniciales.
+                         */
+
+                        url =
+                            url.replace(
+                                /^\/+/,
+                                ""
+                            );
+
+
+                        /*
+                         * Evitar:
+                         *
+                         * /satorimode/satorimode/...
+                         */
+
+                        if (
+                            url.startsWith(
+                                "satorimode/"
+                            )
+                        ) {
+
+                            return "/" + url;
+
+                        }
+
+
+                        return (
+                            "/satorimode/" +
+                            url
+                        );
+
+                    }
+
+
+                    /* =================================================
+                       RESPALDO
+                    ================================================== */
+
+                    const productId =
+                        createProductSlug(
+                            product
+                        );
+
+
+                    return (
+                        "/satorimode/" +
+                        "productos/" +
+                        "torii/" +
+                        productId +
+                        ".html"
                     );
 
                 }
@@ -1145,16 +1264,16 @@
 
 
                 /* =================================================
-                   CREAR PRODUCTOS
+                   CREAR TARJETAS
                 ================================================= */
 
                 toriiProducts.forEach(
                     function (product) {
 
 
-                        /* -----------------------------------------
+                        /* =========================================
                            IMÁGENES
-                        ------------------------------------------ */
+                        ========================================== */
 
                         const primaryImage =
                             product.images?.[0] ||
@@ -1167,55 +1286,19 @@
                             primaryImage;
 
 
-                        /* -----------------------------------------
+                        /* =========================================
                            URL
+                        ========================================== */
 
-                           Preferimos la URL definida
-                           en products.js.
-                        ------------------------------------------ */
-
-                        let productUrl =
-                            product.url ||
-                            "";
+                        const productUrl =
+                            getProductUrl(
+                                product
+                            );
 
 
-                        if (!productUrl) {
-
-                            const productId =
-                                String(
-                                    product.id ||
-                                    product.name ||
-                                    ""
-                                )
-                                .normalize("NFD")
-                                .replace(
-                                    /[\u0300-\u036f]/g,
-                                    ""
-                                )
-                                .toLowerCase()
-                                .trim()
-                                .replace(
-                                    /[^a-z0-9]+/g,
-                                    "-"
-                                )
-                                .replace(
-                                    /^-+|-+$/g,
-                                    ""
-                                );
-
-
-                            productUrl =
-                                "productos/" +
-                                "torii/" +
-                                productId +
-                                ".html";
-
-                        }
-
-
-                        /* -----------------------------------------
+                        /* =========================================
                            PRECIO
-                        ------------------------------------------ */
+                        ========================================== */
 
                         const price =
                             new Intl.NumberFormat(
@@ -1238,22 +1321,16 @@
                             );
 
 
-                        /* -----------------------------------------
+                        /* =========================================
                            BADGES
-                        ------------------------------------------ */
+                        ========================================== */
 
                         const badges = [];
 
 
-                        /* -----------------------------------------
+                        /* =========================================
                            NUEVO
-
-                           Utiliza el sistema central de
-                           products.js.
-
-                           Por defecto:
-                           7 días.
-                        ------------------------------------------ */
+                        ========================================== */
 
                         if (
                             typeof isProductNew ===
@@ -1279,9 +1356,9 @@
                         }
 
 
-                        /* -----------------------------------------
+                        /* =========================================
                            DESTACADO
-                        ------------------------------------------ */
+                        ========================================== */
 
                         if (
                             product.featured ===
@@ -1304,9 +1381,9 @@
                         }
 
 
-                        /* -----------------------------------------
+                        /* =========================================
                            TARJETA
-                        ------------------------------------------ */
+                        ========================================== */
 
                         const card =
                             document.createElement(
@@ -1321,6 +1398,19 @@
                         card.href =
                             productUrl;
 
+
+                        card.setAttribute(
+                            "aria-label",
+                            `Ver ${
+                                product.name ||
+                                "producto"
+                            }`
+                        );
+
+
+                        /* =========================================
+                           HTML
+                        ========================================== */
 
                         card.innerHTML = `
 
@@ -1417,10 +1507,12 @@
                                         torii-product-name
                                     "
                                 >
+
                                     ${escapeHTML(
                                         product.name ||
                                         "Producto"
                                     )}
+
                                 </h3>
 
 
@@ -1429,7 +1521,9 @@
                                         torii-product-price
                                     "
                                 >
+
                                     ${price}
+
                                 </div>
 
                             </div>
