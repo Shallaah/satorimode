@@ -2133,19 +2133,29 @@
             ================================================== */
 
             document
-                .getElementById(
-                    "satori-cart-checkout"
-                )
-                ?.addEventListener(
-                    "click",
-                    function () {
+    .getElementById(
+        "satori-cart-checkout"
+    )
+    ?.addEventListener(
+        "click",
+        function () {
 
-                        alert(
-                            "El sistema de pago estará disponible próximamente."
-                        );
+            const cart =
+                getPageCart();
 
-                    }
-                );
+            if (
+                !cart.length
+            ) {
+
+                return;
+
+            }
+
+            window.location.href =
+                "/satorimode/checkout.html";
+
+        }
+    );
 
         }
 
