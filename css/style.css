@@ -10,8 +10,8 @@
     --black: #111111;
     --white: #ffffff;
 
-    --red: #f31218;
-    --dark-red: #d90e13;
+--red: #EF0930;
+--dark-red: #c90727;
 
     --gray: #666666;
     --light-gray: #f5f5f5;
@@ -764,44 +764,44 @@ img {
 
     position: relative;
 
-    margin-top: 120px;
-    margin-bottom: 100px;
+    width:
+        min(
+            var(--satori-content-width),
+            calc(
+                100% -
+                (var(--satori-side-space) * 2)
+            )
+        );
 
-    min-height: 230px;
+    min-height: 370px;
 
-    padding: 50px;
+    margin: 80px auto 80px;
+
+    padding: 55px;
 
     display: flex;
-    align-items: center;
 
-    box-sizing: border-box;
+    align-items: center;
 
     overflow: hidden;
 
-    background:
-        radial-gradient(
-            circle at 85% 30%,
-            #430000 0%,
-            #1d0000 40%,
-            #080000 80%
-        );
+    box-sizing: border-box;
+
+    background: #EF0930;
 
     color: #fff;
 
-    border: 1px solid rgba(
-        255,
-        255,
-        255,
-        0.18
-    );
+    border: none;
 
     border-radius: 10px;
+
+    isolation: isolate;
 
 }
 
 
 /* =====================================================
-   LÍNEA DECORATIVA SUPERIOR
+   DETALLE DECORATIVO
 ====================================================== */
 
 .satori-pack::before {
@@ -810,21 +810,25 @@ img {
 
     position: absolute;
 
-    top: 0;
-    left: 0;
+    width: 520px;
+    height: 520px;
 
-    width: 150px;
-    height: 2px;
+    right: 4%;
+    top: 50%;
 
-    background:
-        var(--red, #ff1b1b);
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    z-index: 0;
 
 }
 
-
-/* =====================================================
-   LÍNEA DECORATIVA INFERIOR
-====================================================== */
 
 .satori-pack::after {
 
@@ -832,14 +836,24 @@ img {
 
     position: absolute;
 
-    bottom: 0;
-    right: 0;
+    width: 420px;
+    height: 420px;
 
-    width: 150px;
-    height: 2px;
+    right: 8%;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
 
     background:
-        var(--red, #ff1b1b);
+        rgba(255,255,255,.10);
+
+    filter:
+        blur(80px);
+
+    z-index: 0;
 
 }
 
@@ -852,7 +866,9 @@ img {
 
     position: relative;
 
-    z-index: 2;
+    z-index: 5;
+
+    width: 52%;
 
     max-width: 650px;
 
@@ -865,14 +881,15 @@ img {
 
 .satori-pack-label {
 
-    margin-bottom: 8px;
+    display: block;
 
-    color:
-        var(--red, #ff1b1b);
+    margin-bottom: 12px;
 
-    font-size: 10px;
+    color: #000;
 
-    font-weight: 800;
+    font-size: 11px;
+
+    font-weight: 900;
 
     letter-spacing: 4px;
 
@@ -885,26 +902,27 @@ img {
 
 .satori-pack h2 {
 
-    margin: 0 0 12px;
+    margin: 0 0 18px;
 
     font-size:
         clamp(
-            30px,
+            38px,
             4vw,
-            52px
+            62px
         );
 
-    line-height: 1;
+    line-height: .95;
 
     font-weight: 900;
+
+    letter-spacing: -1.5px;
 
 }
 
 
 .satori-pack h2 span {
 
-    color:
-        var(--red, #ff1b1b);
+    color: #000;
 
 }
 
@@ -915,11 +933,14 @@ img {
 
 .satori-pack p {
 
+    max-width: 570px;
+
     margin: 0;
 
-    color: #ccc;
+    color:
+        rgba(255,255,255,.95);
 
-    font-size: 14px;
+    font-size: 15px;
 
     line-height: 1.6;
 
@@ -935,39 +956,164 @@ img {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    margin-top: 24px;
+    gap: 12px;
 
-    padding: 13px 22px;
+    margin-top: 25px;
 
-    background:
-        var(--red, #ff1b1b);
+    padding: 14px 23px;
+
+    background: #000;
 
     color: #fff;
 
-    text-decoration: none;
+    border-radius: 5px;
 
     font-size: 11px;
 
     font-weight: 800;
 
-    letter-spacing: .3px;
+    letter-spacing: .4px;
 
-    border-radius: 5px;
+    text-decoration: none;
 
     transition:
-        transform .2s ease,
-        background .2s ease;
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease;
 
 }
 
 
 .satori-pack-button:hover {
 
-    background: #d90000;
+    background: #fff;
 
-    transform: translateY(-2px);
+    color: #000;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =====================================================
+   VISUAL / CAJA
+====================================================== */
+
+.satori-pack-visual {
+
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 53%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 2;
+
+}
+
+
+/* =====================================================
+   GLOW
+====================================================== */
+
+.satori-pack-glow {
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.18);
+
+    filter:
+        blur(75px);
+
+    opacity: .8;
+
+}
+
+
+/* =====================================================
+   CAJA SATORII
+====================================================== */
+
+.satori-pack-box {
+
+    position: relative;
+
+    z-index: 3;
+
+    width:
+        min(
+            570px,
+            95%
+        );
+
+    max-height: 420px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 30px 28px
+            rgba(0,0,0,.45)
+        );
+
+    transform:
+        translateY(18px);
+
+    transition:
+        transform .45s ease,
+        filter .45s ease;
+
+}
+
+
+.satori-pack:hover
+.satori-pack-box {
+
+    transform:
+        translateY(8px)
+        scale(1.035);
+
+    filter:
+        drop-shadow(
+            0 35px 35px
+            rgba(0,0,0,.5)
+        );
+
+}
+
+
+/* =====================================================
+   RECOMENDACIONES VACÍAS
+====================================================== */
+
+/*
+   Si JavaScript no ha cargado recomendaciones,
+   ocultamos toda la sección automáticamente.
+*/
+
+.recommendations:has(
+    .recommendations-grid:empty
+) {
+
+    display: none;
 
 }
 
@@ -980,8 +1126,34 @@ img {
 
     .satori-pack {
 
-        margin-top: 100px;
-        margin-bottom: 80px;
+        min-height: 330px;
+
+        padding: 45px;
+
+        margin-top: 70px;
+
+        margin-bottom: 70px;
+
+    }
+
+
+    .satori-pack-content {
+
+        width: 55%;
+
+    }
+
+
+    .satori-pack-visual {
+
+        width: 50%;
+
+    }
+
+
+    .satori-pack-box {
+
+        width: 100%;
 
     }
 
@@ -996,35 +1168,88 @@ img {
 
     .satori-pack {
 
-        margin-top: 80px;
-        margin-bottom: 60px;
+        width:
+            calc(100% - 30px);
 
-        min-height: 220px;
+        min-height: auto;
 
-        padding: 30px 25px;
+        margin-top: 55px;
 
-        border-radius: 8px;
+        margin-bottom: 55px;
+
+        padding:
+            30px 22px 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        border-radius: 10px;
 
     }
 
 
     .satori-pack::before {
 
-        width: 90px;
+        width: 300px;
+        height: 300px;
+
+        right: 50%;
+
+        top: auto;
+        bottom: 80px;
+
+        transform:
+            translateX(50%);
 
     }
 
 
     .satori-pack::after {
 
-        width: 90px;
+        width: 280px;
+        height: 280px;
+
+        right: 50%;
+
+        top: auto;
+        bottom: 70px;
+
+        transform:
+            translateX(50%);
+
+    }
+
+
+    .satori-pack-content {
+
+        width: 100%;
+
+        max-width: none;
+
+    }
+
+
+    .satori-pack-label {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 10px;
 
     }
 
 
     .satori-pack h2 {
 
-        font-size: 32px;
+        font-size: 34px;
+
+        letter-spacing: -1px;
+
+        margin-bottom: 15px;
 
     }
 
@@ -1033,14 +1258,114 @@ img {
 
         font-size: 13px;
 
+        line-height: 1.5;
+
     }
 
 
     .satori-pack-button {
 
+        width: 100%;
+
         margin-top: 20px;
 
-        padding: 12px 18px;
+        padding: 14px 18px;
+
+    }
+
+
+    /* -------------------------------------------------
+       CAJA EN MÓVIL
+    ------------------------------------------------- */
+
+    .satori-pack-visual {
+
+        position: relative;
+
+        width: 100%;
+
+        height: 245px;
+
+        margin-top: -5px;
+
+    }
+
+
+    .satori-pack-box {
+
+        width: 105%;
+
+        max-height: 280px;
+
+        transform:
+            translateY(8px);
+
+    }
+
+
+    .satori-pack:hover
+    .satori-pack-box {
+
+        transform:
+            translateY(8px);
+
+    }
+
+
+    .satori-pack-glow {
+
+        width: 260px;
+        height: 260px;
+
+        filter:
+            blur(60px);
+
+    }
+
+}
+
+
+/* =====================================================
+   MÓVILES MUY PEQUEÑOS
+====================================================== */
+
+@media (max-width: 430px) {
+
+    .satori-pack {
+
+        width:
+            calc(100% - 24px);
+
+        padding:
+            26px 18px 0;
+
+    }
+
+
+    .satori-pack h2 {
+
+        font-size: 31px;
+
+    }
+
+
+    .satori-pack p {
+
+        font-size: 12px;
+
+    }
+
+
+    .satori-pack-visual {
+
+        height: 220px;
+
+    }
+
+
+    .satori-pack-box {
+
+        width: 110%;
 
     }
 
