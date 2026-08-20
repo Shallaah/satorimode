@@ -970,6 +970,353 @@
         }
 
 
+
+        /* =========================================================
+           CARRUSEL — CONTENIDO DEL PACK
+        ========================================================== */
+
+        .sp-carousel-section {
+            padding: 78px 20px 70px;
+        }
+
+        .sp-carousel-heading {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .sp-carousel-heading h2 {
+            margin: 7px 0 0;
+            color: #111;
+            font-size: clamp(48px, 5vw, 76px);
+            line-height: .88;
+            letter-spacing: -4px;
+            font-weight: 950;
+        }
+
+        .sp-carousel-heading h2 span {
+            color: var(--sp-red);
+            font-style: italic;
+        }
+
+        .sp-carousel-heading p {
+            margin: 14px auto 0;
+            color: var(--sp-muted);
+            font-size: 12px;
+        }
+
+        .sp-carousel-steps {
+            max-width: 1100px;
+            margin: 0 auto 28px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .sp-step {
+            position: relative;
+            border: 0;
+            border-top: 1px solid #d8d8d8;
+            background: transparent;
+            padding: 15px 12px 12px;
+            color: #999;
+            text-align: center;
+            cursor: pointer;
+            transition: color .25s ease, border-color .25s ease;
+        }
+
+        .sp-step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: -1px;
+            right: 0;
+            width: 1px;
+            height: 13px;
+            background: #d8d8d8;
+        }
+
+        .sp-step strong {
+            display: block;
+            color: #111;
+            font-size: 20px;
+            line-height: 1;
+            font-weight: 950;
+        }
+
+        .sp-step span {
+            display: block;
+            margin-top: 7px;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .7px;
+        }
+
+        .sp-step.is-active {
+            border-top-color: var(--sp-red);
+            color: var(--sp-red);
+        }
+
+        .sp-step.is-active strong {
+            color: var(--sp-red);
+        }
+
+        .sp-step:hover {
+            color: var(--sp-red);
+        }
+
+        .sp-carousel {
+            position: relative;
+            max-width: 1320px;
+            min-height: 520px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: .72fr 1.28fr;
+            align-items: center;
+            gap: 44px;
+            padding: 42px 62px;
+            overflow: hidden;
+            border: 1px solid #ededed;
+            border-radius: 12px;
+            background: #fafafa;
+        }
+
+        .sp-carousel-copy {
+            position: relative;
+            z-index: 2;
+            padding: 25px 0 25px 18px;
+        }
+
+        .sp-carousel-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            border-radius: 50%;
+            background: var(--sp-red);
+            color: #fff;
+            font-size: 21px;
+            box-shadow: 0 10px 25px rgba(239,9,48,.16);
+        }
+
+        .sp-carousel-counter {
+            color: #111;
+            font-size: 17px;
+            font-weight: 950;
+            letter-spacing: -.5px;
+        }
+
+        .sp-carousel-counter span {
+            color: var(--sp-red);
+        }
+
+        .sp-carousel-copy h3 {
+            margin: 8px 0 0;
+            color: #111;
+            font-size: clamp(42px, 4vw, 66px);
+            line-height: .88;
+            letter-spacing: -4px;
+            font-weight: 950;
+        }
+
+        .sp-carousel-copy h3 span {
+            color: var(--sp-red);
+        }
+
+        .sp-carousel-line {
+            width: 50px;
+            height: 3px;
+            margin: 22px 0;
+            background: var(--sp-red);
+        }
+
+        .sp-carousel-copy p {
+            max-width: 400px;
+            margin: 0;
+            color: var(--sp-muted);
+            font-size: 12px;
+            line-height: 1.75;
+        }
+
+        .sp-carousel-tag {
+            display: inline-flex;
+            margin-top: 23px;
+            padding: 8px 11px;
+            background: #111;
+            color: #fff;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .sp-carousel-visual {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 9px;
+            background:
+                radial-gradient(circle at 50% 45%, #ffffff 0%, #f4f4f4 58%, #ececec 100%);
+        }
+
+        .sp-carousel-visual::before {
+            content: "";
+            position: absolute;
+            width: 62%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(239,9,48,.045);
+        }
+
+        .sp-carousel-visual img {
+            position: relative;
+            z-index: 1;
+            width: 82%;
+            height: 82%;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 25px 25px rgba(0,0,0,.16));
+            transition: opacity .18s ease, transform .35s ease;
+        }
+
+        .sp-carousel-visual.is-changing img {
+            opacity: 0;
+            transform: scale(.96);
+        }
+
+        .sp-carousel-number {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+            z-index: 3;
+            padding: 8px 10px;
+            background: #111;
+            color: #fff;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .sp-carousel-number span {
+            color: var(--sp-red);
+        }
+
+        .sp-carousel-arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 5;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-50%);
+            border: 1px solid #e8e8e8;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--sp-red);
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(0,0,0,.06);
+            transition: transform .2s ease, background .2s ease, color .2s ease;
+        }
+
+        .sp-carousel-arrow:hover {
+            transform: translateY(-50%) scale(1.08);
+            background: var(--sp-red);
+            color: #fff;
+        }
+
+        .sp-carousel-prev {
+            left: 15px;
+        }
+
+        .sp-carousel-next {
+            right: 15px;
+        }
+
+        .sp-carousel-tabs {
+            max-width: 1100px;
+            margin: 22px auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid #e7e7e7;
+            border-radius: 9px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,.045);
+            overflow: hidden;
+        }
+
+        .sp-tab {
+            position: relative;
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border: 0;
+            border-right: 1px solid #e7e7e7;
+            background: #fff;
+            color: #111;
+            cursor: pointer;
+            text-align: left;
+            transition: background .25s ease, color .25s ease;
+        }
+
+        .sp-tab:last-child {
+            border-right: 0;
+        }
+
+        .sp-tab > span {
+            font-size: 21px;
+            filter: grayscale(1);
+            transition: filter .25s ease;
+        }
+
+        .sp-tab strong,
+        .sp-tab small {
+            display: block;
+        }
+
+        .sp-tab strong {
+            font-size: 10px;
+            font-weight: 950;
+        }
+
+        .sp-tab small {
+            margin-top: 4px;
+            color: #777;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: .6px;
+        }
+
+        .sp-tab.is-active {
+            color: var(--sp-red);
+            background: #fff;
+        }
+
+        .sp-tab.is-active::after {
+            content: "";
+            position: absolute;
+            left: 12%;
+            right: 12%;
+            bottom: 0;
+            height: 3px;
+            background: var(--sp-red);
+        }
+
+        .sp-tab.is-active > span {
+            filter: none;
+        }
+
+        .sp-tab.is-active small {
+            color: var(--sp-red);
+        }
+
         /* =========================================================
            RESPONSIVE
         ========================================================== */
@@ -978,6 +1325,110 @@
 
             .sp-page {
                 width: min(100% - 40px, 1800px);
+            }
+
+
+            .sp-carousel-section {
+                padding: 58px 0 45px;
+            }
+
+            .sp-carousel-heading {
+                margin-bottom: 30px;
+            }
+
+            .sp-carousel-heading h2 {
+                font-size: 45px;
+                letter-spacing: -2px;
+            }
+
+            .sp-carousel-steps {
+                margin-bottom: 18px;
+            }
+
+            .sp-step {
+                padding: 11px 3px;
+            }
+
+            .sp-step strong {
+                font-size: 16px;
+            }
+
+            .sp-step span {
+                font-size: 7px;
+                letter-spacing: .25px;
+            }
+
+            .sp-carousel {
+                min-height: 0;
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding: 22px 16px 18px;
+                border-radius: 8px;
+            }
+
+            .sp-carousel-copy {
+                order: 2;
+                padding: 8px 20px 22px;
+            }
+
+            .sp-carousel-icon {
+                width: 42px;
+                height: 42px;
+                margin-bottom: 18px;
+                font-size: 18px;
+            }
+
+            .sp-carousel-copy h3 {
+                font-size: 42px;
+                letter-spacing: -2px;
+            }
+
+            .sp-carousel-copy p {
+                font-size: 11px;
+            }
+
+            .sp-carousel-visual {
+                order: 1;
+                min-height: 270px;
+            }
+
+            .sp-carousel-visual img {
+                width: 86%;
+                height: 86%;
+            }
+
+            .sp-carousel-arrow {
+                top: 135px;
+                width: 42px;
+                height: 42px;
+                font-size: 21px;
+            }
+
+            .sp-carousel-prev {
+                left: 8px;
+            }
+
+            .sp-carousel-next {
+                right: 8px;
+            }
+
+            .sp-carousel-tabs {
+                grid-template-columns: repeat(4, 1fr);
+                margin-top: 14px;
+            }
+
+            .sp-tab {
+                min-height: 68px;
+                gap: 0;
+                justify-content: center;
+            }
+
+            .sp-tab > span {
+                font-size: 18px;
+            }
+
+            .sp-tab div {
+                display: none;
             }
 
             .sp-hero {
@@ -1395,291 +1846,113 @@
 
 
             <!-- =================================================
-                 ELEMENTOS
+                 CARRUSEL — CONTENIDO DEL SATORII PACK
             ================================================== -->
 
-            <section class="sp-items">
+            <section class="sp-carousel-section" id="contenido">
 
+                <div class="sp-carousel-heading">
+                    <div class="sp-label">✦ LO QUE INCLUYE TU</div>
+                    <h2>SATORII <span>PACK.</span></h2>
+                    <p>Cuatro piezas exclusivas. Una experiencia SATORII.</p>
+                </div>
 
-                <!-- =================================================
-                     01 MINI POSTER
-                ================================================== -->
+                <div class="sp-carousel-steps" aria-label="Contenido del SATORII Pack">
+                    <button class="sp-step is-active" data-slide="0" type="button">
+                        <strong>01</strong>
+                        <span>🖼️ MINI PÓSTER</span>
+                    </button>
+                    <button class="sp-step" data-slide="1" type="button">
+                        <strong>02</strong>
+                        <span>💌 POSTAL</span>
+                    </button>
+                    <button class="sp-step" data-slide="2" type="button">
+                        <strong>03</strong>
+                        <span>✨ STICKERS</span>
+                    </button>
+                    <button class="sp-step" data-slide="3" type="button">
+                        <strong>04</strong>
+                        <span>🪪 TARJETA SATORII</span>
+                    </button>
+                </div>
 
-                <article class="sp-item">
+                <div class="sp-carousel">
 
-                    <div class="sp-item-image">
+                    <button class="sp-carousel-arrow sp-carousel-prev" type="button" aria-label="Anterior">
+                        ←
+                    </button>
 
-                        <div class="sp-item-number">
-                            01 · 🖼️ MINI PÓSTER
+                    <div class="sp-carousel-copy">
+                        <div class="sp-carousel-icon" id="spCarouselIcon">🖼️</div>
+
+                        <div class="sp-carousel-counter">
+                            <span id="spCarouselNumber">01</span> / 04
                         </div>
 
-                        <img
-                            src="img/productos/satorii-pack/gift.jpg"
-                            alt="Mini póster SATORII"
-                            loading="lazy"
-                        >
+                        <h3 id="spCarouselTitle">MINI PÓSTER<span>.</span></h3>
 
-                    </div>
+                        <div class="sp-carousel-line"></div>
 
-
-                    <div class="sp-item-content">
-
-                        <div class="sp-item-icon">
-                            🖼️
-                        </div>
-
-                        <h3>
-                            MINI<br>
-                            PÓSTER.
-                        </h3>
-
-                        <p>
+                        <p id="spCarouselText">
                             Una pequeña pieza de arte diseñada especialmente
                             para cada edición del SATORII PACK. Ideal para
                             decorar tu espacio y conservar como recuerdo.
                         </p>
 
-                        <div class="sp-item-tag">
-                            ✓ INCLUIDO EN EL PACK
+                        <div class="sp-carousel-tag" id="spCarouselTag">
+                            ✦ DISEÑO EXCLUSIVO
                         </div>
-
                     </div>
 
-                </article>
-
-
-                <!-- =================================================
-                     02 POSTAL
-                ================================================== -->
-
-                <article class="sp-item">
-
-                    <div class="sp-item-image">
-
-                        <div class="sp-item-number">
-                            02 · 💌 POSTAL
-                        </div>
+                    <div class="sp-carousel-visual">
+                        <div class="sp-carousel-number">SATORII PACK · <span id="spVisualNumber">01</span></div>
 
                         <img
-                            src="img/productos/satorii-pack/content.jpg"
-                            alt="Postal SATORII"
-                            loading="lazy"
+                            id="spCarouselImage"
+                            src="img/productos/satorii-pack/gift.jpg"
+                            alt="Mini póster SATORII"
                         >
-
                     </div>
 
+                    <button class="sp-carousel-arrow sp-carousel-next" type="button" aria-label="Siguiente">
+                        →
+                    </button>
 
-                    <div class="sp-item-content">
+                </div>
 
-                        <div class="sp-item-icon">
-                            💌
+                <div class="sp-carousel-tabs">
+
+                    <button class="sp-tab is-active" data-slide="0" type="button">
+                        <span>🖼️</span>
+                        <div>
+                            <strong>01</strong>
+                            <small>MINI PÓSTER</small>
                         </div>
+                    </button>
 
-                        <h3>
-                            POSTAL.
-                        </h3>
-
-                        <p>
-                            Una postal con un diseño especial de SATORII.
-                            Un pequeño recuerdo que puedes guardar,
-                            exhibir o compartir.
-                        </p>
-
-                        <div class="sp-item-tag">
-                            ✓ INCLUIDO EN EL PACK
+                    <button class="sp-tab" data-slide="1" type="button">
+                        <span>💌</span>
+                        <div>
+                            <strong>02</strong>
+                            <small>POSTAL</small>
                         </div>
+                    </button>
 
-                    </div>
-
-                </article>
-
-
-                <!-- =================================================
-                     03 STICKERS
-                ================================================== -->
-
-                <article class="sp-item">
-
-                    <div class="sp-item-image">
-
-                        <div class="sp-item-number">
-                            03 · ✨ STICKERS
+                    <button class="sp-tab" data-slide="2" type="button">
+                        <span>✨</span>
+                        <div>
+                            <strong>03</strong>
+                            <small>STICKERS</small>
                         </div>
+                    </button>
 
-                        <img
-                            src="img/productos/satorii-pack/content.jpg"
-                            alt="Stickers SATORII"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-
-                    <div class="sp-item-content">
-
-                        <div class="sp-item-icon">
-                            ✨
+                    <button class="sp-tab" data-slide="3" type="button">
+                        <span>🪪</span>
+                        <div>
+                            <strong>04</strong>
+                            <small>TARJETA SATORII</small>
                         </div>
-
-                        <h3>
-                            STICKERS.
-                        </h3>
-
-                        <p>
-                            Una selección de stickers diseñados para
-                            representar la identidad de SATORII.
-                            Pégalos donde quieras o guárdalos para tu colección.
-                        </p>
-
-                        <div class="sp-item-tag">
-                            ✓ INCLUIDO EN EL PACK
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- =================================================
-                     04 TARJETA
-                ================================================== -->
-
-                <article class="sp-item">
-
-                    <div class="sp-item-image">
-
-                        <div class="sp-item-number">
-                            04 · 🪪 TARJETA SATORII
-                        </div>
-
-                        <img
-                            src="img/productos/satorii-pack/content.jpg"
-                            alt="Tarjeta SATORII"
-                            loading="lazy"
-                        >
-
-                    </div>
-
-
-                    <div class="sp-item-content">
-
-                        <div class="sp-item-icon">
-                            🪪
-                        </div>
-
-                        <h3>
-                            TARJETA<br>
-                            SATORII.
-                        </h3>
-
-                        <p>
-                            Una tarjeta exclusiva que identifica la edición
-                            de tu SATORII PACK. Diseñada para ser guardada
-                            como parte de la experiencia.
-                        </p>
-
-                        <div class="sp-item-tag">
-                            ✦ EDICIÓN SATORII
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-            </section>
-
-
-            <!-- =================================================
-                 TARJETA DESTACADA
-            ================================================== -->
-
-            <section class="sp-card-section">
-
-                <div class="sp-card-section-inner">
-
-
-                    <div class="sp-card-visual">
-
-                        <div class="sp-card">
-
-                            <div class="sp-card-top">
-
-                                <div class="sp-card-logo">
-                                    SATORII
-                                </div>
-
-                                <div class="sp-card-edition">
-                                    EDITION 001
-                                </div>
-
-                            </div>
-
-
-                            <div class="sp-card-bottom">
-
-                                <div class="sp-card-number">
-                                    SATORII PACK
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div>
-
-                        <div class="sp-label">
-                            🪪 TARJETA SATORII
-                        </div>
-
-                        <h2>
-                            UN DETALLE.
-                            <span>MUY SATORII.</span>
-                        </h2>
-
-                        <p>
-                            La tarjeta SATORII forma parte del pack y
-                            acompaña cada edición con un diseño propio.
-                            Un pequeño elemento pensado para darle
-                            identidad a la experiencia.
-                        </p>
-
-
-                        <div class="sp-card-points">
-
-                            <div class="sp-card-point">
-
-                                <strong>
-                                    ✦ DISEÑO EXCLUSIVO
-                                </strong>
-
-                                <span>
-                                    Una tarjeta diseñada especialmente
-                                    para cada edición.
-                                </span>
-
-                            </div>
-
-
-                            <div class="sp-card-point">
-
-                                <strong>
-                                    🎴 PARTE DEL PACK
-                                </strong>
-
-                                <span>
-                                    No es un producto adicional.
-                                    Forma parte del SATORII PACK.
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    </button>
 
                 </div>
 
@@ -1864,6 +2137,124 @@
 
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const slides = [
+                {
+                    number: "01",
+                    icon: "🖼️",
+                    title: "MINI PÓSTER",
+                    text: "Una pequeña pieza de arte diseñada especialmente para cada edición del SATORII PACK. Ideal para decorar tu espacio y conservar como recuerdo.",
+                    tag: "✦ DISEÑO EXCLUSIVO",
+                    image: "img/productos/satorii-pack/gift.jpg",
+                    alt: "Mini póster SATORII"
+                },
+                {
+                    number: "02",
+                    icon: "💌",
+                    title: "POSTAL",
+                    text: "Una postal con un diseño especial de SATORII. Un pequeño recuerdo que puedes guardar, exhibir o compartir.",
+                    tag: "✦ DISEÑO EXCLUSIVO",
+                    image: "img/productos/satorii-pack/content.jpg",
+                    alt: "Postal SATORII"
+                },
+                {
+                    number: "03",
+                    icon: "✨",
+                    title: "STICKERS",
+                    text: "Una selección de stickers diseñados para representar la identidad de SATORII. Pégalos donde quieras o guárdalos para tu colección.",
+                    tag: "✦ DISEÑOS SATORII",
+                    image: "img/productos/satorii-pack/content.jpg",
+                    alt: "Stickers SATORII"
+                },
+                {
+                    number: "04",
+                    icon: "🪪",
+                    title: "TARJETA SATORII",
+                    text: "Una tarjeta exclusiva que identifica la edición de tu SATORII PACK. Un pequeño elemento pensado para formar parte de la experiencia.",
+                    tag: "✦ EDICIÓN SATORII",
+                    image: "img/productos/satorii-pack/content.jpg",
+                    alt: "Tarjeta SATORII"
+                }
+            ];
+
+            let current = 0;
+
+            const icon = document.getElementById("spCarouselIcon");
+            const number = document.getElementById("spCarouselNumber");
+            const title = document.getElementById("spCarouselTitle");
+            const paragraph = document.getElementById("spCarouselText");
+            const tag = document.getElementById("spCarouselTag");
+            const image = document.getElementById("spCarouselImage");
+            const visualNumber = document.getElementById("spVisualNumber");
+            const visual = document.querySelector(".sp-carousel-visual");
+
+            const steps = document.querySelectorAll(".sp-step");
+            const tabs = document.querySelectorAll(".sp-tab");
+
+            function updateCarousel(index) {
+
+                current = (index + slides.length) % slides.length;
+                const slide = slides[current];
+
+                visual.classList.add("is-changing");
+
+                setTimeout(function () {
+
+                    icon.textContent = slide.icon;
+                    number.textContent = slide.number;
+                    visualNumber.textContent = slide.number;
+
+                    title.innerHTML = slide.title + "<span>.</span>";
+                    paragraph.textContent = slide.text;
+                    tag.textContent = slide.tag;
+
+                    image.src = slide.image;
+                    image.alt = slide.alt;
+
+                    steps.forEach(function (step, i) {
+                        step.classList.toggle("is-active", i === current);
+                    });
+
+                    tabs.forEach(function (tab, i) {
+                        tab.classList.toggle("is-active", i === current);
+                    });
+
+                    visual.classList.remove("is-changing");
+
+                }, 160);
+            }
+
+            document.querySelector(".sp-carousel-prev").addEventListener("click", function () {
+                updateCarousel(current - 1);
+            });
+
+            document.querySelector(".sp-carousel-next").addEventListener("click", function () {
+                updateCarousel(current + 1);
+            });
+
+            steps.forEach(function (step) {
+                step.addEventListener("click", function () {
+                    updateCarousel(Number(step.dataset.slide));
+                });
+            });
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener("click", function () {
+                    updateCarousel(Number(tab.dataset.slide));
+                });
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "ArrowLeft") updateCarousel(current - 1);
+                if (event.key === "ArrowRight") updateCarousel(current + 1);
+            });
+
+        });
+    </script>
 
 </body>
 </html>
