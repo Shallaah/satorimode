@@ -221,6 +221,8 @@
 
             text-decoration: none;
 
+            cursor: pointer;
+
         }
 
 
@@ -1048,6 +1050,7 @@
                         function (product) {
 
                             return (
+                                product.available === true &&
                                 String(
                                     product.category || ""
                                 )
@@ -1070,6 +1073,198 @@
                             ? "producto"
                             : "productos"
                     }`;
+
+
+                /* =================================================
+                   ESCAPE HTML
+                ================================================= */
+
+                function escapeHTML(
+                    value
+                ) {
+
+                    return String(
+                        value ?? ""
+                    )
+                    .replace(
+                        /&/g,
+                        "&amp;"
+                    )
+                    .replace(
+                        /</g,
+                        "&lt;"
+                    )
+                    .replace(
+                        />/g,
+                        "&gt;"
+                    )
+                    .replace(
+                        /"/g,
+                        "&quot;"
+                    )
+                    .replace(
+                        /'/g,
+                        "&#039;"
+                    );
+
+                }
+
+
+                /* =================================================
+                   CREAR SLUG
+                ================================================= */
+
+                function createProductSlug(
+                    product
+                ) {
+
+                    return String(
+                        product.id ||
+                        product.name ||
+                        ""
+                    )
+                    .normalize("NFD")
+                    .replace(
+                        /[\u0300-\u036f]/g,
+                        ""
+                    )
+                    .toLowerCase()
+                    .trim()
+                    .replace(
+                        /[^a-z0-9]+/g,
+                        "-"
+                    )
+                    .replace(
+                        /^-+|-+$/g,
+                        "");
+
+                }
+
+
+                /* =================================================
+                   OBTENER URL DEL PRODUCTO
+                ================================================= */
+
+                function getProductUrl(
+                    product
+                ) {
+
+                    if (
+                        !product
+                    ) {
+
+                        return "#";
+
+                    }
+
+
+                    /*
+                     * =================================================
+                     * URL DEFINIDA EN PRODUCTS.JS
+                     * =================================================
+                     */
+
+                    if (
+                        product.url
+                    ) {
+
+                        let url =
+                            String(
+                                product.url
+                            )
+                            .trim();
+
+
+                        /*
+                         * Eliminar barras iniciales.
+                         */
+
+                        url =
+                            url.replace(
+                                /^\/+/,
+                                ""
+                            );
+
+
+                        /*
+                         * Si ya viene con
+                         * satorimode/, no lo duplicamos.
+                         */
+
+                        if (
+                            url.startsWith(
+                                "satorimode/"
+                            )
+                        ) {
+
+                            return "/" + url;
+
+                        }
+
+
+                        /*
+                         * Ruta normal del proyecto.
+                         */
+
+                        return (
+                            "/satorimode/" +
+                            url
+                        );
+
+                    }
+
+
+                    /*
+                     * =================================================
+                     * RESPALDO
+                     * =================================================
+                     */
+
+                    const productId =
+                        createProductSlug(
+                            product
+                        );
+
+
+                    return (
+                        "/satorimode/" +
+                        "productos/" +
+                        "anime/" +
+                        productId +
+                        ".html"
+                    );
+
+                }
+
+
+                /* =================================================
+                   FORMATO PRECIO
+                ================================================= */
+
+                function formatPrice(
+                    value
+                ) {
+
+                    return new Intl.NumberFormat(
+                        "es-CL",
+                        {
+                            style:
+                                "currency",
+
+                            currency:
+                                "CLP",
+
+                            maximumFractionDigits:
+                                0
+                        }
+                    )
+                    .format(
+                        Number(
+                            value
+                        ) || 0
+                    );
+
+                }
 
 
                 /* =================================================
@@ -1107,7 +1302,6 @@
                 animeProducts.forEach(
                     function (product) {
 
-
                         /* =========================================
                            IMÁGENES
                         ========================================== */
@@ -1128,8 +1322,9 @@
                         ========================================== */
 
                         const productUrl =
-                            product.url ||
-                            "";
+                            getProductUrl(
+                                product
+                            );
 
 
                         /* =========================================
@@ -1137,23 +1332,8 @@
                         ========================================== */
 
                         const price =
-                            new Intl.NumberFormat(
-                                "es-CL",
-                                {
-                                    style:
-                                        "currency",
-
-                                    currency:
-                                        "CLP",
-
-                                    maximumFractionDigits:
-                                        0
-                                }
-                            )
-                            .format(
-                                Number(
-                                    product.price
-                                ) || 0
+                            formatPrice(
+                                product.price
                             );
 
 
@@ -1165,20 +1345,15 @@
 
 
                         /*
-                           NUEVO
-
-                           Utilizamos directamente
-                           isProductNew() desde products.js.
-
-                           Así la etiqueta se elimina
-                           automáticamente después
-                           de los 7 días.
-                        */
+                         * NUEVO
+                         */
 
                         if (
                             typeof isProductNew ===
                             "function" &&
-                            isProductNew(product)
+                            isProductNew(
+                                product
+                            )
                         ) {
 
                             badges.push(`
@@ -1198,8 +1373,8 @@
 
 
                         /*
-                           DESTACADO
-                        */
+                         * DESTACADO
+                         */
 
                         if (
                             product.featured ===
@@ -1237,20 +1412,22 @@
 
 
                         /*
-                           No inventamos una URL.
+                         * IMPORTANTE:
+                         *
+                         * La tarjeta completa es el enlace.
+                         */
 
-                           products.js ya tiene
-                           la página correspondiente.
-                        */
+                        card.href =
+                            productUrl;
 
-                        if (
-                            productUrl
-                        ) {
 
-                            card.href =
-                                productUrl;
-
-                        }
+                        card.setAttribute(
+                            "aria-label",
+                            `Ver ${
+                                product.name ||
+                                "producto"
+                            }`
+                        );
 
 
                         /* =========================================
@@ -1292,11 +1469,13 @@
                                                 class="
                                                     image-primary
                                                 "
-                                                src="${primaryImage}"
-                                                alt="${
+                                                src="${escapeHTML(
+                                                    primaryImage
+                                                )}"
+                                                alt="${escapeHTML(
                                                     product.name ||
                                                     "Producto SATORII"
-                                                }"
+                                                )}"
                                                 loading="lazy"
                                             >
 
@@ -1313,11 +1492,13 @@
                                                 class="
                                                     image-secondary
                                                 "
-                                                src="${secondaryImage}"
-                                                alt="${
+                                                src="${escapeHTML(
+                                                    secondaryImage
+                                                )}"
+                                                alt="${escapeHTML(
                                                     product.name ||
                                                     "Producto SATORII"
-                                                }"
+                                                )}"
                                                 loading="lazy"
                                             >
 
@@ -1348,10 +1529,12 @@
                                         anime-product-name
                                     "
                                 >
-                                    ${
+
+                                    ${escapeHTML(
                                         product.name ||
                                         "Producto"
-                                    }
+                                    )}
+
                                 </h3>
 
 
@@ -1360,7 +1543,9 @@
                                         anime-product-price
                                     "
                                 >
+
                                     ${price}
+
                                 </div>
 
                             </div>
