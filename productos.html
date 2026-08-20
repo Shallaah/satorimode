@@ -524,6 +524,8 @@
 
             color: inherit;
 
+            cursor: pointer;
+
         }
 
 
@@ -1160,10 +1162,6 @@
             <section class="products-controls">
 
 
-                <!-- =============================================
-                     CABECERA
-                ============================================== -->
-
                 <div class="products-category-bar">
 
                     <h2
@@ -1184,9 +1182,9 @@
                 </div>
 
 
-                <!-- =============================================
-                     BOTÓN FILTROS
-                ============================================== -->
+                <!-- =================================================
+                     FILTROS
+                ================================================== -->
 
                 <button
                     type="button"
@@ -1208,19 +1206,15 @@
                 </button>
 
 
-                <!-- =============================================
-                     PANEL
-                ============================================== -->
-
                 <div
                     class="products-filter-panel"
                     id="products-filter-panel"
                 >
 
 
-                    <!-- =========================================
+                    <!-- =================================================
                          CATEGORÍA
-                    ========================================== -->
+                    ================================================== -->
 
                     <div class="products-filter-section">
 
@@ -1248,9 +1242,9 @@
                     </div>
 
 
-                    <!-- =========================================
+                    <!-- =================================================
                          COLOR
-                    ========================================== -->
+                    ================================================== -->
 
                     <div
                         class="products-filter-section"
@@ -1271,9 +1265,9 @@
                     </div>
 
 
-                    <!-- =========================================
+                    <!-- =================================================
                          ORDEN
-                    ========================================== -->
+                    ================================================== -->
 
                     <div class="products-filter-section">
 
@@ -1295,14 +1289,22 @@
                                 Precio: menor a mayor
                             </option>
 
+                            <option value="price-desc">
+                                Precio: mayor a menor
+                            </option>
+
+                            <option value="name-asc">
+                                Nombre: A → Z
+                            </option>
+
                         </select>
 
                     </div>
 
 
-                    <!-- =========================================
+                    <!-- =================================================
                          LIMPIAR
-                    ========================================== -->
+                    ================================================== -->
 
                     <button
                         type="button"
@@ -1462,7 +1464,7 @@
 
                 /* =================================================
                    COMPROBAR PRODUCTS
-                ================================================= */
+                ================================================== */
 
                 if (
                     typeof PRODUCTS === "undefined" ||
@@ -1490,6 +1492,21 @@
                     }
 
                     return;
+
+                }
+
+
+                /* =================================================
+                   COMPROBAR FUNCIÓN NUEVO
+                ================================================== */
+
+                if (
+                    typeof isProductNew !== "function"
+                ) {
+
+                    console.warn(
+                        "SatoriMode · isProductNew() no está disponible."
+                    );
 
                 }
 
@@ -1558,33 +1575,6 @@
                         /'/g,
                         "&#039;"
                     );
-
-                }
-
-
-                /* =================================================
-                   SLUG
-                ================================================= */
-
-                function slugify(value) {
-
-                    return String(
-                        value || ""
-                    )
-                    .normalize("NFD")
-                    .replace(
-                        /[\u0300-\u036f]/g,
-                        ""
-                    )
-                    .toLowerCase()
-                    .trim()
-                    .replace(
-                        /[^a-z0-9]+/g,
-                        "-"
-                    )
-                    .replace(
-                        /^-+|-+$/g,
-                        "");
 
                 }
 
@@ -1700,7 +1690,7 @@
 
                 /* =================================================
                    CREAR BOTÓN
-                ================================================= */
+                ================================================== */
 
                 function createFilterButton(
                     label,
@@ -1743,53 +1733,39 @@
 
                 /* =================================================
                    CONSTRUIR FILTROS
-                ================================================= */
+                ================================================== */
 
                 function buildFilters() {
 
                     /* =============================================
                        CATEGORÍAS
+
+                       Ahora vienen directamente de PRODUCTS.
                     ============================================== */
 
                     const categories = [
 
-                        "anime",
+                        ...new Set(
 
-                        "anime-goods",
+                            PRODUCTS
+                                .map(
+                                    function (
+                                        product
+                                    ) {
 
-                        "torii"
+                                        return product.category;
+
+                                    }
+                                )
+                                .filter(Boolean)
+
+                        )
 
                     ];
 
 
                     categories.forEach(
                         function (category) {
-
-                            const exists =
-                                PRODUCTS.some(
-                                    function (product) {
-
-                                        return (
-                                            normalize(
-                                                product.category
-                                            ) ===
-                                            normalize(
-                                                category
-                                            )
-                                        );
-
-                                    }
-                                );
-
-
-                            if (
-                                !exists
-                            ) {
-
-                                return;
-
-                            }
-
 
                             const button =
                                 createFilterButton(
@@ -1853,7 +1829,7 @@
 
                 /* =================================================
                    FILTRAR PRODUCTOS
-                ================================================= */
+                ================================================== */
 
                 function getFilteredProducts() {
 
@@ -1971,6 +1947,63 @@
                         );
 
                     }
+
+                    else if (
+                        state.sort ===
+                        "price-desc"
+                    ) {
+
+                        result.sort(
+                            function (
+                                a,
+                                b
+                            ) {
+
+                                return (
+                                    Number(
+                                        b.price
+                                    ) || 0
+                                ) -
+                                (
+                                    Number(
+                                        a.price
+                                    ) || 0
+                                );
+
+                            }
+                        );
+
+                    }
+
+                    else if (
+                        state.sort ===
+                        "name-asc"
+                    ) {
+
+                        result.sort(
+                            function (
+                                a,
+                                b
+                            ) {
+
+                                return String(
+                                    a.name || ""
+                                ).localeCompare(
+                                    String(
+                                        b.name || ""
+                                    ),
+                                    "es",
+                                    {
+                                        sensitivity:
+                                            "base"
+                                    }
+                                );
+
+                            }
+                        );
+
+                    }
+
                     else {
 
                         result.sort(
@@ -2002,8 +2035,107 @@
 
 
                 /* =================================================
+                   CREAR RUTA DEL PRODUCTO
+                ================================================== */
+
+                function getProductUrl(
+                    product
+                ) {
+
+                    /*
+                     * Si el producto tiene URL definida,
+                     * usamos esa URL.
+                     */
+
+                    if (
+                        product &&
+                        product.url
+                    ) {
+
+                        const cleanUrl =
+                            String(
+                                product.url
+                            )
+                            .trim()
+                            .replace(
+                                /^\/+/,
+                                ""
+                            );
+
+
+                        /*
+                         * Si ya viene con /satorimode/,
+                         * no lo duplicamos.
+                         */
+
+                        if (
+                            cleanUrl.startsWith(
+                                "satorimode/"
+                            )
+                        ) {
+
+                            return "/" +
+                                cleanUrl;
+
+                        }
+
+
+                        return (
+                            "/satorimode/" +
+                            cleanUrl
+                        );
+
+                    }
+
+
+                    /*
+                     * Fallback automático.
+                     */
+
+                    const category =
+                        normalize(
+                            product.category
+                        );
+
+
+                    const productId =
+                        String(
+                            product.id ||
+                            product.name ||
+                            ""
+                        )
+                        .normalize("NFD")
+                        .replace(
+                            /[\u0300-\u036f]/g,
+                            ""
+                        )
+                        .toLowerCase()
+                        .trim()
+                        .replace(
+                            /[^a-z0-9]+/g,
+                            "-"
+                        )
+                        .replace(
+                            /^-+|-+$/g,
+                            ""
+                        );
+
+
+                    return (
+                        "/satorimode/" +
+                        "productos/" +
+                        category +
+                        "/" +
+                        productId +
+                        ".html"
+                    );
+
+                }
+
+
+                /* =================================================
                    RENDER
-                ================================================= */
+                ================================================== */
 
                 function renderProducts() {
 
@@ -2038,6 +2170,7 @@
                             .toUpperCase();
 
                     }
+
                     else {
 
                         categoryTitle.textContent =
@@ -2091,33 +2224,9 @@
                                 primaryImage;
 
 
-                            const category =
-                                normalize(
-                                    product.category
-                                );
-
-
-                            const productId =
-                                slugify(
-                                    product.id ||
-                                    product.name
-                                );
-
-
-                            /*
-                               Usamos product.url cuando
-                               existe. Si no existe,
-                               construimos la ruta.
-                            */
-
                             const productUrl =
-                                product.url ||
-                                (
-                                    "productos/" +
-                                    category +
-                                    "/" +
-                                    productId +
-                                    ".html"
+                                getProductUrl(
+                                    product
                                 );
 
 
@@ -2133,6 +2242,16 @@
 
                             card.href =
                                 productUrl;
+
+
+                            /*
+                             * Permite también abrir con teclado.
+                             */
+
+                            card.setAttribute(
+                                "aria-label",
+                                `Ver ${product.name || "producto"}`
+                            );
 
 
                             const categoryLabel =
@@ -2151,14 +2270,26 @@
 
                             /* =====================================
                                BADGE NUEVO
+
+                               IMPORTANTE:
+                               Ahora respeta releaseDate + newDays.
                             ====================================== */
 
                             let badges = "";
 
 
+                            const productIsNew =
+                                typeof isProductNew ===
+                                "function"
+                                    ? isProductNew(
+                                        product
+                                    )
+                                    : product.newProduct ===
+                                      true;
+
+
                             if (
-                                product.newProduct ===
-                                true
+                                productIsNew
                             ) {
 
                                 badges = `
@@ -2302,7 +2433,7 @@
 
                 /* =================================================
                    ACTUALIZAR BOTONES
-                ================================================= */
+                ================================================== */
 
                 function updateFilterButtons() {
 
@@ -2371,7 +2502,7 @@
 
                 /* =================================================
                    CLICK FILTROS
-                ================================================= */
+                ================================================== */
 
                 document.addEventListener(
                     "click",
@@ -2430,41 +2561,8 @@
 
 
                 /* =================================================
-                   BOTÓN TODOS
-                ================================================= */
-
-                document.addEventListener(
-                    "click",
-                    function (event) {
-
-                        const button =
-                            event.target.closest(
-                                "[data-filter-type='category'][data-filter-value='']"
-                            );
-
-
-                        if (!button) {
-
-                            return;
-
-                        }
-
-
-                        state.category =
-                            "";
-
-
-                        updateFilterButtons();
-
-                        renderProducts();
-
-                    }
-                );
-
-
-                /* =================================================
                    ORDEN
-                ================================================= */
+                ================================================== */
 
                 sortSelect.addEventListener(
                     "change",
@@ -2481,7 +2579,7 @@
 
                 /* =================================================
                    LIMPIAR
-                ================================================= */
+                ================================================== */
 
                 clearButton.addEventListener(
                     "click",
@@ -2511,7 +2609,7 @@
 
                 /* =================================================
                    ABRIR / CERRAR FILTROS
-                ================================================= */
+                ================================================== */
 
                 filterToggle.addEventListener(
                     "click",
