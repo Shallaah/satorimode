@@ -136,7 +136,18 @@ const PRODUCTS = [
 
         featured: true,
 
-        newProduct: true
+        newProduct: true,
+
+
+        /* =================================================
+           NUEVO HASTA
+           
+           La etiqueta NUEVO se mostrará hasta esta fecha.
+           Formato: YYYY-MM-DD
+        ================================================== */
+
+        newUntil:
+            "2026-08-23"
 
     },
 
@@ -274,7 +285,15 @@ const PRODUCTS = [
 
         featured: false,
 
-        newProduct: true
+        newProduct: true,
+
+
+        /* =================================================
+           NUEVO HASTA
+        ================================================== */
+
+        newUntil:
+            "2026-08-23"
 
     }
 
@@ -282,8 +301,80 @@ const PRODUCTS = [
 
 
 /* =========================================================
-   FUNCIONES BÁSICAS
+   SISTEMA DE PRODUCTO NUEVO
    ========================================================= */
+
+
+/* =========================================================
+   COMPROBAR SI UN PRODUCTO SIGUE SIENDO NUEVO
+   ========================================================= */
+
+function isProductNew(product) {
+
+    if (!product) {
+        return false;
+    }
+
+
+    /* =====================================================
+       SI TIENE FECHA DE EXPIRACIÓN
+    ====================================================== */
+
+    if (product.newUntil) {
+
+        const today =
+            new Date();
+
+
+        today.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        const expirationDate =
+            new Date(
+                product.newUntil +
+                "T00:00:00"
+            );
+
+
+        return (
+            today <
+            expirationDate
+        );
+
+    }
+
+
+    /* =====================================================
+       COMPATIBILIDAD CON PRODUCTOS ANTIGUOS
+    ====================================================== */
+
+    return (
+        product.newProduct === true
+    );
+
+}
+
+
+/* =========================================================
+   OBTENER FECHA DE EXPIRACIÓN DE NUEVO
+   ========================================================= */
+
+function getProductNewUntil(product) {
+
+    if (!product) {
+        return null;
+    }
+
+
+    return product.newUntil ||
+        null;
+
+}
 
 
 /* =========================================================
@@ -410,8 +501,11 @@ function getNewProducts() {
 
     return PRODUCTS.filter(
         product =>
-            product.newProduct === true &&
+
+            isProductNew(product) &&
+
             product.available === true
+
     );
 
 }
@@ -1404,7 +1498,7 @@ function filterProducts(
         result =
             result.filter(
                 product =>
-                    product.newProduct === true
+                    isProductNew(product)
             );
 
     }
