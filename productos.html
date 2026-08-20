@@ -2459,18 +2459,18 @@
                     ============================================== */
 
                     if (
-                        state.newProduct
-                    ) {
+    state.newProduct
+) {
 
-                        result =
-                            result.filter(
-                                product =>
-                                    product.newProduct ===
-                                    true
-                            );
+    result =
+        result.filter(
+            product =>
+                typeof isProductNew === "function"
+                    ? isProductNew(product)
+                    : product.newProduct === true
+        );
 
-                    }
-
+}
 
                     /* =============================================
                        ORDENAMIENTO
@@ -2719,24 +2719,25 @@
 
 
                             if (
-                                product.newProduct ===
-                                true
-                            ) {
+    typeof isProductNew === "function"
+        ? isProductNew(product)
+        : product.newProduct === true
+) {
 
-                                badges.push(
-                                    `
-                                    <span
-                                        class="
-                                            products-product-badge
-                                            new
-                                        "
-                                    >
-                                        NUEVO
-                                    </span>
-                                    `
-                                );
+    badges.push(
+        `
+        <span
+            class="
+                products-product-badge
+                new
+            "
+        >
+            NUEVO
+        </span>
+        `
+    );
 
-                            }
+}
 
 
                             if (
