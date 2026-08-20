@@ -1,0 +1,1456 @@
+============================================================
+                    SATORII — MANUAL MAESTRO
+============================================================
+
+Documento central de identidad, diseño, estructura y
+convenciones para el desarrollo de la página web de SATORII.
+
+Este archivo debe consultarse antes de crear o modificar
+cualquier página, componente, imagen o sección del sitio.
+
+
+============================================================
+1. IDENTIDAD DE SATORII
+============================================================
+
+Nombre:
+SATORII
+
+Concepto:
+
+SATORII combina:
+
+- Cultura japonesa
+- Anime
+- Streetwear
+- Diseño urbano
+- Cultura pop
+- Productos coleccionables
+- Identidad visual japonesa contemporánea
+
+La página debe sentirse:
+
+- Moderna
+- Urbana
+- Minimalista
+- Premium
+- Japonesa sin caer en exceso de elementos tradicionales
+- Visualmente fuerte
+- Limpia
+- Fácil de navegar
+
+
+============================================================
+2. COLORES OFICIALES
+============================================================
+
+ROJO PRINCIPAL SATORII:
+
+#EF0930
+
+Este color debe utilizarse como rojo oficial de la marca.
+
+Usos principales:
+
+- Botones principales
+- Hover importantes
+- Ofertas
+- Descuentos
+- Acentos
+- Indicadores
+- Contadores
+- Elementos destacados
+- Links activos
+- Bordes destacados
+- Efectos de interacción
+
+
+NEGRO:
+
+#000000
+
+Usos:
+
+- Header
+- Fondos principales
+- Texto fuerte
+- Footer
+- Botones secundarios
+- Secciones oscuras
+
+
+NEGRO SUAVE:
+
+#111111
+
+Usos:
+
+- Texto
+- Botones
+- Fondos secundarios
+- Elementos de interfaz
+
+
+BLANCO:
+
+#FFFFFF
+
+Usos:
+
+- Fondos
+- Texto sobre negro
+- Texto sobre rojo
+- Tarjetas
+- Modales
+
+
+GRIS CLARO:
+
+#F5F5F5
+
+Usos:
+
+- Fondos secundarios
+- Áreas de productos
+- Separadores suaves
+
+
+GRIS BORDE:
+
+#DDDDDD
+
+Usos:
+
+- Bordes
+- Separadores
+- Inputs
+
+
+GRIS TEXTO:
+
+#777777
+
+Usos:
+
+- Texto secundario
+- Descripciones
+- Información complementaria
+
+
+IMPORTANTE:
+
+No crear nuevos rojos para la página.
+
+El rojo oficial de SATORII es:
+
+#EF0930
+
+
+============================================================
+3. TIPOGRAFÍAS
+============================================================
+
+TIPOGRAFÍA PRINCIPAL:
+
+Inter
+
+Usos:
+
+- Navegación
+- Botones
+- Texto
+- Formularios
+- Información
+- Interfaz
+
+
+TIPOGRAFÍA DE MARCA / TÍTULOS:
+
+Barlow Condensed
+
+Usos:
+
+- Logo
+- Títulos grandes
+- Títulos de secciones
+- Elementos visuales
+- Textos de impacto
+
+
+ESTILO DEL LOGO:
+
+- Barlow Condensed
+- Bold / Extra Bold
+- Italic
+- Mayúsculas
+- Letter spacing reducido
+- Ligera inclinación
+
+
+============================================================
+4. ESTRUCTURA DE CARPETAS
+============================================================
+
+La estructura recomendada del proyecto es:
+
+
+/satorimode/
+
+    index.html
+
+    productos.html
+
+    producto.html
+
+    carrito.html
+
+    checkout.html
+
+    cuenta.html
+
+    satorii-pack.html
+
+    regala-satorii.html
+
+    anime.html
+
+    torii.html
+
+    anime-goods.html
+
+    cambios-y-devoluciones.html
+
+    preguntas-frecuentes.html
+
+    envios.html
+
+    guia-tallas.html
+
+
+    /js/
+
+        satorii-header.js
+        satorii-footer.js
+        productos.js
+        carrito.js
+        producto.js
+        checkout.js
+
+
+    /css/
+
+        global.css
+        productos.css
+        producto.css
+        carrito.css
+        checkout.css
+
+
+    /img/
+
+        /logo/
+
+        /banner/
+
+        /productos/
+
+        /colecciones/
+
+        /categorias/
+
+        /packs/
+
+        /iconos/
+
+        /promociones/
+
+        /decoracion/
+
+
+============================================================
+5. IMÁGENES
+============================================================
+
+Todas las imágenes deben estar organizadas por función.
+
+NO colocar imágenes aleatoriamente en la carpeta principal.
+
+
+------------------------------------------------------------
+5.1 PRODUCTOS
+------------------------------------------------------------
+
+Ruta:
+
+/img/productos/
+
+
+Ejemplo:
+
+/img/productos/polera-torii-01.webp
+
+
+Formato recomendado:
+
+WEBP
+
+
+Nombre recomendado:
+
+producto-nombre-numero.webp
+
+
+Ejemplo:
+
+polera-torii-01.webp
+polera-torii-02.webp
+polera-torii-03.webp
+
+
+Para galerías:
+
+polera-torii-01.webp
+polera-torii-02.webp
+polera-torii-03.webp
+polera-torii-04.webp
+
+
+------------------------------------------------------------
+5.2 BANNERS
+------------------------------------------------------------
+
+Ruta:
+
+/img/banner/
+
+
+Ejemplos:
+
+/img/banner/hero-principal.webp
+/img/banner/hero-anime.webp
+/img/banner/satorii-pack.webp
+/img/banner/promocion-verano.webp
+
+
+Los banners deben mantener proporciones consistentes.
+
+
+------------------------------------------------------------
+5.3 COLECCIONES
+------------------------------------------------------------
+
+Ruta:
+
+/img/colecciones/
+
+
+Ejemplos:
+
+/img/colecciones/anime.webp
+/img/colecciones/torii.webp
+/img/colecciones/anime-goods.webp
+
+
+------------------------------------------------------------
+5.4 PACKS
+------------------------------------------------------------
+
+Ruta:
+
+/img/packs/
+
+
+Ejemplos:
+
+/img/packs/satorii-pack-01.webp
+/img/packs/satorii-pack-02.webp
+
+
+------------------------------------------------------------
+5.5 ICONOS
+------------------------------------------------------------
+
+Ruta:
+
+/img/iconos/
+
+
+Siempre que sea posible:
+
+- SVG
+- O iconos realizados mediante CSS/SVG
+
+
+No utilizar imágenes rasterizadas para iconos simples
+si pueden realizarse con SVG.
+
+
+============================================================
+6. NOMBRES DE ARCHIVOS
+============================================================
+
+Usar:
+
+- minúsculas
+- guiones
+- sin espacios
+- sin caracteres especiales
+- sin tildes
+
+
+CORRECTO:
+
+polera-torii-negra.webp
+
+
+INCORRECTO:
+
+Polera Torii Negra.webp
+
+Poléra_Torii.png
+
+
+============================================================
+7. HEADER
+============================================================
+
+El header oficial se encuentra implementado mediante:
+
+satorii-header.js
+
+
+No duplicar manualmente el header dentro de cada HTML.
+
+
+El header incluye:
+
+- Barra superior
+- Instagram
+- Envíos a todo Chile
+- Logo SATORII
+- Navegación
+- Colecciones
+- Productos
+- Ayuda
+- Buscador
+- Cuenta
+- Carrito
+- Menú móvil
+- Carrito lateral
+- Buscador modal
+- Header flotante al hacer scroll
+
+
+COLOR HEADER:
+
+#000000
+
+
+ROJO:
+
+#EF0930
+
+
+IMPORTANTE:
+
+Si se modifica el header:
+
+Modificar solamente:
+
+satorii-header.js
+
+
+No crear versiones diferentes del header para cada página.
+
+
+============================================================
+8. FOOTER
+============================================================
+
+El footer debe ser global.
+
+Archivo:
+
+satorii-footer.js
+
+
+Todas las páginas deben utilizar el mismo footer.
+
+
+Debe incluir:
+
+- Logo SATORII
+- Navegación
+- Colecciones
+- Ayuda
+- Información de envíos
+- Cambios y devoluciones
+- Redes sociales
+- Información legal
+- Copyright
+
+
+El diseño debe mantener:
+
+- Negro
+- Blanco
+- Rojo SATORII
+
+
+============================================================
+9. PRODUCTOS
+============================================================
+
+Todos los productos deben utilizar una estructura de datos
+consistente.
+
+
+Ejemplo:
+
+{
+    id: "satorii-001",
+    name: "Polera Torii",
+    price: 24990,
+    image: "img/productos/polera-torii-01.webp",
+    category: "torii",
+    collection: "anime",
+    sizes: ["S", "M", "L", "XL"]
+}
+
+
+PROPIEDADES PRINCIPALES:
+
+id
+name
+price
+image
+category
+collection
+sizes
+
+
+Propiedades opcionales:
+
+description
+images
+oldPrice
+discount
+stock
+featured
+newProduct
+colors
+tags
+
+
+============================================================
+10. TARJETAS DE PRODUCTOS
+============================================================
+
+Las tarjetas deben mantener un diseño limpio y moderno.
+
+
+Cada tarjeta puede contener:
+
+- Imagen
+- Etiqueta NUEVO
+- Etiqueta OFERTA
+- Nombre
+- Precio
+- Precio anterior
+- Descuento
+- Botón / interacción de carrito
+
+
+INTERACCIÓN HOVER:
+
+Al pasar el mouse:
+
+- La tarjeta puede elevarse ligeramente
+- La imagen puede hacer un pequeño zoom
+- Puede aparecer una sombra
+- El rojo SATORII puede utilizarse como acento
+
+
+NO exagerar las animaciones.
+
+
+Las animaciones deben sentirse:
+
+- suaves
+- rápidas
+- premium
+
+
+============================================================
+11. ANIMACIONES
+============================================================
+
+Duración recomendada:
+
+0.2s
+0.25s
+0.3s
+
+
+Usar:
+
+ease
+ease-out
+
+
+Evitar animaciones demasiado lentas.
+
+
+La interfaz debe sentirse rápida.
+
+
+Para usuarios con:
+
+prefers-reduced-motion: reduce
+
+Las animaciones deben reducirse o eliminarse.
+
+
+============================================================
+12. BOTONES
+============================================================
+
+BOTÓN PRINCIPAL:
+
+Fondo:
+
+#EF0930
+
+Texto:
+
+#FFFFFF
+
+
+Hover:
+
+#111111
+
+
+BOTÓN SECUNDARIO:
+
+Fondo:
+
+#111111
+
+Texto:
+
+#FFFFFF
+
+
+Hover:
+
+#EF0930
+
+
+BOTÓN OUTLINE:
+
+Fondo:
+
+transparent
+
+Borde:
+
+#111111
+
+Texto:
+
+#111111
+
+
+============================================================
+13. RESPONSIVE
+============================================================
+
+La página debe diseñarse pensando primero en:
+
+Desktop
+Tablet
+Mobile
+
+
+Breakpoint principal utilizado actualmente:
+
+1000px
+
+
+Mobile:
+
+<=1000px
+
+
+Mobile pequeño:
+
+<=430px
+
+
+Nunca diseñar únicamente para desktop.
+
+
+============================================================
+14. HEADER MÓVIL
+============================================================
+
+En móvil:
+
+- Logo centrado
+- Hamburguesa izquierda
+- Buscador derecha
+- Cuenta
+- Carrito
+- Menú lateral
+
+
+El menú debe funcionar mediante:
+
+- Overlay
+- Animación lateral
+- Submenús desplegables
+
+
+============================================================
+15. CARRITO
+============================================================
+
+Storage principal:
+
+satorimode_cart
+
+
+Storage antiguo compatible:
+
+satorii_cart
+
+
+El carrito utiliza:
+
+localStorage
+
+
+Debe mantener:
+
+- Producto
+- Precio
+- Imagen
+- Cantidad
+- Subtotal
+
+
+El contador del header debe actualizarse
+automáticamente.
+
+
+EVENTO:
+
+satori-cart-updated
+
+
+Cuando otro componente modifique el carrito,
+debe poder disparar:
+
+window.dispatchEvent(
+    new Event("satori-cart-updated")
+);
+
+
+============================================================
+16. BÚSQUEDA
+============================================================
+
+La búsqueda utiliza:
+
+productos.html?search=
+
+
+Ejemplo:
+
+productos.html?search=torii
+
+
+El header ya genera esta URL.
+
+
+productos.html debe interpretar el parámetro:
+
+search
+
+
+y filtrar los productos.
+
+
+============================================================
+17. RUTAS
+============================================================
+
+Base principal:
+
+/satorimode/
+
+
+Las rutas del proyecto deben utilizar esta base
+cuando corresponda.
+
+
+Ejemplo:
+
+/satorimode/index.html
+
+
+/ satorimode / productos.html
+
+SIN ESPACIOS.
+
+La constante utilizada actualmente es:
+
+
+const SATORIMODE_BASE = "/satorimode/";
+
+
+============================================================
+18. COLECCIONES
+============================================================
+
+Colecciones principales:
+
+ANIME
+
+TORII
+
+ANIME GOODS
+
+TODO
+
+
+Las colecciones deben poder crecer en el futuro.
+
+
+No diseñar el sistema de manera que solamente permita
+estas tres categorías.
+
+
+============================================================
+19. PRODUCTOS ESPECIALES
+============================================================
+
+Productos / experiencias especiales:
+
+SATORII PACK
+
+REGALA SATORII
+
+
+Estos productos pueden tener páginas y diseños
+especiales independientes.
+
+
+============================================================
+20. PÁGINA DE PRODUCTOS
+============================================================
+
+productos.html debe permitir:
+
+- Mostrar productos
+- Buscar
+- Filtrar
+- Ordenar
+- Ver producto
+- Agregar al carrito
+
+
+Filtros futuros:
+
+- Categoría
+- Colección
+- Precio
+- Talla
+- Color
+- Disponibilidad
+
+
+Orden:
+
+- Destacados
+- Más recientes
+- Precio menor
+- Precio mayor
+
+
+============================================================
+21. PÁGINA INDIVIDUAL
+============================================================
+
+producto.html
+
+
+Debe recibir:
+
+?id=
+
+
+Ejemplo:
+
+producto.html?id=satorii-001
+
+
+Debe mostrar:
+
+- Galería
+- Imagen principal
+- Nombre
+- Precio
+- Descuento
+- Tallas
+- Color
+- Cantidad
+- Agregar al carrito
+- Descripción
+- Información
+- Productos relacionados
+
+
+============================================================
+22. HOME
+============================================================
+
+index.html debe funcionar como presentación principal
+de SATORII.
+
+
+Orden recomendado:
+
+
+1. HERO
+
+2. COLECCIONES
+
+3. PRODUCTOS DESTACADOS
+
+4. NUEVOS PRODUCTOS
+
+5. BANNER / PROMOCIÓN
+
+6. SATORII PACK
+
+7. IDENTIDAD SATORII
+
+8. INSTAGRAM / REDES
+
+9. FOOTER
+
+
+============================================================
+23. HERO / BANNERS
+============================================================
+
+Los banners deben evitar saturación.
+
+
+Prioridad:
+
+Imagen
++
+Mensaje corto
++
+CTA
+
+
+Ejemplo:
+
+
+SATORII
+
+CULTURA QUE VISTES.
+
+
+BOTÓN:
+
+VER COLECCIÓN
+
+
+El texto debe ser corto.
+
+
+============================================================
+24. ESTILO VISUAL
+============================================================
+
+SATORII NO debe parecer:
+
+- una tienda genérica
+- una página llena de colores
+- una tienda de dropshipping
+- una página saturada de banners
+- una página excesivamente japonesa tradicional
+
+
+Debe sentirse:
+
+STREETWEAR
++
+JAPÓN
++
+ANIME
++
+MINIMALISMO
++
+PREMIUM
+
+
+============================================================
+25. ESPACIADO
+============================================================
+
+Preferir espacios amplios.
+
+
+Secciones grandes:
+
+60px
+80px
+100px
+
+
+Desktop:
+
+
+padding lateral:
+
+40px mínimo
+
+
+Contenedor máximo recomendado:
+
+1400px
+
+
+En pantallas grandes:
+
+max-width:
+1400px
+
+
+============================================================
+26. ACCESIBILIDAD
+============================================================
+
+Todos los botones deben tener:
+
+aria-label
+
+cuando sea necesario.
+
+
+Todas las imágenes deben tener:
+
+alt
+
+
+Los elementos interactivos deben poder utilizarse
+con teclado.
+
+
+Mantener:
+
+focus-visible
+
+
+No eliminar completamente los indicadores de foco.
+
+
+============================================================
+27. HTML
+============================================================
+
+Usar HTML semántico:
+
+
+header
+nav
+main
+section
+article
+footer
+aside
+
+
+Evitar abusar de:
+
+<div>
+
+
+============================================================
+28. JAVASCRIPT
+============================================================
+
+JavaScript debe estar organizado por responsabilidad.
+
+
+Ejemplo:
+
+
+satorii-header.js
+
+→ Header
+
+
+satorii-footer.js
+
+→ Footer
+
+
+productos.js
+
+→ Productos
+
+
+producto.js
+
+→ Producto individual
+
+
+carrito.js
+
+→ Carrito
+
+
+checkout.js
+
+→ Checkout
+
+
+No colocar todo el JavaScript del proyecto
+dentro de un solo archivo.
+
+
+============================================================
+29. CSS
+============================================================
+
+Evitar estilos repetidos entre páginas.
+
+
+Los estilos globales deben ir en:
+
+global.css
+
+
+Los estilos específicos:
+
+productos.css
+producto.css
+carrito.css
+checkout.css
+
+
+Los componentes globales:
+
+Header
+Footer
+
+
+deben tener sus propios estilos o estar claramente
+organizados.
+
+
+============================================================
+30. CÓDIGO
+============================================================
+
+Todo código nuevo debe:
+
+- Ser legible
+- Estar comentado cuando corresponda
+- Mantener la estructura existente
+- No romper funcionalidades anteriores
+- Ser responsive
+- Mantener #EF0930
+- Mantener las rutas existentes
+- Evitar dependencias innecesarias
+
+
+Antes de reemplazar un archivo completo:
+
+revisar qué funcionalidades ya existen.
+
+
+NO eliminar funciones existentes solamente para
+agregar una nueva.
+
+
+============================================================
+31. IMÁGENES GENERADAS
+============================================================
+
+Cuando se genere una imagen para SATORII:
+
+1. Definir primero su función.
+
+2. Definir dónde se utilizará.
+
+3. Definir proporción.
+
+4. Definir nombre del archivo.
+
+5. Guardarla en su carpeta correspondiente.
+
+
+Ejemplo:
+
+
+Imagen:
+
+Hero principal
+
+
+Carpeta:
+
+/img/banner/
+
+
+Nombre:
+
+hero-principal.webp
+
+
+============================================================
+32. PRODUCTOS — IMÁGENES
+============================================================
+
+Idealmente cada producto debe tener:
+
+
+01 → vista principal
+
+02 → vista secundaria
+
+03 → detalle
+
+04 → espalda / otra vista
+
+
+Ejemplo:
+
+
+/img/productos/
+
+polera-torii-01.webp
+polera-torii-02.webp
+polera-torii-03.webp
+polera-torii-04.webp
+
+
+============================================================
+33. BANNERS — REGLAS
+============================================================
+
+Los banners deben mantener:
+
+- buena resolución
+- composición limpia
+- espacio para texto
+- buena lectura en móvil
+- buena lectura en desktop
+
+
+No colocar texto importante pegado a los bordes.
+
+
+Cuando sea posible:
+
+crear una versión desktop
+y una versión mobile.
+
+
+Ejemplo:
+
+
+hero-principal-desktop.webp
+hero-principal-mobile.webp
+
+
+============================================================
+34. LOGOS
+============================================================
+
+El logo principal debe utilizarse preferentemente
+como texto/vector cuando sea posible.
+
+
+No deformar el logo.
+
+
+No cambiar:
+
+- proporciones
+- inclinación
+- colores
+- espaciado
+
+
+Sin una razón de diseño específica.
+
+
+============================================================
+35. REDES SOCIALES
+============================================================
+
+Instagram oficial:
+
+https://www.instagram.com/satoriicl/
+
+
+El enlace debe abrirse en nueva pestaña cuando
+corresponda.
+
+
+============================================================
+36. PRINCIPIO DE DISEÑO
+============================================================
+
+MENOS ES MÁS.
+
+
+Cada elemento debe tener una función.
+
+
+Evitar:
+
+- exceso de sombras
+- exceso de bordes
+- exceso de colores
+- demasiadas animaciones
+- textos innecesarios
+- banners consecutivos sin propósito
+
+
+SATORII debe tener una identidad fuerte
+sin necesidad de saturar la pantalla.
+
+
+============================================================
+37. PRIORIDAD DE COMPONENTES
+============================================================
+
+COMPONENTES GLOBALES:
+
+1. Header
+2. Footer
+3. Carrito
+4. Buscador
+
+
+COMPONENTES DE TIENDA:
+
+5. Tarjeta producto
+6. Sistema de productos
+7. Filtros
+8. Página producto
+9. Carrito completo
+10. Checkout
+
+
+COMPONENTES VISUALES:
+
+11. Hero
+12. Banners
+13. Colecciones
+14. Promociones
+15. Instagram
+
+
+============================================================
+38. ESTADO ACTUAL
+============================================================
+
+HEADER:
+
+[✓] Header principal
+[✓] Barra superior
+[✓] Logo
+[✓] Navegación desktop
+[✓] Dropdowns
+[✓] Menú móvil
+[✓] Buscador
+[✓] Cuenta
+[✓] Carrito lateral
+[✓] Contador carrito
+[✓] LocalStorage
+[✓] Header flotante
+
+
+PENDIENTE:
+
+[ ] Footer global
+[ ] Sistema central de productos
+[ ] Tarjeta producto definitiva
+[ ] productos.html definitivo
+[ ] producto.html
+[ ] carrito.html definitivo
+[ ] checkout.html
+[ ] sistema de filtros
+[ ] sistema de búsqueda completo
+[ ] index.html definitivo
+[ ] banners definitivos
+[ ] optimización general
+[ ] SEO
+[ ] favicon
+[ ] Open Graph
+[ ] optimización móvil
+[ ] optimización de imágenes
+
+
+============================================================
+39. ORDEN DE DESARROLLO
+============================================================
+
+Seguir preferentemente este orden:
+
+
+01 — ME.TXT
+02 — HEADER
+03 — FOOTER
+04 — SISTEMA DE PRODUCTOS
+05 — TARJETA DE PRODUCTO
+06 — PRODUCTOS.HTML
+07 — PRODUCTO.HTML
+08 — CARRITO.HTML
+09 — CHECKOUT.HTML
+10 — INDEX.HTML
+11 — BANNERS
+12 — SEO
+13 — OPTIMIZACIÓN
+14 — PRUEBAS
+
+
+============================================================
+40. REGLA PRINCIPAL
+============================================================
+
+ANTES DE CREAR ALGO NUEVO:
+
+Preguntar:
+
+¿Esto debería ser un componente reutilizable?
+
+
+Si la respuesta es sí:
+
+crear un componente global.
+
+
+Si la respuesta es no:
+
+mantenerlo específico de la página.
+
+
+La finalidad es evitar tener código duplicado
+en todas las páginas.
+
+
+============================================================
+                    FIN DEL MANUAL
+============================================================
