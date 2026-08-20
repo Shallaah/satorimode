@@ -6,7 +6,7 @@
     <link
         rel="icon"
         type="image/png"
-        href="img/logo.png"
+        href="/satorimode/img/logo.png"
     >
 
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 
     <meta
         name="description"
-        content="SATORII — Finaliza tu compra."
+        content="Finaliza tu compra en SATORII."
     >
 
     <meta
@@ -30,7 +30,7 @@
 
     <link
         rel="stylesheet"
-        href="css/style.css"
+        href="/satorimode/css/style.css"
     >
 
 
@@ -40,246 +40,265 @@
            SATORII · CHECKOUT
         ====================================================== */
 
-        .satori-checkout-page {
+        :root {
 
-            width: 100%;
+            --checkout-red:
+                #EF0930;
 
-            min-height: 70vh;
+            --checkout-black:
+                #111111;
+
+            --checkout-dark:
+                #111827;
+
+            --checkout-gray:
+                #777;
+
+            --checkout-border:
+                #dedede;
+
+            --checkout-bg:
+                #f7f7f7;
+
+        }
+
+
+        * {
+
+            box-sizing:
+                border-box;
+
+        }
+
+
+        body {
+
+            margin:0;
+
+            background:#fff;
+
+            color:
+                var(--checkout-black);
+
+        }
+
+
+        /* =====================================================
+           HEADER CHECKOUT
+        ====================================================== */
+
+        .satori-checkout-header {
+
+            width:100%;
+
+            height:82px;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
 
             padding:
-                90px
-                30px
-                100px;
+                0 30px;
 
-            background: #fff;
+            border-bottom:
+                1px solid #e5e5e5;
+
+            background:#fff;
+
+        }
+
+
+        .satori-checkout-logo {
+
+            display:block;
+
+            width:
+                125px;
+
+            height:auto;
+
+        }
+
+
+        /* =====================================================
+           PÁGINA
+        ====================================================== */
+
+        .satori-checkout-page {
+
+            width:100%;
+
+            min-height:100vh;
+
+            padding:
+                55px 30px 90px;
+
+            background:#fff;
 
         }
 
 
         .satori-checkout-container {
 
-            width: min(
-                1200px,
+            width:min(
+                1180px,
                 100%
             );
 
-            margin: 0 auto;
-
-        }
-
-
-        /* =====================================================
-           CABECERA
-        ====================================================== */
-
-        .satori-checkout-heading {
-
-            margin-bottom: 55px;
-
-        }
-
-
-        .satori-checkout-label {
-
-            display: block;
-
-            margin-bottom: 12px;
-
-            color:
-                var(--red, #EF0930);
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 3px;
-
-        }
-
-
-        .satori-checkout-heading h1 {
-
-            margin: 0;
-
-            color: #111;
-
-            font-size:
-                clamp(
-                    44px,
-                    7vw,
-                    82px
-                );
-
-            line-height: .9;
-
-            font-weight: 900;
-
-            letter-spacing: -4px;
-
-        }
-
-
-        .satori-checkout-heading p {
-
-            max-width: 650px;
-
             margin:
-                22px 0 0;
-
-            color: #777;
-
-            font-size: 14px;
-
-            line-height: 1.7;
+                0 auto;
 
         }
 
 
         /* =====================================================
-           LAYOUT
+           GRID PRINCIPAL
         ====================================================== */
 
         .satori-checkout-layout {
 
-            display: grid;
+            display:grid;
 
             grid-template-columns:
                 minmax(0, 1fr)
-                380px;
+                390px;
 
-            gap: 60px;
+            gap:70px;
 
-            align-items: start;
+            align-items:start;
 
         }
 
 
         /* =====================================================
-           SECCIONES
+           TITULOS
         ====================================================== */
+
+        .satori-checkout-label {
+
+            display:block;
+
+            margin-bottom:10px;
+
+            color:
+                var(--checkout-red);
+
+            font-size:10px;
+
+            font-weight:900;
+
+            letter-spacing:3px;
+
+        }
+
 
         .satori-checkout-section {
 
-            margin-bottom: 45px;
-
-            padding-bottom: 35px;
-
-            border-bottom:
-                1px solid #ddd;
+            margin-bottom:45px;
 
         }
 
 
-        .satori-checkout-section:last-child {
+        .satori-checkout-section h1 {
 
-            margin-bottom: 0;
+            margin:
+                0 0 25px;
 
-        }
+            color:
+                var(--checkout-black);
 
+            font-size:32px;
 
-        .satori-checkout-section-title {
+            line-height:1;
 
-            display: flex;
+            font-weight:900;
 
-            align-items: center;
-
-            gap: 12px;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .satori-checkout-section-number {
-
-            width: 28px;
-
-            height: 28px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            flex-shrink: 0;
-
-            background: #111;
-
-            color: #fff;
-
-            border-radius: 50%;
-
-            font-size: 10px;
-
-            font-weight: 900;
+            letter-spacing:-1.5px;
 
         }
 
 
-        .satori-checkout-section-title h2 {
+        .satori-checkout-section h2 {
 
-            margin: 0;
+            margin:
+                0 0 20px;
 
-            color: #111;
+            color:
+                var(--checkout-black);
 
-            font-size: 18px;
+            font-size:20px;
 
-            font-weight: 900;
+            line-height:1.1;
 
-            letter-spacing: -.4px;
+            font-weight:900;
+
+        }
+
+
+        .satori-checkout-description {
+
+            margin:
+                -10px 0 22px;
+
+            color:
+                var(--checkout-gray);
+
+            font-size:12px;
+
+            line-height:1.6;
 
         }
 
 
         /* =====================================================
-           FORMULARIO
+           FORMULARIOS
         ====================================================== */
 
-        .satori-checkout-form-grid {
+        .satori-checkout-form {
 
-            display: grid;
+            display:grid;
 
             grid-template-columns:
                 repeat(
                     2,
-                    minmax(0, 1fr)
+                    minmax(0,1fr)
                 );
 
-            gap: 18px;
+            gap:14px;
 
         }
 
 
         .satori-checkout-field {
 
-            min-width: 0;
+            display:flex;
+
+            flex-direction:column;
+
+            gap:6px;
 
         }
 
 
         .satori-checkout-field.full {
 
-            grid-column: 1 / -1;
+            grid-column:
+                1 / -1;
 
         }
 
 
         .satori-checkout-field label {
 
-            display: block;
+            color:#444;
 
-            margin-bottom: 8px;
+            font-size:10px;
 
-            color: #333;
+            font-weight:800;
 
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: .8px;
-
-            text-transform: uppercase;
+            letter-spacing:.5px;
 
         }
 
@@ -287,29 +306,28 @@
         .satori-checkout-field input,
         .satori-checkout-field select {
 
-            width: 100%;
+            width:100%;
 
-            height: 48px;
+            min-height:48px;
 
             padding:
                 0 14px;
 
-            box-sizing: border-box;
-
             border:
-                1px solid #ccc;
+                1px solid
+                var(--checkout-border);
 
-            border-radius: 5px;
+            border-radius:6px;
 
-            outline: none;
+            background:#fff;
 
-            background: #fff;
+            color:#111;
 
-            color: #111;
+            outline:none;
 
-            font-family: inherit;
+            font-family:inherit;
 
-            font-size: 13px;
+            font-size:13px;
 
             transition:
                 border-color .2s ease,
@@ -322,15 +340,15 @@
         .satori-checkout-field select:focus {
 
             border-color:
-                #111;
+                var(--checkout-black);
 
             box-shadow:
-                0 0 0 3px
+                0 0 0 2px
                 rgba(
-                    0,
-                    0,
-                    0,
-                    .05
+                    17,
+                    17,
+                    17,
+                    .06
                 );
 
         }
@@ -338,7 +356,312 @@
 
         .satori-checkout-field input::placeholder {
 
-            color: #aaa;
+            color:#aaa;
+
+        }
+
+
+        /* =====================================================
+           CONTACTO
+        ====================================================== */
+
+        .satori-checkout-contact-login {
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+            gap:15px;
+
+            margin-bottom:20px;
+
+        }
+
+
+        .satori-checkout-contact-login span {
+
+            color:#777;
+
+            font-size:12px;
+
+        }
+
+
+        .satori-checkout-login {
+
+            color:
+                var(--checkout-black);
+
+            font-size:11px;
+
+            font-weight:800;
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        .satori-checkout-checkbox {
+
+            display:flex;
+
+            align-items:center;
+
+            gap:9px;
+
+            margin-top:14px;
+
+            color:#777;
+
+            font-size:11px;
+
+            cursor:pointer;
+
+        }
+
+
+        .satori-checkout-checkbox input {
+
+            width:15px;
+
+            height:15px;
+
+            accent-color:
+                var(--checkout-red);
+
+        }
+
+
+        /* =====================================================
+           MÉTODOS DE PAGO
+        ====================================================== */
+
+        .satori-payment-box {
+
+            border:
+                1px solid
+                var(--checkout-border);
+
+            border-radius:8px;
+
+            overflow:hidden;
+
+        }
+
+
+        .satori-payment-option {
+
+            display:flex;
+
+            align-items:center;
+
+            gap:13px;
+
+            min-height:64px;
+
+            padding:
+                0 18px;
+
+            border-bottom:
+                1px solid
+                var(--checkout-border);
+
+            cursor:pointer;
+
+        }
+
+
+        .satori-payment-option:last-child {
+
+            border-bottom:0;
+
+        }
+
+
+        .satori-payment-option input {
+
+            width:17px;
+
+            height:17px;
+
+            accent-color:
+                var(--checkout-red);
+
+        }
+
+
+        .satori-payment-option-content {
+
+            flex:1;
+
+        }
+
+
+        .satori-payment-option-title {
+
+            display:block;
+
+            color:#111;
+
+            font-size:12px;
+
+            font-weight:900;
+
+        }
+
+
+        .satori-payment-option-description {
+
+            display:block;
+
+            margin-top:3px;
+
+            color:#888;
+
+            font-size:10px;
+
+        }
+
+
+        .satori-payment-logo {
+
+            display:flex;
+
+            align-items:center;
+
+            gap:5px;
+
+            color:#111;
+
+            font-size:10px;
+
+            font-weight:900;
+
+        }
+
+
+        .satori-payment-logo span {
+
+            padding:
+                4px 6px;
+
+            border:
+                1px solid #ddd;
+
+            border-radius:3px;
+
+            font-size:8px;
+
+        }
+
+
+        /* =====================================================
+           ENVÍO
+        ====================================================== */
+
+        .satori-shipping-options {
+
+            display:flex;
+
+            flex-direction:column;
+
+            border:
+                1px solid
+                var(--checkout-border);
+
+            border-radius:8px;
+
+            overflow:hidden;
+
+        }
+
+
+        .satori-shipping-option {
+
+            display:flex;
+
+            align-items:center;
+
+            gap:13px;
+
+            min-height:68px;
+
+            padding:
+                10px 16px;
+
+            border-bottom:
+                1px solid
+                var(--checkout-border);
+
+            cursor:pointer;
+
+        }
+
+
+        .satori-shipping-option:last-child {
+
+            border-bottom:0;
+
+        }
+
+
+        .satori-shipping-option input {
+
+            width:17px;
+
+            height:17px;
+
+            accent-color:
+                var(--checkout-red);
+
+        }
+
+
+        .satori-shipping-info {
+
+            flex:1;
+
+        }
+
+
+        .satori-shipping-name {
+
+            display:block;
+
+            color:#111;
+
+            font-size:12px;
+
+            font-weight:900;
+
+        }
+
+
+        .satori-shipping-description {
+
+            display:block;
+
+            margin-top:3px;
+
+            color:#888;
+
+            font-size:10px;
+
+        }
+
+
+        .satori-shipping-price {
+
+            color:#111;
+
+            font-size:12px;
+
+            font-weight:900;
+
+            white-space:nowrap;
 
         }
 
@@ -349,81 +672,76 @@
 
         .satori-checkout-summary {
 
-            position: sticky;
+            position:sticky;
 
-            top: 90px;
+            top:25px;
 
-            padding: 28px;
+            padding:
+                25px;
 
-            background: #f8f8f8;
+            background:
+                #f8f8f8;
 
             border:
                 1px solid #ddd;
 
-            border-radius: 7px;
+            border-radius:8px;
 
         }
 
 
-        .satori-checkout-summary-label {
+        .satori-summary-title {
 
-            display: block;
+            display:flex;
 
-            margin-bottom: 18px;
+            align-items:center;
 
-            color:
-                var(--red, #EF0930);
+            justify-content:space-between;
 
-            font-size: 9px;
-
-            font-weight: 800;
-
-            letter-spacing: 2px;
+            margin-bottom:22px;
 
         }
 
 
-        .satori-checkout-summary h2 {
+        .satori-summary-title h2 {
 
-            margin:
-                0 0 25px;
+            margin:0;
 
-            color: #111;
+            color:#111;
 
-            font-size: 24px;
+            font-size:20px;
 
-            font-weight: 900;
+            font-weight:900;
 
-            letter-spacing: -1px;
+            letter-spacing:-.5px;
+
+        }
+
+
+        .satori-summary-count {
+
+            color:#888;
+
+            font-size:10px;
+
+            font-weight:800;
 
         }
 
 
         /* =====================================================
-           PRODUCTOS DEL RESUMEN
+           PRODUCTO RESUMEN
         ====================================================== */
 
-        .satori-checkout-products {
+        .satori-summary-products {
 
-            border-top:
-                1px solid #ddd;
+            display:flex;
 
-        }
+            flex-direction:column;
 
+            gap:15px;
 
-        .satori-checkout-product {
-
-            display: grid;
-
-            grid-template-columns:
-                65px
-                minmax(0, 1fr)
-                auto;
-
-            gap: 12px;
-
-            padding:
-                15px 0;
+            padding-bottom:20px;
 
             border-bottom:
                 1px solid #ddd;
@@ -431,89 +749,216 @@
         }
 
 
-        .satori-checkout-product-image {
+        .satori-summary-product {
 
-            width: 65px;
+            display:grid;
 
-            height: 65px;
+            grid-template-columns:
+                64px
+                minmax(0,1fr)
+                auto;
 
-            overflow: hidden;
+            gap:12px;
 
-            background: #eee;
-
-            border-radius: 5px;
-
-        }
-
-
-        .satori-checkout-product-image img {
-
-            width: 100%;
-
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
+            align-items:center;
 
         }
 
 
-        .satori-checkout-product-info {
+        .satori-summary-image {
 
-            min-width: 0;
+            position:relative;
 
-        }
+            width:64px;
 
+            height:64px;
 
-        .satori-checkout-product-name {
+            overflow:hidden;
 
-            margin: 0;
+            border-radius:5px;
 
-            color: #111;
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            line-height: 1.35;
+            background:#eee;
 
         }
 
 
-        .satori-checkout-product-options {
+        .satori-summary-image img {
 
-            margin-top: 5px;
+            width:100%;
 
-            color: #888;
+            height:100%;
 
-            font-size: 9px;
+            display:block;
 
-            line-height: 1.5;
-
-        }
-
-
-        .satori-checkout-product-quantity {
-
-            margin-top: 4px;
-
-            color: #777;
-
-            font-size: 9px;
+            object-fit:cover;
 
         }
 
 
-        .satori-checkout-product-price {
+        .satori-summary-quantity {
 
-            color: #111;
+            position:absolute;
 
-            font-size: 12px;
+            top:-5px;
 
-            font-weight: 900;
+            right:-5px;
 
-            white-space: nowrap;
+            min-width:19px;
+
+            height:19px;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            padding:0 5px;
+
+            border-radius:50%;
+
+            background:
+                var(--checkout-dark);
+
+            color:#fff;
+
+            font-size:9px;
+
+            font-weight:900;
+
+        }
+
+
+        .satori-summary-product-name {
+
+            color:#111;
+
+            font-size:12px;
+
+            font-weight:800;
+
+            line-height:1.3;
+
+        }
+
+
+        .satori-summary-product-options {
+
+            margin-top:4px;
+
+            color:#888;
+
+            font-size:9px;
+
+            line-height:1.4;
+
+        }
+
+
+        .satori-summary-product-price {
+
+            color:#111;
+
+            font-size:11px;
+
+            font-weight:900;
+
+            white-space:nowrap;
+
+        }
+
+
+        /* =====================================================
+           CUPÓN
+        ====================================================== */
+
+        .satori-discount {
+
+            display:flex;
+
+            gap:8px;
+
+            margin:
+                20px 0;
+
+        }
+
+
+        .satori-discount input {
+
+            flex:1;
+
+            min-width:0;
+
+            height:42px;
+
+            padding:
+                0 12px;
+
+            border:
+                1px solid #ccc;
+
+            border-radius:5px;
+
+            background:#fff;
+
+            outline:none;
+
+            font-family:inherit;
+
+            font-size:11px;
+
+        }
+
+
+        .satori-discount button {
+
+            min-width:80px;
+
+            padding:
+                0 12px;
+
+            border:
+                1px solid #111;
+
+            border-radius:5px;
+
+            background:#fff;
+
+            color:#111;
+
+            font-size:9px;
+
+            font-weight:900;
+
+            letter-spacing:.5px;
+
+            cursor:pointer;
+
+        }
+
+
+        .satori-discount button:hover {
+
+            background:#111;
+
+            color:#fff;
+
+        }
+
+
+        .satori-discount-message {
+
+            display:none;
+
+            margin-top:-12px;
+
+            margin-bottom:15px;
+
+            color:
+                var(--checkout-red);
+
+            font-size:10px;
 
         }
 
@@ -522,224 +967,245 @@
            TOTALES
         ====================================================== */
 
-        .satori-checkout-total {
+        .satori-summary-total-row {
 
-            margin-top: 5px;
+            display:flex;
 
-        }
+            align-items:center;
 
+            justify-content:space-between;
 
-        .satori-checkout-total-row {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
+            gap:20px;
 
             padding:
-                13px 0;
+                11px 0;
 
-            border-bottom:
+            border-top:
                 1px solid #ddd;
 
         }
 
 
-        .satori-checkout-total-row span {
+        .satori-summary-total-row span {
 
-            color: #555;
+            color:#666;
 
-            font-size: 10px;
+            font-size:10px;
 
-            font-weight: 700;
-
-            letter-spacing: .8px;
+            font-weight:700;
 
         }
 
 
-        .satori-checkout-total-row strong {
+        .satori-summary-total-row strong {
 
-            color: #111;
+            color:#111;
 
-            font-size: 14px;
+            font-size:13px;
 
-            font-weight: 900;
-
-        }
-
-
-        .satori-checkout-total-row.final {
-
-            padding-top: 20px;
-
-            border-bottom: 0;
+            font-weight:900;
 
         }
 
 
-        .satori-checkout-total-row.final span {
+        .satori-summary-grand {
 
-            color: #111;
+            margin-top:8px;
 
-            font-size: 11px;
+            padding-top:17px;
 
-            font-weight: 900;
-
-        }
-
-
-        .satori-checkout-total-row.final strong {
-
-            font-size: 22px;
+            border-top:
+                1px solid #111;
 
         }
 
 
-        /* =====================================================
-           ENVÍO
-        ====================================================== */
+        .satori-summary-grand span {
 
-        .satori-checkout-shipping-note {
+            color:#111;
 
-            margin:
-                18px 0 0;
+            font-size:12px;
 
-            padding:
-                12px;
+            font-weight:900;
 
-            background: #fff;
+        }
 
-            border:
-                1px solid #ddd;
 
-            border-radius: 5px;
+        .satori-summary-grand strong {
 
-            color: #777;
+            color:#111;
 
-            font-size: 10px;
+            font-size:24px;
 
-            line-height: 1.6;
+            font-weight:900;
+
+            letter-spacing:-1px;
 
         }
 
 
         /* =====================================================
-           BOTÓN FLOW
+           PAGAR
         ====================================================== */
 
-        .satori-checkout-pay {
+        .satori-pay-button {
 
-            width: 100%;
+            width:100%;
 
-            min-height: 54px;
+            min-height:55px;
 
-            margin-top: 22px;
+            margin-top:22px;
 
-            border: 0;
+            border:0;
 
-            border-radius: 5px;
+            border-radius:5px;
 
             background:
-                var(--red, #EF0930);
+                var(--checkout-red);
 
-            color: #fff;
+            color:#fff;
 
-            font-family: inherit;
+            font-family:inherit;
 
-            font-size: 10px;
+            font-size:10px;
 
-            font-weight: 900;
+            font-weight:900;
 
-            letter-spacing: 1.2px;
+            letter-spacing:1.5px;
 
-            cursor: pointer;
+            cursor:pointer;
 
             transition:
                 background .2s ease,
-                transform .2s ease,
-                box-shadow .2s ease;
+                transform .2s ease;
 
         }
 
 
-        .satori-checkout-pay:hover {
+        .satori-pay-button:hover {
 
-            background: #111;
+            background:#111;
 
             transform:
                 translateY(-1px);
 
-            box-shadow:
-                0 10px 25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .12
-                );
+        }
+
+
+        .satori-pay-button:disabled {
+
+            opacity:.55;
+
+            cursor:not-allowed;
+
+            transform:none;
 
         }
 
 
-        .satori-checkout-pay:disabled {
+        .satori-secure {
 
-            opacity: .55;
+            margin-top:14px;
 
-            cursor: not-allowed;
+            color:#999;
 
-            transform: none;
+            font-size:9px;
 
-            box-shadow: none;
+            line-height:1.6;
 
-        }
-
-
-        .satori-checkout-security {
-
-            margin-top: 14px;
-
-            color: #999;
-
-            font-size: 9px;
-
-            line-height: 1.6;
-
-            text-align: center;
+            text-align:center;
 
         }
 
 
         /* =====================================================
-           VOLVER
+           FOOTER CHECKOUT
         ====================================================== */
 
-        .satori-checkout-back {
+        .satori-checkout-footer {
 
-            display: inline-block;
+            margin-top:65px;
 
-            margin-top: 20px;
+            padding-top:25px;
 
-            color: #666;
-
-            text-decoration: none;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: .7px;
+            border-top:
+                1px solid #ddd;
 
         }
 
 
-        .satori-checkout-back:hover {
+        .satori-checkout-footer-links {
+
+            display:flex;
+
+            flex-wrap:wrap;
+
+            justify-content:center;
+
+            gap:18px;
+
+        }
+
+
+        .satori-checkout-footer-links a {
+
+            color:#777;
+
+            font-size:9px;
+
+            font-weight:700;
+
+            text-decoration:none;
+
+        }
+
+
+        .satori-checkout-footer-links a:hover {
 
             color:
-                var(--red, #EF0930);
+                var(--checkout-red);
+
+        }
+
+
+        /* =====================================================
+           ERROR
+        ====================================================== */
+
+        .satori-checkout-error {
+
+            display:none;
+
+            margin-bottom:20px;
+
+            padding:
+                13px 15px;
+
+            border:
+                1px solid
+                rgba(
+                    239,
+                    9,
+                    48,
+                    .25
+                );
+
+            border-radius:5px;
+
+            background:
+                rgba(
+                    239,
+                    9,
+                    48,
+                    .05
+                );
+
+            color:
+                var(--checkout-red);
+
+            font-size:11px;
+
+            font-weight:700;
 
         }
 
@@ -750,105 +1216,82 @@
 
         .satori-checkout-empty {
 
-            padding:
-                80px 20px;
+            min-height:
+                500px;
 
-            border-top:
-                1px solid #ddd;
+            display:flex;
 
-            text-align: center;
+            flex-direction:column;
 
-        }
+            align-items:center;
 
+            justify-content:center;
 
-        .satori-checkout-empty-label {
-
-            display: block;
-
-            margin-bottom: 12px;
-
-            color:
-                var(--red, #EF0930);
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 3px;
+            text-align:center;
 
         }
 
 
-        .satori-checkout-empty h2 {
+        .satori-checkout-empty h1 {
 
-            margin: 0;
-
-            color: #111;
+            margin:0;
 
             font-size:
                 clamp(
-                    30px,
-                    5vw,
-                    48px
+                    35px,
+                    7vw,
+                    65px
                 );
 
-            font-weight: 900;
+            font-weight:900;
 
-            letter-spacing: -2px;
+            letter-spacing:-3px;
 
         }
 
 
         .satori-checkout-empty p {
 
-            max-width: 500px;
+            max-width:450px;
 
             margin:
-                18px auto 28px;
+                18px 0 28px;
 
-            color: #777;
+            color:#777;
 
-            font-size: 13px;
+            font-size:13px;
 
-            line-height: 1.7;
+            line-height:1.7;
 
         }
 
 
-        .satori-checkout-empty-button {
+        .satori-checkout-empty a {
 
-            min-height: 48px;
+            display:inline-flex;
 
-            display: inline-flex;
+            align-items:center;
 
-            align-items: center;
+            justify-content:center;
 
-            justify-content: center;
+            min-height:48px;
 
             padding:
-                0 28px;
+                0 25px;
 
-            border-radius: 4px;
+            background:#111;
 
-            background: #111;
+            color:#fff;
 
-            color: #fff;
+            text-decoration:none;
 
-            text-decoration: none;
+            font-size:10px;
 
-            font-size: 10px;
+            font-weight:900;
 
-            font-weight: 900;
+            letter-spacing:1px;
 
-            letter-spacing: 1px;
-
-        }
-
-
-        .satori-checkout-empty-button:hover {
-
-            background:
-                var(--red, #EF0930);
+            border-radius:4px;
 
         }
 
@@ -857,30 +1300,25 @@
            TABLET
         ====================================================== */
 
-        @media (max-width: 900px) {
-
-            .satori-checkout-page {
-
-                padding:
-                    65px
-                    20px
-                    80px;
-
-            }
-
+        @media (
+            max-width:950px
+        ) {
 
             .satori-checkout-layout {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
 
-                gap: 45px;
+                gap:45px;
 
             }
 
 
             .satori-checkout-summary {
 
-                position: static;
+                position:static;
+
+                order:-1;
 
             }
 
@@ -891,103 +1329,97 @@
            MÓVIL
         ====================================================== */
 
-        @media (max-width: 600px) {
+        @media (
+            max-width:650px
+        ) {
 
-            .satori-checkout-heading {
+            .satori-checkout-header {
 
-                margin-bottom: 40px;
-
-            }
-
-
-            .satori-checkout-heading h1 {
-
-                font-size: 52px;
-
-                letter-spacing: -2px;
+                height:68px;
 
             }
 
 
-            .satori-checkout-heading p {
+            .satori-checkout-logo {
 
-                font-size: 13px;
+                width:105px;
 
             }
 
 
-            .satori-checkout-form-grid {
+            .satori-checkout-page {
 
-                grid-template-columns: 1fr;
+                padding:
+                    30px 16px 60px;
 
-                gap: 15px;
+            }
+
+
+            .satori-checkout-form {
+
+                grid-template-columns:
+                    1fr;
 
             }
 
 
             .satori-checkout-field.full {
 
-                grid-column: auto;
+                grid-column:auto;
 
             }
 
 
             .satori-checkout-section {
 
-                margin-bottom: 35px;
+                margin-bottom:35px;
 
-                padding-bottom: 28px;
+            }
+
+
+            .satori-checkout-section h1 {
+
+                font-size:27px;
 
             }
 
 
             .satori-checkout-summary {
 
-                padding: 22px;
+                padding:20px;
 
             }
 
 
-            .satori-checkout-product {
+            .satori-summary-products {
 
-                grid-template-columns:
-                    58px
-                    minmax(0, 1fr)
-                    auto;
+                max-height:260px;
 
-                gap: 10px;
+                overflow:auto;
 
             }
 
 
-            .satori-checkout-product-image {
+            .satori-checkout-contact-login {
 
-                width: 58px;
+                align-items:flex-start;
 
-                height: 58px;
+                flex-direction:column;
+
+                gap:7px;
 
             }
 
-        }
 
+            .satori-checkout-footer-links {
 
-        /* =====================================================
-           REDUCCIÓN DE MOVIMIENTO
-        ====================================================== */
-
-        @media (
-            prefers-reduced-motion: reduce
-        ) {
-
-            .satori-checkout-field input,
-            .satori-checkout-field select,
-            .satori-checkout-pay {
-
-                transition: none;
+                gap:
+                    10px 15px;
 
             }
 
         }
+
 
     </style>
 
@@ -1001,7 +1433,22 @@
          HEADER
     ====================================================== -->
 
-    <div id="satori-header"></div>
+    <header class="satori-checkout-header">
+
+        <a
+            href="/satorimode/index.html"
+            aria-label="Volver a SATORII"
+        >
+
+            <img
+                src="/satorimode/img/logo.png"
+                alt="SATORII"
+                class="satori-checkout-logo"
+            >
+
+        </a>
+
+    </header>
 
 
     <!-- =====================================================
@@ -1010,41 +1457,12 @@
 
     <main class="satori-checkout-page">
 
-        <div class="satori-checkout-container">
+        <div
+            class="satori-checkout-container"
+            id="checkout-container"
+        >
 
-
-            <!-- =================================================
-                 CABECERA
-            ================================================== -->
-
-            <header class="satori-checkout-heading">
-
-                <span class="satori-checkout-label">
-                    SATORII · CHECKOUT
-                </span>
-
-
-                <h1>
-                    FINALIZA TU COMPRA.
-                </h1>
-
-
-                <p>
-                    Completa tus datos para preparar
-                    tu pedido. El pago se realizará
-                    posteriormente mediante Flow.
-                </p>
-
-            </header>
-
-
-            <!-- =================================================
-                 CONTENIDO DINÁMICO
-            ================================================== -->
-
-            <div
-                id="satori-checkout-content"
-            ></div>
+            <!-- JS -->
 
         </div>
 
@@ -1058,15 +1476,9 @@
     <div id="satori-footer"></div>
 
 
-    <!-- =====================================================
-         SCRIPTS
-    ====================================================== -->
-
-    <script src="js/header.js"></script>
-
-    <script src="js/footer.js"></script>
-
-    <script src="js/cart.js"></script>
+    <script
+        src="/satorimode/js/footer.js"
+    ></script>
 
 
     <!-- =====================================================
@@ -1086,9 +1498,9 @@
             "satorimode_cart";
 
 
-        const checkoutContent =
+        const checkoutContainer =
             document.getElementById(
-                "satori-checkout-content"
+                "checkout-container"
             );
 
 
@@ -1096,7 +1508,63 @@
            UTILIDADES
         ====================================================== */
 
-        function getCheckoutCart() {
+        function escapeHTML(
+            value
+        ) {
+
+            return String(
+                value ?? ""
+            )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+        }
+
+
+        function formatPrice(
+            price
+        ) {
+
+            return new Intl.NumberFormat(
+                "es-CL",
+                {
+                    style:
+                        "currency",
+
+                    currency:
+                        "CLP",
+
+                    maximumFractionDigits:
+                        0
+
+                }
+            )
+            .format(
+                Number(price) || 0
+            );
+
+        }
+
+
+        function getCart() {
 
             try {
 
@@ -1113,21 +1581,22 @@
                 }
 
 
-                const parsed =
+                const cart =
                     JSON.parse(
                         saved
                     );
 
 
                 return Array.isArray(
-                    parsed
+                    cart
                 )
-                    ? parsed
+                    ? cart
                     : [];
 
             }
-
-            catch (error) {
+            catch (
+                error
+            ) {
 
                 console.error(
                     "SATORII · Error leyendo carrito:",
@@ -1141,133 +1610,76 @@
         }
 
 
-        function formatCheckoutPrice(
-            price
-        ) {
+        /* =====================================================
+           CARRITO VACÍO
+        ====================================================== */
 
-            return new Intl.NumberFormat(
-                "es-CL",
-                {
-                    style: "currency",
-                    currency: "CLP",
-                    maximumFractionDigits: 0
-                }
-            ).format(
-                Number(price) || 0
-            );
+        function renderEmpty() {
 
-        }
+            checkoutContainer.innerHTML = `
+
+                <section
+                    class="satori-checkout-empty"
+                >
+
+                    <span
+                        class="satori-checkout-label"
+                    >
+                        SATORII · CHECKOUT
+                    </span>
 
 
-        function escapeCheckoutHTML(
-            value
-        ) {
+                    <h1>
+                        TU CARRITO ESTÁ VACÍO.
+                    </h1>
 
-            return String(
-                value ?? ""
-            )
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
-                .replace(
-                    /</g,
-                    "&lt;"
-                )
-                .replace(
-                    />/g,
-                    "&gt;"
-                )
-                .replace(
-                    /"/g,
-                    "&quot;"
-                )
-                .replace(
-                    /'/g,
-                    "&#039;"
-                );
+
+                    <p>
+                        Necesitas agregar al menos
+                        un producto antes de continuar
+                        con la compra.
+                    </p>
+
+
+                    <a
+                        href="/satorimode/productos.html"
+                    >
+                        EXPLORAR PRODUCTOS
+                    </a>
+
+                </section>
+
+            `;
 
         }
 
 
         /* =====================================================
-           RENDER
+           CHECKOUT
         ====================================================== */
 
         function renderCheckout() {
 
-            if (!checkoutContent) {
-
-                return;
-
-            }
-
-
             const cart =
-                getCheckoutCart();
+                getCart();
 
-
-            /* =================================================
-               CARRITO VACÍO
-            ================================================== */
 
             if (
                 cart.length === 0
             ) {
 
-                checkoutContent.innerHTML = `
-
-                    <section
-                        class="
-                            satori-checkout-empty
-                        "
-                    >
-
-                        <span
-                            class="
-                                satori-checkout-empty-label
-                            "
-                        >
-                            SATORII · CHECKOUT
-                        </span>
-
-
-                        <h2>
-                            TU CARRITO ESTÁ VACÍO.
-                        </h2>
-
-
-                        <p>
-                            No puedes finalizar una compra
-                            sin productos en tu carrito.
-                        </p>
-
-
-                        <a
-                            href="productos.html"
-                            class="
-                                satori-checkout-empty-button
-                            "
-                        >
-                            EXPLORAR PRODUCTOS
-                        </a>
-
-                    </section>
-
-                `;
+                renderEmpty();
 
                 return;
 
             }
 
 
-            /* =================================================
-               TOTALES
-            ================================================== */
+            let subtotal =
+                0;
 
-            let subtotal = 0;
-
-            let totalItems = 0;
+            let totalItems =
+                0;
 
 
             cart.forEach(
@@ -1302,11 +1714,29 @@
             );
 
 
+            /*
+             * Por ahora el envío es 0.
+             *
+             * Cuando conectemos el backend
+             * podremos calcularlo según
+             * comuna / región / método.
+             */
+
+            const shipping =
+                0;
+
+
+            const total =
+                subtotal +
+                shipping;
+
+
             /* =================================================
                PRODUCTOS
             ================================================== */
 
-            let productsHTML = "";
+            let productsHTML =
+                "";
 
 
             cart.forEach(
@@ -1323,18 +1753,15 @@
                         );
 
 
-                    const price =
+                    const itemTotal =
                         Number(
                             product.price || 0
-                        );
-
-
-                    const itemTotal =
-                        price *
+                        ) *
                         quantity;
 
 
-                    let options = "";
+                    let options =
+                        "";
 
 
                     if (
@@ -1343,7 +1770,7 @@
 
                         options +=
                             "Talla: " +
-                            escapeCheckoutHTML(
+                            escapeHTML(
                                 product.size
                             );
 
@@ -1366,7 +1793,7 @@
 
                         options +=
                             "Color: " +
-                            escapeCheckoutHTML(
+                            escapeHTML(
                                 product.color
                             );
 
@@ -1377,46 +1804,50 @@
 
                         <article
                             class="
-                                satori-checkout-product
+                                satori-summary-product
                             "
                         >
 
                             <div
                                 class="
-                                    satori-checkout-product-image
+                                    satori-summary-image
                                 "
                             >
 
                                 <img
-                                    src="${escapeCheckoutHTML(
+                                    src="${escapeHTML(
                                         product.image || ""
                                     )}"
-                                    alt="${escapeCheckoutHTML(
+                                    alt="${escapeHTML(
                                         product.name ||
                                         "Producto SATORII"
                                     )}"
-                                    loading="lazy"
                                 >
+
+
+                                <span
+                                    class="
+                                        satori-summary-quantity
+                                    "
+                                >
+                                    ${quantity}
+                                </span>
 
                             </div>
 
 
-                            <div
-                                class="
-                                    satori-checkout-product-info
-                                "
-                            >
+                            <div>
 
-                                <h3
+                                <div
                                     class="
-                                        satori-checkout-product-name
+                                        satori-summary-product-name
                                     "
                                 >
-                                    ${escapeCheckoutHTML(
+                                    ${escapeHTML(
                                         product.name ||
                                         "Producto"
                                     )}
-                                </h3>
+                                </div>
 
 
                                 ${
@@ -1424,7 +1855,7 @@
                                         ? `
                                             <div
                                                 class="
-                                                    satori-checkout-product-options
+                                                    satori-summary-product-options
                                                 "
                                             >
                                                 ${options}
@@ -1433,28 +1864,18 @@
                                         : ""
                                 }
 
-
-                                <div
-                                    class="
-                                        satori-checkout-product-quantity
-                                    "
-                                >
-                                    Cantidad:
-                                    ${quantity}
-                                </div>
-
                             </div>
 
 
-                            <div
+                            <strong
                                 class="
-                                    satori-checkout-product-price
+                                    satori-summary-product-price
                                 "
                             >
-                                ${formatCheckoutPrice(
+                                ${formatPrice(
                                     itemTotal
                                 )}
-                            </div>
+                            </strong>
 
                         </article>
 
@@ -1468,7 +1889,7 @@
                HTML
             ================================================== */
 
-            checkoutContent.innerHTML = `
+            checkoutContainer.innerHTML = `
 
                 <div
                     class="
@@ -1481,44 +1902,146 @@
                          FORMULARIO
                     ========================================== -->
 
-                    <section>
+                    <div>
 
 
                         <!-- =====================================
-                             DATOS PERSONALES
+                             CONTACTO
                         ====================================== -->
 
-                        <div
+                        <section
                             class="
                                 satori-checkout-section
                             "
                         >
 
+                            <span
+                                class="
+                                    satori-checkout-label
+                                "
+                            >
+                                SATORII · CONTACTO
+                            </span>
+
+
                             <div
                                 class="
-                                    satori-checkout-section-title
+                                    satori-checkout-contact-login
                                 "
                             >
 
-                                <span
-                                    class="
-                                        satori-checkout-section-number
-                                    "
-                                >
-                                    1
+                                <span>
+                                    Información de contacto
                                 </span>
 
 
-                                <h2>
-                                    DATOS DE CONTACTO
-                                </h2>
+                                <a
+                                    href="#"
+                                    class="
+                                        satori-checkout-login
+                                    "
+                                    onclick="
+                                        return false;
+                                    "
+                                >
+                                    INICIAR SESIÓN
+                                </a>
 
                             </div>
 
 
                             <div
                                 class="
-                                    satori-checkout-form-grid
+                                    satori-checkout-form
+                                "
+                            >
+
+                                <div
+                                    class="
+                                        satori-checkout-field
+                                        full
+                                    "
+                                >
+
+                                    <label
+                                        for="checkout-email"
+                                    >
+                                        CORREO ELECTRÓNICO
+                                    </label>
+
+
+                                    <input
+                                        id="checkout-email"
+                                        name="email"
+                                        type="email"
+                                        autocomplete="email"
+                                        placeholder="tu@email.com"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <label
+                                class="
+                                    satori-checkout-checkbox
+                                "
+                            >
+
+                                <input
+                                    id="checkout-newsletter"
+                                    type="checkbox"
+                                >
+
+                                <span>
+                                    Recibir ofertas y anuncios
+                                    importantes de SATORII.
+                                </span>
+
+                            </label>
+
+                        </section>
+
+
+                        <!-- =====================================
+                             ENVÍO
+                        ====================================== -->
+
+                        <section
+                            class="
+                                satori-checkout-section
+                            "
+                        >
+
+                            <span
+                                class="
+                                    satori-checkout-label
+                                "
+                            >
+                                SATORII · ENVÍO
+                            </span>
+
+
+                            <h1>
+                                DATOS DE ENTREGA.
+                            </h1>
+
+
+                            <p
+                                class="
+                                    satori-checkout-description
+                                "
+                            >
+                                Ingresa los datos donde
+                                quieres recibir tu pedido.
+                            </p>
+
+
+                            <div
+                                class="
+                                    satori-checkout-form
                                 "
                             >
 
@@ -1531,16 +2054,15 @@
                                     <label
                                         for="checkout-name"
                                     >
-                                        Nombre
+                                        NOMBRE
                                     </label>
 
 
                                     <input
                                         id="checkout-name"
-                                        name="name"
                                         type="text"
                                         autocomplete="given-name"
-                                        placeholder="Tu nombre"
+                                        placeholder="Nombre"
                                         required
                                     >
 
@@ -1556,16 +2078,15 @@
                                     <label
                                         for="checkout-lastname"
                                     >
-                                        Apellido
+                                        APELLIDOS
                                     </label>
 
 
                                     <input
                                         id="checkout-lastname"
-                                        name="lastname"
                                         type="text"
                                         autocomplete="family-name"
-                                        placeholder="Tu apellido"
+                                        placeholder="Apellidos"
                                         required
                                     >
 
@@ -1579,18 +2100,18 @@
                                 >
 
                                     <label
-                                        for="checkout-email"
+                                        for="checkout-rut"
                                     >
-                                        Email
+                                        RUT
                                     </label>
 
 
                                     <input
-                                        id="checkout-email"
-                                        name="email"
-                                        type="email"
-                                        autocomplete="email"
-                                        placeholder="correo@ejemplo.cl"
+                                        id="checkout-rut"
+                                        type="text"
+                                        inputmode="text"
+                                        placeholder="12.345.678-9"
+                                        maxlength="12"
                                         required
                                     >
 
@@ -1606,13 +2127,12 @@
                                     <label
                                         for="checkout-phone"
                                     >
-                                        Teléfono
+                                        TELÉFONO
                                     </label>
 
 
                                     <input
                                         id="checkout-phone"
-                                        name="phone"
                                         type="tel"
                                         autocomplete="tel"
                                         placeholder="+56 9 1234 5678"
@@ -1621,48 +2141,76 @@
 
                                 </div>
 
-                            </div>
 
-                        </div>
-
-
-                        <!-- =====================================
-                             DIRECCIÓN
-                        ====================================== -->
-
-                        <div
-                            class="
-                                satori-checkout-section
-                            "
-                        >
-
-                            <div
-                                class="
-                                    satori-checkout-section-title
-                                "
-                            >
-
-                                <span
+                                <div
                                     class="
-                                        satori-checkout-section-number
+                                        satori-checkout-field
+                                        full
                                     "
                                 >
-                                    2
-                                </span>
+
+                                    <label
+                                        for="checkout-address"
+                                    >
+                                        DIRECCIÓN
+                                    </label>
 
 
-                                <h2>
-                                    DATOS DE ENVÍO
-                                </h2>
+                                    <input
+                                        id="checkout-address"
+                                        type="text"
+                                        autocomplete="street-address"
+                                        placeholder="Nombre de la calle y número"
+                                        required
+                                    >
 
-                            </div>
+                                </div>
 
 
-                            <div
-                                class="
-                                    satori-checkout-form-grid
-                                "
-                            >
+                                <div
+                                    class="
+                                        satori-checkout-field
+                                    "
+                                >
+
+                                    <label
+                                        for="checkout-apartment"
+                                    >
+                                        DEPARTAMENTO / CASA
+                                    </label>
+
+
+                                    <input
+                                        id="checkout-apartment"
+                                        type="text"
+                                        placeholder="Opcional"
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-checkout-field
+                                    "
+                                >
+
+                                    <label
+                                        for="checkout-postal"
+                                    >
+                                        CÓDIGO POSTAL
+                                    </label>
+
+
+                                    <input
+                                        id="checkout-postal"
+                                        type="text"
+                                        inputmode="numeric"
+                                        placeholder="Opcional"
+                                    >
+
+                                </div>
+
 
                                 <div
                                     class="
@@ -1673,20 +2221,19 @@
                                     <label
                                         for="checkout-region"
                                     >
-                                        Región
+                                        REGIÓN
                                     </label>
 
 
                                     <select
                                         id="checkout-region"
-                                        name="region"
                                         required
                                     >
 
                                         <option
                                             value=""
                                         >
-                                            Selecciona tu región
+                                            Selecciona una región
                                         </option>
 
                                         <option>
@@ -1767,157 +2314,305 @@
                                     <label
                                         for="checkout-city"
                                     >
-                                        Comuna
+                                        COMUNA
                                     </label>
 
 
                                     <input
                                         id="checkout-city"
-                                        name="city"
                                         type="text"
                                         autocomplete="address-level2"
-                                        placeholder="Tu comuna"
+                                        placeholder="Ej: Temuco"
                                         required
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        satori-checkout-field full
-                                    "
-                                >
-
-                                    <label
-                                        for="checkout-address"
-                                    >
-                                        Dirección
-                                    </label>
-
-
-                                    <input
-                                        id="checkout-address"
-                                        name="address"
-                                        type="text"
-                                        autocomplete="street-address"
-                                        placeholder="Calle y número"
-                                        required
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        satori-checkout-field
-                                    "
-                                >
-
-                                    <label
-                                        for="checkout-address-extra"
-                                    >
-                                        Departamento / Casa
-                                    </label>
-
-
-                                    <input
-                                        id="checkout-address-extra"
-                                        name="addressExtra"
-                                        type="text"
-                                        placeholder="Opcional"
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        satori-checkout-field
-                                    "
-                                >
-
-                                    <label
-                                        for="checkout-postal"
-                                    >
-                                        Código postal
-                                    </label>
-
-
-                                    <input
-                                        id="checkout-postal"
-                                        name="postalCode"
-                                        type="text"
-                                        inputmode="numeric"
-                                        autocomplete="postal-code"
-                                        placeholder="Opcional"
                                     >
 
                                 </div>
 
                             </div>
 
-                        </div>
+                        </section>
 
 
                         <!-- =====================================
-                             NOTA
+                             MÉTODO DE ENVÍO
                         ====================================== -->
 
-                        <div
+                        <section
                             class="
                                 satori-checkout-section
                             "
                         >
 
-                            <div
+                            <span
                                 class="
-                                    satori-checkout-section-title
+                                    satori-checkout-label
                                 "
                             >
-
-                                <span
-                                    class="
-                                        satori-checkout-section-number
-                                    "
-                                >
-                                    3
-                                </span>
+                                SATORII · ENTREGA
+                            </span>
 
 
-                                <h2>
-                                    NOTA DEL PEDIDO
-                                </h2>
-
-                            </div>
+                            <h2>
+                                MÉTODO DE ENTREGA
+                            </h2>
 
 
                             <div
                                 class="
-                                    satori-checkout-field
+                                    satori-shipping-options
                                 "
                             >
 
                                 <label
-                                    for="checkout-note"
+                                    class="
+                                        satori-shipping-option
+                                    "
                                 >
-                                    Comentario
+
+                                    <input
+                                        type="radio"
+                                        name="shipping"
+                                        value="standard"
+                                        checked
+                                    >
+
+
+                                    <span
+                                        class="
+                                            satori-shipping-info
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-shipping-name
+                                            "
+                                        >
+                                            Envío estándar
+                                        </span>
+
+
+                                        <span
+                                            class="
+                                                satori-shipping-description
+                                            "
+                                        >
+                                            El costo será calculado
+                                            según destino.
+                                        </span>
+
+                                    </span>
+
+
+                                    <strong
+                                        class="
+                                            satori-shipping-price
+                                        "
+                                    >
+                                        POR CALCULAR
+                                    </strong>
+
                                 </label>
 
 
-                                <input
-                                    id="checkout-note"
-                                    name="note"
-                                    type="text"
-                                    placeholder="Opcional"
+                                <label
+                                    class="
+                                        satori-shipping-option
+                                    "
                                 >
+
+                                    <input
+                                        type="radio"
+                                        name="shipping"
+                                        value="pickup"
+                                    >
+
+
+                                    <span
+                                        class="
+                                            satori-shipping-info
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-shipping-name
+                                            "
+                                        >
+                                            Retiro
+                                        </span>
+
+
+                                        <span
+                                            class="
+                                                satori-shipping-description
+                                            "
+                                        >
+                                            Disponible según
+                                            condiciones de SATORII.
+                                        </span>
+
+                                    </span>
+
+
+                                    <strong
+                                        class="
+                                            satori-shipping-price
+                                        "
+                                    >
+                                        $0
+                                    </strong>
+
+                                </label>
 
                             </div>
 
-                        </div>
+                        </section>
 
 
-                    </section>
+                        <!-- =====================================
+                             PAGO
+                        ====================================== -->
+
+                        <section
+                            class="
+                                satori-checkout-section
+                            "
+                        >
+
+                            <span
+                                class="
+                                    satori-checkout-label
+                                "
+                            >
+                                SATORII · PAGO
+                            </span>
+
+
+                            <h1>
+                                PAGO SEGURO.
+                            </h1>
+
+
+                            <p
+                                class="
+                                    satori-checkout-description
+                                "
+                            >
+                                Serás dirigido a la plataforma
+                                de pago segura de Flow para
+                                completar tu compra.
+                            </p>
+
+
+                            <div
+                                class="
+                                    satori-payment-box
+                                "
+                            >
+
+                                <label
+                                    class="
+                                        satori-payment-option
+                                    "
+                                >
+
+                                    <input
+                                        type="radio"
+                                        name="payment"
+                                        value="flow"
+                                        checked
+                                    >
+
+
+                                    <span
+                                        class="
+                                            satori-payment-option-content
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-payment-option-title
+                                            "
+                                        >
+                                            Flow
+                                        </span>
+
+
+                                        <span
+                                            class="
+                                                satori-payment-option-description
+                                            "
+                                        >
+                                            Pago seguro con los
+                                            medios disponibles.
+                                        </span>
+
+                                    </span>
+
+
+                                    <span
+                                        class="
+                                            satori-payment-logo
+                                        "
+                                    >
+
+                                        <span>
+                                            FLOW
+                                        </span>
+
+                                    </span>
+
+                                </label>
+
+
+                                <label
+                                    class="
+                                        satori-payment-option
+                                    "
+                                >
+
+                                    <input
+                                        type="radio"
+                                        name="payment"
+                                        value="other"
+                                    >
+
+
+                                    <span
+                                        class="
+                                            satori-payment-option-content
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-payment-option-title
+                                            "
+                                        >
+                                            Otros medios de pago
+                                        </span>
+
+
+                                        <span
+                                            class="
+                                                satori-payment-option-description
+                                            "
+                                        >
+                                            Se habilitarán cuando
+                                            corresponda.
+                                        </span>
+
+                                    </span>
+
+                                </label>
+
+                            </div>
+
+                        </section>
+
+                    </div>
 
 
                     <!-- =========================================
@@ -1930,23 +2625,36 @@
                         "
                     >
 
-                        <span
+                        <div
                             class="
-                                satori-checkout-summary-label
+                                satori-summary-title
                             "
                         >
-                            SATORII · PEDIDO
-                        </span>
+
+                            <h2>
+                                RESUMEN
+                            </h2>
 
 
-                        <h2>
-                            RESUMEN
-                        </h2>
+                            <span
+                                class="
+                                    satori-summary-count
+                                "
+                            >
+                                ${totalItems}
+                                ${
+                                    totalItems === 1
+                                        ? "artículo"
+                                        : "artículos"
+                                }
+                            </span>
+
+                        </div>
 
 
                         <div
                             class="
-                                satori-checkout-products
+                                satori-summary-products
                             "
                         >
 
@@ -1955,192 +2663,329 @@
                         </div>
 
 
+                        <!-- =====================================
+                             DESCUENTO
+                        ====================================== -->
+
                         <div
                             class="
-                                satori-checkout-total
+                                satori-discount
                             "
                         >
 
-                            <div
-                                class="
-                                    satori-checkout-total-row
-                                "
+                            <input
+                                id="checkout-discount"
+                                type="text"
+                                placeholder="Código de descuento"
+                                autocomplete="off"
                             >
 
-                                <span>
-                                    PRODUCTOS
-                                </span>
 
-
-                                <strong>
-                                    ${totalItems}
-                                </strong>
-
-                            </div>
-
-
-                            <div
-                                class="
-                                    satori-checkout-total-row
-                                "
+                            <button
+                                type="button"
+                                id="checkout-discount-button"
                             >
-
-                                <span>
-                                    SUBTOTAL
-                                </span>
-
-
-                                <strong>
-                                    ${formatCheckoutPrice(
-                                        subtotal
-                                    )}
-                                </strong>
-
-                            </div>
-
-
-                            <div
-                                class="
-                                    satori-checkout-total-row
-                                "
-                            >
-
-                                <span>
-                                    ENVÍO
-                                </span>
-
-
-                                <strong>
-                                    POR CALCULAR
-                                </strong>
-
-                            </div>
-
-
-                            <div
-                                class="
-                                    satori-checkout-total-row final
-                                "
-                            >
-
-                                <span>
-                                    TOTAL
-                                </span>
-
-
-                                <strong
-                                    id="checkout-total"
-                                >
-                                    ${formatCheckoutPrice(
-                                        subtotal
-                                    )}
-                                </strong>
-
-                            </div>
+                                APLICAR
+                            </button>
 
                         </div>
 
 
                         <div
+                            id="checkout-discount-message"
                             class="
-                                satori-checkout-shipping-note
+                                satori-discount-message
                             "
                         >
-                            El costo de envío será calculado
-                            antes de realizar el pago.
                         </div>
 
+
+                        <!-- =====================================
+                             SUBTOTAL
+                        ====================================== -->
+
+                        <div
+                            class="
+                                satori-summary-total-row
+                            "
+                        >
+
+                            <span>
+                                SUBTOTAL
+                            </span>
+
+
+                            <strong>
+                                ${formatPrice(
+                                    subtotal
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <!-- =====================================
+                             ENVÍO
+                        ====================================== -->
+
+                        <div
+                            class="
+                                satori-summary-total-row
+                            "
+                        >
+
+                            <span>
+                                ENVÍO
+                            </span>
+
+
+                            <strong
+                                id="checkout-shipping-price"
+                            >
+                                POR CALCULAR
+                            </strong>
+
+                        </div>
+
+
+                        <!-- =====================================
+                             TOTAL
+                        ====================================== -->
+
+                        <div
+                            class="
+                                satori-summary-total-row
+                                satori-summary-grand
+                            "
+                        >
+
+                            <span>
+                                TOTAL
+                            </span>
+
+
+                            <strong
+                                id="checkout-total"
+                            >
+                                ${formatPrice(
+                                    total
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <!-- =====================================
+                             ERROR
+                        ====================================== -->
+
+                        <div
+                            id="checkout-error"
+                            class="
+                                satori-checkout-error
+                            "
+                        >
+                        </div>
+
+
+                        <!-- =====================================
+                             PAGAR
+                        ====================================== -->
 
                         <button
                             type="button"
-                            class="
-                                satori-checkout-pay
-                            "
-                            id="satori-checkout-pay"
+                            id="satori-pay-button"
+                            class="satori-pay-button"
                         >
-                            CONTINUAR CON FLOW
+                            PAGAR AHORA
                         </button>
 
 
-                        <div
+                        <p
                             class="
-                                satori-checkout-security
+                                satori-secure
                             "
                         >
-                            El pago se procesará de forma
+                            🔒 Tu pago será procesado de forma
                             segura mediante Flow.
-                        </div>
-
-
-                        <a
-                            href="carrito.html"
-                            class="
-                                satori-checkout-back
-                            "
-                        >
-                            ← VOLVER AL CARRITO
-                        </a>
+                        </p>
 
                     </aside>
 
                 </div>
 
+
+                <!-- =============================================
+                     FOOTER CHECKOUT
+                ============================================== -->
+
+                <footer
+                    class="
+                        satori-checkout-footer
+                    "
+                >
+
+                    <nav
+                        class="
+                            satori-checkout-footer-links
+                        "
+                    >
+
+                        <a href="#">
+                            Política de reembolso
+                        </a>
+
+                        <a href="#">
+                            Envío
+                        </a>
+
+                        <a href="#">
+                            Política de privacidad
+                        </a>
+
+                        <a href="#">
+                            Términos del servicio
+                        </a>
+
+                        <a href="#">
+                            Cancelaciones
+                        </a>
+
+                        <a href="#">
+                            Contacto
+                        </a>
+
+                    </nav>
+
+                </footer>
+
             `;
 
 
-            /* =================================================
-               BOTÓN FLOW
-            ================================================== */
+            initializeCheckout(
+                subtotal
+            );
+
+        }
+
+
+        /* =====================================================
+           INICIALIZAR
+        ====================================================== */
+
+        function initializeCheckout(
+            subtotal
+        ) {
 
             const payButton =
                 document.getElementById(
-                    "satori-checkout-pay"
+                    "satori-pay-button"
                 );
 
 
-            if (
-                payButton
-            ) {
+            const errorBox =
+                document.getElementById(
+                    "checkout-error"
+                );
 
-                payButton.addEventListener(
+
+            /* =================================================
+               RUT
+            ================================================= */
+
+            const rutInput =
+                document.getElementById(
+                    "checkout-rut"
+                );
+
+
+            rutInput?.addEventListener(
+                "input",
+                function () {
+
+                    let value =
+                        this.value
+                            .replace(
+                                /[^0-9kK]/g,
+                                ""
+                            )
+                            .toUpperCase();
+
+
+                    if (
+                        value.length > 1
+                    ) {
+
+                        const body =
+                            value.slice(
+                                0,
+                                -1
+                            );
+
+
+                        const dv =
+                            value.slice(
+                                -1
+                            );
+
+
+                        const formatted =
+                            body
+                                .replace(
+                                    /\B(?=(\d{3})+(?!\d))/g,
+                                    "."
+                                );
+
+
+                        this.value =
+                            formatted +
+                            "-" +
+                            dv;
+
+                    }
+
+                }
+            );
+
+
+            /* =================================================
+               DESCUENTO
+            ================================================= */
+
+            document
+                .getElementById(
+                    "checkout-discount-button"
+                )
+                ?.addEventListener(
                     "click",
                     function () {
 
-                        const requiredFields =
-                            checkoutContent.querySelectorAll(
-                                "input[required], select[required]"
+                        const input =
+                            document.getElementById(
+                                "checkout-discount"
                             );
 
 
-                        let valid = true;
-
-
-                        requiredFields.forEach(
-                            function (
-                                field
-                            ) {
-
-                                if (
-                                    !field.value.trim()
-                                ) {
-
-                                    field.focus();
-
-                                    valid = false;
-
-                                }
-
-                            }
-                        );
-
-
-                        if (
-                            !valid
-                        ) {
-
-                            alert(
-                                "Completa todos los datos obligatorios antes de continuar."
+                        const message =
+                            document.getElementById(
+                                "checkout-discount-message"
                             );
+
+
+                        const code =
+                            input
+                                .value
+                                .trim()
+                                .toUpperCase();
+
+
+                        if (!code) {
+
+                            message.textContent =
+                                "Ingresa un código de descuento.";
+
+                            message.style.display =
+                                "block";
 
                             return;
 
@@ -2148,26 +2993,169 @@
 
 
                         /*
-                         * FLOW TODAVÍA NO ESTÁ CONECTADO.
-                         *
-                         * Esto será reemplazado posteriormente
-                         * por una llamada al backend SATORII.
+                         * Todavía no tenemos
+                         * sistema de cupones/backend.
                          */
 
-                        alert(
-                            "Checkout preparado. La conexión con Flow se agregará en la siguiente etapa."
-                        );
+                        message.textContent =
+                            "Este código se validará durante el proceso de compra.";
+
+                        message.style.display =
+                            "block";
 
                     }
                 );
 
-            }
+
+            /* =================================================
+               PAGAR
+            ================================================= */
+
+            payButton?.addEventListener(
+                "click",
+                function () {
+
+                    errorBox.style.display =
+                        "none";
+
+
+                    /* =========================================
+                       VALIDAR FORMULARIO
+                    ========================================== */
+
+                    const requiredFields =
+                        document.querySelectorAll(
+                            "#checkout-container [required]"
+                        );
+
+
+                    for (
+                        const field of requiredFields
+                    ) {
+
+                        if (
+                            !field.value.trim()
+                        ) {
+
+                            field.focus();
+
+
+                            errorBox.textContent =
+                                "Completa todos los campos obligatorios antes de continuar.";
+
+
+                            errorBox.style.display =
+                                "block";
+
+
+                            return;
+
+                        }
+
+                    }
+
+
+                    /* =========================================
+                       VALIDAR EMAIL
+                    ========================================== */
+
+                    const email =
+                        document
+                            .getElementById(
+                                "checkout-email"
+                            )
+                            .value
+                            .trim();
+
+
+                    if (
+                        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                            .test(
+                                email
+                            )
+                    ) {
+
+                        document
+                            .getElementById(
+                                "checkout-email"
+                            )
+                            .focus();
+
+
+                        errorBox.textContent =
+                            "Ingresa un correo electrónico válido.";
+
+
+                        errorBox.style.display =
+                            "block";
+
+
+                        return;
+
+                    }
+
+
+                    /* =========================================
+                       ESTADO ACTUAL
+                    ========================================== */
+
+                    /*
+                     * AQUÍ todavía NO hacemos
+                     * la llamada a Flow.
+                     *
+                     * En la siguiente etapa:
+                     *
+                     * checkout.html
+                     *       ↓
+                     * /api/create-payment
+                     *       ↓
+                     * Flow
+                     */
+
+                    payButton.disabled =
+                        true;
+
+
+                    payButton.textContent =
+                        "PREPARANDO PAGO...";
+
+
+                    /*
+                     * Por ahora mostramos
+                     * un mensaje hasta que
+                     * conectemos el backend.
+                     */
+
+                    setTimeout(
+                        function () {
+
+                            payButton.disabled =
+                                false;
+
+
+                            payButton.textContent =
+                                "PAGAR AHORA";
+
+
+                            errorBox.textContent =
+                                "El pago estará disponible cuando conectemos SATORII con Flow.";
+
+
+                            errorBox.style.display =
+                                "block";
+
+                        },
+                        600
+                    );
+
+                }
+            );
 
         }
 
 
         /* =====================================================
-           INICIALIZACIÓN
+           INICIO
         ====================================================== */
 
         if (
@@ -2187,39 +3175,6 @@
             renderCheckout();
 
         }
-
-
-        /* =====================================================
-           SINCRONIZACIÓN
-        ====================================================== */
-
-        document.addEventListener(
-            "satorii:cart-updated",
-            function () {
-
-                renderCheckout();
-
-            }
-        );
-
-
-        window.addEventListener(
-            "storage",
-            function (
-                event
-            ) {
-
-                if (
-                    event.key ===
-                    CART_KEY
-                ) {
-
-                    renderCheckout();
-
-                }
-
-            }
-        );
 
     </script>
 
