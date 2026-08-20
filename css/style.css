@@ -1381,25 +1381,48 @@ img {
 ========================================================= */
 
 @media (max-width: 768px) {
+
     .hero-slide {
         width: 100%;
+
         height: auto;
+
         min-height: 0;
+
         max-height: none;
-        aspect-ratio: 2 / 3;
+
+        aspect-ratio: 1080 / 1200;
+
+        overflow: hidden;
     }
 
-    .hero-slide picture,
-    .hero-slide picture img {
+
+    .hero-slide picture {
+        display: block;
+
         width: 100%;
+
         height: 100%;
     }
 
-    .hero-slide picture img {
-        object-fit: cover;
-    }
-}
 
+    .hero-slide picture img {
+        display: block;
+
+        width: 100%;
+
+        height: 100%;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        user-select: none;
+
+        pointer-events: none;
+    }
+
+}
 @media (max-width: 430px) {
     .hero-slide {
         min-height: 340px;
