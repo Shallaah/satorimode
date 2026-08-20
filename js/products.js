@@ -10,13 +10,23 @@ const PRODUCTS = [
 
     {
         id: "kid-buu",
+
         name: "Polera Kid Buu",
 
         category: "anime",
+
         collection: "Anime",
 
+        subcategory: "poleras",
+
         price: 18990,
+
         currency: "CLP",
+
+
+        /* =================================================
+           DESCRIPCIÓN
+        ================================================== */
 
         description:
             "Polera inspirada en Kid Buu, diseñada para nuestra colección Anime de Satorii.",
@@ -24,7 +34,7 @@ const PRODUCTS = [
 
         /* =================================================
            INFORMACIÓN DEL PRODUCTO
-           ================================================= */
+        ================================================== */
 
         details: {
 
@@ -47,11 +57,16 @@ const PRODUCTS = [
 
 
         /* =================================================
-           IMÁGENES
-           ================================================= */
+           IMAGEN PRINCIPAL
+        ================================================== */
 
         image:
             "img/productos/anime/dbz-kid-buu/01.PNG",
+
+
+        /* =================================================
+           GALERÍA
+        ================================================== */
 
         images: [
 
@@ -65,8 +80,8 @@ const PRODUCTS = [
 
 
         /* =================================================
-           PÁGINA DEL PRODUCTO
-           ================================================= */
+           PÁGINA INDIVIDUAL
+        ================================================== */
 
         url:
             "productos/anime/polera-kid-buu.html",
@@ -74,7 +89,7 @@ const PRODUCTS = [
 
         /* =================================================
            TALLAS
-           ================================================= */
+        ================================================== */
 
         sizes: [
 
@@ -87,16 +102,18 @@ const PRODUCTS = [
 
         /* =================================================
            COLORES
-           ================================================= */
+        ================================================== */
 
         colors: [
-        "Blanco"
-],
+
+            "Blanco"
+
+        ],
 
 
         /* =================================================
            ETIQUETAS
-           ================================================= */
+        ================================================== */
 
         tags: [
 
@@ -113,156 +130,761 @@ const PRODUCTS = [
 
         /* =================================================
            ESTADO
-           ================================================= */
+        ================================================== */
 
         available: true,
 
-        featured: true
+        featured: true,
+
+        newProduct: true
 
     },
-   {
-    id: "goku",
 
-    name: "Polera Goku",
 
-    category: "anime",
-    collection: "Anime",
+    /* =====================================================
+       POLERA GOKU
+       ===================================================== */
 
-    price: 19990,
-    currency: "CLP",
+    {
+        id: "goku",
 
-    details: {
+        name: "Polera Goku",
+
+        category: "anime",
+
+        collection: "Anime",
+
+        subcategory: "poleras",
+
+        price: 19990,
+
+        currency: "CLP",
+
+
+        /* =================================================
+           DESCRIPCIÓN
+        ================================================== */
 
         description:
-            "Polera inspirada en Goku para nuestra colección Anime de SatoriMode.",
+            "Polera inspirada en Goku para nuestra colección Anime de Satorii.",
 
-        shipping:
-            "Enviamos a todo Chile. Los pedidos se preparan y despachan según la modalidad de envío seleccionada.",
 
-        warranty:
-            "Todos nuestros productos cuentan con garantía frente a fallas de fabricación.",
+        /* =================================================
+           INFORMACIÓN DEL PRODUCTO
+        ================================================== */
 
-        measurements:
-            "Disponible en tallas M, L y XL. Revisa nuestra guía de tallas antes de comprar.",
+        details: {
 
-        care:
-            "Lavar con agua fría y evitar el uso de cloro. No planchar directamente sobre el estampado."
+            description:
+                "Polera inspirada en Goku para nuestra colección Anime de Satorii.",
 
-    },
+            shipping:
+                "Enviamos a todo Chile. Los pedidos se preparan y despachan según la modalidad de envío seleccionada.",
 
-    image:
-        "productos/anime/polera-kid-buu-01.PNG",
+            warranty:
+                "Todos nuestros productos cuentan con garantía frente a fallas de fabricación.",
 
-    images: [
+            measurements:
+                "Disponible en tallas M, L y XL. Revisa nuestra guía de tallas antes de comprar.",
 
-        "productos/anime/polera-kid-buu-01.PNG",
+            care:
+                "Lavar con agua fría y evitar el uso de cloro. No planchar directamente sobre el estampado."
 
-        "productos/anime/polera-kid-buu-02.PNG",
+        },
 
-        "productos/anime/polera-kid-buu-03.PNG"
 
-    ],
+        /* =================================================
+           IMAGEN PRINCIPAL
+        ================================================== */
 
-    url:
-        "productos/anime/goku.html",
+        image:
+            "img/productos/anime/goku/01.PNG",
 
-    sizes: [
-        "M",
-        "L",
-        "XL"
-    ],
 
-colors: [
-    "Negro",
-    "Blanco"
-],
+        /* =================================================
+           GALERÍA
+        ================================================== */
 
-    tags: [
-        "goku",
-        "dragon ball",
-        "dragon ball z",
-        "anime",
-        "polera",
-        "streetwear"
-    ],
+        images: [
 
-    available: true,
+            "img/productos/anime/goku/01.PNG",
 
-    featured: false
-}
+            "img/productos/anime/goku/02.PNG",
+
+            "img/productos/anime/goku/03.PNG"
+
+        ],
+
+
+        /* =================================================
+           PÁGINA INDIVIDUAL
+        ================================================== */
+
+        url:
+            "productos/anime/goku.html",
+
+
+        /* =================================================
+           TALLAS
+        ================================================== */
+
+        sizes: [
+
+            "M",
+            "L",
+            "XL"
+
+        ],
+
+
+        /* =================================================
+           COLORES
+        ================================================== */
+
+        colors: [
+
+            "Negro",
+
+            "Blanco"
+
+        ],
+
+
+        /* =================================================
+           ETIQUETAS
+        ================================================== */
+
+        tags: [
+
+            "goku",
+            "dragon ball",
+            "dragon ball z",
+            "anime",
+            "polera",
+            "streetwear"
+
+        ],
+
+
+        /* =================================================
+           ESTADO
+        ================================================== */
+
+        available: true,
+
+        featured: false,
+
+        newProduct: true
+
+    }
 
 ];
 
 
 /* =========================================================
-   FUNCIONES
+   FUNCIONES BÁSICAS
+   ========================================================= */
+
+
+/* =========================================================
+   OBTENER PRODUCTO POR ID
    ========================================================= */
 
 function getProductById(id) {
 
-    return PRODUCTS.find(product =>
-        product.id === id
-    );
+    if (!id) {
+        return null;
+    }
+
+    return PRODUCTS.find(
+        product =>
+            product.id === id
+    ) || null;
 
 }
 
+
+/* =========================================================
+   OBTENER PRODUCTOS POR CATEGORÍA
+   ========================================================= */
 
 function getProductsByCategory(category) {
 
-    return PRODUCTS.filter(product =>
-        product.category === category
+    if (!category) {
+        return [];
+    }
+
+    const normalizedCategory =
+        normalizeProductText(category);
+
+    return PRODUCTS.filter(
+        product =>
+            normalizeProductText(
+                product.category
+            ) === normalizedCategory
     );
 
 }
 
+
+/* =========================================================
+   OBTENER PRODUCTOS POR COLECCIÓN
+   ========================================================= */
+
+function getProductsByCollection(collection) {
+
+    if (!collection) {
+        return [];
+    }
+
+    const normalizedCollection =
+        normalizeProductText(collection);
+
+    return PRODUCTS.filter(
+        product =>
+            normalizeProductText(
+                product.collection
+            ) === normalizedCollection
+    );
+
+}
+
+
+/* =========================================================
+   OBTENER PRODUCTOS POR SUBCATEGORÍA
+   ========================================================= */
+
+function getProductsBySubcategory(subcategory) {
+
+    if (!subcategory) {
+        return [];
+    }
+
+    const normalizedSubcategory =
+        normalizeProductText(subcategory);
+
+    return PRODUCTS.filter(
+        product =>
+            normalizeProductText(
+                product.subcategory
+            ) === normalizedSubcategory
+    );
+
+}
+
+
+/* =========================================================
+   PRODUCTOS DISPONIBLES
+   ========================================================= */
 
 function getAvailableProducts() {
 
-    return PRODUCTS.filter(product =>
-        product.available === true
+    return PRODUCTS.filter(
+        product =>
+            product.available === true
     );
 
 }
 
+
+/* =========================================================
+   PRODUCTOS DESTACADOS
+   ========================================================= */
 
 function getFeaturedProducts() {
 
-    return PRODUCTS.filter(product =>
-        product.featured === true
+    return PRODUCTS.filter(
+        product =>
+            product.featured === true &&
+            product.available === true
     );
 
 }
 
 
-function searchProducts(query) {
+/* =========================================================
+   PRODUCTOS NUEVOS
+   ========================================================= */
 
-    if (!query) return [];
+function getNewProducts() {
 
-    const text = query
-        .trim()
-        .toLowerCase();
-
-    if (!text) return [];
-
-    return PRODUCTS.filter(product => {
-
-        const searchableText = [
-
-            product.name,
-            product.category,
-            product.collection,
-            ...product.tags
-
-        ]
-        .join(" ")
-        .toLowerCase();
-
-        return searchableText.includes(text);
-
-    });
+    return PRODUCTS.filter(
+        product =>
+            product.newProduct === true &&
+            product.available === true
+    );
 
 }
 
+
+/* =========================================================
+   NORMALIZAR TEXTO
+   ========================================================= */
+
+function normalizeProductText(value) {
+
+    return String(value || "")
+        .normalize("NFD")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+        .toLowerCase()
+        .trim();
+
+}
+
+
+/* =========================================================
+   TEXTO BUSCABLE DE UN PRODUCTO
+   ========================================================= */
+
+function getProductSearchText(product) {
+
+    if (!product) {
+        return "";
+    }
+
+
+    const values = [
+
+        product.name,
+
+        product.category,
+
+        product.collection,
+
+        product.subcategory,
+
+        product.description,
+
+        ...(Array.isArray(product.tags)
+            ? product.tags
+            : []
+        ),
+
+        ...(Array.isArray(product.colors)
+            ? product.colors
+            : []
+        ),
+
+        ...(Array.isArray(product.sizes)
+            ? product.sizes
+            : []
+        )
+
+    ];
+
+
+    return normalizeProductText(
+        values.join(" ")
+    );
+
+}
+
+
+/* =========================================================
+   BÚSQUEDA DE PRODUCTOS
+   ========================================================= */
+
+function searchProducts(query) {
+
+    const text =
+        normalizeProductText(query);
+
+
+    if (!text) {
+        return [];
+    }
+
+
+    return PRODUCTS.filter(
+        product => {
+
+            const searchableText =
+                getProductSearchText(
+                    product
+                );
+
+            return searchableText.includes(
+                text
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   BÚSQUEDA CON PRODUCTOS DISPONIBLES
+   ========================================================= */
+
+function searchAvailableProducts(query) {
+
+    const text =
+        normalizeProductText(query);
+
+
+    if (!text) {
+        return [];
+    }
+
+
+    return PRODUCTS.filter(
+        product => {
+
+            if (
+                product.available !== true
+            ) {
+                return false;
+            }
+
+
+            const searchableText =
+                getProductSearchText(
+                    product
+                );
+
+
+            return searchableText.includes(
+                text
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   OBTENER TODAS LAS CATEGORÍAS
+   ========================================================= */
+
+function getProductCategories() {
+
+    return [
+        ...new Set(
+
+            PRODUCTS
+                .map(
+                    product =>
+                        product.category
+                )
+                .filter(Boolean)
+
+        )
+    ];
+
+}
+
+
+/* =========================================================
+   OBTENER TODAS LAS COLECCIONES
+   ========================================================= */
+
+function getProductCollections() {
+
+    return [
+        ...new Set(
+
+            PRODUCTS
+                .map(
+                    product =>
+                        product.collection
+                )
+                .filter(Boolean)
+
+        )
+    ];
+
+}
+
+
+/* =========================================================
+   OBTENER TODAS LAS SUBCATEGORÍAS
+   ========================================================= */
+
+function getProductSubcategories() {
+
+    return [
+        ...new Set(
+
+            PRODUCTS
+                .map(
+                    product =>
+                        product.subcategory
+                )
+                .filter(Boolean)
+
+        )
+    ];
+
+}
+
+
+/* =========================================================
+   OBTENER TODAS LAS TALLAS
+   ========================================================= */
+
+function getProductSizes() {
+
+    const sizes = [];
+
+
+    PRODUCTS.forEach(
+        product => {
+
+            if (
+                !Array.isArray(
+                    product.sizes
+                )
+            ) {
+                return;
+            }
+
+
+            product.sizes.forEach(
+                size => {
+
+                    if (
+                        size &&
+                        !sizes.includes(size)
+                    ) {
+
+                        sizes.push(size);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    return sizes;
+
+}
+
+
+/* =========================================================
+   OBTENER TODOS LOS COLORES
+   ========================================================= */
+
+function getProductColors() {
+
+    const colors = [];
+
+
+    PRODUCTS.forEach(
+        product => {
+
+            if (
+                !Array.isArray(
+                    product.colors
+                )
+            ) {
+                return;
+            }
+
+
+            product.colors.forEach(
+                color => {
+
+                    if (
+                        color &&
+                        !colors.includes(color)
+                    ) {
+
+                        colors.push(color);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    return colors;
+
+}
+
+
+/* =========================================================
+   OBTENER RANGO DE PRECIOS
+   ========================================================= */
+
+function getProductPriceRange() {
+
+    const prices =
+        PRODUCTS
+            .map(
+                product =>
+                    Number(
+                        product.price
+                    ) || 0
+            )
+            .filter(
+                price =>
+                    price > 0
+            );
+
+
+    if (!prices.length) {
+
+        return {
+
+            min: 0,
+
+            max: 0
+
+        };
+
+    }
+
+
+    return {
+
+        min: Math.min(
+            ...prices
+        ),
+
+        max: Math.max(
+            ...prices
+        )
+
+    };
+
+}
+
+
+/* =========================================================
+   PRODUCTOS POR RANGO DE PRECIO
+   ========================================================= */
+
+function getProductsByPriceRange(
+    min = 0,
+    max = Infinity
+) {
+
+    const minimum =
+        Number(min) || 0;
+
+    const maximum =
+        Number(max);
+
+
+    return PRODUCTS.filter(
+        product => {
+
+            const price =
+                Number(
+                    product.price
+                ) || 0;
+
+
+            return (
+                price >= minimum &&
+                (
+                    !Number.isFinite(
+                        maximum
+                    ) ||
+                    price <= maximum
+                )
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PRODUCTOS POR TALLA
+   ========================================================= */
+
+function getProductsBySize(size) {
+
+    if (!size) {
+        return [];
+    }
+
+
+    const normalizedSize =
+        normalizeProductText(size);
+
+
+    return PRODUCTS.filter(
+        product => {
+
+            if (
+                !Array.isArray(
+                    product.sizes
+                )
+            ) {
+                return false;
+            }
+
+
+            return product.sizes.some(
+                productSize =>
+                    normalizeProductText(
+                        productSize
+                    ) === normalizedSize
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PRODUCTOS POR COLOR
+   ========================================================= */
+
+function getProductsByColor(color) {
+
+    if (!color) {
+        return [];
+    }
+
+
+    const normalizedColor =
+        normalizeProductText(color);
+
+
+    return PRODUCTS.filter(
+        product => {
+
+            if (
+                !Array.isArray(
+                    product.colors
+                )
+            ) {
+                return false;
+            }
+
+
+            return product.colors.some(
+                productColor =>
+                    normalizeProductText(
+                        productColor
+                    ) === normalizedColor
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PRODUCTOS RELACIONADOS
+   ========================================================= */
 
 function getRelatedProducts(
     currentProductId,
@@ -270,29 +892,54 @@ function getRelatedProducts(
     limit = 3
 ) {
 
-    let products = PRODUCTS.filter(product =>
+    let products =
+        PRODUCTS.filter(
+            product =>
 
-        product.id !== currentProductId &&
-        product.available === true
+                product.id !==
+                    currentProductId &&
 
-    );
+                product.available === true
+
+        );
 
 
     if (category) {
 
-        const sameCategory =
-            products.filter(product =>
-                product.category === category
+        const normalizedCategory =
+            normalizeProductText(
+                category
             );
 
-        if (sameCategory.length > 0) {
+
+        const sameCategory =
+            products.filter(
+                product =>
+
+                    normalizeProductText(
+                        product.category
+                    ) ===
+                    normalizedCategory
+
+            );
+
+
+        if (
+            sameCategory.length > 0
+        ) {
 
             products = [
 
                 ...sameCategory,
 
-                ...products.filter(product =>
-                    product.category !== category
+                ...products.filter(
+                    product =>
+
+                        normalizeProductText(
+                            product.category
+                        ) !==
+                        normalizedCategory
+
                 )
 
             ];
@@ -302,7 +949,554 @@ function getRelatedProducts(
     }
 
 
-    return products.slice(0, limit);
+    return products.slice(
+        0,
+        limit
+    );
+
+}
+
+
+/* =========================================================
+   ORDENAMIENTO
+   ========================================================= */
+
+
+/* =========================================================
+   PRECIO MENOR → MAYOR
+   ========================================================= */
+
+function sortProductsByPriceAsc(
+    products
+) {
+
+    return [...products].sort(
+        (
+            a,
+            b
+        ) =>
+            (
+                Number(
+                    a.price
+                ) || 0
+            ) -
+            (
+                Number(
+                    b.price
+                ) || 0
+            )
+    );
+
+}
+
+
+/* =========================================================
+   PRECIO MAYOR → MENOR
+   ========================================================= */
+
+function sortProductsByPriceDesc(
+    products
+) {
+
+    return [...products].sort(
+        (
+            a,
+            b
+        ) =>
+            (
+                Number(
+                    b.price
+                ) || 0
+            ) -
+            (
+                Number(
+                    a.price
+                ) || 0
+            )
+    );
+
+}
+
+
+/* =========================================================
+   NOMBRE A → Z
+   ========================================================= */
+
+function sortProductsByNameAsc(
+    products
+) {
+
+    return [...products].sort(
+        (
+            a,
+            b
+        ) =>
+            String(
+                a.name || ""
+            ).localeCompare(
+                String(
+                    b.name || ""
+                ),
+                "es",
+                {
+                    sensitivity:
+                        "base"
+                }
+            )
+    );
+
+}
+
+
+/* =========================================================
+   DESTACADOS PRIMERO
+   ========================================================= */
+
+function sortProductsByFeatured(
+    products
+) {
+
+    return [...products].sort(
+        (
+            a,
+            b
+        ) => {
+
+            const featuredA =
+                a.featured === true
+                    ? 1
+                    : 0;
+
+            const featuredB =
+                b.featured === true
+                    ? 1
+                    : 0;
+
+
+            return featuredB -
+                featuredA;
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FILTRO COMBINADO
+   ========================================================= */
+
+function filterProducts(
+    products,
+    filters = {}
+) {
+
+    let result =
+        Array.isArray(products)
+            ? [...products]
+            : [];
+
+
+    /* =====================================================
+       BÚSQUEDA
+    ====================================================== */
+
+    if (
+        filters.search
+    ) {
+
+        const searchText =
+            normalizeProductText(
+                filters.search
+            );
+
+
+        result =
+            result.filter(
+                product =>
+
+                    getProductSearchText(
+                        product
+                    ).includes(
+                        searchText
+                    )
+
+            );
+
+    }
+
+
+    /* =====================================================
+       CATEGORÍA
+    ====================================================== */
+
+    if (
+        filters.category
+    ) {
+
+        const category =
+            normalizeProductText(
+                filters.category
+            );
+
+
+        result =
+            result.filter(
+                product =>
+
+                    normalizeProductText(
+                        product.category
+                    ) === category
+
+            );
+
+    }
+
+
+    /* =====================================================
+       COLECCIÓN
+    ====================================================== */
+
+    if (
+        filters.collection
+    ) {
+
+        const collection =
+            normalizeProductText(
+                filters.collection
+            );
+
+
+        result =
+            result.filter(
+                product =>
+
+                    normalizeProductText(
+                        product.collection
+                    ) === collection
+
+            );
+
+    }
+
+
+    /* =====================================================
+       SUBCATEGORÍA
+    ====================================================== */
+
+    if (
+        filters.subcategory
+    ) {
+
+        const subcategory =
+            normalizeProductText(
+                filters.subcategory
+            );
+
+
+        result =
+            result.filter(
+                product =>
+
+                    normalizeProductText(
+                        product.subcategory
+                    ) === subcategory
+
+            );
+
+    }
+
+
+    /* =====================================================
+       TALLA
+    ====================================================== */
+
+    if (
+        filters.size
+    ) {
+
+        const size =
+            normalizeProductText(
+                filters.size
+            );
+
+
+        result =
+            result.filter(
+                product => {
+
+                    if (
+                        !Array.isArray(
+                            product.sizes
+                        )
+                    ) {
+                        return false;
+                    }
+
+
+                    return product.sizes.some(
+                        productSize =>
+
+                            normalizeProductText(
+                                productSize
+                            ) === size
+
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       COLOR
+    ====================================================== */
+
+    if (
+        filters.color
+    ) {
+
+        const color =
+            normalizeProductText(
+                filters.color
+            );
+
+
+        result =
+            result.filter(
+                product => {
+
+                    if (
+                        !Array.isArray(
+                            product.colors
+                        )
+                    ) {
+                        return false;
+                    }
+
+
+                    return product.colors.some(
+                        productColor =>
+
+                            normalizeProductText(
+                                productColor
+                            ) === color
+
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       PRECIO MÍNIMO
+    ====================================================== */
+
+    if (
+        filters.minPrice !==
+        undefined
+    ) {
+
+        const minPrice =
+            Number(
+                filters.minPrice
+            ) || 0;
+
+
+        result =
+            result.filter(
+                product =>
+
+                    (
+                        Number(
+                            product.price
+                        ) || 0
+                    ) >= minPrice
+
+            );
+
+    }
+
+
+    /* =====================================================
+       PRECIO MÁXIMO
+    ====================================================== */
+
+    if (
+        filters.maxPrice !==
+        undefined
+    ) {
+
+        const maxPrice =
+            Number(
+                filters.maxPrice
+            );
+
+
+        if (
+            Number.isFinite(
+                maxPrice
+            )
+        ) {
+
+            result =
+                result.filter(
+                    product =>
+
+                        (
+                            Number(
+                                product.price
+                            ) || 0
+                        ) <= maxPrice
+
+                );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       DISPONIBILIDAD
+    ====================================================== */
+
+    if (
+        filters.available === true
+    ) {
+
+        result =
+            result.filter(
+                product =>
+                    product.available === true
+            );
+
+    }
+
+
+    /* =====================================================
+       DESTACADOS
+    ====================================================== */
+
+    if (
+        filters.featured === true
+    ) {
+
+        result =
+            result.filter(
+                product =>
+                    product.featured === true
+            );
+
+    }
+
+
+    /* =====================================================
+       NUEVOS
+    ====================================================== */
+
+    if (
+        filters.newProduct === true
+    ) {
+
+        result =
+            result.filter(
+                product =>
+                    product.newProduct === true
+            );
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   ORDENAMIENTO GENERAL
+   ========================================================= */
+
+function sortProducts(
+    products,
+    sort = "featured"
+) {
+
+    const list =
+        Array.isArray(products)
+            ? [...products]
+            : [];
+
+
+    switch (sort) {
+
+        case "price-asc":
+
+            return sortProductsByPriceAsc(
+                list
+            );
+
+
+        case "price-desc":
+
+            return sortProductsByPriceDesc(
+                list
+            );
+
+
+        case "name-asc":
+
+            return sortProductsByNameAsc(
+                list
+            );
+
+
+        case "featured":
+
+        default:
+
+            return sortProductsByFeatured(
+                list
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   OBTENER PRODUCTOS PARA CATÁLOGO
+   ========================================================= */
+
+function getCatalogProducts(
+    filters = {},
+    sort = "featured"
+) {
+
+    let products =
+        PRODUCTS.filter(
+            product =>
+                product.available === true
+        );
+
+
+    products =
+        filterProducts(
+            products,
+            filters
+        );
+
+
+    products =
+        sortProducts(
+            products,
+            sort
+        );
+
+
+    return products;
 
 }
 
