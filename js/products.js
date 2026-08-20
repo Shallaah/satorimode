@@ -105,7 +105,7 @@ const PRODUCTS = [
         ================================================== */
 
         url:
-            "productos/anime/polera-kid-buu.html",
+            "productos/anime/kid-buu.html",
 
 
         /* =================================================
