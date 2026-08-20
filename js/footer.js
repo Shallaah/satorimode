@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         Torii
                     </a>
 
-                    <a href="${BASE}accesorios.html">
-                        Accesorios
+                    <a href="${BASE}anime-goods.html">
+                        Anime Goods
                     </a>
 
                 </div>
