@@ -2,11 +2,23 @@
    SATORIMODE · CATÁLOGO DE PRODUCTOS
    ========================================================= */
 
+
+/* =========================================================
+   CONFIGURACIÓN
+   ========================================================= */
+
+const DEFAULT_NEW_DAYS = 7;
+
+
+/* =========================================================
+   PRODUCTOS
+   ========================================================= */
+
 const PRODUCTS = [
 
     /* =====================================================
        POLERA KID BUU
-       ===================================================== */
+    ===================================================== */
 
     {
         id: "kid-buu",
@@ -22,6 +34,15 @@ const PRODUCTS = [
         price: 18990,
 
         currency: "CLP",
+
+
+        /* =================================================
+           FECHA DE LANZAMIENTO
+        ================================================== */
+
+        releaseDate: "2026-08-20",
+
+        newDays: 7,
 
 
         /* =================================================
@@ -136,25 +157,14 @@ const PRODUCTS = [
 
         featured: true,
 
-        newProduct: true,
-
-
-        /* =================================================
-           NUEVO HASTA
-           
-           La etiqueta NUEVO se mostrará hasta esta fecha.
-           Formato: YYYY-MM-DD
-        ================================================== */
-
-        newUntil:
-            "2026-08-23"
+        newProduct: true
 
     },
 
 
     /* =====================================================
        POLERA GOKU
-       ===================================================== */
+    ===================================================== */
 
     {
         id: "goku",
@@ -170,6 +180,15 @@ const PRODUCTS = [
         price: 19990,
 
         currency: "CLP",
+
+
+        /* =================================================
+           FECHA DE LANZAMIENTO
+        ================================================== */
+
+        releaseDate: "2026-08-20",
+
+        newDays: 7,
 
 
         /* =================================================
@@ -285,15 +304,7 @@ const PRODUCTS = [
 
         featured: false,
 
-        newProduct: true,
-
-
-        /* =================================================
-           NUEVO HASTA
-        ================================================== */
-
-        newUntil:
-            "2026-08-23"
+        newProduct: true
 
     }
 
@@ -301,13 +312,21 @@ const PRODUCTS = [
 
 
 /* =========================================================
-   SISTEMA DE PRODUCTO NUEVO
+   SISTEMA · PRODUCTO NUEVO
    ========================================================= */
 
 
-/* =========================================================
-   COMPROBAR SI UN PRODUCTO SIGUE SIENDO NUEVO
-   ========================================================= */
+/*
+   Comprueba si un producto todavía debe aparecer
+   como NUEVO.
+
+   Ejemplo:
+
+   releaseDate: "2026-08-20"
+   newDays: 7
+
+   El producto será NUEVO durante 7 días.
+*/
 
 function isProductNew(product) {
 
@@ -316,63 +335,120 @@ function isProductNew(product) {
     }
 
 
-    /* =====================================================
-       SI TIENE FECHA DE EXPIRACIÓN
-    ====================================================== */
+    /*
+       Si no está marcado como producto nuevo,
+       no mostramos la etiqueta.
+    */
 
-    if (product.newUntil) {
+    if (product.newProduct !== true) {
+        return false;
+    }
 
-        const today =
-            new Date();
+
+    /*
+       Si no tiene fecha de lanzamiento,
+       mantenemos el comportamiento anterior.
+    */
+
+    if (!product.releaseDate) {
+        return true;
+    }
 
 
-        today.setHours(
-            0,
-            0,
-            0,
-            0
+    /*
+       Número de días configurado.
+       Si no existe, usamos 7 días.
+    */
+
+    const days =
+        Number(product.newDays) ||
+        DEFAULT_NEW_DAYS;
+
+
+    /*
+       Fecha de lanzamiento.
+    */
+
+    const releaseDate =
+        new Date(
+            `${product.releaseDate}T00:00:00`
         );
 
 
-        const expirationDate =
-            new Date(
-                product.newUntil +
-                "T00:00:00"
-            );
+    /*
+       Comprobar que la fecha sea válida.
+    */
 
+    if (
+        Number.isNaN(
+            releaseDate.getTime()
+        )
+    ) {
 
-        return (
-            today <
-            expirationDate
-        );
+        return false;
 
     }
 
 
-    /* =====================================================
-       COMPATIBILIDAD CON PRODUCTOS ANTIGUOS
-    ====================================================== */
+    /*
+       Fecha actual.
+    */
 
-    return (
-        product.newProduct === true
+    const now =
+        new Date();
+
+
+    /*
+       Normalizamos la fecha actual
+       para trabajar por días completos.
+    */
+
+    const today =
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate()
+        );
+
+
+    /*
+       Fecha límite.
+
+       Ejemplo:
+
+       lanzamiento:
+       20 agosto
+
+       7 días:
+
+       hasta:
+       26 agosto
+
+       El 27 deja de aparecer.
+    */
+
+    const expirationDate =
+        new Date(
+            releaseDate
+        );
+
+
+    expirationDate.setDate(
+        expirationDate.getDate() +
+        days
     );
 
-}
 
+    /*
+       Producto NUEVO mientras
+       la fecha actual sea anterior
+       a la fecha de expiración.
+    */
 
-/* =========================================================
-   OBTENER FECHA DE EXPIRACIÓN DE NUEVO
-   ========================================================= */
-
-function getProductNewUntil(product) {
-
-    if (!product) {
-        return null;
-    }
-
-
-    return product.newUntil ||
-        null;
+    return (
+        today <
+        expirationDate
+    );
 
 }
 
@@ -501,11 +577,8 @@ function getNewProducts() {
 
     return PRODUCTS.filter(
         product =>
-
-            isProductNew(product) &&
-
-            product.available === true
-
+            product.available === true &&
+            isProductNew(product)
     );
 
 }
