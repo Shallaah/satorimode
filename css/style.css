@@ -3379,3 +3379,486 @@ button:hover {
     }
 
 }
+
+/* =========================================================
+   SATORII PACK — ESTILOS DEFINITIVOS
+   IMPORTANTE: las clases usan "satorii"
+========================================================= */
+
+.satorii-pack {
+    position: relative !important;
+    width: min(
+        var(--satori-content-width),
+        calc(100% - (var(--satori-side-space) * 2))
+    ) !important;
+
+    min-height: 370px !important;
+
+    margin: 80px auto !important;
+    padding: 55px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    overflow: hidden !important;
+
+    background: #EF0930 !important;
+    color: #fff !important;
+
+    border: none !important;
+    border-radius: 10px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.satorii-pack-content {
+    position: relative !important;
+    z-index: 10 !important;
+
+    width: 52% !important;
+    max-width: 650px !important;
+}
+
+
+/* =========================================================
+   ETIQUETA
+========================================================= */
+
+.satorii-pack-label {
+    display: block !important;
+
+    margin-bottom: 12px !important;
+
+    color: #000 !important;
+
+    font-size: 11px !important;
+    font-weight: 900 !important;
+
+    letter-spacing: 4px !important;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.satorii-pack h2 {
+    margin: 0 0 18px !important;
+
+    color: #fff !important;
+
+    font-size: clamp(38px, 4vw, 62px) !important;
+
+    line-height: .95 !important;
+
+    font-weight: 900 !important;
+
+    letter-spacing: -1.5px !important;
+}
+
+
+.satorii-pack h2 span {
+    color: #000 !important;
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.satorii-pack p {
+    max-width: 570px !important;
+
+    margin: 0 !important;
+
+    color: #fff !important;
+
+    font-size: 15px !important;
+
+    line-height: 1.6 !important;
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.satorii-pack-button {
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 10px !important;
+
+    margin-top: 25px !important;
+
+    padding: 14px 23px !important;
+
+    background: #000 !important;
+    color: #fff !important;
+
+    border-radius: 5px !important;
+
+    text-decoration: none !important;
+
+    font-size: 11px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: .4px !important;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease !important;
+}
+
+
+.satorii-pack-button span {
+    font-size: 17px !important;
+}
+
+
+.satorii-pack-button:hover {
+    background: #fff !important;
+    color: #000 !important;
+
+    transform: translateY(-2px) !important;
+}
+
+
+/* =========================================================
+   CARACTERÍSTICAS
+========================================================= */
+
+.satorii-pack-features {
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 20px !important;
+
+    margin-top: 30px !important;
+}
+
+
+.pack-feature {
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 9px !important;
+
+    color: #fff !important;
+}
+
+
+.pack-feature-icon {
+    width: 34px !important;
+    height: 34px !important;
+
+    flex-shrink: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 1px solid rgba(255,255,255,.85) !important;
+
+    border-radius: 50% !important;
+
+    font-size: 16px !important;
+}
+
+
+.pack-feature div {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+
+.pack-feature strong {
+    color: #fff !important;
+
+    font-size: 9px !important;
+    font-weight: 800 !important;
+
+    line-height: 1.2 !important;
+}
+
+
+.pack-feature small {
+    color: rgba(255,255,255,.9) !important;
+
+    font-size: 8px !important;
+
+    line-height: 1.2 !important;
+}
+
+
+.pack-divider {
+    width: 1px !important;
+    height: 35px !important;
+
+    flex-shrink: 0 !important;
+
+    background: rgba(255,255,255,.5) !important;
+}
+
+
+/* =========================================================
+   PARTE VISUAL
+========================================================= */
+
+.satorii-pack-visual {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+
+    width: 53% !important;
+    height: 100% !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    z-index: 3 !important;
+}
+
+
+/* =========================================================
+   GLOW
+========================================================= */
+
+.satorii-pack-glow {
+    position: absolute !important;
+
+    width: 420px !important;
+    height: 420px !important;
+
+    border-radius: 50% !important;
+
+    background: rgba(255,255,255,.18) !important;
+
+    filter: blur(80px) !important;
+}
+
+
+/* =========================================================
+   CAJA
+========================================================= */
+
+.satorii-pack-box {
+    position: relative !important;
+
+    z-index: 5 !important;
+
+    width: min(570px, 95%) !important;
+
+    max-height: 420px !important;
+
+    object-fit: contain !important;
+
+    filter:
+        drop-shadow(
+            0 30px 30px rgba(0,0,0,.45)
+        ) !important;
+
+    transform: translateY(18px) !important;
+
+    transition:
+        transform .45s ease,
+        filter .45s ease !important;
+}
+
+
+.satorii-pack:hover .satorii-pack-box {
+    transform:
+        translateY(8px)
+        scale(1.035) !important;
+
+    filter:
+        drop-shadow(
+            0 35px 35px rgba(0,0,0,.5)
+        ) !important;
+}
+
+
+/* =========================================================
+   DECORACIÓN
+========================================================= */
+
+.satorii-pack::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    width: 520px !important;
+    height: 520px !important;
+
+    right: 3% !important;
+    top: 50% !important;
+
+    transform: translateY(-50%) !important;
+
+    border-radius: 50% !important;
+
+    border: 1px solid rgba(255,255,255,.18) !important;
+
+    z-index: 1 !important;
+}
+
+
+.satorii-pack::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    width: 430px !important;
+    height: 430px !important;
+
+    right: 8% !important;
+    top: 50% !important;
+
+    transform: translateY(-50%) !important;
+
+    border-radius: 50% !important;
+
+    background: rgba(255,255,255,.10) !important;
+
+    filter: blur(80px) !important;
+
+    z-index: 1 !important;
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .satorii-pack {
+        width: calc(100% - 30px) !important;
+
+        min-height: auto !important;
+
+        margin: 55px auto !important;
+
+        padding: 30px 22px 0 !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+
+        border-radius: 10px !important;
+    }
+
+
+    .satorii-pack-content {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+
+    .satorii-pack-label {
+        font-size: 9px !important;
+        letter-spacing: 3px !important;
+    }
+
+
+    .satorii-pack h2 {
+        font-size: 34px !important;
+    }
+
+
+    .satorii-pack p {
+        font-size: 13px !important;
+    }
+
+
+    .satorii-pack-button {
+        width: 100% !important;
+
+        margin-top: 20px !important;
+    }
+
+
+    .satorii-pack-features {
+        gap: 8px !important;
+        justify-content: space-between !important;
+    }
+
+
+    .pack-feature {
+        gap: 5px !important;
+    }
+
+
+    .pack-feature-icon {
+        width: 28px !important;
+        height: 28px !important;
+
+        font-size: 13px !important;
+    }
+
+
+    .pack-feature strong {
+        font-size: 7px !important;
+    }
+
+
+    .pack-feature small {
+        font-size: 6px !important;
+    }
+
+
+    .pack-divider {
+        height: 28px !important;
+    }
+
+
+    .satorii-pack-visual {
+        position: relative !important;
+
+        width: 100% !important;
+        height: 250px !important;
+
+        margin-top: -5px !important;
+    }
+
+
+    .satorii-pack-box {
+        width: 105% !important;
+
+        max-height: 280px !important;
+
+        transform: translateY(8px) !important;
+    }
+
+
+    .satorii-pack-glow {
+        width: 280px !important;
+        height: 280px !important;
+    }
+
+}
+
+
+/* =========================================================
+   ROJO OFICIAL SATORII
+========================================================= */
+
+:root {
+    --red: #EF0930;
+    --dark-red: #c90727;
+}
