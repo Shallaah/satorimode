@@ -1,2460 +1,2422 @@
-(function () {
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-    "use strict";
 
+/* =========================================================
+   SATORII — VARIABLES
+========================================================= */
 
-    /* =====================================================
-       CONFIGURACIÓN
-    ====================================================== */
+:root {
 
-    const SATORIMODE_BASE = "/satorimode/";
+    /* -----------------------------------------------------
+       COLORES
+    ----------------------------------------------------- */
 
-    const SATORII_RED = "#EF0930";
+    --black: #111111;
+    --black-soft: #0b0b0b;
 
-    const CART_STORAGE_KEY =
-        "satorimode_cart";
+    --white: #ffffff;
 
-    const OLD_CART_STORAGE_KEY =
-        "satorii_cart";
+    --red: #EF0930;
+    --dark-red: #c90727;
 
+    --gray: #666666;
+    --gray-light: #777777;
+    --gray-muted: #999999;
 
-    /* =====================================================
-       INICIALIZACIÓN
-    ====================================================== */
+    --light-gray: #f5f5f5;
 
-    function initSatoriiHeader() {
+    --border: #dddddd;
+    --border-soft: rgba(0, 0, 0, .08);
 
-        /* =================================================
-           EVITAR DUPLICADOS
-        ================================================== */
 
-        document
-            .getElementById("satori-header")
-            ?.remove();
+    /* -----------------------------------------------------
+       TIPOGRAFÍAS
+    ----------------------------------------------------- */
 
-        document
-            .getElementById("satori-header-style")
-            ?.remove();
+    --font-main:
+        "Inter",
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        document
-            .getElementById("satori-header-spacer")
-            ?.remove();
+    --font-logo:
+        "Barlow Condensed",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
 
 
-        /* =================================================
-           ROOT
-        ================================================== */
+    /* -----------------------------------------------------
+       RADIOS
+    ----------------------------------------------------- */
 
-        const root =
-            document.createElement("div");
+    --radius-sm: 5px;
+    --radius: 8px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
 
-        root.id =
-            "satori-header";
 
+    /* -----------------------------------------------------
+       CONTENEDORES
+    ----------------------------------------------------- */
 
-        /* =================================================
-           HTML
-        ================================================== */
+    --satori-content-width: 1800px;
+    --satori-side-space: 30px;
 
-        root.innerHTML = `
 
-        <!-- =================================================
-             BARRA SUPERIOR
-        ================================================== -->
+    /* -----------------------------------------------------
+       TRANSICIONES
+    ----------------------------------------------------- */
 
-        <div class="top-bar">
+    --transition-fast: .2s ease;
+    --transition-normal: .3s ease;
 
-            <div class="top-bar-inner">
+}
 
 
-                <!-- INSTAGRAM -->
+/* =========================================================
+   RESET
+========================================================= */
 
-                <a
-                    class="top-instagram"
-                    href="https://www.instagram.com/satoriicl/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram Satorii"
-                >
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-                    <svg viewBox="0 0 24 24"
-                         aria-hidden="true">
 
-                        <rect
-                            x="3"
-                            y="3"
-                            width="18"
-                            height="18"
-                            rx="5"
-                        />
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
 
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="4"
-                        />
 
-                        <circle
-                            cx="17.5"
-                            cy="6.5"
-                            r="1"
-                            class="instagram-dot"
-                        />
+body {
+    margin: 0;
+    padding: 0;
 
-                    </svg>
+    background: var(--white);
+    color: var(--black);
 
-                </a>
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.45;
 
+    overflow-x: hidden;
+}
 
-                <!-- ENVÍOS -->
 
-                <span class="shipping-message">
+body.menu-open {
+    overflow: hidden;
+}
 
-                    <svg
-                        class="shipping-icon"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
 
-                        <path
-                            d="M3 6h11v10H3z"
-                        />
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
 
-                        <path
-                            d="M14 10h4l3 3v3h-7z"
-                        />
 
-                        <circle
-                            cx="7"
-                            cy="18"
-                            r="2"
-                        />
+button {
+    cursor: pointer;
+}
 
-                        <circle
-                            cx="18"
-                            cy="18"
-                            r="2"
-                        />
 
-                    </svg>
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-                    <span>
-                        ENVÍOS A TODO CHILE
-                    </span>
 
-                </span>
+img {
+    display: block;
+    max-width: 100%;
+}
 
 
-                <!-- MENSAJE -->
+/* =========================================================
+   ACCESIBILIDAD — FOCUS
+========================================================= */
 
-                <span class="top-message">
-                    CULTURA JAPONESA · STREETWEAR · ANIME
-                </span>
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
 
-            </div>
+    outline:
+        2px solid var(--red);
 
-        </div>
+    outline-offset: 3px;
+}
 
 
-        <!-- =================================================
-             HEADER PRINCIPAL
-        ================================================== -->
+/* =========================================================
+   HEADER GLOBAL
+   Controlado por js/header.js
+========================================================= */
 
-        <header class="main-header">
+#satori-header {
+    width: 100%;
+    position: relative;
+    z-index: 9999;
+}
 
-            <div class="header-inner">
 
+#satori-header + main {
+    padding-top: 0 !important;
+}
 
-                <!-- HAMBURGUESA -->
 
-                <button
-                    id="satori-mobile-open"
-                    class="mobile-menu-button"
-                    type="button"
-                    aria-label="Abrir menú"
-                    aria-controls="satori-mobile-menu"
-                    aria-expanded="false"
-                >
+/* =========================================================
+   HERO / BANNER
+========================================================= */
 
-                    <span></span>
-                    <span></span>
-                    <span></span>
+.hero-slider {
 
-                </button>
+    width: 100%;
 
+    position: relative;
 
-                <!-- LOGO -->
+    z-index: 0;
 
-                <a
-                    href="${SATORIMODE_BASE}index.html"
-                    class="satori-logo satori-brand-logo"
-                    aria-label="Satorii - Inicio"
-                >
-                    SATORII
-                </a>
+    overflow: hidden;
 
+    background: #eeeeee;
 
-                <!-- =================================================
-                     NAVEGACIÓN PC
-                ================================================== -->
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 
-                <nav
-                    class="main-nav"
-                    aria-label="Navegación principal"
-                >
+    cursor: grab;
 
+    /*
+     * Permite deslizar horizontalmente
+     * sin bloquear completamente
+     * el scroll vertical en móviles.
+     */
+    touch-action: pan-y;
 
-                    <a
-                        href="${SATORIMODE_BASE}index.html"
-                        class="nav-home-button"
-                    >
-                        INICIO
-                    </a>
+    user-select: none;
+}
 
 
-                    <!-- COLECCIONES -->
+.hero-slider.dragging {
+    cursor: grabbing;
+}
 
-                    <div class="nav-dropdown">
 
-                        <button
-                            class="nav-dropdown-btn"
-                            type="button"
-                            aria-expanded="false"
-                        >
+.hero-track {
 
-                            <span>
-                                COLECCIONES
-                            </span>
+    display: flex;
 
-                            <svg
-                                class="nav-arrow"
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
+    width: 100%;
 
-                        </button>
+    transition:
+        transform .55s cubic-bezier(
+            .22,
+            .61,
+            .36,
+            1
+        );
+}
 
 
-                        <div class="dropdown-menu">
+.hero-slide {
 
-                            <a href="${SATORIMODE_BASE}anime.html">
-                                Anime
-                            </a>
+    position: relative;
 
-                            <a href="${SATORIMODE_BASE}torii.html">
-                                Torii
-                            </a>
+    flex: 0 0 100%;
 
-                            <a href="${SATORIMODE_BASE}anime-goods.html">
-                                Anime Goods
-                            </a>
+    width: 100%;
 
-                            <a href="${SATORIMODE_BASE}productos.html">
-                                Todo
-                            </a>
+    height: min(68vh, 720px);
 
-                        </div>
+    min-height: 500px;
 
-                    </div>
+    overflow: hidden;
 
+    background: #eeeeee;
+}
 
-                    <!-- PRODUCTOS -->
 
-                    <div class="nav-dropdown">
+.hero-slide picture {
 
-                        <button
-                            class="nav-dropdown-btn"
-                            type="button"
-                            aria-expanded="false"
-                        >
+    position: relative;
 
-                            <span>
-                                PRODUCTOS
-                            </span>
+    display: block;
 
-                            <svg
-                                class="nav-arrow"
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
+    width: 100%;
+    height: 100%;
+}
 
-                        </button>
 
+.hero-slide img,
+.hero-slide picture img {
 
-                        <div class="dropdown-menu">
+    display: block;
 
-                            <a href="${SATORIMODE_BASE}satorii-pack.html">
-                                Satorii Pack
-                            </a>
+    width: 100%;
+    height: 100%;
 
-                            <a href="${SATORIMODE_BASE}regala-satorii.html">
-                                Regala Satorii
-                            </a>
+    object-fit: cover;
 
-                        </div>
+    object-position: center;
 
-                    </div>
+    user-select: none;
 
+    pointer-events: none;
 
-                    <!-- AYUDA -->
+    -webkit-user-drag: none;
+}
 
-                    <div class="nav-dropdown">
 
-                        <button
-                            class="nav-dropdown-btn"
-                            type="button"
-                            aria-expanded="false"
-                        >
+/* =========================================================
+   HERO — INDICADORES
+========================================================= */
 
-                            <span>
-                                AYUDA
-                            </span>
+.hero-dots {
 
-                            <svg
-                                class="nav-arrow"
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
+    position: absolute;
 
-                        </button>
+    bottom: 18px;
+    left: 50%;
 
+    transform: translateX(-50%);
 
-                        <div class="dropdown-menu">
+    display: flex;
 
-                            <a href="${SATORIMODE_BASE}cambios-y-devoluciones.html">
-                                Cambios y devoluciones
-                            </a>
+    align-items: center;
 
-                            <a href="${SATORIMODE_BASE}preguntas-frecuentes.html">
-                                Preguntas frecuentes
-                            </a>
+    gap: 7px;
 
-                            <a href="${SATORIMODE_BASE}envios.html">
-                                Envíos
-                            </a>
+    z-index: 20;
+}
 
-                            <a href="${SATORIMODE_BASE}guia-tallas.html">
-                                Guía de tallas
-                            </a>
 
-                        </div>
+.hero-dot {
 
-                    </div>
+    width: 8px;
+    height: 8px;
 
-                </nav>
+    padding: 0;
 
+    border: 0;
 
-                <!-- =================================================
-                     ICONOS
-                ================================================== -->
+    border-radius: 50%;
 
-                <div class="header-icons">
+    background:
+        rgba(255, 255, 255, .65);
 
+    transition:
+        width var(--transition-fast),
+        background var(--transition-fast),
+        opacity var(--transition-fast);
+}
 
-                    <!-- BUSCADOR INLINE -->
 
-                    <form
-                        class="header-search-inline"
-                        id="satori-search-inline"
-                    >
+.hero-dot:hover {
+    opacity: .85;
+}
 
-                        <input
-                            type="search"
-                            id="satori-search-inline-input"
-                            placeholder="¿Qué estás buscando?"
-                            autocomplete="off"
-                            aria-label="Buscar productos"
-                        >
 
-                    </form>
+.hero-dot.active {
 
+    width: 24px;
 
-                    <!-- BUSCAR -->
+    border-radius: 10px;
 
-                    <button
-                        class="header-icon"
-                        id="satori-search"
-                        type="button"
-                        aria-label="Buscar"
-                        aria-controls="satori-search-overlay"
-                        aria-expanded="false"
-                    >
+    background: var(--white);
+}
 
-                        <svg viewBox="0 0 24 24"
-                             aria-hidden="true">
 
-                            <circle
-                                cx="10.8"
-                                cy="10.8"
-                                r="6.5"
-                            />
+/* =========================================================
+   BENEFICIOS
+========================================================= */
 
-                            <line
-                                x1="16"
-                                y1="16"
-                                x2="21"
-                                y2="21"
-                            />
+.benefits {
 
-                        </svg>
+    position: relative;
 
-                    </button>
+    z-index: 20;
 
+    width: min(
+        var(--satori-content-width),
+        calc(
+            100% -
+            (var(--satori-side-space) * 2)
+        )
+    );
 
-                    <!-- CUENTA -->
+    margin: -42px auto 0;
 
-                    <a
-                        class="header-icon"
-                        href="${SATORIMODE_BASE}cuenta.html"
-                        aria-label="Mi cuenta"
-                    >
+    padding: 0;
 
-                        <svg viewBox="0 0 24 24"
-                             aria-hidden="true">
+    display: grid;
 
-                            <circle
-                                cx="12"
-                                cy="8"
-                                r="3.2"
-                            />
+    grid-template-columns:
+        repeat(4, 1fr);
 
-                            <path
-                                d="M5.5 20c.8-3.5 3-5.2 6.5-5.2s5.7 1.7 6.5 5.2"
-                            />
+    background: var(--white);
 
-                        </svg>
+    border:
+        1px solid var(--border-soft);
 
-                    </a>
+    border-radius:
+        var(--radius-md);
 
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, .08);
 
-                    <!-- CARRITO -->
+    overflow: hidden;
+}
 
-                    <button
-                        class="header-icon cart-header-icon"
-                        id="satori-cart-button"
-                        type="button"
-                        aria-label="Abrir carrito"
-                        aria-controls="satori-cart-preview"
-                        aria-expanded="false"
-                    >
 
-                        <svg viewBox="0 0 24 24"
-                             aria-hidden="true">
+.benefit {
 
-                            <path
-                                d="M4 5h2l1.7 10.2a2 2 0 0 0 2 1.7h6.8a2 2 0 0 0 2-1.5L20 8H7"
-                            />
+    position: relative;
 
-                            <circle
-                                cx="10"
-                                cy="20"
-                                r="1.2"
-                            />
+    min-height: 92px;
 
-                            <circle
-                                cx="17"
-                                cy="20"
-                                r="1.2"
-                            />
+    padding: 20px 24px;
 
-                        </svg>
+    display: flex;
 
+    align-items: center;
 
-                        <span
-                            class="cart-count"
-                            data-satori-cart-count
-                            aria-hidden="true"
-                        >
-                            0
-                        </span>
+    gap: 15px;
 
-                    </button>
+    background: var(--white);
 
-                </div>
+    border-right:
+        1px solid rgba(0, 0, 0, .10);
 
-            </div>
+    transition:
+        background var(--transition-normal);
+}
 
-        </header>
 
+.benefit:last-child {
+    border-right: 0;
+}
 
-        <!-- =================================================
-             OVERLAY MENÚ MÓVIL
-        ================================================== -->
 
-        <div
-            class="mobile-menu-overlay"
-            id="satori-mobile-overlay"
-            aria-hidden="true"
-        ></div>
+.benefit:not(:last-child)::after {
 
+    content: "";
 
-        <!-- =================================================
-             MENÚ MÓVIL
-        ================================================== -->
+    position: absolute;
 
-        <aside
-            class="mobile-menu"
-            id="satori-mobile-menu"
-            aria-hidden="true"
-        >
+    top: 18px;
+    right: 0;
+    bottom: 18px;
 
-            <div class="mobile-menu-header">
+    width: 1px;
 
-                <a
-                    href="${SATORIMODE_BASE}index.html"
-                    class="mobile-menu-logo satori-brand-logo"
-                >
-                    SATORII
-                </a>
+    background:
+        rgba(0, 0, 0, .10);
+}
 
 
-                <button
-                    id="satori-mobile-close"
-                    class="mobile-menu-close"
-                    type="button"
-                    aria-label="Cerrar menú"
-                >
+.benefit-icon {
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 6l12 12"></path>
-                        <path d="M18 6L6 18"></path>
-                    </svg>
+    width: 40px;
+    height: 40px;
 
-                </button>
+    min-width: 40px;
 
-            </div>
+    flex-shrink: 0;
 
+    display: flex;
 
-            <nav
-                class="mobile-nav"
-                aria-label="Menú móvil"
-            >
+    align-items: center;
+    justify-content: center;
 
+    font-size: 21px;
+    line-height: 1;
 
-                <a
-                    href="${SATORIMODE_BASE}index.html"
-                    class="mobile-nav-button mobile-home-button"
-                >
-                    INICIO
-                </a>
+    border-radius: 50%;
 
+    background:
+        rgba(239, 9, 48, .07);
 
-                <!-- COLECCIONES -->
+    color: var(--red);
 
-                <button
-                    class="mobile-nav-button"
-                    data-target="mobile-collections"
-                    type="button"
-                    aria-expanded="false"
-                >
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
 
-                    <span>
-                        COLECCIONES
-                    </span>
 
-                    <svg
-                        class="mobile-arrow"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6 6-6"></path>
-                    </svg>
+.benefit-content {
 
-                </button>
+    display: flex;
 
+    flex-direction: column;
 
-                <div
-                    class="mobile-submenu"
-                    id="mobile-collections"
-                >
+    justify-content: center;
 
-                    <a href="${SATORIMODE_BASE}anime.html">
-                        Anime
-                    </a>
+    min-width: 0;
+}
 
-                    <a href="${SATORIMODE_BASE}torii.html">
-                        Torii
-                    </a>
 
-                    <a href="${SATORIMODE_BASE}anime-goods.html">
-                        Anime Goods
-                    </a>
+.benefit strong {
 
-                    <a href="${SATORIMODE_BASE}productos.html">
-                        Todo
-                    </a>
+    display: block;
 
-                </div>
+    margin-bottom: 5px;
 
+    color: var(--black);
 
-                <!-- PRODUCTOS -->
+    font-size: 12px;
 
-                <button
-                    class="mobile-nav-button"
-                    data-target="mobile-products"
-                    type="button"
-                    aria-expanded="false"
-                >
+    line-height: 1.2;
 
-                    <span>
-                        PRODUCTOS
-                    </span>
+    font-weight: 800;
+}
 
-                    <svg
-                        class="mobile-arrow"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6 6-6"></path>
-                    </svg>
 
-                </button>
+.benefit-content > span {
 
+    display: block;
 
-                <div
-                    class="mobile-submenu"
-                    id="mobile-products"
-                >
+    color: var(--gray-light);
 
-                    <a href="${SATORIMODE_BASE}satorii-pack.html">
-                        Satorii Pack
-                    </a>
+    font-size: 10px;
 
-                    <a href="${SATORIMODE_BASE}regala-satorii.html">
-                        Regala Satorii
-                    </a>
+    line-height: 1.4;
+}
 
-                </div>
 
+.benefit:hover {
+    background: #fafafa;
+}
 
-                <!-- AYUDA -->
 
-                <button
-                    class="mobile-nav-button"
-                    data-target="mobile-help"
-                    type="button"
-                    aria-expanded="false"
-                >
+.benefit:hover .benefit-icon {
 
-                    <span>
-                        AYUDA
-                    </span>
+    background: var(--red);
 
-                    <svg
-                        class="mobile-arrow"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6 6-6"></path>
-                    </svg>
+    color: var(--white);
 
-                </button>
+    transform: scale(1.05);
+}
 
 
-                <div
-                    class="mobile-submenu"
-                    id="mobile-help"
-                >
+/* =========================================================
+   SECCIONES
+========================================================= */
 
-                    <a href="${SATORIMODE_BASE}cambios-y-devoluciones.html">
-                        Cambios y devoluciones
-                    </a>
+.section,
+.recommendations {
 
-                    <a href="${SATORIMODE_BASE}preguntas-frecuentes.html">
-                        Preguntas frecuentes
-                    </a>
+    width: min(
+        var(--satori-content-width),
+        calc(
+            100% -
+            (var(--satori-side-space) * 2)
+        )
+    );
 
-                    <a href="${SATORIMODE_BASE}envios.html">
-                        Envíos
-                    </a>
+    margin-left: auto;
+    margin-right: auto;
+}
 
-                    <a href="${SATORIMODE_BASE}guia-tallas.html">
-                        Guía de tallas
-                    </a>
 
-                </div>
+.section {
+    margin-top: 52px;
+}
 
-            </nav>
 
+.recommendations {
+    margin-top: 70px;
+}
 
-            <!-- REDES -->
 
-            <div class="mobile-social">
+.section-header {
 
-                <span>
-                    SÍGUENOS
-                </span>
+    margin-bottom: 20px;
 
-                <a
-                    href="https://www.instagram.com/satoriicl/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mobile-instagram"
-                >
+    display: flex;
 
-                    <svg viewBox="0 0 24 24"
-                         aria-hidden="true">
+    align-items: center;
 
-                        <rect
-                            x="3"
-                            y="3"
-                            width="18"
-                            height="18"
-                            rx="5"
-                        />
+    justify-content: space-between;
 
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="4"
-                        />
+    gap: 15px;
+}
 
-                        <circle
-                            cx="17.5"
-                            cy="6.5"
-                            r="1"
-                            class="instagram-dot"
-                        />
 
-                    </svg>
+.section-header h2 {
 
-                    INSTAGRAM
+    margin: 0;
 
-                    <svg
-                        class="external-icon"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M14 5h5v5"></path>
-                        <path d="M19 5l-8 8"></path>
-                        <path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"></path>
-                    </svg>
+    font-size: 24px;
 
-                </a>
+    line-height: 1.1;
 
-            </div>
+    font-weight: 800;
 
-        </aside>
+    letter-spacing: -.5px;
+}
 
 
-        <!-- =================================================
-             BUSCADOR
-        ================================================== -->
+.section-header a {
 
-        <div
-            class="search-overlay"
-            id="satori-search-overlay"
-            aria-hidden="true"
-        >
+    flex-shrink: 0;
 
-            <div
-                class="search-box"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Buscar productos"
-            >
+    color: var(--red);
 
-                <button
-                    class="search-close"
-                    id="satori-search-close"
-                    type="button"
-                    aria-label="Cerrar búsqueda"
-                >
+    font-size: 13px;
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 6l12 12"></path>
-                        <path d="M18 6L6 18"></path>
-                    </svg>
+    font-weight: 700;
 
-                </button>
+    transition:
+        color var(--transition-fast);
+}
 
 
-                <div class="search-title">
-                    BUSCAR
-                </div>
+.section-header a:hover {
+    color: var(--dark-red);
+}
 
 
-                <form
-                    class="search-form"
-                    id="satori-search-form"
-                >
+/* =========================================================
+   COLECCIONES
+========================================================= */
 
-                    <input
-                        type="search"
-                        id="satori-search-input"
-                        placeholder="¿Qué estás buscando?"
-                        autocomplete="off"
-                        aria-label="Buscar productos"
-                    >
+.collections-grid {
 
+    width: 100%;
 
-                    <button
-                        type="submit"
-                        aria-label="Buscar"
-                    >
+    display: grid;
 
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
-                            <circle
-                                cx="10.8"
-                                cy="10.8"
-                                r="6.5"
-                            />
-                            <line
-                                x1="16"
-                                y1="16"
-                                x2="21"
-                                y2="21"
-                            />
-                        </svg>
+    grid-template-columns:
+        repeat(4, 1fr);
 
-                    </button>
+    gap: 10px;
+}
 
-                </form>
 
-            </div>
+.collection-card {
 
-        </div>
+    min-height: 230px;
 
+    position: relative;
 
-        <!-- =================================================
-             OVERLAY CARRITO
-        ================================================== -->
+    overflow: hidden;
 
-        <div
-            class="cart-preview-overlay"
-            id="satori-cart-overlay"
-            aria-hidden="true"
-        ></div>
+    display: flex;
 
+    align-items: flex-end;
 
-        <!-- =================================================
-             CARRITO
-        ================================================== -->
+    border:
+        1px solid #cccccc;
 
-        <aside
-            class="cart-preview"
-            id="satori-cart-preview"
-            aria-hidden="true"
-        >
+    border-radius:
+        var(--radius);
 
-            <div class="cart-preview-header">
+    background-color:
+        var(--black);
 
-                <div>
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, .05);
 
-                    <div class="cart-preview-label">
-                        SATORII · SHOPPING CART
-                    </div>
+    transition:
+        transform var(--transition-normal),
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
 
-                    <h2>
-                        TU CARRITO
-                    </h2>
 
-                </div>
+.collection-card::before {
 
+    content: "";
 
-                <button
-                    id="satori-cart-close"
-                    class="cart-preview-close"
-                    type="button"
-                    aria-label="Cerrar carrito"
-                >
+    position: absolute;
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 6l12 12"></path>
-                        <path d="M18 6L6 18"></path>
-                    </svg>
+    inset: -8px;
 
-                </button>
+    background-size: cover;
 
-            </div>
+    background-position: center;
 
+    background-repeat: no-repeat;
 
-            <div
-                class="cart-preview-content"
-                id="satori-cart-preview-content"
-            ></div>
+    transform: scale(1);
 
-
-            <div
-                class="cart-preview-footer"
-                id="satori-cart-preview-footer"
-            >
-
-                <div class="cart-preview-subtotal">
-
-                    <span>
-                        SUBTOTAL
-                    </span>
-
-                    <strong
-                        id="satori-cart-preview-subtotal"
-                    >
-                        $0
-                    </strong>
-
-                </div>
-
-
-                <div class="cart-preview-actions">
-
-                    <a
-                        href="${SATORIMODE_BASE}carrito.html"
-                        class="cart-preview-button cart-preview-view"
-                    >
-                        VER CARRITO
-                    </a>
-
-                    <a
-                        href="${SATORIMODE_BASE}checkout.html"
-                        class="cart-preview-button cart-preview-checkout"
-                    >
-                        FINALIZAR PEDIDO
-                    </a>
-
-                </div>
-
-
-                <a
-                    href="${SATORIMODE_BASE}productos.html"
-                    class="cart-preview-continue"
-                >
-                    ← Seguir comprando
-                </a>
-
-            </div>
-
-        </aside>
-
-        `;
-
-
-        /* =====================================================
-           INSERTAR
-        ====================================================== */
-
-        document.body.prepend(root);
-
-
-        /* =====================================================
-           CSS DEL HEADER
-        ====================================================== */
-
-        const style =
-            document.createElement("style");
-
-        style.id =
-            "satori-header-style";
-
-
-        style.textContent = `
-
-        /* =====================================================
-           BASE
-        ====================================================== */
-
-        #satori-header,
-        #satori-header * {
-            box-sizing:border-box;
-        }
-
-        #satori-header {
-            width:100%;
-            position:relative;
-            z-index:9999;
-            font-family:
-                "Inter",
-                Arial,
-                Helvetica,
-                sans-serif;
-        }
-
-
-        /* =====================================================
-           TOP BAR
-        ====================================================== */
-
-        #satori-header .top-bar {
-            width:100%;
-            height:32px;
-            background:${SATORII_RED};
-            color:#fff;
-            position:relative;
-            z-index:10001;
-        }
-
-        #satori-header .top-bar-inner {
-            width:min(
-                1500px,
-                calc(100% - 40px)
-            );
-            height:100%;
-            margin:0 auto;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            position:relative;
-        }
-
-        #satori-header .top-instagram {
-            position:absolute;
-            left:0;
-            top:50%;
-            transform:translateY(-50%);
-            width:22px;
-            height:22px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#fff;
-            text-decoration:none;
-        }
-
-        #satori-header .top-instagram svg {
-            width:17px;
-            height:17px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:1.8;
-            stroke-linecap:round;
-            stroke-linejoin:round;
-        }
-
-        #satori-header .instagram-dot {
-            fill:currentColor;
-            stroke:none;
-        }
-
-
-        /* =====================================================
-           ENVÍOS SVG
-        ====================================================== */
-
-        #satori-header .shipping-message {
-            position:absolute;
-            left:50%;
-            top:50%;
-            transform:translate(-50%,-50%);
-            display:flex;
-            align-items:center;
-            gap:6px;
-            font-size:10px;
-            font-weight:700;
-            white-space:nowrap;
-        }
-
-        #satori-header .shipping-icon {
-            width:15px;
-            height:15px;
-            flex-shrink:0;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:1.7;
-            stroke-linecap:round;
-            stroke-linejoin:round;
-        }
-
-        #satori-header .top-message {
-            position:absolute;
-            right:0;
-            top:50%;
-            transform:translateY(-50%);
-            font-size:9px;
-            white-space:nowrap;
-            letter-spacing:.4px;
-        }
-
-
-        /* =====================================================
-           HEADER PRINCIPAL
-        ====================================================== */
-
-        #satori-header .main-header {
-            position:relative;
-            width:100%;
-            height:68px;
-            background:#000;
-            border-bottom:1px solid #222;
-            z-index:10000;
-        }
-
-        #satori-header .header-inner {
-            width:min(
-                1400px,
-                calc(100% - 40px)
-            );
-            height:68px;
-            margin:0 auto;
-            display:grid;
-            grid-template-columns:1fr auto 1fr;
-            align-items:center;
-            position:relative;
-        }
-
-
-        /* =====================================================
-           LOGO
-        ====================================================== */
-
-        #satori-header .satori-brand-logo {
-            font-family:
-                "Barlow Condensed",
-                "Arial Narrow",
-                Arial,
-                sans-serif;
-            font-weight:800;
-            font-style:italic;
-            letter-spacing:-1.8px;
-            text-transform:uppercase;
-            color:#fff;
-            text-decoration:none;
-            line-height:.88;
-            white-space:nowrap;
-            transform:skewX(-3deg);
-            transition:
-                color .2s ease,
-                transform .2s ease;
-        }
-
-        #satori-header .satori-logo {
-            grid-column:1;
-            justify-self:start;
-            font-size:30px;
-        }
-
-        @media (min-width:1001px) {
-
-            #satori-header .satori-logo:hover {
-                color:${SATORII_RED};
-                transform:
-                    skewX(-5deg)
-                    scale(1.05);
-            }
-
-        }
-
-
-        /* =====================================================
-           NAVEGACIÓN
-        ====================================================== */
-
-        #satori-header .main-nav {
-            grid-column:2;
-            height:100%;
-            display:flex;
-            align-items:center;
-            gap:28px;
-        }
-
-        #satori-header .nav-home-button,
-        #satori-header .nav-dropdown-btn {
-            height:100%;
-            padding:0;
-            border:0;
-            background:none;
-            color:#fff;
-            font-family:inherit;
-            font-size:12px;
-            font-weight:600;
-            cursor:pointer;
-            display:flex;
-            align-items:center;
-            gap:6px;
-            text-decoration:none;
-            white-space:nowrap;
-        }
-
-        #satori-header .nav-home-button:hover,
-        #satori-header .nav-dropdown-btn:hover {
-            color:${SATORII_RED};
-        }
-
-        #satori-header .nav-dropdown {
-            position:relative;
-            height:100%;
-            display:flex;
-            align-items:center;
-        }
-
-        #satori-header .nav-arrow {
-            width:13px;
-            height:13px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:2;
-            stroke-linecap:round;
-            stroke-linejoin:round;
-            transition:transform .2s ease;
-        }
-
-        #satori-header
-        .nav-dropdown.open
-        .nav-arrow {
-            transform:rotate(180deg);
-        }
-
-
-        /* =====================================================
-           DROPDOWN
-        ====================================================== */
-
-        #satori-header .dropdown-menu {
-            position:absolute;
-            top:68px;
-            left:50%;
-            transform:translate(-50%,-8px);
-            width:220px;
-            padding:8px;
-            background:#fff;
-            border:1px solid #ddd;
-            border-radius:10px;
-            box-shadow:
-                0 15px 35px
-                rgba(0,0,0,.12);
-            opacity:0;
-            visibility:hidden;
-            pointer-events:none;
-            transition:
-                opacity .2s ease,
-                transform .2s ease;
-            z-index:100001;
-        }
-
-        #satori-header
-        .nav-dropdown.open
-        .dropdown-menu {
-            opacity:1;
-            visibility:visible;
-            pointer-events:auto;
-            transform:translate(-50%,0);
-        }
-
-        #satori-header .dropdown-menu a {
-            display:block;
-            padding:11px;
-            color:#111;
-            text-decoration:none;
-            font-size:12px;
-            border-radius:7px;
-        }
-
-        #satori-header .dropdown-menu a:hover {
-            background:#f5f5f5;
-            color:${SATORII_RED};
-        }
-
-
-        /* =====================================================
-           ICONOS
-        ====================================================== */
-
-        #satori-header .header-icons {
-            grid-column:3;
-            justify-self:end;
-            display:flex;
-            align-items:center;
-            gap:3px;
-        }
-
-        #satori-header .header-icon {
-            width:34px;
-            height:34px;
-            padding:0;
-            border:0;
-            background:transparent;
-            color:#fff;
-            text-decoration:none;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            cursor:pointer;
-            position:relative;
-            -webkit-tap-highlight-color:transparent;
-        }
-
-        #satori-header .header-icon:hover {
-            color:${SATORII_RED};
-        }
-
-        #satori-header .header-icon svg {
-            width:18px;
-            height:18px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:1.55;
-            stroke-linecap:round;
-            stroke-linejoin:round;
-        }
-
-
-        /* =====================================================
-           BUSCADOR INLINE
-        ====================================================== */
-
-        #satori-header .header-search-inline {
-            display:flex;
-            align-items:center;
-            width:0;
-            max-width:0;
-            opacity:0;
-            overflow:hidden;
-            transition:
-                width .25s ease,
-                max-width .25s ease,
-                opacity .2s ease,
-                margin .25s ease;
-            margin-right:0;
-        }
-
-        #satori-header .header-search-inline.open {
-            width:220px;
-            max-width:220px;
-            opacity:1;
-            margin-right:2px;
-        }
-
-        #satori-header .header-search-inline input {
-            width:100%;
-            height:34px;
-            padding:0 10px;
-            border:0;
-            border-bottom:1px solid rgba(255,255,255,.65);
-            outline:none;
-            background:transparent;
-            color:#fff;
-            font-family:inherit;
-            font-size:12px;
-        }
-
-        #satori-header .header-search-inline input::placeholder {
-            color:rgba(255,255,255,.65);
-        }
-
-        #satori-header .header-search-inline button {
-            display:none;
-        }
-
-
-        /* =====================================================
-           CARRITO
-        ====================================================== */
-
-        #satori-header .cart-count {
-            position:absolute;
-            top:1px;
-            right:1px;
-            min-width:15px;
-            height:15px;
-            padding:0 4px;
-            border-radius:999px;
-            background:${SATORII_RED};
-            color:#fff;
-            font-size:9px;
-            font-weight:700;
-            line-height:15px;
-            text-align:center;
-            display:none;
-            align-items:center;
-            justify-content:center;
-            pointer-events:none;
-            z-index:20;
-        }
-
-
-        /* =====================================================
-           HAMBURGUESA
-        ====================================================== */
-
-        #satori-header .mobile-menu-button {
-            display:none;
-        }
-
-
-        /* =====================================================
-           HEADER FLOTANTE
-        ====================================================== */
-
-        #satori-header.scrolled .main-header {
-            position:fixed;
-            top:8px;
-            left:8px;
-            width:calc(100% - 16px);
-            height:64px;
-            background:#000;
-            border:1px solid #222;
-            border-radius:16px;
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,.16);
-            z-index:900000;
-        }
-
-        #satori-header.scrolled
-        .header-inner {
-            height:62px;
-        }
-
-
-        /* =====================================================
-           OVERLAYS
-        ====================================================== */
-
-        #satori-header .mobile-menu-overlay,
-        #satori-header .cart-preview-overlay {
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,.45);
-            opacity:0;
-            visibility:hidden;
-            pointer-events:none;
-            transition:
-                opacity .25s ease,
-                visibility .25s ease;
-        }
-
-        #satori-header .mobile-menu-overlay {
-            z-index:1000000;
-        }
-
-        #satori-header .cart-preview-overlay {
-            z-index:1000002;
-        }
-
-        #satori-header
-        .mobile-menu-overlay.open,
-        #satori-header
-        .cart-preview-overlay.open {
-            opacity:1;
-            visibility:visible;
-            pointer-events:auto;
-        }
-
-
-        /* =====================================================
-           MENÚ MÓVIL
-        ====================================================== */
-
-        #satori-header .mobile-menu {
-            position:fixed;
-            top:0;
-            left:0;
-            width:min(370px,88vw);
-            height:100dvh;
-            padding:20px 24px;
-            background:#fff;
-            transform:translateX(-100%);
-            transition:transform .28s ease;
-            overflow-y:auto;
-            z-index:1000001;
-        }
-
-        #satori-header
-        .mobile-menu.open {
-            transform:translateX(0);
-        }
-
-        #satori-header .mobile-menu-header {
-            height:60px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            border-bottom:1px solid #ddd;
-        }
-
-        #satori-header .mobile-menu-logo {
-            font-size:28px;
-        }
-
-        #satori-header .mobile-menu-close {
-            width:40px;
-            height:40px;
-            padding:0;
-            border:0;
-            background:none;
-            color:#111;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            cursor:pointer;
-        }
-
-        #satori-header .mobile-menu-close svg {
-            width:22px;
-            height:22px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:2;
-            stroke-linecap:round;
-        }
-
-        #satori-header .mobile-menu-close:hover {
-            color:${SATORII_RED};
-        }
-
-
-        /* =====================================================
-           NAVEGACIÓN MÓVIL
-        ====================================================== */
-
-        #satori-header .mobile-nav-button {
-            width:100%;
-            min-height:60px;
-            padding:0;
-            border:0;
-            border-bottom:1px solid #ddd;
-            background:#fff;
-            color:#111;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            font-family:inherit;
-            font-size:15px;
-            font-weight:600;
-            text-decoration:none;
-            cursor:pointer;
-        }
-
-        #satori-header .mobile-home-button {
-            justify-content:flex-start;
-        }
-
-        #satori-header .mobile-nav-button:hover {
-            color:${SATORII_RED};
-        }
-
-        #satori-header .mobile-arrow {
-            width:16px;
-            height:16px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:2;
-            stroke-linecap:round;
-            stroke-linejoin:round;
-            transition:transform .2s ease;
-        }
-
-        #satori-header
-        .mobile-nav-button.active
-        .mobile-arrow {
-            transform:rotate(180deg);
-        }
-
-        #satori-header .mobile-submenu {
-            max-height:0;
-            overflow:hidden;
-            opacity:0;
-            transition:
-                max-height .25s ease,
-                opacity .2s ease;
-        }
-
-        #satori-header
-        .mobile-submenu.open {
-            max-height:500px;
-            opacity:1;
-        }
-
-        #satori-header .mobile-submenu a {
-            height:48px;
-            padding-left:20px;
-            display:flex;
-            align-items:center;
-            border-bottom:1px solid #eee;
-            color:#555;
-            text-decoration:none;
-            font-size:14px;
-        }
-
-        #satori-header .mobile-submenu a:hover {
-            color:${SATORII_RED};
-        }
-
-
-        /* =====================================================
-           SOCIAL
-        ====================================================== */
-
-        #satori-header .mobile-social {
-            margin-top:35px;
-            padding-top:5px;
-        }
-
-        #satori-header .mobile-social span {
-            display:block;
-            margin-bottom:15px;
-            color:${SATORII_RED};
-            font-size:10px;
-            font-weight:700;
-            letter-spacing:3px;
-        }
-
-        #satori-header .mobile-instagram {
-            display:flex;
-            align-items:center;
-            gap:8px;
-            color:#111;
-            text-decoration:none;
-            font-size:14px;
-            font-weight:700;
-        }
-
-        #satori-header .mobile-instagram:hover {
-            color:${SATORII_RED};
-        }
-
-        #satori-header .mobile-instagram svg {
-            width:17px;
-            height:17px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:1.8;
-            stroke-linecap:round;
-            stroke-linejoin:round;
-        }
-
-        #satori-header .mobile-instagram .external-icon {
-            width:13px;
-            height:13px;
-            margin-left:1px;
-            stroke-width:1.7;
-        }
-
-
-        /* =====================================================
-           BUSCADOR
-        ====================================================== */
-
-        #satori-header .search-overlay {
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,.55);
-            opacity:0;
-            visibility:hidden;
-            pointer-events:none;
-            display:flex;
-            align-items:flex-start;
-            justify-content:center;
-            padding-top:90px;
-            transition:
-                opacity .2s ease,
-                visibility .2s ease;
-            z-index:2000000;
-        }
-
-        #satori-header
-        .search-overlay.open {
-            opacity:1;
-            visibility:visible;
-            pointer-events:auto;
-        }
-
-        #satori-header .search-box {
-            position:relative;
-            width:min(700px,calc(100% - 32px));
-            padding:30px;
-            background:#fff;
-            border-radius:16px;
-            box-shadow:
-                0 20px 60px
-                rgba(0,0,0,.25);
-            transform:translateY(-15px);
-            transition:transform .2s ease;
-        }
-
-        #satori-header
-        .search-overlay.open
-        .search-box {
-            transform:translateY(0);
-        }
-
-        #satori-header .search-close {
-            position:absolute;
-            top:10px;
-            right:12px;
-            width:38px;
-            height:38px;
-            padding:0;
-            border:0;
-            background:none;
-            color:#111;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            cursor:pointer;
-        }
-
-        #satori-header .search-close svg {
-            width:22px;
-            height:22px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:2;
-            stroke-linecap:round;
-        }
-
-        #satori-header .search-close:hover {
-            color:${SATORII_RED};
-        }
-
-        #satori-header .search-title {
-            margin:0 45px 18px 0;
-            color:#111;
-            font-size:13px;
-            font-weight:800;
-            letter-spacing:2px;
-        }
-
-        #satori-header .search-form {
-            display:flex;
-            width:100%;
-            height:52px;
-            border:1px solid #ccc;
-            border-radius:10px;
-            overflow:hidden;
-        }
-
-        #satori-header .search-form:focus-within {
-            border-color:${SATORII_RED};
-        }
-
-        #satori-header .search-form input {
-            flex:1;
-            min-width:0;
-            padding:0 16px;
-            border:0;
-            outline:none;
-            font-family:inherit;
-            font-size:15px;
-            color:#111;
-            background:#fff;
-        }
-
-        #satori-header .search-form input::placeholder {
-            color:#999;
-        }
-
-        #satori-header .search-form button {
-            width:60px;
-            flex-shrink:0;
-            border:0;
-            background:${SATORII_RED};
-            color:#fff;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            cursor:pointer;
-        }
-
-        #satori-header .search-form button svg {
-            width:20px;
-            height:20px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:1.8;
-            stroke-linecap:round;
-            stroke-linejoin:round;
-        }
-
-        #satori-header .search-form button:hover {
-            background:#111;
-        }
-
-
-        /* =====================================================
-           CARRITO
-        ====================================================== */
-
-        #satori-header .cart-preview {
-            position:fixed;
-            top:0;
-            right:0;
-            width:min(430px,100vw);
-            height:100dvh;
-            background:#fff;
-            display:flex;
-            flex-direction:column;
-            transform:translateX(100%);
-            transition:transform .28s ease;
-            box-shadow:
-                -15px 0 45px
-                rgba(0,0,0,.15);
-            z-index:1000003;
-        }
-
-        #satori-header
-        .cart-preview.open {
-            transform:translateX(0);
-        }
-
-        #satori-header .cart-preview-header {
-            flex-shrink:0;
-            min-height:92px;
-            padding:22px 25px;
-            border-bottom:1px solid #ddd;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:20px;
-        }
-
-        #satori-header .cart-preview-label {
-            margin-bottom:6px;
-            color:${SATORII_RED};
-            font-size:9px;
-            font-weight:800;
-            letter-spacing:2px;
-        }
-
-        #satori-header .cart-preview-header h2 {
-            margin:0;
-            color:#111;
-            font-family:
-                "Barlow Condensed",
-                "Arial Narrow",
-                Arial,
-                sans-serif;
-            font-size:25px;
-            font-weight:800;
-            letter-spacing:-.5px;
-        }
-
-        #satori-header .cart-preview-close {
-            flex-shrink:0;
-            width:40px;
-            height:40px;
-            padding:0;
-            border:0;
-            background:transparent;
-            color:#111;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            cursor:pointer;
-        }
-
-        #satori-header .cart-preview-close svg {
-            width:22px;
-            height:22px;
-            fill:none;
-            stroke:currentColor;
-            stroke-width:2;
-            stroke-linecap:round;
-        }
-
-        #satori-header .cart-preview-close:hover {
-            color:${SATORII_RED};
-        }
-
-
-        /* =====================================================
-           CONTENIDO CARRITO
-        ====================================================== */
-
-        #satori-header .cart-preview-content {
-            flex:1;
-            overflow-y:auto;
-            padding:5px 25px 20px;
-        }
-
-        #satori-header .cart-preview-item {
-            display:grid;
-            grid-template-columns:82px minmax(0,1fr);
-            gap:14px;
-            padding:18px 0;
-            border-bottom:1px solid #eee;
-        }
-
-        #satori-header .cart-preview-image {
-            width:82px;
-            height:82px;
-            overflow:hidden;
-            background:#f5f5f5;
-            border-radius:6px;
-        }
-
-        #satori-header .cart-preview-image img {
-            width:100%;
-            height:100%;
-            display:block;
-            object-fit:cover;
-        }
-
-        #satori-header .cart-preview-info {
-            min-width:0;
-        }
-
-        #satori-header .cart-preview-name {
-            margin:0;
-            color:#111;
-            font-size:14px;
-            font-weight:700;
-            line-height:1.3;
-        }
-
-        #satori-header .cart-preview-options {
-            margin-top:5px;
-            color:#777;
-            font-size:10px;
-            line-height:1.5;
-        }
-
-        #satori-header .cart-preview-price {
-            margin-top:7px;
-            color:#111;
-            font-size:13px;
-            font-weight:800;
-        }
-
-        #satori-header .cart-preview-controls {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            margin-top:10px;
-        }
-
-        #satori-header .cart-preview-quantity {
-            display:flex;
-            align-items:center;
-            height:30px;
-            border:1px solid #ccc;
-            border-radius:4px;
-            overflow:hidden;
-        }
-
-        #satori-header .cart-preview-quantity button {
-            width:28px;
-            height:100%;
-            border:0;
-            background:#fff;
-            cursor:pointer;
-            font-size:14px;
-        }
-
-        #satori-header .cart-preview-quantity button:hover {
-            color:${SATORII_RED};
-        }
-
-        #satori-header .cart-preview-quantity span {
-            min-width:30px;
-            text-align:center;
-            font-size:11px;
-            font-weight:700;
-        }
-
-        #satori-header .cart-preview-remove {
-            border:0;
-            background:none;
-            color:#888;
-            font-size:9px;
-            font-weight:700;
-            cursor:pointer;
-        }
-
-        #satori-header .cart-preview-remove:hover {
-            color:${SATORII_RED};
-        }
-
-
-        /* =====================================================
-           CARRITO VACÍO
-        ====================================================== */
-
-        #satori-header .cart-preview-empty {
-            min-height:100%;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            padding:40px 25px;
-            text-align:center;
-        }
-
-        #satori-header .cart-preview-empty-label {
-            margin-bottom:10px;
-            color:${SATORII_RED};
-            font-size:9px;
-            font-weight:800;
-            letter-spacing:2px;
-        }
-
-        #satori-header .cart-preview-empty h3 {
-            margin:0;
-            color:#111;
-            font-family:
-                "Barlow Condensed",
-                "Arial Narrow",
-                Arial,
-                sans-serif;
-            font-size:28px;
-            font-weight:800;
-        }
-
-        #satori-header .cart-preview-empty p {
-            max-width:290px;
-            margin:12px auto 22px;
-            color:#777;
-            font-size:12px;
-            line-height:1.6;
-        }
-
-        #satori-header .cart-preview-empty a {
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            min-height:44px;
-            padding:0 22px;
-            background:#111;
-            color:#fff;
-            text-decoration:none;
-            font-size:10px;
-            font-weight:800;
-            border-radius:4px;
-        }
-
-        #satori-header .cart-preview-empty a:hover {
-            background:${SATORII_RED};
-        }
-
-
-        /* =====================================================
-           FOOTER CARRITO
-        ====================================================== */
-
-        #satori-header .cart-preview-footer {
-            flex-shrink:0;
-            padding:20px 25px 24px;
-            background:#fafafa;
-            border-top:1px solid #ddd;
-        }
-
-        #satori-header .cart-preview-subtotal {
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            margin-bottom:16px;
-        }
-
-        #satori-header .cart-preview-subtotal span {
-            color:#555;
-            font-size:11px;
-            font-weight:700;
-            letter-spacing:1px;
-        }
-
-        #satori-header .cart-preview-subtotal strong {
-            color:#111;
-            font-size:18px;
-            font-weight:900;
-        }
-
-        #satori-header .cart-preview-actions {
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:10px;
-            width:100%;
-        }
-
-        #satori-header .cart-preview-button {
-            width:100%;
-            min-height:48px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:0 10px;
-            text-decoration:none;
-            font-size:10px;
-            font-weight:800;
-            letter-spacing:.8px;
-            border-radius:5px;
-            transition:
-                background .2s ease,
-                color .2s ease,
-                border-color .2s ease;
-        }
-
-        #satori-header .cart-preview-view {
-            background:#fff;
-            color:#111;
-            border:1px solid #111;
-        }
-
-        #satori-header .cart-preview-view:hover {
-            background:#111;
-            color:#fff;
-        }
-
-        #satori-header .cart-preview-checkout {
-            background:${SATORII_RED};
-            color:#fff;
-            border:1px solid ${SATORII_RED};
-        }
-
-        #satori-header .cart-preview-checkout:hover {
-            background:#111;
-            border-color:#111;
-        }
-
-        #satori-header .cart-preview-continue {
-            display:block;
-            margin-top:13px;
-            text-align:center;
-            color:#555;
-            text-decoration:none;
-            font-size:10px;
-            font-weight:700;
-        }
-
-        #satori-header .cart-preview-continue:hover {
-            color:${SATORII_RED};
-        }
-
-
-        /* =====================================================
-           MÓVIL
-        ====================================================== */
-
-        @media (max-width:1000px) {
-
-            #satori-header .top-message {
-                display:none;
-            }
-
-            #satori-header .main-header {
-                height:64px;
-            }
-
-            #satori-header .header-inner {
-                width:100%;
-                height:64px;
-                margin:0;
-                display:block;
-            }
-
-            #satori-header .header-search-inline {
-                display:none !important;
-            }
-
-
-            /* HAMBURGUESA */
-
-            #satori-header .mobile-menu-button {
-                position:absolute;
-                left:14px;
-                top:50%;
-                transform:translateY(-50%);
-                width:36px;
-                height:36px;
-                padding:6px;
-                border:0;
-                background:transparent;
-                display:flex;
-                flex-direction:column;
-                justify-content:center;
-                align-items:flex-start;
-                gap:5px;
-                cursor:pointer;
-                z-index:900001;
-            }
-
-            #satori-header
-            .mobile-menu-button span {
-                display:block;
-                width:23px;
-                height:1.5px;
-                background:#fff;
-            }
-
-            #satori-header
-            .mobile-menu-button span:nth-child(2) {
-                width:17px;
-            }
-
-
-            /* LOGO */
-
-            #satori-header .satori-logo,
-            #satori-header .satori-logo:hover,
-            #satori-header .satori-logo:active,
-            #satori-header .satori-logo:focus {
-
-                position:absolute;
-                left:50%;
-                top:50%;
-
-                transform:
-                    translate(-50%,-50%)
-                    skewX(-3deg);
-
-                font-size:29px;
-                z-index:900001;
-                color:#fff;
-            }
-
-
-            /* NAV */
-
-            #satori-header .main-nav {
-                display:none;
-            }
-
-
-            /* ICONOS */
-
-            #satori-header .header-icons {
-                position:absolute;
-                right:7px;
-                top:50%;
-                transform:translateY(-50%);
-                display:flex;
-                align-items:center;
-                gap:1px;
-                z-index:900001;
-            }
-
-            #satori-header .header-icon {
-                width:32px;
-                height:32px;
-            }
-
-
-            /* CARRITO */
-
-            #satori-header .cart-preview {
-                width:min(390px,90vw);
-            }
-
-            #satori-header .cart-preview-header {
-                min-height:82px;
-                padding:18px 20px;
-            }
-
-            #satori-header .cart-preview-content {
-                padding:0 20px 20px;
-            }
-
-            #satori-header .cart-preview-footer {
-                padding:18px 20px 22px;
-            }
-
-
-            /* BUSCADOR */
-
-            #satori-header .search-overlay {
-                padding:
-                    max(82px, calc(env(safe-area-inset-top) + 72px))
-                    12px
-                    20px;
-                align-items:flex-start;
-            }
-
-            #satori-header .search-box {
-                width:100%;
-                max-width:520px;
-                padding:26px 18px 20px;
-                border-radius:14px;
-            }
-
-            #satori-header .search-title {
-                margin-top:2px;
-                margin-bottom:15px;
-                font-size:12px;
-                letter-spacing:1.8px;
-            }
-
-            #satori-header .search-form {
-                height:50px;
-                border-radius:9px;
-            }
-
-            #satori-header .search-form input {
-                padding:0 13px;
-                font-size:14px;
-            }
-
-            #satori-header .search-form button {
-                width:54px;
-            }
-
-            #satori-header .search-close {
-                top:8px;
-                right:9px;
-                width:34px;
-                height:34px;
-            }
-
-        }
-
-
-        /* =====================================================
-           MÓVILES PEQUEÑOS
-        ====================================================== */
-
-        @media (max-width:430px) {
-
-            #satori-header .shipping-message {
-                font-size:9px;
-            }
-
-            #satori-header .shipping-icon {
-                width:14px;
-                height:14px;
-            }
-
-            #satori-header .satori-logo,
-            #satori-header .satori-logo:hover,
-            #satori-header .satori-logo:active,
-            #satori-header .satori-logo:focus {
-                font-size:28px;
-            }
-
-            #satori-header .cart-preview {
-                width:92vw;
-            }
-
-            #satori-header .search-overlay {
-                padding-left:10px;
-                padding-right:10px;
-            }
-
-            #satori-header .search-box {
-                padding:
-                    25px
-                    14px
-                    17px;
-            }
-
-        }
-
-
-        /* =====================================================
-           SAFE AREA IPHONE
-        ====================================================== */
-
-        @supports (
-            padding:max(0px)
-        ) {
-
-            @media (max-width:1000px) {
-
-                #satori-header .mobile-menu {
-
-                    padding-top:
-                        max(
-                            20px,
-                            env(safe-area-inset-top)
-                        );
-
-                }
-
-            }
-
-        }
-
-
-        /* =====================================================
-           FOCUS
-        ====================================================== */
-
-        #satori-header
-        button:focus-visible,
-        #satori-header
-        a:focus-visible,
-        #satori-header
-        input:focus-visible {
-
-            outline:
-                2px solid ${SATORII_RED};
-
-            outline-offset:3px;
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION
-        ====================================================== */
-
-        @media (prefers-reduced-motion:reduce) {
-
-            #satori-header *,
-            #satori-header *::before,
-            #satori-header *::after {
-
-                transition:none !important;
-
-            }
-
-        }
-
-        `;
-
-
-        document.head.appendChild(style);
-
-
-        /* =====================================================
-           ESPACIADOR
-        ====================================================== */
-
-        const spacer =
-            document.createElement("div");
-
-        spacer.id =
-            "satori-header-spacer";
-
-        spacer.style.display =
-            "none";
-
-        spacer.style.height =
-            "0px";
-
-        root.insertAdjacentElement(
-            "afterend",
-            spacer
+    transition:
+        transform .55s cubic-bezier(
+            .22,
+            .61,
+            .36,
+            1
         );
 
+    z-index: 0;
+}
 
-        /* =====================================================
-           SCROLL
-        ====================================================== */
 
-        function updateScrollHeader() {
+.collection-card:nth-child(1)::before {
+    background-image:
+        url("../img/anime-card.png");
+}
 
-            const scrolled =
-                window.scrollY > 50;
 
-            root.classList.toggle(
-                "scrolled",
-                scrolled
-            );
+.collection-card:nth-child(2)::before {
+    background-image:
+        url("../img/torii-card.png");
+}
 
-            if (scrolled) {
 
-                spacer.style.display =
-                    "block";
+.collection-card:nth-child(3)::before {
+    background-image:
+        url("../img/anime-goods-card.png");
+}
 
-                spacer.style.height =
-                    "64px";
 
-            } else {
+.collection-card:nth-child(4)::before {
+    background-image:
+        url("../img/todo-card.png");
+}
 
-                spacer.style.display =
-                    "none";
 
-                spacer.style
+.collection-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, .55) 0%,
+            rgba(0, 0, 0, .22) 28%,
+            rgba(0, 0, 0, .06) 55%,
+            rgba(0, 0, 0, 0) 75%
+        );
+
+    transition:
+        background var(--transition-normal);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+.collection-card > div {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 20px;
+
+    color: var(--white);
+}
+
+
+.collection-card h3 {
+
+    margin: 0;
+
+    color: var(--white);
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    text-shadow:
+        0 2px 5px
+        rgba(0, 0, 0, .85);
+
+    transition:
+        color var(--transition-fast);
+}
+
+
+.collection-card span {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--white);
+
+    font-size: 12px;
+
+    text-shadow:
+        0 2px 5px
+        rgba(0, 0, 0, .85);
+
+    transition:
+        color var(--transition-fast);
+}
+
+
+.collection-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        #999999;
+
+    box-shadow:
+        0 14px 30px
+        rgba(0, 0, 0, .14);
+}
+
+
+.collection-card:hover::before {
+    transform: scale(1.05);
+}
+
+
+.collection-card:hover::after {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, .72) 0%,
+            rgba(0, 0, 0, .28) 45%,
+            rgba(0, 0, 0, .05) 75%
+        );
+}
+
+
+.collection-card:hover h3,
+.collection-card:hover span {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   RECOMENDACIONES
+========================================================= */
+
+.recommendations-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+}
+
+
+.recommendation-card {
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        var(--white);
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal),
+        border-color var(--transition-normal);
+}
+
+
+.recommendation-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        #cccccc;
+
+    box-shadow:
+        0 12px 28px
+        rgba(0, 0, 0, .10);
+}
+
+
+.recommendation-image {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background:
+        var(--light-gray);
+}
+
+
+.recommendation-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .45s ease;
+}
+
+
+.recommendation-card:hover
+.recommendation-image img {
+
+    transform:
+        scale(1.035);
+}
+
+
+.recommendation-info {
+    padding: 15px;
+}
+
+
+.recommendation-category {
+
+    margin-bottom: 6px;
+
+    color: var(--red);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+}
+
+
+.recommendation-name {
+
+    margin-bottom: 4px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.recommendation-price {
+
+    color: var(--gray-light);
+
+    font-size: 13px;
+}
+
+
+.recommendation-placeholder {
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 150px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+    font-family:
+        var(--font-logo);
+
+    font-size: 28px;
+
+    font-style: italic;
+}
+
+
+/*
+ * Oculta la sección cuando no existen
+ * productos recomendados.
+ */
+
+.recommendations:
+has(.recommendations-grid:empty) {
+
+    display: none;
+}
+
+
+/* =========================================================
+   SATORII PACK
+========================================================= */
+
+.satorii-pack {
+
+    position: relative;
+
+    width: min(
+        var(--satori-content-width),
+        calc(
+            100% -
+            (var(--satori-side-space) * 2)
+        )
+    );
+
+    min-height: 370px;
+
+    margin: 80px auto;
+
+    padding: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        var(--red);
+
+    color:
+        var(--white);
+
+    border: none;
+
+    border-radius:
+        var(--radius-md);
+
+    isolation: isolate;
+}
+
+
+.satorii-pack-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 52%;
+
+    max-width: 650px;
+}
+
+
+.satorii-pack-label {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color:
+        var(--black);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+
+.satorii-pack h2 {
+
+    margin:
+        0 0 18px;
+
+    color:
+        var(--white);
+
+    font-size:
+        clamp(
+            38px,
+            4vw,
+            62px
+        );
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
+}
+
+
+.satorii-pack h2 span {
+    color: var(--black);
+}
+
+
+.satorii-pack p {
+
+    max-width: 570px;
+
+    margin: 0;
+
+    color:
+        var(--white);
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+.satorii-pack-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding:
+        14px 23px;
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+    border-radius:
+        var(--radius-sm);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .4px;
+
+    transition:
+        transform var(--transition-normal),
+        background var(--transition-normal),
+        color var(--transition-normal);
+}
+
+
+.satorii-pack-button span {
+    font-size: 17px;
+}
+
+
+.satorii-pack-button:hover {
+
+    background:
+        var(--white);
+
+    color:
+        var(--black);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.satorii-pack-features {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+
+.pack-feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color:
+        var(--white);
+}
+
+
+.pack-feature-icon {
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .85);
+
+    border-radius: 50%;
+
+    font-size: 16px;
+}
+
+
+.pack-feature div {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.pack-feature strong {
+
+    color:
+        var(--white);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+
+.pack-feature small {
+
+    color:
+        rgba(255, 255, 255, .9);
+
+    font-size: 8px;
+
+    line-height: 1.2;
+}
+
+
+.pack-divider {
+
+    width: 1px;
+
+    height: 35px;
+
+    flex-shrink: 0;
+
+    background:
+        rgba(255, 255, 255, .5);
+}
+
+
+.satorii-pack-visual {
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 53%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 3;
+}
+
+
+.satorii-pack-glow {
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, .18);
+
+    filter:
+        blur(80px);
+}
+
+
+.satorii-pack-box {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(570px, 95%);
+
+    max-height: 420px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 30px 30px
+            rgba(0, 0, 0, .45)
+        );
+
+    transform:
+        translateY(18px);
+
+    transition:
+        transform .45s ease,
+        filter .45s ease;
+}
+
+
+.satorii-pack:hover
+.satorii-pack-box {
+
+    transform:
+        translateY(8px)
+        scale(1.035);
+
+    filter:
+        drop-shadow(
+            0 35px 35px
+            rgba(0, 0, 0, .5)
+        );
+}
+
+
+.satorii-pack::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: 3%;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .18);
+
+    z-index: 1;
+}
+
+
+.satorii-pack::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    right: 8%;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, .10);
+
+    filter:
+        blur(80px);
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   FOOTER GLOBAL
+   Controlado por js/footer.js
+========================================================= */
+
+.satori-global-footer {
+
+    width: 100%;
+
+    margin-top: 70px;
+
+    background:
+        var(--black-soft);
+
+    color:
+        var(--white);
+
+    border-top:
+        2px solid #222222;
+}
+
+
+.satori-footer-main {
+
+    width:
+        min(
+            1500px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        65px 0 45px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 1fr 1fr 1.5fr;
+
+    gap: 50px;
+}
+
+
+.satori-footer-brand h3 {
+
+    margin:
+        0 0 5px;
+
+    font-family:
+        var(--font-logo);
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    font-style: italic;
+
+    letter-spacing: -1px;
+}
+
+
+.satori-footer-kanji {
+
+    display: block;
+
+    margin-bottom: 18px;
+
+    color:
+        var(--red);
+
+    font-size: 13px;
+}
+
+
+.satori-footer-brand p {
+
+    max-width: 300px;
+
+    margin: 0;
+
+    color:
+        #aaaaaa;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+.satori-footer-instagram {
+
+    width: 38px;
+    height: 38px;
+
+    margin-top: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid #444444;
+
+    border-radius: 50%;
+
+    color:
+        var(--white);
+
+    transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+.satori-footer-instagram:hover {
+
+    color:
+        var(--red);
+
+    border-color:
+        var(--red);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.satori-footer-instagram svg {
+
+    width: 18px;
+    height: 18px;
+}
+
+
+.satori-footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.satori-footer-column h4 {
+
+    margin:
+        0 0 8px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+.satori-footer-column a {
+
+    color:
+        #aaaaaa;
+
+    font-size: 13px;
+
+    transition:
+        color var(--transition-fast);
+}
+
+
+.satori-footer-column a:hover {
+    color:
+        var(--white);
+}
+
+
+.satori-footer-community-label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        var(--red);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.satori-footer-community h3 {
+
+    margin:
+        0 0 10px;
+
+    font-size: 30px;
+
+    line-height: 1;
+}
+
+
+.satori-footer-community h3 span {
+    color:
+        var(--red);
+}
+
+
+.satori-footer-community p {
+
+    margin:
+        0 0 18px;
+
+    color:
+        #aaaaaa;
+
+    font-size: 13px;
+}
+
+
+.satori-footer-newsletter {
+
+    display: flex;
+
+    width: 100%;
+
+    max-width: 400px;
+
+    height: 46px;
+
+    border:
+        1px solid #444444;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    background:
+        var(--white);
+}
+
+
+.satori-footer-newsletter input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        0 14px;
+
+    border: 0;
+
+    outline: none;
+
+    color:
+        var(--black);
+
+    background:
+        var(--white);
+
+    font-size: 13px;
+}
+
+
+.satori-footer-newsletter button {
+
+    width: 52px;
+
+    border: 0;
+
+    background:
+        var(--red);
+
+    color:
+        var(--white);
+
+    font-size: 20px;
+
+    transition:
+        background var(--transition-fast);
+}
+
+
+.satori-footer-newsletter button:hover {
+    background:
+        var(--dark-red);
+}
+
+
+.satori-footer-bottom {
+
+    width:
+        min(
+            1500px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        18px 0;
+
+    border-top:
+        1px solid #222222;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    color:
+        #777777;
+
+    font-size: 11px;
+}
+
+
+.satori-footer-bottom > div {
+
+    display: flex;
+
+    gap: 20px;
+}
+
+
+.satori-footer-bottom a:hover {
+    color:
+        var(--white);
+}
+
+
+/* =========================================================
+   TABLET GRANDE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    :root {
+        --satori-side-space: 24px;
+    }
+
+
+    .collections-grid,
+    .recommendations-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .satori-footer-main {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET — SATORII PACK
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .satorii-pack {
+
+        min-height: 330px;
+
+        padding: 45px;
+    }
+
+
+    .satorii-pack-content {
+        width: 55%;
+    }
+
+
+    .satorii-pack-visual {
+        width: 50%;
+    }
+
+
+    .satorii-pack-box {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET — BENEFICIOS
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .benefits {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        margin-top: -30px;
+    }
+
+
+    .benefit {
+
+        min-height: 82px;
+    }
+
+
+    .benefit:nth-child(2),
+    .benefit:nth-child(4) {
+
+        border-right: 0;
+    }
+
+
+    .benefit:nth-child(1),
+    .benefit:nth-child(2) {
+
+        border-bottom:
+            1px solid var(--border);
+    }
+
+
+    .benefit:nth-child(3),
+    .benefit:nth-child(4) {
+
+        border-bottom: 0;
+    }
+
+
+    .benefit:nth-child(2)::after,
+    .benefit:nth-child(4)::after {
+
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 900px) {
+
+    :root {
+        --satori-side-space: 15px;
+    }
+
+
+    /* -----------------------------------------------------
+       HERO
+    ----------------------------------------------------- */
+
+    .hero-slide {
+
+        height: 58vh;
+
+        min-height: 360px;
+
+        max-height: 580px;
+    }
+
+
+    .hero-dots {
+        bottom: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       BENEFICIOS
+    ----------------------------------------------------- */
+
+    .benefits {
+
+        width:
+            calc(100% - 30px);
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .benefit {
+
+        min-height: 90px;
+
+        padding: 16px;
+
+        gap: 10px;
+    }
+
+
+    .benefit strong {
+        font-size: 11px;
+    }
+
+
+    .benefit-content > span {
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------------------
+       SECCIONES
+    ----------------------------------------------------- */
+
+    .section,
+    .recommendations {
+
+        width:
+            calc(100% - 30px);
+    }
+
+
+    .section {
+        margin-top: 38px;
+    }
+
+
+    .recommendations {
+        margin-top: 50px;
+    }
+
+
+    .section-header {
+        margin-bottom: 16px;
+    }
+
+
+    .section-header h2 {
+        font-size: 21px;
+    }
+
+
+    .section-header a {
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       COLECCIONES
+    ----------------------------------------------------- */
+
+    .collections-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .collection-card {
+        min-height: 180px;
+    }
+
+
+    .collection-card > div {
+        padding: 15px;
+    }
+
+
+    .collection-card h3 {
+        font-size: 16px;
+    }
+
+
+    .collection-card span {
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------------------
+       RECOMENDACIONES
+    ----------------------------------------------------- */
+
+    .recommendations-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 9px;
+    }
+
+
+    .recommendation-info {
+        padding: 11px;
+    }
+
+
+    .recommendation-category {
+        font-size: 9px;
+    }
+
+
+    .recommendation-name {
+        font-size: 13px;
+    }
+
+
+    .recommendation-price {
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------------------
+       SATORII PACK
+    ----------------------------------------------------- */
+
+    .satorii-pack {
+
+        width:
+            calc(100% - 30px);
+
+        min-height: auto;
+
+        margin:
+            55px auto;
+
+        padding:
+            30px 22px 0;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .satorii-pack-content {
+
+        width: 100%;
+
+        max-width: none;
+    }
+
+
+    .satorii-pack-label {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .satorii-pack h2 {
+        font-size: 34px;
+    }
+
+
+    .satorii-pack p {
+        font-size: 13px;
+    }
+
+
+    .satorii-pack-button {
+
+        width: 100%;
+
+        margin-top: 20px;
+    }
+
+
+    .satorii-pack-features {
+
+        gap: 8px;
+
+        justify-content:
+            space-between;
+    }
+
+
+    .pack-feature {
+        gap: 5px;
+    }
+
+
+    .pack-feature-icon {
+
+        width: 28px;
+        height: 28px;
+
+        font-size: 13px;
+    }
+
+
+    .pack-feature strong {
+        font-size: 7px;
+    }
+
+
+    .pack-feature small {
+        font-size: 6px;
+    }
+
+
+    .pack-divider {
+        height: 28px;
+    }
+
+
+    .satorii-pack-visual {
+
+        position: relative;
+
+        width: 100%;
+
+        height: 250px;
+
+        margin-top: -5px;
+    }
+
+
+    .satorii-pack-box {
+
+        width: 105%;
+
+        max-height: 280px;
+
+        transform:
+            translateY(8px);
+    }
+
+
+    .satorii-pack:hover
+    .satorii-pack-box {
+
+        transform:
+            translateY(8px);
+    }
+
+
+    .satorii-pack-glow {
+
+        width: 280px;
+        height: 280px;
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
+
+    .satori-global-footer {
+        margin-top: 50px;
+    }
+
+
+    .satori-footer-main {
+
+        width:
+            calc(100% - 30px);
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding:
+            45px 0 30px;
+    }
+
+
+    .satori-footer-bottom {
+
+        width:
+            calc(100% - 30px);
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL — BENEFICIOS
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .benefits {
+
+        width:
+            calc(100% - 24px);
+
+        margin:
+            -28px auto 0;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        border-radius:
+            12px;
+
+        box-shadow:
+            0 10px 30px
+            rgba(0, 0, 0, .10);
+    }
+
+
+    .benefit {
+
+        min-height: 88px;
+
+        padding:
+            15px 13px;
+
+        gap: 10px;
+    }
+
+
+    .benefit-icon {
+
+        width: 34px;
+        height: 34px;
+
+        min-width: 34px;
+
+        font-size: 17px;
+    }
+
+
+    .benefit strong {
+
+        font-size: 9px;
+
+        margin-bottom: 4px;
+    }
+
+
+    .benefit-content > span {
+
+        font-size: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL — HERO
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero-slide {
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: 0;
+
+        max-height: none;
+
+        aspect-ratio:
+            1080 / 1200;
+
+        overflow: hidden;
+    }
+
+
+    .hero-slide picture {
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .hero-slide picture img {
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        user-select: none;
+
+        pointer-events: none;
+
+        -webkit-user-drag: none;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero-slide {
+        min-height: 340px;
+    }
+
+
+    .benefit {
+
+        padding:
+            13px 10px;
+
+        gap: 8px;
+    }
+
+
+    .benefit-icon {
+
+        width: 31px;
+        height: 31px;
+
+        min-width: 31px;
+
+        font-size: 15px;
+    }
+
+
+    .benefit strong {
+        font-size: 8px;
+    }
+
+
+    .benefit-content > span {
+        font-size: 7px;
+    }
+
+
+    .collection-card {
+        min-height: 140px;
+    }
+
+
+    .collection-card > div {
+        padding: 12px;
+    }
+
+
+    .collection-card h3 {
+        font-size: 15px;
+    }
+
+
+    .recommendations-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .satori-footer-bottom > div {
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       SATORII PACK
+    ----------------------------------------------------- */
+
+    .satorii-pack {
+
+        width:
+            calc(100% - 24px);
+
+        padding:
+            26px 18px 0;
+    }
+
+
+    .satorii-pack h2 {
+        font-size: 31px;
+    }
+
+
+    .satorii-pack p {
+        font-size: 12px;
+    }
+
+
+    .satorii-pack-visual {
+        height: 220px;
+    }
+
+
+    .satorii-pack-box {
+        width: 110%;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD — REDUCIR MOVIMIENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        transition:
+            none !important;
+
+        animation:
+            none !important;
+    }
+
+
+    .hero-track {
+        transition:
+            none !important;
+    }
+
+
+    .collection-card:hover,
+    .recommendation-card:hover {
+
+        transform: none;
+    }
+
+
+    .collection-card:hover::before,
+    .recommendation-card:hover
+    .recommendation-image img {
+
+        transform: none;
+    }
+
+
+    .satorii-pack:hover
+    .satorii-pack-box {
+
+        transform:
+            translateY(18px);
+    }
+
+}
