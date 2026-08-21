@@ -50,6 +50,9 @@ jobs:
 
           npm run optimize-images
 
+       - name: Actualizar referencias WebP
+        run: node scripts/update-image-references.js
+
       - name: Verificar generate-products.js
         run: |
           echo "========================================"
