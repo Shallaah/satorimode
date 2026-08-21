@@ -2,17 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-
-const IMAGE_ROOT = path.join(
-    ROOT,
-    "img",
-    "productos"
-);
-
-
-/* =====================================================
-   CONFIGURACIÓN
-===================================================== */
+const IMAGE_ROOT = path.join(ROOT, "img");
 
 const SUPPORTED_EXTENSIONS = [
     ".png",
@@ -20,30 +10,15 @@ const SUPPORTED_EXTENSIONS = [
     ".jpeg"
 ];
 
-
-/*
- * Calidad WebP.
- *
- * 82 = muy buena calidad + bastante menos peso.
- */
 const WEBP_QUALITY = 82;
-
-
-/* =====================================================
-   UTILIDADES
-===================================================== */
 
 function isSupportedImage(fileName) {
 
-    const extension =
-        path.extname(fileName)
-            .toLowerCase();
-
-    return SUPPORTED_EXTENSIONS
-        .includes(extension);
+    return SUPPORTED_EXTENSIONS.includes(
+        path.extname(fileName).toLowerCase()
+    );
 
 }
-
 
 function getWebpName(fileName) {
 
@@ -54,40 +29,28 @@ function getWebpName(fileName) {
 
 }
 
-
-/* =====================================================
-   BUSCAR IMÁGENES
-===================================================== */
-
 function findImages(directory) {
 
     if (!fs.existsSync(directory)) {
-
         return [];
-
     }
-
 
     const results = [];
 
-
-    const entries =
-        fs.readdirSync(
+    for (
+        const entry of fs.readdirSync(
             directory,
             {
                 withFileTypes: true
             }
-        );
-
-
-    for (const entry of entries) {
+        )
+    ) {
 
         const fullPath =
             path.join(
                 directory,
                 entry.name
             );
-
 
         if (entry.isDirectory()) {
 
@@ -98,7 +61,6 @@ function findImages(directory) {
             continue;
 
         }
-
 
         if (
             entry.isFile() &&
@@ -111,63 +73,40 @@ function findImages(directory) {
 
     }
 
-
     return results;
 
 }
 
-
-/* =====================================================
-   CONVERSIÓN
-===================================================== */
-
-async function convertImage(
-    inputPath
-) {
-
-    /*
-     * sharp se carga solamente cuando
-     * ejecutamos el conversor.
-     */
+async function convertImage(inputPath) {
 
     const sharp =
         require("sharp");
 
-
     const directory =
         path.dirname(inputPath);
-
-
-    const outputName =
-        getWebpName(
-            path.basename(inputPath)
-        );
-
 
     const outputPath =
         path.join(
             directory,
-            outputName
+            getWebpName(
+                path.basename(inputPath)
+            )
         );
-
-
-    /*
-     * Si ya existe WebP, no lo
-     * sobrescribimos innecesariamente.
-     */
 
     if (
         fs.existsSync(outputPath)
     ) {
 
         console.log(
-            `↪ Ya existe: ${path.relative(ROOT, outputPath)}`
+            `↪ Ya existe: ${path.relative(
+                ROOT,
+                outputPath
+            )}`
         );
 
         return;
 
     }
-
 
     await sharp(inputPath)
         .webp({
@@ -176,46 +115,43 @@ async function convertImage(
         })
         .toFile(outputPath);
 
-
     const originalSize =
         fs.statSync(
             inputPath
         ).size;
-
 
     const webpSize =
         fs.statSync(
             outputPath
         ).size;
 
-
     const reduction =
         originalSize > 0
-            ? (
-                100 -
-                (
-                    webpSize /
-                    originalSize
-                ) *
-                100
-            )
+            ? 100 -
+              (
+                  webpSize /
+                  originalSize
+              ) *
+              100
             : 0;
 
-
     console.log(
-        `✓ ${path.relative(ROOT, inputPath)}`
+        `✓ ${path.relative(
+            ROOT,
+            inputPath
+        )}`
     );
 
-
     console.log(
-        `  → ${path.relative(ROOT, outputPath)}`
+        `  → ${path.relative(
+            ROOT,
+            outputPath
+        )}`
     );
-
 
     console.log(
         `  ${(originalSize / 1024 / 1024).toFixed(2)} MB → ${(webpSize / 1024 / 1024).toFixed(2)} MB`
     );
-
 
     console.log(
         `  Reducción: ${reduction.toFixed(1)}%`
@@ -223,25 +159,23 @@ async function convertImage(
 
 }
 
-
-/* =====================================================
-   EJECUCIÓN
-===================================================== */
-
 async function main() {
 
     console.log("");
-    console.log(
-        "========================================"
-    );
-    console.log(
-        " SATORII · OPTIMIZADOR DE IMÁGENES"
-    );
-    console.log(
-        "========================================"
-    );
-    console.log("");
 
+    console.log(
+        "========================================"
+    );
+
+    console.log(
+        " SATORII · OPTIMIZADOR GLOBAL DE IMÁGENES"
+    );
+
+    console.log(
+        "========================================"
+    );
+
+    console.log("");
 
     if (
         !fs.existsSync(
@@ -250,26 +184,17 @@ async function main() {
     ) {
 
         console.log(
-            "No existe la carpeta:"
-        );
-
-        console.log(
-            path.relative(
-                ROOT,
-                IMAGE_ROOT
-            )
+            "No existe la carpeta img/"
         );
 
         return;
 
     }
 
-
     const images =
         findImages(
             IMAGE_ROOT
         );
-
 
     if (
         images.length === 0
@@ -283,13 +208,11 @@ async function main() {
 
     }
 
-
     console.log(
         `Encontradas: ${images.length} imagen(es)`
     );
 
     console.log("");
-
 
     for (
         const image of images
@@ -301,30 +224,34 @@ async function main() {
 
     }
 
-
     console.log("");
+
     console.log(
         "========================================"
     );
+
     console.log(
-        " Conversión terminada"
+        " Optimización terminada"
     );
+
     console.log(
         "========================================"
     );
+
     console.log("");
 
 }
-
 
 main()
     .catch(
         error => {
 
             console.error("");
+
             console.error(
                 "❌ Error durante la conversión:"
             );
+
             console.error(
                 error
             );
