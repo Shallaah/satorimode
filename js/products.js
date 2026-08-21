@@ -82,7 +82,7 @@ const PRODUCTS = [
         ================================================== */
 
         image:
-            "img/productos/anime/dbz-kid-buu/01.PNG",
+            "img/productos/anime/dbz-kid-buu/01.webp",
 
 
         /* =================================================
@@ -91,11 +91,11 @@ const PRODUCTS = [
 
         images: [
 
-            "img/productos/anime/dbz-kid-buu/01.PNG",
+            "img/productos/anime/dbz-kid-buu/01.webp",
 
-            "img/productos/anime/dbz-kid-buu/02.PNG",
+            "img/productos/anime/dbz-kid-buu/02.webp",
 
-            "img/productos/anime/dbz-kid-buu/03.PNG"
+            "img/productos/anime/dbz-kid-buu/03.webp"
 
         ],
 

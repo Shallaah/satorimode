@@ -664,25 +664,25 @@ select:focus-visible {
 
 .collection-card:nth-child(1)::before {
     background-image:
-        url("../img/anime-card.png");
+        url("../img/anime-card.webp");
 }
 
 
 .collection-card:nth-child(2)::before {
     background-image:
-        url("../img/torii-card.png");
+        url("../img/torii-card.webp");
 }
 
 
 .collection-card:nth-child(3)::before {
     background-image:
-        url("../img/anime-goods-card.png");
+        url("../img/anime-goods-card.webp");
 }
 
 
 .collection-card:nth-child(4)::before {
     background-image:
-        url("../img/todo-card.png");
+        url("../img/todo-card.webp");
 }
 
 
