@@ -5,6 +5,10 @@ on:
     paths:
       - "js/products.js"
       - "scripts/generate-products.js"
+      - "scripts/optimize-images.js"
+      - "package.json"
+      - "package-lock.json"
+      - "img/productos/**"
       - ".github/workflows/generate-products.yml"
 
   workflow_dispatch:
@@ -30,6 +34,23 @@ jobs:
           git config user.name "SatoriMode Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Optimizar imágenes
+        run: |
+          echo "========================================"
+          echo "Optimizando imágenes"
+          echo "========================================"
+
+          npm run optimize-images
+
       - name: Verificar generate-products.js
         run: |
           echo "========================================"
@@ -48,19 +69,19 @@ jobs:
           echo "Generando páginas de productos"
           echo "========================================"
 
-          node scripts/generate-products.js
+          npm run generate-products
 
-      - name: Guardar páginas generadas
+      - name: Guardar archivos generados
         run: |
 
-          git add productos
+          git add productos img/productos
 
           if git diff --cached --quiet; then
-            echo "No hay cambios en las páginas de productos."
+            echo "No hay cambios generados."
             exit 0
           fi
 
-          git commit -m "Generar páginas de productos"
+          git commit -m "Optimizar imágenes y generar páginas de productos"
 
           git pull --rebase origin main
 
