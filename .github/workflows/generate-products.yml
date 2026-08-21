@@ -76,7 +76,7 @@ jobs:
       - name: Guardar archivos generados
         run: |
 
-          git add productos img
+          git add -A
 
           if git diff --cached --quiet; then
             echo "No hay cambios generados."
