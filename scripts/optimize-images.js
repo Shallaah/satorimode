@@ -1,5 +1,367 @@
 const fs = require("fs");
 const path = require("path");
+const sharp = require("sharp");
+
+const ROOT = path.resolve(__dirname, "..");
+const IMAGE_ROOT = path.join(ROOT, "img");
+
+const IMAGE_EXTENSIONS = [".png", ".jpg", ".jpeg"];
+const SOURCE_EXTENSIONS = [".html", ".htm", ".css", ".js"];
+
+function isImage(file) {
+    return IMAGE_EXTENSIONS.includes(
+        path.extname(file).toLowerCase()
+    );
+}
+
+function getWebpPath(file) {
+    return path.join(
+        path.dirname(file),
+        path.basename(file, path.extname(file)) + ".webp"
+    );
+}
+
+function getAllFiles(directory) {
+    if (!fs.existsSync(directory)) return [];
+
+    const files = [];
+
+    for (const item of fs.readdirSync(directory, {
+        withFileTypes: true
+    })) {
+        if (
+            item.name === ".git" ||
+            item.name === "node_modules"
+        ) {
+            continue;
+        }
+
+        const fullPath = path.join(
+            directory,
+            item.name
+        );
+
+        if (item.isDirectory()) {
+            files.push(
+                ...getAllFiles(fullPath)
+            );
+        } else {
+            files.push(fullPath);
+        }
+    }
+
+    return files;
+}
+
+
+/* =================================================
+   CONVERTIR IMÁGENES
+================================================= */
+
+async function optimizeImages() {
+
+    const files = getAllFiles(
+        IMAGE_ROOT
+    ).filter(isImage);
+
+    console.log(
+        `Imágenes encontradas: ${files.length}`
+    );
+
+    for (const input of files) {
+
+        const output =
+            getWebpPath(input);
+
+        if (fs.existsSync(output)) {
+
+            console.log(
+                `↪ Ya existe: ${path.relative(
+                    ROOT,
+                    output
+                )}`
+            );
+
+            continue;
+        }
+
+        await sharp(input)
+            .webp({
+                quality: 82,
+                effort: 5
+            })
+            .toFile(output);
+
+        const originalSize =
+            fs.statSync(input).size;
+
+        const webpSize =
+            fs.statSync(output).size;
+
+        const reduction =
+            100 -
+            (
+                webpSize /
+                originalSize
+            ) *
+            100;
+
+        console.log(
+            `✓ ${path.relative(
+                ROOT,
+                input
+            )}`
+        );
+
+        console.log(
+            `  → ${path.relative(
+                ROOT,
+                output
+            )}`
+        );
+
+        console.log(
+            `  Reducción: ${reduction.toFixed(
+                1
+            )}%`
+        );
+    }
+}
+
+
+/* =================================================
+   ACTUALIZAR REFERENCIAS
+================================================= */
+
+function updateReferences() {
+
+    const files =
+        getAllFiles(ROOT).filter(
+            file =>
+                SOURCE_EXTENSIONS.includes(
+                    path.extname(file).toLowerCase()
+                )
+        );
+
+    let replacements = 0;
+
+    for (const file of files) {
+
+        let content =
+            fs.readFileSync(
+                file,
+                "utf8"
+            );
+
+        const original =
+            content;
+
+        /*
+         * Busca referencias como:
+         *
+         * "img/banner.png"
+         * 'img/producto.jpg'
+         */
+
+        content =
+            content.replace(
+                /(["'])([^"'\r\n]+?\.(?:png|jpe?g))\1/gi,
+                (
+                    match,
+                    quote,
+                    imageReference
+                ) => {
+
+                    /*
+                     * No tocar URLs externas.
+                     */
+
+                    if (
+                        imageReference.startsWith(
+                            "http://"
+                        ) ||
+                        imageReference.startsWith(
+                            "https://"
+                        ) ||
+                        imageReference.startsWith(
+                            "//"
+                        ) ||
+                        imageReference.startsWith(
+                            "data:"
+                        )
+                    ) {
+
+                        return match;
+
+                    }
+
+                    /*
+                     * Resolver la ruta.
+                     */
+
+                    let imagePath;
+
+                    if (
+                        imageReference.startsWith(
+                            "img/"
+                        )
+                    ) {
+
+                        imagePath =
+                            path.resolve(
+                                ROOT,
+                                imageReference
+                            );
+
+                    } else {
+
+                        imagePath =
+                            path.resolve(
+                                path.dirname(file),
+                                imageReference
+                            );
+
+                    }
+
+                    /*
+                     * Comprobar que la imagen existe.
+                     */
+
+                    if (
+                        !fs.existsSync(
+                            imagePath
+                        )
+                    ) {
+
+                        return match;
+
+                    }
+
+                    /*
+                     * Comprobar que existe
+                     * su versión WebP.
+                     */
+
+                    const webpPath =
+                        getWebpPath(
+                            imagePath
+                        );
+
+                    if (
+                        !fs.existsSync(
+                            webpPath
+                        )
+                    ) {
+
+                        return match;
+
+                    }
+
+                    /*
+                     * Cambiar .png/.jpg/.jpeg
+                     * por .webp.
+                     */
+
+                    const extension =
+                        path.extname(
+                            imageReference
+                        );
+
+                    const webpReference =
+                        imageReference.slice(
+                            0,
+                            -extension.length
+                        ) +
+                        ".webp";
+
+                    replacements++;
+
+                    return (
+                        quote +
+                        webpReference +
+                        quote
+                    );
+                }
+            );
+
+        if (
+            content !== original
+        ) {
+
+            fs.writeFileSync(
+                file,
+                content,
+                "utf8"
+            );
+
+            console.log(
+                `✓ Referencias actualizadas: ${path.relative(
+                    ROOT,
+                    file
+                )}`
+            );
+        }
+    }
+
+    console.log("");
+    console.log(
+        `Referencias WebP actualizadas: ${replacements}`
+    );
+}
+
+
+/* =================================================
+   EJECAR
+================================================= */
+
+async function main() {
+
+    console.log("");
+    console.log(
+        "========================================"
+    );
+    console.log(
+        " SATORII · OPTIMIZADOR DE IMÁGENES"
+    );
+    console.log(
+        "========================================"
+    );
+    console.log("");
+
+    await optimizeImages();
+
+    console.log("");
+    console.log(
+        "Actualizando referencias..."
+    );
+    console.log("");
+
+    updateReferences();
+
+    console.log("");
+    console.log(
+        "========================================"
+    );
+    console.log(
+        " Optimización terminada"
+    );
+    console.log(
+        "========================================"
+    );
+    console.log("");
+}
+
+main().catch(error => {
+
+    console.error("");
+    console.error(
+        "❌ Error durante la optimización:"
+    );
+    console.error(error);
+
+    process.exit(1);
+});const fs = require("fs");
+const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const IMAGE_ROOT = path.join(ROOT, "img");
