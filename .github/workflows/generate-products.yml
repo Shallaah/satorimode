@@ -8,7 +8,7 @@ on:
       - "scripts/optimize-images.js"
       - "package.json"
       - "package-lock.json"
-      - "img/productos/**"
+      - "img/**"
       - ".github/workflows/generate-products.yml"
 
   workflow_dispatch:
