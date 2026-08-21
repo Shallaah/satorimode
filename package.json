@@ -1,0 +1,13 @@
+{
+  "name": "satorimode",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SATORII image optimization and product generation tools",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js",
+    "generate-products": "node scripts/generate-products.js"
+  },
+  "dependencies": {
+    "sharp": "^0.34.3"
+  }
+}
