@@ -736,15 +736,25 @@
             );
 
 
-        const image =
-            root.dataset.productImage ||
-            document.body.dataset.productImage ||
-            document
-                .querySelector(
-                    ".satori-main-image img"
-                )
-                ?.src ||
-            "";
+const imageElement =
+    document.querySelector(
+        ".satori-main-image img, .product-main-image img, #mainProductImage"
+    );
+
+const image =
+    root.dataset.productImage ||
+    document.body.dataset.productImage ||
+    imageElement?.currentSrc ||
+    imageElement?.src ||
+    "";
+
+const normalizedImage =
+    image
+        ? new URL(
+            image,
+            document.baseURI
+        ).href
+        : "";
 
 
         return {
@@ -762,7 +772,7 @@
                 price,
 
             image:
-                image,
+                normalizedImage,
 
             size:
                 activeSize
