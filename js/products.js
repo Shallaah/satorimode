@@ -1888,3 +1888,9 @@ function getCatalogProducts(
 console.log(
     `SatoriMode · ${PRODUCTS.length} producto(s) cargado(s).`
 );
+
+/* =========================================================
+   SINCRONIZAR CON SUPABASE
+========================================================= */
+
+syncProductsFromSupabase();
