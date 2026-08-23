@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             font-style:italic;
 
-            letter-spacing:-1.8px;
+            letter-spacing:-0.8px;
 
             text-transform:uppercase;
 
