@@ -1030,13 +1030,20 @@
     <div id="satori-footer"></div>
 
 
-    <!-- =====================================================
-         PRODUCTOS
-    ====================================================== -->
+<!-- SUPABASE -->
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
-    <script
-        src="/satorimode/js/products.js"
-    ></script>
+<script
+    src="/satorimode/js/supabase.js"
+></script>
+
+
+<!-- PRODUCTOS -->
+<script
+    src="/satorimode/js/products.js"
+></script>
 
 
     <!-- =====================================================
@@ -2195,7 +2202,15 @@
 
             }
         );
+        
+document.addEventListener(
+    "satorii:products-updated",
+    function () {
 
+        renderPageCart();
+
+    }
+);
 
         window.addEventListener(
             "storage",
