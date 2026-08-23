@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             width:100%;
 
-            background:#000;
+            background:#101727;
 
             color:#fff;
 
