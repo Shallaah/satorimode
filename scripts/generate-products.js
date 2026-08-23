@@ -4114,21 +4114,33 @@ function generateProductJS() {
 
     function initSatoriProduct() {
 
+
+        /* =================================================
+           SINCRONIZACIÓN DEL PRODUCTO
+        ================================================= */
+
         function refreshProductData() {
 
             if (
                 typeof PRODUCTS === "undefined" ||
                 !Array.isArray(PRODUCTS)
             ) {
-                return;
+
+                return false;
+
             }
+
 
             const productId =
                 document.body.dataset.productId;
 
+
             if (!productId) {
-                return;
+
+                return false;
+
             }
+
 
             const product =
                 PRODUCTS.find(
@@ -4137,14 +4149,23 @@ function generateProductJS() {
                         String(productId)
                 );
 
+
             if (!product) {
-                return;
+
+                return false;
+
             }
+
 
             const price =
                 "$" +
                 Number(product.price || 0)
                     .toLocaleString("es-CL");
+
+
+            /* =============================================
+               PRECIO VISIBLE
+            ============================================= */
 
             document
                 .querySelectorAll(
@@ -4152,9 +4173,17 @@ function generateProductJS() {
                 )
                 .forEach(
                     element => {
-                        element.textContent = price;
+
+                        element.textContent =
+                            price;
+
                     }
                 );
+
+
+            /* =============================================
+               DATA-PRODUCT-PRICE
+            ============================================= */
 
             document
                 .querySelectorAll(
@@ -4162,41 +4191,114 @@ function generateProductJS() {
                 )
                 .forEach(
                     element => {
+
                         element.dataset.productPrice =
                             String(product.price);
+
                     }
                 );
+
+
+            /* =============================================
+               BOTÓN AGREGAR AL CARRITO
+            ============================================= */
 
             const addButton =
                 document.getElementById(
                     "addToCart"
                 );
 
+
             if (addButton) {
 
                 addButton.dataset.productPrice =
                     String(product.price);
 
+
                 if (
-                    !addButton.classList.contains("added")
+                    !addButton.classList.contains(
+                        "added"
+                    )
                 ) {
+
                     addButton.textContent =
                         "AGREGAR AL CARRITO · " +
                         price;
+
                 }
+
             }
+
+
+            /* =============================================
+               PRECIO DEL BODY
+            ============================================= */
 
             document.body.dataset.productPrice =
                 String(product.price);
+
+
+            return true;
+
         }
 
-        refreshProductData();
+
+        /* =================================================
+           INTENTO INICIAL
+        ================================================= */
+
+        if (!refreshProductData()) {
+
+
+            /*
+             * Si products.js todavía no terminó
+             * de cargar/sincronizar, esperamos.
+             */
+
+            let attempts = 0;
+
+            const maxAttempts = 50;
+
+
+            const retryTimer =
+                setInterval(
+                    function () {
+
+                        attempts += 1;
+
+
+                        if (
+                            refreshProductData() ||
+                            attempts >= maxAttempts
+                        ) {
+
+                            clearInterval(
+                                retryTimer
+                            );
+
+                        }
+
+                    },
+                    100
+                );
+
+        }
+
+
+        /* =================================================
+           ACTUALIZACIÓN DESDE SUPABASE
+        ================================================= */
 
         window.addEventListener(
             "satorii:products-updated",
-            refreshProductData
+            function () {
+
+                refreshProductData();
+
+            }
         );
-        
+
+
         /* =================================================
            GALERÍA
         ================================================= */
@@ -4574,6 +4676,7 @@ function generateProductJS() {
             addButton
         ) {
 
+
             const originalText =
                 addButton.textContent.trim();
 
@@ -4617,8 +4720,13 @@ function generateProductJS() {
                             );
 
 
-                            addButton.textContent =
-                                originalText;
+                            /*
+                             * Volvemos a obtener el precio
+                             * actual antes de restaurar
+                             * el texto del botón.
+                             */
+
+                            refreshProductData();
 
                         },
                         2200
@@ -4680,7 +4788,6 @@ function generateProductJS() {
     `;
 
 }
-
 
 /* =====================================================
    HTML PRENDA
