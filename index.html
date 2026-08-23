@@ -142,7 +142,7 @@
 
 
         /* =====================================================
-           RESET
+           RESET LOCAL
         ====================================================== */
 
         .satori-index,
@@ -163,7 +163,9 @@
 
 
         /* =====================================================
+           =====================================================
            HERO / BANNER
+           =====================================================
         ====================================================== */
 
         .hero-slider {
@@ -264,7 +266,7 @@
 
 
         /* =====================================================
-           HERO DOTS
+           DOTS HERO
         ====================================================== */
 
         .hero-dots {
@@ -367,7 +369,7 @@
 
 
         /* =====================================================
-           TEXTOS
+           TEXTOS GENERALES
         ====================================================== */
 
         .satori-kicker {
@@ -487,8 +489,6 @@
         }
 
 
-        /* TEXTO SATORII DE FONDO */
-
         .satori-story::before {
 
             content:
@@ -530,10 +530,6 @@
 
         }
 
-
-        /* =====================================================
-           COPY
-        ====================================================== */
 
         .satori-story-copy {
 
@@ -645,9 +641,7 @@
                 1px;
 
             transition:
-                background .2s ease,
-                color .2s ease,
-                transform .2s ease;
+                .2s ease;
 
         }
 
@@ -723,9 +717,6 @@
             border-radius:
                 50%;
 
-            color:
-                var(--satori-red);
-
             transform:
                 rotate(-8deg);
 
@@ -773,11 +764,14 @@
             letter-spacing:
                 1.2px;
 
+            color:
+                var(--satori-red);
+
         }
 
 
         /* =====================================================
-           SÍMBOLO TORII
+           TORII
         ====================================================== */
 
         .satori-story-torii {
@@ -852,6 +846,821 @@
 
             box-shadow:
                 23px 0 0
+                var(--satori-red);
+
+        }
+
+
+        /* =====================================================
+           =====================================================
+           CARRUSEL DE COLECCIONES
+           =====================================================
+        ====================================================== */
+
+        .satori-collections {
+
+            position:
+                relative;
+
+            padding:
+                78px 0 82px;
+
+            background:
+                #ffffff;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .satori-collections::before {
+
+            content:
+                "SATORII";
+
+            position:
+                absolute;
+
+            left:
+                -35px;
+
+            top:
+                80px;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                190px;
+
+            font-weight:
+                900;
+
+            line-height:
+                .7;
+
+            color:
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .025
+                );
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .satori-collections-header {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            gap:
+                30px;
+
+            margin-bottom:
+                28px;
+
+        }
+
+
+        .satori-collections-description {
+
+            max-width:
+                420px;
+
+            margin:
+                0;
+
+            color:
+                #777;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        /* =====================================================
+           CARRUSEL
+        ====================================================== */
+
+        .satori-carousel {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+        }
+
+
+        .satori-carousel-viewport {
+
+            width:
+                100%;
+
+            overflow:
+                hidden;
+
+            padding:
+                25px 0 35px;
+
+            touch-action:
+                pan-y;
+
+            overscroll-behavior-x:
+                contain;
+
+        }
+
+
+        .satori-carousel-track {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                18px;
+
+            width:
+                max-content;
+
+            will-change:
+                transform;
+
+            transition:
+                transform .65s
+                cubic-bezier(
+                    .22,
+                    .61,
+                    .36,
+                    1
+                );
+
+        }
+
+
+        /* =====================================================
+           TARJETAS
+        ====================================================== */
+
+        .satori-collection-card {
+
+            position:
+                relative;
+
+            flex:
+                0 0
+                min(
+                    530px,
+                    72vw
+                );
+
+            overflow:
+                hidden;
+
+            background:
+                #0b0b0b;
+
+            border-radius:
+                4px;
+
+            opacity:
+                .35;
+
+            transform:
+                scale(.88);
+
+            box-shadow:
+                0 12px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .08
+                );
+
+            transition:
+                transform .65s
+                cubic-bezier(
+                    .22,
+                    .61,
+                    .36,
+                    1
+                ),
+                opacity .65s ease,
+                box-shadow .65s ease;
+
+        }
+
+
+        .satori-collection-card.active {
+
+            opacity:
+                1;
+
+            transform:
+                scale(1);
+
+            box-shadow:
+                0 24px 60px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .18
+                );
+
+            z-index:
+                5;
+
+        }
+
+
+        /* =====================================================
+           IMAGEN
+        ====================================================== */
+
+        .satori-collection-image {
+
+            position:
+                relative;
+
+            width:
+                100%;
+
+            aspect-ratio:
+                1.35 / 1;
+
+            overflow:
+                hidden;
+
+            background:
+                #101010;
+
+        }
+
+
+        .satori-collection-image::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            z-index:
+                2;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        .60
+                    ),
+                    transparent 55%
+                );
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .satori-collection-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                block;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform .7s ease;
+
+        }
+
+
+        .satori-collection-card:hover
+        .satori-collection-image img {
+
+            transform:
+                scale(1.045);
+
+        }
+
+
+        /* =====================================================
+           FALLBACK
+        ====================================================== */
+
+        .satori-collection-fallback {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            overflow:
+                hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111,
+                    #252525
+                );
+
+        }
+
+
+        .satori-collection-fallback::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                260px;
+
+            height:
+                260px;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .08
+                );
+
+            transform:
+                rotate(45deg);
+
+        }
+
+
+        .satori-collection-fallback::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                120px;
+
+            height:
+                120px;
+
+            border:
+                18px solid
+                var(--satori-red);
+
+            opacity:
+                .12;
+
+            transform:
+                rotate(45deg);
+
+        }
+
+
+        .satori-fallback-title {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(
+                    60px,
+                    9vw,
+                    105px
+                );
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -4px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .12
+                );
+
+        }
+
+
+        /* =====================================================
+           BADGE
+        ====================================================== */
+
+        .satori-collection-badge {
+
+            position:
+                absolute;
+
+            z-index:
+                5;
+
+            top:
+                16px;
+
+            left:
+                16px;
+
+            padding:
+                7px 11px;
+
+            background:
+                var(--satori-red);
+
+            color:
+                #fff;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                8px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        /* =====================================================
+           INFO
+        ====================================================== */
+
+        .satori-collection-info {
+
+            min-height:
+                100px;
+
+            padding:
+                17px 20px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            background:
+                #111923;
+
+            color:
+                #fff;
+
+        }
+
+
+        .satori-collection-info h3 {
+
+            margin:
+                0;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                40px;
+
+            line-height:
+                .8;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -.5px;
+
+        }
+
+
+        .satori-collection-info p {
+
+            margin:
+                7px 0 0;
+
+            color:
+                #9299a2;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                8px;
+
+            line-height:
+                1.3;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .7px;
+
+        }
+
+
+        .satori-collection-button {
+
+            flex:
+                0 0 auto;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                12px 15px;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .35
+                );
+
+            color:
+                #fff;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                8px;
+
+            font-weight:
+                800;
+
+            white-space:
+                nowrap;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .satori-collection-button:hover {
+
+            background:
+                var(--satori-red);
+
+            border-color:
+                var(--satori-red);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           CONTROLES
+        ====================================================== */
+
+        .satori-carousel-controls {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                9px;
+
+            margin:
+                0 0 15px;
+
+        }
+
+
+        .satori-carousel-arrow {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            padding:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border:
+                1px solid
+                #d5d5d2;
+
+            border-radius:
+                50%;
+
+            background:
+                #fff;
+
+            color:
+                #111;
+
+            font-size:
+                22px;
+
+            line-height:
+                1;
+
+            cursor:
+                pointer;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .satori-carousel-arrow:hover {
+
+            background:
+                var(--satori-red);
+
+            border-color:
+                var(--satori-red);
+
+            color:
+                #fff;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           DOTS COLECCIONES
+        ====================================================== */
+
+        .satori-carousel-dots {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                7px;
+
+        }
+
+
+        .satori-carousel-dot {
+
+            width:
+                6px;
+
+            height:
+                6px;
+
+            padding:
+                0;
+
+            border:
+                0;
+
+            border-radius:
+                50%;
+
+            background:
+                #c9c9c6;
+
+            cursor:
+                pointer;
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .satori-carousel-dot.active {
+
+            width:
+                25px;
+
+            border-radius:
+                10px;
+
+            background:
                 var(--satori-red);
 
         }
@@ -1048,9 +1857,6 @@
 
             font-weight:
                 900;
-
-            letter-spacing:
-                -1px;
 
         }
 
@@ -1308,7 +2114,9 @@
 
 
         /* =====================================================
+           =====================================================
            MOBILE
+           =====================================================
         ====================================================== */
 
         @media (max-width: 650px) {
@@ -1346,7 +2154,7 @@
 
 
             /* =================================================
-               CONTENEDORES
+               CONTENEDOR
             ================================================== */
 
             .satori-container {
@@ -1483,6 +2291,197 @@
 
                 transform:
                     scale(.75);
+
+            }
+
+
+            /* =================================================
+               COLECCIONES
+            ================================================== */
+
+            .satori-collections {
+
+                padding:
+                    58px 0 62px;
+
+            }
+
+
+            .satori-collections::before {
+
+                font-size:
+                    105px;
+
+                top:
+                    65px;
+
+            }
+
+
+            .satori-collections-header {
+
+                display:
+                    block;
+
+                margin-bottom:
+                    20px;
+
+                padding:
+                    0 10px;
+
+            }
+
+
+            .satori-collections-description {
+
+                max-width:
+                    100%;
+
+                margin-top:
+                    14px;
+
+                font-size:
+                    9px;
+
+                line-height:
+                    1.7;
+
+            }
+
+
+            .satori-heading {
+
+                font-size:
+                    40px;
+
+            }
+
+
+            .satori-carousel-viewport {
+
+                padding:
+                    20px 0 28px;
+
+            }
+
+
+            .satori-carousel-track {
+
+                gap:
+                    12px;
+
+            }
+
+
+            .satori-collection-card {
+
+                flex:
+                    0 0 78vw;
+
+                border-radius:
+                    4px;
+
+                opacity:
+                    .35;
+
+                transform:
+                    scale(.87);
+
+            }
+
+
+            .satori-collection-card.active {
+
+                opacity:
+                    1;
+
+                transform:
+                    scale(1);
+
+            }
+
+
+            .satori-collection-image {
+
+                aspect-ratio:
+                    .95 / 1;
+
+            }
+
+
+            .satori-collection-badge {
+
+                top:
+                    12px;
+
+                left:
+                    12px;
+
+                padding:
+                    6px 9px;
+
+                font-size:
+                    7px;
+
+            }
+
+
+            .satori-collection-info {
+
+                min-height:
+                    82px;
+
+                padding:
+                    13px;
+
+                gap:
+                    8px;
+
+            }
+
+
+            .satori-collection-info h3 {
+
+                font-size:
+                    32px;
+
+            }
+
+
+            .satori-collection-info p {
+
+                margin-top:
+                    5px;
+
+                font-size:
+                    7px;
+
+            }
+
+
+            .satori-collection-button {
+
+                padding:
+                    10px;
+
+                font-size:
+                    6.5px;
+
+            }
+
+
+            .satori-carousel-controls {
+
+                display:
+                    none;
+
+            }
+
+
+            .satori-carousel-dots {
+
+                margin-top:
+                    0;
 
             }
 
@@ -1767,7 +2766,6 @@
                 aria-live="polite"
             >
 
-
                 <!-- BANNER 1 -->
 
                 <article
@@ -1851,9 +2849,7 @@
             </div>
 
 
-            <!-- =================================================
-                 DOTS
-            ================================================== -->
+            <!-- DOTS -->
 
             <div
                 class="hero-dots"
@@ -1892,24 +2888,12 @@
 
         <!-- =================================================
              IDENTIDAD SATORII
-             
-             AQUÍ ELIMINAMOS COMPLETAMENTE:
-
-             "NUESTRAS COLECCIONES"
-
-             La portada ahora pasa directamente desde
-             el banner a la identidad de la marca.
         ================================================== -->
 
         <section
             class="satori-story"
             id="satori"
         >
-
-
-            <!-- =================================================
-                 TEXTO
-            ================================================== -->
 
             <div
                 class="satori-story-copy"
@@ -1959,9 +2943,7 @@
             </div>
 
 
-            <!-- =================================================
-                 SELLO SATORII
-            ================================================== -->
+            <!-- SELLO -->
 
             <div
                 class="satori-story-stamp-wrap"
@@ -1984,6 +2966,447 @@
 
 
         <!-- =================================================
+             CARRUSEL DE COLECCIONES
+             
+             Se mantiene el carrusel, pero con un diseño
+             más limpio y enfocado en la marca.
+        ================================================== -->
+
+        <section
+            class="satori-collections"
+            id="colecciones"
+        >
+
+            <div
+                class="satori-container"
+            >
+
+                <!-- CABECERA -->
+
+                <div
+                    class="satori-collections-header"
+                >
+
+                    <div>
+
+                        <div
+                            class="satori-kicker"
+                        >
+                            EXPLORA SATORII
+                        </div>
+
+
+                        <h2
+                            class="satori-heading"
+                        >
+
+                            NUESTRAS
+                            <span>
+                                COLECCIONES.
+                            </span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <p
+                        class="satori-collections-description"
+                    >
+
+                        Descubre nuestras líneas de
+                        diseño y encuentra el estilo
+                        que más representa tu forma
+                        de vivir el anime y Japón.
+
+                    </p>
+
+                </div>
+
+
+                <!-- CARRUSEL -->
+
+                <div
+                    class="satori-carousel"
+                >
+
+                    <div
+                        class="satori-carousel-viewport"
+                        id="satori-carousel-viewport"
+                    >
+
+                        <div
+                            class="satori-carousel-track"
+                            id="satori-carousel-track"
+                        >
+
+
+                            <!-- =================================================
+                                 ANIME
+                            ================================================== -->
+
+                            <article
+                                class="
+                                    satori-collection-card
+                                    active
+                                "
+                                data-collection="0"
+                            >
+
+                                <div
+                                    class="
+                                        satori-collection-image
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-collection-badge
+                                        "
+                                    >
+                                        ANIME
+                                    </span>
+
+
+                                    <div
+                                        class="
+                                            satori-collection-fallback
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-fallback-title
+                                            "
+                                        >
+                                            ANIME
+                                        </span>
+
+                                    </div>
+
+
+                                    <img
+                                        src="img/anime-card.webp"
+                                        alt="Colección Anime Satorii"
+                                        loading="lazy"
+                                        decoding="async"
+                                        onerror="
+                                            this.style.display='none';
+                                        "
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-collection-info
+                                    "
+                                >
+
+                                    <div>
+
+                                        <h3>
+                                            ANIME.
+                                        </h3>
+
+                                        <p>
+                                            Anime Streetwear
+                                        </p>
+
+                                    </div>
+
+
+                                    <a
+                                        href="anime.html"
+                                        class="
+                                            satori-collection-button
+                                        "
+                                    >
+
+                                        VER COLECCIÓN →
+
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- =================================================
+                                 YOKAI
+                            ================================================== -->
+
+                            <article
+                                class="
+                                    satori-collection-card
+                                "
+                                data-collection="1"
+                            >
+
+                                <div
+                                    class="
+                                        satori-collection-image
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-collection-badge
+                                        "
+                                    >
+                                        NUEVA
+                                    </span>
+
+
+                                    <div
+                                        class="
+                                            satori-collection-fallback
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-fallback-title
+                                            "
+                                        >
+                                            YOKAI
+                                        </span>
+
+                                    </div>
+
+
+                                    <img
+                                        src="img/yokai-card.webp"
+                                        alt="Colección Yokai Satorii"
+                                        loading="lazy"
+                                        decoding="async"
+                                        onerror="
+                                            this.style.display='none';
+                                        "
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-collection-info
+                                    "
+                                >
+
+                                    <div>
+
+                                        <h3>
+                                            YOKAI.
+                                        </h3>
+
+                                        <p>
+                                            Folklore · Japón · Misterio
+                                        </p>
+
+                                    </div>
+
+
+                                    <a
+                                        href="yokai.html"
+                                        class="
+                                            satori-collection-button
+                                        "
+                                    >
+
+                                        VER COLECCIÓN →
+
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- =================================================
+                                 SATORII ORIGINALS
+                            ================================================== -->
+
+                            <article
+                                class="
+                                    satori-collection-card
+                                "
+                                data-collection="2"
+                            >
+
+                                <div
+                                    class="
+                                        satori-collection-image
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-collection-badge
+                                        "
+                                    >
+                                        ORIGINAL
+                                    </span>
+
+
+                                    <div
+                                        class="
+                                            satori-collection-fallback
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-fallback-title
+                                            "
+                                        >
+                                            SATORII
+                                        </span>
+
+                                    </div>
+
+
+                                    <img
+                                        src="img/torii-card.webp"
+                                        alt="Satorii Originals"
+                                        loading="lazy"
+                                        decoding="async"
+                                        onerror="
+                                            this.style.display='none';
+                                        "
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-collection-info
+                                    "
+                                >
+
+                                    <div>
+
+                                        <h3>
+                                            SATORII.
+                                        </h3>
+
+                                        <p>
+                                            Diseños originales
+                                        </p>
+
+                                    </div>
+
+
+                                    <a
+                                        href="productos.html"
+                                        class="
+                                            satori-collection-button
+                                        "
+                                    >
+
+                                        VER COLECCIÓN →
+
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         FLECHAS PC
+                    ================================================== -->
+
+                    <div
+                        class="
+                            satori-carousel-controls
+                        "
+                    >
+
+                        <button
+                            type="button"
+                            class="
+                                satori-carousel-arrow
+                            "
+                            id="satori-carousel-prev"
+                            aria-label="Colección anterior"
+                        >
+                            ‹
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="
+                                satori-carousel-arrow
+                            "
+                            id="satori-carousel-next"
+                            aria-label="Colección siguiente"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DOTS
+                    ================================================== -->
+
+                    <div
+                        class="
+                            satori-carousel-dots
+                        "
+                        id="satori-carousel-dots"
+                    >
+
+                        <button
+                            type="button"
+                            class="
+                                satori-carousel-dot
+                                active
+                            "
+                            data-index="0"
+                            aria-label="Anime"
+                        ></button>
+
+
+                        <button
+                            type="button"
+                            class="
+                                satori-carousel-dot
+                            "
+                            data-index="1"
+                            aria-label="Yokai"
+                        ></button>
+
+
+                        <button
+                            type="button"
+                            class="
+                                satori-carousel-dot
+                            "
+                            data-index="2"
+                            aria-label="Satorii Originals"
+                        ></button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
              SATORII PACK
         ================================================== -->
 
@@ -1992,11 +3415,6 @@
             id="pack"
         >
 
-
-            <!-- =================================================
-                 TEXTO PACK
-            ================================================== -->
-
             <div
                 class="satori-pack-content"
             >
@@ -2004,9 +3422,7 @@
                 <div
                     class="satori-pack-label"
                 >
-
                     ✦ EXCLUSIVO SATORII
-
                 </div>
 
 
@@ -2042,10 +3458,6 @@
             </div>
 
 
-            <!-- =================================================
-                 IMAGEN PACK
-            ================================================== -->
-
             <div
                 class="satori-pack-visual"
             >
@@ -2065,11 +3477,6 @@
 
         <!-- =================================================
              RECOMENDACIONES
-             
-             Esta sección SÍ se mantiene porque tiene
-             una función comercial directa:
-             
-             mostrar productos al visitante.
         ================================================== -->
 
         <section
@@ -2211,11 +3618,13 @@
     <!-- =====================================================
          =====================================================
          HERO SLIDER
+         =====================================================
          
          LOOP INFINITO
          AUTOPLAY
          SWIPE
          DOTS
+         
          =====================================================
     ====================================================== -->
 
@@ -2224,7 +3633,6 @@
         document.addEventListener(
             "DOMContentLoaded",
             function () {
-
 
                 const slider =
                     document.getElementById(
@@ -2400,7 +3808,7 @@
 
 
                 /* =================================================
-                   ACTUALIZAR SLIDER
+                   ACTUALIZAR
                 ================================================== */
 
                 function updateSlider(
@@ -2686,8 +4094,6 @@
                             touchEndY;
 
 
-                        /* IGNORAR SCROLL VERTICAL */
-
                         if (
                             Math.abs(
                                 differenceY
@@ -2704,8 +4110,6 @@
                         }
 
 
-                        /* MOVIMIENTO MÍNIMO */
-
                         if (
                             Math.abs(
                                 differenceX
@@ -2719,8 +4123,6 @@
                         }
 
 
-                        /* IZQUIERDA */
-
                         if (
                             differenceX > 0
                         ) {
@@ -2728,9 +4130,6 @@
                             nextSlide();
 
                         }
-
-
-                        /* DERECHA */
 
                         else {
 
@@ -2830,7 +4229,7 @@
 
 
                 /* =================================================
-                   PAUSAR SI NO ESTÁ VISIBLE
+                   VISIBILIDAD
                 ================================================== */
 
                 if (
@@ -2893,6 +4292,839 @@
 
                 updateSlider(
                     false
+                );
+
+            }
+
+        );
+
+    </script>
+
+
+    <!-- =====================================================
+         =====================================================
+         CARRUSEL DE COLECCIONES
+         
+         LOOP INFINITO
+         PC + MOBILE
+         SWIPE
+         FLECHAS
+         DOTS
+         
+         =====================================================
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                const viewport =
+                    document.getElementById(
+                        "satori-carousel-viewport"
+                    );
+
+
+                const track =
+                    document.getElementById(
+                        "satori-carousel-track"
+                    );
+
+
+                const originalCards =
+                    Array.from(
+                        track.querySelectorAll(
+                            ".satori-collection-card"
+                        )
+                    );
+
+
+                const dots =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".satori-carousel-dot"
+                        )
+                    );
+
+
+                const previousButton =
+                    document.getElementById(
+                        "satori-carousel-prev"
+                    );
+
+
+                const nextButton =
+                    document.getElementById(
+                        "satori-carousel-next"
+                    );
+
+
+                if (
+                    !viewport ||
+                    !track ||
+                    originalCards.length < 2
+                ) {
+
+                    return;
+
+                }
+
+
+                /* =================================================
+                   CLONES
+                ================================================== */
+
+                const fragmentBefore =
+                    document.createDocumentFragment();
+
+
+                const fragmentAfter =
+                    document.createDocumentFragment();
+
+
+                originalCards
+                    .slice()
+                    .reverse()
+                    .forEach(
+                        function (
+                            card
+                        ) {
+
+                            const clone =
+                                card.cloneNode(
+                                    true
+                                );
+
+
+                            clone.classList.add(
+                                "carousel-clone"
+                            );
+
+
+                            fragmentBefore.appendChild(
+                                clone
+                            );
+
+                        }
+                    );
+
+
+                originalCards.forEach(
+                    function (
+                        card
+                    ) {
+
+                        const clone =
+                            card.cloneNode(
+                                true
+                            );
+
+
+                        clone.classList.add(
+                            "carousel-clone"
+                        );
+
+
+                        fragmentAfter.appendChild(
+                            clone
+                        );
+
+                    }
+                );
+
+
+                track.insertBefore(
+                    fragmentBefore,
+                    track.firstChild
+                );
+
+
+                track.appendChild(
+                    fragmentAfter
+                );
+
+
+                const cards =
+                    Array.from(
+                        track.querySelectorAll(
+                            ".satori-collection-card"
+                        )
+                    );
+
+
+                const originalCount =
+                    originalCards.length;
+
+
+                /*
+                 * Comenzamos en la primera
+                 * tarjeta ORIGINAL.
+                 */
+
+                let currentIndex =
+                    originalCount;
+
+
+                let isAnimating =
+                    false;
+
+
+                let touchStartX =
+                    0;
+
+
+                let touchStartY =
+                    0;
+
+
+                let isTouching =
+                    false;
+
+
+                /* =================================================
+                   ÍNDICE LÓGICO
+                ================================================== */
+
+                function getLogicalIndex() {
+
+                    return (
+                        (
+                            currentIndex -
+                            originalCount
+                        )
+                        %
+                        originalCount
+                        +
+                        originalCount
+                    )
+                    %
+                    originalCount;
+
+                }
+
+
+                /* =================================================
+                   TARJETA ACTIVA
+                ================================================== */
+
+                function updateCards() {
+
+                    cards.forEach(
+                        function (
+                            card,
+                            index
+                        ) {
+
+                            card.classList.toggle(
+                                "active",
+                                index ===
+                                currentIndex
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   DOTS
+                ================================================== */
+
+                function updateDots() {
+
+                    const logicalIndex =
+                        getLogicalIndex();
+
+
+                    dots.forEach(
+                        function (
+                            dot,
+                            index
+                        ) {
+
+                            dot.classList.toggle(
+                                "active",
+                                index ===
+                                logicalIndex
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   CENTRAR
+                ================================================== */
+
+                function updateCarousel(
+                    animate = true
+                ) {
+
+                    updateCards();
+
+                    updateDots();
+
+
+                    const activeCard =
+                        cards[
+                            currentIndex
+                        ];
+
+
+                    if (
+                        !activeCard
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const viewportWidth =
+                        viewport
+                            .getBoundingClientRect()
+                            .width;
+
+
+                    const cardWidth =
+                        activeCard
+                            .getBoundingClientRect()
+                            .width;
+
+
+                    const cardCenter =
+                        activeCard.offsetLeft +
+                        (
+                            cardWidth /
+                            2
+                        );
+
+
+                    const viewportCenter =
+                        viewportWidth /
+                        2;
+
+
+                    const translate =
+                        viewportCenter -
+                        cardCenter;
+
+
+                    track.style.transition =
+                        animate
+                            ? "transform .65s cubic-bezier(.22,.61,.36,1)"
+                            : "none";
+
+
+                    track.style.transform =
+                        `translate3d(${translate}px,0,0)`;
+
+                }
+
+
+                /* =================================================
+                   CAMBIAR
+                ================================================== */
+
+                function goTo(
+                    index
+                ) {
+
+                    if (
+                        isAnimating
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    currentIndex =
+                        index;
+
+
+                    updateCarousel(
+                        true
+                    );
+
+
+                    isAnimating =
+                        true;
+
+                }
+
+
+                /* =================================================
+                   SIGUIENTE
+                ================================================== */
+
+                function nextCollection() {
+
+                    goTo(
+                        currentIndex + 1
+                    );
+
+                }
+
+
+                /* =================================================
+                   ANTERIOR
+                ================================================== */
+
+                function previousCollection() {
+
+                    goTo(
+                        currentIndex - 1
+                    );
+
+                }
+
+
+                /* =================================================
+                   TRANSICIÓN
+                ================================================== */
+
+                track.addEventListener(
+                    "transitionend",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            event.propertyName !==
+                            "transform"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        isAnimating =
+                            false;
+
+
+                        /*
+                         * Llegamos a clones
+                         * del final.
+                         */
+
+                        if (
+                            currentIndex >=
+                            originalCount * 2
+                        ) {
+
+                            currentIndex -=
+                                originalCount;
+
+
+                            updateCarousel(
+                                false
+                            );
+
+                        }
+
+
+                        /*
+                         * Llegamos a clones
+                         * del principio.
+                         */
+
+                        if (
+                            currentIndex <
+                            originalCount
+                        ) {
+
+                            currentIndex +=
+                                originalCount;
+
+
+                            updateCarousel(
+                                false
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
+                   FLECHA ANTERIOR
+                ================================================== */
+
+                if (
+                    previousButton
+                ) {
+
+                    previousButton.addEventListener(
+                        "click",
+                        function () {
+
+                            previousCollection();
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   FLECHA SIGUIENTE
+                ================================================== */
+
+                if (
+                    nextButton
+                ) {
+
+                    nextButton.addEventListener(
+                        "click",
+                        function () {
+
+                            nextCollection();
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   DOTS
+                ================================================== */
+
+                dots.forEach(
+                    function (
+                        dot
+                    ) {
+
+                        dot.addEventListener(
+                            "click",
+                            function () {
+
+                                if (
+                                    isAnimating
+                                ) {
+
+                                    return;
+
+                                }
+
+
+                                const logicalIndex =
+                                    Number(
+                                        dot.dataset.index
+                                    );
+
+
+                                currentIndex =
+                                    originalCount +
+                                    logicalIndex;
+
+
+                                updateCarousel(
+                                    true
+                                );
+
+
+                                isAnimating =
+                                    true;
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =================================================
+                   TOUCH START
+                ================================================== */
+
+                viewport.addEventListener(
+                    "touchstart",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            !event.touches.length
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        touchStartX =
+                            event.touches[
+                                0
+                            ].clientX;
+
+
+                        touchStartY =
+                            event.touches[
+                                0
+                            ].clientY;
+
+
+                        isTouching =
+                            true;
+
+                    },
+                    {
+                        passive:
+                            true
+                    }
+                );
+
+
+                /* =================================================
+                   TOUCH END
+                ================================================== */
+
+                viewport.addEventListener(
+                    "touchend",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            !isTouching
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        isTouching =
+                            false;
+
+
+                        if (
+                            !event.changedTouches.length
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const touchEndX =
+                            event.changedTouches[
+                                0
+                            ].clientX;
+
+
+                        const touchEndY =
+                            event.changedTouches[
+                                0
+                            ].clientY;
+
+
+                        const differenceX =
+                            touchStartX -
+                            touchEndX;
+
+
+                        const differenceY =
+                            touchStartY -
+                            touchEndY;
+
+
+                        /*
+                         * Ignorar scroll vertical.
+                         */
+
+                        if (
+                            Math.abs(
+                                differenceY
+                            ) >
+                            Math.abs(
+                                differenceX
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Movimiento mínimo.
+                         */
+
+                        if (
+                            Math.abs(
+                                differenceX
+                            ) < 45
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Swipe izquierda.
+                         */
+
+                        if (
+                            differenceX > 0
+                        ) {
+
+                            nextCollection();
+
+                        }
+
+                        /*
+                         * Swipe derecha.
+                         */
+
+                        else {
+
+                            previousCollection();
+
+                        }
+
+                    },
+                    {
+                        passive:
+                            true
+                    }
+                );
+
+
+                /* =================================================
+                   TECLADO
+                ================================================== */
+
+                document.addEventListener(
+                    "keydown",
+                    function (
+                        event
+                    ) {
+
+                        const section =
+                            document.getElementById(
+                                "colecciones"
+                            );
+
+
+                        if (
+                            !section
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const rect =
+                            section.getBoundingClientRect();
+
+
+                        const visible =
+                            rect.top <
+                            window.innerHeight &&
+                            rect.bottom >
+                            0;
+
+
+                        if (
+                            !visible
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            event.key ===
+                            "ArrowLeft"
+                        ) {
+
+                            previousCollection();
+
+                        }
+
+
+                        if (
+                            event.key ===
+                            "ArrowRight"
+                        ) {
+
+                            nextCollection();
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
+                   RESIZE
+                ================================================== */
+
+                let resizeTimer;
+
+
+                window.addEventListener(
+                    "resize",
+                    function () {
+
+                        clearTimeout(
+                            resizeTimer
+                        );
+
+
+                        resizeTimer =
+                            setTimeout(
+                                function () {
+
+                                    updateCarousel(
+                                        false
+                                    );
+
+                                },
+                                100
+                            );
+
+                    }
+                );
+
+
+                /* =================================================
+                   INICIALIZAR
+                ================================================== */
+
+                requestAnimationFrame(
+                    function () {
+
+                        updateCarousel(
+                            false
+                        );
+
+                    }
+                );
+
+
+                window.addEventListener(
+                    "load",
+                    function () {
+
+                        updateCarousel(
+                            false
+                        );
+
+                    }
                 );
 
             }
