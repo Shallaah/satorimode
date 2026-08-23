@@ -31,7 +31,7 @@ const PRODUCTS = [
 
         subcategory: "poleras",
 
-        price: 18990,
+        price: 189910,
 
         currency: "CLP",
 
