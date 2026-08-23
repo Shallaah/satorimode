@@ -164,7 +164,9 @@
 
 
         /* =====================================================
+           =====================================================
            HERO / BANNER
+           =====================================================
         ====================================================== */
 
         .hero-slider {
@@ -189,6 +191,42 @@
 
             overscroll-behavior-x:
                 contain;
+
+        }
+
+
+        /* =====================================================
+           LÍNEA ROJA INFERIOR DEL BANNER
+        ====================================================== */
+
+        .hero-slider::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            right:
+                0;
+
+            bottom:
+                0;
+
+            height:
+                2px;
+
+            background:
+                var(--satori-red);
+
+            z-index:
+                30;
+
+            pointer-events:
+                none;
 
         }
 
@@ -284,7 +322,7 @@
                 translateX(-50%);
 
             z-index:
-                20;
+                35;
 
             display:
                 flex;
@@ -436,7 +474,241 @@
 
         /* =====================================================
            =====================================================
-           EXPLORA SATORII
+           NEW DROP
+           PRIMERO DESPUÉS DEL BANNER
+           =====================================================
+        ====================================================== */
+
+        .satori-new-drop {
+
+            padding:
+                88px 0 95px;
+
+            background:
+                #fff;
+
+        }
+
+
+        .satori-new-drop-header {
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        .satori-new-drop-header a {
+
+            color:
+                var(--satori-red);
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                .5px;
+
+        }
+
+
+        .satori-products-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    1fr
+                );
+
+            gap:
+                18px;
+
+        }
+
+
+        .satori-product-card {
+
+            min-width:
+                0;
+
+        }
+
+
+        .satori-product-image {
+
+            position:
+                relative;
+
+            width:
+                100%;
+
+            aspect-ratio:
+                1 / 1.06;
+
+            overflow:
+                hidden;
+
+            background:
+                #eeeeec;
+
+        }
+
+
+        .satori-product-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform .5s ease;
+
+        }
+
+
+        .satori-product-card:hover
+        .satori-product-image img {
+
+            transform:
+                scale(1.04);
+
+        }
+
+
+        .satori-product-tag {
+
+            position:
+                absolute;
+
+            z-index:
+                4;
+
+            top:
+                10px;
+
+            left:
+                10px;
+
+            padding:
+                5px 8px;
+
+            background:
+                var(--satori-red);
+
+            color:
+                #fff;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                7px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .satori-product-name {
+
+            margin-top:
+                11px;
+
+            color:
+                #111;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                18px;
+
+            line-height:
+                1;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .satori-product-category {
+
+            margin-top:
+                5px;
+
+            color:
+                #999;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                8px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .satori-product-price {
+
+            margin-top:
+                6px;
+
+            color:
+                #111;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =====================================================
+           =====================================================
+           EXPLORA SATORII / COLECCIONES
            =====================================================
         ====================================================== */
 
@@ -610,7 +882,10 @@
 
 
         /* =====================================================
-           TARJETAS
+           TARJETAS DEL CARRUSEL
+           
+           ESCRITORIO:
+           540px × 574px aprox.
         ====================================================== */
 
         .satori-collection-card {
@@ -687,7 +962,16 @@
 
 
         /* =====================================================
-           IMAGEN
+           IMAGEN DEL CARRUSEL
+           
+           PROPORCIÓN:
+           0.94 : 1
+           
+           MÁXIMO:
+           540 × 574px aprox.
+           
+           ARCHIVO RECOMENDADO:
+           1080 × 1150px
         ====================================================== */
 
         .satori-collection-image {
@@ -1295,239 +1579,6 @@
 
 
         /* =====================================================
-           =====================================================
-           NEW DROP
-           =====================================================
-        ====================================================== */
-
-        .satori-new-drop {
-
-            padding:
-                88px 0 95px;
-
-            background:
-                #fff;
-
-        }
-
-
-        .satori-new-drop-header {
-
-            display:
-                flex;
-
-            align-items:
-                flex-end;
-
-            justify-content:
-                space-between;
-
-            margin-bottom:
-                30px;
-
-        }
-
-
-        .satori-new-drop-header a {
-
-            color:
-                var(--satori-red);
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                9px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                .5px;
-
-        }
-
-
-        .satori-products-grid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(
-                    4,
-                    1fr
-                );
-
-            gap:
-                18px;
-
-        }
-
-
-        .satori-product-card {
-
-            min-width:
-                0;
-
-        }
-
-
-        .satori-product-image {
-
-            position:
-                relative;
-
-            width:
-                100%;
-
-            aspect-ratio:
-                1 / 1.06;
-
-            overflow:
-                hidden;
-
-            background:
-                #eeeeec;
-
-        }
-
-
-        .satori-product-image img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            object-fit:
-                cover;
-
-            transition:
-                transform .5s ease;
-
-        }
-
-
-        .satori-product-card:hover
-        .satori-product-image img {
-
-            transform:
-                scale(1.04);
-
-        }
-
-
-        .satori-product-tag {
-
-            position:
-                absolute;
-
-            z-index:
-                4;
-
-            top:
-                10px;
-
-            left:
-                10px;
-
-            padding:
-                5px 8px;
-
-            background:
-                var(--satori-red);
-
-            color:
-                #fff;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                7px;
-
-            font-weight:
-                800;
-
-        }
-
-
-        .satori-product-name {
-
-            margin-top:
-                11px;
-
-            color:
-                #111;
-
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
-
-            font-size:
-                18px;
-
-            line-height:
-                1;
-
-            font-weight:
-                700;
-
-        }
-
-
-        .satori-product-category {
-
-            margin-top:
-                5px;
-
-            color:
-                #999;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                8px;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .satori-product-price {
-
-            margin-top:
-                6px;
-
-            color:
-                #111;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                10px;
-
-            font-weight:
-                800;
-
-        }
-
-
-        /* =====================================================
            RECOMENDACIONES
         ====================================================== */
 
@@ -1583,6 +1634,14 @@
             }
 
 
+            .hero-slider::after {
+
+                height:
+                    2px;
+
+            }
+
+
             .hero-dots {
 
                 bottom:
@@ -1625,7 +1684,65 @@
 
 
             /* =================================================
-               EXPLORA
+               NEW DROP
+            ================================================== */
+
+            .satori-new-drop {
+
+                padding:
+                    62px 0 70px;
+
+            }
+
+
+            .satori-new-drop-header {
+
+                margin-bottom:
+                    22px;
+
+            }
+
+
+            .satori-products-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+                gap:
+                    28px 9px;
+
+            }
+
+
+            .satori-product-name {
+
+                font-size:
+                    15px;
+
+            }
+
+
+            .satori-product-category {
+
+                font-size:
+                    7px;
+
+            }
+
+
+            .satori-product-price {
+
+                font-size:
+                    9px;
+
+            }
+
+
+            /* =================================================
+               COLECCIONES
             ================================================== */
 
             .satori-collections {
@@ -1764,6 +1881,13 @@
             }
 
 
+            /* =================================================
+               IMAGEN MOBILE
+               
+               En un iPhone de 390px:
+               aprox. 296 × 337px
+            ================================================== */
+
             .satori-collection-image {
 
                 aspect-ratio:
@@ -1853,64 +1977,6 @@
 
                 margin-top:
                     0;
-
-            }
-
-
-            /* =================================================
-               NEW DROP
-            ================================================== */
-
-            .satori-new-drop {
-
-                padding:
-                    62px 0 70px;
-
-            }
-
-
-            .satori-new-drop-header {
-
-                margin-bottom:
-                    22px;
-
-            }
-
-
-            .satori-products-grid {
-
-                grid-template-columns:
-                    repeat(
-                        2,
-                        1fr
-                    );
-
-                gap:
-                    28px 9px;
-
-            }
-
-
-            .satori-product-name {
-
-                font-size:
-                    15px;
-
-            }
-
-
-            .satori-product-category {
-
-                font-size:
-                    7px;
-
-            }
-
-
-            .satori-product-price {
-
-                font-size:
-                    9px;
 
             }
 
@@ -2120,7 +2186,351 @@
 
 
         <!-- =================================================
-             EXPLORA SATORII
+             =================================================
+             1 — NEW DROP
+             =================================================
+        ================================================== -->
+
+        <section
+            class="satori-new-drop"
+            id="shop"
+        >
+
+            <div
+                class="satori-container"
+            >
+
+                <div
+                    class="
+                        satori-new-drop-header
+                    "
+                >
+
+                    <div>
+
+                        <div
+                            class="satori-kicker"
+                        >
+                            RECIÉN LLEGADOS
+                        </div>
+
+
+                        <h2
+                            class="satori-heading"
+                        >
+                            NEW DROP
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="productos.html"
+                    >
+                        VER TODO →
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="
+                        satori-products-grid
+                    "
+                >
+
+
+                    <!-- =================================================
+                         KID BUU
+                    ================================================== -->
+
+                    <article
+                        class="
+                            satori-product-card
+                        "
+                    >
+
+                        <a
+                            href="productos/anime/kid-buu.html"
+                        >
+
+                            <div
+                                class="
+                                    satori-product-image
+                                "
+                            >
+
+                                <span
+                                    class="
+                                        satori-product-tag
+                                    "
+                                >
+                                    NEW
+                                </span>
+
+
+                                <img
+                                    src="img/productos/anime/dbz-kid-buu/01.webp"
+                                    alt="Polera Kid Buu"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                            </div>
+
+                        </a>
+
+
+                        <div
+                            class="
+                                satori-product-name
+                            "
+                        >
+                            POLERA KID BUU
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-category
+                            "
+                        >
+                            ANIME STREETWEAR
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-price
+                            "
+                        >
+                            $18.990
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         GOKU
+                    ================================================== -->
+
+                    <article
+                        class="
+                            satori-product-card
+                        "
+                    >
+
+                        <a
+                            href="productos/anime/goku.html"
+                        >
+
+                            <div
+                                class="
+                                    satori-product-image
+                                "
+                            >
+
+                                <span
+                                    class="
+                                        satori-product-tag
+                                    "
+                                >
+                                    NEW
+                                </span>
+
+
+                                <img
+                                    src="img/productos/anime/goku/01.PNG"
+                                    alt="Polera Goku"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                            </div>
+
+                        </a>
+
+
+                        <div
+                            class="
+                                satori-product-name
+                            "
+                        >
+                            POLERA GOKU
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-category
+                            "
+                        >
+                            ANIME STREETWEAR
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-price
+                            "
+                        >
+                            $19.990
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         YOKAI
+                    ================================================== -->
+
+                    <article
+                        class="
+                            satori-product-card
+                        "
+                    >
+
+                        <a
+                            href="productos.html"
+                        >
+
+                            <div
+                                class="
+                                    satori-product-image
+                                "
+                            >
+
+                                <div
+                                    class="
+                                        satori-collection-fallback
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-fallback-title
+                                        "
+                                    >
+                                        YOKAI
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+
+                        <div
+                            class="
+                                satori-product-name
+                            "
+                        >
+                            YOKAI COLLECTION
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-category
+                            "
+                        >
+                            PRÓXIMAMENTE
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-price
+                            "
+                        >
+                            PRÓXIMAMENTE
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         SATORII ORIGINAL
+                    ================================================== -->
+
+                    <article
+                        class="
+                            satori-product-card
+                        "
+                    >
+
+                        <a
+                            href="productos.html"
+                        >
+
+                            <div
+                                class="
+                                    satori-product-image
+                                "
+                            >
+
+                                <div
+                                    class="
+                                        satori-collection-fallback
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-fallback-title
+                                        "
+                                    >
+                                        SATORII
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+
+                        <div
+                            class="
+                                satori-product-name
+                            "
+                        >
+                            SATORII ORIGINAL
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-category
+                            "
+                        >
+                            SATORII ORIGINALS
+                        </div>
+
+
+                        <div
+                            class="
+                                satori-product-price
+                            "
+                        >
+                            PRÓXIMAMENTE
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             =================================================
+             2 — EXPLORA SATORII
+             =================================================
         ================================================== -->
 
         <section
@@ -2642,346 +3052,6 @@
 
 
         <!-- =================================================
-             NEW DROP
-        ================================================== -->
-
-        <section
-            class="satori-new-drop"
-            id="shop"
-        >
-
-            <div
-                class="satori-container"
-            >
-
-                <div
-                    class="
-                        satori-new-drop-header
-                    "
-                >
-
-                    <div>
-
-                        <div
-                            class="satori-kicker"
-                        >
-                            RECIÉN LLEGADOS
-                        </div>
-
-
-                        <h2
-                            class="satori-heading"
-                        >
-                            NEW DROP
-                        </h2>
-
-                    </div>
-
-
-                    <a
-                        href="productos.html"
-                    >
-                        VER TODO →
-                    </a>
-
-                </div>
-
-
-                <div
-                    class="
-                        satori-products-grid
-                    "
-                >
-
-
-                    <!-- =================================================
-                         KID BUU
-                    ================================================== -->
-
-                    <article
-                        class="
-                            satori-product-card
-                        "
-                    >
-
-                        <a
-                            href="productos/anime/kid-buu.html"
-                        >
-
-                            <div
-                                class="
-                                    satori-product-image
-                                "
-                            >
-
-                                <span
-                                    class="
-                                        satori-product-tag
-                                    "
-                                >
-                                    NEW
-                                </span>
-
-
-                                <img
-                                    src="img/productos/anime/dbz-kid-buu/01.webp"
-                                    alt="Polera Kid Buu"
-                                    loading="lazy"
-                                    decoding="async"
-                                >
-
-                            </div>
-
-                        </a>
-
-
-                        <div
-                            class="
-                                satori-product-name
-                            "
-                        >
-                            POLERA KID BUU
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-category
-                            "
-                        >
-                            ANIME STREETWEAR
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-price
-                            "
-                        >
-                            $18.990
-                        </div>
-
-                    </article>
-
-
-                    <!-- =================================================
-                         GOKU
-                    ================================================== -->
-
-                    <article
-                        class="
-                            satori-product-card
-                        "
-                    >
-
-                        <a
-                            href="productos/anime/goku.html"
-                        >
-
-                            <div
-                                class="
-                                    satori-product-image
-                                "
-                            >
-
-                                <span
-                                    class="
-                                        satori-product-tag
-                                    "
-                                >
-                                    NEW
-                                </span>
-
-
-                                <img
-                                    src="img/productos/anime/goku/01.PNG"
-                                    alt="Polera Goku"
-                                    loading="lazy"
-                                    decoding="async"
-                                >
-
-                            </div>
-
-                        </a>
-
-
-                        <div
-                            class="
-                                satori-product-name
-                            "
-                        >
-                            POLERA GOKU
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-category
-                            "
-                        >
-                            ANIME STREETWEAR
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-price
-                            "
-                        >
-                            $19.990
-                        </div>
-
-                    </article>
-
-
-                    <!-- =================================================
-                         YOKAI
-                    ================================================== -->
-
-                    <article
-                        class="
-                            satori-product-card
-                        "
-                    >
-
-                        <a
-                            href="productos.html"
-                        >
-
-                            <div
-                                class="
-                                    satori-product-image
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        satori-collection-fallback
-                                    "
-                                >
-
-                                    <span
-                                        class="
-                                            satori-fallback-title
-                                        "
-                                    >
-                                        YOKAI
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-
-                        <div
-                            class="
-                                satori-product-name
-                            "
-                        >
-                            YOKAI COLLECTION
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-category
-                            "
-                        >
-                            PRÓXIMAMENTE
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-price
-                            "
-                        >
-                            PRÓXIMAMENTE
-                        </div>
-
-                    </article>
-
-
-                    <!-- =================================================
-                         SATORII ORIGINAL
-                    ================================================== -->
-
-                    <article
-                        class="
-                            satori-product-card
-                        "
-                    >
-
-                        <a
-                            href="productos.html"
-                        >
-
-                            <div
-                                class="
-                                    satori-product-image
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        satori-collection-fallback
-                                    "
-                                >
-
-                                    <span
-                                        class="
-                                            satori-fallback-title
-                                        "
-                                    >
-                                        SATORII
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-
-                        <div
-                            class="
-                                satori-product-name
-                            "
-                        >
-                            SATORII ORIGINAL
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-category
-                            "
-                        >
-                            SATORII ORIGINALS
-                        </div>
-
-
-                        <div
-                            class="
-                                satori-product-price
-                            "
-                        >
-                            PRÓXIMAMENTE
-                        </div>
-
-                    </article>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
              RECOMENDACIONES
         ================================================== -->
 
@@ -3126,7 +3196,7 @@
          =====================================================
          HERO SLIDER
          
-         LOOP INFINITO REAL
+         LOOP INFINITO
          AUTOPLAY
          SWIPE
          DOTS
@@ -3177,10 +3247,6 @@
 
                 }
 
-
-                /* =================================================
-                   CLONES
-                ================================================== */
 
                 const firstClone =
                     originalSlides[0]
@@ -3246,10 +3312,6 @@
                     null;
 
 
-                /* =================================================
-                   DOTS
-                ================================================== */
-
                 function updateDots() {
 
                     let logicalIndex =
@@ -3307,10 +3369,6 @@
                 }
 
 
-                /* =================================================
-                   POSICIONAR
-                ================================================== */
-
                 function updateSlider(
                     animate = true
                 ) {
@@ -3329,10 +3387,6 @@
 
                 }
 
-
-                /* =================================================
-                   IR A SLIDE
-                ================================================== */
 
                 function goTo(
                     index
@@ -3362,10 +3416,6 @@
                 }
 
 
-                /* =================================================
-                   SIGUIENTE
-                ================================================== */
-
                 function nextSlide() {
 
                     goTo(
@@ -3377,10 +3427,6 @@
                 }
 
 
-                /* =================================================
-                   ANTERIOR
-                ================================================== */
-
                 function previousSlide() {
 
                     goTo(
@@ -3391,10 +3437,6 @@
 
                 }
 
-
-                /* =================================================
-                   TRANSICIÓN
-                ================================================== */
 
                 track.addEventListener(
                     "transitionend",
@@ -3451,10 +3493,6 @@
                 );
 
 
-                /* =================================================
-                   DOTS
-                ================================================== */
-
                 dots.forEach(
                     function (
                         dot
@@ -3492,10 +3530,6 @@
                     }
                 );
 
-
-                /* =================================================
-                   TOUCH START
-                ================================================== */
 
                 slider.addEventListener(
                     "touchstart",
@@ -3537,10 +3571,6 @@
                     }
                 );
 
-
-                /* =================================================
-                   TOUCH END
-                ================================================== */
 
                 slider.addEventListener(
                     "touchend",
@@ -3645,10 +3675,6 @@
                 );
 
 
-                /* =================================================
-                   TECLADO
-                ================================================== */
-
                 document.addEventListener(
                     "keydown",
                     function (
@@ -3677,10 +3703,6 @@
                     }
                 );
 
-
-                /* =================================================
-                   AUTOPLAY
-                ================================================== */
 
                 function startAutoplay() {
 
@@ -3727,10 +3749,6 @@
 
                 }
 
-
-                /* =================================================
-                   PAUSAR SI NO ESTÁ VISIBLE
-                ================================================== */
 
                 if (
                     "IntersectionObserver"
@@ -3785,10 +3803,6 @@
 
                 }
 
-
-                /* =================================================
-                   INICIALIZAR
-                ================================================== */
 
                 updateSlider(
                     false
