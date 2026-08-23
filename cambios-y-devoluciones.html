@@ -3,12 +3,6 @@
 
 <head>
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="img/logo.webp"
-    >
-
     <meta charset="UTF-8">
 
     <meta
@@ -21,60 +15,97 @@
         content="Cambios y devoluciones SATORII. Conoce nuestras condiciones para cambios de talla y productos con defectos."
     >
 
-    <title>Cambios y devoluciones | Satorii</title>
+    <title>Cambios y devoluciones | SATORII</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.webp"
+    >
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
 
+
     <style>
 
         /* =====================================================
            SATORII · CAMBIOS Y DEVOLUCIONES
-           Estilo: opción 4
-        ====================================================== */
+           ===================================================== */
+
+        :root {
+
+            --satorii-red: #EF0930;
+            --satorii-black: #111111;
+            --satorii-white: #FFFFFF;
+            --satorii-gray: #666666;
+            --satorii-light: #F6F6F6;
+            --satorii-border: #E5E5E5;
+
+        }
+
+
+        /* =====================================================
+           BASE
+        ===================================================== */
 
         .returns-page {
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #fff 0%,
-                    #fafafa 100%
-                );
+            width: 100%;
 
-            color: #111;
+            overflow: hidden;
+
+            background: #fff;
+
+            color:
+                var(--satorii-black);
+
+        }
+
+
+        .returns-page * {
+
+            box-sizing: border-box;
 
         }
 
 
         /* =====================================================
            HERO
-        ====================================================== */
+        ===================================================== */
 
         .returns-hero {
 
             position: relative;
 
-            max-width: 1180px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
-            min-height: 420px;
+            min-height: 500px;
 
-            margin: 0 auto;
+            margin:
+                28px auto 0;
 
             padding:
-                105px
-                40px
-                70px;
-
-            box-sizing: border-box;
+                70px 55px;
 
             overflow: hidden;
 
             display: flex;
 
             align-items: center;
+
+            border-radius: 8px;
+
+            background:
+                var(--satorii-red);
+
+            color: #fff;
 
         }
 
@@ -83,7 +114,7 @@
 
             position: relative;
 
-            z-index: 2;
+            z-index: 3;
 
             max-width: 720px;
 
@@ -92,13 +123,13 @@
 
         .returns-label {
 
-            display: inline-block;
+            display: block;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
 
-            color: #ff1b1b;
+            color: #fff;
 
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 900;
 
@@ -111,17 +142,18 @@
 
             margin: 0;
 
-            font-size: clamp(
-                52px,
-                7vw,
-                92px
-            );
+            font-size:
+                clamp(
+                    55px,
+                    7vw,
+                    100px
+                );
 
-            line-height: .9;
+            line-height: .78;
 
-            font-weight: 900;
+            font-weight: 950;
 
-            letter-spacing: -5px;
+            letter-spacing: -6px;
 
             text-transform: uppercase;
 
@@ -130,128 +162,144 @@
 
         .returns-hero h1 span {
 
-            color: #ff1b1b;
+            display: block;
+
+            color: #111;
+
+            font-style: italic;
 
         }
 
 
         .returns-hero p {
 
-            max-width: 590px;
+            max-width: 570px;
 
-            margin: 25px 0 0;
+            margin:
+                28px 0 0;
 
-            color: #666;
+            color: rgba(
+                255,
+                255,
+                255,
+                .92
+            );
 
-            font-size: 14px;
+            font-size: 11px;
 
             line-height: 1.8;
 
         }
 
-/* =====================================================
-   KANJI DECORATIVO
-====================================================== */
 
-.returns-kanji {
-
-    position: absolute;
-
-    right: 35px;
-
-    bottom: -45px;
-
-    width: 390px;
-
-    height: 390px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    pointer-events: none;
-
-    user-select: none;
-
-}
-
-
-.returns-kanji span {
-
-    position: relative;
-
-    z-index: 2;
-
-    color: #111;
-
-    font-family:
-        "Noto Sans JP",
-        "Yu Gothic",
-        "Hiragino Kaku Gothic ProN",
-        Arial,
-        sans-serif;
-
-    font-size: 330px;
-
-    font-weight: 900;
-
-    line-height: 1;
-
-    opacity: .07;
-
-}
-
-
-/* Círculo rojo decorativo */
-
-.returns-kanji-circle {
-
-    position: absolute;
-
-    top: 35px;
-
-    right: 5px;
-
-    width: 125px;
-
-    height: 125px;
-
-    background: #ff1b1b;
-
-    border-radius: 50%;
-
-    opacity: .12;
-
-}
-        
         /* =====================================================
-           HELP NAV
-        ====================================================== */
+           KANJI
+        ===================================================== */
+
+        .returns-kanji {
+
+            position: absolute;
+
+            z-index: 1;
+
+            right: 35px;
+
+            bottom: -80px;
+
+            width: 460px;
+
+            height: 460px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            pointer-events: none;
+
+            user-select: none;
+
+        }
+
+
+        .returns-kanji span {
+
+            position: relative;
+
+            z-index: 2;
+
+            color: #111;
+
+            font-family:
+                "Noto Sans JP",
+                "Yu Gothic",
+                "Hiragino Kaku Gothic ProN",
+                Arial,
+                sans-serif;
+
+            font-size: 390px;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            opacity: .075;
+
+        }
+
+
+        .returns-kanji-circle {
+
+            position: absolute;
+
+            top: 35px;
+
+            right: 15px;
+
+            width: 145px;
+
+            height: 145px;
+
+            border-radius: 50%;
+
+            background: #111;
+
+            opacity: .08;
+
+        }
+
+
+        /* =====================================================
+           NAVEGACIÓN DE AYUDA
+        ===================================================== */
 
         .returns-nav {
 
-            max-width: 1120px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                0
-                30px
-                35px;
+                14px 0 0;
 
             display: grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 12px;
+            gap: 10px;
 
         }
 
 
         .returns-nav-card {
+
+            min-height: 70px;
 
             display: flex;
 
@@ -259,33 +307,20 @@
 
             gap: 13px;
 
-            min-height: 78px;
-
             padding:
-                15px
-                18px;
+                14px 17px;
 
-            box-sizing: border-box;
+            border:
+                1px solid
+                var(--satorii-border);
+
+            border-radius: 6px;
 
             background: #fff;
 
-            border:
-                1px solid #e7e7e7;
-
-            border-radius: 12px;
-
-            color: #222;
+            color: #111;
 
             text-decoration: none;
-
-            box-shadow:
-                0 8px 25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .035
-                );
 
             transition:
                 transform .2s ease,
@@ -301,15 +336,15 @@
                 translateY(-3px);
 
             border-color:
-                #ff1b1b;
+                var(--satorii-red);
 
             box-shadow:
-                0 12px 30px
+                0 10px 30px
                 rgba(
                     0,
                     0,
                     0,
-                    .07
+                    .06
                 );
 
         }
@@ -319,30 +354,32 @@
 
             background: #111;
 
-            color: #fff;
-
             border-color: #111;
+
+            color: #fff;
 
         }
 
 
         .returns-nav-icon {
 
-            width: 40px;
+            width: 38px;
 
-            height: 40px;
+            height: 38px;
 
-            flex: 0 0 40px;
+            flex:
+                0 0 38px;
 
             display: grid;
 
             place-items: center;
 
-            background: #f5f5f5;
+            border-radius: 5px;
 
-            border-radius: 10px;
+            background:
+                var(--satorii-light);
 
-            font-size: 18px;
+            font-size: 16px;
 
         }
 
@@ -350,14 +387,15 @@
         .returns-nav-card.active
         .returns-nav-icon {
 
-            background: #ff1b1b;
+            background:
+                var(--satorii-red);
 
         }
 
 
         .returns-nav-text {
 
-            font-size: 10px;
+            font-size: 8px;
 
             font-weight: 900;
 
@@ -369,19 +407,21 @@
 
 
         /* =====================================================
-           CONTENT
-        ====================================================== */
+           CONTENIDO
+        ===================================================== */
 
         .returns-content-wrap {
 
-            max-width: 1120px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                35px
-                30px
-                100px;
+                90px 0 90px;
 
         }
 
@@ -401,37 +441,49 @@
 
             margin-bottom: 12px;
 
-            color: #999;
+            color:
+                var(--satorii-red);
 
             font-size: 9px;
 
             font-weight: 900;
 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
 
         }
 
 
         .returns-intro h2 {
 
-            margin: 0 0 14px;
+            margin:
+                0 0 15px;
 
-            font-size: 30px;
+            font-size:
+                clamp(
+                    32px,
+                    4vw,
+                    48px
+                );
 
-            line-height: 1.05;
+            line-height: .95;
 
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
+
+            font-weight: 950;
 
         }
 
 
         .returns-intro p {
 
+            max-width: 650px;
+
             margin: 0;
 
-            color: #666;
+            color:
+                var(--satorii-gray);
 
-            font-size: 13px;
+            font-size: 11px;
 
             line-height: 1.8;
 
@@ -439,8 +491,8 @@
 
 
         /* =====================================================
-           POLICY CARDS
-        ====================================================== */
+           CARDS
+        ===================================================== */
 
         .returns-grid {
 
@@ -449,29 +501,47 @@
             grid-template-columns:
                 repeat(2, 1fr);
 
-            gap: 16px;
+            gap: 12px;
 
         }
 
 
         .returns-card {
 
-            padding: 28px;
+            position: relative;
+
+            padding: 27px;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                var(--satorii-border);
+
+            border-radius: 7px;
 
             background: #fff;
 
-            border:
-                1px solid #e8e8e8;
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease,
+                transform .2s ease;
 
-            border-radius: 14px;
+        }
+
+
+        .returns-card:hover {
+
+            border-color:
+                #d8d8d8;
 
             box-shadow:
-                0 8px 30px
+                0 12px 35px
                 rgba(
                     0,
                     0,
                     0,
-                    .035
+                    .055
                 );
 
         }
@@ -479,7 +549,8 @@
 
         .returns-card.full {
 
-            grid-column: 1 / -1;
+            grid-column:
+                1 / -1;
 
         }
 
@@ -492,16 +563,17 @@
 
             justify-content: space-between;
 
-            margin-bottom: 20px;
+            margin-bottom: 22px;
 
         }
 
 
         .returns-card-number span:first-child {
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
@@ -512,44 +584,50 @@
 
         .returns-card-icon {
 
-            width: 42px;
+            width: 40px;
 
-            height: 42px;
+            height: 40px;
 
             display: grid;
 
             place-items: center;
 
             border:
-                1px solid #eee;
+                1px solid
+                #e8e8e8;
 
             border-radius: 50%;
 
-            font-size: 19px;
+            font-size: 17px;
 
         }
 
 
         .returns-card h2 {
 
-            margin: 0 0 12px;
+            margin:
+                0 0 12px;
 
             font-size: 21px;
 
-            line-height: 1.15;
+            line-height: 1.1;
 
-            letter-spacing: -.5px;
+            letter-spacing: -.7px;
+
+            font-weight: 900;
 
         }
 
 
         .returns-card p {
 
-            margin: 0 0 11px;
+            margin:
+                0 0 11px;
 
-            color: #666;
+            color:
+                #666;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.8;
 
@@ -559,15 +637,14 @@
         .returns-card ul {
 
             margin:
-                12px
-                0
-                0;
+                12px 0 0;
 
-            padding-left: 19px;
+            padding-left: 18px;
 
-            color: #555;
+            color:
+                #555;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.8;
 
@@ -576,7 +653,20 @@
 
         .returns-card li {
 
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+
+        }
+
+
+        /* =====================================================
+           ESTADOS
+        ===================================================== */
+
+        .returns-card.guarantee {
+
+            border-top:
+                3px solid
+                #111;
 
         }
 
@@ -584,7 +674,8 @@
         .returns-card.accepted {
 
             border-top:
-                3px solid #35b96b;
+                3px solid
+                #35b96b;
 
         }
 
@@ -592,32 +683,26 @@
         .returns-card.not-accepted {
 
             border-top:
-                3px solid #ff1b1b;
-
-        }
-
-
-        .returns-card.guarantee {
-
-            border-top:
-                3px solid #111;
+                3px solid
+                var(--satorii-red);
 
         }
 
 
         /* =====================================================
-           PROCESS
-        ====================================================== */
+           PROCESO
+        ===================================================== */
 
         .returns-process {
 
-            margin-top: 16px;
+            margin-top: 25px;
 
-            padding: 28px;
+            padding: 27px;
 
-            background: #111;
+            border-radius: 6px;
 
-            border-radius: 14px;
+            background:
+                #111;
 
             color: #fff;
 
@@ -626,24 +711,28 @@
 
         .returns-process-label {
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
 
         }
 
 
         .returns-process h2 {
 
-            margin: 0 0 25px;
+            margin:
+                0 0 25px;
 
-            font-size: 24px;
+            font-size: 25px;
+
+            line-height: 1;
 
             letter-spacing: -1px;
 
@@ -657,30 +746,35 @@
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 12px;
+            gap: 9px;
 
         }
 
 
         .returns-step {
 
+            min-height: 145px;
+
             padding: 18px;
 
-            background: #191919;
-
             border:
-                1px solid #2a2a2a;
+                1px solid
+                #2a2a2a;
 
-            border-radius: 10px;
+            border-radius: 5px;
+
+            background:
+                #191919;
 
         }
 
 
         .returns-step-number {
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 900;
 
@@ -690,11 +784,11 @@
         .returns-step h3 {
 
             margin:
-                12px
-                0
-                8px;
+                12px 0 8px;
 
-            font-size: 12px;
+            font-size: 11px;
+
+            line-height: 1.2;
 
         }
 
@@ -705,7 +799,7 @@
 
             color: #aaa;
 
-            font-size: 10px;
+            font-size: 9px;
 
             line-height: 1.7;
 
@@ -713,21 +807,15 @@
 
 
         /* =====================================================
-           CONTACT
-        ====================================================== */
+           CONTACTO
+        ===================================================== */
 
         .returns-contact {
 
-            margin-top: 16px;
+            margin-top: 22px;
 
-            padding: 28px;
-
-            background: #fff;
-
-            border:
-                1px solid #e8e8e8;
-
-            border-radius: 14px;
+            padding:
+                24px;
 
             display: flex;
 
@@ -737,14 +825,26 @@
 
             gap: 25px;
 
+            border:
+                1px solid
+                var(--satorii-border);
+
+            border-radius: 6px;
+
+            background:
+                var(--satorii-light);
+
         }
 
 
         .returns-contact h2 {
 
-            margin: 0 0 8px;
+            margin:
+                0 0 7px;
 
-            font-size: 20px;
+            font-size: 18px;
+
+            letter-spacing: -1px;
 
         }
 
@@ -755,7 +855,7 @@
 
             color: #666;
 
-            font-size: 11px;
+            font-size: 9px;
 
             line-height: 1.7;
 
@@ -764,36 +864,56 @@
 
         .returns-contact a {
 
+            min-height: 42px;
+
             display: inline-flex;
 
             align-items: center;
 
-            gap: 8px;
+            justify-content: center;
 
             padding:
-                12px
-                18px;
+                0 20px;
 
-            background: #ff1b1b;
+            border-radius: 0;
+
+            background:
+                var(--satorii-red);
 
             color: #fff;
 
-            border-radius: 999px;
-
-            font-size: 10px;
+            font-size: 8px;
 
             font-weight: 900;
 
+            letter-spacing: 1px;
+
             text-decoration: none;
+
+            text-transform: uppercase;
+
+            transition: .2s ease;
+
+            white-space: nowrap;
+
+        }
+
+
+        .returns-contact a:hover {
+
+            background: #111;
+
+            transform:
+                translateY(-2px);
 
         }
 
 
         /* =====================================================
-           RESPONSIVE
-        ====================================================== */
+           TABLET
+        ===================================================== */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
 
             .returns-nav {
 
@@ -805,7 +925,8 @@
 
             .returns-grid {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
 
             }
 
@@ -827,53 +948,76 @@
 
             .returns-kanji {
 
-    right: -80px;
+                right: -80px;
 
-    opacity: .8;
+                transform:
+                    scale(.85);
 
-    transform: scale(.85);
-
-}
+            }
 
         }
 
 
-        @media (max-width: 600px) {
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
 
             .returns-hero {
 
-                min-height: 400px;
+                width:
+                    calc(100% - 24px);
+
+                min-height: 440px;
+
+                margin-top: 18px;
 
                 padding:
-                    90px
-                    22px
-                    60px;
+                    50px 25px 60px;
+
+                border-radius: 7px;
 
             }
 
 
             .returns-hero h1 {
 
-                font-size: 48px;
+                font-size: 53px;
 
-                letter-spacing: -3px;
+                letter-spacing: -4px;
 
             }
 
 
             .returns-hero p {
 
-                font-size: 12px;
+                max-width: 330px;
+
+                font-size: 10px;
+
+            }
+
+
+            .returns-kanji {
+
+                right: -150px;
+
+                bottom: -70px;
+
+                transform:
+                    scale(.70);
 
             }
 
 
             .returns-nav {
 
+                width:
+                    calc(100% - 30px);
+
                 padding:
-                    0
-                    16px
-                    25px;
+                    12px 0 0;
 
                 grid-template-columns: 1fr;
 
@@ -882,17 +1026,41 @@
 
             .returns-content-wrap {
 
+                width:
+                    calc(100% - 30px);
+
                 padding:
-                    25px
-                    16px
-                    70px;
+                    65px 0 65px;
+
+            }
+
+
+            .returns-intro h2 {
+
+                font-size: 34px;
+
+                letter-spacing: -2px;
 
             }
 
 
             .returns-card {
 
-                padding: 22px;
+                padding: 21px;
+
+            }
+
+
+            .returns-process {
+
+                padding: 20px;
+
+            }
+
+
+            .returns-process h2 {
+
+                font-size: 22px;
 
             }
 
@@ -904,25 +1072,46 @@
             }
 
 
+            .returns-step {
+
+                min-height: auto;
+
+            }
+
+
             .returns-contact {
 
                 align-items: flex-start;
 
                 flex-direction: column;
 
+                padding: 20px;
+
             }
 
 
-           .returns-kanji {
+            .returns-contact a {
 
-    right: -145px;
+                width: 100%;
 
-    bottom: -35px;
+            }
 
-    transform:
-        scale(.72);
+        }
 
-}
+
+        /* =====================================================
+           REDUCIR ANIMACIONES
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .returns-nav-card,
+            .returns-card,
+            .returns-contact a {
+
+                transition: none !important;
+
+            }
 
         }
 
@@ -935,8 +1124,8 @@
 
 
     <!-- =====================================================
-         HEADER GLOBAL
-    ====================================================== -->
+         HEADER
+    ===================================================== -->
 
     <div id="satori-header"></div>
 
@@ -950,10 +1139,22 @@
 
         <section class="returns-hero">
 
-            <div class="returns-hero-content">
 
-                <span class="returns-label">
+            <div
+                class="
+                    returns-hero-content
+                "
+            >
+
+
+                <span
+                    class="
+                        returns-label
+                    "
+                >
+
                     SATORII · AYUDA
+
                 </span>
 
 
@@ -970,44 +1171,77 @@
 
                 <p>
 
-                    Queremos que tu experiencia con Satorii
+                    Queremos que tu experiencia con SATORII
                     sea simple. Revisa nuestra política para
                     cambios de talla, productos con defectos
                     y el proceso para solicitar ayuda.
 
                 </p>
 
+
             </div>
 
 
-            <div class="returns-kanji">
+            <!-- KANJI -->
 
-    <span>悟</span>
+            <div
+                class="
+                    returns-kanji
+                "
+                aria-hidden="true"
+            >
 
-    <div class="returns-kanji-circle"></div>
+                <span>
+                    悟
+                </span>
 
-</div>
+                <div
+                    class="
+                        returns-kanji-circle
+                    "
+                ></div>
+
+            </div>
+
 
         </section>
-
 
 
         <!-- =================================================
              NAVEGACIÓN DE AYUDA
         ================================================== -->
 
-        <nav class="returns-nav">
+        <nav
+            class="
+                returns-nav
+            "
+            aria-label="
+                Navegación de ayuda
+            "
+        >
+
 
             <a
                 href="cambios-y-devoluciones.html"
-                class="returns-nav-card active"
+                class="
+                    returns-nav-card
+                    active
+                "
             >
 
-                <span class="returns-nav-icon">
+                <span
+                    class="
+                        returns-nav-icon
+                    "
+                >
                     🔄
                 </span>
 
-                <span class="returns-nav-text">
+                <span
+                    class="
+                        returns-nav-text
+                    "
+                >
                     Cambios y devoluciones
                 </span>
 
@@ -1016,14 +1250,24 @@
 
             <a
                 href="preguntas-frecuentes.html"
-                class="returns-nav-card"
+                class="
+                    returns-nav-card
+                "
             >
 
-                <span class="returns-nav-icon">
+                <span
+                    class="
+                        returns-nav-icon
+                    "
+                >
                     ❓
                 </span>
 
-                <span class="returns-nav-text">
+                <span
+                    class="
+                        returns-nav-text
+                    "
+                >
                     Preguntas frecuentes
                 </span>
 
@@ -1032,14 +1276,24 @@
 
             <a
                 href="envios.html"
-                class="returns-nav-card"
+                class="
+                    returns-nav-card
+                "
             >
 
-                <span class="returns-nav-icon">
+                <span
+                    class="
+                        returns-nav-icon
+                    "
+                >
                     🚚
                 </span>
 
-                <span class="returns-nav-text">
+                <span
+                    class="
+                        returns-nav-text
+                    "
+                >
                     Envíos
                 </span>
 
@@ -1048,31 +1302,49 @@
 
             <a
                 href="guia-tallas.html"
-                class="returns-nav-card"
+                class="
+                    returns-nav-card
+                "
             >
 
-                <span class="returns-nav-icon">
+                <span
+                    class="
+                        returns-nav-icon
+                    "
+                >
                     📏
                 </span>
 
-                <span class="returns-nav-text">
+                <span
+                    class="
+                        returns-nav-text
+                    "
+                >
                     Guía de tallas
                 </span>
 
             </a>
 
-        </nav>
 
+        </nav>
 
 
         <!-- =================================================
              CONTENIDO
         ================================================== -->
 
-        <section class="returns-content-wrap">
+        <section
+            class="
+                returns-content-wrap
+            "
+        >
 
 
-            <div class="returns-intro">
+            <div
+                class="
+                    returns-intro
+                "
+            >
 
                 <span>
                     POLÍTICA SATORII
@@ -1080,37 +1352,56 @@
 
 
                 <h2>
-                    Queremos que todo salga bien. 🖤
+                    QUEREMOS QUE TODO SALGA BIEN.
                 </h2>
 
 
                 <p>
 
-                    Si algo no salió como esperabas, escríbenos.
-                    Revisaremos tu caso y te indicaremos cómo
-                    proceder de acuerdo con las condiciones de
-                    Satorii.
+                    Si algo no salió como esperabas,
+                    escríbenos. Revisaremos tu caso y
+                    te indicaremos cómo proceder de
+                    acuerdo con las condiciones de SATORII.
 
                 </p>
 
             </div>
 
 
+            <div
+                class="
+                    returns-grid
+                "
+            >
 
-            <div class="returns-grid">
 
+                <!-- =================================================
+                     01
+                ================================================== -->
 
-                <!-- 01 -->
+                <article
+                    class="
+                        returns-card
+                        guarantee
+                    "
+                >
 
-                <article class="returns-card guarantee">
-
-                    <div class="returns-card-number">
+                    <div
+                        class="
+                            returns-card-number
+                        "
+                    >
 
                         <span>
                             01 / GARANTÍA
                         </span>
 
-                        <span class="returns-card-icon">
+
+                        <span
+                            class="
+                                returns-card-icon
+                            "
+                        >
                             🛡️
                         </span>
 
@@ -1124,9 +1415,9 @@
 
                     <p>
 
-                        Si recibes una prenda con un defecto de
-                        fabricación, contáctanos para revisar el
-                        caso y buscar una solución.
+                        Si recibes una prenda con un defecto
+                        de fabricación, contáctanos para revisar
+                        el caso y buscar una solución.
 
                     </p>
 
@@ -1135,26 +1426,41 @@
 
                         Para agilizar la revisión, envíanos
                         fotografías claras del producto y una
-                        descripción del problema junto con los
-                        datos de tu pedido.
+                        descripción del problema junto con
+                        los datos de tu pedido.
 
                     </p>
+
 
                 </article>
 
 
+                <!-- =================================================
+                     02
+                ================================================== -->
 
-                <!-- 02 -->
+                <article
+                    class="
+                        returns-card
+                    "
+                >
 
-                <article class="returns-card">
-
-                    <div class="returns-card-number">
+                    <div
+                        class="
+                            returns-card-number
+                        "
+                    >
 
                         <span>
                             02 / TALLAS
                         </span>
 
-                        <span class="returns-card-icon">
+
+                        <span
+                            class="
+                                returns-card-icon
+                            "
+                        >
                             👕
                         </span>
 
@@ -1168,9 +1474,10 @@
 
                     <p>
 
-                        Si la talla que elegiste no es la adecuada,
-                        puedes solicitar un cambio siempre que la
-                        prenda cumpla nuestras condiciones.
+                        Si la talla que elegiste no es la
+                        adecuada, puedes solicitar un cambio
+                        siempre que la prenda cumpla
+                        nuestras condiciones.
 
                     </p>
 
@@ -1199,21 +1506,37 @@
 
                     </ul>
 
+
                 </article>
 
 
+                <!-- =================================================
+                     03
+                ================================================== -->
 
-                <!-- 03 -->
+                <article
+                    class="
+                        returns-card
+                        accepted
+                    "
+                >
 
-                <article class="returns-card accepted">
-
-                    <div class="returns-card-number">
+                    <div
+                        class="
+                            returns-card-number
+                        "
+                    >
 
                         <span>
                             03 / ACEPTAMOS
                         </span>
 
-                        <span class="returns-card-icon">
+
+                        <span
+                            class="
+                                returns-card-icon
+                            "
+                        >
                             ✓
                         </span>
 
@@ -1249,21 +1572,37 @@
 
                     </ul>
 
+
                 </article>
 
 
+                <!-- =================================================
+                     04
+                ================================================== -->
 
-                <!-- 04 -->
+                <article
+                    class="
+                        returns-card
+                        not-accepted
+                    "
+                >
 
-                <article class="returns-card not-accepted">
-
-                    <div class="returns-card-number">
+                    <div
+                        class="
+                            returns-card-number
+                        "
+                    >
 
                         <span>
                             04 / NO ACEPTAMOS
                         </span>
 
-                        <span class="returns-card-icon">
+
+                        <span
+                            class="
+                                returns-card-icon
+                            "
+                        >
                             ✕
                         </span>
 
@@ -1299,21 +1638,37 @@
 
                     </ul>
 
+
                 </article>
 
 
+                <!-- =================================================
+                     05 / PROCESO
+                ================================================== -->
 
-                <!-- 05 / PROCESO -->
+                <article
+                    class="
+                        returns-card
+                        full
+                    "
+                >
 
-                <div class="returns-card full">
-
-                    <div class="returns-card-number">
+                    <div
+                        class="
+                            returns-card-number
+                        "
+                    >
 
                         <span>
                             05 / PROCESO
                         </span>
 
-                        <span class="returns-card-icon">
+
+                        <span
+                            class="
+                                returns-card-icon
+                            "
+                        >
                             🔄
                         </span>
 
@@ -1334,112 +1689,191 @@
                     </p>
 
 
-                    <div class="returns-process">
+                    <div
+                        class="
+                            returns-process
+                        "
+                    >
 
-                        <div class="returns-process-label">
+                        <div
+                            class="
+                                returns-process-label
+                            "
+                        >
+
                             PASO A PASO
+
                         </div>
 
 
                         <h2>
-                            Así funciona el proceso.
+                            ASÍ FUNCIONA EL PROCESO.
                         </h2>
 
 
-                        <div class="returns-steps">
+                        <div
+                            class="
+                                returns-steps
+                            "
+                        >
 
 
-                            <div class="returns-step">
+                            <div
+                                class="
+                                    returns-step
+                                "
+                            >
 
-                                <span class="returns-step-number">
+                                <span
+                                    class="
+                                        returns-step-number
+                                    "
+                                >
                                     01
                                 </span>
+
 
                                 <h3>
                                     Contáctanos
                                 </h3>
 
+
                                 <p>
+
                                     Escríbenos con tu número
                                     de pedido y el motivo
                                     del cambio.
+
                                 </p>
 
                             </div>
 
 
-                            <div class="returns-step">
+                            <div
+                                class="
+                                    returns-step
+                                "
+                            >
 
-                                <span class="returns-step-number">
+                                <span
+                                    class="
+                                        returns-step-number
+                                    "
+                                >
                                     02
                                 </span>
+
 
                                 <h3>
                                     Revisamos tu caso
                                 </h3>
 
+
                                 <p>
+
                                     Verificaremos las condiciones
                                     del producto y la solicitud.
+
                                 </p>
 
                             </div>
 
 
-                            <div class="returns-step">
+                            <div
+                                class="
+                                    returns-step
+                                "
+                            >
 
-                                <span class="returns-step-number">
+                                <span
+                                    class="
+                                        returns-step-number
+                                    "
+                                >
                                     03
                                 </span>
+
 
                                 <h3>
                                     Te indicamos los pasos
                                 </h3>
 
+
                                 <p>
+
                                     Si corresponde, te explicaremos
                                     cómo realizar el cambio.
+
                                 </p>
 
                             </div>
 
 
-                            <div class="returns-step">
+                            <div
+                                class="
+                                    returns-step
+                                "
+                            >
 
-                                <span class="returns-step-number">
+                                <span
+                                    class="
+                                        returns-step-number
+                                    "
+                                >
                                     04
                                 </span>
+
 
                                 <h3>
                                     Recibes tu nueva prenda
                                 </h3>
 
+
                                 <p>
+
                                     Una vez aprobado el proceso,
                                     coordinaremos el cambio.
+
                                 </p>
 
                             </div>
+
 
                         </div>
 
                     </div>
 
-                </div>
+
+                </article>
 
 
+                <!-- =================================================
+                     06 / ENVÍO
+                ================================================== -->
 
-                <!-- 06 / ENVÍO -->
+                <article
+                    class="
+                        returns-card
+                        full
+                    "
+                >
 
-                <article class="returns-card full">
-
-                    <div class="returns-card-number">
+                    <div
+                        class="
+                            returns-card-number
+                        "
+                    >
 
                         <span>
                             06 / ENVÍO
                         </span>
 
-                        <span class="returns-card-icon">
+
+                        <span
+                            class="
+                                returns-card-icon
+                            "
+                        >
                             🚚
                         </span>
 
@@ -1453,8 +1887,9 @@
 
                     <p>
 
-                        Una vez aprobado el cambio, te indicaremos
-                        cómo realizar el proceso según tu ubicación
+                        Una vez aprobado el cambio,
+                        te indicaremos cómo realizar
+                        el proceso según tu ubicación
                         y disponibilidad.
 
                     </p>
@@ -1462,37 +1897,54 @@
 
                     <p>
 
-                        Los costos asociados al envío de un cambio
-                        por elección de talla serán informados antes
-                        de continuar con el proceso.
+                        Los costos asociados al envío
+                        de un cambio por elección de talla
+                        serán informados antes de continuar
+                        con el proceso.
 
                     </p>
 
 
                     <p>
 
-                        Si se determina que el producto presenta
-                        un defecto de fabricación, SATORII revisará
-                        el caso y te informará la solución
-                        correspondiente.
+                        Si se determina que el producto
+                        presenta un defecto de fabricación,
+                        SATORII revisará el caso y te informará
+                        la solución correspondiente.
 
                     </p>
+
 
                 </article>
 
 
+                <!-- =================================================
+                     07 / CONTACTO
+                ================================================== -->
 
-                <!-- 07 / CONTACTO -->
+                <article
+                    class="
+                        returns-card
+                        full
+                    "
+                >
 
-                <article class="returns-card full">
-
-                    <div class="returns-card-number">
+                    <div
+                        class="
+                            returns-card-number
+                        "
+                    >
 
                         <span>
                             07 / ¿DUDAS?
                         </span>
 
-                        <span class="returns-card-icon">
+
+                        <span
+                            class="
+                                returns-card-icon
+                            "
+                        >
                             💬
                         </span>
 
@@ -1513,7 +1965,11 @@
                     </p>
 
 
-                    <div class="returns-contact">
+                    <div
+                        class="
+                            returns-contact
+                        "
+                    >
 
                         <div>
 
@@ -1521,9 +1977,12 @@
                                 SATORII
                             </h2>
 
+
                             <p>
+
                                 Estamos para ayudarte.
                                 Escríbenos por nuestro Instagram oficial.
+
                             </p>
 
                         </div>
@@ -1534,163 +1993,38 @@
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            ◎ @satorimode
+
+                            INSTAGRAM
+                            &nbsp; →
+
                         </a>
+
 
                     </div>
 
+
                 </article>
+
 
             </div>
 
+
         </section>
+
 
     </main>
 
 
-
     <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+         FOOTER GLOBAL
+    ===================================================== -->
 
-    <footer class="site-footer">
-
-
-        <div class="footer-main">
-
-
-            <div class="footer-brand">
-
-                <h3>
-                    SATORII
-                </h3>
-
-
-                <p>
-                    Anime, cultura japonesa y streetwear.
-                </p>
-
-            </div>
-
-
-
-            <div class="footer-column footer-social">
-
-                <h4>
-                    SÍGUENOS
-                </h4>
-
-
-                <a
-                    href="https://www.instagram.com/satoriicl/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="instagram-link"
-                >
-                    Instagram
-                </a>
-
-            </div>
-
-
-
-            <div class="footer-column">
-
-                <h4>
-                    COLECCIONES
-                </h4>
-
-
-                <a href="anime.html">
-                    Anime
-                </a>
-
-
-                <a href="anime-goods.html">
-                    Anime Goods
-                </a>
-
-
-                <a href="Torii.html">
-                    Torii
-                </a>
-
-            </div>
-
-
-
-            <div class="footer-column">
-
-                <h4>
-                    PRODUCTOS
-                </h4>
-
-
-                <a href="productos.html">
-                    Todos los productos
-                </a>
-
-
-                <a href="regala-satorii.html">
-                    Gift Cards
-                </a>
-
-
-                <a href="satorii-pack.html">
-                    Satorii Pack
-                </a>
-
-            </div>
-
-
-
-            <div class="footer-column">
-
-                <h4>
-                    AYUDA
-                </h4>
-
-
-                <a href="guia-tallas.html">
-                    Guía de tallas
-                </a>
-
-
-                <a href="envios.html">
-                    Envíos
-                </a>
-
-
-                <a href="preguntas-frecuentes.html">
-                    Preguntas frecuentes
-                </a>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 SATORII
-            </span>
-
-
-            <span>
-                Todos los derechos reservados.
-            </span>
-
-        </div>
-
-    </footer>
+    <div id="satori-footer"></div>
 
 
     <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+         SCRIPTS
+    ===================================================== -->
 
     <script src="js/main.js"></script>
 
