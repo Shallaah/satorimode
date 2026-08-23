@@ -2609,6 +2609,23 @@
 
 
                 /* =================================================
+                   ACTUALIZAR CATÁLOGO DESDE SUPABASE
+                ================================================= */
+
+window.addEventListener(
+    "satorii:products-updated",
+    function () {
+
+        buildFilters();
+
+        updateFilterButtons();
+
+        renderProducts();
+
+    }
+);
+                
+                /* =================================================
                    ABRIR / CERRAR FILTROS
                 ================================================== */
 
