@@ -162,10 +162,9 @@
 
 
         /* =====================================================
-           BANNER
-           
-           IMPORTANTE:
-           NO ALTERAMOS EL DISEÑO DEL BANNER.
+           =====================================================
+           HERO / BANNER
+           =====================================================
         ====================================================== */
 
         .hero-slider {
@@ -173,8 +172,180 @@
             position:
                 relative;
 
+            width:
+                100%;
+
             overflow:
                 hidden;
+
+            touch-action:
+                pan-y;
+
+            user-select:
+                none;
+
+            -webkit-user-select:
+                none;
+
+            overscroll-behavior-x:
+                contain;
+
+        }
+
+
+        .hero-track {
+
+            display:
+                flex;
+
+            width:
+                max-content;
+
+            will-change:
+                transform;
+
+            transition:
+                transform
+                .65s
+                cubic-bezier(
+                    .22,
+                    .61,
+                    .36,
+                    1
+                );
+
+        }
+
+
+        .hero-slide {
+
+            flex:
+                0 0 100vw;
+
+            width:
+                100vw;
+
+            position:
+                relative;
+
+        }
+
+
+        .hero-slide picture {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+        }
+
+
+        .hero-slide img {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            height:
+                auto;
+
+            max-width:
+                100%;
+
+            user-select:
+                none;
+
+            -webkit-user-drag:
+                none;
+
+        }
+
+
+        /* =====================================================
+           DOTS DEL BANNER
+        ====================================================== */
+
+        .hero-dots {
+
+            position:
+                absolute;
+
+            left:
+                50%;
+
+            bottom:
+                18px;
+
+            transform:
+                translateX(-50%);
+
+            z-index:
+                20;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                7px;
+
+        }
+
+
+        .hero-dot {
+
+            width:
+                7px;
+
+            height:
+                7px;
+
+            padding:
+                0;
+
+            border:
+                0;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .55
+                );
+
+            cursor:
+                pointer;
+
+            transition:
+                width .25s ease,
+                background .25s ease;
+
+        }
+
+
+        .hero-dot.active {
+
+            width:
+                24px;
+
+            border-radius:
+                10px;
+
+            background:
+                var(--satori-red);
 
         }
 
@@ -285,10 +456,6 @@
 
         }
 
-
-        /*
-         * Decoración muy sutil.
-         */
 
         .satori-collections::before {
 
@@ -406,6 +573,9 @@
             touch-action:
                 pan-y;
 
+            overscroll-behavior-x:
+                contain;
+
         }
 
 
@@ -423,6 +593,9 @@
             width:
                 max-content;
 
+            will-change:
+                transform;
+
             transition:
                 transform
                 .65s
@@ -433,14 +606,11 @@
                     1
                 );
 
-            will-change:
-                transform;
-
         }
 
 
         /* =====================================================
-           TARJETA
+           TARJETAS
         ====================================================== */
 
         .satori-collection-card {
@@ -641,10 +811,7 @@
 
 
         /* =====================================================
-           FALLBACK VISUAL
-           
-           Si una imagen todavía no existe,
-           la tarjeta sigue viéndose diseñada.
+           FALLBACK
         ====================================================== */
 
         .satori-collection-fallback {
@@ -970,7 +1137,7 @@
 
 
         /* =====================================================
-           CONTROLES
+           CONTROLES PC
         ====================================================== */
 
         .satori-carousel-controls {
@@ -1549,6 +1716,14 @@
         }
 
 
+        .satori-story-copy h2 span {
+
+            color:
+                var(--satori-red);
+
+        }
+
+
         .satori-story-copy p {
 
             max-width:
@@ -1877,9 +2052,7 @@
 
 
         /* =====================================================
-           =====================================================
            RECOMENDACIONES
-           =====================================================
         ====================================================== */
 
         .recommendations {
@@ -1897,7 +2070,7 @@
 
 
         /* =====================================================
-           RESPONSIVE
+           TABLET
         ====================================================== */
 
         @media (max-width: 1000px) {
@@ -1933,6 +2106,45 @@
         ====================================================== */
 
         @media (max-width: 650px) {
+
+
+            /* =================================================
+               BANNER
+            ================================================= */
+
+            .hero-slider {
+
+                touch-action:
+                    pan-y;
+
+            }
+
+
+            .hero-dots {
+
+                bottom:
+                    10px;
+
+            }
+
+
+            .hero-dot {
+
+                width:
+                    6px;
+
+                height:
+                    6px;
+
+            }
+
+
+            .hero-dot.active {
+
+                width:
+                    20px;
+
+            }
 
 
             /* =================================================
@@ -1975,8 +2187,8 @@
                 width:
                     calc(100% - 36px);
 
-                margin-bottom:
-                    26px;
+                margin:
+                    0 auto 24px;
 
             }
 
@@ -2016,6 +2228,8 @@
 
             /* =================================================
                CARRUSEL MOBILE
+               
+               SIN FLECHAS
             ================================================= */
 
             .satori-carousel {
@@ -2028,8 +2242,17 @@
 
             .satori-carousel-viewport {
 
+                width:
+                    100%;
+
                 padding:
                     20px 0 28px;
+
+                overflow:
+                    hidden;
+
+                touch-action:
+                    pan-y;
 
             }
 
@@ -2039,21 +2262,24 @@
                 gap:
                     12px;
 
+                width:
+                    max-content;
+
             }
 
 
             /*
-             * 76vw:
-             *
-             * La tarjeta central ocupa bastante espacio,
-             * pero deja visible una parte importante de las
-             * tarjetas laterales.
+             * La tarjeta central ocupa el espacio principal,
+             * dejando visibles las tarjetas vecinas.
              */
 
             .satori-collection-card {
 
                 flex:
                     0 0 76vw;
+
+                max-width:
+                    none;
 
                 border-radius:
                     16px;
@@ -2139,7 +2365,7 @@
             .satori-collection-button {
 
                 padding:
-                    10px 10px;
+                    10px;
 
                 font-size:
                     6.5px;
@@ -2147,24 +2373,26 @@
             }
 
 
+            /*
+             * LAS FLECHAS NO EXISTEN EN TELÉFONO.
+             */
+
             .satori-carousel-controls {
 
-                gap:
-                    7px;
+                display:
+                    none !important;
 
             }
 
 
-            .satori-carousel-arrow {
+            /* =================================================
+               DOTS
+            ================================================= */
 
-                width:
-                    38px;
+            .satori-carousel-dots {
 
-                height:
-                    38px;
-
-                font-size:
-                    20px;
+                margin-top:
+                    0;
 
             }
 
@@ -2418,7 +2646,6 @@
 
         }
 
-
     </style>
 
 </head>
@@ -2447,8 +2674,6 @@
 
         <!-- =================================================
              HERO / BANNER
-             
-             SE MANTIENE IGUAL
         ================================================== -->
 
         <section
@@ -2549,7 +2774,7 @@
             </div>
 
 
-            <!-- DOTS DEL BANNER -->
+            <!-- DOTS -->
 
             <div
                 class="hero-dots"
@@ -2588,8 +2813,6 @@
 
         <!-- =================================================
              COLECCIONES
-             
-             AHORA VIENEN DIRECTAMENTE DESPUÉS DEL BANNER
         ================================================== -->
 
         <section
@@ -2600,9 +2823,6 @@
             <div
                 class="satori-container"
             >
-
-
-                <!-- HEADER -->
 
                 <div
                     class="satori-collections-header"
@@ -2640,7 +2860,6 @@
                     class="satori-carousel"
                 >
 
-
                     <div
                         class="satori-carousel-viewport"
                         id="satori-carousel-viewport"
@@ -2652,9 +2871,7 @@
                         >
 
 
-                            <!-- =================================
-                                 ANIME
-                            ================================== -->
+                            <!-- ANIME -->
 
                             <article
                                 class="
@@ -2742,9 +2959,7 @@
                             </article>
 
 
-                            <!-- =================================
-                                 YOKAI
-                            ================================== -->
+                            <!-- YOKAI -->
 
                             <article
                                 class="
@@ -2831,9 +3046,7 @@
                             </article>
 
 
-                            <!-- =================================
-                                 SATORII
-                            ================================== -->
+                            <!-- SATORII -->
 
                             <article
                                 class="
@@ -2920,9 +3133,7 @@
                             </article>
 
 
-                            <!-- =================================
-                                 LIMITED
-                            ================================== -->
+                            <!-- LIMITED -->
 
                             <article
                                 class="
@@ -3014,7 +3225,7 @@
                     </div>
 
 
-                    <!-- CONTROLES -->
+                    <!-- FLECHAS PC -->
 
                     <div
                         class="
@@ -3096,7 +3307,6 @@
 
                     </div>
 
-
                 </div>
 
             </div>
@@ -3116,7 +3326,6 @@
             <div
                 class="satori-container"
             >
-
 
                 <div
                     class="
@@ -3151,14 +3360,11 @@
                 </div>
 
 
-                <!-- PRODUCTOS -->
-
                 <div
                     class="
                         satori-products-grid
                     "
                 >
-
 
                     <!-- KID BUU -->
 
@@ -3431,7 +3637,6 @@
 
                     </article>
 
-
                 </div>
 
             </div>
@@ -3440,7 +3645,7 @@
 
 
         <!-- =================================================
-             IDENTIDAD SATORII
+             IDENTIDAD
         ================================================== -->
 
         <section
@@ -3448,9 +3653,6 @@
                 satori-story
             "
         >
-
-
-            <!-- VISUAL -->
 
             <div
                 class="
@@ -3468,8 +3670,6 @@
 
             </div>
 
-
-            <!-- TEXTO -->
 
             <div
                 class="
@@ -3519,7 +3719,6 @@
                 </a>
 
             </div>
-
 
         </section>
 
@@ -3602,8 +3801,6 @@
 
         <!-- =================================================
              RECOMENDACIONES
-             
-             SE MANTIENE TU SISTEMA ACTUAL
         ================================================== -->
 
         <section
@@ -3660,7 +3857,7 @@
 
 
     <!-- =====================================================
-         JAVASCRIPT
+         JAVASCRIPT — PRODUCTOS
     ====================================================== -->
 
     <script
@@ -3669,20 +3866,22 @@
     ></script>
 
 
+    <!-- =====================================================
+         JAVASCRIPT — HEADER
+    ====================================================== -->
+
     <script
         src="js/header.js"
         defer
     ></script>
 
 
+    <!-- =====================================================
+         JAVASCRIPT — FOOTER
+    ====================================================== -->
+
     <script
         src="js/footer.js"
-        defer
-    ></script>
-
-
-    <script
-        src="js/hero-slider.js"
         defer
     ></script>
 
@@ -3742,10 +3941,12 @@
 
 
     <!-- =====================================================
-         CARRUSEL DE COLECCIONES
-
-         PC + TABLET + MOBILE
-         MISMA LÓGICA
+         =====================================================
+         HERO SLIDER
+         
+         LOOP INFINITO REAL
+         AUTOPLAY + SWIPE
+         =====================================================
     ====================================================== -->
 
     <script>
@@ -3754,51 +3955,35 @@
             "DOMContentLoaded",
             function () {
 
-
-                const viewport =
+                const slider =
                     document.getElementById(
-                        "satori-carousel-viewport"
+                        "hero-slider"
                     );
-
 
                 const track =
                     document.getElementById(
-                        "satori-carousel-track"
+                        "hero-track"
                     );
 
-
-                const cards =
+                const originalSlides =
                     Array.from(
-                        document.querySelectorAll(
-                            ".satori-collection-card"
+                        track.querySelectorAll(
+                            ".hero-slide"
                         )
                     );
-
 
                 const dots =
                     Array.from(
                         document.querySelectorAll(
-                            ".satori-carousel-dot"
+                            ".hero-dot"
                         )
                     );
 
 
-                const previousButton =
-                    document.getElementById(
-                        "satori-carousel-prev"
-                    );
-
-
-                const nextButton =
-                    document.getElementById(
-                        "satori-carousel-next"
-                    );
-
-
                 if (
-                    !viewport ||
+                    !slider ||
                     !track ||
-                    !cards.length
+                    originalSlides.length < 2
                 ) {
 
                     return;
@@ -3806,8 +3991,59 @@
                 }
 
 
+                /* =================================================
+                   CLONES
+                   
+                   Creamos:
+                   
+                   ÚLTIMO → BANNER 1 → 2 → 3 → PRIMERO
+                   
+                   Esto permite que el loop sea visualmente
+                   continuo.
+                ================================================== */
+
+                const firstClone =
+                    originalSlides[0].cloneNode(true);
+
+                const lastClone =
+                    originalSlides[
+                        originalSlides.length - 1
+                    ].cloneNode(true);
+
+
+                firstClone.classList.add(
+                    "hero-clone"
+                );
+
+                lastClone.classList.add(
+                    "hero-clone"
+                );
+
+
+                track.appendChild(
+                    firstClone
+                );
+
+                track.insertBefore(
+                    lastClone,
+                    originalSlides[0]
+                );
+
+
+                const slides =
+                    Array.from(
+                        track.querySelectorAll(
+                            ".hero-slide"
+                        )
+                    );
+
+
                 let currentIndex =
-                    0;
+                    1;
+
+
+                let isAnimating =
+                    false;
 
 
                 let touchStartX =
@@ -3818,18 +4054,797 @@
                     0;
 
 
+                let isTouching =
+                    false;
+
+
+                let autoplayTimer =
+                    null;
+
+
+                const duration =
+                    650;
+
+
+                /* =================================================
+                   ACTUALIZAR DOTS
+                ================================================== */
+
+                function updateDots() {
+
+                    let logicalIndex =
+                        currentIndex - 1;
+
+
+                    if (
+                        logicalIndex < 0
+                    ) {
+
+                        logicalIndex =
+                            originalSlides.length - 1;
+
+                    }
+
+
+                    if (
+                        logicalIndex >=
+                        originalSlides.length
+                    ) {
+
+                        logicalIndex =
+                            0;
+
+                    }
+
+
+                    dots.forEach(
+                        function (
+                            dot,
+                            index
+                        ) {
+
+                            const active =
+                                index ===
+                                logicalIndex;
+
+
+                            dot.classList.toggle(
+                                "active",
+                                active
+                            );
+
+
+                            dot.setAttribute(
+                                "aria-current",
+                                active
+                                    ? "true"
+                                    : "false"
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   POSICIONAR
+                ================================================== */
+
+                function updateSlider(
+                    animate = true
+                ) {
+
+                    if (
+                        animate
+                    ) {
+
+                        track.style.transition =
+                            "transform .65s cubic-bezier(.22,.61,.36,1)";
+
+                    } else {
+
+                        track.style.transition =
+                            "none";
+
+                    }
+
+
+                    track.style.transform =
+                        `translate3d(-${currentIndex * 100}vw,0,0)`;
+
+
+                    updateDots();
+
+                }
+
+
+                /* =================================================
+                   IR A SLIDE
+                ================================================== */
+
+                function goTo(
+                    index
+                ) {
+
+                    if (
+                        isAnimating
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    currentIndex =
+                        index;
+
+
+                    updateSlider(
+                        true
+                    );
+
+
+                    isAnimating =
+                        true;
+
+                }
+
+
+                /* =================================================
+                   SIGUIENTE
+                ================================================== */
+
+                function nextSlide() {
+
+                    goTo(
+                        currentIndex + 1
+                    );
+
+                    restartAutoplay();
+
+                }
+
+
+                /* =================================================
+                   ANTERIOR
+                ================================================== */
+
+                function previousSlide() {
+
+                    goTo(
+                        currentIndex - 1
+                    );
+
+                    restartAutoplay();
+
+                }
+
+
+                /* =================================================
+                   TRANSICIÓN TERMINADA
+                   
+                   Aquí hacemos el salto invisible
+                   cuando estamos en un clon.
+                ================================================== */
+
+                track.addEventListener(
+                    "transitionend",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            event.propertyName !==
+                            "transform"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        isAnimating =
+                            false;
+
+
+                        /*
+                         * Estamos en el clon
+                         * del primer banner.
+                         */
+
+                        if (
+                            currentIndex ===
+                            slides.length - 1
+                        ) {
+
+                            currentIndex =
+                                1;
+
+
+                            updateSlider(
+                                false
+                            );
+
+                        }
+
+
+                        /*
+                         * Estamos en el clon
+                         * del último banner.
+                         */
+
+                        if (
+                            currentIndex ===
+                            0
+                        ) {
+
+                            currentIndex =
+                                originalSlides.length;
+
+
+                            updateSlider(
+                                false
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
+                   DOTS
+                ================================================== */
+
+                dots.forEach(
+                    function (
+                        dot
+                    ) {
+
+                        dot.addEventListener(
+                            "click",
+                            function () {
+
+                                if (
+                                    isAnimating
+                                ) {
+
+                                    return;
+
+                                }
+
+
+                                const index =
+                                    Number(
+                                        dot.dataset.slide
+                                    );
+
+
+                                currentIndex =
+                                    index + 1;
+
+
+                                updateSlider(
+                                    true
+                                );
+
+
+                                restartAutoplay();
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =================================================
+                   TOUCH START
+                ================================================== */
+
+                slider.addEventListener(
+                    "touchstart",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            !event.touches.length
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        touchStartX =
+                            event.touches[0].clientX;
+
+
+                        touchStartY =
+                            event.touches[0].clientY;
+
+
+                        isTouching =
+                            true;
+
+
+                        stopAutoplay();
+
+                    },
+                    {
+                        passive:
+                            true
+                    }
+                );
+
+
+                /* =================================================
+                   TOUCH END
+                ================================================== */
+
+                slider.addEventListener(
+                    "touchend",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            !isTouching
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        isTouching =
+                            false;
+
+
+                        if (
+                            !event.changedTouches.length
+                        ) {
+
+                            restartAutoplay();
+
+                            return;
+
+                        }
+
+
+                        const touchEndX =
+                            event.changedTouches[0].clientX;
+
+
+                        const touchEndY =
+                            event.changedTouches[0].clientY;
+
+
+                        const differenceX =
+                            touchStartX -
+                            touchEndX;
+
+
+                        const differenceY =
+                            touchStartY -
+                            touchEndY;
+
+
+                        /*
+                         * Si es principalmente
+                         * vertical, ignoramos.
+                         */
+
+                        if (
+                            Math.abs(
+                                differenceY
+                            ) >
+                            Math.abs(
+                                differenceX
+                            )
+                        ) {
+
+                            restartAutoplay();
+
+                            return;
+
+                        }
+
+
+                        if (
+                            Math.abs(
+                                differenceX
+                            ) < 45
+                        ) {
+
+                            restartAutoplay();
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Swipe izquierda
+                         */
+
+                        if (
+                            differenceX > 0
+                        ) {
+
+                            nextSlide();
+
+                        }
+
+
+                        /*
+                         * Swipe derecha
+                         */
+
+                        else {
+
+                            previousSlide();
+
+                        }
+
+                    },
+                    {
+                        passive:
+                            true
+                    }
+                );
+
+
+                /* =================================================
+                   TECLADO
+                ================================================== */
+
+                document.addEventListener(
+                    "keydown",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            event.key ===
+                            "ArrowRight"
+                        ) {
+
+                            nextSlide();
+
+                        }
+
+
+                        if (
+                            event.key ===
+                            "ArrowLeft"
+                        ) {
+
+                            previousSlide();
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
+                   AUTOPLAY
+                ================================================== */
+
+                function startAutoplay() {
+
+                    stopAutoplay();
+
+
+                    autoplayTimer =
+                        setInterval(
+                            function () {
+
+                                nextSlide();
+
+                            },
+                            5000
+                        );
+
+                }
+
+
+                function stopAutoplay() {
+
+                    if (
+                        autoplayTimer
+                    ) {
+
+                        clearInterval(
+                            autoplayTimer
+                        );
+
+                        autoplayTimer =
+                            null;
+
+                    }
+
+                }
+
+
+                function restartAutoplay() {
+
+                    stopAutoplay();
+
+                    startAutoplay();
+
+                }
+
+
+                /* =================================================
+                   PAUSAR SI NO ESTÁ VISIBLE
+                ================================================== */
+
+                if (
+                    "IntersectionObserver"
+                    in window
+                ) {
+
+                    const observer =
+                        new IntersectionObserver(
+                            function (
+                                entries
+                            ) {
+
+                                entries.forEach(
+                                    function (
+                                        entry
+                                    ) {
+
+                                        if (
+                                            entry.isIntersecting
+                                        ) {
+
+                                            startAutoplay();
+
+                                        } else {
+
+                                            stopAutoplay();
+
+                                        }
+
+                                    }
+                                );
+
+                            },
+                            {
+                                threshold:
+                                    .25
+                            }
+                        );
+
+
+                    observer.observe(
+                        slider
+                    );
+
+                } else {
+
+                    startAutoplay();
+
+                }
+
+
+                /* =================================================
+                   INICIALIZAR
+                ================================================== */
+
+                updateSlider(
+                    false
+                );
+
+            }
+
+        );
+
+    </script>
+
+
+    <!-- =====================================================
+         =====================================================
+         CARRUSEL DE COLECCIONES
+         
+         LOOP INFINITO REAL
+         PC + MOBILE
+         =====================================================
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const viewport =
+                    document.getElementById(
+                        "satori-carousel-viewport"
+                    );
+
+                const track =
+                    document.getElementById(
+                        "satori-carousel-track"
+                    );
+
+                const originalCards =
+                    Array.from(
+                        track.querySelectorAll(
+                            ".satori-collection-card"
+                        )
+                    );
+
+                const dots =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".satori-carousel-dot"
+                        )
+                    );
+
+                const previousButton =
+                    document.getElementById(
+                        "satori-carousel-prev"
+                    );
+
+                const nextButton =
+                    document.getElementById(
+                        "satori-carousel-next"
+                    );
+
+
+                if (
+                    !viewport ||
+                    !track ||
+                    originalCards.length < 2
+                ) {
+
+                    return;
+
+                }
+
+
+                /* =================================================
+                   CREAR CLONES
+                   
+                   [LIMITED] [ANIME] [YOKAI] [SATORII] [LIMITED]
+                   [ANIME] [YOKAI] [SATORII] [LIMITED] [ANIME]
+                   ...
+                   
+                   El usuario nunca llega a un final real.
+                ================================================== */
+
+                const fragmentBefore =
+                    document.createDocumentFragment();
+
+                const fragmentAfter =
+                    document.createDocumentFragment();
+
+
+                originalCards
+                    .slice()
+                    .reverse()
+                    .forEach(
+                        function (
+                            card
+                        ) {
+
+                            const clone =
+                                card.cloneNode(true);
+
+                            clone.classList.add(
+                                "carousel-clone"
+                            );
+
+                            fragmentBefore.appendChild(
+                                clone
+                            );
+
+                        }
+                    );
+
+
+                originalCards.forEach(
+                    function (
+                        card
+                    ) {
+
+                        const clone =
+                            card.cloneNode(true);
+
+                        clone.classList.add(
+                            "carousel-clone"
+                        );
+
+                        fragmentAfter.appendChild(
+                            clone
+                        );
+
+                    }
+                );
+
+
+                track.insertBefore(
+                    fragmentBefore,
+                    track.firstChild
+                );
+
+
+                track.appendChild(
+                    fragmentAfter
+                );
+
+
+                const cards =
+                    Array.from(
+                        track.querySelectorAll(
+                            ".satori-collection-card"
+                        )
+                    );
+
+
+                const originalCount =
+                    originalCards.length;
+
+
+                /*
+                 * Comenzamos en la primera tarjeta
+                 * ORIGINAL, no en el clon.
+                 */
+
+                let currentIndex =
+                    originalCount;
+
+
                 let isAnimating =
                     false;
 
 
+                let touchStartX =
+                    0;
+
+
+                let touchStartY =
+                    0;
+
+
+                let isTouching =
+                    false;
+
+
+                const duration =
+                    650;
+
+
                 /* =================================================
-                   CENTRAR TARJETA
+                   ÍNDICE LÓGICO
                 ================================================== */
 
-                function updateCarousel(
-                    animate = true
-                ) {
+                function getLogicalIndex() {
 
+                    return (
+                        (
+                            currentIndex -
+                            originalCount
+                        ) %
+                        originalCount +
+                        originalCount
+                    ) %
+                    originalCount;
+
+                }
+
+
+                /* =================================================
+                   ACTUALIZAR TARJETAS
+                ================================================== */
+
+                function updateCards() {
 
                     cards.forEach(
                         function (
@@ -3845,6 +4860,18 @@
                         }
                     );
 
+                }
+
+
+                /* =================================================
+                   ACTUALIZAR DOTS
+                ================================================== */
+
+                function updateDots() {
+
+                    const logicalIndex =
+                        getLogicalIndex();
+
 
                     dots.forEach(
                         function (
@@ -3854,11 +4881,26 @@
 
                             dot.classList.toggle(
                                 "active",
-                                index === currentIndex
+                                index === logicalIndex
                             );
 
                         }
                     );
+
+                }
+
+
+                /* =================================================
+                   CENTRAR TARJETA
+                ================================================== */
+
+                function updateCarousel(
+                    animate = true
+                ) {
+
+                    updateCards();
+
+                    updateDots();
 
 
                     const activeCard =
@@ -3878,23 +4920,21 @@
                         viewport.getBoundingClientRect().width;
 
 
-                    const cardLeft =
-                        activeCard.offsetLeft;
-
-
                     const cardWidth =
                         activeCard.getBoundingClientRect().width;
 
 
                     const cardCenter =
-                        cardLeft +
+                        activeCard.offsetLeft +
                         (
-                            cardWidth / 2
+                            cardWidth /
+                            2
                         );
 
 
                     const viewportCenter =
-                        viewportWidth / 2;
+                        viewportWidth /
+                        2;
 
 
                     const translate =
@@ -3903,38 +4943,22 @@
 
 
                     if (
-                        !animate
+                        animate
                     ) {
 
                         track.style.transition =
-                            "none";
+                            "transform .65s cubic-bezier(.22,.61,.36,1)";
 
                     } else {
 
                         track.style.transition =
-                            "transform .65s cubic-bezier(.22,.61,.36,1)";
+                            "none";
 
                     }
 
 
                     track.style.transform =
                         `translate3d(${translate}px,0,0)`;
-
-
-                    if (
-                        !animate
-                    ) {
-
-                        requestAnimationFrame(
-                            function () {
-
-                                track.style.transition =
-                                    "transform .65s cubic-bezier(.22,.61,.36,1)";
-
-                            }
-                        );
-
-                    }
 
                 }
 
@@ -3956,59 +4980,119 @@
                     }
 
 
-                    if (
-                        index < 0
-                    ) {
-
-                        index =
-                            cards.length - 1;
-
-                    }
-
-
-                    if (
-                        index >= cards.length
-                    ) {
-
-                        index =
-                            0;
-
-                    }
-
-
-                    if (
-                        index === currentIndex
-                    ) {
-
-                        updateCarousel();
-
-                        return;
-
-                    }
-
-
                     currentIndex =
                         index;
 
 
-                    updateCarousel();
+                    updateCarousel(
+                        true
+                    );
 
 
                     isAnimating =
                         true;
 
+                }
 
-                    setTimeout(
-                        function () {
 
-                            isAnimating =
-                                false;
+                /* =================================================
+                   SIGUIENTE
+                ================================================== */
 
-                        },
-                        650
+                function nextCollection() {
+
+                    goTo(
+                        currentIndex + 1
                     );
 
                 }
+
+
+                /* =================================================
+                   ANTERIOR
+                ================================================== */
+
+                function previousCollection() {
+
+                    goTo(
+                        currentIndex - 1
+                    );
+
+                }
+
+
+                /* =================================================
+                   TRANSICIÓN TERMINADA
+                   
+                   Aquí ocurre el salto invisible
+                   de los clones hacia las tarjetas reales.
+                ================================================== */
+
+                track.addEventListener(
+                    "transitionend",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            event.propertyName !==
+                            "transform"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        isAnimating =
+                            false;
+
+
+                        /*
+                         * Si estamos en las tarjetas
+                         * clonadas del FINAL.
+                         *
+                         * Volvemos a la copia ORIGINAL.
+                         */
+
+                        if (
+                            currentIndex >=
+                            originalCount * 2
+                        ) {
+
+                            currentIndex -=
+                                originalCount;
+
+
+                            updateCarousel(
+                                false
+                            );
+
+                        }
+
+
+                        /*
+                         * Si estamos en las tarjetas
+                         * clonadas del PRINCIPIO.
+                         */
+
+                        if (
+                            currentIndex <
+                            originalCount
+                        ) {
+
+                            currentIndex +=
+                                originalCount;
+
+
+                            updateCarousel(
+                                false
+                            );
+
+                        }
+
+                    }
+                );
 
 
                 /* =================================================
@@ -4023,9 +5107,7 @@
                         "click",
                         function () {
 
-                            goTo(
-                                currentIndex - 1
-                            );
+                            previousCollection();
 
                         }
                     );
@@ -4045,9 +5127,7 @@
                         "click",
                         function () {
 
-                            goTo(
-                                currentIndex + 1
-                            );
+                            nextCollection();
 
                         }
                     );
@@ -4068,11 +5148,33 @@
                             "click",
                             function () {
 
-                                goTo(
+                                if (
+                                    isAnimating
+                                ) {
+
+                                    return;
+
+                                }
+
+
+                                const logicalIndex =
                                     Number(
                                         dot.dataset.index
-                                    )
+                                    );
+
+
+                                currentIndex =
+                                    originalCount +
+                                    logicalIndex;
+
+
+                                updateCarousel(
+                                    true
                                 );
+
+
+                                isAnimating =
+                                    true;
 
                             }
                         );
@@ -4107,6 +5209,10 @@
                         touchStartY =
                             event.touches[0].clientY;
 
+
+                        isTouching =
+                            true;
+
                     },
                     {
                         passive:
@@ -4124,6 +5230,19 @@
                     function (
                         event
                     ) {
+
+                        if (
+                            !isTouching
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        isTouching =
+                            false;
+
 
                         if (
                             !event.changedTouches.length
@@ -4153,13 +5272,18 @@
 
 
                         /*
-                         * Si el gesto fue principalmente
-                         * vertical, no hacemos nada.
+                         * Evita mover el carrusel
+                         * cuando el usuario simplemente
+                         * está haciendo scroll vertical.
                          */
 
                         if (
-                            Math.abs(differenceY) >
-                            Math.abs(differenceX)
+                            Math.abs(
+                                differenceY
+                            ) >
+                            Math.abs(
+                                differenceX
+                            )
                         ) {
 
                             return;
@@ -4168,12 +5292,13 @@
 
 
                         /*
-                         * Distancia mínima.
+                         * Movimiento mínimo.
                          */
 
                         if (
-                            Math.abs(differenceX) <
-                            45
+                            Math.abs(
+                                differenceX
+                            ) < 45
                         ) {
 
                             return;
@@ -4181,19 +5306,28 @@
                         }
 
 
+                        /*
+                         * IZQUIERDA
+                         * → SIGUIENTE
+                         */
+
                         if (
                             differenceX > 0
                         ) {
 
-                            goTo(
-                                currentIndex + 1
-                            );
+                            nextCollection();
 
-                        } else {
+                        }
 
-                            goTo(
-                                currentIndex - 1
-                            );
+
+                        /*
+                         * DERECHA
+                         * → ANTERIOR
+                         */
+
+                        else {
+
+                            previousCollection();
 
                         }
 
@@ -4255,9 +5389,7 @@
                             "ArrowLeft"
                         ) {
 
-                            goTo(
-                                currentIndex - 1
-                            );
+                            previousCollection();
 
                         }
 
@@ -4267,9 +5399,7 @@
                             "ArrowRight"
                         ) {
 
-                            goTo(
-                                currentIndex + 1
-                            );
+                            nextCollection();
 
                         }
 
@@ -4335,8 +5465,8 @@
                     }
                 );
 
-
             }
+
         );
 
     </script>
