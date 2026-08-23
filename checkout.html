@@ -2200,13 +2200,26 @@
     </footer>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
 
-    <script src="js/products.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
-<script>
+<script
+    src="/satorimode/js/supabase.js"
+></script>
+
+
+<!-- =====================================================
+     PRODUCTOS
+===================================================== -->
+
+<script
+    src="/satorimode/js/products.js"
+></script>
 
     "use strict";
 
@@ -2878,6 +2891,22 @@
         }
     );
 
+    /* =====================================================
+   ACTUALIZACIÓN DE PRECIOS DESDE SUPABASE
+===================================================== */
+
+window.addEventListener(
+    "satorii:products-updated",
+    function () {
+
+        console.log(
+            "SATORII · Productos actualizados, refrescando checkout."
+        );
+
+        renderCheckout();
+
+    }
+);
 </script>
 </body>
 
