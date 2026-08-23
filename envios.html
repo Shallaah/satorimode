@@ -3,12 +3,6 @@
 
 <head>
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="img/logo.webp"
-    >
-
     <meta charset="UTF-8">
 
     <meta
@@ -21,30 +15,60 @@
         content="Envíos SATORII. Conoce nuestros tiempos de preparación, transporte y proceso de despacho."
     >
 
-    <title>Envíos | Satorii</title>
+    <title>Envíos | SATORII</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.webp"
+    >
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
 
+
     <style>
 
         /* =====================================================
            SATORII · ENVÍOS
-           Basado en la estructura de Cambios y Devoluciones
+           Identidad global SATORII
+        ====================================================== */
+
+        :root {
+
+            --satorii-red: #EF0930;
+            --satorii-black: #111111;
+            --satorii-white: #FFFFFF;
+            --satorii-gray: #666666;
+            --satorii-light: #F6F6F6;
+            --satorii-border: #E5E5E5;
+
+        }
+
+
+        /* =====================================================
+           BASE
         ====================================================== */
 
         .shipping-page {
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #fff 0%,
-                    #fafafa 100%
-                );
+            width: 100%;
 
-            color: #111;
+            overflow: hidden;
+
+            background: #fff;
+
+            color:
+                var(--satorii-black);
+
+        }
+
+
+        .shipping-page * {
+
+            box-sizing: border-box;
 
         }
 
@@ -57,24 +81,32 @@
 
             position: relative;
 
-            max-width: 1180px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
-            min-height: 420px;
+            min-height: 500px;
 
-            margin: 0 auto;
+            margin:
+                28px auto 0;
 
             padding:
-                105px
-                40px
-                70px;
-
-            box-sizing: border-box;
+                70px 55px;
 
             overflow: hidden;
 
             display: flex;
 
             align-items: center;
+
+            border-radius: 8px;
+
+            background:
+                var(--satorii-red);
+
+            color: #fff;
 
         }
 
@@ -83,7 +115,7 @@
 
             position: relative;
 
-            z-index: 2;
+            z-index: 3;
 
             max-width: 720px;
 
@@ -92,13 +124,13 @@
 
         .shipping-label {
 
-            display: inline-block;
+            display: block;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
 
-            color: #ff1b1b;
+            color: #fff;
 
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 900;
 
@@ -111,17 +143,18 @@
 
             margin: 0;
 
-            font-size: clamp(
-                52px,
-                7vw,
-                92px
-            );
+            font-size:
+                clamp(
+                    55px,
+                    7vw,
+                    100px
+                );
 
-            line-height: .9;
+            line-height: .78;
 
-            font-weight: 900;
+            font-weight: 950;
 
-            letter-spacing: -5px;
+            letter-spacing: -6px;
 
             text-transform: uppercase;
 
@@ -130,20 +163,31 @@
 
         .shipping-hero h1 span {
 
-            color: #ff1b1b;
+            display: block;
+
+            color: #111;
+
+            font-style: italic;
 
         }
 
 
         .shipping-hero p {
 
-            max-width: 590px;
+            max-width: 570px;
 
-            margin: 25px 0 0;
+            margin:
+                28px 0 0;
 
-            color: #666;
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .92
+                );
 
-            font-size: 14px;
+            font-size: 11px;
 
             line-height: 1.8;
 
@@ -158,13 +202,15 @@
 
             position: absolute;
 
+            z-index: 1;
+
             right: 35px;
 
-            bottom: -45px;
+            bottom: -80px;
 
-            width: 390px;
+            width: 460px;
 
-            height: 390px;
+            height: 460px;
 
             display: flex;
 
@@ -194,13 +240,13 @@
                 Arial,
                 sans-serif;
 
-            font-size: 330px;
+            font-size: 390px;
 
             font-weight: 900;
 
             line-height: 1;
 
-            opacity: .07;
+            opacity: .075;
 
         }
 
@@ -211,47 +257,51 @@
 
             top: 35px;
 
-            right: 5px;
+            right: 15px;
 
-            width: 125px;
+            width: 145px;
 
-            height: 125px;
-
-            background: #ff1b1b;
+            height: 145px;
 
             border-radius: 50%;
 
-            opacity: .12;
+            background: #111;
+
+            opacity: .08;
 
         }
 
 
         /* =====================================================
-           HELP NAV
+           NAVEGACIÓN DE AYUDA
         ====================================================== */
 
         .shipping-nav {
 
-            max-width: 1120px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                0
-                30px
-                35px;
+                14px 0 0;
 
             display: grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 12px;
+            gap: 10px;
 
         }
 
 
         .shipping-nav-card {
+
+            min-height: 70px;
 
             display: flex;
 
@@ -259,33 +309,20 @@
 
             gap: 13px;
 
-            min-height: 78px;
-
             padding:
-                15px
-                18px;
+                14px 17px;
 
-            box-sizing: border-box;
+            border:
+                1px solid
+                var(--satorii-border);
+
+            border-radius: 6px;
 
             background: #fff;
 
-            border:
-                1px solid #e7e7e7;
-
-            border-radius: 12px;
-
-            color: #222;
+            color: #111;
 
             text-decoration: none;
-
-            box-shadow:
-                0 8px 25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .035
-                );
 
             transition:
                 transform .2s ease,
@@ -301,15 +338,15 @@
                 translateY(-3px);
 
             border-color:
-                #ff1b1b;
+                var(--satorii-red);
 
             box-shadow:
-                0 12px 30px
+                0 10px 30px
                 rgba(
                     0,
                     0,
                     0,
-                    .07
+                    .06
                 );
 
         }
@@ -319,30 +356,32 @@
 
             background: #111;
 
-            color: #fff;
-
             border-color: #111;
+
+            color: #fff;
 
         }
 
 
         .shipping-nav-icon {
 
-            width: 40px;
+            width: 38px;
 
-            height: 40px;
+            height: 38px;
 
-            flex: 0 0 40px;
+            flex:
+                0 0 38px;
 
             display: grid;
 
             place-items: center;
 
-            background: #f5f5f5;
+            border-radius: 5px;
 
-            border-radius: 10px;
+            background:
+                var(--satorii-light);
 
-            font-size: 18px;
+            font-size: 16px;
 
         }
 
@@ -350,14 +389,15 @@
         .shipping-nav-card.active
         .shipping-nav-icon {
 
-            background: #ff1b1b;
+            background:
+                var(--satorii-red);
 
         }
 
 
         .shipping-nav-text {
 
-            font-size: 10px;
+            font-size: 8px;
 
             font-weight: 900;
 
@@ -369,19 +409,21 @@
 
 
         /* =====================================================
-           CONTENT
+           CONTENIDO
         ====================================================== */
 
         .shipping-content-wrap {
 
-            max-width: 1120px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                35px
-                30px
-                100px;
+                90px 0 90px;
 
         }
 
@@ -390,48 +432,60 @@
 
             max-width: 760px;
 
-            margin-bottom: 38px;
+            margin-bottom: 45px;
 
         }
 
 
-        .shipping-intro span {
+        .shipping-intro-label {
 
             display: block;
 
             margin-bottom: 12px;
 
-            color: #999;
+            color:
+                var(--satorii-red);
 
             font-size: 9px;
 
             font-weight: 900;
 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
 
         }
 
 
         .shipping-intro h2 {
 
-            margin: 0 0 14px;
+            margin:
+                0 0 15px;
 
-            font-size: 30px;
+            font-size:
+                clamp(
+                    32px,
+                    4vw,
+                    48px
+                );
 
-            line-height: 1.05;
+            line-height: .95;
 
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
+
+            font-weight: 950;
 
         }
 
 
         .shipping-intro p {
 
+            max-width: 680px;
+
             margin: 0;
 
-            color: #666;
+            color:
+                var(--satorii-gray);
 
-            font-size: 13px;
+            font-size: 11px;
 
             line-height: 1.8;
 
@@ -439,7 +493,7 @@
 
 
         /* =====================================================
-           SHIPPING PROCESS
+           PROCESO DE ENVÍO
         ====================================================== */
 
         .shipping-process {
@@ -449,31 +503,50 @@
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 12px;
+            gap: 10px;
 
-            margin-bottom: 55px;
+            margin-bottom: 45px;
 
         }
 
 
         .shipping-step {
 
-            padding: 26px;
+            min-height: 250px;
+
+            padding: 24px;
 
             background: #fff;
 
             border:
-                1px solid #e8e8e8;
+                1px solid
+                var(--satorii-border);
 
-            border-radius: 14px;
+            border-radius: 6px;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .shipping-step:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #d8d8d8;
 
             box-shadow:
-                0 8px 30px
+                0 12px 30px
                 rgba(
                     0,
                     0,
                     0,
-                    .035
+                    .055
                 );
 
         }
@@ -487,11 +560,12 @@
 
             justify-content: space-between;
 
-            margin-bottom: 20px;
+            margin-bottom: 22px;
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
@@ -513,24 +587,27 @@
             margin-bottom: 18px;
 
             border:
-                1px solid #eee;
+                1px solid #e5e5e5;
 
             border-radius: 50%;
 
-            font-size: 19px;
+            font-size: 18px;
 
         }
 
 
         .shipping-step h2 {
 
-            margin: 0 0 10px;
+            margin:
+                0 0 10px;
 
-            font-size: 21px;
+            font-size: 19px;
 
-            line-height: 1.15;
+            line-height: 1.1;
 
-            letter-spacing: -.5px;
+            letter-spacing: -.6px;
+
+            font-weight: 900;
 
         }
 
@@ -539,11 +616,21 @@
 
             margin: 0;
 
-            color: #666;
+            color:
+                var(--satorii-gray);
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.8;
+
+        }
+
+
+        .shipping-step strong {
+
+            color: #111;
+
+            font-weight: 900;
 
         }
 
@@ -554,34 +641,63 @@
 
         .shipping-card {
 
-            padding: 28px;
+            margin-bottom: 10px;
 
-            margin-bottom: 16px;
+            padding: 28px;
 
             background: #fff;
 
             border:
-                1px solid #e8e8e8;
+                1px solid
+                var(--satorii-border);
 
-            border-radius: 14px;
+            border-radius: 6px;
+
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .shipping-card:hover {
+
+            border-color:
+                #d8d8d8;
 
             box-shadow:
-                0 8px 30px
+                0 10px 30px
                 rgba(
                     0,
                     0,
                     0,
-                    .035
+                    .04
                 );
 
         }
 
 
-        .shipping-card.full {
+        .shipping-card.time {
 
-            width: 100%;
+            border-top:
+                3px solid #111;
 
-            box-sizing: border-box;
+        }
+
+
+        .shipping-card.important {
+
+            border-top:
+                3px solid
+                var(--satorii-red);
+
+        }
+
+
+        .shipping-card.info {
+
+            border-top:
+                3px solid #35b96b;
 
         }
 
@@ -599,11 +715,13 @@
         }
 
 
-        .shipping-card-number span:first-child {
+        .shipping-card-number
+        span:first-child {
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
@@ -614,62 +732,76 @@
 
         .shipping-card-icon {
 
-            width: 42px;
+            width: 40px;
 
-            height: 42px;
+            height: 40px;
 
             display: grid;
 
             place-items: center;
 
             border:
-                1px solid #eee;
+                1px solid #e5e5e5;
 
             border-radius: 50%;
 
-            font-size: 19px;
+            font-size: 18px;
 
         }
 
 
         .shipping-card h2 {
 
-            margin: 0 0 12px;
+            margin:
+                0 0 12px;
 
-            font-size: 21px;
+            font-size: 20px;
 
-            line-height: 1.15;
+            line-height: 1.1;
 
-            letter-spacing: -.5px;
+            letter-spacing: -.6px;
+
+            font-weight: 900;
 
         }
 
 
         .shipping-card p {
 
-            margin: 0 0 11px;
+            max-width: 850px;
 
-            color: #666;
+            margin:
+                0 0 11px;
 
-            font-size: 11px;
+            color:
+                var(--satorii-gray);
+
+            font-size: 10px;
 
             line-height: 1.8;
 
         }
 
 
+        .shipping-card p:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
         .shipping-card ul {
 
-            margin:
-                12px
-                0
-                0;
+            max-width: 850px;
 
-            padding-left: 19px;
+            margin:
+                15px 0 0;
+
+            padding-left: 18px;
 
             color: #555;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.8;
 
@@ -678,48 +810,33 @@
 
         .shipping-card li {
 
-            margin-bottom: 5px;
+            margin-bottom: 6px;
 
         }
 
 
-        .shipping-card.time {
+        .shipping-card strong {
 
-            border-top:
-                3px solid #111;
+            color: #111;
 
-        }
-
-
-        .shipping-card.important {
-
-            border-top:
-                3px solid #ff1b1b;
-
-        }
-
-
-        .shipping-card.info {
-
-            border-top:
-                3px solid #35b96b;
+            font-weight: 900;
 
         }
 
 
         /* =====================================================
-           IMPORTANT INFORMATION
+           INFORMACIÓN DESTACADA
         ====================================================== */
 
         .shipping-important {
 
-            margin-top: 16px;
+            margin-top: 10px;
 
-            padding: 28px;
+            padding: 30px;
+
+            border-radius: 6px;
 
             background: #111;
-
-            border-radius: 14px;
 
             color: #fff;
 
@@ -728,39 +845,45 @@
 
         .shipping-important-label {
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
 
         }
 
 
         .shipping-important h2 {
 
-            margin: 0 0 12px;
+            margin:
+                0 0 12px;
 
             font-size: 24px;
 
+            line-height: 1;
+
             letter-spacing: -1px;
+
+            font-weight: 900;
 
         }
 
 
         .shipping-important p {
 
-            margin: 0;
+            max-width: 820px;
 
-            max-width: 800px;
+            margin: 0;
 
             color: #aaa;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.8;
 
@@ -770,15 +893,13 @@
         .shipping-important ul {
 
             margin:
-                18px
-                0
-                0;
+                18px 0 0;
 
-            padding-left: 19px;
+            padding-left: 18px;
 
             color: #aaa;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.8;
 
@@ -787,27 +908,20 @@
 
         .shipping-important li {
 
-            margin-bottom: 8px;
+            margin-bottom: 7px;
 
         }
 
 
         /* =====================================================
-           CONTACT
+           CONTACTO
         ====================================================== */
 
         .shipping-contact {
 
-            margin-top: 16px;
+            margin-top: 10px;
 
-            padding: 28px;
-
-            background: #fff;
-
-            border:
-                1px solid #e8e8e8;
-
-            border-radius: 14px;
+            padding: 26px;
 
             display: flex;
 
@@ -817,14 +931,29 @@
 
             gap: 25px;
 
+            border:
+                1px solid
+                var(--satorii-border);
+
+            border-radius: 6px;
+
+            background: #fff;
+
         }
 
 
         .shipping-contact h2 {
 
-            margin: 0 0 8px;
+            margin:
+                0 0 8px;
 
             font-size: 20px;
+
+            line-height: 1.1;
+
+            letter-spacing: -.5px;
+
+            font-weight: 900;
 
         }
 
@@ -833,9 +962,10 @@
 
             margin: 0;
 
-            color: #666;
+            color:
+                var(--satorii-gray);
 
-            font-size: 11px;
+            font-size: 9px;
 
             line-height: 1.7;
 
@@ -844,32 +974,39 @@
 
         .shipping-contact a {
 
+            min-height: 42px;
+
             display: inline-flex;
 
             align-items: center;
 
-            gap: 8px;
+            justify-content: center;
 
             padding:
-                12px
-                18px;
+                0 20px;
 
-            background: #ff1b1b;
+            background:
+                var(--satorii-red);
 
             color: #fff;
 
-            border-radius: 999px;
+            border-radius: 0;
 
-            font-size: 10px;
+            font-size: 8px;
 
             font-weight: 900;
 
+            letter-spacing: 1px;
+
             text-decoration: none;
+
+            text-transform: uppercase;
 
             white-space: nowrap;
 
             transition:
-                transform .2s ease;
+                transform .2s ease,
+                background .2s ease;
 
         }
 
@@ -879,14 +1016,16 @@
             transform:
                 translateY(-2px);
 
+            background: #111;
+
         }
 
 
         /* =====================================================
-           RESPONSIVE
+           TABLET
         ====================================================== */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
 
             .shipping-nav {
 
@@ -908,8 +1047,6 @@
 
                 right: -80px;
 
-                opacity: .8;
-
                 transform:
                     scale(.85);
 
@@ -918,42 +1055,66 @@
         }
 
 
-        @media (max-width: 600px) {
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
 
             .shipping-hero {
 
-                min-height: 400px;
+                width:
+                    calc(100% - 24px);
+
+                min-height: 440px;
+
+                margin-top: 18px;
 
                 padding:
-                    90px
-                    22px
-                    60px;
+                    50px 25px 60px;
+
+                border-radius: 7px;
 
             }
 
 
             .shipping-hero h1 {
 
-                font-size: 48px;
+                font-size: 53px;
 
-                letter-spacing: -3px;
+                letter-spacing: -4px;
 
             }
 
 
             .shipping-hero p {
 
-                font-size: 12px;
+                max-width: 330px;
+
+                font-size: 10px;
+
+            }
+
+
+            .shipping-kanji {
+
+                right: -150px;
+
+                bottom: -70px;
+
+                transform:
+                    scale(.70);
 
             }
 
 
             .shipping-nav {
 
+                width:
+                    calc(100% - 30px);
+
                 padding:
-                    0
-                    16px
-                    25px;
+                    12px 0 0;
 
                 grid-template-columns: 1fr;
 
@@ -962,10 +1123,27 @@
 
             .shipping-content-wrap {
 
+                width:
+                    calc(100% - 30px);
+
                 padding:
-                    25px
-                    16px
-                    70px;
+                    65px 0 65px;
+
+            }
+
+
+            .shipping-intro {
+
+                margin-bottom: 35px;
+
+            }
+
+
+            .shipping-intro h2 {
+
+                font-size: 34px;
+
+                letter-spacing: -2px;
 
             }
 
@@ -973,6 +1151,19 @@
             .shipping-process {
 
                 grid-template-columns: 1fr;
+
+                gap: 8px;
+
+                margin-bottom: 35px;
+
+            }
+
+
+            .shipping-step {
+
+                min-height: auto;
+
+                padding: 22px;
 
             }
 
@@ -984,11 +1175,36 @@
             }
 
 
+            .shipping-card h2 {
+
+                font-size: 19px;
+
+            }
+
+
+            .shipping-important {
+
+                padding: 23px;
+
+            }
+
+
+            .shipping-important h2 {
+
+                font-size: 21px;
+
+            }
+
+
             .shipping-contact {
 
-                align-items: flex-start;
+                align-items:
+                    flex-start;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
+
+                padding: 22px;
 
             }
 
@@ -997,19 +1213,23 @@
 
                 width: 100%;
 
-                justify-content: center;
-
             }
 
+        }
 
-            .shipping-kanji {
 
-                right: -145px;
+        /* =====================================================
+           REDUCIR ANIMACIONES
+        ====================================================== */
 
-                bottom: -35px;
+        @media (prefers-reduced-motion: reduce) {
 
-                transform:
-                    scale(.72);
+            .shipping-step,
+            .shipping-card,
+            .shipping-nav-card,
+            .shipping-contact a {
+
+                transition: none !important;
 
             }
 
@@ -1025,7 +1245,7 @@
 
     <!-- =====================================================
          HEADER GLOBAL
-    ====================================================== -->
+    ===================================================== -->
 
     <div id="satori-header"></div>
 
@@ -1039,10 +1259,21 @@
 
         <section class="shipping-hero">
 
-            <div class="shipping-hero-content">
 
-                <span class="shipping-label">
+            <div
+                class="
+                    shipping-hero-content
+                "
+            >
+
+                <span
+                    class="
+                        shipping-label
+                    "
+                >
+
                     SATORII · AYUDA
+
                 </span>
 
 
@@ -1069,40 +1300,72 @@
             </div>
 
 
-            <!-- KANJI -->
+            <!-- =================================================
+                 KANJI
+            ================================================== -->
 
-            <div class="shipping-kanji">
+            <div
+                class="
+                    shipping-kanji
+                "
+                aria-hidden="true"
+            >
 
                 <span>
                     送
                 </span>
 
-                <div class="shipping-kanji-circle"></div>
+
+                <div
+                    class="
+                        shipping-kanji-circle
+                    "
+                ></div>
 
             </div>
 
-        </section>
 
+        </section>
 
 
         <!-- =================================================
              NAVEGACIÓN DE AYUDA
         ================================================== -->
 
-        <nav class="shipping-nav">
+        <nav
+            class="
+                shipping-nav
+            "
+            aria-label="
+                Navegación de ayuda
+            "
+        >
 
 
             <a
                 href="cambios-y-devoluciones.html"
-                class="shipping-nav-card"
+                class="
+                    shipping-nav-card
+                "
             >
 
-                <span class="shipping-nav-icon">
+                <span
+                    class="
+                        shipping-nav-icon
+                    "
+                >
                     🔄
                 </span>
 
-                <span class="shipping-nav-text">
+
+                <span
+                    class="
+                        shipping-nav-text
+                    "
+                >
+
                     Cambios y devoluciones
+
                 </span>
 
             </a>
@@ -1110,15 +1373,28 @@
 
             <a
                 href="preguntas-frecuentes.html"
-                class="shipping-nav-card"
+                class="
+                    shipping-nav-card
+                "
             >
 
-                <span class="shipping-nav-icon">
+                <span
+                    class="
+                        shipping-nav-icon
+                    "
+                >
                     ❓
                 </span>
 
-                <span class="shipping-nav-text">
+
+                <span
+                    class="
+                        shipping-nav-text
+                    "
+                >
+
                     Preguntas frecuentes
+
                 </span>
 
             </a>
@@ -1126,15 +1402,29 @@
 
             <a
                 href="envios.html"
-                class="shipping-nav-card active"
+                class="
+                    shipping-nav-card
+                    active
+                "
             >
 
-                <span class="shipping-nav-icon">
+                <span
+                    class="
+                        shipping-nav-icon
+                    "
+                >
                     🚚
                 </span>
 
-                <span class="shipping-nav-text">
+
+                <span
+                    class="
+                        shipping-nav-text
+                    "
+                >
+
                     Envíos
+
                 </span>
 
             </a>
@@ -1142,15 +1432,28 @@
 
             <a
                 href="guia-tallas.html"
-                class="shipping-nav-card"
+                class="
+                    shipping-nav-card
+                "
             >
 
-                <span class="shipping-nav-icon">
+                <span
+                    class="
+                        shipping-nav-icon
+                    "
+                >
                     📏
                 </span>
 
-                <span class="shipping-nav-text">
+
+                <span
+                    class="
+                        shipping-nav-text
+                    "
+                >
+
                     Guía de tallas
+
                 </span>
 
             </a>
@@ -1159,23 +1462,38 @@
         </nav>
 
 
-
         <!-- =================================================
              CONTENIDO
         ================================================== -->
 
-        <section class="shipping-content-wrap">
+        <section
+            class="
+                shipping-content-wrap
+            "
+        >
 
 
-            <div class="shipping-intro">
+            <div
+                class="
+                    shipping-intro
+                "
+            >
 
-                <span>
+                <span
+                    class="
+                        shipping-intro-label
+                    "
+                >
+
                     INFORMACIÓN DE ENVÍOS
+
                 </span>
 
 
                 <h2>
-                    Tu pedido desde Satorii a tus manos.
+
+                    TU PEDIDO DESDE SATORII A TUS MANOS.
+
                 </h2>
 
 
@@ -1191,19 +1509,30 @@
             </div>
 
 
-
             <!-- =================================================
                  PROCESO DE ENVÍO
             ================================================== -->
 
-            <div class="shipping-process">
+            <div
+                class="
+                    shipping-process
+                "
+            >
 
 
                 <!-- 01 -->
 
-                <article class="shipping-step">
+                <article
+                    class="
+                        shipping-step
+                    "
+                >
 
-                    <div class="shipping-step-number">
+                    <div
+                        class="
+                            shipping-step-number
+                        "
+                    >
 
                         <span>
                             01 / PEDIDO
@@ -1212,7 +1541,11 @@
                     </div>
 
 
-                    <div class="shipping-step-icon">
+                    <div
+                        class="
+                            shipping-step-icon
+                        "
+                    >
                         🛒
                     </div>
 
@@ -1233,12 +1566,19 @@
                 </article>
 
 
-
                 <!-- 02 -->
 
-                <article class="shipping-step">
+                <article
+                    class="
+                        shipping-step
+                    "
+                >
 
-                    <div class="shipping-step-number">
+                    <div
+                        class="
+                            shipping-step-number
+                        "
+                    >
 
                         <span>
                             02 / PREPARACIÓN
@@ -1247,7 +1587,11 @@
                     </div>
 
 
-                    <div class="shipping-step-icon">
+                    <div
+                        class="
+                            shipping-step-icon
+                        "
+                    >
                         📦
                     </div>
 
@@ -1260,7 +1604,9 @@
                     <p>
 
                         Normalmente demoramos entre
-                        <strong>4 a 7 días hábiles</strong>
+                        <strong>
+                            4 a 7 días hábiles
+                        </strong>
                         en preparar el pedido.
 
                     </p>
@@ -1268,12 +1614,19 @@
                 </article>
 
 
-
                 <!-- 03 -->
 
-                <article class="shipping-step">
+                <article
+                    class="
+                        shipping-step
+                    "
+                >
 
-                    <div class="shipping-step-number">
+                    <div
+                        class="
+                            shipping-step-number
+                        "
+                    >
 
                         <span>
                             03 / TRANSPORTE
@@ -1282,7 +1635,11 @@
                     </div>
 
 
-                    <div class="shipping-step-icon">
+                    <div
+                        class="
+                            shipping-step-icon
+                        "
+                    >
                         🚚
                     </div>
 
@@ -1295,7 +1652,9 @@
                     <p>
 
                         El transporte generalmente demora entre
-                        <strong>1 a 4 días hábiles</strong>,
+                        <strong>
+                            1 a 4 días hábiles
+                        </strong>,
                         dependiendo del destino y del transporte
                         seleccionado.
 
@@ -1304,12 +1663,19 @@
                 </article>
 
 
-
                 <!-- 04 -->
 
-                <article class="shipping-step">
+                <article
+                    class="
+                        shipping-step
+                    "
+                >
 
-                    <div class="shipping-step-number">
+                    <div
+                        class="
+                            shipping-step-number
+                        "
+                    >
 
                         <span>
                             04 / ENTREGA
@@ -1318,7 +1684,11 @@
                     </div>
 
 
-                    <div class="shipping-step-icon">
+                    <div
+                        class="
+                            shipping-step-icon
+                        "
+                    >
                         🏠
                     </div>
 
@@ -1342,20 +1712,33 @@
             </div>
 
 
-
             <!-- =================================================
                  01 / TIEMPOS
             ================================================== -->
 
-            <article class="shipping-card time">
+            <article
+                class="
+                    shipping-card
+                    time
+                "
+            >
 
-                <div class="shipping-card-number">
+                <div
+                    class="
+                        shipping-card-number
+                    "
+                >
 
                     <span>
                         01 / TIEMPOS DE ENVÍO
                     </span>
 
-                    <span class="shipping-card-icon">
+
+                    <span
+                        class="
+                            shipping-card-icon
+                        "
+                    >
                         ⏱️
                     </span>
 
@@ -1415,20 +1798,33 @@
             </article>
 
 
-
             <!-- =================================================
                  02 / DESPACHO
             ================================================== -->
 
-            <article class="shipping-card info">
+            <article
+                class="
+                    shipping-card
+                    info
+                "
+            >
 
-                <div class="shipping-card-number">
+                <div
+                    class="
+                        shipping-card-number
+                    "
+                >
 
                     <span>
                         02 / DESPACHO
                     </span>
 
-                    <span class="shipping-card-icon">
+
+                    <span
+                        class="
+                            shipping-card-icon
+                        "
+                    >
                         📦
                     </span>
 
@@ -1459,20 +1855,32 @@
             </article>
 
 
-
             <!-- =================================================
                  03 / SEGUIMIENTO
             ================================================== -->
 
-            <article class="shipping-card">
+            <article
+                class="
+                    shipping-card
+                "
+            >
 
-                <div class="shipping-card-number">
+                <div
+                    class="
+                        shipping-card-number
+                    "
+                >
 
                     <span>
                         03 / SEGUIMIENTO
                     </span>
 
-                    <span class="shipping-card-icon">
+
+                    <span
+                        class="
+                            shipping-card-icon
+                        "
+                    >
                         🔎
                     </span>
 
@@ -1503,20 +1911,33 @@
             </article>
 
 
-
             <!-- =================================================
                  04 / IMPORTANTE
             ================================================== -->
 
-            <article class="shipping-card important">
+            <article
+                class="
+                    shipping-card
+                    important
+                "
+            >
 
-                <div class="shipping-card-number">
+                <div
+                    class="
+                        shipping-card-number
+                    "
+                >
 
                     <span>
                         04 / IMPORTANTE SABER
                     </span>
 
-                    <span class="shipping-card-icon">
+
+                    <span
+                        class="
+                            shipping-card-icon
+                        "
+                    >
                         💡
                     </span>
 
@@ -1548,21 +1969,33 @@
             </article>
 
 
-
             <!-- =================================================
                  INFORMACIÓN DESTACADA
             ================================================== -->
 
-            <div class="shipping-important">
+            <div
+                class="
+                    shipping-important
+                "
+            >
 
 
-                <div class="shipping-important-label">
+                <div
+                    class="
+                        shipping-important-label
+                    "
+                >
+
                     INFORMACIÓN IMPORTANTE
+
                 </div>
 
 
                 <h2>
-                    Queremos que recibas tu pedido sin complicaciones. 🖤
+
+                    Queremos que recibas tu pedido
+                    sin complicaciones. 🖤
+
                 </h2>
 
 
@@ -1579,39 +2012,51 @@
                 <ul>
 
                     <li>
+
                         Revisa siempre los tiempos mostrados
                         antes de finalizar tu compra.
+
                     </li>
 
 
                     <li>
+
                         El carrito refleja las opciones de envío
                         disponibles para tu pedido.
+
                     </li>
 
 
                     <li>
+
                         Los tiempos de transporte pueden variar
                         según el destino.
+
                     </li>
 
 
                     <li>
+
                         Si existe algún imprevisto que retrase
                         tu pedido, te avisaremos.
+
                     </li>
 
                 </ul>
 
-            </div>
 
+            </div>
 
 
             <!-- =================================================
                  CONTACTO
             ================================================== -->
 
-            <div class="shipping-contact">
+            <div
+                class="
+                    shipping-contact
+                "
+            >
 
 
                 <div>
@@ -1637,29 +2082,32 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    ◎ @satorimode
+
+                    INSTAGRAM
+                    &nbsp; →
+
                 </a>
+
 
             </div>
 
 
         </section>
 
-    </main>
 
+    </main>
 
 
     <!-- =====================================================
          FOOTER GLOBAL
-    ====================================================== -->
+    ===================================================== -->
 
     <div id="satori-footer"></div>
 
 
-
     <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+         JAVASCRIPT GLOBAL
+    ===================================================== -->
 
     <script src="js/main.js"></script>
 
