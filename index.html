@@ -14,6 +14,7 @@
         media="(min-width: 769px)"
     >
 
+
     <!-- =====================================================
          PRELOAD — BANNER MOBILE
     ====================================================== -->
@@ -24,6 +25,7 @@
         href="img/banner-01-mobile.webp"
         media="(max-width: 768px)"
     >
+
 
     <!-- =====================================================
          CONFIGURACIÓN
@@ -102,7 +104,7 @@
 
 
     <!-- =====================================================
-         SATORII INDEX
+         CSS INDEX SATORII
     ====================================================== -->
 
     <style>
@@ -1155,7 +1157,7 @@
                 8px;
 
             margin:
-                0 0 0;
+                0;
 
         }
 
@@ -1225,7 +1227,7 @@
 
 
         /* =====================================================
-           DOTS
+           DOTS CARRUSEL
         ====================================================== */
 
         .satori-carousel-dots {
@@ -1350,7 +1352,10 @@
                 grid;
 
             grid-template-columns:
-                repeat(4, 1fr);
+                repeat(
+                    4,
+                    1fr
+                );
 
             gap:
                 18px;
@@ -1519,262 +1524,7 @@
 
 
         /* =====================================================
-           =====================================================
-           IDENTIDAD
-           =====================================================
-        ====================================================== */
-
-        .satori-story {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            min-height:
-                570px;
-
-        }
-
-
-        .satori-story-visual {
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                #090909;
-
-            color:
-                #fff;
-
-        }
-
-
-        .satori-story-visual::before {
-
-            content:
-                "祭";
-
-            position:
-                absolute;
-
-            left:
-                50%;
-
-            top:
-                50%;
-
-            transform:
-                translate(
-                    -50%,
-                    -50%
-                );
-
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
-
-            font-size:
-                620px;
-
-            line-height:
-                .6;
-
-            font-weight:
-                900;
-
-            color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .025
-                );
-
-        }
-
-
-        .satori-story-visual::after {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                230px;
-
-            height:
-                230px;
-
-            border:
-                1px solid
-                rgba(
-                    239,
-                    9,
-                    48,
-                    .5
-                );
-
-            transform:
-                rotate(45deg);
-
-        }
-
-
-        .satori-story-logo {
-
-            position:
-                relative;
-
-            z-index:
-                3;
-
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
-
-            font-size:
-                clamp(
-                    80px,
-                    10vw,
-                    160px
-                );
-
-            line-height:
-                .8;
-
-            font-weight:
-                900;
-
-            letter-spacing:
-                -7px;
-
-        }
-
-
-        .satori-story-copy {
-
-            padding:
-                80px;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-
-            background:
-                #f2f2f0;
-
-        }
-
-
-        .satori-story-copy h2 {
-
-            margin:
-                10px 0 22px;
-
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
-
-            font-size:
-                clamp(
-                    55px,
-                    6vw,
-                    90px
-                );
-
-            line-height:
-                .78;
-
-            font-weight:
-                800;
-
-        }
-
-
-        .satori-story-copy h2 span {
-
-            color:
-                var(--satori-red);
-
-        }
-
-
-        .satori-story-copy p {
-
-            max-width:
-                470px;
-
-            margin:
-                0 0 24px;
-
-            color:
-                #666;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                12px;
-
-            line-height:
-                1.8;
-
-        }
-
-
-        .satori-story-copy a {
-
-            width:
-                fit-content;
-
-            color:
-                var(--satori-red);
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                9px;
-
-            font-weight:
-                800;
-
-        }
-
-
-        /* =====================================================
-           =====================================================
            PACK
-           =====================================================
         ====================================================== */
 
         .satori-pack-new {
@@ -2027,8 +1777,7 @@
                 rotate(5deg);
 
             border:
-                1px solid
-                #333;
+                1px solid #333;
 
             box-shadow:
                 25px 25px 0
@@ -2078,23 +1827,10 @@
             .satori-products-grid {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
-
-            }
-
-
-            .satori-story {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .satori-story-visual {
-
-                min-height:
-                    400px;
+                    repeat(
+                        2,
+                        1fr
+                    );
 
             }
 
@@ -2110,7 +1846,7 @@
 
             /* =================================================
                BANNER
-            ================================================= */
+            ================================================== */
 
             .hero-slider {
 
@@ -2149,19 +1885,21 @@
 
             /* =================================================
                CONTENEDORES
-            ================================================= */
+            ================================================== */
 
             .satori-container {
 
                 width:
-                    calc(100% - 20px);
+                    calc(
+                        100% - 20px
+                    );
 
             }
 
 
             /* =================================================
                COLECCIONES
-            ================================================= */
+            ================================================== */
 
             .satori-collections {
 
@@ -2185,7 +1923,9 @@
             .satori-collections-header {
 
                 width:
-                    calc(100% - 36px);
+                    calc(
+                        100% - 36px
+                    );
 
                 margin:
                     0 auto 24px;
@@ -2228,9 +1968,7 @@
 
             /* =================================================
                CARRUSEL MOBILE
-               
-               SIN FLECHAS
-            ================================================= */
+            ================================================== */
 
             .satori-carousel {
 
@@ -2267,11 +2005,6 @@
 
             }
 
-
-            /*
-             * La tarjeta central ocupa el espacio principal,
-             * dejando visibles las tarjetas vecinas.
-             */
 
             .satori-collection-card {
 
@@ -2373,9 +2106,9 @@
             }
 
 
-            /*
-             * LAS FLECHAS NO EXISTEN EN TELÉFONO.
-             */
+            /* =================================================
+               FLECHAS OCULTAS EN MOBILE
+            ================================================== */
 
             .satori-carousel-controls {
 
@@ -2387,7 +2120,7 @@
 
             /* =================================================
                DOTS
-            ================================================= */
+            ================================================== */
 
             .satori-carousel-dots {
 
@@ -2399,7 +2132,7 @@
 
             /* =================================================
                NEW DROP
-            ================================================= */
+            ================================================== */
 
             .satori-new-drop {
 
@@ -2420,7 +2153,10 @@
             .satori-products-grid {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(
+                        2,
+                        1fr
+                    );
 
                 gap:
                     28px 9px;
@@ -2453,96 +2189,15 @@
 
 
             /* =================================================
-               STORY
-            ================================================= */
-
-            .satori-story {
-
-                display:
-                    flex;
-
-                flex-direction:
-                    column;
-
-            }
-
-
-            .satori-story-visual {
-
-                min-height:
-                    280px;
-
-            }
-
-
-            .satori-story-visual::before {
-
-                font-size:
-                    360px;
-
-            }
-
-
-            .satori-story-visual::after {
-
-                width:
-                    150px;
-
-                height:
-                    150px;
-
-            }
-
-
-            .satori-story-logo {
-
-                font-size:
-                    82px;
-
-                letter-spacing:
-                    -5px;
-
-            }
-
-
-            .satori-story-copy {
-
-                padding:
-                    52px 22px 58px;
-
-            }
-
-
-            .satori-story-copy h2 {
-
-                margin:
-                    9px 0 18px;
-
-                font-size:
-                    55px;
-
-            }
-
-
-            .satori-story-copy p {
-
-                font-size:
-                    10px;
-
-                line-height:
-                    1.75;
-
-            }
-
-
-            /* =================================================
                PACK
-            ================================================= */
+            ================================================== */
 
             .satori-pack-new {
 
                 width:
-                    calc(100% - 20px);
+                    calc(
+                        100% - 20px
+                    );
 
                 min-height:
                     430px;
@@ -2612,12 +2267,14 @@
 
             /* =================================================
                RECOMENDACIONES
-            ================================================= */
+            ================================================== */
 
             .recommendations {
 
                 width:
-                    calc(100% - 20px);
+                    calc(
+                        100% - 20px
+                    );
 
                 margin:
                     0 auto 70px;
@@ -2770,11 +2427,12 @@
 
                 </article>
 
-
             </div>
 
 
-            <!-- DOTS -->
+            <!-- =================================================
+                 DOTS BANNER
+            ================================================== -->
 
             <div
                 class="hero-dots"
@@ -2838,23 +2496,30 @@
                     <h2
                         class="satori-heading"
                     >
+
                         NUESTRAS
+
                         <span>
                             COLECCIONES
                         </span>
+
                     </h2>
 
 
                     <p>
+
                         Anime, folklore japonés y diseños
                         originales. Encuentra la colección
                         que más representa tu estilo.
+
                     </p>
 
                 </div>
 
 
-                <!-- CARRUSEL -->
+                <!-- =================================================
+                     CARRUSEL
+                ================================================== -->
 
                 <div
                     class="satori-carousel"
@@ -2871,7 +2536,9 @@
                         >
 
 
-                            <!-- ANIME -->
+                            <!-- =================================================
+                                 ANIME
+                            ================================================== -->
 
                             <article
                                 class="
@@ -2959,7 +2626,9 @@
                             </article>
 
 
-                            <!-- YOKAI -->
+                            <!-- =================================================
+                                 YOKAI
+                            ================================================== -->
 
                             <article
                                 class="
@@ -3046,7 +2715,9 @@
                             </article>
 
 
-                            <!-- SATORII -->
+                            <!-- =================================================
+                                 SATORII ORIGINAL
+                            ================================================== -->
 
                             <article
                                 class="
@@ -3133,7 +2804,9 @@
                             </article>
 
 
-                            <!-- LIMITED -->
+                            <!-- =================================================
+                                 LIMITED
+                            ================================================== -->
 
                             <article
                                 class="
@@ -3225,7 +2898,9 @@
                     </div>
 
 
-                    <!-- FLECHAS PC -->
+                    <!-- =================================================
+                         FLECHAS PC
+                    ================================================== -->
 
                     <div
                         class="
@@ -3259,7 +2934,9 @@
                     </div>
 
 
-                    <!-- DOTS -->
+                    <!-- =================================================
+                         DOTS
+                    ================================================== -->
 
                     <div
                         class="
@@ -3366,7 +3043,10 @@
                     "
                 >
 
-                    <!-- KID BUU -->
+
+                    <!-- =================================================
+                         KID BUU
+                    ================================================== -->
 
                     <article
                         class="
@@ -3434,7 +3114,9 @@
                     </article>
 
 
-                    <!-- GOKU -->
+                    <!-- =================================================
+                         GOKU
+                    ================================================== -->
 
                     <article
                         class="
@@ -3502,7 +3184,9 @@
                     </article>
 
 
-                    <!-- YOKAI -->
+                    <!-- =================================================
+                         YOKAI
+                    ================================================== -->
 
                     <article
                         class="
@@ -3570,7 +3254,9 @@
                     </article>
 
 
-                    <!-- SATORII -->
+                    <!-- =================================================
+                         SATORII ORIGINAL
+                    ================================================== -->
 
                     <article
                         class="
@@ -3637,86 +3323,8 @@
 
                     </article>
 
+
                 </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             IDENTIDAD
-        ================================================== -->
-
-        <section
-            class="
-                satori-story
-            "
-        >
-
-            <div
-                class="
-                    satori-story-visual
-                "
-            >
-
-                <div
-                    class="
-                        satori-story-logo
-                    "
-                >
-                    SATORII
-                </div>
-
-            </div>
-
-
-            <div
-                class="
-                    satori-story-copy
-                "
-            >
-
-                <div
-                    class="
-                        satori-kicker
-                    "
-                >
-                    MÁS QUE UNA TIENDA
-                </div>
-
-
-                <h2>
-
-                    ANIME.<br>
-
-                    JAPÓN.<br>
-
-                    <span>
-                        STREETWEAR.
-                    </span>
-
-                </h2>
-
-
-                <p>
-
-                    Satorii nace de una idea sencilla:
-                    llevar aquello que nos apasiona
-                    a nuestra forma de vestir.
-
-                    Anime, cultura japonesa y estética
-                    urbana convertidos en diseños que
-                    puedas hacer tuyos.
-
-                </p>
-
-
-                <a
-                    href="#"
-                >
-                    CONOCE SATORII →
-                </a>
 
             </div>
 
@@ -3725,6 +3333,8 @@
 
         <!-- =================================================
              SATORII PACK
+             
+             SE MANTIENE
         ================================================== -->
 
         <section
@@ -3752,6 +3362,7 @@
                 <h2>
 
                     SATORII
+
                     <span>
                         PACK.
                     </span>
@@ -3945,7 +3556,9 @@
          HERO SLIDER
          
          LOOP INFINITO REAL
-         AUTOPLAY + SWIPE
+         AUTOPLAY
+         SWIPE
+         DOTS
          =====================================================
     ====================================================== -->
 
@@ -3960,10 +3573,12 @@
                         "hero-slider"
                     );
 
+
                 const track =
                     document.getElementById(
                         "hero-track"
                     );
+
 
                 const originalSlides =
                     Array.from(
@@ -3971,6 +3586,7 @@
                             ".hero-slide"
                         )
                     );
+
 
                 const dots =
                     Array.from(
@@ -3993,17 +3609,12 @@
 
                 /* =================================================
                    CLONES
-                   
-                   Creamos:
-                   
-                   ÚLTIMO → BANNER 1 → 2 → 3 → PRIMERO
-                   
-                   Esto permite que el loop sea visualmente
-                   continuo.
                 ================================================== */
 
                 const firstClone =
-                    originalSlides[0].cloneNode(true);
+                    originalSlides[0]
+                        .cloneNode(true);
+
 
                 const lastClone =
                     originalSlides[
@@ -4015,6 +3626,7 @@
                     "hero-clone"
                 );
 
+
                 lastClone.classList.add(
                     "hero-clone"
                 );
@@ -4023,6 +3635,7 @@
                 track.appendChild(
                     firstClone
                 );
+
 
                 track.insertBefore(
                     lastClone,
@@ -4062,12 +3675,8 @@
                     null;
 
 
-                const duration =
-                    650;
-
-
                 /* =================================================
-                   ACTUALIZAR DOTS
+                   DOTS
                 ================================================== */
 
                 function updateDots() {
@@ -4135,19 +3744,10 @@
                     animate = true
                 ) {
 
-                    if (
+                    track.style.transition =
                         animate
-                    ) {
-
-                        track.style.transition =
-                            "transform .65s cubic-bezier(.22,.61,.36,1)";
-
-                    } else {
-
-                        track.style.transition =
-                            "none";
-
-                    }
+                            ? "transform .65s cubic-bezier(.22,.61,.36,1)"
+                            : "none";
 
 
                     track.style.transform =
@@ -4222,10 +3822,7 @@
 
 
                 /* =================================================
-                   TRANSICIÓN TERMINADA
-                   
-                   Aquí hacemos el salto invisible
-                   cuando estamos en un clon.
+                   TRANSICIÓN
                 ================================================== */
 
                 track.addEventListener(
@@ -4248,11 +3845,6 @@
                             false;
 
 
-                        /*
-                         * Estamos en el clon
-                         * del primer banner.
-                         */
-
                         if (
                             currentIndex ===
                             slides.length - 1
@@ -4268,11 +3860,6 @@
 
                         }
 
-
-                        /*
-                         * Estamos en el clon
-                         * del último banner.
-                         */
 
                         if (
                             currentIndex ===
@@ -4315,14 +3902,10 @@
                                 }
 
 
-                                const index =
+                                currentIndex =
                                     Number(
                                         dot.dataset.slide
-                                    );
-
-
-                                currentIndex =
-                                    index + 1;
+                                    ) + 1;
 
 
                                 updateSlider(
@@ -4359,11 +3942,15 @@
 
 
                         touchStartX =
-                            event.touches[0].clientX;
+                            event.touches[
+                                0
+                            ].clientX;
 
 
                         touchStartY =
-                            event.touches[0].clientY;
+                            event.touches[
+                                0
+                            ].clientY;
 
 
                         isTouching =
@@ -4415,11 +4002,15 @@
 
 
                         const touchEndX =
-                            event.changedTouches[0].clientX;
+                            event.changedTouches[
+                                0
+                            ].clientX;
 
 
                         const touchEndY =
-                            event.changedTouches[0].clientY;
+                            event.changedTouches[
+                                0
+                            ].clientY;
 
 
                         const differenceX =
@@ -4431,11 +4022,6 @@
                             touchStartY -
                             touchEndY;
 
-
-                        /*
-                         * Si es principalmente
-                         * vertical, ignoramos.
-                         */
 
                         if (
                             Math.abs(
@@ -4466,10 +4052,6 @@
                         }
 
 
-                        /*
-                         * Swipe izquierda
-                         */
-
                         if (
                             differenceX > 0
                         ) {
@@ -4477,11 +4059,6 @@
                             nextSlide();
 
                         }
-
-
-                        /*
-                         * Swipe derecha
-                         */
 
                         else {
 
@@ -4562,6 +4139,7 @@
                             autoplayTimer
                         );
 
+
                         autoplayTimer =
                             null;
 
@@ -4605,7 +4183,9 @@
 
                                             startAutoplay();
 
-                                        } else {
+                                        }
+
+                                        else {
 
                                             stopAutoplay();
 
@@ -4626,7 +4206,9 @@
                         slider
                     );
 
-                } else {
+                }
+
+                else {
 
                     startAutoplay();
 
@@ -4652,7 +4234,7 @@
          =====================================================
          CARRUSEL DE COLECCIONES
          
-         LOOP INFINITO REAL
+         LOOP INFINITO
          PC + MOBILE
          =====================================================
     ====================================================== -->
@@ -4668,10 +4250,12 @@
                         "satori-carousel-viewport"
                     );
 
+
                 const track =
                     document.getElementById(
                         "satori-carousel-track"
                     );
+
 
                 const originalCards =
                     Array.from(
@@ -4680,6 +4264,7 @@
                         )
                     );
 
+
                 const dots =
                     Array.from(
                         document.querySelectorAll(
@@ -4687,10 +4272,12 @@
                         )
                     );
 
+
                 const previousButton =
                     document.getElementById(
                         "satori-carousel-prev"
                     );
+
 
                 const nextButton =
                     document.getElementById(
@@ -4710,17 +4297,12 @@
 
 
                 /* =================================================
-                   CREAR CLONES
-                   
-                   [LIMITED] [ANIME] [YOKAI] [SATORII] [LIMITED]
-                   [ANIME] [YOKAI] [SATORII] [LIMITED] [ANIME]
-                   ...
-                   
-                   El usuario nunca llega a un final real.
+                   CLONES
                 ================================================== */
 
                 const fragmentBefore =
                     document.createDocumentFragment();
+
 
                 const fragmentAfter =
                     document.createDocumentFragment();
@@ -4737,9 +4319,11 @@
                             const clone =
                                 card.cloneNode(true);
 
+
                             clone.classList.add(
                                 "carousel-clone"
                             );
+
 
                             fragmentBefore.appendChild(
                                 clone
@@ -4757,9 +4341,11 @@
                         const clone =
                             card.cloneNode(true);
 
+
                         clone.classList.add(
                             "carousel-clone"
                         );
+
 
                         fragmentAfter.appendChild(
                             clone
@@ -4792,11 +4378,6 @@
                     originalCards.length;
 
 
-                /*
-                 * Comenzamos en la primera tarjeta
-                 * ORIGINAL, no en el clon.
-                 */
-
                 let currentIndex =
                     originalCount;
 
@@ -4815,10 +4396,6 @@
 
                 let isTouching =
                     false;
-
-
-                const duration =
-                    650;
 
 
                 /* =================================================
@@ -4917,11 +4494,13 @@
 
 
                     const viewportWidth =
-                        viewport.getBoundingClientRect().width;
+                        viewport.getBoundingClientRect()
+                            .width;
 
 
                     const cardWidth =
-                        activeCard.getBoundingClientRect().width;
+                        activeCard.getBoundingClientRect()
+                            .width;
 
 
                     const cardCenter =
@@ -4942,19 +4521,10 @@
                         cardCenter;
 
 
-                    if (
+                    track.style.transition =
                         animate
-                    ) {
-
-                        track.style.transition =
-                            "transform .65s cubic-bezier(.22,.61,.36,1)";
-
-                    } else {
-
-                        track.style.transition =
-                            "none";
-
-                    }
+                            ? "transform .65s cubic-bezier(.22,.61,.36,1)"
+                            : "none";
 
 
                     track.style.transform =
@@ -5023,9 +4593,6 @@
 
                 /* =================================================
                    TRANSICIÓN TERMINADA
-                   
-                   Aquí ocurre el salto invisible
-                   de los clones hacia las tarjetas reales.
                 ================================================== */
 
                 track.addEventListener(
@@ -5048,13 +4615,6 @@
                             false;
 
 
-                        /*
-                         * Si estamos en las tarjetas
-                         * clonadas del FINAL.
-                         *
-                         * Volvemos a la copia ORIGINAL.
-                         */
-
                         if (
                             currentIndex >=
                             originalCount * 2
@@ -5070,11 +4630,6 @@
 
                         }
 
-
-                        /*
-                         * Si estamos en las tarjetas
-                         * clonadas del PRINCIPIO.
-                         */
 
                         if (
                             currentIndex <
@@ -5203,11 +4758,15 @@
 
 
                         touchStartX =
-                            event.touches[0].clientX;
+                            event.touches[
+                                0
+                            ].clientX;
 
 
                         touchStartY =
-                            event.touches[0].clientY;
+                            event.touches[
+                                0
+                            ].clientY;
 
 
                         isTouching =
@@ -5254,11 +4813,15 @@
 
 
                         const touchEndX =
-                            event.changedTouches[0].clientX;
+                            event.changedTouches[
+                                0
+                            ].clientX;
 
 
                         const touchEndY =
-                            event.changedTouches[0].clientY;
+                            event.changedTouches[
+                                0
+                            ].clientY;
 
 
                         const differenceX =
@@ -5270,12 +4833,6 @@
                             touchStartY -
                             touchEndY;
 
-
-                        /*
-                         * Evita mover el carrusel
-                         * cuando el usuario simplemente
-                         * está haciendo scroll vertical.
-                         */
 
                         if (
                             Math.abs(
@@ -5291,10 +4848,6 @@
                         }
 
 
-                        /*
-                         * Movimiento mínimo.
-                         */
-
                         if (
                             Math.abs(
                                 differenceX
@@ -5306,11 +4859,6 @@
                         }
 
 
-                        /*
-                         * IZQUIERDA
-                         * → SIGUIENTE
-                         */
-
                         if (
                             differenceX > 0
                         ) {
@@ -5318,12 +4866,6 @@
                             nextCollection();
 
                         }
-
-
-                        /*
-                         * DERECHA
-                         * → ANTERIOR
-                         */
 
                         else {
 
