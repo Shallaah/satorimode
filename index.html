@@ -164,7 +164,9 @@
 
 
         /* =====================================================
+           =====================================================
            HERO / BANNER
+           =====================================================
         ====================================================== */
 
         .hero-slider {
@@ -189,14 +191,6 @@
 
             overscroll-behavior-x:
                 contain;
-
-            /*
-             * Línea inferior SATORII
-             */
-
-            border-bottom:
-                2px solid
-                #101727;
 
         }
 
@@ -359,6 +353,163 @@
 
 
         /* =====================================================
+           =====================================================
+           BARRA DINÁMICA
+           =====================================================
+        ====================================================== */
+
+        .satori-marquee {
+
+            position:
+                relative;
+
+            width:
+                100%;
+
+            height:
+                42px;
+
+            overflow:
+                hidden;
+
+            background:
+                #101727;
+
+            color:
+                #ffffff;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            white-space:
+                nowrap;
+
+            user-select:
+                none;
+
+        }
+
+
+        .satori-marquee-track {
+
+            display:
+                flex;
+
+            width:
+                max-content;
+
+            animation:
+                satori-marquee-scroll
+                28s
+                linear
+                infinite;
+
+            will-change:
+                transform;
+
+        }
+
+
+        .satori-marquee-group {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            flex-shrink:
+                0;
+
+        }
+
+
+        .satori-marquee-item {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                18px;
+
+            padding:
+                0 18px;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                9px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                1.5px;
+
+        }
+
+
+        .satori-marquee-item strong {
+
+            color:
+                var(--satori-red);
+
+        }
+
+
+        .satori-marquee-symbol {
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .35
+                );
+
+            font-size:
+                12px;
+
+        }
+
+
+        @keyframes satori-marquee-scroll {
+
+            from {
+
+                transform:
+                    translate3d(
+                        0,
+                        0,
+                        0
+                    );
+
+            }
+
+            to {
+
+                transform:
+                    translate3d(
+                        -50%,
+                        0,
+                        0
+                    );
+
+            }
+
+        }
+
+
+        /* =====================================================
            UTILIDADES
         ====================================================== */
 
@@ -445,7 +596,6 @@
         /* =====================================================
            =====================================================
            NEW DROP
-           PRIMERO DESPUÉS DEL BANNER
            =====================================================
         ====================================================== */
 
@@ -455,7 +605,7 @@
                 88px 0 95px;
 
             background:
-                #fff;
+                #ffffff;
 
         }
 
@@ -678,8 +828,7 @@
 
         /* =====================================================
            =====================================================
-           EXPLORA SATORII
-           CARRUSEL
+           COLECCIONES
            =====================================================
         ====================================================== */
 
@@ -856,6 +1005,19 @@
            TARJETAS
         ====================================================== */
 
+        /*
+           DIMENSIÓN MÁXIMA DESKTOP:
+
+           ANCHO:
+           540px
+
+           IMAGEN:
+           540px × ~574px
+
+           RECOMENDACIÓN PARA ARCHIVOS:
+           1200 × 1275px
+        */
+
         .satori-collection-card {
 
             position:
@@ -930,13 +1092,7 @@
 
 
         /* =====================================================
-           IMAGEN DEL CARRUSEL
-           
-           PROPORCIÓN:
-           0.94 : 1
-
-           RECOMENDADO:
-           1200 × 1280 px
+           IMAGEN
         ====================================================== */
 
         .satori-collection-image {
@@ -1270,7 +1426,7 @@
                 18px;
 
             background:
-                var(--satori-dark);
+                #111923;
 
             color:
                 #fff;
@@ -1355,7 +1511,7 @@
                 #fff;
 
             color:
-                var(--satori-dark);
+                #111923;
 
             font-family:
                 "Inter",
@@ -1593,15 +1749,6 @@
 
             .hero-slider {
 
-                border-bottom:
-                    1px solid
-                    #101727;
-
-            }
-
-
-            .hero-slider {
-
                 touch-action:
                     pan-y;
 
@@ -1631,6 +1778,43 @@
 
                 width:
                     20px;
+
+            }
+
+
+            /* =================================================
+               BARRA DINÁMICA
+            ================================================== */
+
+            .satori-marquee {
+
+                height:
+                    38px;
+
+            }
+
+
+            .satori-marquee-item {
+
+                padding:
+                    0 13px;
+
+                gap:
+                    13px;
+
+                font-size:
+                    7px;
+
+                letter-spacing:
+                    1.2px;
+
+            }
+
+
+            .satori-marquee-symbol {
+
+                font-size:
+                    10px;
 
             }
 
@@ -1708,7 +1892,7 @@
 
 
             /* =================================================
-               EXPLORA
+               COLECCIONES
             ================================================== */
 
             .satori-collections {
@@ -1850,7 +2034,7 @@
             .satori-collection-image {
 
                 aspect-ratio:
-                    .88 / 1;
+                    .94 / 1;
 
             }
 
@@ -1997,7 +2181,7 @@
 
     <!-- =====================================================
          INDEX
-    ===================================================== -->
+    ====================================================== -->
 
     <div
         class="satori-index"
@@ -2145,8 +2329,141 @@
 
 
         <!-- =================================================
+             BARRA DINÁMICA SATORII
+        ================================================== -->
+
+        <div
+            class="satori-marquee"
+            aria-label="Información Satorii"
+        >
+
+            <div
+                class="satori-marquee-track"
+            >
+
+                <!-- GRUPO 1 -->
+
+                <div
+                    class="satori-marquee-group"
+                >
+
+                    <span class="satori-marquee-item">
+                        <strong>
+                            BIENVENIDOS A SATORII
+                        </strong>
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        ANIME STREETWEAR
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        CULTURA JAPONESA
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        DESCUBRE TU PRÓXIMO DROP
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        HECHO PARA TU UNIVERSO
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+                </div>
+
+
+                <!-- GRUPO 2 — DUPLICADO PARA LOOP -->
+
+                <div
+                    class="satori-marquee-group"
+                    aria-hidden="true"
+                >
+
+                    <span class="satori-marquee-item">
+                        <strong>
+                            BIENVENIDOS A SATORII
+                        </strong>
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        ANIME STREETWEAR
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        CULTURA JAPONESA
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        DESCUBRE TU PRÓXIMO DROP
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+
+                    <span class="satori-marquee-item">
+                        HECHO PARA TU UNIVERSO
+                        <span class="satori-marquee-symbol">
+                            ✦
+                        </span>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
              NEW DROP
-             PRIMERO
         ================================================== -->
 
         <section
@@ -2159,9 +2476,7 @@
             >
 
                 <div
-                    class="
-                        satori-new-drop-header
-                    "
+                    class="satori-new-drop-header"
                 >
 
                     <div>
@@ -2192,9 +2507,7 @@
 
 
                 <div
-                    class="
-                        satori-products-grid
-                    "
+                    class="satori-products-grid"
                 >
 
 
@@ -2203,9 +2516,7 @@
                     ================================================== -->
 
                     <article
-                        class="
-                            satori-product-card
-                        "
+                        class="satori-product-card"
                     >
 
                         <a
@@ -2213,15 +2524,11 @@
                         >
 
                             <div
-                                class="
-                                    satori-product-image
-                                "
+                                class="satori-product-image"
                             >
 
                                 <span
-                                    class="
-                                        satori-product-tag
-                                    "
+                                    class="satori-product-tag"
                                 >
                                     NEW
                                 </span>
@@ -2240,27 +2547,21 @@
 
 
                         <div
-                            class="
-                                satori-product-name
-                            "
+                            class="satori-product-name"
                         >
                             POLERA KID BUU
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-category
-                            "
+                            class="satori-product-category"
                         >
                             ANIME STREETWEAR
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-price
-                            "
+                            class="satori-product-price"
                         >
                             $18.990
                         </div>
@@ -2273,9 +2574,7 @@
                     ================================================== -->
 
                     <article
-                        class="
-                            satori-product-card
-                        "
+                        class="satori-product-card"
                     >
 
                         <a
@@ -2283,15 +2582,11 @@
                         >
 
                             <div
-                                class="
-                                    satori-product-image
-                                "
+                                class="satori-product-image"
                             >
 
                                 <span
-                                    class="
-                                        satori-product-tag
-                                    "
+                                    class="satori-product-tag"
                                 >
                                     NEW
                                 </span>
@@ -2310,27 +2605,21 @@
 
 
                         <div
-                            class="
-                                satori-product-name
-                            "
+                            class="satori-product-name"
                         >
                             POLERA GOKU
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-category
-                            "
+                            class="satori-product-category"
                         >
                             ANIME STREETWEAR
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-price
-                            "
+                            class="satori-product-price"
                         >
                             $19.990
                         </div>
@@ -2343,9 +2632,7 @@
                     ================================================== -->
 
                     <article
-                        class="
-                            satori-product-card
-                        "
+                        class="satori-product-card"
                     >
 
                         <a
@@ -2353,21 +2640,15 @@
                         >
 
                             <div
-                                class="
-                                    satori-product-image
-                                "
+                                class="satori-product-image"
                             >
 
                                 <div
-                                    class="
-                                        satori-collection-fallback
-                                    "
+                                    class="satori-collection-fallback"
                                 >
 
                                     <span
-                                        class="
-                                            satori-fallback-title
-                                        "
+                                        class="satori-fallback-title"
                                     >
                                         YOKAI
                                     </span>
@@ -2380,27 +2661,21 @@
 
 
                         <div
-                            class="
-                                satori-product-name
-                            "
+                            class="satori-product-name"
                         >
                             YOKAI COLLECTION
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-category
-                            "
+                            class="satori-product-category"
                         >
                             PRÓXIMAMENTE
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-price
-                            "
+                            class="satori-product-price"
                         >
                             PRÓXIMAMENTE
                         </div>
@@ -2413,9 +2688,7 @@
                     ================================================== -->
 
                     <article
-                        class="
-                            satori-product-card
-                        "
+                        class="satori-product-card"
                     >
 
                         <a
@@ -2423,21 +2696,15 @@
                         >
 
                             <div
-                                class="
-                                    satori-product-image
-                                "
+                                class="satori-product-image"
                             >
 
                                 <div
-                                    class="
-                                        satori-collection-fallback
-                                    "
+                                    class="satori-collection-fallback"
                                 >
 
                                     <span
-                                        class="
-                                            satori-fallback-title
-                                        "
+                                        class="satori-fallback-title"
                                     >
                                         SATORII
                                     </span>
@@ -2450,33 +2717,26 @@
 
 
                         <div
-                            class="
-                                satori-product-name
-                            "
+                            class="satori-product-name"
                         >
                             SATORII ORIGINAL
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-category
-                            "
+                            class="satori-product-category"
                         >
                             SATORII ORIGINALS
                         </div>
 
 
                         <div
-                            class="
-                                satori-product-price
-                            "
+                            class="satori-product-price"
                         >
                             PRÓXIMAMENTE
                         </div>
 
                     </article>
-
 
                 </div>
 
@@ -2486,8 +2746,7 @@
 
 
         <!-- =================================================
-             EXPLORA SATORII
-             CARRUSEL
+             EXPLORA SATORII / COLECCIONES
         ================================================== -->
 
         <section
@@ -2566,9 +2825,7 @@
                             >
 
                                 <div
-                                    class="
-                                        satori-collection-image
-                                    "
+                                    class="satori-collection-image"
                                 >
 
                                     <span
@@ -2776,7 +3033,7 @@
 
 
                                     <img
-                                        src="img/satorii-pack-card.webp"
+                                        src="img/satorii-pack.webp"
                                         alt="Satorii Pack"
                                         loading="lazy"
                                         decoding="async"
@@ -2972,6 +3229,7 @@
                             aria-label="Anime"
                         ></button>
 
+
                         <button
                             type="button"
                             class="
@@ -2981,6 +3239,7 @@
                             aria-label="Yokai"
                         ></button>
 
+
                         <button
                             type="button"
                             class="
@@ -2989,6 +3248,7 @@
                             data-index="2"
                             aria-label="Satorii Pack"
                         ></button>
+
 
                         <button
                             type="button"
@@ -3205,10 +3465,6 @@
                 }
 
 
-                /* =================================================
-                   CLONES
-                ================================================== */
-
                 const firstClone =
                     originalSlides[0]
                         .cloneNode(true);
@@ -3273,10 +3529,6 @@
                     null;
 
 
-                /* =================================================
-                   DOTS
-                ================================================== */
-
                 function updateDots() {
 
                     let logicalIndex =
@@ -3334,10 +3586,6 @@
                 }
 
 
-                /* =================================================
-                   POSICIONAR
-                ================================================== */
-
                 function updateSlider(
                     animate = true
                 ) {
@@ -3356,10 +3604,6 @@
 
                 }
 
-
-                /* =================================================
-                   IR A SLIDE
-                ================================================== */
 
                 function goTo(
                     index
@@ -3389,10 +3633,6 @@
                 }
 
 
-                /* =================================================
-                   SIGUIENTE
-                ================================================== */
-
                 function nextSlide() {
 
                     goTo(
@@ -3404,10 +3644,6 @@
                 }
 
 
-                /* =================================================
-                   ANTERIOR
-                ================================================== */
-
                 function previousSlide() {
 
                     goTo(
@@ -3418,10 +3654,6 @@
 
                 }
 
-
-                /* =================================================
-                   TRANSICIÓN
-                ================================================== */
 
                 track.addEventListener(
                     "transitionend",
@@ -3478,10 +3710,6 @@
                 );
 
 
-                /* =================================================
-                   DOTS
-                ================================================== */
-
                 dots.forEach(
                     function (
                         dot
@@ -3519,10 +3747,6 @@
                     }
                 );
 
-
-                /* =================================================
-                   TOUCH START
-                ================================================== */
 
                 slider.addEventListener(
                     "touchstart",
@@ -3564,10 +3788,6 @@
                     }
                 );
 
-
-                /* =================================================
-                   TOUCH END
-                ================================================== */
 
                 slider.addEventListener(
                     "touchend",
@@ -3672,10 +3892,6 @@
                 );
 
 
-                /* =================================================
-                   TECLADO
-                ================================================== */
-
                 document.addEventListener(
                     "keydown",
                     function (
@@ -3704,10 +3920,6 @@
                     }
                 );
 
-
-                /* =================================================
-                   AUTOPLAY
-                ================================================== */
 
                 function startAutoplay() {
 
@@ -3754,10 +3966,6 @@
 
                 }
 
-
-                /* =================================================
-                   PAUSAR SI NO ESTÁ VISIBLE
-                ================================================== */
 
                 if (
                     "IntersectionObserver"
@@ -3813,10 +4021,6 @@
                 }
 
 
-                /* =================================================
-                   INICIALIZAR
-                ================================================== */
-
                 updateSlider(
                     false
                 );
@@ -3833,11 +4037,6 @@
          CARRUSEL SATORII
          
          4 TARJETAS
-         ANIME
-         YOKAI
-         SATORII PACK
-         GIFT CARD
-         
          LOOP INFINITO
          PC + MOBILE
          SWIPE
