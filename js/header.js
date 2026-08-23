@@ -3389,6 +3389,214 @@
 
 
         /* =====================================================
+           OBTENER PRODUCTO ACTUAL DEL CATÁLOGO
+           
+           IMPORTANTE:
+           
+           El carrito guarda una copia del producto en
+           localStorage, pero esa copia NO es la fuente
+           oficial del precio.
+
+           La fuente actual es PRODUCTS.
+
+           PRODUCTS se sincroniza desde Supabase.
+        ====================================================== */
+
+        function getCatalogProduct(
+            cartItem
+        ) {
+
+            if (
+                typeof PRODUCTS ===
+                "undefined" ||
+                !Array.isArray(PRODUCTS)
+            ) {
+
+                return null;
+
+            }
+
+
+            const cartId =
+                String(
+                    cartItem?.productId ??
+                    cartItem?.id ??
+                    ""
+                );
+
+
+            if (!cartId) {
+
+                return null;
+
+            }
+
+
+            return (
+                PRODUCTS.find(
+                    function (product) {
+
+                        return String(
+                            product.id
+                        ) === cartId;
+
+                    }
+                ) ||
+                null
+            );
+
+        }
+
+
+        /* =====================================================
+           DATOS ACTUALES DEL PRODUCTO
+        ====================================================== */
+
+        function getCurrentCartItemData(
+            cartItem
+        ) {
+
+            const catalogProduct =
+                getCatalogProduct(
+                    cartItem
+                );
+
+
+            /*
+             * Si PRODUCTS está disponible y encontramos
+             * el producto, usamos SIEMPRE sus datos actuales.
+             */
+
+            if (catalogProduct) {
+
+                return {
+
+                    ...cartItem,
+
+                    id:
+                        catalogProduct.id,
+
+                    productId:
+                        catalogProduct.id,
+
+                    name:
+                        catalogProduct.name ||
+                        cartItem.name ||
+                        "Producto",
+
+                    price:
+                        Number(
+                            catalogProduct.price
+                        ) || 0,
+
+                    image:
+                        catalogProduct.image ||
+                        catalogProduct.images?.[0] ||
+                        cartItem.image ||
+                        "",
+
+                    quantity:
+                        Math.max(
+                            1,
+                            Number(
+                                cartItem.quantity ??
+                                cartItem.cantidad ??
+                                1
+                            ) || 1
+                        )
+
+                };
+
+            }
+
+
+            /*
+             * Si PRODUCTS todavía no está disponible,
+             * utilizamos temporalmente los datos locales.
+             *
+             * Esto evita que el header quede roto durante
+             * la carga inicial.
+             */
+
+            if (
+                typeof PRODUCTS ===
+                "undefined"
+            ) {
+
+                return {
+
+                    ...cartItem,
+
+                    price:
+                        Number(
+                            cartItem.price ??
+                            cartItem.precio ??
+                            0
+                        ) || 0,
+
+                    quantity:
+                        Math.max(
+                            1,
+                            Number(
+                                cartItem.quantity ??
+                                cartItem.cantidad ??
+                                1
+                            ) || 1
+                        )
+
+                };
+
+            }
+
+
+            /*
+             * PRODUCTS ya existe pero el producto no está
+             * disponible en el catálogo.
+             *
+             * NO usamos el precio antiguo.
+             */
+
+            return {
+
+                ...cartItem,
+
+                price:0,
+
+                quantity:
+                    Math.max(
+                        1,
+                        Number(
+                            cartItem.quantity ??
+                            cartItem.cantidad ??
+                            1
+                        ) || 1
+                    )
+
+            };
+
+        }
+
+
+        /* =====================================================
+           OBTENER CARRITO NORMALIZADO
+        ====================================================== */
+
+        function getNormalizedCart() {
+
+            return getCart().map(
+                function (cartItem) {
+
+                    return getCurrentCartItemData(
+                        cartItem
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
            CANTIDAD TOTAL
         ====================================================== */
 
@@ -3428,6 +3636,9 @@
 
         /* =====================================================
            SUBTOTAL
+
+           IMPORTANTE:
+           Se calcula con el precio ACTUAL de PRODUCTS.
         ====================================================== */
 
         function getCartSubtotal(
@@ -3440,19 +3651,21 @@
                     item
                 ) {
 
+                    const currentItem =
+                        getCurrentCartItemData(
+                            item
+                        );
+
+
                     const price =
                         Number(
-                            item.price ??
-                            item.precio ??
-                            0
+                            currentItem.price
                         ) || 0;
 
 
                     const quantity =
                         Number(
-                            item.quantity ??
-                            item.cantidad ??
-                            1
+                            currentItem.quantity
                         ) || 1;
 
 
@@ -3555,8 +3768,12 @@
                 return;
 
 
-            const cart =
+            const rawCart =
                 getCart();
+
+
+            const cart =
+                getNormalizedCart();
 
 
             if (!cart.length) {
@@ -3597,23 +3814,37 @@
                             index
                         ) {
 
+                            const catalogProduct =
+                                getCatalogProduct(
+                                    rawCart[index]
+                                );
+
+
                             const name =
+                                catalogProduct?.name ||
                                 item.name ||
                                 item.nombre ||
                                 "Producto";
 
 
                             const image =
+                                catalogProduct?.image ||
+                                catalogProduct?.images?.[0] ||
                                 item.image ||
                                 item.imagen ||
                                 "";
 
 
+                            /*
+                             * PRECIO ACTUAL
+                             *
+                             * Si encontramos el producto
+                             * en PRODUCTS, usamos ese precio.
+                             */
+
                             const price =
                                 Number(
-                                    item.price ??
-                                    item.precio ??
-                                    0
+                                    item.price
                                 ) || 0;
 
 
@@ -4067,7 +4298,7 @@
 
 
         /* =====================================================
-           EVENTO PERSONALIZADO
+           EVENTO PERSONALIZADO DEL CARRITO
         ====================================================== */
 
         window.addEventListener(
@@ -4086,6 +4317,28 @@
                     renderCart();
 
                 }
+
+            }
+        );
+
+
+        /* =====================================================
+           EVENTO DE ACTUALIZACIÓN DE PRODUCTOS
+
+           Este evento lo dispara products.js cuando
+           termina de sincronizar PRODUCTS con Supabase.
+
+           Por lo tanto, si el precio cambia en Supabase,
+           el carrito del header se vuelve a renderizar.
+        ====================================================== */
+
+        window.addEventListener(
+            "satorii:products-updated",
+            function () {
+
+                updateCartCount();
+
+                renderCart();
 
             }
         );
