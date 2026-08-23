@@ -4,7 +4,7 @@
 <head>
 
     <!-- =====================================================
-         PRELOAD — BANNER DESKTOP
+         PRELOAD
     ====================================================== -->
 
     <link
@@ -13,11 +13,6 @@
         href="img/banner-01.webp"
         media="(min-width: 769px)"
     >
-
-
-    <!-- =====================================================
-         PRELOAD — BANNER MOBILE
-    ====================================================== -->
 
     <link
         rel="preload"
@@ -45,7 +40,7 @@
 
     <meta
         name="theme-color"
-        content="#EF0930"
+        content="#101727"
     >
 
     <meta
@@ -104,7 +99,7 @@
 
 
     <!-- =====================================================
-         CSS INDEX SATORII
+         CSS SATORII INDEX
     ====================================================== -->
 
     <style>
@@ -127,6 +122,9 @@
             --satori-dark:
                 #101727;
 
+            --satori-dark-2:
+                #151d2d;
+
             --satori-white:
                 #ffffff;
 
@@ -134,7 +132,10 @@
                 #737373;
 
             --satori-light:
-                #f4f4f2;
+                #f3f2ef;
+
+            --satori-paper:
+                #eeeae2;
 
             --satori-width:
                 1700px;
@@ -143,7 +144,7 @@
 
 
         /* =====================================================
-           RESET LOCAL
+           RESET
         ====================================================== */
 
         .satori-index,
@@ -163,9 +164,35 @@
         }
 
 
+        .satori-index img {
+
+            max-width:
+                100%;
+
+        }
+
+
+        /* =====================================================
+           CONTENEDOR
+        ====================================================== */
+
+        .satori-container {
+
+            width:
+                min(
+                    var(--satori-width),
+                    calc(100% - 70px)
+                );
+
+            margin:
+                0 auto;
+
+        }
+
+
         /* =====================================================
            =====================================================
-           HERO / BANNER
+           HERO
            =====================================================
         ====================================================== */
 
@@ -179,6 +206,9 @@
 
             overflow:
                 hidden;
+
+            background:
+                #111;
 
             touch-action:
                 pan-y;
@@ -207,8 +237,7 @@
                 transform;
 
             transition:
-                transform
-                .65s
+                transform .65s
                 cubic-bezier(
                     .22,
                     .61,
@@ -221,14 +250,14 @@
 
         .hero-slide {
 
+            position:
+                relative;
+
             flex:
                 0 0 100vw;
 
             width:
                 100vw;
-
-            position:
-                relative;
 
         }
 
@@ -268,7 +297,7 @@
 
 
         /* =====================================================
-           DOTS DEL BANNER
+           HERO DOTS
         ====================================================== */
 
         .hero-dots {
@@ -280,7 +309,7 @@
                 50%;
 
             bottom:
-                18px;
+                22px;
 
             transform:
                 translateX(-50%);
@@ -332,8 +361,7 @@
                 pointer;
 
             transition:
-                width .25s ease,
-                background .25s ease;
+                .25s ease;
 
         }
 
@@ -341,7 +369,7 @@
         .hero-dot.active {
 
             width:
-                24px;
+                26px;
 
             border-radius:
                 10px;
@@ -354,11 +382,11 @@
 
         /* =====================================================
            =====================================================
-           BARRA DINÁMICA
+           TICKER
            =====================================================
         ====================================================== */
 
-        .satori-marquee {
+        .satori-ticker {
 
             position:
                 relative;
@@ -372,28 +400,40 @@
             overflow:
                 hidden;
 
-            background:
-                #101727;
-
-            color:
-                #ffffff;
-
             display:
                 flex;
 
             align-items:
                 center;
 
-            white-space:
-                nowrap;
+            background:
+                var(--satori-dark);
 
-            user-select:
-                none;
+            color:
+                #fff;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .04
+                );
+
+            border-bottom:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .08
+                );
 
         }
 
 
-        .satori-marquee-track {
+        .satori-ticker-track {
 
             display:
                 flex;
@@ -401,19 +441,19 @@
             width:
                 max-content;
 
+            white-space:
+                nowrap;
+
             animation:
-                satori-marquee-scroll
-                28s
+                satoriTicker
+                32s
                 linear
                 infinite;
-
-            will-change:
-                transform;
 
         }
 
 
-        .satori-marquee-group {
+        .satori-ticker-content {
 
             display:
                 flex;
@@ -421,13 +461,19 @@
             align-items:
                 center;
 
+            gap:
+                28px;
+
+            padding-right:
+                28px;
+
             flex-shrink:
                 0;
 
         }
 
 
-        .satori-marquee-item {
+        .satori-ticker-item {
 
             display:
                 inline-flex;
@@ -436,10 +482,7 @@
                 center;
 
             gap:
-                18px;
-
-            padding:
-                0 18px;
+                9px;
 
             font-family:
                 "Inter",
@@ -453,12 +496,23 @@
                 700;
 
             letter-spacing:
-                1.5px;
+                1.1px;
+
+            text-transform:
+                uppercase;
 
         }
 
 
-        .satori-marquee-item strong {
+        .satori-ticker-jp {
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                16px;
 
             color:
                 var(--satori-red);
@@ -466,43 +520,30 @@
         }
 
 
-        .satori-marquee-symbol {
+        .satori-ticker-symbol {
 
             color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .35
-                );
+                var(--satori-red);
 
             font-size:
-                12px;
+                11px;
 
         }
 
 
-        @keyframes satori-marquee-scroll {
+        @keyframes satoriTicker {
 
             from {
 
                 transform:
-                    translate3d(
-                        0,
-                        0,
-                        0
-                    );
+                    translateX(0);
 
             }
 
             to {
 
                 transform:
-                    translate3d(
-                        -50%,
-                        0,
-                        0
-                    );
+                    translateX(-50%);
 
             }
 
@@ -510,22 +551,10 @@
 
 
         /* =====================================================
-           UTILIDADES
+           =====================================================
+           TITULOS
+           =====================================================
         ====================================================== */
-
-        .satori-container {
-
-            width:
-                min(
-                    var(--satori-width),
-                    calc(100% - 60px)
-                );
-
-            margin:
-                0 auto;
-
-        }
-
 
         .satori-kicker {
 
@@ -549,6 +578,9 @@
             line-height:
                 1;
 
+            text-transform:
+                uppercase;
+
         }
 
 
@@ -565,19 +597,19 @@
 
             font-size:
                 clamp(
-                    42px,
+                    45px,
                     5vw,
-                    72px
+                    76px
                 );
 
             line-height:
                 .82;
 
             font-weight:
-                800;
+                900;
 
             letter-spacing:
-                -.8px;
+                -1.5px;
 
             color:
                 #101010;
@@ -601,33 +633,159 @@
 
         .satori-new-drop {
 
+            position:
+                relative;
+
             padding:
-                88px 0 95px;
+                72px 0 82px;
 
             background:
-                #ffffff;
+                #fff;
+
+            overflow:
+                hidden;
 
         }
 
 
-        .satori-new-drop-header {
+        .satori-new-drop-layout {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                260px
+                minmax(
+                    0,
+                    1fr
+                );
+
+            gap:
+                42px;
+
+            align-items:
+                stretch;
+
+        }
+
+
+        /* =====================================================
+           NEW DROP INTRO
+        ====================================================== */
+
+        .satori-new-drop-intro {
 
             display:
                 flex;
 
-            align-items:
-                flex-end;
+            flex-direction:
+                column;
 
             justify-content:
-                space-between;
+                center;
 
-            margin-bottom:
-                30px;
+            padding:
+                15px 0;
 
         }
 
 
-        .satori-new-drop-header a {
+        .satori-new-drop-intro h2 {
+
+            margin:
+                10px 0 0;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(
+                    55px,
+                    5vw,
+                    78px
+                );
+
+            line-height:
+                .78;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -2px;
+
+            color:
+                #101010;
+
+        }
+
+
+        .satori-new-drop-intro h2::after {
+
+            content:
+                "";
+
+            display:
+                block;
+
+            width:
+                48px;
+
+            height:
+                3px;
+
+            margin:
+                24px 0 24px;
+
+            background:
+                var(--satori-red);
+
+        }
+
+
+        .satori-new-drop-intro p {
+
+            max-width:
+                210px;
+
+            margin:
+                0;
+
+            color:
+                #666;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        .satori-new-drop-link {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            width:
+                fit-content;
+
+            margin-top:
+                28px;
 
             color:
                 var(--satori-red);
@@ -644,29 +802,51 @@
                 800;
 
             letter-spacing:
-                .5px;
+                .7px;
+
+            text-transform:
+                uppercase;
 
         }
 
 
-        .satori-products-grid {
+        .satori-new-drop-link:hover {
+
+            color:
+                #111;
+
+        }
+
+
+        /* =====================================================
+           PRODUCTOS
+        ====================================================== */
+
+        .satori-new-drop-products {
 
             display:
                 grid;
 
             grid-template-columns:
-                repeat(
-                    4,
-                    1fr
+                minmax(
+                    0,
+                    1.45fr
+                )
+                minmax(
+                    170px,
+                    .72fr
+                )
+                minmax(
+                    170px,
+                    .72fr
                 );
 
+            grid-template-rows:
+                1fr
+                1fr;
+
             gap:
-                18px;
-
-        }
-
-
-        .satori-product-card {
+                12px;
 
             min-width:
                 0;
@@ -674,16 +854,16 @@
         }
 
 
-        .satori-product-image {
+        .satori-feature-product {
 
             position:
                 relative;
 
-            width:
-                100%;
+            grid-row:
+                1 / 3;
 
-            aspect-ratio:
-                1 / 1.06;
+            min-width:
+                0;
 
             overflow:
                 hidden;
@@ -694,7 +874,66 @@
         }
 
 
-        .satori-product-image img {
+        .satori-small-product {
+
+            position:
+                relative;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr
+                1.05fr;
+
+            min-width:
+                0;
+
+            overflow:
+                hidden;
+
+            background:
+                #eeeeec;
+
+        }
+
+
+        .satori-product-visual {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            background:
+                #eeeeec;
+
+        }
+
+
+        .satori-feature-product
+        .satori-product-visual {
+
+            min-height:
+                480px;
+
+        }
+
+
+        .satori-small-product
+        .satori-product-visual {
+
+            min-height:
+                180px;
+
+        }
+
+
+        .satori-product-visual img {
+
+            display:
+                block;
 
             width:
                 100%;
@@ -711,11 +950,250 @@
         }
 
 
-        .satori-product-card:hover
-        .satori-product-image img {
+        .satori-feature-product:hover
+        .satori-product-visual img,
+
+        .satori-small-product:hover
+        .satori-product-visual img {
 
             transform:
-                scale(1.04);
+                scale(1.035);
+
+        }
+
+
+        .satori-product-content {
+
+            position:
+                absolute;
+
+            left:
+                24px;
+
+            right:
+                24px;
+
+            bottom:
+                22px;
+
+            z-index:
+                4;
+
+        }
+
+
+        .satori-small-product
+        .satori-product-content {
+
+            position:
+                relative;
+
+            left:
+                auto;
+
+            right:
+                auto;
+
+            bottom:
+                auto;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            padding:
+                16px;
+
+            background:
+                #f1f1ef;
+
+        }
+
+
+        .satori-product-number {
+
+            display:
+                block;
+
+            margin-bottom:
+                5px;
+
+            color:
+                var(--satori-red);
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .satori-product-name {
+
+            margin:
+                0;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                23px;
+
+            line-height:
+                .9;
+
+            font-weight:
+                800;
+
+            color:
+                #111;
+
+        }
+
+
+        .satori-feature-product
+        .satori-product-content .satori-product-name {
+
+            font-size:
+                45px;
+
+            color:
+                #111;
+
+        }
+
+
+        .satori-product-category {
+
+            margin-top:
+                5px;
+
+            color:
+                #777;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                7px;
+
+            font-weight:
+                600;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .5px;
+
+        }
+
+
+        .satori-product-price {
+
+            margin-top:
+                7px;
+
+            color:
+                #111;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .satori-product-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                fit-content;
+
+            margin-top:
+                13px;
+
+            padding:
+                9px 14px;
+
+            border:
+                1px solid #111;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .88
+                );
+
+            color:
+                #111;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                7px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                .4px;
+
+            text-transform:
+                uppercase;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .satori-product-button:hover {
+
+            background:
+                var(--satori-red);
+
+            border-color:
+                var(--satori-red);
+
+            color:
+                #fff;
 
         }
 
@@ -725,14 +1203,14 @@
             position:
                 absolute;
 
-            z-index:
-                4;
-
             top:
-                10px;
+                12px;
 
             left:
-                10px;
+                12px;
+
+            z-index:
+                8;
 
             padding:
                 5px 8px;
@@ -754,16 +1232,109 @@
             font-weight:
                 800;
 
+            letter-spacing:
+                .5px;
+
         }
 
 
-        .satori-product-name {
+        /* =====================================================
+           FALLBACK PRODUCTO
+        ====================================================== */
 
-            margin-top:
-                11px;
+        .satori-product-fallback {
 
-            color:
-                #111;
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            overflow:
+                hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #252525
+                );
+
+        }
+
+
+        .satori-product-fallback::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                70%;
+
+            aspect-ratio:
+                1;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .09
+                );
+
+            transform:
+                rotate(45deg);
+
+        }
+
+
+        .satori-product-fallback::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                45%;
+
+            aspect-ratio:
+                1;
+
+            border:
+                16px solid
+                var(--satori-red);
+
+            opacity:
+                .12;
+
+            transform:
+                rotate(45deg);
+
+        }
+
+
+        .satori-product-fallback span {
+
+            position:
+                relative;
+
+            z-index:
+                2;
 
             font-family:
                 "Barlow Condensed",
@@ -771,85 +1342,56 @@
                 sans-serif;
 
             font-size:
-                18px;
-
-            line-height:
-                1;
-
-            font-weight:
-                700;
-
-        }
-
-
-        .satori-product-category {
-
-            margin-top:
-                5px;
-
-            color:
-                #999;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                8px;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .satori-product-price {
-
-            margin-top:
-                6px;
-
-            color:
-                #111;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                10px;
+                clamp(
+                    40px,
+                    5vw,
+                    75px
+                );
 
             font-weight:
-                800;
+                900;
+
+            letter-spacing:
+                -3px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .14
+                );
 
         }
 
 
         /* =====================================================
            =====================================================
-           COLECCIONES
+           EXPLORA TU UNIVERSO
            =====================================================
         ====================================================== */
 
-        .satori-collections {
+        .satori-universe {
 
             position:
                 relative;
 
             padding:
-                82px 0 92px;
-
-            background:
-                #f5f5f3;
+                82px 0 88px;
 
             overflow:
                 hidden;
 
+            background:
+                var(--satori-dark);
+
+            color:
+                #fff;
+
         }
 
 
-        .satori-collections::before {
+        .satori-universe::before {
 
             content:
                 "SATORII";
@@ -857,11 +1399,11 @@
             position:
                 absolute;
 
-            top:
-                80px;
-
             left:
-                -40px;
+                -30px;
+
+            top:
+                25px;
 
             font-family:
                 "Barlow Condensed",
@@ -869,7 +1411,7 @@
                 sans-serif;
 
             font-size:
-                180px;
+                190px;
 
             line-height:
                 .7;
@@ -877,11 +1419,14 @@
             font-weight:
                 900;
 
+            letter-spacing:
+                -8px;
+
             color:
                 rgba(
-                    0,
-                    0,
-                    0,
+                    255,
+                    255,
+                    255,
                     .025
                 );
 
@@ -891,7 +1436,7 @@
         }
 
 
-        .satori-collections-header {
+        .satori-universe-layout {
 
             position:
                 relative;
@@ -899,28 +1444,91 @@
             z-index:
                 2;
 
-            max-width:
-                720px;
+            display:
+                grid;
 
-            margin:
-                0 auto 32px;
+            grid-template-columns:
+                245px
+                minmax(
+                    0,
+                    1fr
+                );
 
-            text-align:
+            gap:
+                38px;
+
+            align-items:
                 center;
 
         }
 
 
-        .satori-collections-header p {
+        .satori-universe-intro {
 
-            max-width:
-                590px;
+            align-self:
+                center;
 
-            margin:
-                18px auto 0;
+        }
+
+
+        .satori-universe-intro .satori-kicker {
 
             color:
-                #707070;
+                var(--satori-red);
+
+        }
+
+
+        .satori-universe-intro h2 {
+
+            margin:
+                10px 0 0;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(
+                    50px,
+                    5vw,
+                    74px
+                );
+
+            line-height:
+                .76;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -2px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .satori-universe-intro h2 span {
+
+            color:
+                var(--satori-red);
+
+        }
+
+
+        .satori-universe-intro p {
+
+            max-width:
+                210px;
+
+            margin:
+                20px 0 0;
+
+            color:
+                #aeb4be;
 
             font-family:
                 "Inter",
@@ -928,7 +1536,7 @@
                 sans-serif;
 
             font-size:
-                13px;
+                10px;
 
             line-height:
                 1.7;
@@ -936,222 +1544,126 @@
         }
 
 
-        /* =====================================================
-           CARRUSEL
-        ====================================================== */
-
-        .satori-carousel {
-
-            position:
-                relative;
-
-            z-index:
-                2;
-
-        }
-
-
-        .satori-carousel-viewport {
-
-            width:
-                100%;
-
-            overflow:
-                hidden;
-
-            padding:
-                30px 0 36px;
-
-            touch-action:
-                pan-y;
-
-            overscroll-behavior-x:
-                contain;
-
-        }
-
-
-        .satori-carousel-track {
+        .satori-universe-button {
 
             display:
-                flex;
+                inline-flex;
 
             align-items:
                 center;
 
-            gap:
-                18px;
+            justify-content:
+                center;
 
-            width:
-                max-content;
+            margin-top:
+                24px;
 
-            will-change:
-                transform;
+            padding:
+                12px 16px;
+
+            background:
+                var(--satori-red);
+
+            color:
+                #fff;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                7px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                .5px;
+
+            text-transform:
+                uppercase;
 
             transition:
-                transform
-                .65s
-                cubic-bezier(
-                    .22,
-                    .61,
-                    .36,
-                    1
-                );
+                .2s ease;
 
         }
 
 
-        /* =====================================================
-           TARJETAS
-        ====================================================== */
-
-        /*
-           DIMENSIÓN MÁXIMA DESKTOP:
-
-           ANCHO:
-           540px
-
-           IMAGEN:
-           540px × ~574px
-
-           RECOMENDACIÓN PARA ARCHIVOS:
-           1200 × 1275px
-        */
-
-        .satori-collection-card {
-
-            position:
-                relative;
-
-            flex:
-                0 0
-                min(
-                    540px,
-                    72vw
-                );
-
-            overflow:
-                hidden;
-
-            border-radius:
-                18px;
+        .satori-universe-button:hover {
 
             background:
+                #fff;
+
+            color:
                 #111;
 
-            opacity:
-                .42;
-
             transform:
-                scale(.87);
-
-            box-shadow:
-                0 10px 35px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .08
-                );
-
-            transition:
-                transform .65s
-                cubic-bezier(
-                    .22,
-                    .61,
-                    .36,
-                    1
-                ),
-                opacity .65s ease,
-                box-shadow .65s ease;
-
-        }
-
-
-        .satori-collection-card.active {
-
-            opacity:
-                1;
-
-            transform:
-                scale(1);
-
-            box-shadow:
-                0 25px 65px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .20
-                );
-
-            z-index:
-                5;
+                translateY(-2px);
 
         }
 
 
         /* =====================================================
-           IMAGEN
+           TARJETAS UNIVERSO
         ====================================================== */
 
-        .satori-collection-image {
+        .satori-universe-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+
+            gap:
+                12px;
+
+        }
+
+
+        .satori-universe-card {
 
             position:
                 relative;
 
-            width:
-                100%;
+            display:
+                block;
 
-            aspect-ratio:
-                .94 / 1;
+            min-width:
+                0;
 
             overflow:
                 hidden;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #111923,
-                    #050505
+            aspect-ratio:
+                .72 / 1;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .35
                 );
+
+            background:
+                #171717;
+
+            color:
+                #fff;
 
         }
 
 
-        .satori-collection-image::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            inset:
-                0;
-
-            z-index:
-                1;
-
-            background:
-                radial-gradient(
-                    circle at 50% 25%,
-                    rgba(
-                        239,
-                        9,
-                        48,
-                        .15
-                    ),
-                    transparent 45%
-                );
-
-            pointer-events:
-                none;
-
-        }
-
-
-        .satori-collection-image::after {
+        .satori-universe-card::after {
 
             content:
                 "";
@@ -1172,9 +1684,14 @@
                         0,
                         0,
                         0,
-                        .48
+                        .88
                     ),
-                    transparent 55%
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        .05
+                    ) 62%
                 );
 
             pointer-events:
@@ -1183,16 +1700,13 @@
         }
 
 
-        .satori-collection-image img {
+        .satori-universe-card img {
 
             position:
-                relative;
+                absolute;
 
-            z-index:
+            inset:
                 0;
-
-            display:
-                block;
 
             width:
                 100%;
@@ -1204,33 +1718,158 @@
                 cover;
 
             transition:
-                transform .7s ease;
+                transform .6s ease;
 
         }
 
 
-        .satori-collection-card:hover
-        .satori-collection-image img {
+        .satori-universe-card:hover img {
 
             transform:
-                scale(1.045);
+                scale(1.055);
+
+        }
+
+
+        .satori-universe-card-content {
+
+            position:
+                absolute;
+
+            left:
+                18px;
+
+            right:
+                18px;
+
+            bottom:
+                17px;
+
+            z-index:
+                4;
+
+        }
+
+
+        .satori-universe-card h3 {
+
+            margin:
+                0;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                30px;
+
+            line-height:
+                .82;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -.5px;
+
+        }
+
+
+        .satori-universe-card small {
+
+            display:
+                block;
+
+            margin-top:
+                6px;
+
+            color:
+                #b8bdc5;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                7px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .7px;
+
+        }
+
+
+        .satori-universe-arrow {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                30px;
+
+            height:
+                30px;
+
+            margin-top:
+                13px;
+
+            border:
+                1px solid
+                var(--satori-red);
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .25
+                );
+
+            color:
+                #fff;
+
+            font-size:
+                13px;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .satori-universe-card:hover
+        .satori-universe-arrow {
+
+            background:
+                var(--satori-red);
 
         }
 
 
         /* =====================================================
-           FALLBACK
+           FALLBACK UNIVERSO
         ====================================================== */
 
-        .satori-collection-fallback {
+        .satori-universe-fallback {
 
             position:
                 absolute;
 
             inset:
-                0;
-
-            z-index:
                 0;
 
             display:
@@ -1242,82 +1881,17 @@
             justify-content:
                 center;
 
-            overflow:
-                hidden;
-
             background:
                 linear-gradient(
-                    135deg,
+                    145deg,
                     #131313,
-                    #252525
+                    #292929
                 );
 
         }
 
 
-        .satori-collection-fallback::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                270px;
-
-            height:
-                270px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .08
-                );
-
-            transform:
-                rotate(45deg);
-
-        }
-
-
-        .satori-collection-fallback::after {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                130px;
-
-            height:
-                130px;
-
-            border:
-                20px solid
-                var(--satori-red);
-
-            opacity:
-                .12;
-
-            transform:
-                rotate(45deg);
-
-        }
-
-
-        .satori-fallback-title {
-
-            position:
-                relative;
-
-            z-index:
-                2;
+        .satori-universe-fallback span {
 
             font-family:
                 "Barlow Condensed",
@@ -1325,17 +1899,10 @@
                 sans-serif;
 
             font-size:
-                clamp(
-                    55px,
-                    9vw,
-                    100px
-                );
+                55px;
 
             font-weight:
                 900;
-
-            letter-spacing:
-                -4px;
 
             color:
                 rgba(
@@ -1349,69 +1916,146 @@
 
 
         /* =====================================================
-           BADGE
+           =====================================================
+           EXPERIENCIA SATORII
+           =====================================================
         ====================================================== */
 
-        .satori-collection-badge {
+        .satori-experience {
 
             position:
-                absolute;
+                relative;
 
-            z-index:
-                5;
-
-            top:
-                18px;
-
-            left:
-                18px;
+            min-height:
+                300px;
 
             padding:
-                7px 12px;
+                55px 0;
 
-            border-radius:
-                50px;
+            overflow:
+                hidden;
 
             background:
-                var(--satori-red);
-
-            color:
-                #fff;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                8px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                .8px;
+                var(--satori-paper);
 
         }
 
 
-        /* =====================================================
-           INFO
-        ====================================================== */
+        .satori-experience::before {
 
-        .satori-collection-info {
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                -120px;
+
+            top:
+                -80px;
+
+            width:
+                380px;
+
+            height:
+                240px;
+
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        .15
+                    ),
+                    transparent 68%
+                );
+
+            transform:
+                rotate(
+                    -14deg
+                );
+
+            filter:
+                blur(10px);
+
+        }
+
+
+        .satori-experience::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            right:
+                -60px;
+
+            bottom:
+                -80px;
+
+            width:
+                300px;
+
+            height:
+                250px;
+
+            border:
+                1px solid
+                rgba(
+                    239,
+                    9,
+                    48,
+                    .18
+                );
+
+            border-radius:
+                50%;
+
+            transform:
+                rotate(
+                    -20deg
+                );
+
+        }
+
+
+        .satori-experience-layout {
 
             position:
                 relative;
 
             z-index:
-                5;
+                2;
 
-            min-height:
-                105px;
+            display:
+                grid;
 
-            padding:
-                18px 20px;
+            grid-template-columns:
+                280px
+                minmax(
+                    260px,
+                    1fr
+                )
+                minmax(
+                    380px,
+                    1.3fr
+                );
+
+            gap:
+                42px;
+
+            align-items:
+                center;
+
+        }
+
+
+        .satori-pack-box {
 
             display:
                 flex;
@@ -1420,21 +2064,282 @@
                 center;
 
             justify-content:
-                space-between;
+                center;
 
-            gap:
-                18px;
-
-            background:
-                #111923;
-
-            color:
-                #fff;
+            min-height:
+                210px;
 
         }
 
 
-        .satori-collection-info h3 {
+        .satori-pack-box img {
+
+            width:
+                100%;
+
+            max-width:
+                300px;
+
+            max-height:
+                220px;
+
+            object-fit:
+                contain;
+
+            filter:
+                drop-shadow(
+                    0 18px 18px
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        .22
+                    )
+                );
+
+        }
+
+
+        .satori-experience-content .satori-kicker {
+
+            color:
+                var(--satori-red);
+
+        }
+
+
+        .satori-experience-content h2 {
+
+            margin:
+                10px 0 0;
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(
+                    48px,
+                    5vw,
+                    72px
+                );
+
+            line-height:
+                .76;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                -1.5px;
+
+        }
+
+
+        .satori-experience-content h2 span {
+
+            color:
+                var(--satori-red);
+
+        }
+
+
+        .satori-experience-content p {
+
+            max-width:
+                280px;
+
+            margin:
+                18px 0 0;
+
+            color:
+                #656565;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        .satori-experience-features {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    1fr
+                );
+
+        }
+
+
+        .satori-experience-feature {
+
+            min-height:
+                105px;
+
+            padding:
+                0 17px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            border-left:
+                1px solid
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .18
+                );
+
+        }
+
+
+        .satori-experience-icon {
+
+            width:
+                30px;
+
+            height:
+                30px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            margin-bottom:
+                10px;
+
+            border:
+                1px solid
+                #111;
+
+            border-radius:
+                50%;
+
+            color:
+                #111;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .satori-experience-feature strong {
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                15px;
+
+            line-height:
+                .9;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .satori-experience-feature span {
+
+            margin-top:
+                5px;
+
+            color:
+                #777;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:
+                7px;
+
+            line-height:
+                1.4;
+
+        }
+
+
+        /* =====================================================
+           =====================================================
+           RECOMENDACIONES
+           =====================================================
+        ====================================================== */
+
+        .recommendations {
+
+            width:
+                min(
+                    var(--satori-width),
+                    calc(100% - 70px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                58px 0 78px;
+
+        }
+
+
+        .recommendations .section-header {
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .recommendations .section-header h2 {
 
             margin:
                 0;
@@ -1445,13 +2350,13 @@
                 sans-serif;
 
             font-size:
-                42px;
+                31px;
 
             line-height:
-                .8;
+                .85;
 
             font-weight:
-                800;
+                900;
 
             letter-spacing:
                 -.5px;
@@ -1459,59 +2364,10 @@
         }
 
 
-        .satori-collection-info p {
-
-            margin:
-                7px 0 0;
+        .recommendations .section-header a {
 
             color:
-                #9ea5ad;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                9px;
-
-            line-height:
-                1.3;
-
-            text-transform:
-                uppercase;
-
-            letter-spacing:
-                .7px;
-
-        }
-
-
-        .satori-collection-button {
-
-            flex:
-                0 0 auto;
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            padding:
-                12px 15px;
-
-            border-radius:
-                8px;
-
-            background:
-                #fff;
-
-            color:
-                #111923;
+                var(--satori-red);
 
             font-family:
                 "Inter",
@@ -1524,212 +2380,123 @@
             font-weight:
                 800;
 
-            white-space:
-                nowrap;
-
-            transition:
-                .2s ease;
+            text-transform:
+                uppercase;
 
         }
 
 
-        .satori-collection-button:hover {
-
-            background:
-                var(--satori-red);
-
-            color:
-                #fff;
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        /* =====================================================
-           CONTROLES PC
-        ====================================================== */
-
-        .satori-carousel-controls {
+        .recommendations-grid {
 
             display:
-                flex;
+                grid;
 
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            gap:
-                8px;
-
-            margin:
-                0;
-
-        }
-
-
-        .satori-carousel-arrow {
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            padding:
-                0;
-
-            border:
-                1px solid #d2d2cf;
-
-            border-radius:
-                50%;
-
-            background:
-                #fff;
-
-            color:
-                #161616;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            font-size:
-                23px;
-
-            line-height:
-                1;
-
-            cursor:
-                pointer;
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        .satori-carousel-arrow:hover {
-
-            background:
-                var(--satori-red);
-
-            border-color:
-                var(--satori-red);
-
-            color:
-                #fff;
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        /* =====================================================
-           DOTS CARRUSEL
-        ====================================================== */
-
-        .satori-carousel-dots {
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            gap:
-                7px;
-
-        }
-
-
-        .satori-carousel-dot {
-
-            width:
-                6px;
-
-            height:
-                6px;
-
-            padding:
-                0;
-
-            border:
-                0;
-
-            border-radius:
-                50%;
-
-            background:
-                #c9c9c6;
-
-            cursor:
-                pointer;
-
-            transition:
-                .25s ease;
-
-        }
-
-
-        .satori-carousel-dot.active {
-
-            width:
-                25px;
-
-            border-radius:
-                10px;
-
-            background:
-                var(--satori-red);
-
-        }
-
-
-        /* =====================================================
-           RECOMENDACIONES
-        ====================================================== */
-
-        .recommendations {
-
-            width:
-                min(
-                    var(--satori-width),
-                    calc(100% - 60px)
+            grid-template-columns:
+                repeat(
+                    6,
+                    minmax(
+                        0,
+                        1fr
+                    )
                 );
 
-            margin:
-                0 auto 90px;
+            gap:
+                10px;
+
+        }
+
+
+        /* =====================================================
+           =====================================================
+           FOOTER
+           =====================================================
+        ====================================================== */
+
+        .satori-index
+        ~ #satori-footer {
+
+            position:
+                relative;
 
         }
 
 
         /* =====================================================
            TABLET
-        ====================================================== */
+           ====================================================== */
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1100px) {
 
-            .satori-products-grid {
+            .satori-new-drop-layout {
 
                 grid-template-columns:
-                    repeat(
-                        2,
+                    190px
+                    minmax(
+                        0,
                         1fr
                     );
+
+                gap:
+                    25px;
+
+            }
+
+
+            .satori-new-drop-products {
+
+                grid-template-columns:
+                    minmax(
+                        0,
+                        1.3fr
+                    )
+                    minmax(
+                        150px,
+                        .8fr
+                    )
+                    minmax(
+                        150px,
+                        .8fr
+                    );
+
+            }
+
+
+            .satori-universe-layout {
+
+                grid-template-columns:
+                    190px
+                    minmax(
+                        0,
+                        1fr
+                    );
+
+                gap:
+                    25px;
+
+            }
+
+
+            .satori-experience-layout {
+
+                grid-template-columns:
+                    220px
+                    1fr;
+
+            }
+
+
+            .satori-experience-features {
+
+                grid-column:
+                    1 / -1;
+
+            }
+
+
+            .satori-experience-feature:first-child {
+
+                border-left:
+                    0;
 
             }
 
@@ -1740,20 +2507,26 @@
            MOBILE
         ====================================================== */
 
-        @media (max-width: 650px) {
+        @media (max-width: 700px) {
 
 
             /* =================================================
-               BANNER
+               CONTENEDOR
             ================================================== */
 
-            .hero-slider {
+            .satori-container {
 
-                touch-action:
-                    pan-y;
+                width:
+                    calc(
+                        100% - 20px
+                    );
 
             }
 
+
+            /* =================================================
+               HERO
+            ================================================== */
 
             .hero-dots {
 
@@ -1783,52 +2556,32 @@
 
 
             /* =================================================
-               BARRA DINÁMICA
+               TICKER
             ================================================== */
 
-            .satori-marquee {
+            .satori-ticker {
 
                 height:
-                    38px;
+                    36px;
 
             }
 
 
-            .satori-marquee-item {
-
-                padding:
-                    0 13px;
-
-                gap:
-                    13px;
+            .satori-ticker-item {
 
                 font-size:
                     7px;
 
                 letter-spacing:
-                    1.2px;
+                    .8px;
 
             }
 
 
-            .satori-marquee-symbol {
+            .satori-ticker-jp {
 
                 font-size:
-                    10px;
-
-            }
-
-
-            /* =================================================
-               CONTENEDORES
-            ================================================== */
-
-            .satori-container {
-
-                width:
-                    calc(
-                        100% - 20px
-                    );
+                    13px;
 
             }
 
@@ -1840,20 +2593,273 @@
             .satori-new-drop {
 
                 padding:
-                    62px 0 70px;
+                    54px 0 62px;
 
             }
 
 
-            .satori-new-drop-header {
+            .satori-new-drop-layout {
+
+                display:
+                    block;
+
+            }
+
+
+            .satori-new-drop-intro {
 
                 margin-bottom:
-                    22px;
+                    24px;
 
             }
 
 
-            .satori-products-grid {
+            .satori-new-drop-intro h2 {
+
+                font-size:
+                    54px;
+
+            }
+
+
+            .satori-new-drop-intro h2::after {
+
+                margin:
+                    17px 0;
+
+            }
+
+
+            .satori-new-drop-intro p {
+
+                max-width:
+                    280px;
+
+                font-size:
+                    9px;
+
+            }
+
+
+            .satori-new-drop-link {
+
+                margin-top:
+                    18px;
+
+            }
+
+
+            .satori-new-drop-products {
+
+                display:
+                    grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                grid-template-rows:
+                    auto auto;
+
+                gap:
+                    8px;
+
+            }
+
+
+            .satori-feature-product {
+
+                grid-column:
+                    1 / -1;
+
+                grid-row:
+                    auto;
+
+            }
+
+
+            .satori-feature-product
+            .satori-product-visual {
+
+                min-height:
+                    330px;
+
+            }
+
+
+            .satori-feature-product
+            .satori-product-content {
+
+                left:
+                    16px;
+
+                right:
+                    16px;
+
+                bottom:
+                    16px;
+
+            }
+
+
+            .satori-feature-product
+            .satori-product-content
+            .satori-product-name {
+
+                font-size:
+                    36px;
+
+            }
+
+
+            .satori-small-product {
+
+                display:
+                    block;
+
+            }
+
+
+            .satori-small-product
+            .satori-product-visual {
+
+                min-height:
+                    155px;
+
+            }
+
+
+            .satori-small-product
+            .satori-product-content {
+
+                min-height:
+                    82px;
+
+                padding:
+                    11px;
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .satori-small-product
+            .satori-product-number {
+
+                font-size:
+                    9px;
+
+            }
+
+
+            .satori-small-product
+            .satori-product-name {
+
+                font-size:
+                    19px;
+
+            }
+
+
+            .satori-small-product
+            .satori-product-category {
+
+                font-size:
+                    6px;
+
+            }
+
+
+            .satori-small-product
+            .satori-product-price {
+
+                font-size:
+                    8px;
+
+            }
+
+
+            /* =================================================
+               UNIVERSO
+            ================================================== */
+
+            .satori-universe {
+
+                padding:
+                    58px 0 64px;
+
+            }
+
+
+            .satori-universe::before {
+
+                top:
+                    55px;
+
+                left:
+                    -20px;
+
+                font-size:
+                    100px;
+
+            }
+
+
+            .satori-universe-layout {
+
+                display:
+                    block;
+
+            }
+
+
+            .satori-universe-intro {
+
+                width:
+                    calc(
+                        100% - 30px
+                    );
+
+                margin:
+                    0 auto 27px;
+
+                text-align:
+                    center;
+
+            }
+
+
+            .satori-universe-intro h2 {
+
+                font-size:
+                    52px;
+
+            }
+
+
+            .satori-universe-intro p {
+
+                max-width:
+                    280px;
+
+                margin:
+                    16px auto 0;
+
+                font-size:
+                    9px;
+
+            }
+
+
+            .satori-universe-button {
+
+                margin-top:
+                    19px;
+
+            }
+
+
+            .satori-universe-grid {
 
                 grid-template-columns:
                     repeat(
@@ -1862,28 +2868,140 @@
                     );
 
                 gap:
-                    28px 9px;
+                    8px;
 
             }
 
 
-            .satori-product-name {
+            .satori-universe-card {
+
+                aspect-ratio:
+                    .73 / 1;
+
+            }
+
+
+            .satori-universe-card-content {
+
+                left:
+                    12px;
+
+                right:
+                    12px;
+
+                bottom:
+                    12px;
+
+            }
+
+
+            .satori-universe-card h3 {
 
                 font-size:
-                    15px;
+                    25px;
 
             }
 
 
-            .satori-product-category {
+            .satori-universe-card small {
 
                 font-size:
-                    7px;
+                    6px;
 
             }
 
 
-            .satori-product-price {
+            .satori-universe-arrow {
+
+                width:
+                    25px;
+
+                height:
+                    25px;
+
+                margin-top:
+                    9px;
+
+                font-size:
+                    11px;
+
+            }
+
+
+            /* =================================================
+               EXPERIENCIA
+            ================================================== */
+
+            .satori-experience {
+
+                padding:
+                    45px 0 50px;
+
+            }
+
+
+            .satori-experience-layout {
+
+                display:
+                    flex;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    20px;
+
+                text-align:
+                    center;
+
+            }
+
+
+            .satori-pack-box {
+
+                order:
+                    2;
+
+                width:
+                    100%;
+
+                min-height:
+                    170px;
+
+            }
+
+
+            .satori-pack-box img {
+
+                max-width:
+                    230px;
+
+                max-height:
+                    180px;
+
+            }
+
+
+            .satori-experience-content {
+
+                order:
+                    1;
+
+            }
+
+
+            .satori-experience-content h2 {
+
+                font-size:
+                    51px;
+
+            }
+
+
+            .satori-experience-content p {
+
+                margin:
+                    15px auto 0;
 
                 font-size:
                     9px;
@@ -1891,234 +3009,67 @@
             }
 
 
-            /* =================================================
-               COLECCIONES
-            ================================================== */
+            .satori-experience-features {
 
-            .satori-collections {
-
-                padding:
-                    62px 0 72px;
-
-            }
-
-
-            .satori-collections::before {
-
-                font-size:
-                    105px;
-
-                top:
-                    70px;
-
-            }
-
-
-            .satori-collections-header {
-
-                width:
-                    calc(
-                        100% - 36px
-                    );
-
-                margin:
-                    0 auto 24px;
-
-            }
-
-
-            .satori-kicker {
-
-                font-size:
-                    8px;
-
-                letter-spacing:
-                    2px;
-
-            }
-
-
-            .satori-heading {
-
-                font-size:
-                    40px;
-
-            }
-
-
-            .satori-collections-header p {
-
-                margin-top:
-                    14px;
-
-                font-size:
-                    10px;
-
-                line-height:
-                    1.65;
-
-            }
-
-
-            /* =================================================
-               CARRUSEL MOBILE
-            ================================================== */
-
-            .satori-carousel {
+                order:
+                    3;
 
                 width:
                     100%;
 
-            }
-
-
-            .satori-carousel-viewport {
-
-                width:
-                    100%;
-
-                padding:
-                    20px 0 28px;
-
-                overflow:
-                    hidden;
-
-                touch-action:
-                    pan-y;
+                grid-template-columns:
+                    1fr 1fr;
 
             }
 
 
-            .satori-carousel-track {
-
-                gap:
-                    12px;
-
-                width:
-                    max-content;
-
-            }
-
-
-            .satori-collection-card {
-
-                flex:
-                    0 0 76vw;
-
-                max-width:
-                    none;
-
-                border-radius:
-                    16px;
-
-                opacity:
-                    .38;
-
-                transform:
-                    scale(.87);
-
-            }
-
-
-            .satori-collection-card.active {
-
-                opacity:
-                    1;
-
-                transform:
-                    scale(1);
-
-            }
-
-
-            .satori-collection-image {
-
-                aspect-ratio:
-                    .94 / 1;
-
-            }
-
-
-            .satori-collection-badge {
-
-                top:
-                    13px;
-
-                left:
-                    13px;
-
-                padding:
-                    6px 9px;
-
-                font-size:
-                    7px;
-
-            }
-
-
-            .satori-collection-info {
+            .satori-experience-feature {
 
                 min-height:
-                    82px;
-
-                padding:
-                    14px;
-
-                gap:
-                    8px;
-
-            }
-
-
-            .satori-collection-info h3 {
-
-                font-size:
-                    32px;
-
-            }
-
-
-            .satori-collection-info p {
-
-                margin-top:
-                    5px;
-
-                font-size:
-                    7px;
-
-            }
-
-
-            .satori-collection-button {
+                    100px;
 
                 padding:
                     10px;
 
-                font-size:
-                    6.5px;
+                border-left:
+                    1px solid
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        .16
+                    );
+
+                border-bottom:
+                    1px solid
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        .16
+                    );
 
             }
 
 
-            /* =================================================
-               FLECHAS OCULTAS EN MOBILE
-            ================================================== */
+            .satori-experience-feature:nth-child(
+                3
+            ) {
 
-            .satori-carousel-controls {
-
-                display:
-                    none !important;
+                border-left:
+                    0;
 
             }
 
 
-            /* =================================================
-               DOTS
-            ================================================== */
+            .satori-experience-feature:nth-child(
+                3
+            ),
+            .satori-experience-feature:nth-child(
+                4
+            ) {
 
-            .satori-carousel-dots {
-
-                margin-top:
+                border-bottom:
                     0;
 
             }
@@ -2135,8 +3086,33 @@
                         100% - 20px
                     );
 
-                margin:
-                    0 auto 70px;
+                padding:
+                    48px 0 60px;
+
+            }
+
+
+            .recommendations .section-header h2 {
+
+                font-size:
+                    25px;
+
+            }
+
+
+            .recommendations-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+
+                gap:
+                    24px 8px;
 
             }
 
@@ -2144,19 +3120,66 @@
 
 
         /* =====================================================
-           TABLET PEQUEÑA
+           MOBILE PEQUEÑO
         ====================================================== */
 
-        @media (
-            min-width: 651px
-        ) and (
-            max-width: 1100px
-        ) {
+        @media (max-width: 380px) {
 
-            .satori-collection-card {
+            .satori-feature-product
+            .satori-product-visual {
 
-                flex:
-                    0 0 65vw;
+                min-height:
+                    285px;
+
+            }
+
+
+            .satori-feature-product
+            .satori-product-content
+            .satori-product-name {
+
+                font-size:
+                    31px;
+
+            }
+
+
+            .satori-universe-card h3 {
+
+                font-size:
+                    22px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ACCESIBILIDAD
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .satori-ticker-track {
+
+                animation:
+                    none;
+
+            }
+
+
+            .hero-track {
+
+                transition:
+                    none;
+
+            }
+
+
+            * {
+
+                scroll-behavior:
+                    auto !important;
 
             }
 
@@ -2189,7 +3212,7 @@
 
 
         <!-- =================================================
-             HERO / BANNER
+             HERO
         ================================================== -->
 
         <section
@@ -2222,7 +3245,7 @@
 
                         <img
                             src="img/banner-01.webp"
-                            alt="Bienvenidos a Satorii"
+                            alt="Satorii — Tu universo comienza aquí"
                             fetchpriority="high"
                             decoding="async"
                             draggable="false"
@@ -2249,7 +3272,7 @@
 
                         <img
                             src="img/banner-02.webp"
-                            alt="Productos Satorii"
+                            alt="New Drop Satorii"
                             loading="lazy"
                             decoding="async"
                             draggable="false"
@@ -2276,7 +3299,7 @@
 
                         <img
                             src="img/banner-03.webp"
-                            alt="Productos Satorii"
+                            alt="Satorii Pack"
                             loading="lazy"
                             decoding="async"
                             draggable="false"
@@ -2290,7 +3313,7 @@
 
 
             <!-- =================================================
-                 DOTS BANNER
+                 DOTS
             ================================================== -->
 
             <div
@@ -2329,130 +3352,204 @@
 
 
         <!-- =================================================
-             BARRA DINÁMICA SATORII
+             TICKER
         ================================================== -->
 
         <div
-            class="satori-marquee"
+            class="satori-ticker"
             aria-label="Información Satorii"
         >
 
             <div
-                class="satori-marquee-track"
+                class="satori-ticker-track"
             >
 
                 <!-- GRUPO 1 -->
 
                 <div
-                    class="satori-marquee-group"
+                    class="satori-ticker-content"
                 >
 
-                    <span class="satori-marquee-item">
-                        <strong>
-                            BIENVENIDOS A SATORII
-                        </strong>
-                        <span class="satori-marquee-symbol">
-                            ✦
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            悟
                         </span>
+                        SATORII
                     </span>
 
-
-                    <span class="satori-marquee-item">
-                        ANIME STREETWEAR
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
                     </span>
 
-
-                    <span class="satori-marquee-item">
-                        CULTURA JAPONESA
-                        <span class="satori-marquee-symbol">
-                            ✦
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            妖怪
                         </span>
+                        YOKAI
                     </span>
 
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
 
-                    <span class="satori-marquee-item">
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            新作
+                        </span>
+                        NEW DROP
+                    </span>
+
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
+
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            日本
+                        </span>
+                        JAPÓN
+                    </span>
+
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
+
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        STREETWEAR
+                    </span>
+
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
+
+                    <span
+                        class="satori-ticker-item"
+                    >
                         DISEÑOS QUE VIVEN CONTIGO
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
-                    </span>
-
-
-                    <span class="satori-marquee-item">
-                        DESCUBRE TU PRÓXIMO DROP
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
-                    </span>
-
-
-                    <span class="satori-marquee-item">
-                        HECHO PARA TU UNIVERSO
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
                     </span>
 
                 </div>
 
 
-                <!-- GRUPO 2 — DUPLICADO PARA LOOP -->
+                <!-- GRUPO 2 -->
 
                 <div
-                    class="satori-marquee-group"
+                    class="satori-ticker-content"
                     aria-hidden="true"
                 >
 
-                    <span class="satori-marquee-item">
-                        <strong>
-                            BIENVENIDOS A SATORII
-                        </strong>
-                        <span class="satori-marquee-symbol">
-                            ✦
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            悟
                         </span>
+                        SATORII
                     </span>
 
-
-                    <span class="satori-marquee-item">
-                        ANIME STREETWEAR
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
                     </span>
 
-
-                    <span class="satori-marquee-item">
-                        CULTURA JAPONESA
-                        <span class="satori-marquee-symbol">
-                            ✦
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            妖怪
                         </span>
+                        YOKAI
                     </span>
 
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
 
-                    <span class="satori-marquee-item">
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            新作
+                        </span>
+                        NEW DROP
+                    </span>
+
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
+
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        <span
+                            class="satori-ticker-jp"
+                        >
+                            日本
+                        </span>
+                        JAPÓN
+                    </span>
+
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
+
+                    <span
+                        class="satori-ticker-item"
+                    >
+                        STREETWEAR
+                    </span>
+
+                    <span
+                        class="satori-ticker-symbol"
+                    >
+                        ✦
+                    </span>
+
+                    <span
+                        class="satori-ticker-item"
+                    >
                         DISEÑOS QUE VIVEN CONTIGO
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
-                    </span>
-
-
-                    <span class="satori-marquee-item">
-                        DESCUBRE TU PRÓXIMO DROP
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
-                    </span>
-
-
-                    <span class="satori-marquee-item">
-                        HECHO PARA TU UNIVERSO
-                        <span class="satori-marquee-symbol">
-                            ✦
-                        </span>
                     </span>
 
                 </div>
@@ -2476,10 +3573,17 @@
             >
 
                 <div
-                    class="satori-new-drop-header"
+                    class="satori-new-drop-layout"
                 >
 
-                    <div>
+
+                    <!-- =================================================
+                         INTRO
+                    ================================================== -->
+
+                    <div
+                        class="satori-new-drop-intro"
+                    >
 
                         <div
                             class="satori-kicker"
@@ -2488,255 +3592,362 @@
                         </div>
 
 
-                        <h2
-                            class="satori-heading"
-                        >
-                            NEW DROP
+                        <h2>
+                            NEW<br>
+                            DROP
                         </h2>
+
+
+                        <p>
+
+                            Lo más reciente en
+                            diseño, calidad y actitud.
+                            Nuevos diseños para
+                            quienes viven su propio
+                            universo.
+
+                        </p>
+
+
+                        <a
+                            href="productos.html"
+                            class="satori-new-drop-link"
+                        >
+                            VER TODO
+                            →
+                        </a>
 
                     </div>
 
 
-                    <a
-                        href="productos.html"
-                    >
-                        VER TODO →
-                    </a>
-
-                </div>
-
-
-                <div
-                    class="satori-products-grid"
-                >
-
-
                     <!-- =================================================
-                         KID BUU
+                         PRODUCTOS
                     ================================================== -->
 
-                    <article
-                        class="satori-product-card"
+                    <div
+                        class="satori-new-drop-products"
                     >
 
-                        <a
-                            href="productos/anime/kid-buu.html"
+
+                        <!-- =================================================
+                             FEATURE — KID BUU
+                        ================================================== -->
+
+                        <article
+                            class="satori-feature-product"
+                        >
+
+                            <a
+                                href="productos/anime/kid-buu.html"
+                                aria-label="Ver Polera Kid Buu"
+                            >
+
+                                <div
+                                    class="
+                                        satori-product-visual
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-product-tag
+                                        "
+                                    >
+                                        01
+                                    </span>
+
+
+                                    <img
+                                        src="img/productos/anime/dbz-kid-buu/01.webp"
+                                        alt="Polera Kid Buu"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-product-content
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-product-number
+                                        "
+                                    >
+                                        01
+                                    </span>
+
+
+                                    <h3
+                                        class="
+                                            satori-product-name
+                                        "
+                                    >
+                                        KID BUU
+                                    </h3>
+
+
+                                    <div
+                                        class="
+                                            satori-product-category
+                                        "
+                                    >
+                                        POLERA · ANIME STREETWEAR
+                                    </div>
+
+
+                                    <div
+                                        class="
+                                            satori-product-price
+                                        "
+                                    >
+                                        $18.990
+                                    </div>
+
+
+                                    <span
+                                        class="
+                                            satori-product-button
+                                        "
+                                    >
+                                        VER PRODUCTO
+                                    </span>
+
+                                </div>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- =================================================
+                             GOKU
+                        ================================================== -->
+
+                        <article
+                            class="
+                                satori-small-product
+                            "
                         >
 
                             <div
-                                class="satori-product-image"
+                                class="
+                                    satori-product-content
+                                "
                             >
 
                                 <span
-                                    class="satori-product-tag"
+                                    class="
+                                        satori-product-number
+                                    "
                                 >
-                                    NEW
+                                    02
                                 </span>
 
 
-                                <img
-                                    src="img/productos/anime/dbz-kid-buu/01.webp"
-                                    alt="Polera Kid Buu"
-                                    loading="lazy"
-                                    decoding="async"
+                                <h3
+                                    class="
+                                        satori-product-name
+                                    "
                                 >
+                                    GOKU
+                                </h3>
+
+
+                                <div
+                                    class="
+                                        satori-product-category
+                                    "
+                                >
+                                    POLERA · ANIME
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-product-price
+                                    "
+                                >
+                                    $19.990
+                                </div>
 
                             </div>
 
-                        </a>
 
-
-                        <div
-                            class="satori-product-name"
-                        >
-                            POLERA KID BUU
-                        </div>
-
-
-                        <div
-                            class="satori-product-category"
-                        >
-                            ANIME STREETWEAR
-                        </div>
-
-
-                        <div
-                            class="satori-product-price"
-                        >
-                            $18.990
-                        </div>
-
-                    </article>
-
-
-                    <!-- =================================================
-                         GOKU
-                    ================================================== -->
-
-                    <article
-                        class="satori-product-card"
-                    >
-
-                        <a
-                            href="productos/anime/goku.html"
-                        >
-
-                            <div
-                                class="satori-product-image"
+                            <a
+                                href="productos/anime/goku.html"
+                                class="
+                                    satori-product-visual
+                                "
                             >
-
-                                <span
-                                    class="satori-product-tag"
-                                >
-                                    NEW
-                                </span>
-
 
                                 <img
                                     src="img/productos/anime/goku/01.PNG"
                                     alt="Polera Goku"
                                     loading="lazy"
                                     decoding="async"
+                                    onerror="
+                                        this.style.display='none';
+                                    "
                                 >
 
-                            </div>
+                            </a>
 
-                        </a>
-
-
-                        <div
-                            class="satori-product-name"
-                        >
-                            POLERA GOKU
-                        </div>
+                        </article>
 
 
-                        <div
-                            class="satori-product-category"
-                        >
-                            ANIME STREETWEAR
-                        </div>
+                        <!-- =================================================
+                             YOKAI
+                        ================================================== -->
 
-
-                        <div
-                            class="satori-product-price"
-                        >
-                            $19.990
-                        </div>
-
-                    </article>
-
-
-                    <!-- =================================================
-                         YOKAI
-                    ================================================== -->
-
-                    <article
-                        class="satori-product-card"
-                    >
-
-                        <a
-                            href="productos.html"
+                        <article
+                            class="
+                                satori-small-product
+                            "
                         >
 
                             <div
-                                class="satori-product-image"
+                                class="
+                                    satori-product-content
+                                "
                             >
 
+                                <span
+                                    class="
+                                        satori-product-number
+                                    "
+                                >
+                                    03
+                                </span>
+
+
+                                <h3
+                                    class="
+                                        satori-product-name
+                                    "
+                                >
+                                    YOKAI
+                                </h3>
+
+
                                 <div
-                                    class="satori-collection-fallback"
+                                    class="
+                                        satori-product-category
+                                    "
+                                >
+                                    PRÓXIMAMENTE
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="yokai.html"
+                                class="
+                                    satori-product-visual
+                                "
+                            >
+
+                                <img
+                                    src="img/yokai-card.webp"
+                                    alt="Yokai Collection"
+                                    loading="lazy"
+                                    decoding="async"
+                                    onerror="
+                                        this.style.display='none';
+                                    "
                                 >
 
-                                    <span
-                                        class="satori-fallback-title"
-                                    >
+                                <div
+                                    class="
+                                        satori-product-fallback
+                                    "
+                                >
+
+                                    <span>
                                         YOKAI
                                     </span>
 
                                 </div>
 
-                            </div>
+                            </a>
 
-                        </a>
-
-
-                        <div
-                            class="satori-product-name"
-                        >
-                            YOKAI COLLECTION
-                        </div>
+                        </article>
 
 
-                        <div
-                            class="satori-product-category"
-                        >
-                            PRÓXIMAMENTE
-                        </div>
+                        <!-- =================================================
+                             SATORII ORIGINAL
+                        ================================================== -->
 
-
-                        <div
-                            class="satori-product-price"
-                        >
-                            PRÓXIMAMENTE
-                        </div>
-
-                    </article>
-
-
-                    <!-- =================================================
-                         SATORII ORIGINAL
-                    ================================================== -->
-
-                    <article
-                        class="satori-product-card"
-                    >
-
-                        <a
-                            href="productos.html"
+                        <article
+                            class="
+                                satori-small-product
+                            "
                         >
 
                             <div
-                                class="satori-product-image"
+                                class="
+                                    satori-product-content
+                                "
+                            >
+
+                                <span
+                                    class="
+                                        satori-product-number
+                                    "
+                                >
+                                    04
+                                </span>
+
+
+                                <h3
+                                    class="
+                                        satori-product-name
+                                    "
+                                >
+                                    SATORII
+                                </h3>
+
+
+                                <div
+                                    class="
+                                        satori-product-category
+                                    "
+                                >
+                                    ORIGINAL
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="productos.html"
+                                class="
+                                    satori-product-visual
+                                "
                             >
 
                                 <div
-                                    class="satori-collection-fallback"
+                                    class="
+                                        satori-product-fallback
+                                    "
                                 >
 
-                                    <span
-                                        class="satori-fallback-title"
-                                    >
+                                    <span>
                                         SATORII
                                     </span>
 
                                 </div>
 
-                            </div>
+                            </a>
 
-                        </a>
+                        </article>
 
-
-                        <div
-                            class="satori-product-name"
-                        >
-                            SATORII ORIGINAL
-                        </div>
-
-
-                        <div
-                            class="satori-product-category"
-                        >
-                            SATORII ORIGINALS
-                        </div>
-
-
-                        <div
-                            class="satori-product-price"
-                        >
-                            PRÓXIMAMENTE
-                        </div>
-
-                    </article>
+                    </div>
 
                 </div>
 
@@ -2746,11 +3957,11 @@
 
 
         <!-- =================================================
-             EXPLORA SATORII / COLECCIONES
+             EXPLORA TU UNIVERSO
         ================================================== -->
 
         <section
-            class="satori-collections"
+            class="satori-universe"
             id="colecciones"
         >
 
@@ -2759,505 +3970,539 @@
             >
 
                 <div
-                    class="satori-collections-header"
+                    class="
+                        satori-universe-layout
+                    "
                 >
 
-                    <div
-                        class="satori-kicker"
-                    >
-                        EXPLORA SATORII
-                    </div>
 
-
-                    <h2
-                        class="satori-heading"
-                    >
-
-                        DESCUBRE
-
-                        <span>
-                            SATORII
-                        </span>
-
-                    </h2>
-
-
-                    <p>
-
-                        Anime, folklore japonés,
-                        experiencias exclusivas y
-                        opciones para regalar.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =================================================
-                     CARRUSEL
-                ================================================== -->
-
-                <div
-                    class="satori-carousel"
-                >
+                    <!-- =================================================
+                         INTRO
+                    ================================================== -->
 
                     <div
-                        class="satori-carousel-viewport"
-                        id="satori-carousel-viewport"
+                        class="
+                            satori-universe-intro
+                        "
                     >
 
                         <div
-                            class="satori-carousel-track"
-                            id="satori-carousel-track"
+                            class="satori-kicker"
+                        >
+                            EXPLORA SATORII
+                        </div>
+
+
+                        <h2>
+
+                            EXPLORA
+
+                            <br>
+
+                            <span>
+                                TU UNIVERSO
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            Cuatro caminos.
+                            Un mismo universo.
+                            Elige el tuyo.
+
+                        </p>
+
+
+                        <a
+                            href="productos.html"
+                            class="
+                                satori-universe-button
+                            "
+                        >
+                            EXPLORAR TODO →
+                        </a>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         4 UNIVERSOS
+                    ================================================== -->
+
+                    <div
+                        class="
+                            satori-universe-grid
+                        "
+                    >
+
+
+                        <!-- =================================================
+                             ANIME
+                        ================================================== -->
+
+                        <a
+                            href="anime.html"
+                            class="
+                                satori-universe-card
+                            "
                         >
 
-
-                            <!-- =================================================
-                                 1 — ANIME
-                            ================================================== -->
-
-                            <article
-                                class="
-                                    satori-collection-card
-                                    active
+                            <img
+                                src="img/anime-card.webp"
+                                alt="Anime Streetwear"
+                                loading="lazy"
+                                decoding="async"
+                                onerror="
+                                    this.style.display='none';
                                 "
-                                data-collection="0"
                             >
 
-                                <div
-                                    class="satori-collection-image"
-                                >
 
-                                    <span
-                                        class="
-                                            satori-collection-badge
-                                        "
-                                    >
-                                        COLECCIÓN
-                                    </span>
-
-
-                                    <div
-                                        class="
-                                            satori-collection-fallback
-                                        "
-                                    >
-
-                                        <span
-                                            class="
-                                                satori-fallback-title
-                                            "
-                                        >
-                                            ANIME
-                                        </span>
-
-                                    </div>
-
-
-                                    <img
-                                        src="img/anime-card.webp"
-                                        alt="Colección Anime"
-                                        loading="lazy"
-                                        decoding="async"
-                                        onerror="
-                                            this.style.display='none';
-                                        "
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        satori-collection-info
-                                    "
-                                >
-
-                                    <div>
-
-                                        <h3>
-                                            ANIME
-                                        </h3>
-
-                                        <p>
-                                            Anime Streetwear
-                                        </p>
-
-                                    </div>
-
-
-                                    <a
-                                        href="anime.html"
-                                        class="
-                                            satori-collection-button
-                                        "
-                                    >
-                                        VER COLECCIÓN →
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-
-                            <!-- =================================================
-                                 2 — YOKAI
-                            ================================================== -->
-
-                            <article
+                            <div
                                 class="
-                                    satori-collection-card
+                                    satori-universe-fallback
                                 "
-                                data-collection="1"
                             >
 
-                                <div
-                                    class="
-                                        satori-collection-image
-                                    "
-                                >
+                                <span>
+                                    ANIME
+                                </span>
 
-                                    <span
-                                        class="
-                                            satori-collection-badge
-                                        "
-                                    >
-                                        NUEVA
-                                    </span>
+                            </div>
 
 
-                                    <div
-                                        class="
-                                            satori-collection-fallback
-                                        "
-                                    >
-
-                                        <span
-                                            class="
-                                                satori-fallback-title
-                                            "
-                                        >
-                                            YOKAI
-                                        </span>
-
-                                    </div>
-
-
-                                    <img
-                                        src="img/yokai-card.webp"
-                                        alt="Colección Yokai"
-                                        loading="lazy"
-                                        decoding="async"
-                                        onerror="
-                                            this.style.display='none';
-                                        "
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        satori-collection-info
-                                    "
-                                >
-
-                                    <div>
-
-                                        <h3>
-                                            YOKAI
-                                        </h3>
-
-                                        <p>
-                                            Folklore · Japón · Misterio
-                                        </p>
-
-                                    </div>
-
-
-                                    <a
-                                        href="yokai.html"
-                                        class="
-                                            satori-collection-button
-                                        "
-                                    >
-                                        VER COLECCIÓN →
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-
-                            <!-- =================================================
-                                 3 — SATORII PACK
-                            ================================================== -->
-
-                            <article
+                            <div
                                 class="
-                                    satori-collection-card
+                                    satori-universe-card-content
                                 "
-                                data-collection="2"
                             >
 
-                                <div
+                                <h3>
+                                    ANIME
+                                </h3>
+
+
+                                <small>
+                                    Anime Streetwear
+                                </small>
+
+
+                                <span
                                     class="
-                                        satori-collection-image
+                                        satori-universe-arrow
                                     "
                                 >
+                                    →
+                                </span>
 
-                                    <span
-                                        class="
-                                            satori-collection-badge
-                                        "
-                                    >
-                                        EXCLUSIVO
-                                    </span>
+                            </div>
+
+                        </a>
 
 
-                                    <div
-                                        class="
-                                            satori-collection-fallback
-                                        "
-                                    >
+                        <!-- =================================================
+                             YOKAI
+                        ================================================== -->
 
-                                        <span
-                                            class="
-                                                satori-fallback-title
-                                            "
-                                        >
-                                            PACK
-                                        </span>
+                        <a
+                            href="yokai.html"
+                            class="
+                                satori-universe-card
+                            "
+                        >
 
-                                    </div>
-
-
-                                    <img
-                                        src="img/satorii-pack.webp"
-                                        alt="Satorii Pack"
-                                        loading="lazy"
-                                        decoding="async"
-                                        onerror="
-                                            this.style.display='none';
-                                        "
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        satori-collection-info
-                                    "
-                                >
-
-                                    <div>
-
-                                        <h3>
-                                            SATORII PACK
-                                        </h3>
-
-                                        <p>
-                                            Experiencia · Exclusivo · Satorii
-                                        </p>
-
-                                    </div>
-
-
-                                    <a
-                                        href="satorii-pack.html"
-                                        class="
-                                            satori-collection-button
-                                        "
-                                    >
-                                        DESCUBRIR →
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-
-                            <!-- =================================================
-                                 4 — GIFT CARD
-                            ================================================== -->
-
-                            <article
-                                class="
-                                    satori-collection-card
+                            <img
+                                src="img/yokai-card.webp"
+                                alt="Yokai"
+                                loading="lazy"
+                                decoding="async"
+                                onerror="
+                                    this.style.display='none';
                                 "
-                                data-collection="3"
                             >
 
-                                <div
+
+                            <div
+                                class="
+                                    satori-universe-fallback
+                                "
+                            >
+
+                                <span>
+                                    YOKAI
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    satori-universe-card-content
+                                "
+                            >
+
+                                <h3>
+                                    YOKAI
+                                </h3>
+
+
+                                <small>
+                                    Folklore · Japón · Misterio
+                                </small>
+
+
+                                <span
                                     class="
-                                        satori-collection-image
+                                        satori-universe-arrow
                                     "
                                 >
+                                    →
+                                </span>
 
-                                    <span
-                                        class="
-                                            satori-collection-badge
-                                        "
-                                    >
-                                        REGALA
-                                    </span>
+                            </div>
+
+                        </a>
 
 
-                                    <div
-                                        class="
-                                            satori-collection-fallback
-                                        "
-                                    >
+                        <!-- =================================================
+                             SATORII PACK
+                        ================================================== -->
 
-                                        <span
-                                            class="
-                                                satori-fallback-title
-                                            "
-                                        >
-                                            GIFT CARD
-                                        </span>
+                        <a
+                            href="satorii-pack.html"
+                            class="
+                                satori-universe-card
+                            "
+                        >
 
-                                    </div>
-
-
-                                    <img
-                                        src="img/gift-card.webp"
-                                        alt="Gift Card Satorii"
-                                        loading="lazy"
-                                        decoding="async"
-                                        onerror="
-                                            this.style.display='none';
-                                        "
-                                    >
-
-                                </div>
+                            <img
+                                src="img/satorii-pack.webp"
+                                alt="Satorii Pack"
+                                loading="lazy"
+                                decoding="async"
+                                onerror="
+                                    this.style.display='none';
+                                "
+                            >
 
 
-                                <div
+                            <div
+                                class="
+                                    satori-universe-fallback
+                                "
+                            >
+
+                                <span>
+                                    PACK
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    satori-universe-card-content
+                                "
+                            >
+
+                                <h3>
+                                    SATORII PACK
+                                </h3>
+
+
+                                <small>
+                                    Experiencia · Exclusivo
+                                </small>
+
+
+                                <span
                                     class="
-                                        satori-collection-info
+                                        satori-universe-arrow
                                     "
                                 >
+                                    →
+                                </span>
 
-                                    <div>
+                            </div>
 
-                                        <h3>
-                                            GIFT CARD
-                                        </h3>
-
-                                        <p>
-                                            Elige · Regala · Satorii
-                                        </p>
-
-                                    </div>
+                        </a>
 
 
-                                    <a
-                                        href="gift-card.html"
-                                        class="
-                                            satori-collection-button
-                                        "
-                                    >
-                                        VER GIFT CARD →
-                                    </a>
+                        <!-- =================================================
+                             GIFT CARD
+                        ================================================== -->
 
-                                </div>
+                        <a
+                            href="gift-card.html"
+                            class="
+                                satori-universe-card
+                            "
+                        >
 
-                            </article>
+                            <img
+                                src="img/gift-card.webp"
+                                alt="Gift Card Satorii"
+                                loading="lazy"
+                                decoding="async"
+                                onerror="
+                                    this.style.display='none';
+                                "
+                            >
 
+
+                            <div
+                                class="
+                                    satori-universe-fallback
+                                "
+                            >
+
+                                <span>
+                                    GIFT
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    satori-universe-card-content
+                                "
+                            >
+
+                                <h3>
+                                    GIFT CARD
+                                </h3>
+
+
+                                <small>
+                                    Elige · Regala · Satorii
+                                </small>
+
+
+                                <span
+                                    class="
+                                        satori-universe-arrow
+                                    "
+                                >
+                                    →
+                                </span>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EXPERIENCIA SATORII
+        ================================================== -->
+
+        <section
+            class="satori-experience"
+            id="pack"
+        >
+
+            <div
+                class="satori-container"
+            >
+
+                <div
+                    class="
+                        satori-experience-layout
+                    "
+                >
+
+
+                    <!-- =================================================
+                         PACK VISUAL
+                    ================================================== -->
+
+                    <div
+                        class="
+                            satori-pack-box
+                        "
+                    >
+
+                        <img
+                            src="img/satorii-pack.webp"
+                            alt="Satorii Pack"
+                            loading="lazy"
+                            decoding="async"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TEXTO
+                    ================================================== -->
+
+                    <div
+                        class="
+                            satori-experience-content
+                        "
+                    >
+
+                        <div
+                            class="satori-kicker"
+                        >
+                            EXPERIENCIA
+                        </div>
+
+
+                        <h2>
+
+                            EXPERIENCIA
+
+                            <br>
+
+                            <span>
+                                SATORII
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            No es solo un pedido.
+                            Es la experiencia de
+                            entrar a Satorii y llevar
+                            una parte de nuestro
+                            universo contigo.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         CARACTERÍSTICAS
+                    ================================================== -->
+
+                    <div
+                        class="
+                            satori-experience-features
+                        "
+                    >
+
+
+                        <div
+                            class="
+                                satori-experience-feature
+                            "
+                        >
+
+                            <div
+                                class="
+                                    satori-experience-icon
+                                "
+                            >
+                                ✦
+                            </div>
+
+                            <strong>
+                                Diseños
+                                exclusivos
+                            </strong>
+
+                            <span>
+                                Creaciones
+                                Satorii
+                            </span>
 
                         </div>
 
-                    </div>
 
-
-                    <!-- =================================================
-                         FLECHAS PC
-                    ================================================== -->
-
-                    <div
-                        class="
-                            satori-carousel-controls
-                        "
-                    >
-
-                        <button
-                            type="button"
+                        <div
                             class="
-                                satori-carousel-arrow
+                                satori-experience-feature
                             "
-                            id="satori-carousel-prev"
-                            aria-label="Elemento anterior"
                         >
-                            ‹
-                        </button>
+
+                            <div
+                                class="
+                                    satori-experience-icon
+                                "
+                            >
+                                ◇
+                            </div>
+
+                            <strong>
+                                Ediciones
+                                limitadas
+                            </strong>
+
+                            <span>
+                                Unidades
+                                especiales
+                            </span>
+
+                        </div>
 
 
-                        <button
-                            type="button"
+                        <div
                             class="
-                                satori-carousel-arrow
+                                satori-experience-feature
                             "
-                            id="satori-carousel-next"
-                            aria-label="Elemento siguiente"
                         >
-                            ›
-                        </button>
 
-                    </div>
+                            <div
+                                class="
+                                    satori-experience-icon
+                                "
+                            >
+                                悟
+                            </div>
+
+                            <strong>
+                                Experiencias
+                                únicas
+                            </strong>
+
+                            <span>
+                                Más que
+                                una compra
+                            </span>
+
+                        </div>
 
 
-                    <!-- =================================================
-                         DOTS
-                    ================================================== -->
-
-                    <div
-                        class="
-                            satori-carousel-dots
-                        "
-                        id="satori-carousel-dots"
-                    >
-
-                        <button
-                            type="button"
+                        <div
                             class="
-                                satori-carousel-dot
-                                active
+                                satori-experience-feature
                             "
-                            data-index="0"
-                            aria-label="Anime"
-                        ></button>
+                        >
 
+                            <div
+                                class="
+                                    satori-experience-icon
+                                "
+                            >
+                                □
+                            </div>
 
-                        <button
-                            type="button"
-                            class="
-                                satori-carousel-dot
-                            "
-                            data-index="1"
-                            aria-label="Yokai"
-                        ></button>
+                            <strong>
+                                Para quienes
+                                viven su camino
+                            </strong>
 
+                            <span>
+                                Tu universo,
+                                tu estilo
+                            </span>
 
-                        <button
-                            type="button"
-                            class="
-                                satori-carousel-dot
-                            "
-                            data-index="2"
-                            aria-label="Satorii Pack"
-                        ></button>
-
-
-                        <button
-                            type="button"
-                            class="
-                                satori-carousel-dot
-                            "
-                            data-index="3"
-                            aria-label="Gift Card"
-                        ></button>
+                        </div>
 
                     </div>
 
@@ -3296,7 +4541,7 @@
                 <a
                     href="productos.html"
                 >
-                    Ver todos
+                    VER TODOS →
                 </a>
 
             </div>
@@ -3369,9 +4614,27 @@
     ></script>
 
 
+    <!-- =====================================================
+         SUPABASE TEST
+    ====================================================== -->
+
     <script>
 
         async function testSupabase() {
+
+            if (
+                typeof satoriSupabase ===
+                "undefined"
+            ) {
+
+                console.warn(
+                    "SATORII · Supabase no está disponible."
+                );
+
+                return;
+
+            }
+
 
             const {
                 data,
@@ -3412,8 +4675,7 @@
     <!-- =====================================================
          =====================================================
          HERO SLIDER
-         
-         LOOP INFINITO REAL
+         LOOP INFINITO
          AUTOPLAY
          SWIPE
          DOTS
@@ -3464,6 +4726,10 @@
 
                 }
 
+
+                /* =================================================
+                   CLONES
+                ================================================== */
 
                 const firstClone =
                     originalSlides[0]
@@ -3529,6 +4795,10 @@
                     null;
 
 
+                /* =================================================
+                   DOTS
+                ================================================== */
+
                 function updateDots() {
 
                     let logicalIndex =
@@ -3586,6 +4856,10 @@
                 }
 
 
+                /* =================================================
+                   ACTUALIZAR
+                ================================================== */
+
                 function updateSlider(
                     animate = true
                 ) {
@@ -3604,6 +4878,10 @@
 
                 }
 
+
+                /* =================================================
+                   IR
+                ================================================== */
 
                 function goTo(
                     index
@@ -3633,6 +4911,10 @@
                 }
 
 
+                /* =================================================
+                   SIGUIENTE
+                ================================================== */
+
                 function nextSlide() {
 
                     goTo(
@@ -3644,6 +4926,10 @@
                 }
 
 
+                /* =================================================
+                   ANTERIOR
+                ================================================== */
+
                 function previousSlide() {
 
                     goTo(
@@ -3654,6 +4940,10 @@
 
                 }
 
+
+                /* =================================================
+                   TRANSICIÓN
+                ================================================== */
 
                 track.addEventListener(
                     "transitionend",
@@ -3710,6 +5000,10 @@
                 );
 
 
+                /* =================================================
+                   DOTS
+                ================================================== */
+
                 dots.forEach(
                     function (
                         dot
@@ -3747,6 +5041,10 @@
                     }
                 );
 
+
+                /* =================================================
+                   TOUCH START
+                ================================================== */
 
                 slider.addEventListener(
                     "touchstart",
@@ -3788,6 +5086,10 @@
                     }
                 );
 
+
+                /* =================================================
+                   TOUCH END
+                ================================================== */
 
                 slider.addEventListener(
                     "touchend",
@@ -3892,6 +5194,10 @@
                 );
 
 
+                /* =================================================
+                   TECLADO
+                ================================================== */
+
                 document.addEventListener(
                     "keydown",
                     function (
@@ -3920,6 +5226,10 @@
                     }
                 );
 
+
+                /* =================================================
+                   AUTOPLAY
+                ================================================== */
 
                 function startAutoplay() {
 
@@ -3966,6 +5276,10 @@
 
                 }
 
+
+                /* =================================================
+                   VISIBILIDAD
+                ================================================== */
 
                 if (
                     "IntersectionObserver"
@@ -4021,795 +5335,12 @@
                 }
 
 
+                /* =================================================
+                   INICIO
+                ================================================== */
+
                 updateSlider(
                     false
-                );
-
-            }
-
-        );
-
-    </script>
-
-
-    <!-- =====================================================
-         =====================================================
-         CARRUSEL SATORII
-         
-         4 TARJETAS
-         LOOP INFINITO
-         PC + MOBILE
-         SWIPE
-         DOTS
-         =====================================================
-    ====================================================== -->
-
-    <script>
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-                const viewport =
-                    document.getElementById(
-                        "satori-carousel-viewport"
-                    );
-
-
-                const track =
-                    document.getElementById(
-                        "satori-carousel-track"
-                    );
-
-
-                const originalCards =
-                    Array.from(
-                        track.querySelectorAll(
-                            ".satori-collection-card"
-                        )
-                    );
-
-
-                const dots =
-                    Array.from(
-                        document.querySelectorAll(
-                            ".satori-carousel-dot"
-                        )
-                    );
-
-
-                const previousButton =
-                    document.getElementById(
-                        "satori-carousel-prev"
-                    );
-
-
-                const nextButton =
-                    document.getElementById(
-                        "satori-carousel-next"
-                    );
-
-
-                if (
-                    !viewport ||
-                    !track ||
-                    originalCards.length < 2
-                ) {
-
-                    return;
-
-                }
-
-
-                /* =================================================
-                   CLONES
-                ================================================== */
-
-                const fragmentBefore =
-                    document.createDocumentFragment();
-
-
-                const fragmentAfter =
-                    document.createDocumentFragment();
-
-
-                originalCards
-                    .slice()
-                    .reverse()
-                    .forEach(
-                        function (
-                            card
-                        ) {
-
-                            const clone =
-                                card.cloneNode(true);
-
-
-                            clone.classList.add(
-                                "carousel-clone"
-                            );
-
-
-                            fragmentBefore.appendChild(
-                                clone
-                            );
-
-                        }
-                    );
-
-
-                originalCards.forEach(
-                    function (
-                        card
-                    ) {
-
-                        const clone =
-                            card.cloneNode(true);
-
-
-                        clone.classList.add(
-                            "carousel-clone"
-                        );
-
-
-                        fragmentAfter.appendChild(
-                            clone
-                        );
-
-                    }
-                );
-
-
-                track.insertBefore(
-                    fragmentBefore,
-                    track.firstChild
-                );
-
-
-                track.appendChild(
-                    fragmentAfter
-                );
-
-
-                const cards =
-                    Array.from(
-                        track.querySelectorAll(
-                            ".satori-collection-card"
-                        )
-                    );
-
-
-                const originalCount =
-                    originalCards.length;
-
-
-                let currentIndex =
-                    originalCount;
-
-
-                let isAnimating =
-                    false;
-
-
-                let touchStartX =
-                    0;
-
-
-                let touchStartY =
-                    0;
-
-
-                let isTouching =
-                    false;
-
-
-                /* =================================================
-                   ÍNDICE LÓGICO
-                ================================================== */
-
-                function getLogicalIndex() {
-
-                    return (
-                        (
-                            currentIndex -
-                            originalCount
-                        ) %
-                        originalCount +
-                        originalCount
-                    ) %
-                    originalCount;
-
-                }
-
-
-                /* =================================================
-                   ACTUALIZAR TARJETAS
-                ================================================== */
-
-                function updateCards() {
-
-                    cards.forEach(
-                        function (
-                            card,
-                            index
-                        ) {
-
-                            card.classList.toggle(
-                                "active",
-                                index === currentIndex
-                            );
-
-                        }
-                    );
-
-                }
-
-
-                /* =================================================
-                   ACTUALIZAR DOTS
-                ================================================== */
-
-                function updateDots() {
-
-                    const logicalIndex =
-                        getLogicalIndex();
-
-
-                    dots.forEach(
-                        function (
-                            dot,
-                            index
-                        ) {
-
-                            dot.classList.toggle(
-                                "active",
-                                index === logicalIndex
-                            );
-
-                        }
-                    );
-
-                }
-
-
-                /* =================================================
-                   CENTRAR TARJETA
-                ================================================== */
-
-                function updateCarousel(
-                    animate = true
-                ) {
-
-                    updateCards();
-
-                    updateDots();
-
-
-                    const activeCard =
-                        cards[currentIndex];
-
-
-                    if (
-                        !activeCard
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    const viewportWidth =
-                        viewport.getBoundingClientRect()
-                            .width;
-
-
-                    const cardWidth =
-                        activeCard.getBoundingClientRect()
-                            .width;
-
-
-                    const cardCenter =
-                        activeCard.offsetLeft +
-                        (
-                            cardWidth /
-                            2
-                        );
-
-
-                    const viewportCenter =
-                        viewportWidth /
-                        2;
-
-
-                    const translate =
-                        viewportCenter -
-                        cardCenter;
-
-
-                    track.style.transition =
-                        animate
-                            ? "transform .65s cubic-bezier(.22,.61,.36,1)"
-                            : "none";
-
-
-                    track.style.transform =
-                        `translate3d(${translate}px,0,0)`;
-
-                }
-
-
-                /* =================================================
-                   CAMBIAR
-                ================================================== */
-
-                function goTo(
-                    index
-                ) {
-
-                    if (
-                        isAnimating
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    currentIndex =
-                        index;
-
-
-                    updateCarousel(
-                        true
-                    );
-
-
-                    isAnimating =
-                        true;
-
-                }
-
-
-                /* =================================================
-                   SIGUIENTE
-                ================================================== */
-
-                function nextCollection() {
-
-                    goTo(
-                        currentIndex + 1
-                    );
-
-                }
-
-
-                /* =================================================
-                   ANTERIOR
-                ================================================== */
-
-                function previousCollection() {
-
-                    goTo(
-                        currentIndex - 1
-                    );
-
-                }
-
-
-                /* =================================================
-                   TRANSICIÓN TERMINADA
-                ================================================== */
-
-                track.addEventListener(
-                    "transitionend",
-                    function (
-                        event
-                    ) {
-
-                        if (
-                            event.propertyName !==
-                            "transform"
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        isAnimating =
-                            false;
-
-
-                        if (
-                            currentIndex >=
-                            originalCount * 2
-                        ) {
-
-                            currentIndex -=
-                                originalCount;
-
-
-                            updateCarousel(
-                                false
-                            );
-
-                        }
-
-
-                        if (
-                            currentIndex <
-                            originalCount
-                        ) {
-
-                            currentIndex +=
-                                originalCount;
-
-
-                            updateCarousel(
-                                false
-                            );
-
-                        }
-
-                    }
-                );
-
-
-                /* =================================================
-                   FLECHA ANTERIOR
-                ================================================== */
-
-                if (
-                    previousButton
-                ) {
-
-                    previousButton.addEventListener(
-                        "click",
-                        function () {
-
-                            previousCollection();
-
-                        }
-                    );
-
-                }
-
-
-                /* =================================================
-                   FLECHA SIGUIENTE
-                ================================================== */
-
-                if (
-                    nextButton
-                ) {
-
-                    nextButton.addEventListener(
-                        "click",
-                        function () {
-
-                            nextCollection();
-
-                        }
-                    );
-
-                }
-
-
-                /* =================================================
-                   DOTS
-                ================================================== */
-
-                dots.forEach(
-                    function (
-                        dot
-                    ) {
-
-                        dot.addEventListener(
-                            "click",
-                            function () {
-
-                                if (
-                                    isAnimating
-                                ) {
-
-                                    return;
-
-                                }
-
-
-                                const logicalIndex =
-                                    Number(
-                                        dot.dataset.index
-                                    );
-
-
-                                currentIndex =
-                                    originalCount +
-                                    logicalIndex;
-
-
-                                updateCarousel(
-                                    true
-                                );
-
-
-                                isAnimating =
-                                    true;
-
-                            }
-                        );
-
-                    }
-                );
-
-
-                /* =================================================
-                   TOUCH START
-                ================================================== */
-
-                viewport.addEventListener(
-                    "touchstart",
-                    function (
-                        event
-                    ) {
-
-                        if (
-                            !event.touches.length
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        touchStartX =
-                            event.touches[
-                                0
-                            ].clientX;
-
-
-                        touchStartY =
-                            event.touches[
-                                0
-                            ].clientY;
-
-
-                        isTouching =
-                            true;
-
-                    },
-                    {
-                        passive:
-                            true
-                    }
-                );
-
-
-                /* =================================================
-                   TOUCH END
-                ================================================== */
-
-                viewport.addEventListener(
-                    "touchend",
-                    function (
-                        event
-                    ) {
-
-                        if (
-                            !isTouching
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        isTouching =
-                            false;
-
-
-                        if (
-                            !event.changedTouches.length
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const touchEndX =
-                            event.changedTouches[
-                                0
-                            ].clientX;
-
-
-                        const touchEndY =
-                            event.changedTouches[
-                                0
-                            ].clientY;
-
-
-                        const differenceX =
-                            touchStartX -
-                            touchEndX;
-
-
-                        const differenceY =
-                            touchStartY -
-                            touchEndY;
-
-
-                        if (
-                            Math.abs(
-                                differenceY
-                            ) >
-                            Math.abs(
-                                differenceX
-                            )
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            Math.abs(
-                                differenceX
-                            ) < 45
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            differenceX > 0
-                        ) {
-
-                            nextCollection();
-
-                        }
-
-                        else {
-
-                            previousCollection();
-
-                        }
-
-                    },
-                    {
-                        passive:
-                            true
-                    }
-                );
-
-
-                /* =================================================
-                   TECLADO
-                ================================================== */
-
-                document.addEventListener(
-                    "keydown",
-                    function (
-                        event
-                    ) {
-
-                        const section =
-                            document.getElementById(
-                                "colecciones"
-                            );
-
-
-                        if (
-                            !section
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const rect =
-                            section.getBoundingClientRect();
-
-
-                        const visible =
-                            rect.top <
-                            window.innerHeight &&
-                            rect.bottom >
-                            0;
-
-
-                        if (
-                            !visible
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            event.key ===
-                            "ArrowLeft"
-                        ) {
-
-                            previousCollection();
-
-                        }
-
-
-                        if (
-                            event.key ===
-                            "ArrowRight"
-                        ) {
-
-                            nextCollection();
-
-                        }
-
-                    }
-                );
-
-
-                /* =================================================
-                   RESIZE
-                ================================================== */
-
-                let resizeTimer;
-
-
-                window.addEventListener(
-                    "resize",
-                    function () {
-
-                        clearTimeout(
-                            resizeTimer
-                        );
-
-
-                        resizeTimer =
-                            setTimeout(
-                                function () {
-
-                                    updateCarousel(
-                                        false
-                                    );
-
-                                },
-                                100
-                            );
-
-                    }
-                );
-
-
-                /* =================================================
-                   INICIALIZAR
-                ================================================== */
-
-                requestAnimationFrame(
-                    function () {
-
-                        updateCarousel(
-                            false
-                        );
-
-                    }
-                );
-
-
-                window.addEventListener(
-                    "load",
-                    function () {
-
-                        updateCarousel(
-                            false
-                        );
-
-                    }
                 );
 
             }
