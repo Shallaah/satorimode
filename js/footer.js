@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        RUTA BASE
-    ===================================================== */
+    ====================================================== */
 
     const script =
         document.currentScript ||
@@ -45,8 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
+       CONFIGURACIÓN
+    ====================================================== */
+
+    const SATORII_RED = "#EF0930";
+
+
+    /* =====================================================
        FOOTER HTML
-    ===================================================== */
+    ====================================================== */
 
     footerContainer.innerHTML = `
 
@@ -56,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 <!-- =====================================
-                     SATORII
+                     MARCA
                 ====================================== -->
 
                 <div class="satori-footer-brand">
@@ -64,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <a
                         href="${BASE}index.html"
                         class="satori-footer-logo"
+                        aria-label="Satorii - Inicio"
                     >
                         SATORII
                     </a>
@@ -93,57 +101,108 @@ document.addEventListener("DOMContentLoaded", function () {
                         Anime
                     </a>
 
-                    <a href="${BASE}torii.html">
-                        Torii
+                    <a href="${BASE}yokai.html">
+                        Yokai
                     </a>
 
-                    <a href="${BASE}anime-goods.html">
-                        Anime Goods
+                    <a href="${BASE}productos.html">
+                        Todo
                     </a>
 
                 </div>
 
 
                 <!-- =====================================
-                     PRODUCTOS
+                     TIENDA
                 ====================================== -->
 
- <div class="satori-footer-column">
+                <div class="satori-footer-column">
 
-    <h3>
-        PRODUCTOS
-    </h3>
+                    <h3>
+                        TIENDA
+                    </h3>
 
-    <a href="productos.html">
-        Todos los productos
-    </a>
+                    <a href="${BASE}productos.html">
+                        Todos los productos
+                    </a>
 
-    <a href="carrito.html">
-        Carrito
-    </a>
+                    <a href="${BASE}carrito.html">
+                        Carrito
+                    </a>
 
-    <div class="satori-footer-social">
+                    <a href="${BASE}satorii-pack.html">
+                        Satorii Pack
+                    </a>
 
-        <h3>
-            SÍGUENOS
-        </h3>
+                    <a href="${BASE}regala-satorii.html">
+                        Regala Satorii
+                    </a>
 
-        <a
-            href="https://www.instagram.com/satoriicl/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="satori-instagram"
-            aria-label="Instagram"
-        >
-            <i class="fa-brands fa-instagram"></i>
-            <span>Instagram</span>
-        </a>
+                </div>
 
-    </div>
 
-</div>
+                <!-- =====================================
+                     AYUDA
+                ====================================== -->
 
-</div>
+                <div class="satori-footer-column">
+
+                    <h3>
+                        AYUDA
+                    </h3>
+
+                    <a href="${BASE}preguntas-frecuentes.html">
+                        Preguntas frecuentes
+                    </a>
+
+                    <a href="${BASE}envios.html">
+                        Envíos
+                    </a>
+
+                    <a href="${BASE}cambios-y-devoluciones.html">
+                        Cambios y devoluciones
+                    </a>
+
+                    <a href="${BASE}guia-tallas.html">
+                        Guía de tallas
+                    </a>
+
+
+                    <!-- =================================
+                         REDES SOCIALES
+                    ================================== -->
+
+                    <div class="satori-footer-social">
+
+                        <h3>
+                            SÍGUENOS
+                        </h3>
+
+                        <a
+                            href="https://www.instagram.com/satoriicl/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="satori-instagram"
+                            aria-label="Instagram Satorii"
+                        >
+
+                            <i
+                                class="fa-brands fa-instagram"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Instagram
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
 
             <!-- =========================================
                  PARTE INFERIOR
@@ -168,8 +227,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       ESTILOS
-    ===================================================== */
+       EVITAR ESTILOS DUPLICADOS
+    ====================================================== */
 
     if (
         document.getElementById(
@@ -179,6 +238,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+
+    /* =====================================================
+       ESTILOS
+    ====================================================== */
 
     const style =
         document.createElement("style");
@@ -191,36 +254,41 @@ document.addEventListener("DOMContentLoaded", function () {
     style.textContent = `
 
         /* =================================================
-           FUENTE DEL LOGO
+           FUENTES
         ================================================= */
 
         @import url(
-            'https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,900;1,900&display=swap'
+            'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap'
         );
 
         @import url(
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'
-);
+            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'
+        );
+
 
         /* =================================================
-           FOOTER
+           FOOTER BASE
         ================================================= */
 
-.satori-footer {
+        .satori-footer {
 
-    width: 100%;
+            width:100%;
 
-    background: #111827;
+            background:#000;
 
-    color: #ffffff;
+            color:#fff;
 
-    margin-top: 0;
+            margin-top:0;
 
-    border-radius: 28px 28px 0 0;
+            border-radius:
+                20px
+                20px
+                0
+                0;
 
-    overflow: hidden;
+            overflow:hidden;
 
-}
+        }
 
 
         /* =================================================
@@ -229,24 +297,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .satori-footer-main {
 
-            width: min(
+            width:min(
                 1400px,
                 calc(100% - 48px)
             );
 
-            margin: 0 auto;
+            margin:0 auto;
 
             padding:
-                48px 0 45px;
+                52px 0 48px;
 
-            display: grid;
+            display:grid;
 
             grid-template-columns:
-                2fr 1fr 1fr;
+                1.7fr
+                1fr
+                1fr
+                1fr;
 
-            gap: 70px;
+            gap:55px;
 
-            align-items: start;
+            align-items:start;
 
         }
 
@@ -257,49 +328,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .satori-footer-brand {
 
-            min-width: 0;
+            min-width:0;
 
         }
 
 
         /* =================================================
-           LOGO SATORII
-
-           Condensado
-           Extra Bold
-           Itálico
-           Compacto
+           LOGO
         ================================================= */
 
         .satori-footer-logo {
 
-            display: inline-block;
+            display:inline-block;
 
-            color: #ffffff;
+            color:#fff;
 
-            text-decoration: none;
+            text-decoration:none;
 
             font-family:
-                "Roboto Condensed",
+                "Barlow Condensed",
                 "Arial Narrow",
                 Arial,
                 sans-serif;
 
-            font-size: 29px;
+            font-size:34px;
 
-            line-height: .88;
+            line-height:.88;
 
-            font-weight: 900;
+            font-weight:800;
 
-            font-style: italic;
+            font-style:italic;
 
-            letter-spacing: -.075em;
+            letter-spacing:-1.8px;
+
+            text-transform:uppercase;
 
             transform:
-                scaleX(.88);
+                skewX(-3deg);
 
             transform-origin:
                 left center;
+
+            transition:
+                color .2s ease,
+                transform .2s ease;
+
+        }
+
+
+        .satori-footer-logo:hover {
+
+            color:${SATORII_RED};
+
+            transform:
+                skewX(-5deg)
+                scale(1.04);
 
         }
 
@@ -310,20 +393,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .satori-footer-kanji {
 
-            margin-top: 9px;
+            margin-top:10px;
 
-            color: #ff003c;
+            color:${SATORII_RED};
 
             font-family:
                 Arial,
                 "Noto Sans JP",
                 sans-serif;
 
-            font-size: 14px;
+            font-size:15px;
 
-            line-height: 1;
+            line-height:1;
 
-            font-weight: 700;
+            font-weight:700;
 
         }
 
@@ -334,14 +417,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .satori-footer-brand p {
 
+            max-width:260px;
+
             margin:
-                15px 0 0;
+                16px 0 0;
 
-            color: #c7ccd4;
+            color:#9ca3af;
 
-            font-size: 11px;
+            font-size:11px;
 
-            line-height: 1.6;
+            line-height:1.65;
 
         }
 
@@ -352,164 +437,212 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .satori-footer-column {
 
-            display: flex;
+            display:flex;
 
-            flex-direction: column;
+            flex-direction:column;
 
-            gap: 10px;
+            align-items:flex-start;
+
+            gap:10px;
 
         }
 
+
+        /* =================================================
+           TÍTULOS
+        ================================================= */
 
         .satori-footer-column h3 {
 
             margin:
                 0 0 8px;
 
-            color: #ffffff;
+            color:#fff;
 
-            font-size: 10px;
+            font-size:10px;
 
-            line-height: 1;
+            line-height:1;
 
-            font-weight: 850;
+            font-weight:800;
 
-            letter-spacing: .09em;
+            letter-spacing:
+                .12em;
 
         }
 
+
+        /* =================================================
+           ENLACES
+        ================================================= */
 
         .satori-footer-column a {
 
-            width: fit-content;
+            width:fit-content;
 
-            color: #c7ccd4;
+            color:#9ca3af;
 
-            font-size: 10px;
+            font-size:10px;
 
-            line-height: 1.3;
+            line-height:1.4;
 
-            text-decoration: none;
+            text-decoration:none;
 
             transition:
-                color .2s ease;
+                color .2s ease,
+                transform .2s ease;
 
         }
 
 
-        .satori-footer-column a:hover {
+        .satori-footer-column > a:hover {
 
-            color: #ffffff;
+            color:${SATORII_RED};
+
+            transform:
+                translateX(2px);
 
         }
 
-/* =================================================
-   REDES SOCIALES
-================================================= */
 
-.satori-footer-social {
+        /* =================================================
+           REDES SOCIALES
+        ================================================= */
 
-    margin-top: 22px;
+        .satori-footer-social {
 
-}
+            margin-top:24px;
 
+            padding-top:0;
 
-.satori-footer-social h3 {
-
-    margin:
-        0 0 10px;
-
-}
+        }
 
 
-.satori-instagram {
+        .satori-footer-social h3 {
 
-    display: inline-flex !important;
+            margin:
+                0 0 11px;
 
-    align-items: center;
-
-    gap: 8px;
-
-    color: #c7ccd4 !important;
-
-    font-size: 10px;
-
-    text-decoration: none;
-
-    transition:
-        color .2s ease,
-        transform .2s ease;
-
-}
+        }
 
 
-.satori-instagram i {
+        .satori-instagram {
 
-    font-size: 17px;
+            display:inline-flex !important;
 
-}
+            align-items:center;
+
+            gap:8px;
+
+            color:#9ca3af !important;
+
+            font-size:10px;
+
+            line-height:1.4;
+
+            text-decoration:none;
+
+            transition:
+                color .2s ease,
+                transform .2s ease;
+
+        }
 
 
-.satori-instagram:hover {
+        .satori-instagram i {
 
-    color: #ff003c !important;
+            font-size:16px;
 
-    transform:
-        translateY(-2px);
+        }
 
-}
+
+        .satori-instagram:hover {
+
+            color:${SATORII_RED} !important;
+
+            transform:
+                translateX(2px);
+
+        }
+
 
         /* =================================================
            PARTE INFERIOR
         ================================================= */
 
-.satori-footer-bottom {
+        .satori-footer-bottom {
 
-    width: min(
-        1400px,
-        calc(100% - 48px)
-    );
+            width:min(
+                1400px,
+                calc(100% - 48px)
+            );
 
-    margin: 0 auto;
+            margin:0 auto;
 
-    padding:
-        18px 0;
+            padding:
+                18px 0;
 
-    border-top:
-        1px solid rgba(
-            255,
-            255,
-            255,
-            .12
-        );
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .10
+                );
 
-    display: flex;
+            display:flex;
 
-    align-items: center;
+            align-items:center;
 
-    justify-content: space-between;
+            justify-content:space-between;
 
-    gap: 80px;
+            gap:40px;
 
-    color: #8e96a3;
+            color:#6b7280;
 
-    font-size: 9px;
+            font-size:9px;
 
-}
+            line-height:1.4;
+
+        }
+
+
+        /* =================================================
+           HOVER GENERAL
+        ================================================= */
+
+        .satori-footer a:focus-visible {
+
+            outline:
+                2px solid
+                ${SATORII_RED};
+
+            outline-offset:3px;
+
+        }
 
 
         /* =================================================
            TABLET
         ================================================= */
 
-        @media (max-width: 800px) {
+        @media (max-width:1000px) {
 
             .satori-footer-main {
 
                 grid-template-columns:
-                    1.5fr 1fr 1fr;
+                    1.5fr
+                    1fr
+                    1fr;
 
-                gap: 35px;
+                gap:40px;
+
+            }
+
+
+            .satori-footer-brand {
+
+                grid-row:span 2;
 
             }
 
@@ -520,21 +653,22 @@ document.addEventListener("DOMContentLoaded", function () {
            MOBILE
         ================================================= */
 
-        @media (max-width: 600px) {
+        @media (max-width:700px) {
 
             .satori-footer-main {
 
                 width:
-                    calc(100% - 28px);
+                    calc(100% - 32px);
 
                 padding:
-                    38px 0;
+                    42px 0;
 
                 grid-template-columns:
-                    1fr 1fr;
+                    1fr
+                    1fr;
 
                 gap:
-                    30px 25px;
+                    35px 25px;
 
             }
 
@@ -544,6 +678,74 @@ document.addEventListener("DOMContentLoaded", function () {
                 grid-column:
                     1 / -1;
 
+                grid-row:auto;
+
+            }
+
+
+            .satori-footer-brand p {
+
+                max-width:
+                    320px;
+
+            }
+
+
+            .satori-footer-bottom {
+
+                width:
+                    calc(100% - 32px);
+
+                padding:
+                    17px 0;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+                gap:7px;
+
+            }
+
+        }
+
+
+        /* =================================================
+           MÓVILES PEQUEÑOS
+        ====================================================== */
+
+        @media (max-width:420px) {
+
+            .satori-footer {
+
+                border-radius:
+                    16px
+                    16px
+                    0
+                    0;
+
+            }
+
+
+            .satori-footer-main {
+
+                width:
+                    calc(100% - 28px);
+
+                grid-template-columns:
+                    1fr;
+
+                gap:30px;
+
+            }
+
+
+            .satori-footer-brand {
+
+                grid-column:auto;
+
             }
 
 
@@ -552,37 +754,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 width:
                     calc(100% - 28px);
 
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
-
-                gap: 8px;
-
             }
 
         }
 
 
         /* =================================================
-           MOBILE PEQUEÑO
-        ================================================= */
+           REDUCED MOTION
+        ====================================================== */
 
-        @media (max-width: 400px) {
+        @media (
+            prefers-reduced-motion:reduce
+        ) {
 
-            .satori-footer-main {
+            .satori-footer *,
+            .satori-footer *::before,
+            .satori-footer *::after {
 
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .satori-footer-brand {
-
-                grid-column:
-                    auto;
+                transition:none !important;
 
             }
 
