@@ -5101,15 +5101,25 @@ function generateClothingHTML(
 
     </main>
 
+<div
+    id="satori-footer"
+></div>
 
-    <div
-        id="satori-footer"
-    ></div>
+
+<!-- SUPABASE -->
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script
+    src="../../js/supabase.js"
+></script>
 
 
-    <script
-        src="../../js/products.js"
-    ></script>
+<!-- PRODUCTOS -->
+<script
+    src="../../js/products.js"
+></script>
 
 
     <script
@@ -5444,14 +5454,25 @@ function generateAccessoryHTML(
     </main>
 
 
-    <div
-        id="satori-footer"
-    ></div>
+<div
+    id="satori-footer"
+></div>
 
 
-    <script
-        src="../../js/products.js"
-    ></script>
+<!-- SUPABASE -->
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script
+    src="../../js/supabase.js"
+></script>
+
+
+<!-- PRODUCTOS -->
+<script
+    src="../../js/products.js"
+></script>
 
 
     <script
