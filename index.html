@@ -634,5 +634,37 @@
         src="js/hero-slider.js"
         defer
     ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+
+<script>
+    async function testSupabase() {
+
+        const { data, error } =
+            await satoriSupabase
+                .from("products")
+                .select("id, name, price");
+
+        if (error) {
+
+            console.error(
+                "SATORII · Error Supabase:",
+                error
+            );
+
+            return;
+
+        }
+
+        console.log(
+            "SATORII · Productos desde Supabase:",
+            data
+        );
+
+    }
+
+    testSupabase();
+</script>
 </body>
 </html>
