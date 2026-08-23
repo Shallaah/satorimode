@@ -14,6 +14,7 @@
         media="(min-width: 769px)"
     >
 
+
     <!-- =====================================================
          PRELOAD — BANNER MOBILE
     ====================================================== -->
@@ -24,6 +25,7 @@
         href="img/banner-01-mobile.webp"
         media="(max-width: 768px)"
     >
+
 
     <!-- =====================================================
          CONFIGURACIÓN
@@ -58,6 +60,7 @@
 
     <title>Satorii | Anime Streetwear</title>
 
+
     <!-- =====================================================
          FAVICON
     ====================================================== -->
@@ -67,6 +70,7 @@
         type="image/png"
         href="img/logo.webp"
     >
+
 
     <!-- =====================================================
          FUENTES
@@ -88,6 +92,7 @@
         rel="stylesheet"
     >
 
+
     <!-- =====================================================
          CSS PRINCIPAL
     ====================================================== -->
@@ -96,6 +101,7 @@
         rel="stylesheet"
         href="css/style.css"
     >
+
 
     <!-- =====================================================
          CSS INDEX SATORII
@@ -158,9 +164,7 @@
 
 
         /* =====================================================
-           =====================================================
            HERO / BANNER
-           =====================================================
         ====================================================== */
 
         .hero-slider {
@@ -432,7 +436,7 @@
 
         /* =====================================================
            =====================================================
-           COLECCIONES
+           EXPLORA SATORII
            =====================================================
         ====================================================== */
 
@@ -782,6 +786,9 @@
             z-index:
                 0;
 
+            display:
+                block;
+
             width:
                 100%;
 
@@ -816,6 +823,9 @@
                 absolute;
 
             inset:
+                0;
+
+            z-index:
                 0;
 
             display:
@@ -1518,657 +1528,6 @@
 
 
         /* =====================================================
-           =====================================================
-           SATORII PACK — ALTERNATIVA 2
-           =====================================================
-        ====================================================== */
-
-        .satori-pack-new {
-
-            position:
-                relative;
-
-            width:
-                min(
-                    var(--satori-width),
-                    calc(100% - 60px)
-                );
-
-            min-height:
-                470px;
-
-            margin:
-                90px auto;
-
-            padding:
-                65px 7%;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                60px;
-
-            overflow:
-                hidden;
-
-            background:
-                #f1efeb;
-
-            color:
-                #101010;
-
-            isolation:
-                isolate;
-
-        }
-
-
-        /* =====================================================
-           CÍRCULO ROJO JAPONÉS
-        ====================================================== */
-
-        .satori-pack-new::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                390px;
-
-            height:
-                390px;
-
-            right:
-                125px;
-
-            top:
-                50%;
-
-            transform:
-                translateY(-50%)
-                rotate(-7deg);
-
-            border-radius:
-                48% 52% 50% 46%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(
-                        239,
-                        9,
-                        48,
-                        .92
-                    ) 0%,
-                    rgba(
-                        239,
-                        9,
-                        48,
-                        .84
-                    ) 58%,
-                    rgba(
-                        239,
-                        9,
-                        48,
-                        .58
-                    ) 72%,
-                    rgba(
-                        239,
-                        9,
-                        48,
-                        0
-                    ) 78%
-                );
-
-            opacity:
-                .92;
-
-            z-index:
-                -1;
-
-        }
-
-
-        /* =====================================================
-           TEXTURA
-        ====================================================== */
-
-        .satori-pack-new::after {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            inset:
-                0;
-
-            background-image:
-                radial-gradient(
-                    rgba(
-                        0,
-                        0,
-                        0,
-                        .055
-                    ) 1px,
-                    transparent 1px
-                );
-
-            background-size:
-                6px 6px;
-
-            opacity:
-                .18;
-
-            pointer-events:
-                none;
-
-            z-index:
-                -1;
-
-        }
-
-
-        /* =====================================================
-           DECORACIÓN SAKURA
-        ====================================================== */
-
-        .satori-pack-sakura {
-
-            position:
-                absolute;
-
-            top:
-                20px;
-
-            right:
-                15px;
-
-            width:
-                260px;
-
-            height:
-                170px;
-
-            pointer-events:
-                none;
-
-            z-index:
-                4;
-
-            transform:
-                rotate(-4deg);
-
-        }
-
-
-        .satori-pack-sakura::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                260px;
-
-            height:
-                3px;
-
-            top:
-                60px;
-
-            right:
-                -20px;
-
-            background:
-                #191919;
-
-            transform:
-                rotate(-28deg);
-
-            border-radius:
-                50%;
-
-        }
-
-
-        .satori-pack-sakura::after {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                125px;
-
-            height:
-                3px;
-
-            top:
-                95px;
-
-            right:
-                65px;
-
-            background:
-                #191919;
-
-            transform:
-                rotate(28deg);
-
-            border-radius:
-                50%;
-
-        }
-
-
-        /* =====================================================
-           FLORES
-        ====================================================== */
-
-        .satori-pack-sakura span {
-
-            position:
-                absolute;
-
-            width:
-                12px;
-
-            height:
-                12px;
-
-            border-radius:
-                50%;
-
-            background:
-                var(--satori-red);
-
-            box-shadow:
-                7px -4px 0 -2px var(--satori-red),
-                -6px -3px 0 -2px var(--satori-red),
-                4px 6px 0 -2px var(--satori-red),
-                -4px 6px 0 -2px var(--satori-red);
-
-        }
-
-
-        .satori-pack-sakura span:nth-child(1) {
-
-            top:
-                35px;
-
-            right:
-                55px;
-
-        }
-
-
-        .satori-pack-sakura span:nth-child(2) {
-
-            top:
-                62px;
-
-            right:
-                115px;
-
-            transform:
-                scale(.8);
-
-        }
-
-
-        .satori-pack-sakura span:nth-child(3) {
-
-            top:
-                82px;
-
-            right:
-                175px;
-
-            transform:
-                scale(.7);
-
-        }
-
-
-        .satori-pack-sakura span:nth-child(4) {
-
-            top:
-                105px;
-
-            right:
-                90px;
-
-            transform:
-                scale(.65);
-
-        }
-
-
-        /* =====================================================
-           CONTENIDO
-        ====================================================== */
-
-        .satori-pack-content {
-
-            position:
-                relative;
-
-            z-index:
-                5;
-
-            max-width:
-                500px;
-
-        }
-
-
-        /* =====================================================
-           LABEL
-        ====================================================== */
-
-        .satori-pack-label {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            padding:
-                7px 12px;
-
-            background:
-                var(--satori-red);
-
-            color:
-                #fff;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                9px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                1.5px;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        /* =====================================================
-           TÍTULO
-        ====================================================== */
-
-        .satori-pack-new h2 {
-
-            margin:
-                18px 0 15px;
-
-            font-family:
-                "Barlow Condensed",
-                "Arial Narrow",
-                Arial,
-                sans-serif;
-
-            font-size:
-                clamp(
-                    72px,
-                    8vw,
-                    115px
-                );
-
-            line-height:
-                .72;
-
-            font-weight:
-                900;
-
-            letter-spacing:
-                -2px;
-
-            color:
-                #111;
-
-        }
-
-
-        .satori-pack-new h2 span {
-
-            color:
-                var(--satori-red);
-
-        }
-
-
-        /* =====================================================
-           LÍNEA DECORATIVA
-        ====================================================== */
-
-        .satori-pack-content::after {
-
-            content:
-                "";
-
-            display:
-                block;
-
-            width:
-                48px;
-
-            height:
-                3px;
-
-            margin-top:
-                18px;
-
-            background:
-                var(--satori-red);
-
-        }
-
-
-        /* =====================================================
-           DESCRIPCIÓN
-        ====================================================== */
-
-        .satori-pack-new p {
-
-            max-width:
-                430px;
-
-            margin:
-                18px 0 0;
-
-            color:
-                #666;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                11px;
-
-            line-height:
-                1.7;
-
-        }
-
-
-        /* =====================================================
-           BOTÓN
-        ====================================================== */
-
-        .satori-pack-button {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            margin-top:
-                22px;
-
-            padding:
-                13px 20px;
-
-            background:
-                var(--satori-red);
-
-            color:
-                #fff;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size:
-                8px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                .5px;
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        .satori-pack-button:hover {
-
-            background:
-                #111;
-
-            color:
-                #fff;
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        /* =====================================================
-           VISUAL DE LA CAJA
-        ====================================================== */
-
-        .satori-pack-visual {
-
-            position:
-                relative;
-
-            z-index:
-                5;
-
-            width:
-                360px;
-
-            height:
-                300px;
-
-            flex:
-                0 0 360px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .20
-                );
-
-            border-radius:
-                20px;
-
-            transform:
-                rotate(0deg);
-
-            box-shadow:
-                none;
-
-        }
-
-
-        .satori-pack-visual img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            object-fit:
-                contain;
-
-            filter:
-                drop-shadow(
-                    0 25px 20px
-                    rgba(
-                        0,
-                        0,
-                        0,
-                        .22
-                    )
-                );
-
-            transition:
-                transform .5s ease;
-
-        }
-
-
-        .satori-pack-visual:hover img {
-
-            transform:
-                scale(1.04)
-                translateY(-4px);
-
-        }
-
-
-        /* =====================================================
            RECOMENDACIONES
         ====================================================== */
 
@@ -2199,42 +1558,6 @@
                         2,
                         1fr
                     );
-
-            }
-
-
-            .satori-pack-new {
-
-                gap:
-                    35px;
-
-                padding-left:
-                    5%;
-
-                padding-right:
-                    5%;
-
-            }
-
-
-            .satori-pack-visual {
-
-                width:
-                    310px;
-
-                height:
-                    270px;
-
-                flex-basis:
-                    310px;
-
-            }
-
-
-            .satori-pack-new::before {
-
-                right:
-                    70px;
 
             }
 
@@ -2302,7 +1625,7 @@
 
 
             /* =================================================
-               COLECCIONES
+               EXPLORA
             ================================================== */
 
             .satori-collections {
@@ -2593,178 +1916,6 @@
 
 
             /* =================================================
-               SATORII PACK — MOBILE
-            ================================================== */
-
-            .satori-pack-new {
-
-                width:
-                    calc(
-                        100% - 20px
-                    );
-
-                min-height:
-                    590px;
-
-                margin:
-                    62px auto;
-
-                padding:
-                    42px 22px 48px;
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
-
-                justify-content:
-                    flex-start;
-
-                gap:
-                    25px;
-
-            }
-
-
-            /* =================================================
-               CÍRCULO ROJO MOBILE
-            ================================================== */
-
-            .satori-pack-new::before {
-
-                width:
-                    280px;
-
-                height:
-                    280px;
-
-                right:
-                    -35px;
-
-                top:
-                    285px;
-
-                transform:
-                    none;
-
-            }
-
-
-            /* =================================================
-               SAKURA MOBILE
-            ================================================== */
-
-            .satori-pack-sakura {
-
-                top:
-                    12px;
-
-                right:
-                    -35px;
-
-                transform:
-                    scale(.72)
-                    rotate(-4deg);
-
-                transform-origin:
-                    top right;
-
-            }
-
-
-            /* =================================================
-               CONTENIDO MOBILE
-            ================================================== */
-
-            .satori-pack-content {
-
-                width:
-                    100%;
-
-                max-width:
-                    100%;
-
-            }
-
-
-            /* =================================================
-               TÍTULO MOBILE
-            ================================================== */
-
-            .satori-pack-new h2 {
-
-                margin:
-                    17px 0 14px;
-
-                font-size:
-                    68px;
-
-                line-height:
-                    .74;
-
-            }
-
-
-            /* =================================================
-               DESCRIPCIÓN MOBILE
-            ================================================== */
-
-            .satori-pack-new p {
-
-                max-width:
-                    285px;
-
-                font-size:
-                    9px;
-
-                line-height:
-                    1.7;
-
-            }
-
-
-            /* =================================================
-               CAJA MOBILE
-            ================================================== */
-
-            .satori-pack-visual {
-
-                width:
-                    245px;
-
-                height:
-                    210px;
-
-                flex:
-                    0 0 210px;
-
-                align-self:
-                    center;
-
-                margin-top:
-                    5px;
-
-            }
-
-
-            .satori-pack-visual img {
-
-                filter:
-                    drop-shadow(
-                        0 18px 15px
-                        rgba(
-                            0,
-                            0,
-                            0,
-                            .22
-                        )
-                    );
-
-            }
-
-
-            /* =================================================
                RECOMENDACIONES
             ================================================== */
 
@@ -2844,6 +1995,7 @@
                 id="hero-track"
                 aria-live="polite"
             >
+
 
                 <!-- BANNER 1 -->
 
@@ -2968,7 +2120,7 @@
 
 
         <!-- =================================================
-             COLECCIONES
+             EXPLORA SATORII
         ================================================== -->
 
         <section
@@ -2995,10 +2147,10 @@
                         class="satori-heading"
                     >
 
-                        NUESTRAS
+                        DESCUBRE
 
                         <span>
-                            COLECCIONES
+                            SATORII
                         </span>
 
                     </h2>
@@ -3006,9 +2158,9 @@
 
                     <p>
 
-                        Anime, folklore japonés y diseños
-                        originales. Encuentra la colección
-                        que más representa tu estilo.
+                        Anime, folklore japonés,
+                        experiencias exclusivas y
+                        opciones para regalar.
 
                     </p>
 
@@ -3035,7 +2187,7 @@
 
 
                             <!-- =================================================
-                                 ANIME
+                                 1 — ANIME
                             ================================================== -->
 
                             <article
@@ -3125,7 +2277,7 @@
 
 
                             <!-- =================================================
-                                 YOKAI
+                                 2 — YOKAI
                             ================================================== -->
 
                             <article
@@ -3214,7 +2366,7 @@
 
 
                             <!-- =================================================
-                                 SATORII ORIGINAL
+                                 3 — SATORII PACK
                             ================================================== -->
 
                             <article
@@ -3222,95 +2374,6 @@
                                     satori-collection-card
                                 "
                                 data-collection="2"
-                            >
-
-                                <div
-                                    class="
-                                        satori-collection-image
-                                    "
-                                >
-
-                                    <span
-                                        class="
-                                            satori-collection-badge
-                                        "
-                                    >
-                                        ORIGINAL
-                                    </span>
-
-
-                                    <div
-                                        class="
-                                            satori-collection-fallback
-                                        "
-                                    >
-
-                                        <span
-                                            class="
-                                                satori-fallback-title
-                                            "
-                                        >
-                                            SATORII
-                                        </span>
-
-                                    </div>
-
-
-                                    <img
-                                        src="img/torii-card.webp"
-                                        alt="Satorii Originals"
-                                        loading="lazy"
-                                        decoding="async"
-                                        onerror="
-                                            this.style.display='none';
-                                        "
-                                    >
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        satori-collection-info
-                                    "
-                                >
-
-                                    <div>
-
-                                        <h3>
-                                            SATORII
-                                        </h3>
-
-                                        <p>
-                                            Diseños originales
-                                        </p>
-
-                                    </div>
-
-
-                                    <a
-                                        href="productos.html"
-                                        class="
-                                            satori-collection-button
-                                        "
-                                    >
-                                        VER COLECCIÓN →
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-
-                            <!-- =================================================
-                                 LIMITED
-                            ================================================== -->
-
-                            <article
-                                class="
-                                    satori-collection-card
-                                "
-                                data-collection="3"
                             >
 
                                 <div
@@ -3339,15 +2402,15 @@
                                                 satori-fallback-title
                                             "
                                         >
-                                            LIMITED
+                                            PACK
                                         </span>
 
                                     </div>
 
 
                                     <img
-                                        src="img/limited-card.webp"
-                                        alt="Colección Limited"
+                                        src="img/satorii-pack.webp"
+                                        alt="Satorii Pack"
                                         loading="lazy"
                                         decoding="async"
                                         onerror="
@@ -3367,23 +2430,112 @@
                                     <div>
 
                                         <h3>
-                                            LIMITED
+                                            SATORII PACK
                                         </h3>
 
                                         <p>
-                                            Ediciones especiales
+                                            Experiencia · Exclusivo · Satorii
                                         </p>
 
                                     </div>
 
 
                                     <a
-                                        href="productos.html"
+                                        href="satorii-pack.html"
                                         class="
                                             satori-collection-button
                                         "
                                     >
-                                        VER COLECCIÓN →
+                                        DESCUBRIR →
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- =================================================
+                                 4 — GIFT CARD
+                            ================================================== -->
+
+                            <article
+                                class="
+                                    satori-collection-card
+                                "
+                                data-collection="3"
+                            >
+
+                                <div
+                                    class="
+                                        satori-collection-image
+                                    "
+                                >
+
+                                    <span
+                                        class="
+                                            satori-collection-badge
+                                        "
+                                    >
+                                        REGALA
+                                    </span>
+
+
+                                    <div
+                                        class="
+                                            satori-collection-fallback
+                                        "
+                                    >
+
+                                        <span
+                                            class="
+                                                satori-fallback-title
+                                            "
+                                        >
+                                            GIFT CARD
+                                        </span>
+
+                                    </div>
+
+
+                                    <img
+                                        src="img/gift-card.webp"
+                                        alt="Gift Card Satorii"
+                                        loading="lazy"
+                                        decoding="async"
+                                        onerror="
+                                            this.style.display='none';
+                                        "
+                                    >
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        satori-collection-info
+                                    "
+                                >
+
+                                    <div>
+
+                                        <h3>
+                                            GIFT CARD
+                                        </h3>
+
+                                        <p>
+                                            Elige · Regala · Satorii
+                                        </p>
+
+                                    </div>
+
+
+                                    <a
+                                        href="gift-card.html"
+                                        class="
+                                            satori-collection-button
+                                        "
+                                    >
+                                        VER GIFT CARD →
                                     </a>
 
                                 </div>
@@ -3412,7 +2564,7 @@
                                 satori-carousel-arrow
                             "
                             id="satori-carousel-prev"
-                            aria-label="Colección anterior"
+                            aria-label="Elemento anterior"
                         >
                             ‹
                         </button>
@@ -3424,7 +2576,7 @@
                                 satori-carousel-arrow
                             "
                             id="satori-carousel-next"
-                            aria-label="Colección siguiente"
+                            aria-label="Elemento siguiente"
                         >
                             ›
                         </button>
@@ -3468,7 +2620,7 @@
                                 satori-carousel-dot
                             "
                             data-index="2"
-                            aria-label="Satorii"
+                            aria-label="Satorii Pack"
                         ></button>
 
                         <button
@@ -3477,7 +2629,7 @@
                                 satori-carousel-dot
                             "
                             data-index="3"
-                            aria-label="Limited"
+                            aria-label="Gift Card"
                         ></button>
 
                     </div>
@@ -3823,112 +2975,6 @@
 
 
                 </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             SATORII PACK
-             
-             ALTERNATIVA 2
-        ================================================== -->
-
-        <section
-            class="
-                satori-pack-new
-            "
-            id="pack"
-        >
-
-            <!-- =================================================
-                 DECORACIÓN SAKURA
-            ================================================== -->
-
-            <div
-                class="
-                    satori-pack-sakura
-                "
-                aria-hidden="true"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
-
-            <!-- =================================================
-                 CONTENIDO
-            ================================================== -->
-
-            <div
-                class="
-                    satori-pack-content
-                "
-            >
-
-                <div
-                    class="
-                        satori-pack-label
-                    "
-                >
-                    ✦ EXCLUSIVO SATORII
-                </div>
-
-
-                <h2>
-
-                    SATORII
-
-                    <span>
-                        PACK.
-                    </span>
-
-                </h2>
-
-
-                <p>
-
-                    Una experiencia especial creada
-                    para acompañar tus pedidos y hacer
-                    que cada compra se sienta diferente.
-
-                </p>
-
-
-                <a
-                    href="satorii-pack.html"
-                    class="
-                        satori-pack-button
-                    "
-                >
-                    DESCUBRIR PACK →
-                </a>
-
-            </div>
-
-
-            <!-- =================================================
-                 CAJA
-            ================================================== -->
-
-            <div
-                class="
-                    satori-pack-visual
-                "
-            >
-
-                <img
-                    src="img/satorii-pack.webp"
-                    alt="Caja Satorii Pack"
-                    loading="lazy"
-                    decoding="async"
-                    draggable="false"
-                >
 
             </div>
 
@@ -4757,10 +3803,13 @@
 
     <!-- =====================================================
          =====================================================
-         CARRUSEL DE COLECCIONES
+         CARRUSEL SATORII
          
+         4 TARJETAS
          LOOP INFINITO
          PC + MOBILE
+         SWIPE
+         DOTS
          =====================================================
     ====================================================== -->
 
