@@ -55,10 +55,7 @@
         content="telephone=no"
     >
 
-    <title>
-        Satorii | Anime Streetwear
-    </title>
-
+    <title>Satorii | Anime Streetwear</title>
 
     <!-- =====================================================
          FAVICON
@@ -69,7 +66,6 @@
         type="image/png"
         href="img/logo.webp"
     >
-
 
     <!-- =====================================================
          FUENTES
@@ -86,7 +82,6 @@
         crossorigin
     >
 
-
     <!-- =====================================================
          PRELOAD — PRIMER BANNER
     ====================================================== -->
@@ -96,7 +91,6 @@
         as="image"
         href="img/banner-01.webp"
     >
-
 
     <!-- =====================================================
          CSS PRINCIPAL
@@ -109,67 +103,50 @@
 
 
     <!-- =====================================================
-         CSS — NUEVO INDEX
-         Mantiene el banner existente y rediseña
-         el resto de la página.
+         CSS DEL INDEX
     ====================================================== -->
 
     <style>
 
-        /* =====================================================
-           SATORII INDEX
-        ====================================================== */
-
         :root {
 
             --satori-red: #EF0930;
-
             --satori-red-dark: #c90727;
-
             --satori-black: #0b0b0b;
-
             --satori-white: #ffffff;
-
-            --satori-gray: #666666;
-
-            --satori-light:
-                #f5f5f3;
-
-            --satori-border:
-                rgba(0, 0, 0, .10);
-
-            --satori-width:
-                1800px;
+            --satori-light: #f5f5f3;
+            --satori-width: 1800px;
 
         }
 
 
         /* =====================================================
-           EL BANNER NO SE MODIFICA
+           BANNER
+           NO SE MODIFICA SU ESTRUCTURA
         ====================================================== */
 
         .hero-slider {
 
             position: relative;
-
             overflow: hidden;
 
         }
 
 
         /* =====================================================
-           ESPACIADO GENERAL
+           CONTENEDORES
         ====================================================== */
 
         .index-section {
 
-            width: min(
-                var(--satori-width),
-                calc(100% - 60px)
-            );
+            width:
+                min(
+                    var(--satori-width),
+                    calc(100% - 60px)
+                );
 
-            margin-left: auto;
-            margin-right: auto;
+            margin:
+                0 auto;
 
         }
 
@@ -181,13 +158,9 @@
         .index-section-header {
 
             display: flex;
-
             align-items: flex-end;
-
             justify-content: space-between;
-
             gap: 20px;
-
             margin-bottom: 26px;
 
         }
@@ -203,18 +176,12 @@
                 Arial,
                 sans-serif;
 
-            font-size: clamp(
-                38px,
-                4vw,
-                58px
-            );
+            font-size:
+                clamp(38px, 4vw, 58px);
 
             line-height: .9;
-
             font-weight: 700;
-
             letter-spacing: -.5px;
-
             color: #111;
 
         }
@@ -224,14 +191,12 @@
 
             margin-bottom: 8px;
 
-            color: var(--satori-red);
+            color:
+                var(--satori-red);
 
             font-size: 10px;
-
             line-height: 1;
-
             font-weight: 800;
-
             letter-spacing: 2px;
 
         }
@@ -241,10 +206,10 @@
 
             flex-shrink: 0;
 
-            color: var(--satori-red);
+            color:
+                var(--satori-red);
 
             font-size: 11px;
-
             font-weight: 800;
 
             transition:
@@ -262,638 +227,52 @@
 
 
         /* =====================================================
-           COLECCIONES
-        ====================================================== */
-
-        .satori-collections {
-
-            padding-top: 80px;
-
-            padding-bottom: 90px;
-
-            background:
-                var(--satori-light);
-
-            overflow: hidden;
-
-        }
-
-
-        .satori-collections-inner {
-
-            width: min(
-                var(--satori-width),
-                calc(100% - 60px)
-            );
-
-            margin-left: auto;
-            margin-right: auto;
-
-        }
-
-
-        .satori-collections-intro {
-
-            max-width: 700px;
-
-            margin:
-
-                0 auto 38px;
-
-            text-align: center;
-
-        }
-
-
-        .satori-collections-intro p {
-
-            margin: 16px auto 0;
-
-            max-width: 580px;
-
-            color: #777;
-
-            font-size: 13px;
-
-            line-height: 1.7;
-
-        }
-
-
-        /* =====================================================
-           CONTROLES
-        ====================================================== */
-
-        .satori-carousel-controls {
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            gap: 9px;
-
-            margin-bottom: 26px;
-
-        }
-
-
-        .satori-carousel-arrow {
-
-            width: 44px;
-
-            height: 44px;
-
-            padding: 0;
-
-            border: 1px solid #d4d4d1;
-
-            border-radius: 50%;
-
-            background:
-                var(--satori-white);
-
-            color: #111;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 25px;
-
-            line-height: 1;
-
-            transition:
-
-                background .2s ease,
-
-                border-color .2s ease,
-
-                color .2s ease,
-
-                transform .2s ease;
-
-        }
-
-
-        .satori-carousel-arrow:hover {
-
-            background:
-                var(--satori-red);
-
-            border-color:
-                var(--satori-red);
-
-            color:
-                var(--satori-white);
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .satori-carousel-arrow:disabled {
-
-            opacity: .35;
-
-            cursor: default;
-
-            transform: none;
-
-        }
-
-
-        /* =====================================================
-           VIEWPORT
-        ====================================================== */
-
-        .satori-carousel-viewport {
-
-            width: 100%;
-
-            overflow: hidden;
-
-            padding-top: 20px;
-
-            padding-bottom: 45px;
-
-            touch-action:
-                pan-y;
-
-        }
-
-
-        /* =====================================================
-           TRACK
-        ====================================================== */
-
-        .satori-carousel-track {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 18px;
-
-            transition:
-
-                transform
-                .65s
-                cubic-bezier(
-                    .22,
-                    .61,
-                    .36,
-                    1
-                );
-
-            will-change:
-                transform;
-
-        }
-
-
-        /* =====================================================
-           TARJETAS
-        ====================================================== */
-
-        .satori-collection-card {
-
-            position: relative;
-
-            flex:
-
-                0 0
-                min(
-                    520px,
-                    72vw
-                );
-
-            overflow: hidden;
-
-            border-radius: 16px;
-
-            background:
-                var(--satori-black);
-
-            box-shadow:
-
-                0 10px 35px
-                rgba(0, 0, 0, .08);
-
-            opacity: .45;
-
-            transform:
-                scale(.88);
-
-            transition:
-
-                transform .65s
-                cubic-bezier(
-                    .22,
-                    .61,
-                    .36,
-                    1
-                ),
-
-                opacity .65s ease,
-
-                box-shadow .65s ease;
-
-        }
-
-
-        .satori-collection-card.active {
-
-            opacity: 1;
-
-            transform:
-                scale(1);
-
-            box-shadow:
-
-                0 22px 55px
-                rgba(0, 0, 0, .18);
-
-            z-index: 5;
-
-        }
-
-
-        /* =====================================================
-           IMAGEN
-        ====================================================== */
-
-        .satori-collection-image {
-
-            position: relative;
-
-            width: 100%;
-
-            aspect-ratio:
-                1 / 1;
-
-            overflow: hidden;
-
-            background:
-                #111;
-
-        }
-
-
-        .satori-collection-image::after {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-
-                linear-gradient(
-                    to top,
-                    rgba(0,0,0,.25),
-                    transparent 55%
-                );
-
-            pointer-events:
-                none;
-
-        }
-
-
-        .satori-collection-image img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            transition:
-                transform .65s ease;
-
-        }
-
-
-        .satori-collection-card:hover
-        .satori-collection-image img {
-
-            transform:
-                scale(1.04);
-
-        }
-
-
-        /* =====================================================
-           FALLBACK IMAGEN
-        ====================================================== */
-
-        .satori-collection-placeholder {
-
-            width: 100%;
-
-            height: 100%;
-
-            min-height: 300px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #171717,
-                    #303030
-                );
-
-            color:
-                rgba(255,255,255,.08);
-
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
-
-            font-size: 90px;
-
-            font-weight: 800;
-
-            letter-spacing:
-                -3px;
-
-            transform:
-                rotate(-5deg);
-
-        }
-
-
-        /* =====================================================
-           BADGE
-        ====================================================== */
-
-        .satori-collection-badge {
-
-            position: absolute;
-
-            z-index: 3;
-
-            top: 18px;
-
-            left: 18px;
-
-            padding:
-                7px 12px;
-
-            border-radius:
-                30px;
-
-            background:
-                var(--satori-red);
-
-            color:
-                var(--satori-white);
-
-            font-size: 9px;
-
-            font-weight: 800;
-
-            letter-spacing:
-                .5px;
-
-        }
-
-
-        /* =====================================================
-           INFO
-        ====================================================== */
-
-        .satori-collection-info {
-
-            min-height: 100px;
-
-            padding:
-                19px 20px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content:
-                space-between;
-
-            gap: 20px;
-
-            background:
-                #111923;
-
-            color:
-                var(--satori-white);
-
-        }
-
-
-        .satori-collection-info h3 {
-
-            margin: 0;
-
-            font-family:
-                "Barlow Condensed",
-                "Arial Narrow",
-                Arial,
-                sans-serif;
-
-            font-size: 38px;
-
-            line-height: .85;
-
-            font-weight: 700;
-
-        }
-
-
-        .satori-collection-info p {
-
-            margin:
-                7px 0 0;
-
-            color:
-                #9da3aa;
-
-            font-size: 9px;
-
-            line-height: 1.3;
-
-            text-transform:
-                uppercase;
-
-            letter-spacing:
-                .6px;
-
-        }
-
-
-        .satori-collection-button {
-
-            flex-shrink: 0;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 8px;
-
-            padding:
-                12px 16px;
-
-            border-radius:
-                8px;
-
-            background:
-                var(--satori-white);
-
-            color:
-                #111923;
-
-            font-size: 9px;
-
-            font-weight: 800;
-
-            transition:
-
-                background .2s ease,
-
-                color .2s ease,
-
-                transform .2s ease;
-
-        }
-
-
-        .satori-collection-button:hover {
-
-            background:
-                var(--satori-red);
-
-            color:
-                var(--satori-white);
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        /* =====================================================
-           DOTS
-        ====================================================== */
-
-        .satori-carousel-dots {
-
-            display: flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            gap: 7px;
-
-        }
-
-
-        .satori-carousel-dot {
-
-            width: 7px;
-
-            height: 7px;
-
-            padding: 0;
-
-            border: 0;
-
-            border-radius:
-                50%;
-
-            background:
-                #c8c8c5;
-
-            transition:
-
-                width .2s ease,
-
-                background .2s ease;
-
-        }
-
-
-        .satori-carousel-dot.active {
-
-            width: 24px;
-
-            border-radius:
-                8px;
-
-            background:
-                var(--satori-red);
-
-        }
-
-
-        /* =====================================================
            NEW DROP
         ====================================================== */
 
         .satori-new-drop {
 
-            padding-top:
-                80px;
-
-            padding-bottom:
-                85px;
+            padding:
+                80px 0 85px;
 
         }
 
 
         .satori-products-grid {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 15px;
+            gap:
+                15px;
 
         }
 
 
         .satori-product-card {
 
-            min-width: 0;
+            min-width:
+                0;
 
         }
 
 
         .satori-product-image {
 
-            position: relative;
+            position:
+                relative;
 
-            width: 100%;
+            width:
+                100%;
 
             aspect-ratio:
                 1 / 1;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             background:
                 #eeeeec;
@@ -903,11 +282,14 @@
 
         .satori-product-image img {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            object-fit: cover;
+            object-fit:
+                cover;
 
             transition:
                 transform .45s ease;
@@ -926,13 +308,17 @@
 
         .satori-product-tag {
 
-            position: absolute;
+            position:
+                absolute;
 
-            z-index: 2;
+            z-index:
+                2;
 
-            top: 10px;
+            top:
+                10px;
 
-            left: 10px;
+            left:
+                10px;
 
             padding:
                 5px 8px;
@@ -943,9 +329,11 @@
             color:
                 #fff;
 
-            font-size: 8px;
+            font-size:
+                8px;
 
-            font-weight: 800;
+            font-weight:
+                800;
 
         }
 
@@ -993,12 +381,637 @@
 
 
         /* =====================================================
-           BLOQUE DE IDENTIDAD
+           COLECCIONES
+        ====================================================== */
+
+        .satori-collections {
+
+            padding:
+                80px 0 90px;
+
+            background:
+                var(--satori-light);
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .satori-collections-inner {
+
+            width:
+                min(
+                    var(--satori-width),
+                    calc(100% - 60px)
+                );
+
+            margin:
+                0 auto;
+
+        }
+
+
+        .satori-collections-intro {
+
+            max-width:
+                700px;
+
+            margin:
+                0 auto 30px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .satori-collections-intro p {
+
+            max-width:
+                580px;
+
+            margin:
+                16px auto 0;
+
+            color:
+                #777;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        /* =====================================================
+           CONTROLES
+        ====================================================== */
+
+        .satori-carousel-controls {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            margin-bottom:
+                10px;
+
+        }
+
+
+        .satori-carousel-arrow {
+
+            width:
+                44px;
+
+            height:
+                44px;
+
+            padding:
+                0;
+
+            border:
+                1px solid #d4d4d1;
+
+            border-radius:
+                50%;
+
+            background:
+                #fff;
+
+            color:
+                #111;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-size:
+                25px;
+
+            line-height:
+                1;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .satori-carousel-arrow:hover {
+
+            background:
+                var(--satori-red);
+
+            border-color:
+                var(--satori-red);
+
+            color:
+                #fff;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           VIEWPORT
+        ====================================================== */
+
+        .satori-carousel-viewport {
+
+            width:
+                100%;
+
+            overflow:
+                hidden;
+
+            padding:
+                20px 0 40px;
+
+            touch-action:
+                pan-y;
+
+        }
+
+
+        /* =====================================================
+           TRACK
+        ====================================================== */
+
+        .satori-carousel-track {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                18px;
+
+            width:
+                max-content;
+
+            transition:
+                transform .65s
+                cubic-bezier(
+                    .22,
+                    .61,
+                    .36,
+                    1
+                );
+
+            will-change:
+                transform;
+
+        }
+
+
+        /* =====================================================
+           TARJETAS
+        ====================================================== */
+
+        .satori-collection-card {
+
+            position:
+                relative;
+
+            flex:
+                0 0 min(520px, 72vw);
+
+            overflow:
+                hidden;
+
+            border-radius:
+                16px;
+
+            background:
+                var(--satori-black);
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,.08);
+
+            opacity:
+                .45;
+
+            transform:
+                scale(.88);
+
+            transition:
+                transform .65s
+                cubic-bezier(
+                    .22,
+                    .61,
+                    .36,
+                    1
+                ),
+                opacity .65s ease,
+                box-shadow .65s ease;
+
+        }
+
+
+        .satori-collection-card.active {
+
+            opacity:
+                1;
+
+            transform:
+                scale(1);
+
+            box-shadow:
+                0 22px 55px
+                rgba(0,0,0,.18);
+
+            z-index:
+                5;
+
+        }
+
+
+        /* =====================================================
+           IMAGEN DE COLECCIÓN
+        ====================================================== */
+
+        .satori-collection-image {
+
+            position:
+                relative;
+
+            width:
+                100%;
+
+            aspect-ratio:
+                1 / 1;
+
+            overflow:
+                hidden;
+
+            background:
+                #111;
+
+        }
+
+
+        .satori-collection-image::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.25),
+                    transparent 55%
+                );
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .satori-collection-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform .65s ease;
+
+        }
+
+
+        .satori-collection-card:hover
+        .satori-collection-image img {
+
+            transform:
+                scale(1.04);
+
+        }
+
+
+        /* =====================================================
+           FALLBACK
+        ====================================================== */
+
+        .satori-collection-placeholder {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            min-height:
+                300px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #303030
+                );
+
+            color:
+                rgba(255,255,255,.08);
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+            font-size:
+                90px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =====================================================
+           BADGE
+        ====================================================== */
+
+        .satori-collection-badge {
+
+            position:
+                absolute;
+
+            z-index:
+                3;
+
+            top:
+                18px;
+
+            left:
+                18px;
+
+            padding:
+                7px 12px;
+
+            border-radius:
+                30px;
+
+            background:
+                var(--satori-red);
+
+            color:
+                #fff;
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                .5px;
+
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ====================================================== */
+
+        .satori-collection-info {
+
+            min-height:
+                100px;
+
+            padding:
+                19px 20px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            background:
+                #111923;
+
+            color:
+                #fff;
+
+        }
+
+
+        .satori-collection-info h3 {
+
+            margin:
+                0;
+
+            font-family:
+                "Barlow Condensed",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
+
+            font-size:
+                38px;
+
+            line-height:
+                .85;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .satori-collection-info p {
+
+            margin:
+                7px 0 0;
+
+            color:
+                #9da3aa;
+
+            font-size:
+                9px;
+
+            line-height:
+                1.3;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .6px;
+
+        }
+
+
+        .satori-collection-button {
+
+            flex-shrink:
+                0;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                12px 16px;
+
+            border-radius:
+                8px;
+
+            background:
+                #fff;
+
+            color:
+                #111923;
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .satori-collection-button:hover {
+
+            background:
+                var(--satori-red);
+
+            color:
+                #fff;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           DOTS
+        ====================================================== */
+
+        .satori-carousel-dots {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            gap:
+                7px;
+
+        }
+
+
+        .satori-carousel-dot {
+
+            width:
+                7px;
+
+            height:
+                7px;
+
+            padding:
+                0;
+
+            border:
+                0;
+
+            border-radius:
+                50%;
+
+            background:
+                #c8c8c5;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .satori-carousel-dot.active {
+
+            width:
+                24px;
+
+            border-radius:
+                8px;
+
+            background:
+                var(--satori-red);
+
+        }
+
+
+        /* =====================================================
+           STORY
         ====================================================== */
 
         .satori-story {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 1fr 1fr;
@@ -1011,15 +1024,20 @@
 
         .satori-story-visual {
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
             background:
                 #0b0b0b;
@@ -1035,14 +1053,17 @@
             content:
                 "祭";
 
-            position: absolute;
+            position:
+                absolute;
 
-            left: 50%;
+            left:
+                50%;
 
-            top: 50%;
+            top:
+                50%;
 
             transform:
-                translate(-50%, -50%);
+                translate(-50%,-50%);
 
             color:
                 rgba(255,255,255,.025);
@@ -1057,9 +1078,6 @@
 
             font-weight:
                 800;
-
-            line-height:
-                .6;
 
         }
 
@@ -1369,43 +1387,15 @@
 
 
         /* =====================================================
-           OCULTAR FALLBACK DEL PACK SI HAY IMAGEN
+           TABLET
         ====================================================== */
 
-        .satori-pack-fallback {
-
-            position:
-                absolute;
-
-            z-index:
-                -1;
-
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
-
-            font-size:
-                38px;
-
-            font-weight:
-                800;
-
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ====================================================== */
-
-        @media (
-            max-width: 1000px
-        ) {
+        @media (max-width: 1000px) {
 
             .satori-products-grid {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2,1fr);
 
             }
 
@@ -1425,13 +1415,18 @@
 
             }
 
-
         }
 
 
-        @media (
-            max-width: 650px
-        ) {
+        /* =====================================================
+           MOBILE
+           
+           IMPORTANTE:
+           AQUÍ EL CARRUSEL SIGUE FUNCIONANDO EXACTAMENTE
+           IGUAL QUE EN PC.
+        ====================================================== */
+
+        @media (max-width: 650px) {
 
             .index-section {
 
@@ -1442,16 +1437,13 @@
 
 
             /* ================================================
-               COLECCIONES MOBILE
+               COLECCIONES
             ================================================ */
 
             .satori-collections {
 
-                padding-top:
-                    60px;
-
-                padding-bottom:
-                    65px;
+                padding:
+                    60px 0 65px;
 
             }
 
@@ -1467,7 +1459,7 @@
             .satori-collections-intro {
 
                 margin-bottom:
-                    20px;
+                    25px;
 
             }
 
@@ -1480,72 +1472,110 @@
             }
 
 
+            /* ================================================
+               FLECHAS
+               
+               AHORA SÍ APARECEN EN TELÉFONO
+            ================================================ */
+
             .satori-carousel-controls {
 
                 display:
-                    none;
+                    flex;
+
+                margin-bottom:
+                    0;
 
             }
 
+
+            .satori-carousel-arrow {
+
+                width:
+                    42px;
+
+                height:
+                    42px;
+
+                font-size:
+                    23px;
+
+            }
+
+
+            /* ================================================
+               VIEWPORT
+               
+               NO SCROLL HORIZONTAL.
+               
+               El movimiento se hace exclusivamente mediante
+               transform, igual que en PC.
+            ================================================ */
 
             .satori-carousel-viewport {
 
-                overflow-x:
-                    auto;
+                width:
+                    100%;
 
-                overflow-y:
+                overflow:
                     hidden;
 
-                scrollbar-width:
-                    none;
+                padding:
+                    20px 0 30px;
 
-                scroll-snap-type:
-                    x mandatory;
-
-                padding-top:
-                    15px;
-
-                padding-bottom:
-                    30px;
+                touch-action:
+                    pan-y;
 
             }
 
 
-            .satori-carousel-viewport::-webkit-scrollbar {
-
-                display:
-                    none;
-
-            }
-
+            /* ================================================
+               TRACK
+            ================================================ */
 
             .satori-carousel-track {
 
                 width:
                     max-content;
 
+                display:
+                    flex;
+
+                align-items:
+                    center;
+
                 gap:
                     12px;
 
-                transform:
-                    none !important;
+                transition:
+                    transform .65s
+                    cubic-bezier(
+                        .22,
+                        .61,
+                        .36,
+                        1
+                    );
 
             }
 
 
+            /* ================================================
+               TARJETAS
+               
+               78vw permite que se vean las tarjetas de
+               los lados de la tarjeta central.
+            ================================================ */
+
             .satori-collection-card {
 
                 flex:
-                    0 0 82vw;
-
-                scroll-snap-align:
-                    center;
+                    0 0 78vw;
 
                 opacity:
-                    .55;
+                    .45;
 
                 transform:
-                    scale(.92);
+                    scale(.88);
 
             }
 
@@ -1585,6 +1615,9 @@
                 padding:
                     11px 13px;
 
+                font-size:
+                    8px;
+
             }
 
 
@@ -1594,11 +1627,8 @@
 
             .satori-new-drop {
 
-                padding-top:
-                    60px;
-
-                padding-bottom:
-                    65px;
+                padding:
+                    60px 0 65px;
 
             }
 
@@ -1606,7 +1636,7 @@
             .satori-products-grid {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2,1fr);
 
                 gap:
                     24px 10px;
@@ -1681,7 +1711,6 @@
 
         }
 
-
     </style>
 
 </head>
@@ -1692,7 +1721,6 @@
 
     <!-- =====================================================
          HEADER GLOBAL
-         Controlado por js/header.js
     ====================================================== -->
 
     <div
@@ -1701,7 +1729,7 @@
 
 
     <!-- =====================================================
-         CONTENIDO PRINCIPAL
+         MAIN
     ====================================================== -->
 
     <main>
@@ -1709,9 +1737,8 @@
 
         <!-- =================================================
              HERO / BANNER
-             
-             IMPORTANTE:
-             ESTE BLOQUE SE MANTIENE COMO EL ORIGINAL.
+
+             ESTE BLOQUE SE MANTIENE IGUAL
         ================================================== -->
 
         <section
@@ -1728,9 +1755,7 @@
             >
 
 
-                <!-- =========================================
-                     BANNER 1
-                ========================================== -->
+                <!-- BANNER 1 -->
 
                 <article
                     class="hero-slide"
@@ -1757,9 +1782,7 @@
                 </article>
 
 
-                <!-- =========================================
-                     BANNER 2
-                ========================================== -->
+                <!-- BANNER 2 -->
 
                 <article
                     class="hero-slide"
@@ -1786,9 +1809,7 @@
                 </article>
 
 
-                <!-- =========================================
-                     BANNER 3
-                ========================================== -->
+                <!-- BANNER 3 -->
 
                 <article
                     class="hero-slide"
@@ -1818,9 +1839,7 @@
             </div>
 
 
-            <!-- =============================================
-                 INDICADORES DEL BANNER
-            ============================================== -->
+            <!-- INDICADORES DEL BANNER -->
 
             <div
                 class="hero-dots"
@@ -1858,8 +1877,7 @@
 
 
         <!-- =================================================
-             IMPORTANTE:
-             AQUÍ YA NO EXISTE EL BLOQUE DE BENEFICIOS.
+             SIN BLOQUE DE BENEFICIOS
              
              Se eliminó completamente:
              - Envíos a todo Chile
@@ -1913,20 +1931,12 @@
                 </div>
 
 
-                <!-- =========================================
-                     PRODUCTOS
-                     
-                     Estos son productos reales del catálogo.
-                ========================================== -->
-
                 <div
                     class="satori-products-grid"
                 >
 
 
-                    <!-- =====================================
-                         KID BUU
-                    ====================================== -->
+                    <!-- KID BUU -->
 
                     <article
                         class="satori-product-card"
@@ -1957,7 +1967,6 @@
 
                         </a>
 
-
                         <div
                             class="satori-product-name"
                         >
@@ -1979,9 +1988,7 @@
                     </article>
 
 
-                    <!-- =====================================
-                         GOKU
-                    ====================================== -->
+                    <!-- GOKU -->
 
                     <article
                         class="satori-product-card"
@@ -2012,7 +2019,6 @@
 
                         </a>
 
-
                         <div
                             class="satori-product-name"
                         >
@@ -2034,9 +2040,7 @@
                     </article>
 
 
-                    <!-- =====================================
-                         PRODUCTO 3
-                    ====================================== -->
+                    <!-- YOKAI -->
 
                     <article
                         class="satori-product-card"
@@ -2064,7 +2068,6 @@
 
                         </a>
 
-
                         <div
                             class="satori-product-name"
                         >
@@ -2086,9 +2089,7 @@
                     </article>
 
 
-                    <!-- =====================================
-                         PRODUCTO 4
-                    ====================================== -->
+                    <!-- SATORII -->
 
                     <article
                         class="satori-product-card"
@@ -2115,7 +2116,6 @@
                             </div>
 
                         </a>
-
 
                         <div
                             class="satori-product-name"
@@ -2147,8 +2147,6 @@
 
         <!-- =================================================
              COLECCIONES
-             
-             CARRUSEL PRINCIPAL
         ================================================== -->
 
         <section
@@ -2160,10 +2158,6 @@
                 class="satori-collections-inner"
             >
 
-
-                <!-- =========================================
-                     INTRO
-                ========================================== -->
 
                 <div
                     class="satori-collections-intro"
@@ -2178,7 +2172,9 @@
                     <h2
                         class="index-section-heading"
                     >
+
                         NUESTRAS
+
                         <span
                             style="
                                 color:#EF0930;
@@ -2186,6 +2182,7 @@
                         >
                             COLECCIONES
                         </span>
+
                     </h2>
 
                     <p>
@@ -2198,9 +2195,7 @@
                 </div>
 
 
-                <!-- =========================================
-                     FLECHAS
-                ========================================== -->
+                <!-- FLECHAS -->
 
                 <div
                     class="satori-carousel-controls"
@@ -2227,9 +2222,7 @@
                 </div>
 
 
-                <!-- =========================================
-                     VIEWPORT
-                ========================================== -->
+                <!-- CARRUSEL -->
 
                 <div
                     class="satori-carousel-viewport"
@@ -2242,28 +2235,19 @@
                     >
 
 
-                        <!-- =================================
-                             ANIME
-                        ================================== -->
+                        <!-- ANIME -->
 
                         <article
-                            class="
-                                satori-collection-card
-                                active
-                            "
+                            class="satori-collection-card active"
                             data-collection="0"
                         >
 
                             <div
-                                class="
-                                    satori-collection-image
-                                "
+                                class="satori-collection-image"
                             >
 
                                 <span
-                                    class="
-                                        satori-collection-badge
-                                    "
+                                    class="satori-collection-badge"
                                 >
                                     COLECCIÓN
                                 </span>
@@ -2273,18 +2257,13 @@
                                     alt="Colección Anime"
                                     loading="lazy"
                                     decoding="async"
-                                    onerror="
-                                        this.style.display='none';
-                                    "
                                 >
 
                             </div>
 
 
                             <div
-                                class="
-                                    satori-collection-info
-                                "
+                                class="satori-collection-info"
                             >
 
                                 <div>
@@ -2302,9 +2281,7 @@
 
                                 <a
                                     href="anime.html"
-                                    class="
-                                        satori-collection-button
-                                    "
+                                    class="satori-collection-button"
                                 >
                                     VER COLECCIÓN →
                                 </a>
@@ -2314,27 +2291,19 @@
                         </article>
 
 
-                        <!-- =================================
-                             YOKAI
-                        ================================== -->
+                        <!-- YOKAI -->
 
                         <article
-                            class="
-                                satori-collection-card
-                            "
+                            class="satori-collection-card"
                             data-collection="1"
                         >
 
                             <div
-                                class="
-                                    satori-collection-image
-                                "
+                                class="satori-collection-image"
                             >
 
                                 <span
-                                    class="
-                                        satori-collection-badge
-                                    "
+                                    class="satori-collection-badge"
                                 >
                                     NUEVA
                                 </span>
@@ -2344,18 +2313,13 @@
                                     alt="Colección Yokai"
                                     loading="lazy"
                                     decoding="async"
-                                    onerror="
-                                        this.style.display='none';
-                                    "
                                 >
 
                             </div>
 
 
                             <div
-                                class="
-                                    satori-collection-info
-                                "
+                                class="satori-collection-info"
                             >
 
                                 <div>
@@ -2373,9 +2337,7 @@
 
                                 <a
                                     href="yokai.html"
-                                    class="
-                                        satori-collection-button
-                                    "
+                                    class="satori-collection-button"
                                 >
                                     VER COLECCIÓN →
                                 </a>
@@ -2385,27 +2347,19 @@
                         </article>
 
 
-                        <!-- =================================
-                             SATORII ORIGINALS
-                        ================================== -->
+                        <!-- SATORII -->
 
                         <article
-                            class="
-                                satori-collection-card
-                            "
+                            class="satori-collection-card"
                             data-collection="2"
                         >
 
                             <div
-                                class="
-                                    satori-collection-image
-                                "
+                                class="satori-collection-image"
                             >
 
                                 <span
-                                    class="
-                                        satori-collection-badge
-                                    "
+                                    class="satori-collection-badge"
                                 >
                                     ORIGINAL
                                 </span>
@@ -2415,18 +2369,13 @@
                                     alt="Satorii Originals"
                                     loading="lazy"
                                     decoding="async"
-                                    onerror="
-                                        this.style.display='none';
-                                    "
                                 >
 
                             </div>
 
 
                             <div
-                                class="
-                                    satori-collection-info
-                                "
+                                class="satori-collection-info"
                             >
 
                                 <div>
@@ -2444,9 +2393,7 @@
 
                                 <a
                                     href="productos.html"
-                                    class="
-                                        satori-collection-button
-                                    "
+                                    class="satori-collection-button"
                                 >
                                     VER COLECCIÓN →
                                 </a>
@@ -2456,27 +2403,19 @@
                         </article>
 
 
-                        <!-- =================================
-                             LIMITED
-                        ================================== -->
+                        <!-- LIMITED -->
 
                         <article
-                            class="
-                                satori-collection-card
-                            "
+                            class="satori-collection-card"
                             data-collection="3"
                         >
 
                             <div
-                                class="
-                                    satori-collection-image
-                                "
+                                class="satori-collection-image"
                             >
 
                                 <span
-                                    class="
-                                        satori-collection-badge
-                                    "
+                                    class="satori-collection-badge"
                                 >
                                     EXCLUSIVO
                                 </span>
@@ -2486,18 +2425,13 @@
                                     alt="Colección Limited"
                                     loading="lazy"
                                     decoding="async"
-                                    onerror="
-                                        this.style.display='none';
-                                    "
                                 >
 
                             </div>
 
 
                             <div
-                                class="
-                                    satori-collection-info
-                                "
+                                class="satori-collection-info"
                             >
 
                                 <div>
@@ -2515,9 +2449,7 @@
 
                                 <a
                                     href="productos.html"
-                                    class="
-                                        satori-collection-button
-                                    "
+                                    class="satori-collection-button"
                                 >
                                     VER COLECCIÓN →
                                 </a>
@@ -2532,9 +2464,7 @@
                 </div>
 
 
-                <!-- =========================================
-                     INDICADORES
-                ========================================== -->
+                <!-- DOTS -->
 
                 <div
                     class="satori-carousel-dots"
@@ -2543,37 +2473,28 @@
 
                     <button
                         type="button"
-                        class="
-                            satori-carousel-dot
-                            active
-                        "
+                        class="satori-carousel-dot active"
                         data-index="0"
                         aria-label="Anime"
                     ></button>
 
                     <button
                         type="button"
-                        class="
-                            satori-carousel-dot
-                        "
+                        class="satori-carousel-dot"
                         data-index="1"
                         aria-label="Yokai"
                     ></button>
 
                     <button
                         type="button"
-                        class="
-                            satori-carousel-dot
-                        "
+                        class="satori-carousel-dot"
                         data-index="2"
                         aria-label="Satorii"
                     ></button>
 
                     <button
                         type="button"
-                        class="
-                            satori-carousel-dot
-                        "
+                        class="satori-carousel-dot"
                         data-index="3"
                         aria-label="Limited"
                     ></button>
@@ -2587,28 +2508,19 @@
 
 
         <!-- =================================================
-             IDENTIDAD SATORII
+             IDENTIDAD
         ================================================== -->
 
         <section
             class="satori-story"
         >
 
-
-            <!-- =============================================
-                 VISUAL
-            ============================================== -->
-
             <div
-                class="
-                    satori-story-visual
-                "
+                class="satori-story-visual"
             >
 
                 <div
-                    class="
-                        satori-story-logo
-                    "
+                    class="satori-story-logo"
                 >
                     SATORII
                 </div>
@@ -2616,20 +2528,12 @@
             </div>
 
 
-            <!-- =============================================
-                 TEXTO
-            ============================================== -->
-
             <div
-                class="
-                    satori-story-copy
-                "
+                class="satori-story-copy"
             >
 
                 <div
-                    class="
-                        index-section-kicker
-                    "
+                    class="index-section-kicker"
                 >
                     MÁS QUE UNA TIENDA
                 </div>
@@ -2667,15 +2571,12 @@
 
                 <a
                     href="#"
-                    class="
-                        index-section-link
-                    "
+                    class="index-section-link"
                 >
                     CONOCE SATORII →
                 </a>
 
             </div>
-
 
         </section>
 
@@ -2685,23 +2586,14 @@
         ================================================== -->
 
         <section
-            class="
-                satori-pack-new
-            "
+            class="satori-pack-new"
             id="pack"
         >
-
-
-            <!-- =============================================
-                 CONTENIDO
-            ============================================== -->
 
             <div>
 
                 <div
-                    class="
-                        satori-pack-label-new
-                    "
+                    class="satori-pack-label-new"
                 >
                     ✦ EXCLUSIVO SATORII
                 </div>
@@ -2728,9 +2620,7 @@
 
                 <a
                     href="satorii-pack.html"
-                    class="
-                        satori-pack-button-new
-                    "
+                    class="satori-pack-button-new"
                 >
                     DESCUBRIR PACK →
                 </a>
@@ -2738,14 +2628,8 @@
             </div>
 
 
-            <!-- =============================================
-                 VISUAL
-            ============================================== -->
-
             <div
-                class="
-                    satori-pack-visual-new
-                "
+                class="satori-pack-visual-new"
             >
 
                 <img
@@ -2756,26 +2640,13 @@
                     draggable="false"
                 >
 
-                <span
-                    class="
-                        satori-pack-fallback
-                    "
-                >
-                    PACK
-                </span>
-
             </div>
-
 
         </section>
 
 
         <!-- =================================================
              RECOMENDACIONES
-             
-             IMPORTANTE:
-             Se mantiene el sistema existente de
-             js/products.js.
         ================================================== -->
 
         <section
@@ -2818,8 +2689,7 @@
 
 
     <!-- =====================================================
-         FOOTER GLOBAL
-         Controlado por js/footer.js
+         FOOTER
     ====================================================== -->
 
     <div
@@ -2828,7 +2698,7 @@
 
 
     <!-- =====================================================
-         JAVASCRIPT — PRODUCTOS
+         JAVASCRIPT EXISTENTE
     ====================================================== -->
 
     <script
@@ -2837,31 +2707,17 @@
     ></script>
 
 
-    <!-- =====================================================
-         JAVASCRIPT — HEADER
-    ====================================================== -->
-
     <script
         src="js/header.js"
         defer
     ></script>
 
 
-    <!-- =====================================================
-         JAVASCRIPT — FOOTER
-    ====================================================== -->
-
     <script
         src="js/footer.js"
         defer
     ></script>
 
-
-    <!-- =====================================================
-         JAVASCRIPT — HERO SLIDER
-         
-         ESTE SCRIPT SE MANTIENE.
-    ====================================================== -->
 
     <script
         src="js/hero-slider.js"
@@ -2924,7 +2780,10 @@
 
 
     <!-- =====================================================
-         JAVASCRIPT — CARRUSEL DE COLECCIONES
+         CARRUSEL DE COLECCIONES
+         
+         PC + MOBILE
+         MISMA LÓGICA
     ====================================================== -->
 
     <script>
@@ -2933,10 +2792,6 @@
             "DOMContentLoaded",
             function () {
 
-
-                /* =============================================
-                   ELEMENTOS
-                ============================================== */
 
                 const viewport =
                     document.getElementById(
@@ -2989,18 +2844,15 @@
                 }
 
 
-                /* =============================================
-                   ESTADO
-                ============================================== */
-
                 let currentIndex = 0;
 
 
-                /* =============================================
-                   ACTUALIZAR CARRUSEL
-                ============================================== */
+                /* =================================================
+                   ACTUALIZAR
+                ================================================== */
 
                 function updateCarousel() {
+
 
                     cards.forEach(
                         function (
@@ -3032,66 +2884,74 @@
                     );
 
 
-                    /*
-                     * En móvil dejamos que el usuario
-                     * pueda desplazarse naturalmente.
-                     */
-
-                    if (
-                        window.innerWidth <= 650
-                    ) {
-
-                        track.style.transform =
-                            "none";
-
-                        return;
-
-                    }
-
-
                     const activeCard =
                         cards[currentIndex];
 
 
-                    if (!activeCard) {
+                    if (
+                        !activeCard
+                    ) {
 
                         return;
 
                     }
 
 
+                    /*
+                     * Calculamos el centro real
+                     * de la tarjeta.
+                     *
+                     * Esto funciona tanto en PC
+                     * como en teléfonos.
+                     */
+
                     const viewportWidth =
-                        viewport
-                            .getBoundingClientRect()
-                            .width;
+                        viewport.getBoundingClientRect().width;
+
+
+                    const cardLeft =
+                        activeCard.offsetLeft;
 
 
                     const cardWidth =
-                        activeCard
-                            .getBoundingClientRect()
-                            .width;
+                        activeCard.getBoundingClientRect().width;
+
+
+                    const cardCenter =
+                        cardLeft +
+                        (
+                            cardWidth / 2
+                        );
+
+
+                    const viewportCenter =
+                        viewportWidth / 2;
 
 
                     const target =
-                        activeCard.offsetLeft -
-                        (
-                            viewportWidth -
-                            cardWidth
-                        ) / 2;
+                        cardCenter -
+                        viewportCenter;
 
+
+                    /*
+                     * IMPORTANTE:
+                     *
+                     * No usamos Math.max().
+                     *
+                     * La primera tarjeta puede necesitar
+                     * un translate positivo para quedar
+                     * perfectamente centrada.
+                     */
 
                     track.style.transform =
-                        `translateX(-${Math.max(
-                            0,
-                            target
-                        )}px)`;
+                        `translateX(${-target}px)`;
 
                 }
 
 
-                /* =============================================
-                   CAMBIAR ÍNDICE
-                ============================================== */
+                /* =================================================
+                   IR A COLECCIÓN
+                ================================================== */
 
                 function goTo(
                     index
@@ -3125,53 +2985,41 @@
                 }
 
 
-                /* =============================================
-                   FLECHA ANTERIOR
-                ============================================== */
+                /* =================================================
+                   ANTERIOR
+                ================================================== */
 
-                if (
-                    previousButton
-                ) {
+                previousButton.addEventListener(
+                    "click",
+                    function () {
 
-                    previousButton.addEventListener(
-                        "click",
-                        function () {
+                        goTo(
+                            currentIndex - 1
+                        );
 
-                            goTo(
-                                currentIndex - 1
-                            );
-
-                        }
-                    );
-
-                }
+                    }
+                );
 
 
-                /* =============================================
-                   FLECHA SIGUIENTE
-                ============================================== */
+                /* =================================================
+                   SIGUIENTE
+                ================================================== */
 
-                if (
-                    nextButton
-                ) {
+                nextButton.addEventListener(
+                    "click",
+                    function () {
 
-                    nextButton.addEventListener(
-                        "click",
-                        function () {
+                        goTo(
+                            currentIndex + 1
+                        );
 
-                            goTo(
-                                currentIndex + 1
-                            );
-
-                        }
-                    );
-
-                }
+                    }
+                );
 
 
-                /* =============================================
+                /* =================================================
                    DOTS
-                ============================================== */
+                ================================================== */
 
                 dots.forEach(
                     function (
@@ -3182,14 +3030,10 @@
                             "click",
                             function () {
 
-                                const index =
+                                goTo(
                                     Number(
                                         dot.dataset.index
-                                    );
-
-
-                                goTo(
-                                    index
+                                    )
                                 );
 
                             }
@@ -3199,15 +3043,19 @@
                 );
 
 
-                /* =============================================
+                /* =================================================
                    SWIPE
-                ============================================== */
+                   
+                   FUNCIONA IGUAL QUE LAS FLECHAS.
+                ================================================== */
 
-                let touchStartX =
-                    0;
+                let touchStartX = 0;
 
-                let touchEndX =
-                    0;
+                let touchStartY = 0;
+
+                let touchEndX = 0;
+
+                let touchEndY = 0;
 
 
                 viewport.addEventListener(
@@ -3227,6 +3075,10 @@
 
                         touchStartX =
                             event.touches[0].clientX;
+
+
+                        touchStartY =
+                            event.touches[0].clientY;
 
                     },
                     {
@@ -3254,20 +3106,43 @@
                             event.changedTouches[0].clientX;
 
 
-                        const difference =
+                        touchEndY =
+                            event.changedTouches[0].clientY;
+
+
+                        const differenceX =
                             touchStartX -
                             touchEndX;
 
 
+                        const differenceY =
+                            touchStartY -
+                            touchEndY;
+
+
                         /*
-                         * Evita activar el carrusel
-                         * por pequeños movimientos.
+                         * Si el movimiento vertical es
+                         * mayor que el horizontal,
+                         * dejamos que la página haga
+                         * scroll normalmente.
                          */
 
                         if (
-                            Math.abs(
-                                difference
-                            ) < 45
+                            Math.abs(differenceY) >
+                            Math.abs(differenceX)
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Movimiento mínimo.
+                         */
+
+                        if (
+                            Math.abs(differenceX) < 45
                         ) {
 
                             return;
@@ -3276,7 +3151,7 @@
 
 
                         if (
-                            difference > 0
+                            differenceX > 0
                         ) {
 
                             goTo(
@@ -3298,49 +3173,15 @@
                 );
 
 
-                /* =============================================
+                /* =================================================
                    TECLADO
-                ============================================== */
+                ================================================== */
 
                 document.addEventListener(
                     "keydown",
                     function (
                         event
                     ) {
-
-                        const section =
-                            document.getElementById(
-                                "colecciones"
-                            );
-
-
-                        if (
-                            !section
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const rect =
-                            section.getBoundingClientRect();
-
-
-                        const visible =
-                            rect.top <
-                            window.innerHeight &&
-                            rect.bottom > 0;
-
-
-                        if (
-                            !visible
-                        ) {
-
-                            return;
-
-                        }
-
 
                         if (
                             event.key === "ArrowLeft"
@@ -3367,9 +3208,9 @@
                 );
 
 
-                /* =============================================
+                /* =================================================
                    RESIZE
-                ============================================== */
+                ================================================== */
 
                 window.addEventListener(
                     "resize",
@@ -3381,11 +3222,33 @@
                 );
 
 
-                /* =============================================
+                /* =================================================
                    INICIALIZAR
-                ============================================== */
+                ================================================== */
 
-                updateCarousel();
+                /*
+                 * Esperamos un momento para asegurarnos
+                 * de que las imágenes y tamaños estén
+                 * disponibles antes de calcular el centro.
+                 */
+
+                requestAnimationFrame(
+                    function () {
+
+                        updateCarousel();
+
+                    }
+                );
+
+
+                window.addEventListener(
+                    "load",
+                    function () {
+
+                        updateCarousel();
+
+                    }
+                );
 
 
             }
