@@ -2816,10 +2816,40 @@
                  * de pago.
                  */
 
-                alert(
-                    "Checkout listo. El siguiente paso será conectar este botón con Flow."
-                );
+              try {
+    const items = cart.map(item => ({
+        product_id: item.id,
+        quantity: item.quantity
+    }));
 
+    const { data, error } = await supabase.functions.invoke(
+        "create-order",
+        {
+            body: {
+                items
+            }
+        }
+    );
+
+    if (error) {
+        console.error("Error creando la orden:", error);
+        alert("No se pudo crear la orden. Inténtalo nuevamente.");
+        return;
+    }
+
+    console.log("SATORII - Respuesta create-order:", data);
+
+    if (!data?.success) {
+        alert("No se pudo validar la orden.");
+        return;
+    }
+
+    alert("Orden validada correctamente.");
+
+} catch (error) {
+    console.error("Error:", error);
+    alert("Ocurrió un error al procesar tu pedido.");
+}
             }
         );
 
