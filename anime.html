@@ -3,6 +3,10 @@
 
 <head>
 
+    <!-- =====================================================
+         SATORII · ANIME
+    ====================================================== -->
+
     <link
         rel="icon"
         type="image/png"
@@ -18,7 +22,7 @@
 
     <meta
         name="description"
-        content="SATORII Anime — Poleras y prendas inspiradas en anime y manga."
+        content="SATORII Anime — Anime, manga y cultura japonesa llevados al streetwear."
     >
 
     <title>Anime | SATORII</title>
@@ -33,11 +37,12 @@
 
         /* =====================================================
            SATORII · ANIME
+           Página de colección
         ====================================================== */
 
 
         /* =====================================================
-           ESTRUCTURA
+           CONTENEDOR
         ====================================================== */
 
         .anime-page {
@@ -61,99 +66,143 @@
 
 
         /* =====================================================
-           INTRO
+           HERO / INTRO
         ====================================================== */
 
         .anime-intro {
 
-            padding-top: 110px;
-            padding-bottom: 70px;
-
-            text-align: center;
+            padding-top: 105px;
+            padding-bottom: 75px;
 
         }
 
 
         .anime-intro-label {
 
-            margin-bottom: 16px;
+            display: block;
+
+            margin-bottom: 18px;
 
             color:
                 var(--red, #EF0930);
 
-            font-size: 11px;
+            font-size: 10px;
 
-            font-weight: 800;
+            font-weight: 900;
 
-            letter-spacing: 4px;
+            letter-spacing: 3px;
+
+            line-height: 1;
 
         }
 
 
         .anime-intro h1 {
 
+            max-width: 1000px;
+
             margin: 0;
 
             color: #111;
 
             font-size: clamp(
-                48px,
-                6vw,
-                88px
+                64px,
+                8vw,
+                125px
             );
 
-            line-height: .95;
+            line-height: .86;
 
             font-weight: 900;
 
-            letter-spacing: -4px;
+            letter-spacing: -6px;
 
         }
 
 
-        .anime-intro h1 span {
+        .anime-intro h1 strong {
 
             color:
                 var(--red, #EF0930);
+
+            font-weight: 900;
 
         }
 
 
         .anime-intro p {
 
-            max-width: 650px;
+            max-width: 620px;
 
-            margin: 25px auto 0;
+            margin:
+                28px 0 0;
 
             color: #666;
 
             font-size: 15px;
 
-            line-height: 1.7;
+            line-height: 1.75;
 
         }
 
 
         /* =====================================================
-           BARRA DE CATEGORÍA
+           SEPARADOR
+        ====================================================== */
+
+        .anime-intro-line {
+
+            width: 100%;
+
+            height: 1px;
+
+            margin-top: 55px;
+
+            background: #dedede;
+
+        }
+
+
+        /* =====================================================
+           CABECERA DE PRODUCTOS
         ====================================================== */
 
         .anime-category-bar {
 
             display: flex;
 
-            align-items: center;
+            align-items: flex-end;
 
             justify-content: space-between;
 
-            gap: 20px;
+            gap: 25px;
 
-            margin-bottom: 45px;
+            margin-bottom: 32px;
 
-            padding-bottom: 18px;
+        }
 
-            border-bottom:
-                1px solid #ddd;
+
+        .anime-category-left {
+
+            min-width: 0;
+
+        }
+
+
+        .anime-category-number {
+
+            display: block;
+
+            margin-bottom: 9px;
+
+            color:
+                var(--red, #EF0930);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
 
         }
 
@@ -164,11 +213,13 @@
 
             color: #111;
 
-            font-size: 14px;
+            font-size: 28px;
 
-            font-weight: 800;
+            line-height: 1;
 
-            letter-spacing: 1px;
+            font-weight: 900;
+
+            letter-spacing: -1px;
 
         }
 
@@ -177,7 +228,9 @@
 
             color: #777;
 
-            font-size: 12px;
+            font-size: 11px;
+
+            font-weight: 600;
 
             white-space: nowrap;
 
@@ -194,13 +247,13 @@
 
             grid-template-columns:
                 repeat(
-                    5,
+                    4,
                     minmax(0, 1fr)
                 );
 
-            column-gap: 22px;
+            column-gap: 24px;
 
-            row-gap: 75px;
+            row-gap: 65px;
 
             width: 100%;
 
@@ -240,9 +293,7 @@
 
             overflow: hidden;
 
-            background: #f7f7f7;
-
-            border-radius: 8px;
+            background: #f5f5f5;
 
         }
 
@@ -318,7 +369,7 @@
         .anime-product-image img {
 
             transform:
-                scale(1.025);
+                scale(1.035);
 
         }
 
@@ -331,9 +382,9 @@
 
             position: absolute;
 
-            top: 10px;
+            top: 12px;
 
-            left: 10px;
+            left: 12px;
 
             z-index: 5;
 
@@ -352,7 +403,7 @@
 
             align-items: center;
 
-            min-height: 24px;
+            min-height: 23px;
 
             padding:
                 5px 8px;
@@ -362,8 +413,6 @@
             background: #111;
 
             color: #fff;
-
-            border-radius: 3px;
 
             font-size: 7px;
 
@@ -397,23 +446,23 @@
 
         .anime-product-info {
 
-            padding-top: 16px;
+            padding-top: 15px;
 
         }
 
 
         .anime-product-category {
 
-            margin-bottom: 6px;
+            margin-bottom: 7px;
 
             color:
                 var(--red, #EF0930);
 
-            font-size: 9px;
+            font-size: 8px;
 
-            font-weight: 800;
+            font-weight: 900;
 
-            letter-spacing: 1.5px;
+            letter-spacing: 1.7px;
 
             text-transform: uppercase;
 
@@ -443,7 +492,7 @@
 
             font-size: 14px;
 
-            font-weight: 700;
+            font-weight: 800;
 
         }
 
@@ -477,57 +526,38 @@
 
             font-size: 20px;
 
+            font-weight: 900;
+
         }
 
 
         /* =====================================================
-           PACK FINAL
+           CTA FINAL
         ====================================================== */
 
-        .anime-pack {
+        .anime-cta {
 
             position: relative;
 
-            margin-top: 120px;
+            margin-top: 115px;
 
             margin-bottom: 100px;
 
-            min-height: 230px;
-
-            padding: 50px;
-
-            display: flex;
-
-            align-items: center;
+            padding:
+                65px 60px;
 
             box-sizing: border-box;
 
             overflow: hidden;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #111827 0%,
-                    #090d15 100%
-                );
+            background: #111;
 
             color: #fff;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .18
-                );
-
-            border-radius: 10px;
 
         }
 
 
-        .anime-pack::before {
+        .anime-cta::before {
 
             content: "";
 
@@ -537,9 +567,9 @@
 
             left: 0;
 
-            width: 150px;
+            width: 180px;
 
-            height: 2px;
+            height: 3px;
 
             background:
                 var(--red, #EF0930);
@@ -547,7 +577,7 @@
         }
 
 
-        .anime-pack::after {
+        .anime-cta::after {
 
             content: "";
 
@@ -557,9 +587,9 @@
 
             bottom: 0;
 
-            width: 150px;
+            width: 180px;
 
-            height: 2px;
+            height: 3px;
 
             background:
                 var(--red, #EF0930);
@@ -567,53 +597,57 @@
         }
 
 
-        .anime-pack-content {
+        .anime-cta-content {
 
             position: relative;
 
             z-index: 2;
 
-            max-width: 650px;
+            max-width: 720px;
 
         }
 
 
-        .anime-pack-label {
+        .anime-cta-label {
 
-            margin-bottom: 8px;
+            display: block;
+
+            margin-bottom: 15px;
 
             color:
                 var(--red, #EF0930);
 
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 4px;
-
-        }
-
-
-        .anime-pack h2 {
-
-            margin:
-                0 0 12px;
-
-            font-size:
-                clamp(
-                    30px,
-                    4vw,
-                    52px
-                );
-
-            line-height: 1;
+            font-size: 9px;
 
             font-weight: 900;
 
+            letter-spacing: 3px;
+
         }
 
 
-        .anime-pack h2 span {
+        .anime-cta h2 {
+
+            margin: 0;
+
+            color: #fff;
+
+            font-size: clamp(
+                36px,
+                5vw,
+                65px
+            );
+
+            line-height: .9;
+
+            font-weight: 900;
+
+            letter-spacing: -3px;
+
+        }
+
+
+        .anime-cta h2 span {
 
             color:
                 var(--red, #EF0930);
@@ -621,15 +655,59 @@
         }
 
 
-        .anime-pack p {
+        .anime-cta p {
 
-            margin: 0;
+            max-width: 550px;
 
-            color: #ccc;
+            margin:
+                22px 0 28px;
+
+            color: #bbb;
 
             font-size: 14px;
 
-            line-height: 1.6;
+            line-height: 1.7;
+
+        }
+
+
+        .anime-cta-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 44px;
+
+            padding:
+                0 22px;
+
+            background:
+                var(--red, #EF0930);
+
+            color: #fff;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            text-decoration: none;
+
+            transition:
+                transform .2s ease,
+                background .2s ease;
+
+        }
+
+
+        .anime-cta-button:hover {
+
+            transform:
+                translateY(-2px);
 
         }
 
@@ -638,22 +716,7 @@
            TABLET
         ====================================================== */
 
-        @media (max-width: 1400px) {
-
-            .anime-products-grid {
-
-                grid-template-columns:
-                    repeat(
-                        4,
-                        minmax(0, 1fr)
-                    );
-
-            }
-
-        }
-
-
-        @media (max-width: 1050px) {
+        @media (max-width: 1200px) {
 
             .anime-products-grid {
 
@@ -663,7 +726,7 @@
                         minmax(0, 1fr)
                     );
 
-                column-gap: 18px;
+                column-gap: 20px;
 
                 row-gap: 55px;
 
@@ -680,10 +743,54 @@
 
 
         /* =====================================================
+           TABLET PEQUEÑO
+        ====================================================== */
+
+        @media (max-width: 850px) {
+
+            .anime-products-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+
+                column-gap: 16px;
+
+                row-gap: 48px;
+
+            }
+
+
+            .anime-intro h1 {
+
+                font-size: clamp(
+                    58px,
+                    11vw,
+                    90px
+                );
+
+                letter-spacing: -4px;
+
+            }
+
+
+            .anime-cta {
+
+                padding:
+                    50px 35px;
+
+            }
+
+        }
+
+
+        /* =====================================================
            MÓVIL
         ====================================================== */
 
-        @media (max-width: 700px) {
+        @media (max-width: 600px) {
 
             .anime-page {
 
@@ -697,32 +804,81 @@
 
             .anime-intro {
 
-                padding-top: 95px;
+                padding-top: 75px;
 
-                padding-bottom: 50px;
+                padding-bottom: 45px;
+
+            }
+
+
+            .anime-intro-label {
+
+                margin-bottom: 14px;
+
+                font-size: 9px;
+
+                letter-spacing: 2.5px;
 
             }
 
 
             .anime-intro h1 {
 
-                font-size: 48px;
+                font-size: 54px;
 
-                letter-spacing: -2px;
+                line-height: .88;
+
+                letter-spacing: -3px;
 
             }
 
 
             .anime-intro p {
 
+                margin-top: 20px;
+
                 font-size: 13px;
+
+                line-height: 1.65;
+
+            }
+
+
+            .anime-intro-line {
+
+                margin-top: 40px;
 
             }
 
 
             .anime-category-bar {
 
-                margin-bottom: 30px;
+                align-items: flex-end;
+
+                margin-bottom: 25px;
+
+            }
+
+
+            .anime-category-number {
+
+                margin-bottom: 7px;
+
+                font-size: 8px;
+
+            }
+
+
+            .anime-category-title {
+
+                font-size: 21px;
+
+            }
+
+
+            .anime-product-count {
+
+                font-size: 9px;
 
             }
 
@@ -735,9 +891,9 @@
                         minmax(0, 1fr)
                     );
 
-                column-gap: 14px;
+                column-gap: 12px;
 
-                row-gap: 45px;
+                row-gap: 42px;
 
             }
 
@@ -751,14 +907,20 @@
 
             .anime-product-category {
 
-                font-size: 8px;
+                margin-bottom: 5px;
+
+                font-size: 7px;
+
+                letter-spacing: 1.3px;
 
             }
 
 
             .anime-product-name {
 
-                font-size: 12px;
+                font-size: 11px;
+
+                line-height: 1.35;
 
             }
 
@@ -767,7 +929,7 @@
 
                 margin-top: 5px;
 
-                font-size: 12px;
+                font-size: 11px;
 
             }
 
@@ -785,7 +947,7 @@
 
             .anime-product-badge {
 
-                min-height: 21px;
+                min-height: 20px;
 
                 padding:
                     4px 6px;
@@ -795,51 +957,107 @@
             }
 
 
-            .anime-pack {
+            .anime-cta {
 
-                margin-top: 80px;
+                margin-top: 75px;
 
-                margin-bottom: 60px;
-
-                min-height: 220px;
+                margin-bottom: 55px;
 
                 padding:
-                    30px 25px;
-
-                border-radius: 8px;
+                    38px 25px;
 
             }
 
 
-            .anime-pack::before {
+            .anime-cta::before {
 
                 width: 90px;
 
+                height: 2px;
+
             }
 
 
-            .anime-pack::after {
+            .anime-cta::after {
 
                 width: 90px;
 
+                height: 2px;
+
             }
 
 
-            .anime-pack h2 {
+            .anime-cta-label {
 
-                font-size: 32px;
+                margin-bottom: 12px;
+
+                font-size: 8px;
+
+            }
+
+
+            .anime-cta h2 {
+
+                font-size: 36px;
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .anime-cta p {
+
+                margin-top: 18px;
+
+                font-size: 12px;
+
+            }
+
+
+            .anime-cta-button {
+
+                min-height: 42px;
+
+                padding:
+                    0 18px;
+
+                font-size: 9px;
 
             }
 
         }
 
 
-        @media (max-width: 420px) {
+        /* =====================================================
+           MÓVIL PEQUEÑO
+        ====================================================== */
 
-            .anime-category-bar {
+        @media (max-width: 380px) {
 
-                align-items:
-                    flex-start;
+            .anime-intro h1 {
+
+                font-size: 48px;
+
+            }
+
+
+            .anime-category-title {
+
+                font-size: 19px;
+
+            }
+
+
+            .anime-product-name {
+
+                font-size: 10px;
+
+            }
+
+
+            .anime-product-price {
+
+                font-size: 10px;
 
             }
 
@@ -860,8 +1078,11 @@
     <div id="satori-header"></div>
 
 
-    <main>
+    <!-- =====================================================
+         CONTENIDO
+    ====================================================== -->
 
+    <main>
 
         <div class="anime-page">
 
@@ -872,84 +1093,111 @@
 
             <section class="anime-intro">
 
-                <div class="anime-intro-label">
-                    SATORII · ANIME
-                </div>
+                <span class="anime-intro-label">
+                    01 / COLECCIÓN
+                </span>
 
 
                 <h1>
+
                     ANIME
-                    <span>
-                        MODE.
-                    </span>
+
+                    <strong>
+                        .
+                    </strong>
+
                 </h1>
 
 
                 <p>
-                    Prendas inspiradas en anime y manga,
-                    llevadas a un estilo urbano.
+                    Diseños inspirados en personajes,
+                    historias y universos del anime,
+                    llevados a la estética urbana de SATORII.
                 </p>
 
+
+                <div class="anime-intro-line"></div>
+
             </section>
-
-
-            <!-- =================================================
-                 CATEGORÍA
-            ================================================== -->
-
-            <div class="anime-category-bar">
-
-                <h2 class="anime-category-title">
-                    COLECCIÓN ANIME
-                </h2>
-
-
-                <span
-                    class="anime-product-count"
-                    id="anime-product-count"
-                >
-                    0 productos
-                </span>
-
-            </div>
 
 
             <!-- =================================================
                  PRODUCTOS
             ================================================== -->
 
-            <section
-                class="anime-products-grid"
-                id="anime-products-grid"
-            >
+            <section>
+
+                <div class="anime-category-bar">
+
+                    <div class="anime-category-left">
+
+                        <span class="anime-category-number">
+                            SATORII / ANIME STREETWEAR
+                        </span>
+
+
+                        <h2 class="anime-category-title">
+                            COLECCIÓN ANIME
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="anime-product-count"
+                        id="anime-product-count"
+                    >
+                        0 productos
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="anime-products-grid"
+                    id="anime-products-grid"
+                ></div>
+
             </section>
 
 
             <!-- =================================================
-                 PACK FINAL
+                 CTA FINAL
             ================================================== -->
 
-            <section class="anime-pack">
+            <section class="anime-cta">
 
-                <div class="anime-pack-content">
+                <div class="anime-cta-content">
 
-                    <div class="anime-pack-label">
-                        SATORII
-                    </div>
+                    <span class="anime-cta-label">
+                        SATORII · ANIME STREETWEAR
+                    </span>
 
 
                     <h2>
-                        LLEVA TU
+
+                        VISTE TU
+
                         <span>
-                            ANIME.
+                            UNIVERSO.
                         </span>
+
                     </h2>
 
 
                     <p>
-                        Descubre nuestras prendas
-                        inspiradas en anime y manga.
+                        Anime, cultura japonesa y estética
+                        urbana llevados a una propuesta
+                        para quienes quieren destacar.
                     </p>
+
+
+                    <a
+                        href="productos.html"
+                        class="anime-cta-button"
+                    >
+                        VER TODOS LOS PRODUCTOS
+                    </a>
 
                 </div>
 
@@ -968,16 +1216,34 @@
     <div id="satori-footer"></div>
 
 
-   <!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
 
-<!-- PRODUCTOS -->
-<script src="js/products.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!-- HEADER / FOOTER -->
-<script src="js/header.js"></script>
-<script src="js/footer.js"></script>
+    <script src="js/supabase.js"></script>
+
+
+    <!-- =====================================================
+         PRODUCTOS
+    ====================================================== -->
+
+    <script src="js/products.js"></script>
+
+
+    <!-- =====================================================
+         HEADER / FOOTER
+    ====================================================== -->
+
+    <script src="js/header.js"></script>
+
+    <script src="js/footer.js"></script>
+
+
+    <!-- =====================================================
+         ANIME · PRODUCTOS
+    ====================================================== -->
 
     <script>
 
@@ -1009,70 +1275,6 @@
                     return;
 
                 }
-
-
-                /* =================================================
-                   COMPROBAR PRODUCTS.JS
-                ================================================= */
-
-                if (
-                    typeof PRODUCTS === "undefined" ||
-                    !Array.isArray(PRODUCTS)
-                ) {
-
-                    grid.innerHTML = `
-
-                        <div class="anime-empty">
-
-                            <strong>
-                                No se pudo cargar el catálogo.
-                            </strong>
-
-                            Revisa que
-                            js/products.js
-                            esté disponible.
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
-
-
-                /* =================================================
-                   FILTRAR PRODUCTOS ANIME
-                ================================================= */
-
-                const animeProducts =
-                    PRODUCTS.filter(
-                        function (product) {
-
-                            return (
-                                product.available === true &&
-                                String(
-                                    product.category || ""
-                                )
-                                .toLowerCase()
-                                .trim() ===
-                                "anime"
-                            );
-
-                        }
-                    );
-
-
-                /* =================================================
-                   CONTADOR
-                ================================================= */
-
-                count.textContent =
-                    `${animeProducts.length} ${
-                        animeProducts.length === 1
-                            ? "producto"
-                            : "productos"
-                    }`;
 
 
                 /* =================================================
@@ -1111,7 +1313,7 @@
 
 
                 /* =================================================
-                   CREAR SLUG
+                   SLUG DE PRODUCTO
                 ================================================= */
 
                 function createProductSlug(
@@ -1142,16 +1344,14 @@
 
 
                 /* =================================================
-                   OBTENER URL DEL PRODUCTO
+                   URL DEL PRODUCTO
                 ================================================= */
 
                 function getProductUrl(
                     product
                 ) {
 
-                    if (
-                        !product
-                    ) {
+                    if (!product) {
 
                         return "#";
 
@@ -1159,14 +1359,10 @@
 
 
                     /*
-                     * =================================================
                      * URL DEFINIDA EN PRODUCTS.JS
-                     * =================================================
                      */
 
-                    if (
-                        product.url
-                    ) {
+                    if (product.url) {
 
                         let url =
                             String(
@@ -1174,10 +1370,6 @@
                             )
                             .trim();
 
-
-                        /*
-                         * Eliminar barras iniciales.
-                         */
 
                         url =
                             url.replace(
@@ -1187,8 +1379,8 @@
 
 
                         /*
-                         * Si ya viene con
-                         * satorimode/, no lo duplicamos.
+                         * Si ya contiene
+                         * la ruta del proyecto.
                          */
 
                         if (
@@ -1202,10 +1394,6 @@
                         }
 
 
-                        /*
-                         * Ruta normal del proyecto.
-                         */
-
                         return (
                             "/satorimode/" +
                             url
@@ -1215,9 +1403,7 @@
 
 
                     /*
-                     * =================================================
                      * RESPALDO
-                     * =================================================
                      */
 
                     const productId =
@@ -1239,7 +1425,7 @@
 
                 /* =================================================
                    FORMATO PRECIO
-                ================================================= */
+                ================================================== */
 
                 function formatPrice(
                     value
@@ -1268,299 +1454,412 @@
 
 
                 /* =================================================
-                   SIN PRODUCTOS
-                ================================================= */
+                   RENDERIZAR PRODUCTOS
+                ================================================== */
 
-                if (
-                    animeProducts.length === 0
-                ) {
+                function renderAnimeProducts() {
 
-                    grid.innerHTML = `
+                    /*
+                     * COMPROBAR PRODUCTS.JS
+                     */
 
-                        <div class="anime-empty">
+                    if (
+                        typeof PRODUCTS ===
+                            "undefined" ||
+                        !Array.isArray(
+                            PRODUCTS
+                        )
+                    ) {
 
-                            <strong>
-                                Próximamente
-                            </strong>
+                        if (count) {
 
-                            Estamos preparando
-                            nuevos diseños de anime.
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
-
-
-                /* =================================================
-                   CREAR TARJETAS
-                ================================================= */
-
-                animeProducts.forEach(
-                    function (product) {
-
-                        /* =========================================
-                           IMÁGENES
-                        ========================================== */
-
-                        const primaryImage =
-                            product.images?.[0] ||
-                            product.image ||
-                            "";
-
-
-                        const secondaryImage =
-                            product.images?.[1] ||
-                            primaryImage;
-
-
-                        /* =========================================
-                           URL
-                        ========================================== */
-
-                        const productUrl =
-                            getProductUrl(
-                                product
-                            );
-
-
-                        /* =========================================
-                           PRECIO
-                        ========================================== */
-
-                        const price =
-                            formatPrice(
-                                product.price
-                            );
-
-
-                        /* =========================================
-                           BADGES
-                        ========================================== */
-
-                        const badges = [];
-
-
-                        /*
-                         * NUEVO
-                         */
-
-                        if (
-                            typeof isProductNew ===
-                            "function" &&
-                            isProductNew(
-                                product
-                            )
-                        ) {
-
-                            badges.push(`
-
-                                <span
-                                    class="
-                                        anime-product-badge
-                                        new
-                                    "
-                                >
-                                    NUEVO
-                                </span>
-
-                            `);
+                            count.textContent =
+                                "0 productos";
 
                         }
 
 
-                        /*
-                         * DESTACADO
-                         */
+                        grid.innerHTML = `
 
-                        if (
-                            product.featured ===
-                            true
-                        ) {
+                            <div class="anime-empty">
 
-                            badges.push(`
+                                <strong>
+                                    No se pudo cargar el catálogo.
+                                </strong>
 
-                                <span
-                                    class="
-                                        anime-product-badge
-                                        featured
-                                    "
-                                >
-                                    DESTACADO
-                                </span>
-
-                            `);
-
-                        }
-
-
-                        /* =========================================
-                           TARJETA
-                        ========================================== */
-
-                        const card =
-                            document.createElement(
-                                "a"
-                            );
-
-
-                        card.className =
-                            "anime-product";
-
-
-                        /*
-                         * IMPORTANTE:
-                         *
-                         * La tarjeta completa es el enlace.
-                         */
-
-                        card.href =
-                            productUrl;
-
-
-                        card.setAttribute(
-                            "aria-label",
-                            `Ver ${
-                                product.name ||
-                                "producto"
-                            }`
-                        );
-
-
-                        /* =========================================
-                           HTML
-                        ========================================== */
-
-                        card.innerHTML = `
-
-                            <div
-                                class="
-                                    anime-product-image
-                                "
-                            >
-
-                                ${
-                                    badges.length
-                                        ? `
-
-                                            <div
-                                                class="
-                                                    anime-product-badges
-                                                "
-                                            >
-
-                                                ${badges.join("")}
-
-                                            </div>
-
-                                        `
-                                        : ""
-                                }
-
-
-                                ${
-                                    primaryImage
-                                        ? `
-
-                                            <img
-                                                class="
-                                                    image-primary
-                                                "
-                                                src="${escapeHTML(
-                                                    primaryImage
-                                                )}"
-                                                alt="${escapeHTML(
-                                                    product.name ||
-                                                    "Producto SATORII"
-                                                )}"
-                                                loading="lazy"
-                                            >
-
-                                        `
-                                        : ""
-                                }
-
-
-                                ${
-                                    secondaryImage
-                                        ? `
-
-                                            <img
-                                                class="
-                                                    image-secondary
-                                                "
-                                                src="${escapeHTML(
-                                                    secondaryImage
-                                                )}"
-                                                alt="${escapeHTML(
-                                                    product.name ||
-                                                    "Producto SATORII"
-                                                )}"
-                                                loading="lazy"
-                                            >
-
-                                        `
-                                        : ""
-                                }
-
-                            </div>
-
-
-                            <div
-                                class="
-                                    anime-product-info
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        anime-product-category
-                                    "
-                                >
-                                    ANIME
-                                </div>
-
-
-                                <h3
-                                    class="
-                                        anime-product-name
-                                    "
-                                >
-
-                                    ${escapeHTML(
-                                        product.name ||
-                                        "Producto"
-                                    )}
-
-                                </h3>
-
-
-                                <div
-                                    class="
-                                        anime-product-price
-                                    "
-                                >
-
-                                    ${price}
-
-                                </div>
+                                Revisa que
+                                js/products.js
+                                esté disponible.
 
                             </div>
 
                         `;
 
+                        return;
 
-                        grid.appendChild(
-                            card
+                    }
+
+
+                    /*
+                     * FILTRAR ANIME
+                     */
+
+                    const animeProducts =
+                        PRODUCTS.filter(
+                            function (product) {
+
+                                return (
+                                    product &&
+                                    product.available === true &&
+                                    String(
+                                        product.category || ""
+                                    )
+                                    .toLowerCase()
+                                    .trim() ===
+                                    "anime"
+                                );
+
+                            }
                         );
+
+
+                    /*
+                     * CONTADOR
+                     */
+
+                    if (count) {
+
+                        count.textContent =
+                            `${animeProducts.length} ${
+                                animeProducts.length === 1
+                                    ? "producto"
+                                    : "productos"
+                            }`;
+
+                    }
+
+
+                    /*
+                     * LIMPIAR GRID
+                     */
+
+                    grid.innerHTML = "";
+
+
+                    /*
+                     * SIN PRODUCTOS
+                     */
+
+                    if (
+                        animeProducts.length === 0
+                    ) {
+
+                        grid.innerHTML = `
+
+                            <div class="anime-empty">
+
+                                <strong>
+                                    PRÓXIMAMENTE
+                                </strong>
+
+                                Estamos preparando
+                                nuevos diseños de anime.
+
+                            </div>
+
+                        `;
+
+                        return;
+
+                    }
+
+
+                    /* =================================================
+                       CREAR TARJETAS
+                    ================================================== */
+
+                    animeProducts.forEach(
+                        function (product) {
+
+                            /*
+                             * IMAGEN PRINCIPAL
+                             */
+
+                            const primaryImage =
+                                product.images?.[0] ||
+                                product.image ||
+                                "";
+
+
+                            /*
+                             * IMAGEN SECUNDARIA
+                             */
+
+                            const secondaryImage =
+                                product.images?.[1] ||
+                                "";
+
+
+                            /*
+                             * URL
+                             */
+
+                            const productUrl =
+                                getProductUrl(
+                                    product
+                                );
+
+
+                            /*
+                             * PRECIO
+                             */
+
+                            const price =
+                                formatPrice(
+                                    product.price
+                                );
+
+
+                            /*
+                             * BADGES
+                             */
+
+                            const badges = [];
+
+
+                            /*
+                             * NUEVO
+                             */
+
+                            if (
+                                typeof isProductNew ===
+                                    "function" &&
+                                isProductNew(
+                                    product
+                                )
+                            ) {
+
+                                badges.push(`
+
+                                    <span
+                                        class="
+                                            anime-product-badge
+                                            new
+                                        "
+                                    >
+                                        NUEVO
+                                    </span>
+
+                                `);
+
+                            }
+
+
+                            /*
+                             * DESTACADO
+                             */
+
+                            if (
+                                product.featured ===
+                                true
+                            ) {
+
+                                badges.push(`
+
+                                    <span
+                                        class="
+                                            anime-product-badge
+                                            featured
+                                        "
+                                    >
+                                        DESTACADO
+                                    </span>
+
+                                `);
+
+                            }
+
+
+                            /*
+                             * TARJETA
+                             */
+
+                            const card =
+                                document.createElement(
+                                    "a"
+                                );
+
+
+                            card.className =
+                                "anime-product";
+
+
+                            card.href =
+                                productUrl;
+
+
+                            card.setAttribute(
+                                "aria-label",
+                                `Ver ${
+                                    product.name ||
+                                    "producto"
+                                }`
+                            );
+
+
+                            /* =================================================
+                               HTML TARJETA
+                            ================================================== */
+
+                            card.innerHTML = `
+
+                                <div
+                                    class="
+                                        anime-product-image
+                                    "
+                                >
+
+                                    ${
+                                        badges.length
+                                            ? `
+
+                                                <div
+                                                    class="
+                                                        anime-product-badges
+                                                    "
+                                                >
+
+                                                    ${badges.join("")}
+
+                                                </div>
+
+                                            `
+                                            : ""
+                                    }
+
+
+                                    ${
+                                        primaryImage
+                                            ? `
+
+                                                <img
+                                                    class="
+                                                        image-primary
+                                                    "
+                                                    src="${escapeHTML(
+                                                        primaryImage
+                                                    )}"
+                                                    alt="${escapeHTML(
+                                                        product.name ||
+                                                        "Producto SATORII"
+                                                    )}"
+                                                    loading="lazy"
+                                                >
+
+                                            `
+                                            : ""
+                                    }
+
+
+                                    ${
+                                        secondaryImage
+                                            ? `
+
+                                                <img
+                                                    class="
+                                                        image-secondary
+                                                    "
+                                                    src="${escapeHTML(
+                                                        secondaryImage
+                                                    )}"
+                                                    alt=""
+                                                    aria-hidden="true"
+                                                    loading="lazy"
+                                                >
+
+                                            `
+                                            : ""
+                                    }
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        anime-product-info
+                                    "
+                                >
+
+                                    <div
+                                        class="
+                                            anime-product-category
+                                        "
+                                    >
+                                        ANIME
+                                    </div>
+
+
+                                    <h3
+                                        class="
+                                            anime-product-name
+                                        "
+                                    >
+
+                                        ${escapeHTML(
+                                            product.name ||
+                                            "Producto"
+                                        )}
+
+                                    </h3>
+
+
+                                    <div
+                                        class="
+                                            anime-product-price
+                                        "
+                                    >
+
+                                        ${price}
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+
+                            grid.appendChild(
+                                card
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   PRIMERA CARGA
+                ================================================== */
+
+                renderAnimeProducts();
+
+
+                /* =================================================
+                   ACTUALIZACIÓN DESDE SUPABASE
+                ================================================== */
+
+                window.addEventListener(
+                    "satorii:products-updated",
+                    function () {
+
+                        renderAnimeProducts();
 
                     }
                 );
 
             }
+
         );
 
     </script>
