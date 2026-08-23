@@ -2194,14 +2194,18 @@
            SINCRONIZACIÓN
         ====================================================== */
 
-        document.addEventListener(
-            "satorii:cart-updated",
-            function () {
+window.addEventListener(
+    "satorii:products-updated",
+    function () {
 
-                renderPageCart();
-
-            }
+        console.log(
+            "SATORII · Catálogo actualizado, refrescando carrito."
         );
+
+        renderPageCart();
+
+    }
+);
         
 document.addEventListener(
     "satorii:products-updated",
