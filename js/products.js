@@ -9,6 +9,219 @@
 
 const DEFAULT_NEW_DAYS = 7;
 
+/* =========================================================
+   SUPABASE · SINCRONIZACIÓN DEL CATÁLOGO
+========================================================= */
+
+async function syncProductsFromSupabase() {
+
+    if (
+        typeof satoriSupabase === "undefined"
+    ) {
+
+        console.warn(
+            "SATORII · Supabase todavía no está disponible."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const {
+            data,
+            error
+        } = await satoriSupabase
+            .from("products")
+            .select(`
+                id,
+                name,
+                category,
+                collection,
+                subcategory,
+                price,
+                currency,
+                available,
+                featured,
+                new_product
+            `)
+            .eq(
+                "available",
+                true
+            );
+
+
+        if (error) {
+
+            console.error(
+                "SATORII · Error cargando productos desde Supabase:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !Array.isArray(data)
+        ) {
+
+            return;
+
+        }
+
+
+        data.forEach(
+            function (
+                remoteProduct
+            ) {
+
+                const localProduct =
+                    PRODUCTS.find(
+                        function (
+                            product
+                        ) {
+
+                            return (
+                                product.id ===
+                                remoteProduct.id
+                            );
+
+                        }
+                    );
+
+
+                if (
+                    !localProduct
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * Supabase será la fuente oficial
+                 * de estos datos dinámicos.
+                 */
+
+                if (
+                    remoteProduct.name !== null
+                ) {
+
+                    localProduct.name =
+                        remoteProduct.name;
+
+                }
+
+
+                if (
+                    remoteProduct.category !== null
+                ) {
+
+                    localProduct.category =
+                        remoteProduct.category;
+
+                }
+
+
+                if (
+                    remoteProduct.collection !== null
+                ) {
+
+                    localProduct.collection =
+                        remoteProduct.collection;
+
+                }
+
+
+                if (
+                    remoteProduct.subcategory !== null
+                ) {
+
+                    localProduct.subcategory =
+                        remoteProduct.subcategory;
+
+                }
+
+
+                if (
+                    remoteProduct.price !== null
+                ) {
+
+                    localProduct.price =
+                        Number(
+                            remoteProduct.price
+                        );
+
+                }
+
+
+                if (
+                    remoteProduct.currency
+                ) {
+
+                    localProduct.currency =
+                        remoteProduct.currency;
+
+                }
+
+
+                localProduct.available =
+                    Boolean(
+                        remoteProduct.available
+                    );
+
+
+                localProduct.featured =
+                    Boolean(
+                        remoteProduct.featured
+                    );
+
+
+                localProduct.newProduct =
+                    Boolean(
+                        remoteProduct.new_product
+                    );
+
+            }
+        );
+
+
+        console.log(
+            "SATORII · Catálogo sincronizado con Supabase.",
+            data
+        );
+
+
+        /*
+         * Avisamos al resto de SATORII
+         * que el catálogo ya está actualizado.
+         */
+
+        window.dispatchEvent(
+            new CustomEvent(
+                "satorii:products-updated"
+            )
+        );
+
+    }
+
+    catch (
+        error
+    ) {
+
+        console.error(
+            "SATORII · Error inesperado sincronizando productos:",
+            error
+        );
+
+    }
+
+}
 
 /* =========================================================
    PRODUCTOS
