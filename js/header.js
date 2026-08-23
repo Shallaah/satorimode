@@ -1128,11 +1128,11 @@
                 sans-serif;
             font-weight:800;
             font-style:italic;
-            letter-spacing:-1.8px;
+            letter-spacing:-0.8px;
             text-transform:uppercase;
             color:#fff;
             text-decoration:none;
-            line-height:.88;
+            line-height:.95;
             white-space:nowrap;
             transform:skewX(-3deg);
             transition:
