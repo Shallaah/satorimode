@@ -4114,7 +4114,89 @@ function generateProductJS() {
 
     function initSatoriProduct() {
 
+        function refreshProductData() {
 
+            if (
+                typeof PRODUCTS === "undefined" ||
+                !Array.isArray(PRODUCTS)
+            ) {
+                return;
+            }
+
+            const productId =
+                document.body.dataset.productId;
+
+            if (!productId) {
+                return;
+            }
+
+            const product =
+                PRODUCTS.find(
+                    item =>
+                        String(item.id) ===
+                        String(productId)
+                );
+
+            if (!product) {
+                return;
+            }
+
+            const price =
+                "$" +
+                Number(product.price || 0)
+                    .toLocaleString("es-CL");
+
+            document
+                .querySelectorAll(
+                    ".satori-product-price"
+                )
+                .forEach(
+                    element => {
+                        element.textContent = price;
+                    }
+                );
+
+            document
+                .querySelectorAll(
+                    "[data-product-price]"
+                )
+                .forEach(
+                    element => {
+                        element.dataset.productPrice =
+                            String(product.price);
+                    }
+                );
+
+            const addButton =
+                document.getElementById(
+                    "addToCart"
+                );
+
+            if (addButton) {
+
+                addButton.dataset.productPrice =
+                    String(product.price);
+
+                if (
+                    !addButton.classList.contains("added")
+                ) {
+                    addButton.textContent =
+                        "AGREGAR AL CARRITO · " +
+                        price;
+                }
+            }
+
+            document.body.dataset.productPrice =
+                String(product.price);
+        }
+
+        refreshProductData();
+
+        window.addEventListener(
+            "satorii:products-updated",
+            refreshProductData
+        );
+        
         /* =================================================
            GALERÍA
         ================================================= */
