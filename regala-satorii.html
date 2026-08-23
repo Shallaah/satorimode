@@ -12,10 +12,10 @@
 
     <meta
         name="description"
-        content="Regala SATORII — Gift Cards para elegir tus productos favoritos dentro de SATORII."
+        content="Regala SATORII — Gift Cards para elegir tus productos favoritos."
     >
 
-    <title>Regala Satorii | SATORII</title>
+    <title>Regala SATORII | SATORII</title>
 
     <link
         rel="icon"
@@ -32,21 +32,16 @@
     <style>
 
         /* =====================================================
-           SATORII GIFT CARDS
+           SATORII — REGALA SATORII
            ===================================================== */
 
         :root {
 
             --satorii-red: #EF0930;
-
             --satorii-black: #111111;
-
             --satorii-white: #FFFFFF;
-
             --satorii-gray: #666666;
-
-            --satorii-light: #F5F5F5;
-
+            --satorii-light: #F6F6F6;
             --satorii-border: #E5E5E5;
 
         }
@@ -100,17 +95,14 @@
                 .86fr
                 1.14fr;
 
-            align-items: stretch;
-
             overflow: hidden;
 
             border-radius: 9px;
 
-            background: #fff;
+            background:
+                var(--satorii-red);
 
-            border:
-                1px solid
-                var(--satorii-border);
+            color: #fff;
 
         }
 
@@ -141,8 +133,7 @@
 
             margin-bottom: 15px;
 
-            color:
-                var(--satorii-red);
+            color: #fff;
 
             font-size: 10px;
 
@@ -159,8 +150,7 @@
 
             margin: 0;
 
-            color:
-                var(--satorii-black);
+            color: #fff;
 
             font-size:
                 clamp(
@@ -182,8 +172,7 @@
 
             display: block;
 
-            color:
-                var(--satorii-red);
+            color: #111;
 
             font-style: italic;
 
@@ -197,8 +186,7 @@
             margin:
                 28px 0 0;
 
-            color:
-                var(--satorii-gray);
+            color: #fff;
 
             font-size: 13px;
 
@@ -224,8 +212,7 @@
             padding:
                 0 22px;
 
-            background:
-                #111;
+            background: #111;
 
             color: #fff;
 
@@ -251,8 +238,9 @@
             transform:
                 translateY(-2px);
 
-            background:
-                var(--satorii-red);
+            background: #fff;
+
+            color: #111;
 
         }
 
@@ -276,14 +264,9 @@
             overflow: hidden;
 
             background:
-                linear-gradient(
-                    135deg,
-                    #f7f7f7,
-                    #eeeeee
-                );
+                #f4f4f4;
 
-            touch-action:
-                pan-y;
+            touch-action: pan-y;
 
         }
 
@@ -334,10 +317,6 @@
         }
 
 
-        /* =====================================================
-           CADA SLIDE
-        ===================================================== */
-
         .satori-gift-slide {
 
             flex:
@@ -358,8 +337,7 @@
 
 
         /* =====================================================
-           TARJETA
-           REFERENCIA: SATORII PACK
+           GIFT CARD
         ===================================================== */
 
         .satori-gift-card {
@@ -375,8 +353,6 @@
             aspect-ratio:
                 1.65 / 1;
 
-            display: block;
-
             overflow: hidden;
 
             border:
@@ -390,8 +366,7 @@
 
             border-radius: 14px;
 
-            background:
-                #fff;
+            background: #fff;
 
             box-shadow:
                 0 25px 60px
@@ -399,7 +374,7 @@
                     0,
                     0,
                     0,
-                    .13
+                    .15
                 );
 
             transform:
@@ -411,14 +386,8 @@
 
             user-select: none;
 
-            -webkit-user-drag: none;
-
         }
 
-
-        /* =====================================================
-           MOVIMIENTO AL PASAR EL MOUSE
-        ===================================================== */
 
         .satori-gift-card:hover {
 
@@ -437,11 +406,6 @@
 
         }
 
-
-        /* =====================================================
-           IMAGEN DE LA TARJETA
-           SOLO CAMBIA EL SRC
-        ===================================================== */
 
         .satori-gift-card img {
 
@@ -498,15 +462,12 @@
                     255,
                     255,
                     255,
-                    .95
+                    .96
                 );
 
-            color:
-                #111;
+            color: #111;
 
             font-size: 20px;
-
-            line-height: 1;
 
             cursor: pointer;
 
@@ -522,22 +483,20 @@
                     .08
                 );
 
-            transition:
-                .2s ease;
+            transition: .2s ease;
 
         }
 
 
         .satori-gift-carousel-arrow:hover {
 
-            background:
-                var(--satorii-red);
-
             border-color:
                 var(--satorii-red);
 
-            color:
-                #fff;
+            background:
+                var(--satorii-red);
+
+            color: #fff;
 
             transform:
                 translateY(-50%)
@@ -561,7 +520,7 @@
 
 
         /* =====================================================
-           PUNTOS
+           DOTS
         ===================================================== */
 
         .satori-gift-carousel-dots {
@@ -575,8 +534,6 @@
             bottom: 25px;
 
             display: flex;
-
-            align-items: center;
 
             gap: 7px;
 
@@ -598,21 +555,11 @@
 
             border-radius: 50%;
 
-            background:
-                #c8c8c8;
+            background: #c8c8c8;
 
             cursor: pointer;
 
-            transition:
-                .25s ease;
-
-        }
-
-
-        .satori-gift-carousel-dot:hover {
-
-            transform:
-                scale(1.2);
+            transition: .25s ease;
 
         }
 
@@ -636,14 +583,15 @@
         .satori-gift-values-section {
 
             width:
-                calc(100% - 60px);
-
-            max-width: 1800px;
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                90px 0 80px;
+                100px 0 85px;
 
         }
 
@@ -655,18 +603,20 @@
             color:
                 var(--satorii-red);
 
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 900;
 
             letter-spacing: 3px;
+
+            text-transform: uppercase;
 
         }
 
 
         .satori-gift-section-heading {
 
-            margin-bottom: 35px;
+            margin-bottom: 38px;
 
         }
 
@@ -674,9 +624,6 @@
         .satori-gift-section-heading h2 {
 
             margin: 0;
-
-            color:
-                #111;
 
             font-size:
                 clamp(
@@ -704,14 +651,14 @@
 
         .satori-gift-section-heading p {
 
-            max-width: 600px;
+            max-width: 580px;
 
             margin-top: 18px;
 
             color:
                 var(--satorii-gray);
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.7;
 
@@ -719,7 +666,7 @@
 
 
         /* =====================================================
-           4 MONTOS
+           VALORES
         ===================================================== */
 
         .satori-gift-values {
@@ -729,7 +676,7 @@
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 14px;
+            gap: 12px;
 
         }
 
@@ -738,9 +685,9 @@
 
             position: relative;
 
-            min-height: 190px;
+            min-height: 185px;
 
-            padding: 25px;
+            padding: 24px;
 
             display: flex;
 
@@ -752,14 +699,13 @@
 
             border:
                 1px solid
-                #dedede;
+                var(--satorii-border);
 
             border-radius: 7px;
 
             background: #fff;
 
-            color:
-                #111;
+            color: #111;
 
             text-decoration: none;
 
@@ -791,11 +737,23 @@
         }
 
 
+        .satori-gift-value.is-selected {
+
+            border-color:
+                var(--satorii-red);
+
+            box-shadow:
+                0 0 0 1px
+                var(--satorii-red);
+
+        }
+
+
         .satori-gift-value-label {
 
-            color: #888;
+            color: #999;
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
@@ -807,8 +765,6 @@
         .satori-gift-value h3 {
 
             margin: 0;
-
-            color: #111;
 
             font-size: 30px;
 
@@ -822,13 +778,13 @@
         .satori-gift-value-description {
 
             width:
-                calc(100% - 45px);
+                calc(100% - 40px);
 
             margin: 0;
 
             color: #777;
 
-            font-size: 10px;
+            font-size: 9px;
 
             line-height: 1.6;
 
@@ -839,9 +795,9 @@
 
             position: absolute;
 
-            right: 20px;
+            right: 19px;
 
-            bottom: 20px;
+            bottom: 19px;
 
             width: 34px;
 
@@ -861,33 +817,13 @@
 
             font-size: 14px;
 
-            transition:
-                background .2s ease,
-                transform .2s ease;
+            transition: .2s ease;
 
         }
 
 
         .satori-gift-value:hover
-        .satori-gift-value-arrow {
-
-            background:
-                var(--satorii-red);
-
-        }
-
-
-        .satori-gift-value.is-selected {
-
-            border-color:
-                var(--satorii-red);
-
-            box-shadow:
-                0 0 0 1px
-                var(--satorii-red);
-
-        }
-
+        .satori-gift-value-arrow,
 
         .satori-gift-value.is-selected
         .satori-gift-value-arrow {
@@ -899,90 +835,21 @@
 
 
         /* =====================================================
-           TICKER
-        ===================================================== */
-
-        .satori-gift-ticker {
-
-            width: 100%;
-
-            min-height: 35px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            overflow: hidden;
-
-            background:
-                var(--satorii-red);
-
-            color: #fff;
-
-        }
-
-
-        .satori-gift-ticker-track {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 25px;
-
-            white-space: nowrap;
-
-            animation:
-                giftTicker
-                14s
-                linear
-                infinite;
-
-        }
-
-
-        .satori-gift-ticker-track span {
-
-            font-size: 8px;
-
-            font-weight: 900;
-
-            letter-spacing: 1px;
-
-        }
-
-
-        @keyframes giftTicker {
-
-            from {
-
-                transform:
-                    translateX(0);
-
-            }
-
-            to {
-
-                transform:
-                    translateX(-50%);
-
-            }
-
-        }
-
-
-        /* =====================================================
            BENEFICIOS
         ===================================================== */
 
         .satori-gift-benefits {
 
+            width: 100%;
+
             display: grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
+
+            border-top:
+                1px solid
+                var(--satorii-border);
 
             border-bottom:
                 1px solid
@@ -993,7 +860,7 @@
 
         .satori-gift-benefit {
 
-            min-height: 145px;
+            min-height: 150px;
 
             padding:
                 28px 25px;
@@ -1018,33 +885,15 @@
 
             font-size: 20px;
 
-            filter:
-                grayscale(100%);
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        .satori-gift-benefit:hover
-        .satori-gift-benefit-icon {
-
-            filter:
-                grayscale(0%);
-
-            transform:
-                translateY(-2px)
-                scale(1.08);
-
         }
 
 
         .satori-gift-benefit h3 {
 
-            margin: 0 0 7px;
+            margin:
+                0 0 7px;
 
-            font-size: 11px;
+            font-size: 10px;
 
             font-weight: 900;
 
@@ -1073,14 +922,15 @@
         .satori-gift-how {
 
             width:
-                calc(100% - 60px);
-
-            max-width: 1500px;
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                90px 0;
+                100px 0;
 
         }
 
@@ -1094,6 +944,8 @@
                 1.1fr;
 
             gap: 70px;
+
+            align-items: start;
 
         }
 
@@ -1130,11 +982,12 @@
 
         .satori-gift-how-title p {
 
-            max-width: 450px;
+            max-width: 460px;
 
             margin-top: 22px;
 
-            color: #666;
+            color:
+                var(--satorii-gray);
 
             font-size: 10px;
 
@@ -1143,11 +996,15 @@
         }
 
 
+        /* =====================================================
+           PASOS
+        ===================================================== */
+
         .satori-gift-steps {
 
             display: grid;
 
-            gap: 12px;
+            gap: 10px;
 
         }
 
@@ -1157,7 +1014,7 @@
             display: grid;
 
             grid-template-columns:
-                50px 1fr;
+                48px 1fr;
 
             gap: 18px;
 
@@ -1166,7 +1023,7 @@
             border-radius: 7px;
 
             background:
-                #f7f7f7;
+                var(--satorii-light);
 
         }
 
@@ -1178,16 +1035,17 @@
 
             font-size: 11px;
 
-            font-weight: 900;
+            font-weight: 950;
 
         }
 
 
         .satori-gift-step h3 {
 
-            margin: 0 0 7px;
+            margin:
+                0 0 7px;
 
-            font-size: 12px;
+            font-size: 11px;
 
             font-weight: 900;
 
@@ -1208,35 +1066,167 @@
 
 
         /* =====================================================
+           CTA FINAL
+        ===================================================== */
+
+        .satori-gift-cta {
+
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
+
+            min-height: 140px;
+
+            margin:
+                0 auto 18px;
+
+            padding:
+                30px 38px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                auto
+                auto;
+
+            gap: 30px;
+
+            align-items: center;
+
+            border-radius: 8px;
+
+            background:
+                var(--satorii-red);
+
+            color: #fff;
+
+        }
+
+
+        .satori-gift-cta h2 {
+
+            margin: 0;
+
+            font-size:
+                clamp(
+                    28px,
+                    3vw,
+                    45px
+                );
+
+            line-height: .9;
+
+            letter-spacing: -2px;
+
+            font-weight: 950;
+
+        }
+
+
+        .satori-gift-cta p {
+
+            margin:
+                8px 0 0;
+
+            font-size: 9px;
+
+        }
+
+
+        .satori-gift-cta-price {
+
+            font-size: 24px;
+
+            font-weight: 950;
+
+            white-space: nowrap;
+
+        }
+
+
+        .satori-gift-cta-button {
+
+            min-height: 44px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                0 22px;
+
+            background: #111;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition: .2s ease;
+
+        }
+
+
+        .satori-gift-cta-button:hover {
+
+            background: #fff;
+
+            color: #111;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
            AVISO
         ===================================================== */
 
         .satori-gift-notice {
 
             width:
-                calc(100% - 60px);
-
-            max-width: 1500px;
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin:
-                0 auto 70px;
+                0 auto 65px;
 
-            padding: 22px;
+            padding:
+                17px 20px;
 
             display: flex;
 
             align-items: center;
 
-            gap: 15px;
+            gap: 12px;
 
             border:
                 1px solid
-                #e5e5e5;
+                rgba(
+                    239,
+                    9,
+                    48,
+                    .20
+                );
 
-            border-radius: 7px;
+            border-radius: 6px;
 
-            background:
-                #fafafa;
+            background: #fff;
 
         }
 
@@ -1246,7 +1236,7 @@
             color:
                 var(--satorii-red);
 
-            font-size: 21px;
+            font-size: 17px;
 
         }
 
@@ -1257,9 +1247,9 @@
 
             color: #666;
 
-            font-size: 9px;
+            font-size: 8px;
 
-            line-height: 1.7;
+            line-height: 1.6;
 
         }
 
@@ -1279,22 +1269,21 @@
 
             .satori-gift-hero {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
             }
 
 
             .satori-gift-card-area {
 
-                min-height: 470px;
+                min-height: 460px;
 
             }
 
 
             .satori-gift-carousel {
 
-                min-height: 470px;
+                min-height: 460px;
 
             }
 
@@ -1302,7 +1291,7 @@
             .satori-gift-values {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    1fr 1fr;
 
             }
 
@@ -1310,7 +1299,7 @@
             .satori-gift-benefits {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    1fr 1fr;
 
             }
 
@@ -1333,10 +1322,27 @@
 
             .satori-gift-how-grid {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
-                gap: 40px;
+                gap: 45px;
+
+            }
+
+
+            .satori-gift-cta {
+
+                grid-template-columns:
+                    1fr auto;
+
+            }
+
+
+            .satori-gift-cta-button {
+
+                grid-column: 2;
+
+                grid-row:
+                    1 / span 2;
 
             }
 
@@ -1380,21 +1386,21 @@
 
             .satori-gift-description {
 
-                font-size: 11px;
+                font-size: 10px;
 
             }
 
 
             .satori-gift-card-area {
 
-                min-height: 310px;
+                min-height: 315px;
 
             }
 
 
             .satori-gift-carousel {
 
-                min-height: 310px;
+                min-height: 315px;
 
             }
 
@@ -1422,7 +1428,7 @@
             .satori-gift-card:hover {
 
                 transform:
-                    rotate(0deg)
+                    rotate(0)
                     translateY(-4px);
 
             }
@@ -1455,7 +1461,7 @@
 
             .satori-gift-carousel-dots {
 
-                bottom: 15px;
+                bottom: 14px;
 
             }
 
@@ -1482,16 +1488,16 @@
 
             .satori-gift-values {
 
-                gap: 10px;
+                gap: 9px;
 
             }
 
 
             .satori-gift-value {
 
-                min-height: 175px;
+                min-height: 170px;
 
-                padding: 19px;
+                padding: 18px;
 
             }
 
@@ -1533,12 +1539,46 @@
             }
 
 
+            .satori-gift-cta {
+
+                width:
+                    calc(100% - 24px);
+
+                margin-bottom: 15px;
+
+                padding: 25px;
+
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+
+            }
+
+
+            .satori-gift-cta-button {
+
+                grid-column: auto;
+
+                grid-row: auto;
+
+                width: fit-content;
+
+            }
+
+
+            .satori-gift-cta-price {
+
+                font-size: 23px;
+
+            }
+
+
             .satori-gift-notice {
 
                 width:
                     calc(100% - 30px);
 
-                margin-bottom: 50px;
+                margin-bottom: 45px;
 
             }
 
@@ -1554,12 +1594,9 @@
             .satori-gift-card,
             .satori-gift-carousel-track,
             .satori-gift-carousel-arrow,
-            .satori-gift-carousel-dot,
-            .satori-gift-ticker-track {
+            .satori-gift-carousel-dot {
 
                 transition: none !important;
-
-                animation: none !important;
 
             }
 
@@ -1583,28 +1620,36 @@
     <main class="satori-gift-page">
 
 
-        <!-- =====================================================
+        <!-- =================================================
              HERO
-        ===================================================== -->
+        ================================================== -->
 
         <section class="satori-gift-hero">
 
 
-            <!-- =================================================
-                 TEXTO
-            ================================================== -->
+            <div
+                class="
+                    satori-gift-hero-content
+                "
+            >
 
-            <div class="satori-gift-hero-content">
 
-
-                <div class="satori-gift-eyebrow">
+                <div
+                    class="
+                        satori-gift-eyebrow
+                    "
+                >
 
                     SATORII · GIFT CARDS
 
                 </div>
 
 
-                <h1 class="satori-gift-hero-title">
+                <h1
+                    class="
+                        satori-gift-hero-title
+                    "
+                >
 
                     REGALA
 
@@ -1615,26 +1660,36 @@
                 </h1>
 
 
-                <p class="satori-gift-description">
+                <p
+                    class="
+                        satori-gift-description
+                    "
+                >
 
-                    Un regalo. Muchas posibilidades.
+                    Un regalo.
+
+                    <br>
+
+                    Muchas posibilidades.
 
                     <br><br>
 
-                    La persona que recibe la Gift Card
-                    puede elegir lo que más le guste
-                    dentro de SATORII.
+                    Deja que esa persona elija
+                    lo que más le guste dentro
+                    de SATORII.
 
                 </p>
 
 
                 <a
                     href="#montos"
-                    class="satori-gift-button"
+                    class="
+                        satori-gift-button
+                    "
                 >
 
                     VER GIFT CARDS
-                    &nbsp; →
+                    &nbsp; ↓
 
                 </a>
 
@@ -1646,11 +1701,17 @@
                  CARRUSEL
             ================================================== -->
 
-            <div class="satori-gift-card-area">
+            <div
+                class="
+                    satori-gift-card-area
+                "
+            >
 
 
                 <div
-                    class="satori-gift-carousel"
+                    class="
+                        satori-gift-carousel
+                    "
                     id="satoriGiftCarousel"
                 >
 
@@ -1662,7 +1723,9 @@
                             prev
                         "
                         id="satoriGiftPrev"
-                        aria-label="Gift Card anterior"
+                        aria-label="
+                            Gift Card anterior
+                        "
                     >
 
                         ←
@@ -1685,11 +1748,6 @@
                         >
 
 
-                            <!-- =================================
-                                 GIFT CARD 1
-                                 SOLO CAMBIA EL SRC
-                            ================================== -->
-
                             <div
                                 class="
                                     satori-gift-slide
@@ -1703,9 +1761,12 @@
                                 >
 
                                     <img
-                                        src="img/gift-card-1.webp"
+                                        src="
+                                            img/gift-card-1.webp
+                                        "
                                         alt="
-                                            Gift Card SATORII
+                                            Gift Card
+                                            SATORII
                                             diseño 1
                                         "
                                         draggable="false"
@@ -1716,10 +1777,6 @@
                             </div>
 
 
-                            <!-- =================================
-                                 GIFT CARD 2
-                            ================================== -->
-
                             <div
                                 class="
                                     satori-gift-slide
@@ -1733,9 +1790,12 @@
                                 >
 
                                     <img
-                                        src="img/gift-card-2.webp"
+                                        src="
+                                            img/gift-card-2.webp
+                                        "
                                         alt="
-                                            Gift Card SATORII
+                                            Gift Card
+                                            SATORII
                                             diseño 2
                                         "
                                         draggable="false"
@@ -1746,10 +1806,6 @@
                             </div>
 
 
-                            <!-- =================================
-                                 GIFT CARD 3
-                            ================================== -->
-
                             <div
                                 class="
                                     satori-gift-slide
@@ -1763,9 +1819,12 @@
                                 >
 
                                     <img
-                                        src="img/gift-card-3.webp"
+                                        src="
+                                            img/gift-card-3.webp
+                                        "
                                         alt="
-                                            Gift Card SATORII
+                                            Gift Card
+                                            SATORII
                                             diseño 3
                                         "
                                         draggable="false"
@@ -1776,10 +1835,6 @@
                             </div>
 
 
-                            <!-- =================================
-                                 GIFT CARD 4
-                            ================================== -->
-
                             <div
                                 class="
                                     satori-gift-slide
@@ -1793,9 +1848,12 @@
                                 >
 
                                     <img
-                                        src="img/gift-card-4.webp"
+                                        src="
+                                            img/gift-card-4.webp
+                                        "
                                         alt="
-                                            Gift Card SATORII
+                                            Gift Card
+                                            SATORII
                                             diseño 4
                                         "
                                         draggable="false"
@@ -1808,7 +1866,6 @@
 
                         </div>
 
-
                     </div>
 
 
@@ -1819,17 +1876,15 @@
                             next
                         "
                         id="satoriGiftNext"
-                        aria-label="Siguiente Gift Card"
+                        aria-label="
+                            Siguiente Gift Card
+                        "
                     >
 
                         →
 
                     </button>
 
-
-                    <!-- =========================================
-                         PUNTOS
-                    ========================================== -->
 
                     <div
                         class="
@@ -1845,7 +1900,7 @@
                             "
                             data-slide="0"
                             aria-label="
-                                Mostrar Gift Card 1
+                                Gift Card 1
                             "
                         ></button>
 
@@ -1857,7 +1912,7 @@
                             "
                             data-slide="1"
                             aria-label="
-                                Mostrar Gift Card 2
+                                Gift Card 2
                             "
                         ></button>
 
@@ -1869,7 +1924,7 @@
                             "
                             data-slide="2"
                             aria-label="
-                                Mostrar Gift Card 3
+                                Gift Card 3
                             "
                         ></button>
 
@@ -1881,7 +1936,7 @@
                             "
                             data-slide="3"
                             aria-label="
-                                Mostrar Gift Card 4
+                                Gift Card 4
                             "
                         ></button>
 
@@ -1898,9 +1953,9 @@
         </section>
 
 
-        <!-- =====================================================
+        <!-- =================================================
              MONTOS
-        ===================================================== -->
+        ================================================== -->
 
         <section
             class="
@@ -1915,6 +1970,7 @@
                     satori-gift-section-heading
                 "
             >
+
 
                 <div
                     class="
@@ -1946,6 +2002,7 @@
 
                 </p>
 
+
             </div>
 
 
@@ -1956,8 +2013,6 @@
             >
 
 
-                <!-- 1 -->
-
                 <a
                     href="#"
                     class="
@@ -1967,9 +2022,7 @@
                     data-add-to-cart
                     data-gift-slide="0"
                     data-product
-                    data-product-id="
-                        gift-card-1
-                    "
+                    data-product-id="gift-card-1"
                     data-product-name="
                         Gift Card SATORII · 1 Polera
                     "
@@ -1981,9 +2034,7 @@
                             satori-gift-value-label
                         "
                     >
-
                         GIFT CARD
-
                     </div>
 
 
@@ -1997,10 +2048,7 @@
                             satori-gift-value-description
                         "
                     >
-
-                        Equivale a 1 polera
-                        SATORII.
-
+                        Equivale a 1 polera SATORII.
                     </p>
 
 
@@ -2009,15 +2057,11 @@
                             satori-gift-value-arrow
                         "
                     >
-
                         →
-
                     </div>
 
                 </a>
 
-
-                <!-- 2 -->
 
                 <a
                     href="#"
@@ -2027,9 +2071,7 @@
                     data-add-to-cart
                     data-gift-slide="1"
                     data-product
-                    data-product-id="
-                        gift-card-2
-                    "
+                    data-product-id="gift-card-2"
                     data-product-name="
                         Gift Card SATORII · 2 Poleras
                     "
@@ -2041,9 +2083,7 @@
                             satori-gift-value-label
                         "
                     >
-
                         GIFT CARD
-
                     </div>
 
 
@@ -2057,10 +2097,7 @@
                             satori-gift-value-description
                         "
                     >
-
-                        Equivale a 2 poleras
-                        SATORII.
-
+                        Equivale a 2 poleras SATORII.
                     </p>
 
 
@@ -2069,15 +2106,11 @@
                             satori-gift-value-arrow
                         "
                     >
-
                         →
-
                     </div>
 
                 </a>
 
-
-                <!-- 3 -->
 
                 <a
                     href="#"
@@ -2087,9 +2120,7 @@
                     data-add-to-cart
                     data-gift-slide="2"
                     data-product
-                    data-product-id="
-                        gift-card-3
-                    "
+                    data-product-id="gift-card-3"
                     data-product-name="
                         Gift Card SATORII · 3 Poleras
                     "
@@ -2101,9 +2132,7 @@
                             satori-gift-value-label
                         "
                     >
-
                         GIFT CARD
-
                     </div>
 
 
@@ -2117,10 +2146,7 @@
                             satori-gift-value-description
                         "
                     >
-
-                        Equivale a 3 poleras
-                        SATORII.
-
+                        Equivale a 3 poleras SATORII.
                     </p>
 
 
@@ -2129,15 +2155,11 @@
                             satori-gift-value-arrow
                         "
                     >
-
                         →
-
                     </div>
 
                 </a>
 
-
-                <!-- 4 -->
 
                 <a
                     href="#"
@@ -2147,9 +2169,7 @@
                     data-add-to-cart
                     data-gift-slide="3"
                     data-product
-                    data-product-id="
-                        gift-card-4
-                    "
+                    data-product-id="gift-card-4"
                     data-product-name="
                         Gift Card SATORII · 4 Poleras
                     "
@@ -2161,9 +2181,7 @@
                             satori-gift-value-label
                         "
                     >
-
                         GIFT CARD
-
                     </div>
 
 
@@ -2177,10 +2195,7 @@
                             satori-gift-value-description
                         "
                     >
-
-                        Equivale a 4 poleras
-                        SATORII.
-
+                        Equivale a 4 poleras SATORII.
                     </p>
 
 
@@ -2189,9 +2204,7 @@
                             satori-gift-value-arrow
                         "
                     >
-
                         →
-
                     </div>
 
                 </a>
@@ -2203,88 +2216,9 @@
         </section>
 
 
-        <!-- =====================================================
-             TICKER
-        ===================================================== -->
-
-        <div class="satori-gift-ticker">
-
-
-            <div
-                class="
-                    satori-gift-ticker-track
-                "
-            >
-
-                <span>
-                    ✦ REGALA SATORII
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ✦ GIFT CARDS
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ✦ UN REGALO
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ✦ MUCHAS POSIBILIDADES
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ✦ ELIGE SATORII
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ✦ REGALA SATORII
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ✦ GIFT CARDS
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ✦ UN REGALO
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- =====================================================
+        <!-- =================================================
              BENEFICIOS
-        ===================================================== -->
+        ================================================== -->
 
         <section
             class="
@@ -2304,16 +2238,16 @@
                         satori-gift-benefit-icon
                     "
                 >
-                    📧
+                    🎁
                 </div>
 
                 <h3>
-                    DIGITAL Y RÁPIDA
+                    UN REGALO DIFERENTE
                 </h3>
 
                 <p>
-                    Recibe los detalles de tu compra
-                    de forma rápida y sencilla.
+                    Tú eliges el monto.
+                    La otra persona elige su favorito.
                 </p>
 
             </article>
@@ -2334,12 +2268,12 @@
                 </div>
 
                 <h3>
-                    FÁCIL DE USAR
+                    ELIGE EN SATORII
                 </h3>
 
                 <p>
-                    Úsala para elegir tus productos
-                    favoritos dentro de SATORII.
+                    Puede utilizarla en los productos
+                    disponibles dentro de la tienda.
                 </p>
 
             </article>
@@ -2356,16 +2290,16 @@
                         satori-gift-benefit-icon
                     "
                 >
-                    🔒
+                    ⚡
                 </div>
 
                 <h3>
-                    COMPRA SEGURA
+                    SIMPLE Y RÁPIDO
                 </h3>
 
                 <p>
-                    Compra de forma rápida
-                    y protegida.
+                    Un proceso pensado para que regalar
+                    sea fácil.
                 </p>
 
             </article>
@@ -2382,16 +2316,16 @@
                         satori-gift-benefit-icon
                     "
                 >
-                    ⏳
+                    ❤️
                 </div>
 
                 <h3>
-                    VÁLIDA POR 2 MESES
+                    HECHO PARA REGALAR
                 </h3>
 
                 <p>
-                    Tienes hasta 2 meses desde su
-                    emisión para utilizarla.
+                    Para cumpleaños, fechas especiales
+                    o simplemente porque sí.
                 </p>
 
             </article>
@@ -2400,9 +2334,9 @@
         </section>
 
 
-        <!-- =====================================================
+        <!-- =================================================
              COMO FUNCIONA
-        ===================================================== -->
+        ================================================== -->
 
         <section
             class="
@@ -2414,7 +2348,7 @@
             <div
                 class="
                     satori-gift-how-grid
-                "
+            "
             >
 
 
@@ -2423,6 +2357,7 @@
                         satori-gift-how-title
                     "
                 >
+
 
                     <div
                         class="
@@ -2448,13 +2383,12 @@
 
                     <p>
 
-                        Elige el monto, realiza la compra
-                        y regala una experiencia que puede
-                        convertirse en anime, streetwear,
-                        accesorios o cualquier otro producto
-                        disponible en SATORII.
+                        Elige el monto, agrégalo al carrito
+                        y regala a esa persona la posibilidad
+                        de escoger dentro de SATORII.
 
                     </p>
+
 
                 </div>
 
@@ -2483,11 +2417,11 @@
                         <div>
 
                             <h3>
-                                ELIGE TU GIFT CARD
+                                ELIGE EL MONTO
                             </h3>
 
                             <p>
-                                Selecciona el monto
+                                Selecciona la Gift Card
                                 que quieres regalar.
                             </p>
 
@@ -2517,8 +2451,8 @@
                             </h3>
 
                             <p>
-                                Añade tu Gift Card al
-                                carrito con un solo clic.
+                                Añade la Gift Card
+                                con un solo clic.
                             </p>
 
                         </div>
@@ -2543,12 +2477,12 @@
                         <div>
 
                             <h3>
-                                COMPLETA TU COMPRA
+                                COMPLETA LA COMPRA
                             </h3>
 
                             <p>
-                                Completa el proceso de
-                                compra de forma segura.
+                                Finaliza el proceso
+                                de compra de forma segura.
                             </p>
 
                         </div>
@@ -2577,7 +2511,7 @@
                             </h3>
 
                             <p>
-                                Comparte tu Gift Card
+                                Comparte la Gift Card
                                 con quien quieras.
                             </p>
 
@@ -2595,9 +2529,61 @@
         </section>
 
 
-        <!-- =====================================================
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section
+            class="
+                satori-gift-cta
+            "
+        >
+
+
+            <div>
+
+                <h2>
+                    REGALA ALGO
+                    QUE PUEDA ELEGIR.
+                </h2>
+
+
+                <p>
+                    Una Gift Card. Muchas posibilidades.
+                </p>
+
+            </div>
+
+
+            <div
+                class="
+                    satori-gift-cta-price
+                "
+            >
+
+                DESDE $18.990
+
+            </div>
+
+
+            <a
+                href="#montos"
+                class="
+                    satori-gift-cta-button
+                "
+            >
+
+                ELEGIR GIFT CARD
+
+            </a>
+
+
+        </section>
+
+
+        <!-- =================================================
              AVISO
-        ===================================================== -->
+        ================================================== -->
 
         <div
             class="
@@ -2605,12 +2591,13 @@
             "
         >
 
+
             <div
                 class="
                     satori-gift-notice-icon
                 "
             >
-                ⚠
+                ℹ️
             </div>
 
 
@@ -2621,10 +2608,10 @@
                 </strong>
 
                 Las Gift Cards SATORII tienen una vigencia
-                máxima de 2 meses desde su emisión. Consulta
-                los términos y condiciones antes de adquirirla.
+                máxima de 2 meses desde su emisión.
 
             </p>
+
 
         </div>
 
@@ -2653,7 +2640,7 @@
     <script>
 
         /* =====================================================
-           CARRUSEL GIFT CARDS
+           SATORII GIFT CARD CAROUSEL
         ===================================================== */
 
         document.addEventListener(
@@ -2697,14 +2684,20 @@
                     );
 
 
+                const carousel =
+                    document.getElementById(
+                        "satoriGiftCarousel"
+                    );
+
+
                 let currentSlide = 0;
 
                 let autoplay;
 
 
-                /* =============================================
-                   MOSTRAR TARJETA
-                ============================================== */
+                /* =================================================
+                   MOSTRAR SLIDE
+                ================================================= */
 
                 function showGiftCard(
                     index,
@@ -2712,7 +2705,9 @@
                 ) {
 
 
-                    if (index < 0) {
+                    if (
+                        index < 0
+                    ) {
 
                         index =
                             slides.length - 1;
@@ -2721,7 +2716,8 @@
 
 
                     if (
-                        index >= slides.length
+                        index >=
+                        slides.length
                     ) {
 
                         index = 0;
@@ -2729,7 +2725,8 @@
                     }
 
 
-                    currentSlide = index;
+                    currentSlide =
+                        index;
 
 
                     track.style.transform =
@@ -2772,7 +2769,9 @@
                     );
 
 
-                    if (restart) {
+                    if (
+                        restart
+                    ) {
 
                         startAutoplay();
 
@@ -2781,12 +2780,11 @@
                 }
 
 
-                /* =============================================
+                /* =================================================
                    AUTOPLAY
-                ============================================== */
+                ================================================= */
 
                 function startAutoplay() {
-
 
                     clearInterval(
                         autoplay
@@ -2818,9 +2816,9 @@
                 }
 
 
-                /* =============================================
+                /* =================================================
                    FLECHAS
-                ============================================== */
+                ================================================= */
 
                 previous.addEventListener(
                     "click",
@@ -2846,9 +2844,9 @@
                 );
 
 
-                /* =============================================
+                /* =================================================
                    DOTS
-                ============================================== */
+                ================================================= */
 
                 dots.forEach(
                     function (
@@ -2871,22 +2869,22 @@
                 );
 
 
-                /* =============================================
-                   MONTOS → TARJETA
-                ============================================== */
+                /* =================================================
+                   MONTO → SLIDE
+                ================================================= */
 
                 values.forEach(
-                    function (value) {
-
+                    function (
+                        value
+                    ) {
 
                         value.addEventListener(
                             "click",
                             function () {
 
-
                                 const slide =
                                     Number(
-                                        value.dataset
+                                        this.dataset
                                             .giftSlide
                                     );
 
@@ -2895,42 +2893,16 @@
                                     slide
                                 );
 
-
-                                value.classList.add(
-                                    "is-selected"
-                                );
-
-
-                                setTimeout(
-                                    function () {
-
-                                        value.classList
-                                            .remove(
-                                                "is-selected"
-                                            );
-
-                                    },
-                                    500
-                                );
-
-
                             }
                         );
-
 
                     }
                 );
 
 
-                /* =============================================
+                /* =================================================
                    MOUSE
-                ============================================== */
-
-                const carousel =
-                    document.getElementById(
-                        "satoriGiftCarousel"
-                    );
-
+                ================================================= */
 
                 carousel.addEventListener(
                     "mouseenter",
@@ -2944,21 +2916,22 @@
                 );
 
 
-                /* =============================================
-                   SWIPE MOBILE
-                ============================================== */
+                /* =================================================
+                   SWIPE
+                ================================================= */
 
                 let touchStartX = 0;
-
-                let touchEndX = 0;
 
 
                 carousel.addEventListener(
                     "touchstart",
-                    function (event) {
+                    function (
+                        event
+                    ) {
 
                         touchStartX =
-                            event.changedTouches[0]
+                            event
+                                .changedTouches[0]
                                 .screenX;
 
                         stopAutoplay();
@@ -2972,46 +2945,50 @@
 
                 carousel.addEventListener(
                     "touchend",
-                    function (event) {
+                    function (
+                        event
+                    ) {
 
 
-                        touchEndX =
-                            event.changedTouches[0]
+                        const touchEndX =
+                            event
+                                .changedTouches[0]
                                 .screenX;
 
 
-                        const difference =
-                            touchStartX -
-                            touchEndX;
+                        const distance =
+                            touchEndX -
+                            touchStartX;
 
 
                         if (
                             Math.abs(
-                                difference
-                            ) > 45
+                                distance
+                            ) < 45
                         ) {
 
-
-                            if (
-                                difference > 0
-                            ) {
-
-                                showGiftCard(
-                                    currentSlide + 1
-                                );
-
-                            } else {
-
-                                showGiftCard(
-                                    currentSlide - 1
-                                );
-
-                            }
-
-
-                        } else {
-
                             startAutoplay();
+
+                            return;
+
+                        }
+
+
+                        if (
+                            distance < 0
+                        ) {
+
+                            showGiftCard(
+                                currentSlide + 1
+                            );
+
+                        }
+
+                        else {
+
+                            showGiftCard(
+                                currentSlide - 1
+                            );
 
                         }
 
@@ -3022,9 +2999,46 @@
                 );
 
 
-                /* =============================================
+                /* =================================================
+                   TECLADO
+                ================================================= */
+
+                document.addEventListener(
+                    "keydown",
+                    function (
+                        event
+                    ) {
+
+                        if (
+                            event.key ===
+                            "ArrowRight"
+                        ) {
+
+                            showGiftCard(
+                                currentSlide + 1
+                            );
+
+                        }
+
+
+                        if (
+                            event.key ===
+                            "ArrowLeft"
+                        ) {
+
+                            showGiftCard(
+                                currentSlide - 1
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
                    INICIO
-                ============================================== */
+                ================================================= */
 
                 showGiftCard(
                     0,
