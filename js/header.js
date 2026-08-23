@@ -229,12 +229,8 @@
                                 Anime
                             </a>
 
-                            <a href="${SATORIMODE_BASE}torii.html">
-                                Torii
-                            </a>
-
-                            <a href="${SATORIMODE_BASE}anime-goods.html">
-                                Anime Goods
+                            <a href="${SATORIMODE_BASE}yokai.html">
+                                Yokai
                             </a>
 
                             <a href="${SATORIMODE_BASE}productos.html">
@@ -574,12 +570,8 @@
                         Anime
                     </a>
 
-                    <a href="${SATORIMODE_BASE}torii.html">
-                        Torii
-                    </a>
-
-                    <a href="${SATORIMODE_BASE}anime-goods.html">
-                        Anime Goods
+                    <a href="${SATORIMODE_BASE}yokai.html">
+                        Yokai
                     </a>
 
                     <a href="${SATORIMODE_BASE}productos.html">
@@ -3390,16 +3382,6 @@
 
         /* =====================================================
            OBTENER PRODUCTO ACTUAL DEL CATÁLOGO
-           
-           IMPORTANTE:
-           
-           El carrito guarda una copia del producto en
-           localStorage, pero esa copia NO es la fuente
-           oficial del precio.
-
-           La fuente actual es PRODUCTS.
-
-           PRODUCTS se sincroniza desde Supabase.
         ====================================================== */
 
         function getCatalogProduct(
@@ -3462,11 +3444,6 @@
                 );
 
 
-            /*
-             * Si PRODUCTS está disponible y encontramos
-             * el producto, usamos SIEMPRE sus datos actuales.
-             */
-
             if (catalogProduct) {
 
                 return {
@@ -3510,14 +3487,6 @@
             }
 
 
-            /*
-             * Si PRODUCTS todavía no está disponible,
-             * utilizamos temporalmente los datos locales.
-             *
-             * Esto evita que el header quede roto durante
-             * la carga inicial.
-             */
-
             if (
                 typeof PRODUCTS ===
                 "undefined"
@@ -3548,13 +3517,6 @@
 
             }
 
-
-            /*
-             * PRODUCTS ya existe pero el producto no está
-             * disponible en el catálogo.
-             *
-             * NO usamos el precio antiguo.
-             */
 
             return {
 
@@ -3636,9 +3598,6 @@
 
         /* =====================================================
            SUBTOTAL
-
-           IMPORTANTE:
-           Se calcula con el precio ACTUAL de PRODUCTS.
         ====================================================== */
 
         function getCartSubtotal(
@@ -3834,13 +3793,6 @@
                                 item.imagen ||
                                 "";
 
-
-                            /*
-                             * PRECIO ACTUAL
-                             *
-                             * Si encontramos el producto
-                             * en PRODUCTS, usamos ese precio.
-                             */
 
                             const price =
                                 Number(
@@ -4324,12 +4276,6 @@
 
         /* =====================================================
            EVENTO DE ACTUALIZACIÓN DE PRODUCTOS
-
-           Este evento lo dispara products.js cuando
-           termina de sincronizar PRODUCTS con Supabase.
-
-           Por lo tanto, si el precio cambia en Supabase,
-           el carrito del header se vuelve a renderizar.
         ====================================================== */
 
         window.addEventListener(
