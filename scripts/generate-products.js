@@ -688,32 +688,24 @@ function getSizeGuide(product) {
 
     return [
 
-        {
-            size: "S",
-            width: "52",
-            length: "70",
-            sleeve: "21"
-        },
+   
 
         {
             size: "M",
-            width: "54",
-            length: "72",
-            sleeve: "22"
+            width: "51",
+            length: "73"
         },
 
         {
             size: "L",
             width: "56",
-            length: "74",
-            sleeve: "23"
+            length: "75.5"
         },
 
         {
             size: "XL",
-            width: "58",
-            length: "76",
-            sleeve: "24"
+            width: "61",
+            length: "78"
         }
 
     ];
@@ -896,13 +888,22 @@ function shuffle(array) {
 
 
 /* =========================================================
-   RECOMENDACIONES
+   RECOMENDACIONES ALEATORIAS
 ========================================================= */
 
 function getRecommendedProducts(
     product,
     products
 ) {
+
+    /*
+       PRODUCTOS DISPONIBLES
+       ---------------------
+
+       Excluimos únicamente el producto
+       que estamos viendo y productos
+       marcados como no disponibles.
+    */
 
     const candidates =
         products.filter(
@@ -927,8 +928,19 @@ function getRecommendedProducts(
                 }
 
 
+                /*
+                   El producto debe tener
+                   al menos una imagen.
+                */
+
+                const images =
+                    getProductImages(
+                        item
+                    );
+
+
                 if (
-                    !isTshirt(item)
+                    !images.length
                 ) {
 
                     return false;
@@ -936,20 +948,16 @@ function getRecommendedProducts(
                 }
 
 
-                const images =
-                    getProductImages(item);
-
-
-                if (!images.length) {
-
-                    return false;
-
-                }
-
-
                 const itemUrl =
-                    normalizeProductUrl(item);
+                    normalizeProductUrl(
+                        item
+                    );
 
+
+                /*
+                   Comprobamos que tenga
+                   al menos una imagen usable.
+                */
 
                 return images.some(
                     image => {
@@ -975,7 +983,29 @@ function getRecommendedProducts(
         );
 
 
-    const productCollection =
+    /*
+       Si no hay productos suficientes,
+       simplemente no mostramos recomendaciones.
+    */
+
+    if (
+        !candidates.length
+    ) {
+
+        return [];
+
+    }
+
+
+    /*
+       COLECCIÓN ACTUAL
+       ----------------
+
+       Primero buscamos productos de la
+       misma colección/categoría.
+    */
+
+    const currentCollection =
         String(
             product.collection ||
             product.category ||
@@ -989,7 +1019,7 @@ function getRecommendedProducts(
         candidates.filter(
             item => {
 
-                const collection =
+                const itemCollection =
                     String(
                         item.collection ||
                         item.category ||
@@ -1000,26 +1030,114 @@ function getRecommendedProducts(
 
 
                 return (
-                    collection &&
-                    collection ===
-                    productCollection
+                    currentCollection &&
+                    itemCollection ===
+                    currentCollection
                 );
 
             }
         );
 
 
-    const pool =
-        sameCollection.length >= 4
-            ? sameCollection
-            : candidates;
+    /*
+       PRODUCTOS DE OTRAS COLECCIONES
+    */
+
+    const otherProducts =
+        candidates.filter(
+            item => {
+
+                const itemCollection =
+                    String(
+                        item.collection ||
+                        item.category ||
+                        ""
+                    )
+                        .trim()
+                        .toLowerCase();
 
 
-    return shuffle(pool).slice(0, 4);
+                return (
+                    !currentCollection ||
+                    itemCollection !==
+                    currentCollection
+                );
+
+            }
+        );
+
+
+    /*
+       MEZCLAMOS AMBOS GRUPOS
+       ----------------------
+
+       La prioridad es:
+
+       1. Misma colección
+       2. Otros productos
+
+       Pero ambos grupos se mezclan
+       aleatoriamente.
+    */
+
+    const shuffledSameCollection =
+        shuffle(
+            sameCollection
+        );
+
+
+    const shuffledOtherProducts =
+        shuffle(
+            otherProducts
+        );
+
+
+    /*
+       Primero tomamos hasta 4 de la
+       misma colección.
+    */
+
+    const selected = [
+        ...shuffledSameCollection
+    ];
+
+
+    /*
+       Si faltan productos para llegar
+       a 4, completamos aleatoriamente
+       con otros productos.
+    */
+
+    if (
+        selected.length < 4
+    ) {
+
+        selected.push(
+            ...shuffledOtherProducts.slice(
+                0,
+                4 - selected.length
+            )
+        );
+
+    }
+
+
+    /*
+       Seguridad adicional:
+
+       Volvemos a mezclar el resultado
+       para que no aparezca siempre
+       exactamente el mismo orden.
+    */
+
+    return shuffle(
+        selected
+    ).slice(
+        0,
+        4
+    );
 
 }
-
-
 /* =========================================================
    CARGAR PRODUCTS.JS
 ========================================================= */
