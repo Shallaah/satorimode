@@ -1390,29 +1390,28 @@
         }
 
 
-        /* =====================================================
-           HEADER FLOTANTE
-        ====================================================== */
+/* =====================================================
+   HEADER FLOTANTE
+====================================================== */
 
-        #satori-header.scrolled .main-header {
-            position:fixed;
-            top:8px;
-            left:8px;
-            width:calc(100% - 16px);
-            height:64px;
-            background:#000;
-            border:1px solid #222;
-            border-radius:16px;
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,.16);
-            z-index:900000;
-        }
+#satori-header.scrolled .main-header {
+    position:fixed;
+    top:8px;
+    left:8px;
+    width:calc(100% - 16px);
+    height:64px;
+    background:#000;
+    border:1px solid #222;
+    border-radius:16px;
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.16);
+    z-index:900000;
+}
 
-        #satori-header.scrolled
-        .header-inner {
-            height:62px;
-        }
+#satori-header.scrolled .header-inner {
+    height:62px;
+}
 
 
         /* =====================================================
@@ -2632,54 +2631,93 @@
         }
 
 
-        /* =====================================================
-           SCROLL HEADER
-        ====================================================== */
+    /* =====================================================
+   SCROLL HEADER · SATORII
+====================================================== */
 
-        function updateScrollHeader() {
+function updateScrollHeader() {
 
-            const scrolled =
-                window.scrollY > 50;
+    if (!root)
+        return;
 
-            root.classList.toggle(
-                "scrolled",
-                scrolled
-            );
+    const scrollPosition =
+        window.scrollY ||
+        window.pageYOffset ||
+        0;
+
+    /*
+     * El header se convierte en flotante
+     * después de bajar 50px.
+     */
+    const scrolled =
+        scrollPosition > 50;
 
 
-            if (scrolled) {
+    /*
+     * Activar / desactivar estado flotante
+     */
+    if (scrolled) {
 
-                spacer.style.display =
-                    "block";
+        root.classList.add("scrolled");
 
-                spacer.style.height =
-                    "68px";
+        /*
+         * Reservamos el espacio que deja
+         * el header al pasar a position: fixed.
+         */
+        if (spacer) {
 
-            } else {
+            spacer.style.display = "block";
 
-                spacer.style.display =
-                    "none";
-
-                spacer.style.height =
-                    "0px";
-
-            }
+            spacer.style.height = "68px";
 
         }
 
+    } else {
 
-        window.addEventListener(
-            "scroll",
-            updateScrollHeader,
-            {
-                passive:true
-            }
-        );
+        root.classList.remove("scrolled");
+
+        /*
+         * Volver al header normal.
+         */
+        if (spacer) {
+
+            spacer.style.display = "none";
+
+            spacer.style.height = "0px";
+
+        }
+
+    }
+
+}
 
 
-        updateScrollHeader();
+/*
+ * Escuchar el scroll de la página
+ */
+window.addEventListener(
+    "scroll",
+    updateScrollHeader,
+    {
+        passive: true
+    }
+);
 
 
+/*
+ * Ejecutar inmediatamente al cargar
+ * por si la página ya tiene scroll.
+ */
+window.addEventListener(
+    "load",
+    updateScrollHeader
+);
+
+
+/*
+ * Estado inicial
+ */
+updateScrollHeader();
         /* =====================================================
            CERRAR DROPDOWNS
         ====================================================== */
