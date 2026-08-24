@@ -3593,7 +3593,7 @@ gallery.innerHTML =
                 return \`
 <button
     type="button"
-    class="satori-product-thumb \\${
+    class="satori-product-thumb \${
         index === 0
             ? "active"
             : ""
