@@ -1,6 +1,6 @@
 /* =========================================================
    SATORII · GENERADOR DE PÁGINAS DE PRODUCTOS
-   DISEÑO 10 · BOLD COMMERCE / SATORII PREMIUM
+   DISEÑO 12 · STREET / LOOKBOOK
 
    - Genera automáticamente:
      productos/{categoria}/{id}.html
@@ -11,9 +11,11 @@
    - Mantiene polling de respaldo cada 30 segundos.
    - Mantiene Header, Footer, Carrito y Animaciones globales.
    - Fondo blanco.
-   - Diseño inspirado en BOLD COMMERCE.
+   - Diseño STREET / LOOKBOOK.
    - Banner editorial SATORII.
-   - Recomendaciones de POLERAS al azar.
+   - Recomendaciones aleatorias:
+     "TAMBIÉN TE PUEDE GUSTAR"
+   - Recomienda 4 poleras al azar.
 ========================================================= */
 
 "use strict";
@@ -73,7 +75,7 @@ const SATORII_HEADER =
     "#000000";
 
 /*
- * COLOR OFICIAL DEL FOOTER + TICKER
+ * COLOR OFICIAL FOOTER + TICKER
  */
 const SATORII_DARK =
     "#101727";
@@ -95,7 +97,7 @@ const SATORII_TEXT =
 
 
 const DESIGN_NAME =
-    "DISEÑO 10 · BOLD COMMERCE / SATORII";
+    "DISEÑO 12 · STREET / LOOKBOOK";
 
 
 /* =========================================================
@@ -468,7 +470,7 @@ function getProductImages(
 
 
 /* =========================================================
-   IMAGEN EDITORIAL DEL BANNER
+   IMAGEN EDITORIAL
 ========================================================= */
 
 function getBannerImage(
@@ -496,7 +498,7 @@ function getBannerImage(
 
 
 /* =========================================================
-   TEXTO DEL BANNER
+   TEXTO BANNER
 ========================================================= */
 
 function getBannerLabel(
@@ -506,7 +508,7 @@ function getBannerLabel(
     return (
         product.bannerLabel ||
         product.details?.bannerLabel ||
-        "SATORII · CHARACTER / DESIGN"
+        "SATORII · STREET CULTURE"
     );
 
 }
@@ -519,7 +521,7 @@ function getBannerTitle(
     return (
         product.bannerTitle ||
         product.details?.bannerTitle ||
-        "EL UNIVERSO DETRÁS DE LA PRENDA"
+        "DISEÑADO PARA DESTACAR"
     );
 
 }
@@ -532,7 +534,7 @@ function getBannerText(
     return (
         product.bannerText ||
         product.details?.bannerText ||
-        "Una pieza creada para llevar la identidad de este universo directamente contigo."
+        "Una pieza creada para llevar la identidad SATORII a la calle."
     );
 
 }
@@ -589,7 +591,7 @@ function getShipping(
 
 
 /* =========================================================
-   CUIDADO
+   CUIDADOS
 ========================================================= */
 
 function getCare(
@@ -963,6 +965,256 @@ function validateProducts(
             }
 
         }
+    );
+
+}
+
+
+/* =========================================================
+   DETECTAR POLERA
+========================================================= */
+
+function isShirtProduct(
+    product
+) {
+
+    const values = [
+
+        product.type,
+
+        product.productType,
+
+        product.category,
+
+        product.collection,
+
+        product.name,
+
+        product.title,
+
+        product.details?.type,
+
+        product.details?.category
+
+    ];
+
+
+    const text =
+        values
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(
+                /[\u0300-\u036f]/g,
+                ""
+            );
+
+
+    const keywords = [
+
+        "polera",
+
+        "poleras",
+
+        "camiseta",
+
+        "camisetas",
+
+        "t-shirt",
+
+        "tshirt",
+
+        "tee",
+
+        "shirt"
+
+    ];
+
+
+    return keywords.some(
+        function (
+            keyword
+        ) {
+
+            return text.includes(
+                keyword
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SHUFFLE
+========================================================= */
+
+function shuffle(
+    array
+) {
+
+    const result =
+        [...array];
+
+
+    for (
+        let i = result.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (
+                    i + 1
+                )
+            );
+
+
+        [
+            result[i],
+            result[j]
+        ] =
+        [
+            result[j],
+            result[i]
+        ];
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   POLERAS RECOMENDADAS AL AZAR
+========================================================= */
+
+function getRandomRecommendedProducts(
+    currentProduct,
+    products,
+    count = 4
+) {
+
+    const currentId =
+        String(
+            currentProduct.id
+        );
+
+
+    /*
+     * Primero buscamos específicamente
+     * otras poleras.
+     */
+
+    const shirts =
+        products.filter(
+            function (
+                product
+            ) {
+
+                return (
+                    String(
+                        product.id
+                    ) !==
+                    currentId &&
+                    isShirtProduct(
+                        product
+                    )
+                );
+
+            }
+        );
+
+
+    /*
+     * Luego dejamos como respaldo
+     * cualquier otro producto.
+     */
+
+    const fallback =
+        products.filter(
+            function (
+                product
+            ) {
+
+                return (
+                    String(
+                        product.id
+                    ) !==
+                    currentId
+                );
+
+            }
+        );
+
+
+    let candidates =
+        shuffle(
+            shirts
+        );
+
+
+    /*
+     * Si no hay suficientes poleras,
+     * completamos con otros productos.
+     */
+
+    if (
+        candidates.length <
+        count
+    ) {
+
+        const selectedIds =
+            new Set(
+                candidates.map(
+                    function (
+                        product
+                    ) {
+
+                        return String(
+                            product.id
+                        );
+
+                    }
+                )
+            );
+
+
+        const additional =
+            shuffle(
+                fallback.filter(
+                    function (
+                        product
+                    ) {
+
+                        return !selectedIds.has(
+                            String(
+                                product.id
+                            )
+                        );
+
+                    }
+                )
+            );
+
+
+        candidates =
+            candidates.concat(
+                additional
+            );
+
+    }
+
+
+    return candidates.slice(
+        0,
+        count
     );
 
 }
@@ -1435,229 +1687,7 @@ function buildBenefits() {
 
 
 /* =========================================================
-   DETECTAR POLERA
-========================================================= */
-
-function isShirtProduct(
-    product
-) {
-
-    const values = [
-
-        product.name,
-
-        product.category,
-
-        product.collection,
-
-        product.type,
-
-        product.productType,
-
-        product.kind,
-
-        ...(Array.isArray(
-            product.tags
-        )
-            ? product.tags
-            : [])
-
-    ];
-
-
-    const text =
-        values
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(
-                /[\u0300-\u036f]/g,
-                ""
-            );
-
-
-    const shirtKeywords = [
-
-        "polera",
-
-        "poleras",
-
-        "t-shirt",
-
-        "tshirt",
-
-        "tee",
-
-        "shirt",
-
-        "camiseta",
-
-        "remera",
-
-        "ropa"
-
-    ];
-
-
-    return shirtKeywords.some(
-        function (
-            keyword
-        ) {
-
-            return text.includes(
-                keyword
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   MEZCLAR ARRAY
-========================================================= */
-
-function shuffleArray(
-    array
-) {
-
-    const result =
-        [...array];
-
-
-    for (
-        let i = result.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() *
-                (
-                    i + 1
-                )
-            );
-
-
-        [
-            result[i],
-            result[j]
-        ] = [
-            result[j],
-            result[i]
-        ];
-
-    }
-
-
-    return result;
-
-}
-
-
-/* =========================================================
-   PRODUCTOS RECOMENDADOS AL AZAR
-========================================================= */
-
-function getRelatedProducts(
-    product,
-    products
-) {
-
-    const available =
-        products.filter(
-            function (
-                item
-            ) {
-
-                return (
-                    item &&
-                    String(
-                        item.id
-                    ) !==
-                    String(
-                        product.id
-                    )
-                );
-
-            }
-        );
-
-
-    /*
-     * Primero buscamos POLERAS.
-     */
-
-    const shirts =
-        available.filter(
-            isShirtProduct
-        );
-
-
-    /*
-     * Si existen suficientes poleras,
-     * usamos exclusivamente poleras.
-     *
-     * Si no existen suficientes,
-     * mezclamos poleras + catálogo restante.
-     */
-
-    let pool;
-
-
-    if (
-        shirts.length >= 4
-    ) {
-
-        pool =
-            shirts;
-
-    }
-
-    else {
-
-        pool =
-            [
-                ...shirts,
-                ...available.filter(
-                    function (
-                        item
-                    ) {
-
-                        return !isShirtProduct(
-                            item
-                        );
-
-                    }
-                )
-            ];
-
-    }
-
-
-    /*
-     * ALEATORIO REAL
-     *
-     * Cada ejecución del generador
-     * puede producir 4 recomendaciones
-     * diferentes.
-     */
-
-    return shuffleArray(
-        pool
-    ).slice(
-        0,
-        4
-    );
-
-}
-
-
-/* =========================================================
-   BANNER EDITORIAL SATORII
+   BANNER EDITORIAL
 ========================================================= */
 
 function buildProductRelatedBanner(
@@ -1694,6 +1724,11 @@ function buildProductRelatedBanner(
 >
 
     <div class="satori-editorial-copy">
+
+        <span class="satori-editorial-index">
+            02
+        </span>
+
 
         <span class="satori-editorial-kicker">
 
@@ -1744,12 +1779,7 @@ function buildProductRelatedBanner(
 
     <div class="satori-editorial-image">
 
-        <div class="satori-editorial-image-grid"></div>
-
-
-        <span class="satori-editorial-number">
-            01
-        </span>
+        <div class="satori-editorial-grid"></div>
 
 
         <img
@@ -1778,7 +1808,7 @@ function buildProductRelatedBanner(
 
 
 /* =========================================================
-   POLERAS RECOMENDADAS
+   PRODUCTOS RECOMENDADOS
 ========================================================= */
 
 function buildRelatedProducts(
@@ -1788,9 +1818,10 @@ function buildRelatedProducts(
 ) {
 
     const related =
-        getRelatedProducts(
+        getRandomRecommendedProducts(
             product,
-            products
+            products,
+            4
         );
 
 
@@ -1804,31 +1835,40 @@ function buildRelatedProducts(
 
 
     return `
-<section
-    class="satori-related"
-    aria-label="Poleras recomendadas"
->
+<section class="satori-related">
+
+    <div class="satori-related-topline">
+
+        <span>
+            SATORII / SELECCIÓN 04
+        </span>
+
+        <span>
+            STREET LOOKBOOK
+        </span>
+
+    </div>
+
 
     <div class="satori-section-heading">
 
         <div>
 
-            <span>
-                SATORII
+            <span class="satori-section-kicker">
+                RECOMENDADO PARA TI
             </span>
 
             <h2>
-                TAMBIÉN TE PUEDE GUSTAR
+                TAMBIÉN
+                <em>TE PUEDE GUSTAR</em>
             </h2>
 
         </div>
 
 
-        <p>
-            POLERAS RECOMENDADAS
-            SELECCIONADAS AL AZAR
-            PARA DESCUBRIR MÁS DE SATORII.
-        </p>
+        <div class="satori-section-number">
+            04
+        </div>
 
     </div>
 
@@ -1873,6 +1913,12 @@ function buildRelatedProducts(
                         );
 
 
+                    const itemCategory =
+                        getCategoryLabel(
+                            item
+                        );
+
+
                     return `
 <a
     href="${escapeHTML(
@@ -1882,6 +1928,9 @@ function buildRelatedProducts(
 >
 
     <div class="satori-related-image">
+
+        <div class="satori-related-overlay"></div>
+
 
         <span class="satori-related-number">
             ${String(
@@ -1893,8 +1942,10 @@ function buildRelatedProducts(
         </span>
 
 
-        <span class="satori-related-badge">
-            RECOMENDADO
+        <span class="satori-related-category">
+            ${escapeHTML(
+                itemCategory
+            )}
         </span>
 
 
@@ -1908,16 +1959,36 @@ function buildRelatedProducts(
             loading="lazy"
         >
 
+
+        <span class="satori-related-arrow">
+            ↗
+        </span>
+
     </div>
 
 
     <div class="satori-related-info">
 
-        <h3>
-            ${escapeHTML(
-                item.name
-            )}
-        </h3>
+        <div>
+
+            <span>
+                ${String(
+                    index + 1
+                ).padStart(
+                    2,
+                    "0"
+                )}
+                / SATORII
+            </span>
+
+
+            <h3>
+                ${escapeHTML(
+                    item.name
+                )}
+            </h3>
+
+        </div>
 
 
         <strong>
@@ -1945,7 +2016,7 @@ function buildRelatedProducts(
 
 
 /* =========================================================
-   CSS · DISEÑO 10
+   CSS · DISEÑO 12
 ========================================================= */
 
 function buildDesignCSS() {
@@ -1954,7 +2025,7 @@ function buildDesignCSS() {
 
 /* =========================================================
    SATORII · PRODUCT PAGE
-   DISEÑO 10 · BOLD COMMERCE
+   DISEÑO 12 · STREET / LOOKBOOK
 ========================================================= */
 
 .satori-product-page {
@@ -2019,9 +2090,9 @@ function buildDesignCSS() {
 
     width:
         min(
-            1420px,
+            1440px,
             calc(
-                100% - 90px
+                100% - 70px
             )
         );
 
@@ -2050,16 +2121,19 @@ function buildDesignCSS() {
         8px;
 
     padding:
-        20px 0 18px;
+        19px 0 17px;
 
     color:
-        #8A8A8A;
+        #858585;
 
     font-size:
-        9px;
+        8px;
 
     font-weight:
-        700;
+        800;
+
+    letter-spacing:
+        .08em;
 
     text-transform:
         uppercase;
@@ -2089,7 +2163,7 @@ function buildDesignCSS() {
 .satori-breadcrumbs strong {
 
     color:
-        #222222;
+        #111111;
 
 }
 
@@ -2104,21 +2178,21 @@ function buildDesignCSS() {
         grid;
 
     grid-template-columns:
-        minmax(0, 1.2fr)
-        minmax(390px, .68fr);
+        minmax(0, 1.18fr)
+        minmax(380px, .68fr);
 
     gap:
         clamp(
-            50px,
-            7vw,
-            115px
+            42px,
+            6vw,
+            95px
         );
 
     align-items:
         start;
 
     padding:
-        5px 0 45px;
+        7px 0 70px;
 
 }
 
@@ -2133,11 +2207,11 @@ function buildDesignCSS() {
         grid;
 
     grid-template-columns:
-        78px
+        72px
         minmax(0, 1fr);
 
     gap:
-        16px;
+        13px;
 
 }
 
@@ -2151,24 +2225,27 @@ function buildDesignCSS() {
         column;
 
     gap:
-        10px;
+        9px;
 
 }
 
 
 .satori-product-thumb {
 
+    position:
+        relative;
+
     width:
-        78px;
+        72px;
 
     height:
-        88px;
+        82px;
 
     padding:
-        4px;
+        3px;
 
     border:
-        1px solid #D7D7D7;
+        1px solid #D4D4D4;
 
     background:
         #FFFFFF;
@@ -2183,13 +2260,51 @@ function buildDesignCSS() {
 }
 
 
+.satori-product-thumb::before {
+
+    content:
+        attr(aria-label);
+
+    position:
+        absolute;
+
+    left:
+        5px;
+
+    bottom:
+        4px;
+
+    z-index:
+        3;
+
+    padding:
+        2px 4px;
+
+    background:
+        rgba(255,255,255,.85);
+
+    color:
+        #111111;
+
+    font-size:
+        5px;
+
+    font-weight:
+        900;
+
+    text-transform:
+        uppercase;
+
+}
+
+
 .satori-product-thumb:hover {
 
     transform:
         translateY(-2px);
 
     border-color:
-        #999999;
+        #888888;
 
 }
 
@@ -2242,7 +2357,7 @@ function buildDesignCSS() {
         1 / 1;
 
     background:
-        #F7F7F7;
+        #F4F4F4;
 
     overflow:
         hidden;
@@ -2253,7 +2368,7 @@ function buildDesignCSS() {
 .satori-main-visual::before {
 
     content:
-        "SATORII";
+        "01";
 
     position:
         absolute;
@@ -2262,34 +2377,35 @@ function buildDesignCSS() {
         18px;
 
     top:
-        14px;
+        5px;
+
+    z-index:
+        1;
 
     color:
-        rgba(0,0,0,.08);
+        rgba(0,0,0,.055);
 
     font-family:
         "Barlow Condensed",
+        "Arial Narrow",
         Arial,
         sans-serif;
 
     font-size:
         clamp(
-            45px,
-            7vw,
-            105px
+            150px,
+            19vw,
+            280px
         );
 
     font-weight:
         900;
 
-    letter-spacing:
-        -.06em;
-
     line-height:
         .8;
 
-    pointer-events:
-        none;
+    letter-spacing:
+        -.08em;
 
 }
 
@@ -2303,13 +2419,16 @@ function buildDesignCSS() {
         absolute;
 
     right:
-        16px;
+        -10px;
 
     bottom:
-        10px;
+        35px;
+
+    z-index:
+        1;
 
     color:
-        rgba(0,0,0,.06);
+        rgba(0,0,0,.055);
 
     font-family:
         "Barlow Condensed",
@@ -2317,19 +2436,23 @@ function buildDesignCSS() {
         sans-serif;
 
     font-size:
-        40px;
+        clamp(
+            45px,
+            5vw,
+            75px
+        );
 
     font-weight:
         900;
+
+    letter-spacing:
+        -.05em;
 
     transform:
         rotate(-90deg);
 
     transform-origin:
         right bottom;
-
-    pointer-events:
-        none;
 
 }
 
@@ -2352,7 +2475,7 @@ function buildDesignCSS() {
         100%;
 
     padding:
-        35px;
+        25px;
 
     object-fit:
         contain;
@@ -2381,13 +2504,13 @@ function buildDesignCSS() {
         absolute;
 
     z-index:
-        4;
+        5;
 
     right:
-        16px;
+        14px;
 
     bottom:
-        16px;
+        14px;
 
     width:
         38px;
@@ -2396,19 +2519,36 @@ function buildDesignCSS() {
         38px;
 
     border:
-        1px solid #D8D8D8;
+        1px solid #CCCCCC;
 
     border-radius:
-        50%;
+        0;
 
     background:
         #FFFFFF;
 
     color:
-        #222222;
+        #111111;
+
+    font-size:
+        17px;
 
     cursor:
         pointer;
+
+}
+
+
+.satori-main-zoom:hover {
+
+    background:
+        var(--product-red);
+
+    border-color:
+        var(--product-red);
+
+    color:
+        #FFFFFF;
 
 }
 
@@ -2420,7 +2560,7 @@ function buildDesignCSS() {
 .satori-product-info {
 
     padding-top:
-        10px;
+        15px;
 
 }
 
@@ -2430,11 +2570,14 @@ function buildDesignCSS() {
     display:
         inline-flex;
 
+    align-items:
+        center;
+
     margin-bottom:
-        13px;
+        17px;
 
     padding:
-        4px 8px;
+        6px 9px;
 
     background:
         var(--product-red);
@@ -2449,21 +2592,24 @@ function buildDesignCSS() {
         900;
 
     letter-spacing:
-        .1em;
+        .14em;
 
 }
 
 
 .satori-product-title {
 
+    position:
+        relative;
+
     margin:
         0;
 
     max-width:
-        620px;
+        650px;
 
     color:
-        #111111;
+        #0A0A0A;
 
     font-family:
         "Barlow Condensed",
@@ -2473,19 +2619,19 @@ function buildDesignCSS() {
 
     font-size:
         clamp(
-            42px,
-            5vw,
-            72px
+            46px,
+            5.8vw,
+            82px
         );
 
     line-height:
-        .86;
+        .79;
 
     font-weight:
         900;
 
     letter-spacing:
-        -.045em;
+        -.055em;
 
     text-transform:
         uppercase;
@@ -2496,13 +2642,13 @@ function buildDesignCSS() {
 .satori-price {
 
     margin-top:
-        18px;
+        22px;
 
     color:
         var(--product-red);
 
     font-size:
-        20px;
+        21px;
 
     font-weight:
         900;
@@ -2516,7 +2662,7 @@ function buildDesignCSS() {
         6px;
 
     padding-bottom:
-        20px;
+        19px;
 
     border-bottom:
         1px solid
@@ -2566,13 +2712,13 @@ function buildDesignCSS() {
         #111111;
 
     font-size:
-        9px;
+        8px;
 
     font-weight:
         900;
 
     letter-spacing:
-        .09em;
+        .13em;
 
 }
 
@@ -2583,10 +2729,10 @@ function buildDesignCSS() {
         #555555;
 
     font-size:
-        9px;
+        8px;
 
     font-weight:
-        700;
+        800;
 
     text-decoration:
         underline;
@@ -2594,13 +2740,17 @@ function buildDesignCSS() {
 }
 
 
+/* =========================================================
+   COLORES
+========================================================= */
+
 .satori-colors {
 
     display:
         flex;
 
     gap:
-        10px;
+        9px;
 
 }
 
@@ -2617,19 +2767,19 @@ function buildDesignCSS() {
         center;
 
     width:
-        27px;
+        29px;
 
     height:
-        27px;
+        29px;
 
     padding:
         3px;
 
     border:
-        1px solid #D5D5D5;
+        1px solid #CCCCCC;
 
     border-radius:
-        50%;
+        0;
 
     background:
         #FFFFFF;
@@ -2654,16 +2804,14 @@ function buildDesignCSS() {
     border:
         1px solid rgba(0,0,0,.12);
 
-    border-radius:
-        50%;
-
 }
 
 
 .satori-color.active {
 
     border:
-        2px solid #111111;
+        2px solid
+        var(--product-red);
 
 }
 
@@ -2684,7 +2832,7 @@ function buildDesignCSS() {
         #888888;
 
     font-size:
-        9px;
+        8px;
 
 }
 
@@ -2702,7 +2850,7 @@ function buildDesignCSS() {
         wrap;
 
     gap:
-        7px;
+        6px;
 
 }
 
@@ -2710,13 +2858,13 @@ function buildDesignCSS() {
 .satori-size {
 
     min-width:
-        42px;
+        43px;
 
     height:
-        36px;
+        37px;
 
     padding:
-        0 11px;
+        0 12px;
 
     border:
         1px solid #CCCCCC;
@@ -2731,10 +2879,18 @@ function buildDesignCSS() {
         9px;
 
     font-weight:
-        800;
+        900;
 
     cursor:
         pointer;
+
+}
+
+
+.satori-size:hover {
+
+    border-color:
+        #111111;
 
 }
 
@@ -2763,11 +2919,11 @@ function buildDesignCSS() {
         grid;
 
     grid-template-columns:
-        110px
+        105px
         minmax(0, 1fr);
 
     gap:
-        10px;
+        9px;
 
     margin-top:
         25px;
@@ -2787,7 +2943,7 @@ function buildDesignCSS() {
         space-between;
 
     height:
-        52px;
+        53px;
 
     border:
         1px solid #CCCCCC;
@@ -2798,7 +2954,7 @@ function buildDesignCSS() {
 .satori-quantity button {
 
     width:
-        34px;
+        32px;
 
     height:
         100%;
@@ -2808,6 +2964,12 @@ function buildDesignCSS() {
 
     background:
         transparent;
+
+    color:
+        #111111;
+
+    font-size:
+        17px;
 
     cursor:
         pointer;
@@ -2829,7 +2991,7 @@ function buildDesignCSS() {
 .satori-add {
 
     min-height:
-        52px;
+        53px;
 
     border:
         1px solid
@@ -2848,10 +3010,14 @@ function buildDesignCSS() {
         900;
 
     letter-spacing:
-        .08em;
+        .12em;
 
     cursor:
         pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
 
 }
 
@@ -2891,7 +3057,7 @@ function buildDesignCSS() {
         repeat(3,1fr);
 
     gap:
-        15px;
+        12px;
 
     margin-top:
         20px;
@@ -2900,10 +3066,12 @@ function buildDesignCSS() {
         18px 0;
 
     border-top:
-        1px solid var(--product-border);
+        1px solid
+        var(--product-border);
 
     border-bottom:
-        1px solid var(--product-border);
+        1px solid
+        var(--product-border);
 
 }
 
@@ -2914,7 +3082,7 @@ function buildDesignCSS() {
         flex;
 
     gap:
-        9px;
+        8px;
 
     align-items:
         flex-start;
@@ -2934,19 +3102,22 @@ function buildDesignCSS() {
         center;
 
     width:
-        26px;
+        25px;
 
     height:
-        26px;
+        25px;
 
     flex:
-        0 0 26px;
+        0 0 25px;
 
     border:
-        1px solid #D8D8D8;
+        1px solid #D2D2D2;
 
     border-radius:
-        50%;
+        0;
+
+    font-size:
+        11px;
 
 }
 
@@ -2960,7 +3131,7 @@ function buildDesignCSS() {
         #222222;
 
     font-size:
-        8px;
+        7px;
 
     font-weight:
         900;
@@ -2980,7 +3151,7 @@ function buildDesignCSS() {
         #888888;
 
     font-size:
-        8px;
+        7px;
 
 }
 
@@ -3003,7 +3174,7 @@ function buildDesignCSS() {
         flex;
 
     gap:
-        28px;
+        25px;
 
     border-bottom:
         1px solid #DADADA;
@@ -3029,10 +3200,13 @@ function buildDesignCSS() {
         #888888;
 
     font-size:
-        9px;
+        8px;
 
     font-weight:
         900;
+
+    letter-spacing:
+        .04em;
 
     cursor:
         pointer;
@@ -3086,7 +3260,7 @@ function buildDesignCSS() {
         10px;
 
     line-height:
-        1.7;
+        1.75;
 
 }
 
@@ -3120,14 +3294,14 @@ function buildDesignCSS() {
         grid;
 
     grid-template-columns:
-        minmax(0, .82fr)
-        minmax(0, 1.18fr);
+        minmax(0,.82fr)
+        minmax(0,1.18fr);
 
     min-height:
-        330px;
+        390px;
 
     margin:
-        0 0 55px;
+        0 0 70px;
 
     background:
         var(--product-dark);
@@ -3159,7 +3333,10 @@ function buildDesignCSS() {
         center;
 
     padding:
-        45px 50px;
+        50px 55px;
+
+    overflow:
+        hidden;
 
 }
 
@@ -3182,10 +3359,75 @@ function buildDesignCSS() {
         0;
 
     width:
-        4px;
+        5px;
 
     background:
         var(--product-red);
+
+}
+
+
+.satori-editorial-copy::after {
+
+    content:
+        "STREET";
+
+    position:
+        absolute;
+
+    right:
+        -35px;
+
+    bottom:
+        -20px;
+
+    color:
+        rgba(255,255,255,.035);
+
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+    font-size:
+        120px;
+
+    font-weight:
+        900;
+
+    transform:
+        rotate(-90deg);
+
+}
+
+
+.satori-editorial-index {
+
+    position:
+        absolute;
+
+    top:
+        20px;
+
+    left:
+        28px;
+
+    color:
+        rgba(255,255,255,.13);
+
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+    font-size:
+        65px;
+
+    font-weight:
+        900;
+
+    line-height:
+        .8;
 
 }
 
@@ -3196,27 +3438,33 @@ function buildDesignCSS() {
         block;
 
     margin-bottom:
-        13px;
+        14px;
 
     color:
         var(--product-red);
 
     font-size:
-        9px;
+        8px;
 
     font-weight:
         900;
 
     letter-spacing:
-        .14em;
+        .16em;
 
 }
 
 
 .satori-editorial-copy h2 {
 
+    position:
+        relative;
+
+    z-index:
+        2;
+
     max-width:
-        490px;
+        530px;
 
     margin:
         0;
@@ -3229,19 +3477,19 @@ function buildDesignCSS() {
 
     font-size:
         clamp(
-            38px,
-            5vw,
-            67px
+            43px,
+            5.2vw,
+            76px
         );
 
     line-height:
-        .84;
+        .8;
 
     font-weight:
         900;
 
     letter-spacing:
-        -.045em;
+        -.055em;
 
     text-transform:
         uppercase;
@@ -3251,11 +3499,17 @@ function buildDesignCSS() {
 
 .satori-editorial-copy p {
 
+    position:
+        relative;
+
+    z-index:
+        2;
+
     max-width:
         430px;
 
     margin:
-        18px 0 0;
+        20px 0 0;
 
     color:
         #C9CED6;
@@ -3275,7 +3529,7 @@ function buildDesignCSS() {
         55px;
 
     height:
-        2px;
+        3px;
 
     margin:
         25px 0 13px;
@@ -3298,7 +3552,7 @@ function buildDesignCSS() {
         900;
 
     letter-spacing:
-        .12em;
+        .13em;
 
 }
 
@@ -3309,7 +3563,7 @@ function buildDesignCSS() {
         relative;
 
     min-height:
-        330px;
+        390px;
 
     background:
         #151D2D;
@@ -3331,16 +3585,16 @@ function buildDesignCSS() {
     inset:
         0;
 
+    z-index:
+        2;
+
     background:
         linear-gradient(
             90deg,
             #101727 0%,
-            rgba(16,23,39,.65) 20%,
-            rgba(16,23,39,0) 60%
+            rgba(16,23,39,.65) 17%,
+            rgba(16,23,39,0) 62%
         );
-
-    z-index:
-        2;
 
     pointer-events:
         none;
@@ -3348,7 +3602,7 @@ function buildDesignCSS() {
 }
 
 
-.satori-editorial-image-grid {
+.satori-editorial-grid {
 
     position:
         absolute;
@@ -3358,20 +3612,20 @@ function buildDesignCSS() {
 
     background-image:
         linear-gradient(
-            rgba(255,255,255,.045) 1px,
+            rgba(255,255,255,.05) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,.045) 1px,
+            rgba(255,255,255,.05) 1px,
             transparent 1px
         );
 
     background-size:
-        34px 34px;
+        35px 35px;
 
     opacity:
-        .45;
+        .55;
 
 }
 
@@ -3402,40 +3656,6 @@ function buildDesignCSS() {
 }
 
 
-.satori-editorial-number {
-
-    position:
-        absolute;
-
-    z-index:
-        4;
-
-    left:
-        25px;
-
-    top:
-        20px;
-
-    color:
-        rgba(255,255,255,.15);
-
-    font-family:
-        "Barlow Condensed",
-        Arial,
-        sans-serif;
-
-    font-size:
-        90px;
-
-    font-weight:
-        900;
-
-    line-height:
-        .8;
-
-}
-
-
 .satori-editorial-mark {
 
     position:
@@ -3445,10 +3665,10 @@ function buildDesignCSS() {
         4;
 
     right:
-        20px;
+        24px;
 
     bottom:
-        18px;
+        20px;
 
     color:
         rgba(255,255,255,.18);
@@ -3459,13 +3679,13 @@ function buildDesignCSS() {
         sans-serif;
 
     font-size:
-        25px;
+        31px;
 
     font-weight:
         900;
 
     letter-spacing:
-        -.03em;
+        -.04em;
 
     transform:
         rotate(-90deg);
@@ -3477,13 +3697,48 @@ function buildDesignCSS() {
 
 
 /* =========================================================
-   RECOMENDADOS
+   RECOMENDACIONES
 ========================================================= */
 
 .satori-related {
 
     padding:
-        0 0 85px;
+        0 0 95px;
+
+}
+
+
+.satori-related-topline {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        18px;
+
+    padding-bottom:
+        10px;
+
+    border-bottom:
+        1px solid #D9D9D9;
+
+    color:
+        #888888;
+
+    font-size:
+        7px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .12em;
 
 }
 
@@ -3503,18 +3758,18 @@ function buildDesignCSS() {
         30px;
 
     margin-bottom:
-        23px;
+        28px;
 
 }
 
 
-.satori-section-heading span {
+.satori-section-kicker {
 
     display:
         block;
 
     margin-bottom:
-        6px;
+        8px;
 
     color:
         var(--product-red);
@@ -3526,7 +3781,7 @@ function buildDesignCSS() {
         900;
 
     letter-spacing:
-        .1em;
+        .13em;
 
 }
 
@@ -3534,10 +3789,13 @@ function buildDesignCSS() {
 .satori-section-heading h2 {
 
     max-width:
-        650px;
+        750px;
 
     margin:
         0;
+
+    color:
+        #111111;
 
     font-family:
         "Barlow Condensed",
@@ -3546,13 +3804,20 @@ function buildDesignCSS() {
         sans-serif;
 
     font-size:
-        38px;
+        clamp(
+            48px,
+            6vw,
+            88px
+        );
 
     line-height:
-        .9;
+        .76;
 
     font-weight:
         900;
+
+    letter-spacing:
+        -.06em;
 
     text-transform:
         uppercase;
@@ -3560,31 +3825,42 @@ function buildDesignCSS() {
 }
 
 
-.satori-section-heading p {
-
-    max-width:
-        270px;
-
-    margin:
-        0;
+.satori-section-heading h2 em {
 
     color:
-        #888888;
+        var(--product-red);
 
-    font-size:
-        8px;
-
-    line-height:
-        1.5;
-
-    text-align:
-        right;
-
-    font-weight:
-        700;
+    font-style:
+        normal;
 
 }
 
+
+.satori-section-number {
+
+    color:
+        rgba(0,0,0,.09);
+
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+    font-size:
+        100px;
+
+    font-weight:
+        900;
+
+    line-height:
+        .7;
+
+}
+
+
+/* =========================================================
+   GRID RECOMENDACIONES
+========================================================= */
 
 .satori-related-grid {
 
@@ -3595,7 +3871,7 @@ function buildDesignCSS() {
         repeat(4,1fr);
 
     gap:
-        18px;
+        15px;
 
 }
 
@@ -3620,13 +3896,39 @@ function buildDesignCSS() {
         relative;
 
     aspect-ratio:
-        1 / 1.04;
+        1 / 1.16;
 
     background:
-        #F7F7F7;
+        #F3F3F3;
 
     overflow:
         hidden;
+
+}
+
+
+.satori-related-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        2;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.12),
+            transparent 30%,
+            transparent 65%,
+            rgba(0,0,0,.25)
+        );
+
+    pointer-events:
+        none;
 
 }
 
@@ -3637,13 +3939,13 @@ function buildDesignCSS() {
         absolute;
 
     z-index:
-        3;
+        4;
 
     left:
         10px;
 
     top:
-        9px;
+        3px;
 
     color:
         rgba(0,0,0,.18);
@@ -3654,15 +3956,18 @@ function buildDesignCSS() {
         sans-serif;
 
     font-size:
-        30px;
+        55px;
 
     font-weight:
         900;
 
+    line-height:
+        .8;
+
 }
 
 
-.satori-related-badge {
+.satori-related-category {
 
     position:
         absolute;
@@ -3674,25 +3979,25 @@ function buildDesignCSS() {
         9px;
 
     top:
-        9px;
+        10px;
 
     padding:
         5px 7px;
 
     background:
-        var(--product-red);
-
-    color:
         #FFFFFF;
 
+    color:
+        #111111;
+
     font-size:
-        7px;
+        6px;
 
     font-weight:
         900;
 
     letter-spacing:
-        .06em;
+        .08em;
 
 }
 
@@ -3712,7 +4017,58 @@ function buildDesignCSS() {
         contain;
 
     transition:
-        transform .3s ease;
+        transform .35s ease;
+
+}
+
+
+.satori-related-arrow {
+
+    position:
+        absolute;
+
+    z-index:
+        5;
+
+    right:
+        10px;
+
+    bottom:
+        9px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    background:
+        var(--product-red);
+
+    color:
+        #FFFFFF;
+
+    font-size:
+        16px;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(5px);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
 
 }
 
@@ -3721,23 +4077,73 @@ function buildDesignCSS() {
 .satori-related-image img {
 
     transform:
-        scale(1.045);
+        scale(1.055);
+
+}
+
+
+.satori-related-card:hover
+.satori-related-arrow {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
 
 }
 
 
 .satori-related-info {
 
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
     padding:
-        11px 2px 0;
+        12px 2px 0;
+
+}
+
+
+.satori-related-info > div > span {
+
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    color:
+        #999999;
+
+    font-size:
+        6px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .1em;
 
 }
 
 
 .satori-related-info h3 {
 
+    max-width:
+        210px;
+
     margin:
-        0 0 5px;
+        0;
 
     color:
         #222222;
@@ -3746,10 +4152,10 @@ function buildDesignCSS() {
         10px;
 
     line-height:
-        1.3;
+        1.2;
 
     font-weight:
-        800;
+        900;
 
     text-transform:
         uppercase;
@@ -3759,11 +4165,14 @@ function buildDesignCSS() {
 
 .satori-related-info strong {
 
+    flex:
+        0 0 auto;
+
     color:
         #111111;
 
     font-size:
-        10px;
+        9px;
 
     font-weight:
         900;
@@ -3784,7 +4193,9 @@ function buildDesignCSS() {
         width:
             min(
                 100%,
-                calc(100% - 55px)
+                calc(
+                    100% - 50px
+                )
             );
 
     }
@@ -3794,19 +4205,10 @@ function buildDesignCSS() {
 
         grid-template-columns:
             minmax(0,1fr)
-            minmax(340px,.72fr);
+            minmax(340px,.7fr);
 
         gap:
-            38px;
-
-    }
-
-
-    .satori-editorial-banner {
-
-        grid-template-columns:
-            minmax(0,.9fr)
-            minmax(0,1.1fr);
+            35px;
 
     }
 
@@ -3815,6 +4217,14 @@ function buildDesignCSS() {
 
         grid-template-columns:
             repeat(3,1fr);
+
+    }
+
+
+    .satori-related-card:last-child {
+
+        display:
+            none;
 
     }
 
@@ -3840,7 +4250,7 @@ function buildDesignCSS() {
     .satori-product-info {
 
         max-width:
-            680px;
+            700px;
 
     }
 
@@ -3856,7 +4266,23 @@ function buildDesignCSS() {
     .satori-editorial-image {
 
         min-height:
-            300px;
+            330px;
+
+    }
+
+
+    .satori-related-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .satori-related-card:last-child {
+
+        display:
+            block;
 
     }
 
@@ -3874,7 +4300,9 @@ function buildDesignCSS() {
     .satori-product-wrap {
 
         width:
-            calc(100% - 28px);
+            calc(
+                100% - 26px
+            );
 
     }
 
@@ -3882,10 +4310,10 @@ function buildDesignCSS() {
     .satori-breadcrumbs {
 
         padding:
-            14px 0;
+            13px 0;
 
         font-size:
-            8px;
+            7px;
 
     }
 
@@ -3896,7 +4324,7 @@ function buildDesignCSS() {
             block;
 
         padding-bottom:
-            35px;
+            45px;
 
     }
 
@@ -3926,7 +4354,7 @@ function buildDesignCSS() {
     .satori-main-image {
 
         padding:
-            15px;
+            10px;
 
     }
 
@@ -3940,10 +4368,10 @@ function buildDesignCSS() {
             row;
 
         gap:
-            8px;
+            7px;
 
         padding:
-            9px 0 3px;
+            9px 0 2px;
 
         overflow-x:
             auto;
@@ -3965,13 +4393,13 @@ function buildDesignCSS() {
     .satori-product-thumb {
 
         flex:
-            0 0 58px;
+            0 0 57px;
 
         width:
-            58px;
+            57px;
 
         height:
-            65px;
+            63px;
 
     }
 
@@ -3979,7 +4407,7 @@ function buildDesignCSS() {
     .satori-product-info {
 
         padding-top:
-            26px;
+            25px;
 
     }
 
@@ -3988,10 +4416,13 @@ function buildDesignCSS() {
 
         font-size:
             clamp(
-                36px,
-                12vw,
-                52px
+                42px,
+                14vw,
+                60px
             );
+
+        line-height:
+            .78;
 
     }
 
@@ -4007,7 +4438,7 @@ function buildDesignCSS() {
     .satori-quantity-row {
 
         grid-template-columns:
-            92px
+            90px
             minmax(0,1fr);
 
     }
@@ -4027,15 +4458,18 @@ function buildDesignCSS() {
     .satori-editorial-banner {
 
         margin:
-            0 0 40px;
+            0 0 48px;
 
     }
 
 
     .satori-editorial-copy {
 
+        min-height:
+            340px;
+
         padding:
-            38px 25px;
+            45px 25px;
 
     }
 
@@ -4043,15 +4477,7 @@ function buildDesignCSS() {
     .satori-editorial-copy h2 {
 
         font-size:
-            42px;
-
-    }
-
-
-    .satori-editorial-copy p {
-
-        font-size:
-            9px;
+            47px;
 
     }
 
@@ -4059,7 +4485,7 @@ function buildDesignCSS() {
     .satori-editorial-image {
 
         min-height:
-            260px;
+            270px;
 
     }
 
@@ -4081,26 +4507,27 @@ function buildDesignCSS() {
     .satori-section-heading h2 {
 
         font-size:
-            34px;
+            clamp(
+                48px,
+                15vw,
+                68px
+            );
 
     }
 
 
-    .satori-section-heading p {
+    .satori-section-number {
 
-        max-width:
-            100%;
-
-        text-align:
-            left;
+        display:
+            none;
 
     }
 
 
-    .satori-related {
+    .satori-related-topline {
 
-        padding-bottom:
-            55px;
+        font-size:
+            6px;
 
     }
 
@@ -4114,7 +4541,53 @@ function buildDesignCSS() {
             );
 
         gap:
-            22px 12px;
+            25px 10px;
+
+    }
+
+
+    .satori-related-image {
+
+        aspect-ratio:
+            1 / 1.12;
+
+    }
+
+
+    .satori-related-info {
+
+        display:
+            block;
+
+    }
+
+
+    .satori-related-info strong {
+
+        display:
+            block;
+
+        margin-top:
+            6px;
+
+    }
+
+
+    .satori-related-arrow {
+
+        opacity:
+            1;
+
+        transform:
+            none;
+
+    }
+
+
+    .satori-related {
+
+        padding-bottom:
+            65px;
 
     }
 
@@ -4132,7 +4605,9 @@ function buildDesignCSS() {
     .satori-product-wrap {
 
         width:
-            calc(100% - 20px);
+            calc(
+                100% - 18px
+            );
 
     }
 
@@ -4140,7 +4615,7 @@ function buildDesignCSS() {
     .satori-product-title {
 
         font-size:
-            33px;
+            39px;
 
     }
 
@@ -4148,7 +4623,7 @@ function buildDesignCSS() {
     .satori-tabs {
 
         gap:
-            17px;
+            16px;
 
     }
 
@@ -4156,15 +4631,18 @@ function buildDesignCSS() {
     .satori-tab {
 
         font-size:
-            8px;
+            7px;
 
     }
 
 
     .satori-editorial-copy {
 
+        min-height:
+            315px;
+
         padding:
-            32px 20px;
+            38px 20px;
 
     }
 
@@ -4172,7 +4650,7 @@ function buildDesignCSS() {
     .satori-editorial-copy h2 {
 
         font-size:
-            35px;
+            39px;
 
     }
 
@@ -4185,10 +4663,18 @@ function buildDesignCSS() {
     }
 
 
-    .satori-section-heading h2 {
+    .satori-related-info h3 {
 
         font-size:
-            30px;
+            9px;
+
+    }
+
+
+    .satori-related-category {
+
+        display:
+            none;
 
     }
 
@@ -4355,7 +4841,7 @@ function buildHero(
         <div class="satori-product-info">
 
             <span class="satori-eyebrow">
-                NUEVO
+                SATORII / DROP
             </span>
 
 
@@ -4788,7 +5274,7 @@ function buildProductScript(
         return (
             product.bannerLabel ||
             product.details?.bannerLabel ||
-            "SATORII · CHARACTER / DESIGN"
+            "SATORII · STREET CULTURE"
         );
 
     }
@@ -4801,7 +5287,7 @@ function buildProductScript(
         return (
             product.bannerTitle ||
             product.details?.bannerTitle ||
-            "EL UNIVERSO DETRÁS DE LA PRENDA"
+            "DISEÑADO PARA DESTACAR"
         );
 
     }
@@ -4814,7 +5300,7 @@ function buildProductScript(
         return (
             product.bannerText ||
             product.details?.bannerText ||
-            "Una pieza creada para llevar la identidad de este universo directamente contigo."
+            "Una pieza creada para llevar la identidad SATORII a la calle."
         );
 
     }
@@ -5163,8 +5649,10 @@ function buildProductScript(
                 image.src =
                     src;
 
+
                 image.alt =
                     product.name || "";
+
 
                 image.loading =
                     "lazy";
@@ -5517,6 +6005,15 @@ function buildProductScript(
                     String(
                         color
                     );
+
+
+                button.setAttribute(
+                    "aria-label",
+                    "Color " +
+                    String(
+                        color
+                    )
+                );
 
 
                 const span =
@@ -6837,6 +7334,17 @@ function generateProducts() {
     );
 
 
+    const shirtCount =
+        products.filter(
+            isShirtProduct
+        ).length;
+
+
+    console.log(
+        `✓ Poleras detectadas: ${shirtCount}`
+    );
+
+
     let generated =
         0;
 
@@ -6905,11 +7413,11 @@ function generateProducts() {
     );
 
     console.log(
-        "✓ Diseño 10 aplicado"
+        "✓ Diseño 12 aplicado"
     );
 
     console.log(
-        "✓ Bold Commerce"
+        "✓ Street / Lookbook"
     );
 
     console.log(
@@ -6973,11 +7481,23 @@ function generateProducts() {
     );
 
     console.log(
-        "✓ Recomendaciones aleatorias"
+        "✓ Street / Lookbook"
     );
 
     console.log(
-        "✓ Recomendaciones priorizan POLERAS"
+        "✓ TAMBIÉN TE PUEDE GUSTAR"
+    );
+
+    console.log(
+        "✓ 4 recomendaciones aleatorias"
+    );
+
+    console.log(
+        "✓ Prioridad a poleras"
+    );
+
+    console.log(
+        "✓ Producto actual excluido"
     );
 
     console.log(
