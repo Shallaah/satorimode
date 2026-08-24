@@ -1312,7 +1312,7 @@
 
 
         /* =====================================================
-           TABLET
+           RESPONSIVE · TABLET
         ====================================================== */
 
         @media (max-width: 1100px) {
@@ -1356,7 +1356,7 @@
 
 
         /* =====================================================
-           TABLET PEQUEÑO
+           RESPONSIVE · TABLET PEQUEÑO
         ====================================================== */
 
         @media (max-width: 800px) {
@@ -1366,22 +1366,26 @@
                 grid-template-columns:
                     1fr;
 
+                min-height: 0;
+
             }
 
 
             .yokai-hero-content {
 
-                min-height: 430px;
+                min-height: 390px;
 
                 padding:
                     75px 30px 50px;
+
+                box-sizing: border-box;
 
             }
 
 
             .yokai-hero-image {
 
-                min-height: 500px;
+                min-height: 460px;
 
             }
 
@@ -1411,7 +1415,7 @@
 
 
         /* =====================================================
-           MÓVIL
+           RESPONSIVE · MÓVIL
         ====================================================== */
 
         @media (max-width: 600px) {
@@ -1420,111 +1424,177 @@
 
                 width:
                     calc(
-                        100% - 30px
+                        100% - 24px
                     );
 
             }
 
 
+            /* -------------------------------------------------
+               HERO
+            -------------------------------------------------- */
+
             .yokai-hero-content {
 
-                min-height: 360px;
+                min-height: 330px;
 
                 padding:
-                    70px 15px 45px;
+                    62px 18px 38px;
+
+            }
+
+
+            .yokai-hero-kicker {
+
+                margin-bottom: 14px;
+
+                font-size: 8px;
+
+                letter-spacing: 2px;
 
             }
 
 
             .yokai-hero h1 {
 
+                max-width: 100%;
+
                 font-size:
-                    68px;
+                    clamp(
+                        58px,
+                        18vw,
+                        76px
+                    );
+
+                line-height: .82;
 
                 letter-spacing:
-                    -3px;
+                    -2.5px;
 
             }
 
 
             .yokai-hero-description {
 
-                max-width:
-                    450px;
+                max-width: 100%;
 
-                margin-top:
-                    22px;
+                margin-top: 19px;
 
-                font-size:
-                    12px;
+                font-size: 11.5px;
+
+                line-height: 1.6;
+
+            }
+
+
+            .yokai-hero-link {
+
+                margin-top: 22px;
+
+                padding-bottom: 6px;
+
+                font-size: 8px;
+
+                letter-spacing: 1.2px;
 
             }
 
 
             .yokai-hero-image {
 
-                min-height:
-                    390px;
+                min-height: 360px;
 
             }
 
 
             .yokai-hero-image::after {
 
-                font-size:
-                    100px;
+                right: -10px;
+
+                bottom: -20px;
+
+                font-size: 92px;
+
+                letter-spacing: -5px;
 
             }
 
 
             .yokai-hero-number {
 
-                top:
-                    18px;
+                top: 15px;
 
-                right:
-                    18px;
+                right: 15px;
 
-                font-size:
-                    10px;
+                font-size: 9px;
+
+                letter-spacing: 1.5px;
 
             }
 
 
+            .yokai-hero-line {
+
+                width: 100px;
+
+                height: 2px;
+
+            }
+
+
+            /* -------------------------------------------------
+               TICKER
+            -------------------------------------------------- */
+
             .yokai-ticker {
 
-                min-height:
-                    44px;
+                min-height: 42px;
 
             }
 
 
             .yokai-ticker-track {
 
-                gap:
-                    16px;
-
                 padding:
-                    0 15px;
+                    0 12px;
 
-                font-size:
-                    11px;
+                font-size: 10px;
+
+                letter-spacing: 1.2px;
+
+                animation-duration:
+                    18s;
 
             }
 
 
+            .yokai-ticker-group {
+
+                gap: 16px;
+
+                padding-right: 16px;
+
+            }
+
+
+            /* -------------------------------------------------
+               PRODUCTOS
+            -------------------------------------------------- */
+
             .yokai-products {
 
                 padding-top:
-                    75px;
+                    62px;
 
             }
 
 
             .yokai-products-heading {
 
-                display:
-                    block;
+                display: block;
+
+                margin-bottom:
+                    22px;
 
             }
 
@@ -1532,29 +1602,43 @@
             .yokai-products-heading h2 {
 
                 font-size:
-                    52px;
+                    clamp(
+                        42px,
+                        14vw,
+                        54px
+                    );
+
+                line-height:
+                    .84;
+
+                letter-spacing:
+                    -1.5px;
 
             }
 
 
             .yokai-products-count {
 
-                display:
-                    block;
+                display: block;
 
                 margin-top:
-                    12px;
+                    10px;
+
+                font-size:
+                    9px;
 
             }
 
 
             .yokai-filters {
 
-                gap:
-                    5px;
+                gap: 5px;
 
                 margin-bottom:
                     25px;
+
+                padding-bottom:
+                    12px;
 
             }
 
@@ -1562,10 +1646,10 @@
             .yokai-filter {
 
                 min-height:
-                    29px;
+                    30px;
 
                 padding:
-                    0 10px;
+                    0 9px;
 
                 font-size:
                     7px;
@@ -1582,10 +1666,18 @@
                     );
 
                 column-gap:
-                    12px;
+                    10px;
 
                 row-gap:
-                    38px;
+                    34px;
+
+            }
+
+
+            .yokai-product-image {
+
+                border-radius:
+                    0;
 
             }
 
@@ -1593,15 +1685,21 @@
             .yokai-product-info {
 
                 padding-top:
-                    10px;
+                    9px;
 
             }
 
 
             .yokai-product-category {
 
+                margin-bottom:
+                    4px;
+
                 font-size:
-                    7px;
+                    6.5px;
+
+                letter-spacing:
+                    1.2px;
 
             }
 
@@ -1609,26 +1707,32 @@
             .yokai-product-name {
 
                 font-size:
-                    11px;
+                    10.5px;
+
+                line-height:
+                    1.3;
 
             }
 
 
             .yokai-product-price {
 
+                margin-top:
+                    4px;
+
                 font-size:
-                    11px;
+                    10.5px;
 
             }
 
 
             .yokai-product-badges {
 
-                top:
-                    7px;
+                top: 6px;
 
-                left:
-                    7px;
+                left: 6px;
+
+                gap: 3px;
 
             }
 
@@ -1636,13 +1740,217 @@
             .yokai-product-badge {
 
                 min-height:
-                    20px;
+                    18px;
 
                 padding:
-                    4px 6px;
+                    4px 5px;
 
                 font-size:
-                    6px;
+                    5.5px;
+
+                letter-spacing:
+                    .7px;
+
+            }
+
+
+            /* -------------------------------------------------
+               CTA · VISTE TU YOKAI
+            -------------------------------------------------- */
+
+            .yokai-cta {
+
+                min-height:
+                    430px;
+
+                margin-top:
+                    65px;
+
+                padding:
+                    55px 18px;
+
+                background-position:
+                    65% center;
+
+            }
+
+
+            .yokai-cta::before {
+
+                width:
+                    90px;
+
+                height:
+                    2px;
+
+            }
+
+
+            .yokai-cta::after {
+
+                width:
+                    90px;
+
+                height:
+                    2px;
+
+            }
+
+
+            .yokai-cta-label {
+
+                margin-bottom:
+                    12px;
+
+                font-size:
+                    7px;
+
+                letter-spacing:
+                    2.2px;
+
+            }
+
+
+            .yokai-cta h2 {
+
+                max-width:
+                    100%;
+
+                font-size:
+                    clamp(
+                        48px,
+                        15vw,
+                        64px
+                    );
+
+                line-height:
+                    .82;
+
+                letter-spacing:
+                    -2px;
+
+            }
+
+
+            .yokai-cta p {
+
+                max-width:
+                    100%;
+
+                margin:
+                    17px 0 23px;
+
+                font-size:
+                    11px;
+
+                line-height:
+                    1.6;
+
+            }
+
+
+            .yokai-cta-button {
+
+                min-height:
+                    42px;
+
+                padding:
+                    0 16px;
+
+                font-size:
+                    8px;
+
+                letter-spacing:
+                    1.2px;
+
+            }
+
+
+            #satori-footer {
+
+                margin-top:
+                    0 !important;
+
+                padding-top:
+                    0 !important;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE · MÓVIL MUY PEQUEÑO
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .yokai-hero-content {
+
+                min-height:
+                    315px;
+
+                padding:
+                    58px 16px 34px;
+
+            }
+
+
+            .yokai-hero h1 {
+
+                font-size:
+                    55px;
+
+            }
+
+
+            .yokai-hero-image {
+
+                min-height:
+                    325px;
+
+            }
+
+
+            .yokai-products {
+
+                padding-top:
+                    55px;
+
+            }
+
+
+            .yokai-products-heading h2 {
+
+                font-size:
+                    44px;
+
+            }
+
+
+            .yokai-products-grid {
+
+                column-gap:
+                    8px;
+
+                row-gap:
+                    30px;
+
+            }
+
+
+            .yokai-product-name {
+
+                font-size:
+                    10px;
+
+            }
+
+
+            .yokai-product-price {
+
+                font-size:
+                    10px;
 
             }
 
@@ -1650,24 +1958,10 @@
             .yokai-cta {
 
                 min-height:
-                    450px;
-
-                margin-top:
-                    75px;
+                    390px;
 
                 padding:
-                    60px 20px;
-
-                background-position:
-                    center;
-
-            }
-
-
-            .yokai-cta-content {
-
-                max-width:
-                    100%;
+                    48px 16px;
 
             }
 
@@ -1675,10 +1969,7 @@
             .yokai-cta h2 {
 
                 font-size:
-                    55px;
-
-                letter-spacing:
-                    -2px;
+                    46px;
 
             }
 
