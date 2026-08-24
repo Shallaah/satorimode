@@ -3581,25 +3581,24 @@ function buildProductScript(
         }
 
 
-        gallery.innerHTML =
-            images
-                .map(
-                    function (
-                        src,
-                        index
-                    ) {
+      gallery.innerHTML =
+gallery.innerHTML =
+    images
+        .map(
+            function (
+                src,
+                index
+            ) {
 
-return \`
+                return \`
 <button
-    class="satori-product-thumb \${
+    type="button"
+    class="satori-product-thumb \\${
         index === 0
             ? "active"
             : ""
     }"
->
-\`;
-
-    data-gallery-image="${src.replace(
+    data-gallery-image="\\${src.replace(
         /&/g,
         "&amp;"
     ).replace(
@@ -3609,11 +3608,11 @@ return \`
 >
 
     <img
-        src="${src.replace(
+        src="\\${src.replace(
             /"/g,
             "&quot;"
         )}"
-        alt="${String(
+        alt="\\${String(
             product.name || ""
         ).replace(
             /"/g,
@@ -3623,12 +3622,11 @@ return \`
     >
 
 </button>
-`;
+\`;
 
-                    }
-                )
-                .join("");
-
+            }
+        )
+        .join("");
 
         bindGallery();
 
@@ -3701,103 +3699,103 @@ return \`
     }
 
 
-    /* =====================================================
-       ACTUALIZAR COLORES
-    ====================================================== */
+  /* =====================================================
+   ACTUALIZAR COLORES
+===================================================== */
 
-    function updateColors(
-        product
-    ) {
+function updateColors(
+    product
+) {
 
-        const colors =
-            Array.isArray(
-                product.colors
-            )
-                ? product.colors
-                : [];
-
-
-        const container =
-            document.querySelector(
-                "[data-product-colors]"
-            );
+    const colors =
+        Array.isArray(
+            product.colors
+        )
+            ? product.colors
+            : [];
 
 
-        if (!container) {
-
-            return;
-
-        }
-
-
-        const map = {
-
-            negro: "#111",
-            black: "#111",
-
-            rojo: "#ef0930",
-            red: "#ef0930",
-
-            blanco: "#fff",
-            white: "#fff",
-
-            rosa: "#e56b8c",
-            pink: "#e56b8c",
-
-            azul: "#4b72c9",
-            blue: "#4b72c9",
-
-            verde: "#5b8d6b",
-            green: "#5b8d6b",
-
-            gris: "#aaa",
-            gray: "#aaa",
-            grey: "#aaa",
-
-            morado: "#8664b9",
-            purple: "#8664b9",
-
-            amarillo: "#e9c64b",
-            yellow: "#e9c64b"
-
-        };
+    const container =
+        document.querySelector(
+            "[data-product-colors]"
+        );
 
 
-        container.innerHTML =
-            colors
-                .map(
-                    function (
-                        color,
-                        index
-                    ) {
+    if (!container) {
 
-                        const value =
-                            String(
-                                color || ""
-                            )
-                                .toLowerCase();
+        return;
+
+    }
 
 
-                        const bg =
-                            map[value] ||
-                            "#d9d9d9";
+    const map = {
+
+        negro: "#111",
+        black: "#111",
+
+        rojo: "#ef0930",
+        red: "#ef0930",
+
+        blanco: "#fff",
+        white: "#fff",
+
+        rosa: "#e56b8c",
+        pink: "#e56b8c",
+
+        azul: "#4b72c9",
+        blue: "#4b72c9",
+
+        verde: "#5b8d6b",
+        green: "#5b8d6b",
+
+        gris: "#aaa",
+        gray: "#aaa",
+        grey: "#aaa",
+
+        morado: "#8664b9",
+        purple: "#8664b9",
+
+        amarillo: "#e9c64b",
+        yellow: "#e9c64b"
+
+    };
 
 
-                        return `
+    container.innerHTML =
+        colors
+            .map(
+                function (
+                    color,
+                    index
+                ) {
+
+                    const value =
+                        String(
+                            color || ""
+                        )
+                            .toLowerCase();
+
+
+                    const bg =
+                        map[value] ||
+                        "#d9d9d9";
+
+
+                    return \`
 <button
     type="button"
-    class="satori-color ${
+    class="satori-color \\${
         index === 0
             ? "active"
             : ""
     }"
-    data-color="${String(
+    data-color="\\${String(
         color
     ).replace(
         /"/g,
         "&quot;"
     )}"
-    title="${String(
+    title="\\${String(
         color
     ).replace(
         /"/g,
@@ -3807,40 +3805,38 @@ return \`
 
     <span
         style="
-            background:${bg}
+            background:\\${bg}
         "
     ></span>
 
 </button>
-`;
+\`;
 
-                    }
-                )
-                .join("");
-
-
-        const selected =
-            document.querySelector(
-                ".satori-selected-color"
-            );
+                }
+            )
+            .join("");
 
 
-        if (
-            selected
-        ) {
-
-            selected.textContent =
-                colors[0] ||
-                "";
-
-        }
+    const selected =
+        document.querySelector(
+            ".satori-selected-color"
+        );
 
 
-        bindColors();
+    if (
+        selected
+    ) {
+
+        selected.textContent =
+            colors[0] ||
+            "";
 
     }
 
 
+    bindColors();
+
+}
     /* =====================================================
        TALLAS
     ====================================================== */
@@ -3907,52 +3903,52 @@ return \`
     }
 
 
-    /* =====================================================
-       ACTUALIZAR TALLAS
-    ====================================================== */
+/* =====================================================
+   ACTUALIZAR TALLAS
+====================================================== */
 
-    function updateSizes(
-        product
-    ) {
+function updateSizes(
+    product
+) {
 
-        const sizes =
-            Array.isArray(
-                product.sizes
-            )
-                ? product.sizes
-                : [];
-
-
-        const container =
-            document.querySelector(
-                "[data-product-sizes]"
-            );
+    const sizes =
+        Array.isArray(
+            product.sizes
+        )
+            ? product.sizes
+            : [];
 
 
-        if (!container) {
+    const container =
+        document.querySelector(
+            "[data-product-sizes]"
+        );
 
-            return;
 
-        }
+    if (!container) {
+
+        return;
+
+    }
 
 
-        container.innerHTML =
-            sizes
-                .map(
-                    function (
-                        size,
-                        index
-                    ) {
+    container.innerHTML =
+        sizes
+            .map(
+                function (
+                    size,
+                    index
+                ) {
 
-                        return `
+                    return \`
 <button
     type="button"
-    class="satori-size ${
+    class="satori-size \\${
         index === 0
             ? "active"
             : ""
     }"
-    data-size="${String(
+    data-size="\\${String(
         size
     ).replace(
         /"/g,
@@ -3960,39 +3956,38 @@ return \`
     )}"
 >
 
-    ${String(
+    \\${String(
         size
     )}
 
 </button>
-`;
+\`;
 
-                    }
-                )
-                .join("");
-
-
-        const selected =
-            document.querySelector(
-                ".satori-selected-size"
-            );
+                }
+            )
+            .join("");
 
 
-        if (
-            selected
-        ) {
-
-            selected.textContent =
-                sizes[0] ||
-                "";
-
-        }
+    const selected =
+        document.querySelector(
+            ".satori-selected-size"
+        );
 
 
-        bindSizes();
+    if (
+        selected
+    ) {
+
+        selected.textContent =
+            sizes[0] ||
+            "";
 
     }
 
+
+    bindSizes();
+
+}
 
     /* =====================================================
        INFORMACIÓN DEL PRODUCTO
