@@ -521,7 +521,7 @@ El Header oficial es un componente global.
 
 Archivo:
 
-satorii-header.js
+header.js
 
 
 No duplicar manualmente el Header dentro de cada HTML.
@@ -566,7 +566,9 @@ IMPORTANTE:
 
 Si se modifica el Header:
 
-Modificar el componente global.
+Modificar:
+
+header.js
 
 
 No crear versiones diferentes del Header para cada página.
@@ -591,7 +593,7 @@ El Footer debe ser global.
 
 Archivo:
 
-satori-footer.js
+footer.js
 
 
 Todas las páginas deben utilizar el mismo Footer.
@@ -896,8 +898,9 @@ El menú puede utilizar:
 - Submenús desplegables
 
 
-El comportamiento debe mantenerse consistente con
-satorii-header.js.
+El comportamiento debe mantenerse consistente con:
+
+header.js
 
 
 ============================================================
@@ -1320,12 +1323,12 @@ JavaScript debe estar organizado por responsabilidad.
 Ejemplo:
 
 
-satorii-header.js
+header.js
 
 → Header
 
 
-satorii-footer.js
+footer.js
 
 → Footer
 
