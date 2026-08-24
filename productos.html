@@ -30,6 +30,8 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="css/animations.css">
+
     <style>
 
         :root {
@@ -1335,13 +1337,13 @@
 
     <div id="satori-header"></div>
 
-    <main>
+    <main class="satori-page-animate">
 
         <!-- =================================================
              HERO
         ================================================== -->
 
-        <section class="products-hero">
+        <section class="products-hero satori-content-animate">
 
             <div class="products-hero-content">
 
@@ -1392,7 +1394,7 @@
              TICKER
         ================================================== -->
 
-        <div class="products-ticker">
+        <div class="products-ticker satori-content-animate">
 
             <div class="products-ticker-track">
 
@@ -1505,7 +1507,7 @@
 
         <div class="products-content">
 
-            <section class="products-catalog">
+            <section class="products-catalog satori-content-animate">
 
                 <div class="products-category-bar">
 
@@ -1537,7 +1539,7 @@
                      FILTROS
                 ================================================== -->
 
-                <section class="products-controls">
+                <section class="products-controls satori-content-animate">
 
                     <button
                         type="button"
@@ -1635,7 +1637,7 @@
                 ================================================== -->
 
                 <section
-                    class="products-grid"
+                    class="products-grid satori-dynamic-grid"
                     id="products-grid"
                 ></section>
 
@@ -1647,7 +1649,7 @@
              CTA
         ================================================== -->
 
-        <section class="products-feature">
+        <section class="products-feature satori-content-animate">
 
             <div class="products-feature-content">
 
@@ -3251,6 +3253,8 @@
         );
 
     </script>
+
+    <script src="js/animations.js" defer></script>
 
 </body>
 
