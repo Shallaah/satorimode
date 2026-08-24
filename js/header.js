@@ -11,11 +11,9 @@
 
     const SATORII_RED = "#EF0930";
 
-    const CART_STORAGE_KEY =
-        "satorimode_cart";
+    const CART_STORAGE_KEY = "satorimode_cart";
 
-    const OLD_CART_STORAGE_KEY =
-        "satorii_cart";
+    const OLD_CART_STORAGE_KEY = "satorii_cart";
 
 
     /* =====================================================
@@ -45,11 +43,9 @@
            ROOT
         ================================================== */
 
-        const root =
-            document.createElement("div");
+        const root = document.createElement("div");
 
-        root.id =
-            "satori-header";
+        root.id = "satori-header";
 
 
         /* =================================================
@@ -66,9 +62,6 @@
 
             <div class="top-bar-inner">
 
-
-                <!-- INSTAGRAM -->
-
                 <a
                     class="top-instagram"
                     href="https://www.instagram.com/satoriicl/"
@@ -77,8 +70,10 @@
                     aria-label="Instagram Satorii"
                 >
 
-                    <svg viewBox="0 0 24 24"
-                         aria-hidden="true">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
 
                         <rect
                             x="3"
@@ -106,8 +101,6 @@
                 </a>
 
 
-                <!-- ENVÍOS -->
-
                 <span class="shipping-message">
 
                     <svg
@@ -116,13 +109,9 @@
                         aria-hidden="true"
                     >
 
-                        <path
-                            d="M3 6h11v10H3z"
-                        />
+                        <path d="M3 6h11v10H3z" />
 
-                        <path
-                            d="M14 10h4l3 3v3h-7z"
-                        />
+                        <path d="M14 10h4l3 3v3h-7z" />
 
                         <circle
                             cx="7"
@@ -144,8 +133,6 @@
 
                 </span>
 
-
-                <!-- MENSAJE -->
 
                 <span class="top-message">
                     CULTURA JAPONESA · STREETWEAR · ANIME
@@ -195,14 +182,13 @@
 
 
                 <!-- =================================================
-                     NAVEGACIÓN PC
+                     NAVEGACIÓN DESKTOP
                 ================================================== -->
 
                 <nav
                     class="main-nav"
                     aria-label="Navegación principal"
                 >
-
 
                     <a
                         href="${SATORIMODE_BASE}index.html"
@@ -386,8 +372,10 @@
                         aria-expanded="false"
                     >
 
-                        <svg viewBox="0 0 24 24"
-                             aria-hidden="true">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
 
                             <circle
                                 cx="10.8"
@@ -415,8 +403,10 @@
                         aria-label="Mi cuenta"
                     >
 
-                        <svg viewBox="0 0 24 24"
-                             aria-hidden="true">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
 
                             <circle
                                 cx="12"
@@ -444,8 +434,10 @@
                         aria-expanded="false"
                     >
 
-                        <svg viewBox="0 0 24 24"
-                             aria-hidden="true">
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
 
                             <path
                                 d="M4 5h2l1.7 10.2a2 2 0 0 0 2 1.7h6.8a2 2 0 0 0 2-1.5L20 8H7"
@@ -525,8 +517,10 @@
                         viewBox="0 0 24 24"
                         aria-hidden="true"
                     >
+
                         <path d="M6 6l12 12"></path>
                         <path d="M18 6L6 18"></path>
+
                     </svg>
 
                 </button>
@@ -538,7 +532,6 @@
                 class="mobile-nav"
                 aria-label="Menú móvil"
             >
-
 
                 <a
                     href="${SATORIMODE_BASE}index.html"
@@ -701,8 +694,10 @@
                     class="mobile-instagram"
                 >
 
-                    <svg viewBox="0 0 24 24"
-                         aria-hidden="true">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
 
                         <rect
                             x="3"
@@ -734,9 +729,11 @@
                         viewBox="0 0 24 24"
                         aria-hidden="true"
                     >
+
                         <path d="M14 5h5v5"></path>
                         <path d="M19 5l-8 8"></path>
                         <path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"></path>
+
                     </svg>
 
                 </a>
@@ -774,8 +771,10 @@
                         viewBox="0 0 24 24"
                         aria-hidden="true"
                     >
+
                         <path d="M6 6l12 12"></path>
                         <path d="M18 6L6 18"></path>
+
                     </svg>
 
                 </button>
@@ -809,17 +808,20 @@
                             viewBox="0 0 24 24"
                             aria-hidden="true"
                         >
+
                             <circle
                                 cx="10.8"
                                 cy="10.8"
                                 r="6.5"
                             />
+
                             <line
                                 x1="16"
                                 y1="16"
                                 x2="21"
                                 y2="21"
                             />
+
                         </svg>
 
                     </button>
@@ -878,8 +880,10 @@
                         viewBox="0 0 24 24"
                         aria-hidden="true"
                     >
+
                         <path d="M6 6l12 12"></path>
                         <path d="M18 6L6 18"></path>
+
                     </svg>
 
                 </button>
@@ -947,14 +951,14 @@
 
 
         /* =====================================================
-           INSERTAR
+           INSERTAR HEADER
         ====================================================== */
 
         document.body.prepend(root);
 
 
         /* =====================================================
-           CSS DEL HEADER
+           CSS
         ====================================================== */
 
         const style =
@@ -984,6 +988,17 @@
                 Arial,
                 Helvetica,
                 sans-serif;
+        }
+
+
+        /* =====================================================
+           BLOQUEAR SCROLL
+        ====================================================== */
+
+        html.satori-lock-scroll,
+        body.satori-lock-scroll {
+            overflow:hidden !important;
+            overscroll-behavior:none;
         }
 
 
@@ -1044,7 +1059,7 @@
 
 
         /* =====================================================
-           ENVÍOS SVG
+           ENVÍOS
         ====================================================== */
 
         #satori-header .shipping-message {
@@ -1347,10 +1362,6 @@
             color:rgba(255,255,255,.65);
         }
 
-        #satori-header .header-search-inline button {
-            display:none;
-        }
-
 
         /* =====================================================
            CARRITO
@@ -1457,11 +1468,19 @@
             left:0;
             width:min(370px,88vw);
             height:100dvh;
+            height:100vh;
             padding:20px 24px;
+            padding-top:
+                max(
+                    20px,
+                    env(safe-area-inset-top)
+                );
             background:#fff;
             transform:translateX(-100%);
             transition:transform .28s ease;
             overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
+            overscroll-behavior:contain;
             z-index:1000001;
         }
 
@@ -1480,6 +1499,7 @@
 
         #satori-header .mobile-menu-logo {
             font-size:28px;
+            color:#111;
         }
 
         #satori-header .mobile-menu-close {
@@ -1594,6 +1614,11 @@
         #satori-header .mobile-social {
             margin-top:35px;
             padding-top:5px;
+            padding-bottom:
+                max(
+                    10px,
+                    env(safe-area-inset-bottom)
+                );
         }
 
         #satori-header .mobile-social span {
@@ -1787,6 +1812,7 @@
             right:0;
             width:min(430px,100vw);
             height:100dvh;
+            height:100vh;
             background:#fff;
             display:flex;
             flex-direction:column;
@@ -1796,6 +1822,8 @@
                 -15px 0 45px
                 rgba(0,0,0,.15);
             z-index:1000003;
+            padding-bottom:
+                env(safe-area-inset-bottom);
         }
 
         #satori-header
@@ -1812,6 +1840,11 @@
             align-items:center;
             justify-content:space-between;
             gap:20px;
+            padding-top:
+                max(
+                    22px,
+                    env(safe-area-inset-top)
+                );
         }
 
         #satori-header .cart-preview-label {
@@ -1869,7 +1902,10 @@
 
         #satori-header .cart-preview-content {
             flex:1;
+            min-height:0;
             overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
+            overscroll-behavior:contain;
             padding:5px 25px 20px;
         }
 
@@ -1926,6 +1962,7 @@
             display:flex;
             align-items:center;
             justify-content:space-between;
+            gap:10px;
             margin-top:10px;
         }
 
@@ -1965,6 +2002,7 @@
             font-size:9px;
             font-weight:700;
             cursor:pointer;
+            white-space:nowrap;
         }
 
         #satori-header .cart-preview-remove:hover {
@@ -2040,6 +2078,14 @@
         #satori-header .cart-preview-footer {
             flex-shrink:0;
             padding:20px 25px 24px;
+            padding-bottom:
+                max(
+                    24px,
+                    calc(
+                        24px +
+                        env(safe-area-inset-bottom)
+                    )
+                );
             background:#fafafa;
             border-top:1px solid #ddd;
         }
@@ -2083,10 +2129,7 @@
             font-weight:800;
             letter-spacing:.8px;
             border-radius:5px;
-            transition:
-                background .2s ease,
-                color .2s ease,
-                border-color .2s ease;
+            text-align:center;
         }
 
         #satori-header .cart-preview-view {
@@ -2134,6 +2177,14 @@
 
             #satori-header .top-message {
                 display:none;
+            }
+
+            #satori-header .top-bar-inner {
+                width:calc(100% - 28px);
+            }
+
+            #satori-header .top-instagram {
+                left:0;
             }
 
             #satori-header .main-header {
@@ -2195,6 +2246,7 @@
             #satori-header .satori-logo:focus {
 
                 position:absolute;
+
                 left:50%;
                 top:50%;
 
@@ -2203,7 +2255,9 @@
                     skewX(-3deg);
 
                 font-size:29px;
+
                 z-index:900001;
+
                 color:#fff;
             }
 
@@ -2243,6 +2297,11 @@
             #satori-header .cart-preview-header {
                 min-height:82px;
                 padding:18px 20px;
+                padding-top:
+                    max(
+                        18px,
+                        env(safe-area-inset-top)
+                    );
             }
 
             #satori-header .cart-preview-content {
@@ -2251,16 +2310,30 @@
 
             #satori-header .cart-preview-footer {
                 padding:18px 20px 22px;
+                padding-bottom:
+                    max(
+                        22px,
+                        calc(
+                            22px +
+                            env(safe-area-inset-bottom)
+                        )
+                    );
             }
 
 
             /* BUSCADOR */
 
             #satori-header .search-overlay {
-                padding:
-                    max(82px, calc(env(safe-area-inset-top) + 72px))
-                    12px
-                    20px;
+                padding-top:
+                    max(
+                        82px,
+                        calc(
+                            env(safe-area-inset-top)
+                            + 72px
+                        )
+                    );
+                padding-left:12px;
+                padding-right:12px;
                 align-items:flex-start;
             }
 
@@ -2340,29 +2413,9 @@
                     17px;
             }
 
-        }
-
-
-        /* =====================================================
-           SAFE AREA IPHONE
-        ====================================================== */
-
-        @supports (
-            padding:max(0px)
-        ) {
-
-            @media (max-width:1000px) {
-
-                #satori-header .mobile-menu {
-
-                    padding-top:
-                        max(
-                            20px,
-                            env(safe-area-inset-top)
-                        );
-
-                }
-
+            #satori-header .cart-preview-actions {
+                grid-template-columns:1fr;
+                gap:8px;
             }
 
         }
@@ -2431,7 +2484,164 @@
 
 
         /* =====================================================
-           SCROLL
+           REFERENCIAS
+        ====================================================== */
+
+        const mobileOpen =
+            root.querySelector(
+                "#satori-mobile-open"
+            );
+
+        const mobileClose =
+            root.querySelector(
+                "#satori-mobile-close"
+            );
+
+        const mobileMenu =
+            root.querySelector(
+                "#satori-mobile-menu"
+            );
+
+        const mobileOverlay =
+            root.querySelector(
+                "#satori-mobile-overlay"
+            );
+
+
+        const searchButton =
+            root.querySelector(
+                "#satori-search"
+            );
+
+        const searchOverlay =
+            root.querySelector(
+                "#satori-search-overlay"
+            );
+
+        const searchClose =
+            root.querySelector(
+                "#satori-search-close"
+            );
+
+        const searchInput =
+            root.querySelector(
+                "#satori-search-input"
+            );
+
+        const searchForm =
+            root.querySelector(
+                "#satori-search-form"
+            );
+
+        const inlineSearch =
+            root.querySelector(
+                "#satori-search-inline"
+            );
+
+        const inlineSearchInput =
+            root.querySelector(
+                "#satori-search-inline-input"
+            );
+
+
+        const cartButton =
+            root.querySelector(
+                "#satori-cart-button"
+            );
+
+        const cartPreview =
+            root.querySelector(
+                "#satori-cart-preview"
+            );
+
+        const cartOverlay =
+            root.querySelector(
+                "#satori-cart-overlay"
+            );
+
+        const cartClose =
+            root.querySelector(
+                "#satori-cart-close"
+            );
+
+        const cartContent =
+            root.querySelector(
+                "#satori-cart-preview-content"
+            );
+
+        const cartSubtotal =
+            root.querySelector(
+                "#satori-cart-preview-subtotal"
+            );
+
+        const cartCount =
+            root.querySelector(
+                "[data-satori-cart-count]"
+            );
+
+
+        const dropdowns =
+            root.querySelectorAll(
+                ".nav-dropdown"
+            );
+
+
+        /* =====================================================
+           BLOQUEO DE SCROLL
+        ====================================================== */
+
+        function lockScroll() {
+
+            document.documentElement.classList.add(
+                "satori-lock-scroll"
+            );
+
+            document.body.classList.add(
+                "satori-lock-scroll"
+            );
+
+        }
+
+
+        function unlockScroll() {
+
+            const mobileIsOpen =
+                mobileMenu?.classList.contains(
+                    "open"
+                );
+
+            const searchIsOpen =
+                searchOverlay?.classList.contains(
+                    "open"
+                );
+
+            const cartIsOpen =
+                cartPreview?.classList.contains(
+                    "open"
+                );
+
+
+            if (
+                !mobileIsOpen &&
+                !searchIsOpen &&
+                !cartIsOpen
+            ) {
+
+                document.documentElement.classList.remove(
+                    "satori-lock-scroll"
+                );
+
+                document.body.classList.remove(
+                    "satori-lock-scroll"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SCROLL HEADER
         ====================================================== */
 
         function updateScrollHeader() {
@@ -2444,17 +2654,1838 @@
                 scrolled
             );
 
+
             if (scrolled) {
 
                 spacer.style.display =
                     "block";
 
                 spacer.style.height =
-                    "64px";
+                    "68px";
 
             } else {
 
                 spacer.style.display =
                     "none";
 
-                spacer.style
+                spacer.style.height =
+                    "0px";
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            updateScrollHeader,
+            {
+                passive:true
+            }
+        );
+
+
+        updateScrollHeader();
+
+
+        /* =====================================================
+           CERRAR DROPDOWNS
+        ====================================================== */
+
+        function closeDropdowns() {
+
+            dropdowns.forEach(
+                function (dropdown) {
+
+                    dropdown.classList.remove(
+                        "open"
+                    );
+
+                    const button =
+                        dropdown.querySelector(
+                            ".nav-dropdown-btn"
+                        );
+
+                    button?.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           MENÚ MÓVIL — CERRAR SUBMENÚS
+        ====================================================== */
+
+        function closeMobileSubmenus() {
+
+            root
+                .querySelectorAll(
+                    ".mobile-submenu.open"
+                )
+                .forEach(
+                    function (submenu) {
+
+                        submenu.classList.remove(
+                            "open"
+                        );
+
+                        const button =
+                            root.querySelector(
+                                '[data-target="' +
+                                submenu.id +
+                                '"]'
+                            );
+
+                        button?.classList.remove(
+                            "active"
+                        );
+
+                        button?.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           MENÚ MÓVIL — ABRIR
+        ====================================================== */
+
+        function openMobileMenu() {
+
+            closeSearch();
+
+            closeCart();
+
+            closeDropdowns();
+
+            if (!mobileMenu)
+                return;
+
+
+            mobileMenu.classList.add(
+                "open"
+            );
+
+            mobileOverlay?.classList.add(
+                "open"
+            );
+
+
+            mobileMenu.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            mobileOverlay?.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            mobileOpen?.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+
+            lockScroll();
+
+        }
+
+
+        /* =====================================================
+           MENÚ MÓVIL — CERRAR
+        ====================================================== */
+
+        function closeMobileMenu() {
+
+            if (!mobileMenu)
+                return;
+
+
+            mobileMenu.classList.remove(
+                "open"
+            );
+
+            mobileOverlay?.classList.remove(
+                "open"
+            );
+
+
+            mobileMenu.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            mobileOverlay?.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            mobileOpen?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            closeMobileSubmenus();
+
+            unlockScroll();
+
+        }
+
+
+        mobileOpen?.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                openMobileMenu();
+
+            }
+        );
+
+
+        mobileClose?.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+
+        mobileOverlay?.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+
+        /* =====================================================
+           SUBMENÚS MÓVILES
+        ====================================================== */
+
+        root
+            .querySelectorAll(
+                ".mobile-nav-button[data-target]"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const targetId =
+                                button.dataset.target;
+
+                            const submenu =
+                                root.querySelector(
+                                    "#" + targetId
+                                );
+
+                            if (!submenu)
+                                return;
+
+
+                            const isOpen =
+                                submenu.classList.contains(
+                                    "open"
+                                );
+
+
+                            closeMobileSubmenus();
+
+
+                            if (!isOpen) {
+
+                                submenu.classList.add(
+                                    "open"
+                                );
+
+                                button.classList.add(
+                                    "active"
+                                );
+
+                                button.setAttribute(
+                                    "aria-expanded",
+                                    "true"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           DROPDOWNS DESKTOP
+        ====================================================== */
+
+        dropdowns.forEach(
+            function (dropdown) {
+
+                const button =
+                    dropdown.querySelector(
+                        ".nav-dropdown-btn"
+                    );
+
+
+                button?.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        const isOpen =
+                            dropdown.classList.contains(
+                                "open"
+                            );
+
+
+                        closeDropdowns();
+
+
+                        if (!isOpen) {
+
+                            dropdown.classList.add(
+                                "open"
+                            );
+
+                            button.setAttribute(
+                                "aria-expanded",
+                                "true"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CLICK FUERA
+        ====================================================== */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    !root.contains(
+                        event.target
+                    )
+                ) {
+
+                    closeDropdowns();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           BUSCADOR — ABRIR
+        ====================================================== */
+
+        function openSearch() {
+
+            closeMobileMenu();
+
+            closeCart();
+
+            closeDropdowns();
+
+
+            if (!searchOverlay)
+                return;
+
+
+            searchOverlay.classList.add(
+                "open"
+            );
+
+
+            searchOverlay.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            searchButton?.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+
+            lockScroll();
+
+
+            window.setTimeout(
+                function () {
+
+                    searchInput?.focus();
+
+                },
+                120
+            );
+
+        }
+
+
+        /* =====================================================
+           BUSCADOR — CERRAR
+        ====================================================== */
+
+        function closeSearch() {
+
+            if (!searchOverlay)
+                return;
+
+
+            searchOverlay.classList.remove(
+                "open"
+            );
+
+
+            searchOverlay.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            searchButton?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            if (inlineSearch) {
+
+                inlineSearch.classList.remove(
+                    "open"
+                );
+
+            }
+
+
+            unlockScroll();
+
+        }
+
+
+        searchButton?.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    searchOverlay?.classList.contains(
+                        "open"
+                    );
+
+
+                if (isOpen) {
+
+                    closeSearch();
+
+                } else {
+
+                    openSearch();
+
+                }
+
+            }
+        );
+
+
+        searchClose?.addEventListener(
+            "click",
+            closeSearch
+        );
+
+
+        searchOverlay?.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target ===
+                    searchOverlay
+                ) {
+
+                    closeSearch();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           BUSCADOR INLINE
+        ====================================================== */
+
+        inlineSearchInput?.addEventListener(
+            "focus",
+            function () {
+
+                inlineSearch?.classList.add(
+                    "open"
+                );
+
+            }
+        );
+
+
+        inlineSearchInput?.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key ===
+                    "Escape"
+                ) {
+
+                    inlineSearchInput.blur();
+
+                    inlineSearch?.classList.remove(
+                        "open"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    event.preventDefault();
+
+
+                    const value =
+                        inlineSearchInput.value
+                            .trim();
+
+
+                    if (!value)
+                        return;
+
+
+                    performSearch(
+                        value
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           BÚSQUEDA
+        ====================================================== */
+
+        function performSearch(
+            value
+        ) {
+
+            const query =
+                String(value || "")
+                    .trim();
+
+
+            if (!query)
+                return;
+
+
+            const url =
+                SATORIMODE_BASE +
+                "productos.html?search=" +
+                encodeURIComponent(
+                    query
+                );
+
+
+            window.location.href =
+                url;
+
+        }
+
+
+        searchForm?.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const value =
+                    searchInput?.value
+                        .trim();
+
+
+                if (!value)
+                    return;
+
+
+                performSearch(
+                    value
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CARRITO
+        ====================================================== */
+
+        function getCart() {
+
+            let cart = [];
+
+
+            try {
+
+                const current =
+                    localStorage.getItem(
+                        CART_STORAGE_KEY
+                    );
+
+                const old =
+                    localStorage.getItem(
+                        OLD_CART_STORAGE_KEY
+                    );
+
+
+                if (current) {
+
+                    cart =
+                        JSON.parse(
+                            current
+                        );
+
+                } else if (old) {
+
+                    cart =
+                        JSON.parse(
+                            old
+                        );
+
+
+                    if (
+                        Array.isArray(
+                            cart
+                        )
+                    ) {
+
+                        localStorage.setItem(
+                            CART_STORAGE_KEY,
+                            JSON.stringify(
+                                cart
+                            )
+                        );
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                console.warn(
+                    "SATORII: no se pudo leer el carrito.",
+                    error
+                );
+
+                cart = [];
+
+            }
+
+
+            if (!Array.isArray(cart)) {
+
+                cart = [];
+
+            }
+
+
+            return cart;
+
+        }
+
+
+        /* =====================================================
+           GUARDAR CARRITO
+        ====================================================== */
+
+        function saveCart(
+            cart
+        ) {
+
+            try {
+
+                localStorage.setItem(
+                    CART_STORAGE_KEY,
+                    JSON.stringify(
+                        cart
+                    )
+                );
+
+
+                window.dispatchEvent(
+                    new CustomEvent(
+                        "satori-cart-updated"
+                    )
+                );
+
+            } catch (error) {
+
+                console.warn(
+                    "SATORII: no se pudo guardar el carrito.",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           FORMATEAR PRECIO
+        ====================================================== */
+
+        function formatPrice(
+            value
+        ) {
+
+            const number =
+                Number(value) || 0;
+
+
+            return "$" +
+                number.toLocaleString(
+                    "es-CL"
+                );
+
+        }
+
+
+        /* =====================================================
+           OBTENER PRODUCTO ACTUAL DEL CATÁLOGO
+           
+           IMPORTANTE:
+           
+           El carrito guarda una copia del producto en
+           localStorage, pero esa copia NO es la fuente
+           oficial del precio.
+
+           La fuente actual es PRODUCTS.
+
+           PRODUCTS se sincroniza desde Supabase.
+        ====================================================== */
+
+        function getCatalogProduct(
+            cartItem
+        ) {
+
+            if (
+                typeof PRODUCTS ===
+                "undefined" ||
+                !Array.isArray(PRODUCTS)
+            ) {
+
+                return null;
+
+            }
+
+
+            const cartId =
+                String(
+                    cartItem?.productId ??
+                    cartItem?.id ??
+                    ""
+                );
+
+
+            if (!cartId) {
+
+                return null;
+
+            }
+
+
+            return (
+                PRODUCTS.find(
+                    function (product) {
+
+                        return String(
+                            product.id
+                        ) === cartId;
+
+                    }
+                ) ||
+                null
+            );
+
+        }
+
+
+        /* =====================================================
+           DATOS ACTUALES DEL PRODUCTO
+        ====================================================== */
+
+        function getCurrentCartItemData(
+            cartItem
+        ) {
+
+            const catalogProduct =
+                getCatalogProduct(
+                    cartItem
+                );
+
+
+            /*
+             * Si PRODUCTS está disponible y encontramos
+             * el producto, usamos SIEMPRE sus datos actuales.
+             */
+
+            if (catalogProduct) {
+
+                return {
+
+                    ...cartItem,
+
+                    id:
+                        catalogProduct.id,
+
+                    productId:
+                        catalogProduct.id,
+
+                    name:
+                        catalogProduct.name ||
+                        cartItem.name ||
+                        "Producto",
+
+                    price:
+                        Number(
+                            catalogProduct.price
+                        ) || 0,
+
+                    image:
+                        catalogProduct.image ||
+                        catalogProduct.images?.[0] ||
+                        cartItem.image ||
+                        "",
+
+                    quantity:
+                        Math.max(
+                            1,
+                            Number(
+                                cartItem.quantity ??
+                                cartItem.cantidad ??
+                                1
+                            ) || 1
+                        )
+
+                };
+
+            }
+
+
+            /*
+             * Si PRODUCTS todavía no está disponible,
+             * utilizamos temporalmente los datos locales.
+             *
+             * Esto evita que el header quede roto durante
+             * la carga inicial.
+             */
+
+            if (
+                typeof PRODUCTS ===
+                "undefined"
+            ) {
+
+                return {
+
+                    ...cartItem,
+
+                    price:
+                        Number(
+                            cartItem.price ??
+                            cartItem.precio ??
+                            0
+                        ) || 0,
+
+                    quantity:
+                        Math.max(
+                            1,
+                            Number(
+                                cartItem.quantity ??
+                                cartItem.cantidad ??
+                                1
+                            ) || 1
+                        )
+
+                };
+
+            }
+
+
+            /*
+             * PRODUCTS ya existe pero el producto no está
+             * disponible en el catálogo.
+             *
+             * NO usamos el precio antiguo.
+             */
+
+            return {
+
+                ...cartItem,
+
+                price:0,
+
+                quantity:
+                    Math.max(
+                        1,
+                        Number(
+                            cartItem.quantity ??
+                            cartItem.cantidad ??
+                            1
+                        ) || 1
+                    )
+
+            };
+
+        }
+
+
+        /* =====================================================
+           OBTENER CARRITO NORMALIZADO
+        ====================================================== */
+
+        function getNormalizedCart() {
+
+            return getCart().map(
+                function (cartItem) {
+
+                    return getCurrentCartItemData(
+                        cartItem
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           CANTIDAD TOTAL
+        ====================================================== */
+
+        function getCartQuantity(
+            cart
+        ) {
+
+            return cart.reduce(
+                function (
+                    total,
+                    item
+                ) {
+
+                    const quantity =
+                        Number(
+                            item.quantity ??
+                            item.cantidad ??
+                            1
+                        );
+
+
+                    return total +
+                        (
+                            Number.isFinite(
+                                quantity
+                            )
+                                ? quantity
+                                : 1
+                        );
+
+                },
+                0
+            );
+
+        }
+
+
+        /* =====================================================
+           SUBTOTAL
+
+           IMPORTANTE:
+           Se calcula con el precio ACTUAL de PRODUCTS.
+        ====================================================== */
+
+        function getCartSubtotal(
+            cart
+        ) {
+
+            return cart.reduce(
+                function (
+                    total,
+                    item
+                ) {
+
+                    const currentItem =
+                        getCurrentCartItemData(
+                            item
+                        );
+
+
+                    const price =
+                        Number(
+                            currentItem.price
+                        ) || 0;
+
+
+                    const quantity =
+                        Number(
+                            currentItem.quantity
+                        ) || 1;
+
+
+                    return total +
+                        (
+                            price *
+                            quantity
+                        );
+
+                },
+                0
+            );
+
+        }
+
+
+        /* =====================================================
+           ACTUALIZAR CONTADOR
+        ====================================================== */
+
+        function updateCartCount() {
+
+            const cart =
+                getCart();
+
+
+            const quantity =
+                getCartQuantity(
+                    cart
+                );
+
+
+            if (!cartCount)
+                return;
+
+
+            if (quantity > 0) {
+
+                cartCount.textContent =
+                    quantity;
+
+                cartCount.style.display =
+                    "flex";
+
+            } else {
+
+                cartCount.textContent =
+                    "0";
+
+                cartCount.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ESCAPAR HTML
+        ====================================================== */
+
+        function escapeHtml(
+            value
+        ) {
+
+            return String(
+                value ?? ""
+            )
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        /* =====================================================
+           RENDER CARRITO
+        ====================================================== */
+
+        function renderCart() {
+
+            if (!cartContent)
+                return;
+
+
+            const rawCart =
+                getCart();
+
+
+            const cart =
+                getNormalizedCart();
+
+
+            if (!cart.length) {
+
+                cartContent.innerHTML = `
+
+                    <div class="cart-preview-empty">
+
+                        <div class="cart-preview-empty-label">
+                            SATORII · SHOP
+                        </div>
+
+                        <h3>
+                            TU CARRITO ESTÁ VACÍO
+                        </h3>
+
+                        <p>
+                            Aún no tienes productos
+                            agregados a tu carrito.
+                        </p>
+
+                        <a
+                            href="${SATORIMODE_BASE}productos.html"
+                        >
+                            EXPLORAR PRODUCTOS
+                        </a>
+
+                    </div>
+
+                `;
+
+            } else {
+
+                cartContent.innerHTML =
+                    cart.map(
+                        function (
+                            item,
+                            index
+                        ) {
+
+                            const catalogProduct =
+                                getCatalogProduct(
+                                    rawCart[index]
+                                );
+
+
+                            const name =
+                                catalogProduct?.name ||
+                                item.name ||
+                                item.nombre ||
+                                "Producto";
+
+
+                            const image =
+                                catalogProduct?.image ||
+                                catalogProduct?.images?.[0] ||
+                                item.image ||
+                                item.imagen ||
+                                "";
+
+
+                            /*
+                             * PRECIO ACTUAL
+                             *
+                             * Si encontramos el producto
+                             * en PRODUCTS, usamos ese precio.
+                             */
+
+                            const price =
+                                Number(
+                                    item.price
+                                ) || 0;
+
+
+                            const quantity =
+                                Number(
+                                    item.quantity ??
+                                    item.cantidad ??
+                                    1
+                                ) || 1;
+
+
+                            const size =
+                                item.size ||
+                                item.talla ||
+                                "";
+
+
+                            const color =
+                                item.color ||
+                                "";
+
+
+                            let options = "";
+
+
+                            if (
+                                size ||
+                                color
+                            ) {
+
+                                options = `
+
+                                    <div
+                                        class="cart-preview-options"
+                                    >
+
+                                        ${
+                                            size
+                                                ? `Talla: ${escapeHtml(size)}`
+                                                : ""
+                                        }
+
+                                        ${
+                                            size && color
+                                                ? " · "
+                                                : ""
+                                        }
+
+                                        ${
+                                            color
+                                                ? `Color: ${escapeHtml(color)}`
+                                                : ""
+                                        }
+
+                                    </div>
+
+                                `;
+
+                            }
+
+
+                            return `
+
+                                <div
+                                    class="cart-preview-item"
+                                    data-cart-index="${index}"
+                                >
+
+                                    <div
+                                        class="cart-preview-image"
+                                    >
+
+                                        ${
+                                            image
+                                                ?
+                                                `
+                                                    <img
+                                                        src="${escapeHtml(image)}"
+                                                        alt="${escapeHtml(name)}"
+                                                        loading="lazy"
+                                                    >
+                                                `
+                                                :
+                                                ""
+                                        }
+
+                                    </div>
+
+
+                                    <div
+                                        class="cart-preview-info"
+                                    >
+
+                                        <h3
+                                            class="cart-preview-name"
+                                        >
+                                            ${escapeHtml(name)}
+                                        </h3>
+
+
+                                        ${options}
+
+
+                                        <div
+                                            class="cart-preview-price"
+                                        >
+                                            ${formatPrice(price)}
+                                        </div>
+
+
+                                        <div
+                                            class="cart-preview-controls"
+                                        >
+
+                                            <div
+                                                class="cart-preview-quantity"
+                                            >
+
+                                                <button
+                                                    type="button"
+                                                    data-cart-action="minus"
+                                                    data-cart-index="${index}"
+                                                    aria-label="Disminuir cantidad"
+                                                >
+                                                    −
+                                                </button>
+
+
+                                                <span>
+                                                    ${quantity}
+                                                </span>
+
+
+                                                <button
+                                                    type="button"
+                                                    data-cart-action="plus"
+                                                    data-cart-index="${index}"
+                                                    aria-label="Aumentar cantidad"
+                                                >
+                                                    +
+                                                </button>
+
+                                            </div>
+
+
+                                            <button
+                                                type="button"
+                                                class="cart-preview-remove"
+                                                data-cart-action="remove"
+                                                data-cart-index="${index}"
+                                            >
+                                                ELIMINAR
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    ).join("");
+
+            }
+
+
+            const subtotal =
+                getCartSubtotal(
+                    cart
+                );
+
+
+            if (cartSubtotal) {
+
+                cartSubtotal.textContent =
+                    formatPrice(
+                        subtotal
+                    );
+
+            }
+
+
+            updateCartCount();
+
+        }
+
+
+        /* =====================================================
+           CARRITO — ABRIR
+        ====================================================== */
+
+        function openCart() {
+
+            closeMobileMenu();
+
+            closeSearch();
+
+            closeDropdowns();
+
+
+            renderCart();
+
+
+            cartPreview?.classList.add(
+                "open"
+            );
+
+            cartOverlay?.classList.add(
+                "open"
+            );
+
+
+            cartPreview?.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            cartOverlay?.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            cartButton?.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+
+            lockScroll();
+
+        }
+
+
+        /* =====================================================
+           CARRITO — CERRAR
+        ====================================================== */
+
+        function closeCart() {
+
+            cartPreview?.classList.remove(
+                "open"
+            );
+
+            cartOverlay?.classList.remove(
+                "open"
+            );
+
+
+            cartPreview?.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            cartOverlay?.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            cartButton?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            unlockScroll();
+
+        }
+
+
+        cartButton?.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    cartPreview?.classList.contains(
+                        "open"
+                    );
+
+
+                if (isOpen) {
+
+                    closeCart();
+
+                } else {
+
+                    openCart();
+
+                }
+
+            }
+        );
+
+
+        cartClose?.addEventListener(
+            "click",
+            closeCart
+        );
+
+
+        cartOverlay?.addEventListener(
+            "click",
+            closeCart
+        );
+
+
+        /* =====================================================
+           CONTROLES CARRITO
+        ====================================================== */
+
+        cartContent?.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(
+                        "[data-cart-action]"
+                    );
+
+
+                if (!button)
+                    return;
+
+
+                const index =
+                    Number(
+                        button.dataset.cartIndex
+                    );
+
+
+                if (
+                    !Number.isInteger(
+                        index
+                    )
+                )
+                    return;
+
+
+                const action =
+                    button.dataset.cartAction;
+
+
+                const cart =
+                    getCart();
+
+
+                if (!cart[index])
+                    return;
+
+
+                const currentQuantity =
+                    Number(
+                        cart[index].quantity ??
+                        cart[index].cantidad ??
+                        1
+                    ) || 1;
+
+
+                if (
+                    action ===
+                    "plus"
+                ) {
+
+                    cart[index].quantity =
+                        currentQuantity + 1;
+
+                }
+
+
+                if (
+                    action ===
+                    "minus"
+                ) {
+
+                    if (
+                        currentQuantity <= 1
+                    ) {
+
+                        cart.splice(
+                            index,
+                            1
+                        );
+
+                    } else {
+
+                        cart[index].quantity =
+                            currentQuantity - 1;
+
+                    }
+
+                }
+
+
+                if (
+                    action ===
+                    "remove"
+                ) {
+
+                    cart.splice(
+                        index,
+                        1
+                    );
+
+                }
+
+
+                saveCart(
+                    cart
+                );
+
+
+                renderCart();
+
+            }
+        );
+
+
+        /* =====================================================
+           STORAGE
+        ====================================================== */
+
+        window.addEventListener(
+            "storage",
+            function (event) {
+
+                if (
+                    event.key ===
+                        CART_STORAGE_KEY ||
+                    event.key ===
+                        OLD_CART_STORAGE_KEY
+                ) {
+
+                    updateCartCount();
+
+
+                    if (
+                        cartPreview?.classList.contains(
+                            "open"
+                        )
+                    ) {
+
+                        renderCart();
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           EVENTO PERSONALIZADO DEL CARRITO
+        ====================================================== */
+
+        window.addEventListener(
+            "satori-cart-updated",
+            function () {
+
+                updateCartCount();
+
+
+                if (
+                    cartPreview?.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    renderCart();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           EVENTO DE ACTUALIZACIÓN DE PRODUCTOS
+
+           Este evento lo dispara products.js cuando
+           termina de sincronizar PRODUCTS con Supabase.
+
+           Por lo tanto, si el precio cambia en Supabase,
+           el carrito del header se vuelve a renderizar.
+        ====================================================== */
+
+        window.addEventListener(
+            "satorii:products-updated",
+            function () {
+
+                updateCartCount();
+
+                renderCart();
+
+            }
+        );
+
+
+        /* =====================================================
+           ESC
+        ====================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key !==
+                    "Escape"
+                )
+                    return;
+
+
+                closeMobileMenu();
+
+                closeSearch();
+
+                closeCart();
+
+                closeDropdowns();
+
+            }
+        );
+
+
+        /* =====================================================
+           REDIMENSIONAMIENTO
+        ====================================================== */
+
+        let resizeTimer;
+
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                clearTimeout(
+                    resizeTimer
+                );
+
+
+                resizeTimer =
+                    setTimeout(
+                        function () {
+
+                            if (
+                                window.innerWidth >
+                                1000
+                            ) {
+
+                                closeMobileMenu();
+
+                            }
+
+                        },
+                        100
+                    );
+
+            }
+        );
+
+
+        /* =====================================================
+           ENLACES DEL MENÚ MÓVIL
+        ====================================================== */
+
+        root
+            .querySelectorAll(
+                ".mobile-nav a"
+            )
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            closeMobileMenu();
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           ENLACES DEL CARRITO
+        ====================================================== */
+
+        root
+            .querySelectorAll(
+                ".cart-preview a"
+            )
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            closeCart();
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           ESTADO INICIAL
+        ====================================================== */
+
+        updateCartCount();
+
+        renderCart();
+
+    }
+
+
+    /* =====================================================
+       INICIALIZACIÓN DOM
+    ====================================================== */
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initSatoriiHeader
+        );
+
+    } else {
+
+        initSatoriiHeader();
+
+    }
+
+
+})();
