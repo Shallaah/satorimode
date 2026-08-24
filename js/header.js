@@ -229,12 +229,8 @@
                                 Anime
                             </a>
 
-                            <a href="${SATORIMODE_BASE}torii.html">
-                                Torii
-                            </a>
-
-                            <a href="${SATORIMODE_BASE}anime-goods.html">
-                                Anime Goods
+                            <a href="${SATORIMODE_BASE}yokai.html">
+                                Yokai
                             </a>
 
                             <a href="${SATORIMODE_BASE}productos.html">
@@ -574,12 +570,8 @@
                         Anime
                     </a>
 
-                    <a href="${SATORIMODE_BASE}torii.html">
-                        Torii
-                    </a>
-
-                    <a href="${SATORIMODE_BASE}anime-goods.html">
-                        Anime Goods
+                    <a href="${SATORIMODE_BASE}yokai.html">
+                        Yokai
                     </a>
 
                     <a href="${SATORIMODE_BASE}productos.html">
@@ -1136,11 +1128,11 @@
                 sans-serif;
             font-weight:800;
             font-style:italic;
-            letter-spacing:-1.8px;
+            letter-spacing:-0.8px;
             text-transform:uppercase;
             color:#fff;
             text-decoration:none;
-            line-height:.88;
+            line-height:.95;
             white-space:nowrap;
             transform:skewX(-3deg);
             transition:
@@ -3389,6 +3381,184 @@
 
 
         /* =====================================================
+           OBTENER PRODUCTO ACTUAL DEL CATÁLOGO
+        ====================================================== */
+
+        function getCatalogProduct(
+            cartItem
+        ) {
+
+            if (
+                typeof PRODUCTS ===
+                "undefined" ||
+                !Array.isArray(PRODUCTS)
+            ) {
+
+                return null;
+
+            }
+
+
+            const cartId =
+                String(
+                    cartItem?.productId ??
+                    cartItem?.id ??
+                    ""
+                );
+
+
+            if (!cartId) {
+
+                return null;
+
+            }
+
+
+            return (
+                PRODUCTS.find(
+                    function (product) {
+
+                        return String(
+                            product.id
+                        ) === cartId;
+
+                    }
+                ) ||
+                null
+            );
+
+        }
+
+
+        /* =====================================================
+           DATOS ACTUALES DEL PRODUCTO
+        ====================================================== */
+
+        function getCurrentCartItemData(
+            cartItem
+        ) {
+
+            const catalogProduct =
+                getCatalogProduct(
+                    cartItem
+                );
+
+
+            if (catalogProduct) {
+
+                return {
+
+                    ...cartItem,
+
+                    id:
+                        catalogProduct.id,
+
+                    productId:
+                        catalogProduct.id,
+
+                    name:
+                        catalogProduct.name ||
+                        cartItem.name ||
+                        "Producto",
+
+                    price:
+                        Number(
+                            catalogProduct.price
+                        ) || 0,
+
+                    image:
+                        catalogProduct.image ||
+                        catalogProduct.images?.[0] ||
+                        cartItem.image ||
+                        "",
+
+                    quantity:
+                        Math.max(
+                            1,
+                            Number(
+                                cartItem.quantity ??
+                                cartItem.cantidad ??
+                                1
+                            ) || 1
+                        )
+
+                };
+
+            }
+
+
+            if (
+                typeof PRODUCTS ===
+                "undefined"
+            ) {
+
+                return {
+
+                    ...cartItem,
+
+                    price:
+                        Number(
+                            cartItem.price ??
+                            cartItem.precio ??
+                            0
+                        ) || 0,
+
+                    quantity:
+                        Math.max(
+                            1,
+                            Number(
+                                cartItem.quantity ??
+                                cartItem.cantidad ??
+                                1
+                            ) || 1
+                        )
+
+                };
+
+            }
+
+
+            return {
+
+                ...cartItem,
+
+                price:0,
+
+                quantity:
+                    Math.max(
+                        1,
+                        Number(
+                            cartItem.quantity ??
+                            cartItem.cantidad ??
+                            1
+                        ) || 1
+                    )
+
+            };
+
+        }
+
+
+        /* =====================================================
+           OBTENER CARRITO NORMALIZADO
+        ====================================================== */
+
+        function getNormalizedCart() {
+
+            return getCart().map(
+                function (cartItem) {
+
+                    return getCurrentCartItemData(
+                        cartItem
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
            CANTIDAD TOTAL
         ====================================================== */
 
@@ -3440,19 +3610,21 @@
                     item
                 ) {
 
+                    const currentItem =
+                        getCurrentCartItemData(
+                            item
+                        );
+
+
                     const price =
                         Number(
-                            item.price ??
-                            item.precio ??
-                            0
+                            currentItem.price
                         ) || 0;
 
 
                     const quantity =
                         Number(
-                            item.quantity ??
-                            item.cantidad ??
-                            1
+                            currentItem.quantity
                         ) || 1;
 
 
@@ -3555,8 +3727,12 @@
                 return;
 
 
-            const cart =
+            const rawCart =
                 getCart();
+
+
+            const cart =
+                getNormalizedCart();
 
 
             if (!cart.length) {
@@ -3597,13 +3773,22 @@
                             index
                         ) {
 
+                            const catalogProduct =
+                                getCatalogProduct(
+                                    rawCart[index]
+                                );
+
+
                             const name =
+                                catalogProduct?.name ||
                                 item.name ||
                                 item.nombre ||
                                 "Producto";
 
 
                             const image =
+                                catalogProduct?.image ||
+                                catalogProduct?.images?.[0] ||
                                 item.image ||
                                 item.imagen ||
                                 "";
@@ -3611,9 +3796,7 @@
 
                             const price =
                                 Number(
-                                    item.price ??
-                                    item.precio ??
-                                    0
+                                    item.price
                                 ) || 0;
 
 
@@ -4067,7 +4250,7 @@
 
 
         /* =====================================================
-           EVENTO PERSONALIZADO
+           EVENTO PERSONALIZADO DEL CARRITO
         ====================================================== */
 
         window.addEventListener(
@@ -4086,6 +4269,22 @@
                     renderCart();
 
                 }
+
+            }
+        );
+
+
+        /* =====================================================
+           EVENTO DE ACTUALIZACIÓN DE PRODUCTOS
+        ====================================================== */
+
+        window.addEventListener(
+            "satorii:products-updated",
+            function () {
+
+                updateCartCount();
+
+                renderCart();
 
             }
         );
