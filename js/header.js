@@ -4255,6 +4255,8 @@
 
         window.addEventListener(
             "satori-cart-updated",
+
+        
             function () {
 
                 updateCartCount();
@@ -4273,6 +4275,22 @@
             }
         );
 
+        document.addEventListener(
+    "satorii:cart-updated",
+    function () {
+
+        updateCartCount();
+
+        if (
+            cartPreview?.classList.contains(
+                "open"
+            )
+        ) {
+            renderCart();
+        }
+
+    }
+);
 
         /* =====================================================
            EVENTO DE ACTUALIZACIÓN DE PRODUCTOS
