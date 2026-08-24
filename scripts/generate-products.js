@@ -1,23 +1,6 @@
 /* =========================================================
    SATORII · GENERADOR DE PÁGINAS DE PRODUCTOS
-   =========================================================
-
-   Este script:
-
-   1. Lee js/products.js
-   2. Obtiene el catálogo PRODUCTS
-   3. Valida los productos
-   4. Utiliza una página existente como plantilla visual
-   5. Genera las páginas individuales
-   6. Mantiene header, footer, carrito y scripts globales
-   7. Adapta automáticamente las rutas según profundidad
-   8. Genera galerías, colores, tallas y productos relacionados
-
-   Ejecutar:
-
-       npm run generate-products
-
-   ========================================================= */
+========================================================= */
 
 "use strict";
 
@@ -81,10 +64,6 @@ const SITE_RED =
    UTILIDADES
 ========================================================= */
 
-
-/**
- * Escapa texto para HTML.
- */
 function escapeHTML(value) {
 
     return String(
@@ -114,24 +93,6 @@ function escapeHTML(value) {
 }
 
 
-/**
- * Escapa texto para utilizarlo
- * dentro de una expresión regular.
- */
-function escapeRegExp(value) {
-
-    return String(value)
-        .replace(
-            /[.*+?^${}()|[\]\\]/g,
-            "\\$&"
-        );
-
-}
-
-
-/**
- * Convierte un valor a slug.
- */
 function slugify(value) {
 
     return String(
@@ -155,19 +116,13 @@ function slugify(value) {
 }
 
 
-/**
- * Formatea precios CLP.
- */
-function formatPrice(
-    value
-) {
-
-    const price =
-        Number(value) || 0;
+function formatPrice(value) {
 
     return (
         "$" +
-        price.toLocaleString(
+        (
+            Number(value) || 0
+        ).toLocaleString(
             "es-CL"
         )
     );
@@ -175,132 +130,22 @@ function formatPrice(
 }
 
 
-/**
- * Convierte categoría a texto visual.
- */
-function displayCategory(
-    product
-) {
+function displayCategory(product) {
 
     return String(
         product.collection ||
         product.category ||
         "SATORII"
-    )
-        .toUpperCase();
+    ).toUpperCase();
 
 }
 
 
-/**
- * Obtiene la profundidad de una URL.
- */
-function getUrlDepth(
-    productUrl
-) {
+/* =========================================================
+   RUTAS
+========================================================= */
 
-    const normalized =
-        String(productUrl)
-            .replace(
-                /^\/+/,
-                ""
-            )
-            .replace(
-                /\/+$/,
-                ""
-            );
-
-    const directory =
-        path.posix.dirname(
-            normalized
-        );
-
-    if (
-        !directory ||
-        directory === "."
-    ) {
-
-        return 0;
-
-    }
-
-    return directory
-        .split("/")
-        .filter(Boolean)
-        .length;
-
-}
-
-
-/**
- * Genera una ruta relativa desde
- * la carpeta de la página hacia la raíz.
- */
-function getRootPrefix(
-    productUrl
-) {
-
-    const depth =
-        getUrlDepth(
-            productUrl
-        );
-
-    if (depth <= 0) {
-
-        return "./";
-
-    }
-
-    return "../".repeat(
-        depth
-    );
-
-}
-
-
-/**
- * Convierte una ruta de imagen
- * del catálogo en una ruta relativa
- * desde la página del producto.
- */
-function imagePathForPage(
-    imagePath,
-    productUrl
-) {
-
-    if (!imagePath) {
-
-        return "";
-
-    }
-
-    const cleanImage =
-        String(imagePath)
-            .replace(
-                /^\/+/,
-                ""
-            );
-
-    const rootPrefix =
-        getRootPrefix(
-            productUrl
-        );
-
-    return (
-        rootPrefix +
-        cleanImage
-    );
-
-}
-
-
-/**
- * Convierte la URL de producto
- * en una ruta física.
- */
-function getOutputPath(
-    product
-) {
+function normalizeProductUrl(product) {
 
     let url =
         String(
@@ -316,6 +161,7 @@ function getOutputPath(
                 "/"
             );
 
+
     if (!url) {
 
         const category =
@@ -324,24 +170,75 @@ function getOutputPath(
                 "productos"
             );
 
+
         const id =
             slugify(
                 product.id ||
                 product.name
             );
 
+
         url =
             `productos/${category}/${id}.html`;
 
     }
 
+
     if (
-        !url.endsWith(".html")
+        !url.toLowerCase().endsWith(
+            ".html"
+        )
     ) {
 
         url += ".html";
 
     }
+
+
+    return url;
+
+}
+
+
+function getRootPrefix(productUrl) {
+
+    const directory =
+        path.posix.dirname(
+            productUrl
+        );
+
+
+    if (
+        !directory ||
+        directory === "."
+    ) {
+
+        return "./";
+
+    }
+
+
+    const depth =
+        directory
+            .split("/")
+            .filter(Boolean)
+            .length;
+
+
+    return "../".repeat(
+        depth
+    );
+
+}
+
+
+function getOutputPath(product) {
+
+    const url =
+        normalizeProductUrl(
+            product
+        );
+
 
     return path.join(
         ROOT_DIR,
@@ -351,15 +248,57 @@ function getOutputPath(
 }
 
 
+function getRelativeProductUrl(
+    currentUrl,
+    targetUrl
+) {
+
+    return path.posix.relative(
+        path.posix.dirname(
+            currentUrl
+        ),
+        normalizeProductUrl({
+            url: targetUrl
+        })
+    );
+
+}
+
+
+function imagePathForPage(
+    image,
+    productUrl
+) {
+
+    if (!image) {
+
+        return "";
+
+    }
+
+
+    const clean =
+        String(image)
+            .replace(
+                /^\/+/,
+                ""
+            );
+
+
+    return (
+        getRootPrefix(
+            productUrl
+        ) +
+        clean
+    );
+
+}
+
+
 /* =========================================================
    CARGAR PRODUCTS
 ========================================================= */
 
-
-/**
- * Lee js/products.js y obtiene
- * exclusivamente const PRODUCTS.
- */
 function loadProducts() {
 
     if (
@@ -369,7 +308,7 @@ function loadProducts() {
     ) {
 
         throw new Error(
-            `No existe ${PRODUCTS_JS}`
+            `No existe: ${PRODUCTS_JS}`
         );
 
     }
@@ -382,16 +321,22 @@ function loadProducts() {
         );
 
 
+    const marker =
+        "const PRODUCTS =";
+
+
     const start =
         source.indexOf(
-            "const PRODUCTS ="
+            marker
         );
 
 
-    if (start === -1) {
+    if (
+        start === -1
+    ) {
 
         throw new Error(
-            "No se encontró 'const PRODUCTS =' en js/products.js"
+            "No se encontró 'const PRODUCTS =' en products.js."
         );
 
     }
@@ -404,10 +349,12 @@ function loadProducts() {
         );
 
 
-    if (arrayStart === -1) {
+    if (
+        arrayStart === -1
+    ) {
 
         throw new Error(
-            "No se encontró el inicio del catálogo PRODUCTS."
+            "No se encontró el array PRODUCTS."
         );
 
     }
@@ -484,11 +431,14 @@ function loadProducts() {
             depth++;
 
         }
+
+
         else if (
             char === "]"
         ) {
 
             depth--;
+
 
             if (
                 depth === 0
@@ -523,12 +473,9 @@ function loadProducts() {
         );
 
 
-    let products;
-
-
     try {
 
-        products =
+        const products =
             vm.runInNewContext(
                 "(" +
                 arraySource +
@@ -536,29 +483,31 @@ function loadProducts() {
                 {}
             );
 
+
+        if (
+            !Array.isArray(
+                products
+            )
+        ) {
+
+            throw new Error(
+                "PRODUCTS no es un array."
+            );
+
+        }
+
+
+        return products;
+
     }
     catch (error) {
 
         throw new Error(
-            "No se pudo interpretar PRODUCTS desde js/products.js.\n" +
+            "Error leyendo PRODUCTS:\n" +
             error.message
         );
 
     }
-
-
-    if (
-        !Array.isArray(products)
-    ) {
-
-        throw new Error(
-            "PRODUCTS no contiene un array válido."
-        );
-
-    }
-
-
-    return products;
 
 }
 
@@ -587,7 +536,7 @@ function validateProducts(
             ) {
 
                 throw new Error(
-                    `Producto inválido en posición ${index}.`
+                    `Producto inválido #${index + 1}.`
                 );
 
             }
@@ -596,7 +545,7 @@ function validateProducts(
             if (!product.id) {
 
                 throw new Error(
-                    `El producto #${index + 1} no tiene id.`
+                    `Producto #${index + 1} sin id.`
                 );
 
             }
@@ -604,7 +553,9 @@ function validateProducts(
 
             if (
                 ids.has(
-                    String(product.id)
+                    String(
+                        product.id
+                    )
                 )
             ) {
 
@@ -616,14 +567,16 @@ function validateProducts(
 
 
             ids.add(
-                String(product.id)
+                String(
+                    product.id
+                )
             );
 
 
             if (!product.name) {
 
                 throw new Error(
-                    `El producto ${product.id} no tiene name.`
+                    `Producto ${product.id} sin name.`
                 );
 
             }
@@ -635,7 +588,7 @@ function validateProducts(
             ) {
 
                 throw new Error(
-                    `El producto ${product.id} no tiene price.`
+                    `Producto ${product.id} sin price.`
                 );
 
             }
@@ -644,18 +597,7 @@ function validateProducts(
             if (!product.image) {
 
                 throw new Error(
-                    `El producto ${product.id} no tiene image.`
-                );
-
-            }
-
-
-            if (
-                !product.url
-            ) {
-
-                console.warn(
-                    `⚠ ${product.id} no tiene url. Se generará automáticamente.`
+                    `Producto ${product.id} sin image.`
                 );
 
             }
@@ -670,58 +612,28 @@ function validateProducts(
    PLANTILLA
 ========================================================= */
 
-
-/**
- * Busca una página existente
- * que pueda utilizarse como plantilla.
- */
 function findTemplate() {
 
     const candidates = [
+
         TEMPLATE_FILE,
+
         DEFAULT_TEMPLATE
+
     ];
 
 
     for (
-        const candidate of candidates
+        const file of candidates
     ) {
 
         if (
             fs.existsSync(
-                candidate
+                file
             )
         ) {
 
-            return candidate;
-
-        }
-
-    }
-
-
-    /*
-     * Buscar cualquier HTML dentro
-     * de productos.
-     */
-
-    if (
-        fs.existsSync(
-            PRODUCTS_DIR
-        )
-    ) {
-
-        const files =
-            findHTMLFiles(
-                PRODUCTS_DIR
-            );
-
-
-        if (
-            files.length
-        ) {
-
-            return files[0];
+            return file;
 
         }
 
@@ -729,91 +641,13 @@ function findTemplate() {
 
 
     throw new Error(
-        "No se encontró ninguna página HTML para utilizar como plantilla."
+        "No se encontró una plantilla de producto."
     );
 
 }
 
 
-/**
- * Busca HTML recursivamente.
- */
-function findHTMLFiles(
-    directory
-) {
-
-    const result = [];
-
-
-    if (
-        !fs.existsSync(
-            directory
-        )
-    ) {
-
-        return result;
-
-    }
-
-
-    for (
-        const entry of
-        fs.readdirSync(
-            directory,
-            {
-                withFileTypes: true
-            }
-        )
-    ) {
-
-        const fullPath =
-            path.join(
-                directory,
-                entry.name
-            );
-
-
-        if (
-            entry.isDirectory()
-        ) {
-
-            result.push(
-                ...findHTMLFiles(
-                    fullPath
-                )
-            );
-
-            continue;
-
-        }
-
-
-        if (
-            entry.isFile() &&
-            entry.name
-                .toLowerCase()
-                .endsWith(".html")
-        ) {
-
-            result.push(
-                fullPath
-            );
-
-        }
-
-    }
-
-
-    return result;
-
-}
-
-
-/**
- * Extrae todos los bloques <style>
- * de la plantilla.
- */
-function extractStyles(
+function extractTemplateStyles(
     template
 ) {
 
@@ -824,62 +658,137 @@ function extractStyles(
 
 
     if (
-        !matches ||
-        !matches.length
+        !matches
     ) {
 
-        throw new Error(
-            "La plantilla no contiene bloques <style>."
-        );
+        return "";
 
     }
 
 
     return matches.join(
-        "\n\n"
-    );
-
-}
-
-
-/**
- * Extrae los scripts globales
- * desde SUPABASE hasta el final.
- */
-function extractScripts(
-    template
-) {
-
-    const marker =
-        "<!-- SUPABASE -->";
-
-
-    const index =
-        template.indexOf(
-            marker
-        );
-
-
-    if (
-        index === -1
-    ) {
-
-        throw new Error(
-            "No se encontró la sección de scripts globales en la plantilla."
-        );
-
-    }
-
-
-    return template.slice(
-        index
+        "\n"
     );
 
 }
 
 
 /* =========================================================
-   HTML · GALERÍA
+   SCRIPTS GLOBALES
+========================================================= */
+
+function buildGlobalScripts(
+    productUrl,
+    template
+) {
+
+    const root =
+        getRootPrefix(
+            productUrl
+        );
+
+
+    /*
+     * Los scripts que TODAS las páginas
+     * individuales necesitan.
+     */
+
+    const scripts = [
+
+        "main.js",
+
+        "header.js",
+
+        "footer.js",
+
+        "cart.js",
+
+        "animations.js"
+
+    ];
+
+
+    const result = [];
+
+
+    scripts.forEach(
+        function (
+            script
+        ) {
+
+            result.push(
+
+                `<script src="${escapeHTML(
+                    root +
+                    "js/" +
+                    script
+                )}" defer></script>`
+
+            );
+
+        }
+    );
+
+
+    /*
+     * Si la plantilla tiene scripts inline
+     * específicos del producto, conservarlos.
+     *
+     * No copiamos scripts externos de la
+     * plantilla para evitar rutas rotas.
+     */
+
+    const inlineScripts =
+        template.match(
+            /<script(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>/gi
+        );
+
+
+    if (
+        inlineScripts
+    ) {
+
+        inlineScripts.forEach(
+            function (
+                script
+            ) {
+
+                if (
+                    script.includes(
+                        "SUPABASE"
+                    ) ||
+                    script.includes(
+                        "satoriQuantity"
+                    ) ||
+                    script.includes(
+                        "satoriMainImage"
+                    ) ||
+                    script.includes(
+                        "satori-tab"
+                    )
+                ) {
+
+                    result.push(
+                        script
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    return result.join(
+        "\n\n"
+    );
+
+}
+
+
+/* =========================================================
+   GALERÍA
 ========================================================= */
 
 function buildGallery(
@@ -898,155 +807,95 @@ function buildGallery(
             ];
 
 
+    const mainImage =
+        imagePathForPage(
+            images[0],
+            productUrl
+        );
+
+
     return `
 
-        <div class="satori-main-image">
+<div class="satori-main-image">
 
-            <img
-                id="satoriMainImage"
-                src="${escapeHTML(
+    <img
+        id="satoriMainImage"
+        src="${escapeHTML(
+            mainImage
+        )}"
+        alt="${escapeHTML(
+            product.name
+        )}"
+    >
+
+</div>
+
+
+<div class="satori-thumbnails">
+
+    ${images
+        .map(
+            function (
+                image,
+                index
+            ) {
+
+                const src =
                     imagePathForPage(
-                        images[0],
-                        productUrl
-                    )
-                )}"
-                alt="${escapeHTML(
-                    product.name
-                )}"
-            >
-
-        </div>
-
-
-        <div class="satori-thumbnails">
-
-            ${images
-                .map(
-                    function (
                         image,
-                        index
-                    ) {
-
-                        const src =
-                            imagePathForPage(
-                                image,
-                                productUrl
-                            );
+                        productUrl
+                    );
 
 
-                        return `
+                return `
 
-                <button
-                    type="button"
-                    class="satori-thumbnail ${
-                        index === 0
-                            ? "active"
-                            : ""
-                    }"
-                    data-image="${escapeHTML(
-                        src
-                    )}"
-                    aria-label="Imagen ${
-                        index + 1
-                    }"
-                >
+<button
+    type="button"
+    class="satori-thumbnail ${
+        index === 0
+            ? "active"
+            : ""
+    }"
+    data-image="${escapeHTML(
+        src
+    )}"
+    aria-label="Imagen ${
+        index + 1
+    }"
+>
 
-                    <img
-                        src="${escapeHTML(
-                            src
-                        )}"
-                        alt="${escapeHTML(
-                            product.name
-                        )}"
-                        loading="${
-                            index === 0
-                                ? "eager"
-                                : "lazy"
-                        }"
-                    >
+    <img
+        src="${escapeHTML(
+            src
+        )}"
+        alt="${escapeHTML(
+            product.name
+        )}"
+        loading="${
+            index === 0
+                ? "eager"
+                : "lazy"
+        }"
+    >
 
-                </button>
+</button>
 
-                        `;
+                `;
 
-                    }
-                )
-                .join(
-                    "\n"
-                )}
+            }
+        )
+        .join("\n")}
 
-        </div>
+</div>
 
-    `;
+`;
 
 }
 
 
 /* =========================================================
-   HTML · COLORES
+   COLORES
 ========================================================= */
-
-function colorClass(
-    color
-) {
-
-    const normalized =
-        slugify(
-            color
-        );
-
-
-    const known = [
-        "black",
-        "negro",
-        "white",
-        "blanco",
-        "red",
-        "rojo",
-        "blue",
-        "azul",
-        "green",
-        "verde",
-        "yellow",
-        "amarillo"
-    ];
-
-
-    if (
-        known.includes(
-            normalized
-        )
-    ) {
-
-        const map = {
-
-            negro: "black",
-            blanco: "white",
-            rojo: "red",
-            azul: "blue",
-            verde: "green",
-            amarillo: "yellow"
-
-        };
-
-
-        return (
-            "color-" +
-            (
-                map[
-                    normalized
-                ] ||
-                normalized
-            )
-        );
-
-    }
-
-
-    return "";
-
-}
-
 
 function buildColors(
     product
@@ -1071,80 +920,69 @@ function buildColors(
 
     return `
 
-        <section class="satori-option">
+<section class="satori-option">
 
-            <div class="satori-option-header">
+    <div class="satori-option-header">
 
-                <span>
-                    COLOR
-                </span>
+        <span>
+            COLOR
+        </span>
 
-            </div>
-
-
-            <div class="satori-color-options">
-
-                ${colors
-                    .map(
-                        function (
-                            color,
-                            index
-                        ) {
-
-                            const dotClass =
-                                colorClass(
-                                    color
-                                );
+    </div>
 
 
-                            return `
+    <div class="satori-color-options">
 
-                    <button
-                        type="button"
-                        class="satori-color-button ${
-                            index === 0
-                                ? "active"
-                                : ""
-                        }"
-                        data-color="${escapeHTML(
-                            color
-                        )}"
-                    >
+        ${colors
+            .map(
+                function (
+                    color,
+                    index
+                ) {
 
-                        <span
-                            class="
-                                satori-color-dot
-                                ${dotClass}
-                            "
-                        ></span>
+                    return `
 
-                        <span>
-                            ${escapeHTML(
-                                color
-                            )}
-                        </span>
+<button
+    type="button"
+    class="satori-color-button ${
+        index === 0
+            ? "active"
+            : ""
+    }"
+    data-color="${escapeHTML(
+        color
+    )}"
+>
 
-                    </button>
+    <span
+        class="satori-color-dot"
+    ></span>
 
-                            `;
+    <span>
+        ${escapeHTML(
+            color
+        )}
+    </span>
 
-                        }
-                    )
-                    .join(
-                        "\n"
-                    )}
+</button>
 
-            </div>
+                    `;
 
-        </section>
+                }
+            )
+            .join("\n")}
 
-    `;
+    </div>
+
+</section>
+
+`;
 
 }
 
 
 /* =========================================================
-   HTML · TALLAS
+   TALLAS
 ========================================================= */
 
 function buildSizes(
@@ -1169,7 +1007,7 @@ function buildSizes(
     }
 
 
-    const rootPrefix =
+    const root =
         getRootPrefix(
             productUrl
         );
@@ -1177,74 +1015,72 @@ function buildSizes(
 
     return `
 
-        <section class="satori-option">
+<section class="satori-option">
 
-            <div class="satori-option-header">
+    <div class="satori-option-header">
 
-                <span>
-                    TALLA
-                </span>
+        <span>
+            TALLA
+        </span>
 
-                <a
-                    href="${escapeHTML(
-                        rootPrefix +
-                        "guia-tallas.html"
-                    )}"
-                >
-                    GUÍA DE TALLAS
-                </a>
+        <a
+            href="${escapeHTML(
+                root +
+                "guia-tallas.html"
+            )}"
+        >
+            GUÍA DE TALLAS
+        </a>
 
-            </div>
+    </div>
 
 
-            <div class="satori-size-options">
+    <div class="satori-size-options">
 
-                ${sizes
-                    .map(
-                        function (
-                            size,
-                            index
-                        ) {
+        ${sizes
+            .map(
+                function (
+                    size,
+                    index
+                ) {
 
-                            return `
+                    return `
 
-                    <button
-                        type="button"
-                        class="satori-size-button ${
-                            index === 0
-                                ? "active"
-                                : ""
-                        }"
-                        data-size="${escapeHTML(
-                            size
-                        )}"
-                    >
+<button
+    type="button"
+    class="satori-size-button ${
+        index === 0
+            ? "active"
+            : ""
+    }"
+    data-size="${escapeHTML(
+        size
+    )}"
+>
 
-                        ${escapeHTML(
-                            size
-                        )}
+    ${escapeHTML(
+        size
+    )}
 
-                    </button>
+</button>
 
-                            `;
+                    `;
 
-                        }
-                    )
-                    .join(
-                        "\n"
-                    )}
+                }
+            )
+            .join("\n")}
 
-            </div>
+    </div>
 
-        </section>
+</section>
 
-    `;
+`;
 
 }
 
 
 /* =========================================================
-   HTML · PRODUCTO PRINCIPAL
+   PRODUCTO PRINCIPAL
 ========================================================= */
 
 function buildProductSection(
@@ -1284,7 +1120,7 @@ function buildProductSection(
 
     const warranty =
         product.details?.warranty ||
-        "Todos nuestros productos cuentan con garantía frente a fallas de fabricación.";
+        "Garantía frente a fallas de fabricación.";
 
 
     const care =
@@ -1295,7 +1131,10 @@ function buildProductSection(
     return `
 
 <section
-    class="satori-product-layout satori-content-animate"
+    class="
+        satori-product-layout
+        satori-content-animate
+    "
     id="producto"
 >
 
@@ -1327,21 +1166,27 @@ function buildProductSection(
     >
 
         <span class="satori-product-category">
+
             ${escapeHTML(
                 category
             )}
+
         </span>
 
 
         <h1>
+
             ${escapeHTML(
                 product.name
             )}
+
         </h1>
 
 
         <div class="satori-product-price">
+
             ${price}
+
         </div>
 
 
@@ -1362,7 +1207,9 @@ function buildProductSection(
         <div class="satori-quantity-row">
 
             <span class="satori-quantity-label">
+
                 CANTIDAD
+
             </span>
 
 
@@ -1376,9 +1223,7 @@ function buildProductSection(
                 </button>
 
 
-                <span
-                    id="satoriQuantity"
-                >
+                <span id="satoriQuantity">
                     1
                 </span>
 
@@ -1434,10 +1279,7 @@ function buildProductSection(
 
             <div class="satori-trust-item">
 
-                <div
-                    class="satori-trust-icon"
-                    aria-hidden="true"
-                >
+                <div class="satori-trust-icon">
                     🚚
                 </div>
 
@@ -1460,10 +1302,7 @@ function buildProductSection(
 
             <div class="satori-trust-item">
 
-                <div
-                    class="satori-trust-icon"
-                    aria-hidden="true"
-                >
+                <div class="satori-trust-icon">
                     🔒
                 </div>
 
@@ -1484,10 +1323,7 @@ function buildProductSection(
 
             <div class="satori-trust-item">
 
-                <div
-                    class="satori-trust-icon"
-                    aria-hidden="true"
-                >
+                <div class="satori-trust-icon">
                     ✦
                 </div>
 
@@ -1549,7 +1385,6 @@ function buildProductSection(
                     )}
                 </p>
 
-
                 <p class="satori-product-care">
 
                     <strong>
@@ -1607,7 +1442,7 @@ function buildProductSection(
 
 </section>
 
-    `;
+`;
 
 }
 
@@ -1622,69 +1457,64 @@ function buildRelatedProducts(
     productUrl
 ) {
 
-    const related =
-        products
-            .filter(
+    let related =
+        products.filter(
+            function (
+                item
+            ) {
+
+                return (
+                    item.id !==
+                    product.id
+                );
+
+            }
+        );
+
+
+    if (
+        product.category
+    ) {
+
+        const sameCategory =
+            related.filter(
                 function (
                     item
                 ) {
 
                     return (
-                        item.id !==
-                        product.id
+                        item.category ===
+                        product.category
                     );
 
                 }
-            )
-            .filter(
-                function (
-                    item
-                ) {
-
-                    if (
-                        product.category &&
-                        item.category
-                    ) {
-
-                        return (
-                            item.category ===
-                            product.category
-                        );
-
-                    }
-
-                    return true;
-
-                }
-            )
-            .slice(
-                0,
-                5
             );
 
 
-    /*
-     * Si no encontramos productos
-     * de la misma categoría,
-     * utilizamos otros productos.
-     */
+        if (
+            sameCategory.length
+        ) {
+
+            related =
+                sameCategory;
+
+        }
+
+    }
+
+
+    related =
+        related.slice(
+            0,
+            5
+        );
+
 
     if (
         !related.length
     ) {
 
-        related.push(
-            ...products
-                .filter(
-                    item =>
-                        item.id !==
-                        product.id
-                )
-                .slice(
-                    0,
-                    5
-                )
-        );
+        return "";
 
     }
 
@@ -1699,14 +1529,12 @@ function buildRelatedProducts(
             SATORII · DESCUBRE MÁS
         </span>
 
-
         <h2>
             TAMBIÉN TE PUEDE
             <em>
                 GUSTAR.
             </em>
         </h2>
-
 
         <p>
             Descubre otros diseños
@@ -1726,25 +1554,14 @@ function buildRelatedProducts(
                 ) {
 
                     const itemUrl =
-                        item.url ||
-                        `productos/${
-                            slugify(
-                                item.category ||
-                                "productos"
-                            )
-                        }/${
-                            slugify(
-                                item.id ||
-                                item.name
-                            )
-                        }.html`;
+                        normalizeProductUrl(
+                            item
+                        );
 
 
                     const relativeUrl =
-                        path.posix.relative(
-                            path.posix.dirname(
-                                productUrl
-                            ),
+                        getRelativeProductUrl(
+                            productUrl,
                             itemUrl
                         );
 
@@ -1758,79 +1575,73 @@ function buildRelatedProducts(
 
                     return `
 
-            <a
-                href="${escapeHTML(
-                    relativeUrl
-                )}"
-                class="satori-related-card"
-            >
+<a
+    href="${escapeHTML(
+        relativeUrl
+    )}"
+    class="satori-related-card"
+>
 
-                <div
-                    class="satori-related-image"
-                >
+    <div class="satori-related-image">
 
-                    <img
-                        src="${escapeHTML(
-                            image
-                        )}"
-                        alt="${escapeHTML(
-                            item.name
-                        )}"
-                        loading="lazy"
-                    >
+        <img
+            src="${escapeHTML(
+                image
+            )}"
+            alt="${escapeHTML(
+                item.name
+            )}"
+            loading="lazy"
+        >
 
-                </div>
+    </div>
 
 
-                <div
-                    class="satori-related-info"
-                >
+    <div class="satori-related-info">
 
-                    <span>
-                        ${escapeHTML(
-                            displayCategory(
-                                item
-                            )
-                        )}
-                    </span>
+        <span>
+            ${escapeHTML(
+                displayCategory(
+                    item
+                )
+            )}
+        </span>
 
 
-                    <h3>
-                        ${escapeHTML(
-                            item.name
-                        )}
-                    </h3>
+        <h3>
+            ${escapeHTML(
+                item.name
+            )}
+        </h3>
 
 
-                    <strong>
-                        ${formatPrice(
-                            item.price
-                        )}
-                    </strong>
+        <strong>
+            ${formatPrice(
+                item.price
+            )}
+        </strong>
 
-                </div>
+    </div>
 
-            </a>
+</a>
 
                     `;
 
                 }
             )
-            .join(
-                "\n"
-            )}
+            .join("\n")}
 
     </div>
 
 </section>
 
-    `;
+`;
 
 }
 
 
 /* =========================================================
-   SECCIONES EDITORIALES
+   EDITORIAL
 ========================================================= */
 
 function buildEditorial(
@@ -1861,12 +1672,6 @@ function buildEditorial(
         );
 
 
-    const category =
-        displayCategory(
-            product
-        );
-
-
     return `
 
 <section class="satori-style-banner no-image">
@@ -1879,18 +1684,23 @@ function buildEditorial(
 
 
         <h2>
+
             CUIDA TU
+
             <em>
                 SATORII.
             </em>
+
         </h2>
 
 
         <p>
+
             Una buena prenda merece durar.
             Aprende a cuidar el estampado,
             el tejido y la apariencia
             de tu Satorii.
+
         </p>
 
 
@@ -1902,7 +1712,7 @@ function buildEditorial(
                 "guia-tallas.html"
             )}"
         >
-            VER GUÍA → 
+            VER GUÍA →
         </a>
 
     </div>
@@ -1916,7 +1726,9 @@ function buildEditorial(
 
         <span>
             SATORII · ${escapeHTML(
-                category
+                displayCategory(
+                    product
+                )
             )}
         </span>
 
@@ -1941,11 +1753,13 @@ function buildEditorial(
 
 
         <p>
+
             Tu estilo no necesita
             explicaciones.
             Es una forma de mostrar
             aquello que realmente
             te representa.
+
         </p>
 
 
@@ -1971,31 +1785,31 @@ function buildEditorial(
 
 </section>
 
-    `;
+`;
 
 }
 
 
 /* =========================================================
-   HTML COMPLETO
+   PÁGINA COMPLETA
 ========================================================= */
 
 function buildPage(
     product,
     products,
-    styles,
-    scripts
+    template
 ) {
 
     const productUrl =
-        String(
-            product.url ||
-            ""
-        )
-            .replace(
-                /^\/+/,
-                ""
-            );
+        normalizeProductUrl(
+            product
+        );
+
+
+    const root =
+        getRootPrefix(
+            productUrl
+        );
 
 
     const image =
@@ -2015,13 +1829,13 @@ function buildPage(
         `${product.name} | Satorii`;
 
 
-    const rootPrefix =
-        getRootPrefix(
-            productUrl
+    const styles =
+        extractTemplateStyles(
+            template
         );
 
 
-    const mainSection =
+    const productSection =
         buildProductSection(
             product,
             productUrl
@@ -2043,6 +1857,13 @@ function buildPage(
         );
 
 
+    const scripts =
+        buildGlobalScripts(
+            productUrl,
+            template
+        );
+
+
     return `<!DOCTYPE html>
 
 <html lang="es">
@@ -2050,6 +1871,7 @@ function buildPage(
 <head>
 
     <meta charset="UTF-8">
+
 
     <meta
         name="viewport"
@@ -2059,6 +1881,7 @@ function buildPage(
         "
     >
 
+
     <meta
         name="description"
         content="${escapeHTML(
@@ -2066,10 +1889,12 @@ function buildPage(
         )}"
     >
 
+
     <meta
         name="theme-color"
         content="${SITE_RED}"
     >
+
 
     <title>
         ${escapeHTML(
@@ -2082,7 +1907,7 @@ function buildPage(
         rel="icon"
         type="image/png"
         href="${escapeHTML(
-            rootPrefix +
+            root +
             "img/logo.webp"
         )}"
     >
@@ -2091,21 +1916,22 @@ function buildPage(
     <link
         rel="stylesheet"
         href="${escapeHTML(
-            rootPrefix +
+            root +
             "css/style.css"
         )}"
     >
 
+
     <link
         rel="stylesheet"
         href="${escapeHTML(
-            rootPrefix +
+            root +
             "css/animations.css"
         )}"
     >
 
 
-${styles}
+    ${styles}
 
 </head>
 
@@ -2136,13 +1962,15 @@ ${styles}
     ></div>
 
 
-    <main class="satori-page-animate">
+    <main
+        class="satori-page-animate"
+    >
 
         <div
             class="satori-product-page"
         >
 
-            ${mainSection}
+            ${productSection}
 
             ${editorial}
 
@@ -2158,7 +1986,8 @@ ${styles}
     ></div>
 
 
-${scripts}
+    ${scripts}
+
 
 </body>
 
@@ -2169,32 +1998,23 @@ ${scripts}
 
 
 /* =========================================================
-   GENERAR PRODUCTOS
+   GENERAR
 ========================================================= */
 
 function generateProducts() {
 
+    console.log("");
     console.log(
         "========================================"
     );
-
     console.log(
         "SATORII · GENERADOR DE PRODUCTOS"
     );
-
     console.log(
         "========================================"
     );
+    console.log("");
 
-
-    console.log(
-        ""
-    );
-
-
-    /*
-     * Cargar productos.
-     */
 
     const products =
         loadProducts();
@@ -2204,10 +2024,6 @@ function generateProducts() {
         `✓ Productos cargados: ${products.length}`
     );
 
-
-    /*
-     * Validar.
-     */
 
     validateProducts(
         products
@@ -2219,20 +2035,8 @@ function generateProducts() {
     );
 
 
-    /*
-     * Buscar plantilla.
-     */
-
     const templateFile =
         findTemplate();
-
-
-    console.log(
-        `✓ Plantilla: ${path.relative(
-            ROOT_DIR,
-            templateFile
-        )}`
-    );
 
 
     const template =
@@ -2242,34 +2046,13 @@ function generateProducts() {
         );
 
 
-    /*
-     * Extraer estilos y scripts.
-     */
-
-    const styles =
-        extractStyles(
-            template
-        );
-
-
-    const scripts =
-        extractScripts(
-            template
-        );
-
-
     console.log(
-        "✓ Estilos de plantilla cargados."
+        `✓ Plantilla: ${path.relative(
+            ROOT_DIR,
+            templateFile
+        )}`
     );
 
-    console.log(
-        "✓ Scripts globales cargados."
-    );
-
-
-    /*
-     * Generar cada producto.
-     */
 
     let generated = 0;
 
@@ -2286,23 +2069,21 @@ function generateProducts() {
 
 
             const productUrl =
-                path
-                    .relative(
-                        ROOT_DIR,
-                        outputPath
-                    )
-                    .replace(
-                        /\\/g,
-                        "/"
-                    );
+                path.relative(
+                    ROOT_DIR,
+                    outputPath
+                )
+                .replace(
+                    /\\/g,
+                    "/"
+                );
 
 
             const html =
                 buildPage(
                     product,
                     products,
-                    styles,
-                    scripts
+                    template
                 );
 
 
@@ -2334,22 +2115,23 @@ function generateProducts() {
     );
 
 
-    console.log(
-        ""
-    );
-
-
+    console.log("");
     console.log(
         "========================================"
     );
-
     console.log(
         `✓ Páginas generadas: ${generated}`
     );
-
+    console.log(
+        "✓ animations.js incluido`
+    );
+    console.log(
+        "✓ Rutas relativas corregidas"
+    );
     console.log(
         "========================================"
     );
+    console.log("");
 
 }
 
@@ -2367,33 +2149,21 @@ catch (
     error
 ) {
 
-    console.error(
-        ""
-    );
-
+    console.error("");
     console.error(
         "========================================"
     );
-
     console.error(
         "SATORII · ERROR"
     );
-
     console.error(
         "========================================"
     );
-
-    console.error(
-        ""
-    );
-
+    console.error("");
     console.error(
         error.message
     );
-
-    console.error(
-        ""
-    );
+    console.error("");
 
     process.exit(
         1
