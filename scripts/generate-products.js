@@ -985,6 +985,19 @@ function getPageCSS() {
             font-family: inherit;
         }
 
+        p,
+        li,
+        span,
+        strong,
+        a,
+        button {
+            text-rendering: optimizeLegibility;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
         .satori-product-page {
             width: 100%;
             max-width: 1440px;
@@ -997,8 +1010,9 @@ function getPageCSS() {
             flex-wrap: wrap;
             gap: 8px;
             margin: 0 0 30px;
-            color: #888;
-            font-size: 10px;
+            color: #777;
+            font-size: 11px;
+            line-height: 1.4;
             font-weight: 700;
             letter-spacing: .08em;
             text-transform: uppercase;
@@ -1090,43 +1104,51 @@ function getPageCSS() {
         .satori-product-category {
             margin-bottom: 12px;
             color: #777;
-            font-size: 10px;
+            font-size: 12px;
+            line-height: 1.3;
             font-weight: 800;
-            letter-spacing: .14em;
+            letter-spacing: .13em;
             text-transform: uppercase;
         }
 
         .satori-product-title {
             margin: 0;
+            max-width: 680px;
+            min-height: 1.8em;
             font-family: var(--s-heading);
-            font-size: clamp(46px, 5vw, 72px);
-            line-height: .88;
+            font-size: 64px;
+            line-height: .9;
             font-weight: 900;
             letter-spacing: -.025em;
             text-transform: uppercase;
+            text-wrap: balance;
         }
 
         .satori-product-subtitle {
-            margin: 10px 0 20px;
-            color: #777;
-            font-size: 12px;
+            margin: 12px 0 20px;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.4;
             font-weight: 600;
-            letter-spacing: .04em;
+            letter-spacing: .045em;
             text-transform: uppercase;
         }
 
         .satori-price {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: var(--s-red);
-            font-size: 25px;
+            font-size: 28px;
+            line-height: 1.1;
             font-weight: 900;
+            letter-spacing: -.01em;
         }
 
         .satori-tax {
             display: block;
             margin-bottom: 28px;
-            color: #888;
-            font-size: 10px;
+            color: #777;
+            font-size: 11px;
+            line-height: 1.4;
         }
 
         .satori-option {
@@ -1139,7 +1161,8 @@ function getPageCSS() {
             align-items: center;
             gap: 15px;
             margin-bottom: 10px;
-            font-size: 10px;
+            font-size: 12px;
+            line-height: 1.3;
             font-weight: 900;
             letter-spacing: .07em;
             text-transform: uppercase;
@@ -1147,7 +1170,8 @@ function getPageCSS() {
 
         .satori-option-label a {
             color: var(--s-black);
-            font-size: 9px;
+            font-size: 11px;
+            line-height: 1.3;
             text-decoration: underline;
         }
 
@@ -1159,13 +1183,14 @@ function getPageCSS() {
         }
 
         .satori-size {
-            min-width: 48px;
-            height: 42px;
-            padding: 0 12px;
+            min-width: 50px;
+            height: 44px;
+            padding: 0 13px;
             border: 1px solid #d5d5d5;
             background: #fff;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 12px;
+            line-height: 1;
             font-weight: 800;
         }
 
@@ -1216,7 +1241,8 @@ function getPageCSS() {
             border: 0;
             background: #fff;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 20px;
+            line-height: 1;
         }
 
         .satori-quantity span {
@@ -1224,7 +1250,8 @@ function getPageCSS() {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 13px;
+            line-height: 1;
             font-weight: 800;
         }
 
@@ -1234,7 +1261,8 @@ function getPageCSS() {
             background: var(--s-red);
             color: #fff;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 12px;
+            line-height: 1.25;
             font-weight: 900;
             letter-spacing: .06em;
             text-transform: uppercase;
@@ -1252,8 +1280,10 @@ function getPageCSS() {
             border: 1px solid #ccc;
             background: #fff;
             cursor: pointer;
-            font-size: 10px;
+            font-size: 11px;
+            line-height: 1.3;
             font-weight: 800;
+            letter-spacing: .02em;
             text-transform: uppercase;
         }
 
@@ -1286,13 +1316,16 @@ function getPageCSS() {
         }
 
         .satori-benefit strong {
-            margin-bottom: 5px;
-            font-size: 9px;
+            margin-bottom: 6px;
+            font-size: 11px;
+            line-height: 1.3;
+            font-weight: 900;
         }
 
         .satori-benefit span {
             color: #777;
-            font-size: 9px;
+            font-size: 10px;
+            line-height: 1.45;
         }
 
         .satori-information {
@@ -1317,10 +1350,12 @@ function getPageCSS() {
             padding: 18px 22px;
             border: 0;
             background: #fff;
-            color: #888;
+            color: #777;
             cursor: pointer;
-            font-size: 10px;
+            font-size: 12px;
+            line-height: 1.2;
             font-weight: 900;
+            letter-spacing: .04em;
             text-transform: uppercase;
         }
 
@@ -1354,9 +1389,10 @@ function getPageCSS() {
 
         .satori-panel-intro span {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--s-red);
-            font-size: 9px;
+            font-size: 11px;
+            line-height: 1.3;
             font-weight: 900;
             letter-spacing: .12em;
         }
@@ -1364,16 +1400,19 @@ function getPageCSS() {
         .satori-tab-panel h2 {
             margin: 0;
             font-family: var(--s-heading);
-            font-size: 30px;
+            font-size: 34px;
             line-height: .95;
             font-weight: 900;
+            letter-spacing: -.01em;
+            text-wrap: balance;
         }
 
         .satori-tab-panel p {
             max-width: 800px;
-            color: #555;
-            font-size: 13px;
+            color: #4f4f4f;
+            font-size: 15px;
             line-height: 1.75;
+            font-weight: 400;
         }
 
         .satori-detail-grid {
@@ -1397,12 +1436,16 @@ function getPageCSS() {
         .satori-detail-grid span {
             margin-bottom: 7px;
             color: #888;
-            font-size: 9px;
+            font-size: 11px;
+            line-height: 1.3;
             font-weight: 800;
+            letter-spacing: .05em;
         }
 
         .satori-detail-grid strong {
-            font-size: 12px;
+            font-size: 14px;
+            line-height: 1.45;
+            font-weight: 800;
         }
 
         .satori-editorial {
@@ -1451,28 +1494,33 @@ function getPageCSS() {
         }
 
         .satori-editorial-content span {
-            margin-bottom: 10px;
+            margin-bottom: 11px;
             color: var(--s-red);
-            font-size: 10px;
+            font-size: 12px;
+            line-height: 1.3;
             font-weight: 900;
             letter-spacing: .14em;
         }
 
         .satori-editorial-content h2 {
-            max-width: 700px;
-            margin: 0 0 14px;
+            max-width: 760px;
+            min-height: 1.75em;
+            margin: 0 0 16px;
             font-family: var(--s-heading);
-            font-size: clamp(46px, 6vw, 78px);
-            line-height: .87;
+            font-size: 58px;
+            line-height: .9;
             font-weight: 900;
+            letter-spacing: -.015em;
+            text-wrap: balance;
         }
 
         .satori-editorial-content p {
-            max-width: 500px;
+            max-width: 560px;
             margin: 0;
-            color: rgba(255,255,255,.82);
-            font-size: 12px;
+            color: rgba(255,255,255,.84);
+            font-size: 15px;
             line-height: 1.7;
+            font-weight: 400;
         }
 
         .satori-recommendations {
@@ -1489,25 +1537,31 @@ function getPageCSS() {
 
         .satori-section-heading span {
             display: block;
-            margin-bottom: 7px;
+            margin-bottom: 8px;
             color: var(--s-red);
-            font-size: 9px;
+            font-size: 11px;
+            line-height: 1.3;
             font-weight: 900;
             letter-spacing: .12em;
         }
 
         .satori-section-heading h2 {
             margin: 0;
+            max-width: 700px;
             font-family: var(--s-heading);
-            font-size: 40px;
+            font-size: 42px;
             line-height: .9;
             font-weight: 900;
+            letter-spacing: -.01em;
+            text-wrap: balance;
         }
 
         .satori-section-heading a {
             color: var(--s-black);
-            font-size: 10px;
+            font-size: 11px;
+            line-height: 1.3;
             font-weight: 900;
+            letter-spacing: .04em;
             text-decoration: none;
         }
 
@@ -1550,16 +1604,20 @@ function getPageCSS() {
         }
 
         .satori-rec-info strong {
+            display: -webkit-box;
+            min-height: 2.8em;
             overflow: hidden;
-            font-size: 12px;
+            font-size: 14px;
+            line-height: 1.4;
             font-weight: 800;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
         }
 
         .satori-rec-info span {
             color: var(--s-red);
-            font-size: 12px;
+            font-size: 13px;
+            line-height: 1.3;
             font-weight: 900;
         }
 
@@ -1599,6 +1657,16 @@ function getPageCSS() {
         }
 
         @media (max-width: 900px) {
+            .satori-product-title {
+                min-height: 0;
+                font-size: 54px;
+            }
+
+            .satori-editorial-content h2 {
+                min-height: 0;
+                font-size: 50px;
+            }
+
             .satori-product-page {
                 padding-left: 20px;
                 padding-right: 20px;
@@ -1624,7 +1692,42 @@ function getPageCSS() {
             }
 
             .satori-product-title {
-                font-size: clamp(42px,14vw,54px);
+                min-height: 0;
+                font-size: 46px;
+                line-height: .92;
+            }
+
+            .satori-product-category {
+                font-size: 11px;
+            }
+
+            .satori-product-subtitle {
+                font-size: 12px;
+            }
+
+            .satori-price {
+                font-size: 25px;
+            }
+
+            .satori-tab-panel h2 {
+                font-size: 30px;
+            }
+
+            .satori-editorial-content h2 {
+                min-height: 0;
+                font-size: 44px;
+            }
+
+            .satori-editorial-content p {
+                font-size: 14px;
+            }
+
+            .satori-section-heading h2 {
+                font-size: 34px;
+            }
+
+            .satori-rec-info strong {
+                font-size: 13px;
             }
 
             .satori-buy-row {
@@ -2264,53 +2367,112 @@ function getProductScript(root, product, productUrl) {
                 "Bearer " +
                 SUPABASE_CONFIG.publishableKey,
 
-            "Content-Type":
+            Accept:
                 "application/json"
         };
     }
 
-    async function supabaseRequest(
-        query
-    ) {
+    function normalizeSupabaseUrl() {
+        return String(
+            SUPABASE_CONFIG.url || ""
+        )
+            .trim()
+            .replace(/\/+$/, "");
+    }
+
+    async function supabaseRequest(query) {
+        const baseUrl =
+            normalizeSupabaseUrl();
+
+        const publishableKey =
+            String(
+                SUPABASE_CONFIG.publishableKey || ""
+            ).trim();
+
         if (
             !SUPABASE_CONFIG.enabled ||
-            !SUPABASE_CONFIG.url ||
-            !SUPABASE_CONFIG.publishableKey
+            !baseUrl ||
+            !publishableKey
         ) {
             return null;
         }
 
         const endpoint =
-            SUPABASE_CONFIG.url.replace(
-                /\\/$/,
-                ""
-            ) +
+            baseUrl +
             "/rest/v1/products?" +
             query;
 
-        const response =
-            await fetch(
-                endpoint,
-                {
-                    method: "GET",
-                    headers:
-                        supabaseHeaders(),
-                    cache: "no-store"
-                }
+        const controller =
+            new AbortController();
+
+        const timeout =
+            window.setTimeout(
+                function () {
+                    controller.abort();
+                },
+                8000
             );
 
-        if (!response.ok) {
-            throw new Error(
-                "Supabase HTTP " +
-                response.status
+        try {
+            const response =
+                await fetch(
+                    endpoint,
+                    {
+                        method: "GET",
+                        headers:
+                            supabaseHeaders(),
+                        cache: "no-store",
+                        signal:
+                            controller.signal
+                    }
+                );
+
+            if (!response.ok) {
+                let details = "";
+
+                try {
+                    details =
+                        await response.text();
+                } catch (_) {}
+
+                throw new Error(
+                    "Supabase HTTP " +
+                    response.status +
+                    (
+                        details
+                            ? " · " + details.slice(0, 180)
+                            : ""
+                    )
+                );
+            }
+
+            return await response.json();
+
+        } catch (error) {
+            if (
+                error &&
+                error.name === "AbortError"
+            ) {
+                throw new Error(
+                    "Supabase tardó demasiado en responder."
+                );
+            }
+
+            throw error;
+
+        } finally {
+            window.clearTimeout(
+                timeout
             );
         }
-
-        return response.json();
     }
 
     async function updateCurrentProductFromSupabase() {
-        if (!PRODUCT.id) {
+        if (
+            PRODUCT.id === undefined ||
+            PRODUCT.id === null ||
+            PRODUCT.id === ""
+        ) {
             return null;
         }
 
@@ -2343,7 +2505,8 @@ function getProductScript(root, product, productUrl) {
 
         if (
             current.price !== undefined &&
-            current.price !== null
+            current.price !== null &&
+            current.price !== ""
         ) {
             const price =
                 Number(
@@ -2379,10 +2542,12 @@ function getProductScript(root, product, productUrl) {
         ----------------------------- */
 
         if (
-            current.name
+            current.name !== undefined &&
+            current.name !== null &&
+            String(current.name).trim()
         ) {
             PRODUCT.name =
-                current.name;
+                String(current.name);
 
             const title =
                 document.querySelector(
@@ -2391,6 +2556,16 @@ function getProductScript(root, product, productUrl) {
 
             if (title) {
                 title.textContent =
+                    current.name;
+            }
+
+            const breadcrumb =
+                document.querySelector(
+                    ".satori-breadcrumb span:last-child"
+                );
+
+            if (breadcrumb) {
+                breadcrumb.textContent =
                     current.name;
             }
 
@@ -2403,6 +2578,16 @@ function getProductScript(root, product, productUrl) {
                 galleryAlt.alt =
                     current.name;
             }
+
+            const cartButton =
+                document.getElementById(
+                    "addToCart"
+                );
+
+            if (cartButton) {
+                cartButton.dataset.productName =
+                    String(current.name);
+            }
         }
 
         /* -----------------------------
@@ -2410,7 +2595,9 @@ function getProductScript(root, product, productUrl) {
         ----------------------------- */
 
         const available =
-            current.available !== false;
+            current.available === undefined
+                ? PRODUCT.available !== false
+                : current.available !== false;
 
         PRODUCT.available =
             available;
@@ -2424,16 +2611,97 @@ function getProductScript(root, product, productUrl) {
             addToCart.disabled =
                 !available;
 
-            if (!available) {
-                addToCart.textContent =
-                    "AGOTADO";
-            } else {
-                addToCart.textContent =
-                    "AGREGAR AL CARRITO";
-            }
+            addToCart.textContent =
+                available
+                    ? "AGREGAR AL CARRITO"
+                    : "AGOTADO";
         }
 
         return current;
+    }
+
+    function getSupabaseImage(item) {
+        let image = "";
+
+        if (
+            Array.isArray(item.images)
+        ) {
+            image =
+                item.images.find(
+                    value =>
+                        value !== null &&
+                        value !== undefined &&
+                        String(value).trim()
+                ) || "";
+        } else if (
+            typeof item.images === "string" &&
+            item.images.trim()
+        ) {
+            try {
+                const parsed =
+                    JSON.parse(
+                        item.images
+                    );
+
+                if (
+                    Array.isArray(parsed)
+                ) {
+                    image =
+                        parsed.find(
+                            value =>
+                                value !== null &&
+                                value !== undefined &&
+                                String(value).trim()
+                        ) || "";
+                }
+            } catch (_) {
+                image =
+                    item.images;
+            }
+        }
+
+        if (
+            !image &&
+            item.image
+        ) {
+            image =
+                String(item.image);
+        }
+
+        return String(
+            image || ""
+        ).trim();
+    }
+
+    function resolveRecommendationImage(
+        image
+    ) {
+        const clean =
+            String(image || "")
+                .trim()
+                .replace(/^\/+/, "")
+                .replace(/^\.\//, "")
+                .replace(/\\/g, "/");
+
+        if (!clean) {
+            return "";
+        }
+
+        if (
+            /^(https?:)?\/\//i.test(clean) ||
+            clean.startsWith("data:") ||
+            clean.startsWith("blob:")
+        ) {
+            return clean;
+        }
+
+        const root =
+            ${safeJSONString(root)};
+
+        return (
+            root +
+            clean
+        );
     }
 
     async function loadSupabaseRecommendations(
@@ -2449,10 +2717,15 @@ function getProductScript(root, product, productUrl) {
         }
 
         try {
+            /*
+             * No filtramos "available" en Supabase.
+             * Así la consulta sigue funcionando aunque
+             * el esquema cambie ligeramente. El filtro
+             * se realiza después en el navegador.
+             */
             const query =
-                "select=id,name,price,image,images,available,category,collection,subcategory,type,productType,url" +
-                "&available=eq.true" +
-                "&limit=50";
+                "select=*" +
+                "&limit=100";
 
             const rows =
                 await supabaseRequest(
@@ -2470,12 +2743,22 @@ function getProductScript(root, product, productUrl) {
                     item => {
                         if (
                             String(item.id) ===
-                            String(currentProduct.id)
+                            String(
+                                currentProduct.id
+                            )
                         ) {
                             return false;
                         }
 
-                        return isTshirt(item);
+                        if (
+                            item.available === false
+                        ) {
+                            return false;
+                        }
+
+                        return isTshirt(
+                            item
+                        );
                     }
                 );
 
@@ -2484,12 +2767,11 @@ function getProductScript(root, product, productUrl) {
                     candidates
                 ).slice(0, 4);
 
-            if (!selected.length) {
+            if (
+                !selected.length
+            ) {
                 return;
             }
-
-            const root =
-                ${safeJSONString(root)};
 
             const currentUrl =
                 ${safeJSONString(productUrl)};
@@ -2497,7 +2779,7 @@ function getProductScript(root, product, productUrl) {
             const currentDirectory =
                 currentUrl
                     .replace(
-                        /\\\\/g,
+                        /\\/g,
                         "/"
                     )
                     .split("/")
@@ -2509,11 +2791,13 @@ function getProductScript(root, product, productUrl) {
                     String(
                         item.url || ""
                     )
+                        .trim()
                         .replace(
-                            /^\\/+/, ""
+                            /^\/+/,
+                            ""
                         )
                         .replace(
-                            /\\\\/g,
+                            /\\/g,
                             "/"
                         );
 
@@ -2527,7 +2811,7 @@ function getProductScript(root, product, productUrl) {
                             .toLowerCase()
                             .normalize("NFD")
                             .replace(
-                                /[\\\\u0300-\\\\u036f]/g,
+                                /[\u0300-\u036f]/g,
                                 ""
                             )
                             .replace(
@@ -2546,7 +2830,7 @@ function getProductScript(root, product, productUrl) {
                             .toLowerCase()
                             .normalize("NFD")
                             .replace(
-                                /[\\\\u0300-\\\\u036f]/g,
+                                /[\u0300-\u036f]/g,
                                 ""
                             )
                             .replace(
@@ -2587,44 +2871,85 @@ function getProductScript(root, product, productUrl) {
                 );
             }
 
-            function getRecommendationImage(item) {
-                let image = "";
-
-                if (
-                    Array.isArray(
-                        item.images
-                    )
-                ) {
-                    image =
-                        item.images.find(
-                            Boolean
-                        ) || "";
-                }
-
-                if (
-                    !image &&
-                    item.image
-                ) {
-                    image =
-                        String(
-                            item.image
-                        );
-                }
-
-                return image;
-            }
-
             const cards =
                 selected.map(
                     item => {
-                        const image =
-                            getRecommendationImage(
+                        const rawImage =
+                            getSupabaseImage(
                                 item
                             );
 
-                        if (!image) {
+                        const image =
+                            resolveRecommendationImage(
+                                rawImage
+                            );
+
+                        if (
+                            !image
+                        ) {
                             return "";
                         }
+
+                        const itemId =
+                            String(
+                                item.id ?? ""
+                            )
+                                .replace(
+                                    /&/g,
+                                    "&amp;"
+                                )
+                                .replace(
+                                    /"/g,
+                                    "&quot;"
+                                )
+                                .replace(
+                                    /</g,
+                                    "&lt;"
+                                )
+                                .replace(
+                                    />/g,
+                                    "&gt;"
+                                );
+
+                        const itemName =
+                            String(
+                                item.name || ""
+                            )
+                                .replace(
+                                    /&/g,
+                                    "&amp;"
+                                )
+                                .replace(
+                                    /"/g,
+                                    "&quot;"
+                                )
+                                .replace(
+                                    /</g,
+                                    "&lt;"
+                                )
+                                .replace(
+                                    />/g,
+                                    "&gt;"
+                                );
+
+                        const safeImage =
+                            image
+                                .replace(
+                                    /&/g,
+                                    "&amp;"
+                                )
+                                .replace(
+                                    /"/g,
+                                    "&quot;"
+                                )
+                                .replace(
+                                    /</g,
+                                    "&lt;"
+                                )
+                                .replace(
+                                    />/g,
+                                    "&gt;"
+                                );
 
                         return (
                             '<a class="satori-recommendation satori-animate is-visible" ' +
@@ -2634,36 +2959,21 @@ function getProductScript(root, product, productUrl) {
                             ) +
                             '" ' +
                             'data-product-id="' +
-                            String(item.id)
-                                .replace(
-                                    /"/g,
-                                    "&quot;"
-                                ) +
+                            itemId +
                             '">' +
                             '<div class="satori-rec-image">' +
                             '<img src="' +
-                            String(image)
-                                .replace(
-                                    /"/g,
-                                    "&quot;"
-                                ) +
+                            safeImage +
                             '" alt="' +
-                            String(
-                                item.name || ""
-                            ).replace(
-                                /"/g,
-                                "&quot;"
-                            ) +
+                            itemName +
                             '" loading="lazy" decoding="async">' +
                             "</div>" +
                             '<div class="satori-rec-info">' +
                             "<strong>" +
-                            String(
-                                item.name || ""
-                            ) +
+                            itemName +
                             "</strong>" +
                             '<span data-supabase-rec-price="' +
-                            String(item.id) +
+                            itemId +
                             '">' +
                             money(
                                 item.price
@@ -2680,6 +2990,9 @@ function getProductScript(root, product, productUrl) {
             if (!cards) {
                 return;
             }
+
+            const root =
+                ${safeJSONString(root)};
 
             const heading =
                 '<div class="satori-section-heading">' +
@@ -2700,7 +3013,7 @@ function getProductScript(root, product, productUrl) {
 
         } catch (error) {
             console.warn(
-                "SATORII · No se pudieron cargar recomendaciones desde Supabase.",
+                "SATORII · No se pudieron cargar recomendaciones desde Supabase. Se mantiene el contenido local.",
                 error
             );
         }
