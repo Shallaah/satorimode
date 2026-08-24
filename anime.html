@@ -541,9 +541,9 @@
 
             width: max-content;
 
-            min-width: max-content;
-
             white-space: nowrap;
+
+            padding: 0;
 
             font-family:
                 "Barlow Condensed",
@@ -556,7 +556,7 @@
             letter-spacing: 1.5px;
 
             animation:
-                animeTicker 22s linear infinite;
+                animeTicker 36s linear infinite;
 
             will-change:
                 transform;
@@ -565,10 +565,39 @@
 
 
         /* =====================================================
-           TICKER · SECUENCIA CONTINUA
+           TICKER · LOOP CONTINUO
+           CADA SET ES MAS ANCHO QUE LA PANTALLA
         ====================================================== */
 
-        .anime-ticker-sequence {
+        @keyframes animeTicker {
+
+            from {
+
+                transform:
+                    translateX(0);
+
+            }
+
+            to {
+
+                transform:
+                    translateX(-50%);
+
+            }
+
+        }
+
+
+        .anime-ticker:hover
+        .anime-ticker-track {
+
+            animation-play-state:
+                paused;
+
+        }
+
+
+        .anime-ticker-set {
 
             display: flex;
 
@@ -576,7 +605,7 @@
 
             flex-shrink: 0;
 
-            width: max-content;
+            min-width: max-content;
 
         }
 
@@ -594,33 +623,7 @@
             padding:
                 0 22px;
 
-        }
-
-
-        @keyframes animeTicker {
-
-            from {
-
-                transform:
-                    translate3d(0, 0, 0);
-
-            }
-
-            to {
-
-                transform:
-                    translate3d(-50%, 0, 0);
-
-            }
-
-        }
-
-
-        .anime-ticker:hover
-        .anime-ticker-track {
-
-            animation-play-state:
-                paused;
+            box-sizing: border-box;
 
         }
 
@@ -631,7 +634,6 @@
                 var(--anime-red);
 
         }
-
 
         /* =====================================================
            PRODUCTOS
@@ -1316,7 +1318,7 @@
 
 
         /* =====================================================
-           TABLET
+           RESPONSIVE · TABLET
         ====================================================== */
 
         @media (max-width: 1100px) {
@@ -1324,7 +1326,8 @@
             .anime-hero {
 
                 grid-template-columns:
-                    1fr 1fr;
+                    1fr
+                    1fr;
 
                 min-height:
                     520px;
@@ -1362,7 +1365,7 @@
 
 
         /* =====================================================
-           TABLET PEQUEÑO
+           RESPONSIVE · TABLET PEQUEÑO
         ====================================================== */
 
         @media (max-width: 800px) {
@@ -1384,7 +1387,7 @@
                     390px;
 
                 padding:
-                    72px 30px 48px;
+                    75px 30px 50px;
 
             }
 
@@ -1425,7 +1428,7 @@
 
 
         /* =====================================================
-           MÓVIL
+           RESPONSIVE · MÓVIL
         ====================================================== */
 
         @media (max-width: 600px) {
@@ -1447,10 +1450,10 @@
             .anime-hero-content {
 
                 min-height:
-                    325px;
+                    330px;
 
                 padding:
-                    60px 18px 38px;
+                    62px 18px 38px;
 
             }
 
@@ -1496,7 +1499,7 @@
                     100%;
 
                 margin-top:
-                    18px;
+                    19px;
 
                 font-size:
                     11.5px;
@@ -1510,7 +1513,7 @@
             .anime-hero-link {
 
                 margin-top:
-                    21px;
+                    22px;
 
                 padding-bottom:
                     6px;
@@ -1591,6 +1594,9 @@
 
             .anime-ticker-track {
 
+                padding:
+                    0;
+
                 font-size:
                     10px;
 
@@ -1598,7 +1604,7 @@
                     1.2px;
 
                 animation-duration:
-                    18s;
+                    24s;
 
             }
 
@@ -1810,7 +1816,17 @@
             }
 
 
-            .anime-cta::before,
+            .anime-cta::before {
+
+                width:
+                    90px;
+
+                height:
+                    2px;
+
+            }
+
+
             .anime-cta::after {
 
                 width:
@@ -1905,7 +1921,7 @@
 
 
         /* =====================================================
-           MÓVIL MUY PEQUEÑO
+           RESPONSIVE · MÓVIL MUY PEQUEÑO
         ====================================================== */
 
         @media (max-width: 380px) {
@@ -1913,10 +1929,10 @@
             .anime-hero-content {
 
                 min-height:
-                    310px;
+                    315px;
 
                 padding:
-                    56px 16px 34px;
+                    58px 16px 34px;
 
             }
 
@@ -1964,7 +1980,14 @@
             }
 
 
-            .anime-product-name,
+            .anime-product-name {
+
+                font-size:
+                    10px;
+
+            }
+
+
             .anime-product-price {
 
                 font-size:
@@ -2124,81 +2147,226 @@
 
             <div class="anime-ticker-track">
 
-                <div class="anime-ticker-sequence">
+
+                <div class="anime-ticker-set">
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
+                    </div>
+
+                    <div class="anime-ticker-group">
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
+                    </div>
+
+                    <div class="anime-ticker-group">
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                 </div>
 
 
-                <div
-                    class="anime-ticker-sequence"
-                    aria-hidden="true"
-                >
+
+                <div class="anime-ticker-set" aria-hidden="true">
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                     <div class="anime-ticker-group">
-                        ANIME <span>✦</span> JAPAN <span>✦</span>
-                        STREETWEAR <span>✦</span> SATORII <span>✦</span>
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
+                    </div>
+
+                    <div class="anime-ticker-group">
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
+                    </div>
+
+                    <div class="anime-ticker-group">
+
+                        ANIME
+                        <span>✦</span>
+                        JAPAN
+                        <span>✦</span>
+                        STREETWEAR
+                        <span>✦</span>
+                        SATORII
+                        <span>✦</span>
+
                     </div>
 
                 </div>
 
             </div>
-
-        </div>
 
         </div>
 
