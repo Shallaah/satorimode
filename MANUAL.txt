@@ -325,8 +325,8 @@ Siempre debe mantenerse organizada por responsabilidad.
 
     /js/
 
-        satorii-header.js
-        satorii-footer.js
+        header.js
+        footer.js
         productos.js
         carrito.js
         producto.js
