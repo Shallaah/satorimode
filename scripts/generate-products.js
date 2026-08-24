@@ -3589,14 +3589,16 @@ function buildProductScript(
                         index
                     ) {
 
-                        return `
+return \`
 <button
-    type="button"
-    class="satori-product-thumb ${
+    class="satori-product-thumb \${
         index === 0
             ? "active"
             : ""
     }"
+>
+\`;
+
     data-gallery-image="${src.replace(
         /&/g,
         "&amp;"
