@@ -888,7 +888,7 @@ function shuffle(array) {
 
 
 /* =========================================================
-   RECOMENDACIONES ALEATORIAS
+   RECOMENDACIONES ALEATORIAS · POLERAS
 ========================================================= */
 
 function getRecommendedProducts(
@@ -897,17 +897,26 @@ function getRecommendedProducts(
 ) {
 
     /*
-       PRODUCTOS DISPONIBLES
-       ---------------------
+       POLERAS RECOMENDADAS
+       --------------------
 
-       Excluimos únicamente el producto
-       que estamos viendo y productos
-       marcados como no disponibles.
+       La sección recomienda exclusivamente
+       productos identificados como poleras.
+
+       Se excluye:
+       ✓ El producto actual
+       ✓ Productos no disponibles
+       ✓ Productos sin imágenes válidas
     */
 
     const candidates =
         products.filter(
             item => {
+
+                /*
+                   Nunca recomendamos el producto
+                   que el usuario está viendo.
+                */
 
                 if (
                     String(item.id) ===
@@ -919,8 +928,25 @@ function getRecommendedProducts(
                 }
 
 
+                /*
+                   Solo productos disponibles.
+                */
+
                 if (
                     item.available === false
+                ) {
+
+                    return false;
+
+                }
+
+
+                /*
+                   SOLO POLERAS
+                */
+
+                if (
+                    !isTshirt(item)
                 ) {
 
                     return false;
@@ -934,9 +960,7 @@ function getRecommendedProducts(
                 */
 
                 const images =
-                    getProductImages(
-                        item
-                    );
+                    getProductImages(item);
 
 
                 if (
@@ -948,16 +972,16 @@ function getRecommendedProducts(
                 }
 
 
+                /*
+                   Comprobamos que exista
+                   al menos una imagen válida.
+                */
+
                 const itemUrl =
                     normalizeProductUrl(
                         item
                     );
 
-
-                /*
-                   Comprobamos que tenga
-                   al menos una imagen usable.
-                */
 
                 return images.some(
                     image => {
@@ -984,8 +1008,8 @@ function getRecommendedProducts(
 
 
     /*
-       Si no hay productos suficientes,
-       simplemente no mostramos recomendaciones.
+       Si no existen poleras suficientes,
+       usamos todas las disponibles.
     */
 
     if (
@@ -998,141 +1022,24 @@ function getRecommendedProducts(
 
 
     /*
-       COLECCIÓN ACTUAL
-       ----------------
+       ALEATORIEDAD
+       ------------
 
-       Primero buscamos productos de la
-       misma colección/categoría.
+       Cada vez que se genera una página,
+       las poleras se mezclan aleatoriamente.
     */
 
-    const currentCollection =
-        String(
-            product.collection ||
-            product.category ||
-            ""
-        )
-            .trim()
-            .toLowerCase();
-
-
-    const sameCollection =
-        candidates.filter(
-            item => {
-
-                const itemCollection =
-                    String(
-                        item.collection ||
-                        item.category ||
-                        ""
-                    )
-                        .trim()
-                        .toLowerCase();
-
-
-                return (
-                    currentCollection &&
-                    itemCollection ===
-                    currentCollection
-                );
-
-            }
-        );
-
-
-    /*
-       PRODUCTOS DE OTRAS COLECCIONES
-    */
-
-    const otherProducts =
-        candidates.filter(
-            item => {
-
-                const itemCollection =
-                    String(
-                        item.collection ||
-                        item.category ||
-                        ""
-                    )
-                        .trim()
-                        .toLowerCase();
-
-
-                return (
-                    !currentCollection ||
-                    itemCollection !==
-                    currentCollection
-                );
-
-            }
-        );
-
-
-    /*
-       MEZCLAMOS AMBOS GRUPOS
-       ----------------------
-
-       La prioridad es:
-
-       1. Misma colección
-       2. Otros productos
-
-       Pero ambos grupos se mezclan
-       aleatoriamente.
-    */
-
-    const shuffledSameCollection =
+    const shuffled =
         shuffle(
-            sameCollection
-        );
-
-
-    const shuffledOtherProducts =
-        shuffle(
-            otherProducts
+            candidates
         );
 
 
     /*
-       Primero tomamos hasta 4 de la
-       misma colección.
+       Mostramos como máximo 4.
     */
 
-    const selected = [
-        ...shuffledSameCollection
-    ];
-
-
-    /*
-       Si faltan productos para llegar
-       a 4, completamos aleatoriamente
-       con otros productos.
-    */
-
-    if (
-        selected.length < 4
-    ) {
-
-        selected.push(
-            ...shuffledOtherProducts.slice(
-                0,
-                4 - selected.length
-            )
-        );
-
-    }
-
-
-    /*
-       Seguridad adicional:
-
-       Volvemos a mezclar el resultado
-       para que no aparezca siempre
-       exactamente el mismo orden.
-    */
-
-    return shuffle(
-        selected
-    ).slice(
+    return shuffled.slice(
         0,
         4
     );
