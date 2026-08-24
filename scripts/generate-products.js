@@ -2083,7 +2083,7 @@ function buildPage(
         type="image/png"
         href="${escapeHTML(
             rootPrefix +
-            "img/logo.png"
+            "img/logo.webp"
         )}"
     >
 
