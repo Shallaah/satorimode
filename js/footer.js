@@ -97,15 +97,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         COLECCIONES
                     </h3>
 
-                    <a href="${BASE}anime.html">
+                    <a href="anime.html">
                         Anime
                     </a>
 
-                    <a href="${BASE}yokai.html">
+                    <a href="yokai.html">
                         Yokai
                     </a>
 
-                    <a href="${BASE}productos.html">
+                    <a href="productos.html">
                         Todo
                     </a>
 
@@ -122,19 +122,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         TIENDA
                     </h3>
 
-                    <a href="${BASE}productos.html">
+                    <a href="productos.html">
                         Todos los productos
                     </a>
 
-                    <a href="${BASE}carrito.html">
+                    <a href="carrito.html">
                         Carrito
                     </a>
 
-                    <a href="${BASE}satorii-pack.html">
+                    <a href="satorii-pack.html">
                         Satorii Pack
                     </a>
 
-                    <a href="${BASE}regala-satorii.html">
+                    <a href="regala-satorii.html">
                         Regala Satorii
                     </a>
 
@@ -151,19 +151,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         AYUDA
                     </h3>
 
-                    <a href="${BASE}preguntas-frecuentes.html">
+                    <a href="preguntas-frecuentes.html">
                         Preguntas frecuentes
                     </a>
 
-                    <a href="${BASE}envios.html">
+                    <a href="envios.html">
                         Envíos
                     </a>
 
-                    <a href="${BASE}cambios-y-devoluciones.html">
+                    <a href="cambios-y-devoluciones.html">
                         Cambios y devoluciones
                     </a>
 
-                    <a href="${BASE}guia-tallas.html">
+                    <a href="guia-tallas.html">
                         Guía de tallas
                     </a>
 
