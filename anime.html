@@ -558,6 +558,66 @@
 
             letter-spacing: 1.5px;
 
+            animation:
+                animeTicker 22s linear infinite;
+
+            will-change:
+                transform;
+
+        }
+
+
+        /* =====================================================
+           TICKER · LOOP INFINITO
+        ====================================================== */
+
+        @keyframes animeTicker {
+
+            from {
+
+                transform:
+                    translateX(0);
+
+            }
+
+            to {
+
+                transform:
+                    translateX(-50%);
+
+            }
+
+        }
+
+
+        .anime-ticker:hover
+        .anime-ticker-track {
+
+            animation-play-state:
+                paused;
+
+        }
+
+
+        .anime-ticker-track {
+
+            gap: 0;
+
+        }
+
+
+        .anime-ticker-group {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 22px;
+
+            flex-shrink: 0;
+
+            padding-right: 22px;
+
         }
 
 
@@ -1625,6 +1685,18 @@
         }
 
 
+        @media (prefers-reduced-motion: reduce) {
+
+            .anime-ticker-track {
+
+                animation:
+                    none;
+
+            }
+
+        }
+
+
         /* =====================================================
            MÓVIL PEQUEÑO
         ====================================================== */
@@ -1743,37 +1815,49 @@
 
             <div class="anime-ticker-track">
 
-                ANIME
+                <div class="anime-ticker-group">
 
-                <span>✦</span>
+                    ANIME
 
-                JAPAN
+                    <span>✦</span>
 
-                <span>✦</span>
+                    JAPAN
 
-                STREETWEAR
+                    <span>✦</span>
 
-                <span>✦</span>
+                    STREETWEAR
 
-                SATORII
+                    <span>✦</span>
 
-                <span>✦</span>
+                    SATORII
 
-                ANIME
+                    <span>✦</span>
 
-                <span>✦</span>
+                </div>
 
-                JAPAN
 
-                <span>✦</span>
+                <div
+                    class="anime-ticker-group"
+                    aria-hidden="true"
+                >
 
-                STREETWEAR
+                    ANIME
 
-                <span>✦</span>
+                    <span>✦</span>
 
-                SATORII
+                    JAPAN
 
-                <span>✦</span>
+                    <span>✦</span>
+
+                    STREETWEAR
+
+                    <span>✦</span>
+
+                    SATORII
+
+                    <span>✦</span>
+
+                </div>
 
             </div>
 
