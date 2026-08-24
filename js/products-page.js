@@ -11,6 +11,19 @@
    - Recomendaciones
 
    products.js se carga automáticamente si es necesario.
+
+   IMPORTANTE:
+
+   Supabase es la fuente oficial de los datos dinámicos
+   del catálogo.
+
+   Cuando products.js termina de sincronizar con Supabase,
+   dispara:
+
+       satorii:products-updated
+
+   Este archivo escucha ese evento y vuelve a renderizar
+   el catálogo para mostrar los datos actualizados.
 ========================================================= */
 
 (function () {
@@ -55,10 +68,6 @@
             existingScript
         ) {
 
-            /*
-             * Esperar a que termine de cargar.
-             */
-
             existingScript.addEventListener(
                 "load",
                 function () {
@@ -86,9 +95,9 @@
 
 
             /*
-             * Si el script ya terminó pero PRODUCTS
-             * sigue sin existir, dejamos que el
-             * callback compruebe el estado.
+             * Si el script ya terminó de cargar pero
+             * PRODUCTS todavía no existe, comprobar
+             * nuevamente.
              */
 
             setTimeout(
@@ -245,7 +254,6 @@
 
     function initProductsPage() {
 
-
         /*
          * Comprobación final.
          */
@@ -277,10 +285,25 @@
 
         function formatPrice(price) {
 
+            const numericPrice =
+                Number(price);
+
+
+            if (
+                !Number.isFinite(
+                    numericPrice
+                )
+            ) {
+
+                return "0";
+
+            }
+
+
             return new Intl.NumberFormat(
                 "es-CL"
             ).format(
-                Number(price || 0)
+                numericPrice
             );
 
         }
@@ -421,6 +444,23 @@
                     : "Consultar";
 
 
+            /*
+             * Precio:
+
+             * Siempre se lee directamente desde
+             * product.price.
+
+             * Como PRODUCTS es actualizado por
+             * Supabase, después de la sincronización
+             * la tarjeta utilizará el nuevo precio.
+             */
+
+            const price =
+                Number(
+                    product.price
+                ) || 0;
+
+
             card.innerHTML = `
 
                 <div class="product-image">
@@ -463,7 +503,7 @@
 
 
                     <p class="product-price">
-                        $${formatPrice(product.price)}
+                        $${formatPrice(price)}
                     </p>
 
 
@@ -604,8 +644,12 @@
 
                     if (
                         pageCategory &&
-                        product.category !==
+                        normalizeProductText(
+                            product.category
+                        ) !==
+                        normalizeProductText(
                             pageCategory
+                        )
                     ) {
 
                         return false;
@@ -639,8 +683,12 @@
 
                     if (
                         activeFilters.collection &&
-                        product.category !==
+                        normalizeProductText(
+                            product.collection
+                        ) !==
+                        normalizeProductText(
                             activeFilters.collection
+                        )
                     ) {
 
                         return false;
@@ -658,8 +706,19 @@
                             !Array.isArray(
                                 product.sizes
                             ) ||
-                            !product.sizes.includes(
-                                activeFilters.size
+                            !product.sizes.some(
+                                function (size) {
+
+                                    return (
+                                        normalizeProductText(
+                                            size
+                                        ) ===
+                                        normalizeProductText(
+                                            activeFilters.size
+                                        )
+                                    );
+
+                                }
                             )
                         )
                     ) {
@@ -683,14 +742,12 @@
                                 function (color) {
 
                                     return (
-                                        String(color)
-                                            .toLowerCase()
-                                            .trim() ===
-                                        String(
+                                        normalizeProductText(
+                                            color
+                                        ) ===
+                                        normalizeProductText(
                                             activeFilters.color
                                         )
-                                            .toLowerCase()
-                                            .trim()
                                     );
 
                                 }
@@ -1174,14 +1231,52 @@
 
 
         /* =================================================
-           GENERAR
+           RENDER INICIAL
         ================================================= */
 
         renderProducts();
 
-
         renderRecommendations();
 
+
+        /* =================================================
+           SINCRONIZACIÓN SUPABASE
+        =================================================
+
+           Este listener es la parte importante.
+
+           products.js modifica PRODUCTS cuando Supabase
+           responde.
+
+           Después dispara:
+
+               satorii:products-updated
+
+           Aquí volvemos a renderizar las tarjetas.
+
+        */
+
+        window.addEventListener(
+            "satorii:products-updated",
+            function () {
+
+                console.log(
+                    "SatoriMode · Productos actualizados desde Supabase."
+                );
+
+
+                renderProducts();
+
+
+                renderRecommendations();
+
+            }
+        );
+
+
+        /* =================================================
+           INFORMACIÓN
+        ================================================= */
 
         console.log(
             `SatoriMode · ${PRODUCTS.length} producto(s) cargado(s).`
