@@ -1,0 +1,244 @@
+/* =========================================================
+   SATORII · ANIMACIONES GLOBALES
+========================================================= */
+
+:root {
+    --satori-ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+
+/* =========================================================
+   ESTADO INICIAL
+========================================================= */
+
+.satori-page-animate {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+
+/* =========================================================
+   ANIMACIÓN PRINCIPAL DE PÁGINA
+========================================================= */
+
+.satori-page-animate.satori-page-loaded {
+    animation:
+        satoriPageIn
+        .75s
+        var(--satori-ease)
+        both;
+}
+
+
+@keyframes satoriPageIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.satori-header-animate {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+
+.satori-header-animate.satori-header-loaded {
+    animation:
+        satoriHeaderIn
+        .55s
+        var(--satori-ease)
+        both;
+}
+
+
+@keyframes satoriHeaderIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.satori-content-animate {
+    opacity: 0;
+    transform: translateY(22px);
+}
+
+
+.satori-content-animate.satori-content-loaded {
+    animation:
+        satoriContentIn
+        .7s
+        var(--satori-ease)
+        both;
+}
+
+
+@keyframes satoriContentIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   CARDS / PRODUCTOS
+========================================================= */
+
+.satori-card-animate {
+    opacity: 0;
+    transform:
+        translateY(24px)
+        scale(.975);
+}
+
+
+.satori-card-animate.satori-card-loaded {
+    animation:
+        satoriCardIn
+        .65s
+        var(--satori-ease)
+        both;
+}
+
+
+@keyframes satoriCardIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(24px)
+            scale(.975);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   FADE
+========================================================= */
+
+.satori-fade-animate {
+    opacity: 0;
+}
+
+
+.satori-fade-animate.satori-fade-loaded {
+    animation:
+        satoriFadeIn
+        .65s
+        var(--satori-ease)
+        both;
+}
+
+
+@keyframes satoriFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   TRANSICIÓN ENTRE PÁGINAS
+========================================================= */
+
+body.satori-page-exit {
+    pointer-events: none;
+}
+
+
+body.satori-page-exit main,
+body.satori-page-exit .satori-page-content {
+    animation:
+        satoriPageOut
+        .25s
+        ease
+        both;
+}
+
+
+@keyframes satoriPageOut {
+
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .satori-page-animate,
+    .satori-page-animate.satori-page-loaded,
+    .satori-header-animate,
+    .satori-header-animate.satori-header-loaded,
+    .satori-content-animate,
+    .satori-content-animate.satori-content-loaded,
+    .satori-card-animate,
+    .satori-card-animate.satori-card-loaded,
+    .satori-fade-animate,
+    .satori-fade-animate.satori-fade-loaded,
+    body.satori-page-exit main,
+    body.satori-page-exit .satori-page-content {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+}
