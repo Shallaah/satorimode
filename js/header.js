@@ -1136,7 +1136,7 @@
                 sans-serif;
             font-weight:800;
             font-style:italic;
-            letter-spacing:-1.8px;
+            letter-spacing:-0.8px;
             text-transform:uppercase;
             color:#fff;
             text-decoration:none;
@@ -2348,7 +2348,7 @@
                 margin-top:2px;
                 margin-bottom:15px;
                 font-size:12px;
-                letter-spacing:1.8px;
+                letter-spacing:0.8px;
             }
 
             #satori-header .search-form {
