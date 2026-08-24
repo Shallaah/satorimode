@@ -58,11 +58,9 @@ const PRODUCTS_DIR =
     );
 
 
-/*
- * =========================================================
- * COLORES OFICIALES SATORII
- * =========================================================
- */
+/* =========================================================
+   COLORES OFICIALES SATORII
+========================================================= */
 
 const SATORII_RED =
     "#EF0930";
@@ -73,6 +71,9 @@ const SATORII_BLACK =
 const SATORII_HEADER =
     "#000000";
 
+/*
+ * COLOR OFICIAL DEL FOOTER + TICKER
+ */
 const SATORII_DARK =
     "#101727";
 
@@ -1674,7 +1675,8 @@ function buildRelatedProducts(
         ${related
             .map(
                 function (
-                    item
+                    item,
+                    index
                 ) {
 
                     const itemUrl =
@@ -1719,9 +1721,12 @@ function buildRelatedProducts(
     <div class="satori-related-image">
 
         <span class="satori-related-number">
-            0${related.indexOf(
-                item
-            ) + 1}
+            ${String(
+                index + 1
+            ).padStart(
+                2,
+                "0"
+            )}
         </span>
 
 
@@ -3084,7 +3089,7 @@ function buildDesignCSS() {
         5px 0 45px;
 
     background:
-        var(--product-dark);
+        #101727;
 
     color:
         #FFFFFF;
@@ -4330,6 +4335,7 @@ function buildDesignCSS() {
 
 function buildHero(
     product,
+    products,
     productUrl
 ) {
 
@@ -4837,7 +4843,8 @@ function buildProductScript(
             .replace(
                 /\\\\/g,
                 "/"
-            );
+            )
+            .trim();
 
 
         if (
@@ -4860,7 +4867,7 @@ function buildProductScript(
         return (
             ROOT_PREFIX +
             original.replace(
-                /^\\/+ /,
+                /^\\/+/,
                 ""
             )
         );
@@ -6689,7 +6696,7 @@ function buildPage(
 
     <!-- =================================================
          PRODUCTO
-    ================================================== -->
+    ================================================= -->
 
     <main
         class="
@@ -6700,6 +6707,7 @@ function buildPage(
 
         ${buildHero(
             product,
+            products,
             productUrl
         )}
 
