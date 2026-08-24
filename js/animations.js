@@ -13,15 +13,6 @@
 
     function initializePageAnimation() {
 
-        /*
-         * Marca que la página ya está lista.
-         *
-         * IMPORTANTE:
-         * No bloqueamos scroll.
-         * No modificamos overflow.
-         * No modificamos pointer-events.
-         */
-
         document.body.classList.add(
             "satori-page-ready"
         );
@@ -53,18 +44,20 @@
 
 
     /* =====================================================
-       ENTRADA DE ELEMENTOS
+       ANIMACIONES DE ELEMENTOS
     ====================================================== */
 
-    function initializeAnimatedElements() {
+    function initializeAnimatedElements(
+        root = document
+    ) {
 
-        /*
-         * CONTENIDO
-         */
+        /* -------------------------------------------------
+           CONTENIDO
+        -------------------------------------------------- */
 
         const contentElements =
-            document.querySelectorAll(
-                ".satori-content-animate"
+            root.querySelectorAll(
+                ".satori-content-animate:not(.satori-content-loaded)"
             );
 
 
@@ -82,13 +75,13 @@
         );
 
 
-        /*
-         * TARJETAS
-         */
+        /* -------------------------------------------------
+           TARJETAS
+        -------------------------------------------------- */
 
         const cards =
-            document.querySelectorAll(
-                ".satori-card-animate"
+            root.querySelectorAll(
+                ".satori-card-animate:not(.satori-card-loaded)"
             );
 
 
@@ -106,13 +99,13 @@
         );
 
 
-        /*
-         * FADE
-         */
+        /* -------------------------------------------------
+           FADE
+        -------------------------------------------------- */
 
         const fades =
-            document.querySelectorAll(
-                ".satori-fade-animate"
+            root.querySelectorAll(
+                ".satori-fade-animate:not(.satori-fade-loaded)"
             );
 
 
@@ -133,23 +126,124 @@
 
 
     /* =====================================================
+       CONTENIDO DINÁMICO
+
+       IMPORTANTE
+
+       anime.html
+       yokai.html
+       productos.html
+
+       generan las tarjetas DESPUÉS de cargar
+       animations.js.
+
+       Por eso necesitamos observar el DOM.
+    ====================================================== */
+
+    function initializeAnimationObserver() {
+
+        if (
+            typeof MutationObserver ===
+            "undefined"
+        ) {
+
+            return;
+
+        }
+
+
+        const observer =
+            new MutationObserver(
+                function (mutations) {
+
+                    mutations.forEach(
+                        function (mutation) {
+
+                            mutation.addedNodes.forEach(
+                                function (node) {
+
+                                    if (
+                                        node.nodeType !==
+                                        Node.ELEMENT_NODE
+                                    ) {
+
+                                        return;
+
+                                    }
+
+
+                                    /*
+                                     * Si el elemento agregado
+                                     * ES directamente una tarjeta
+                                     */
+
+                                    if (
+                                        node.matches &&
+                                        node.matches(
+                                            ".satori-card-animate, .satori-content-animate, .satori-fade-animate"
+                                        )
+                                    ) {
+
+                                        initializeAnimatedElements(
+                                            node.parentElement ||
+                                            document
+                                        );
+
+                                        return;
+
+                                    }
+
+
+                                    /*
+                                     * Si el elemento agregado
+                                     * contiene tarjetas dentro
+                                     */
+
+                                    if (
+                                        node.querySelector &&
+                                        node.querySelector(
+                                            ".satori-card-animate, .satori-content-animate, .satori-fade-animate"
+                                        )
+                                    ) {
+
+                                        initializeAnimatedElements(
+                                            node
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        observer.observe(
+            document.body,
+            {
+                childList: true,
+                subtree: true
+            }
+        );
+
+    }
+
+
+    /* =====================================================
        TRANSICIONES ENTRE PÁGINAS
     ====================================================== */
 
-    /*
-     * DESACTIVADAS TEMPORALMENTE.
-     *
-     * No interceptamos los enlaces.
-     * Esto permite que:
-     *
-     * - header.js controle sus botones
-     * - carrito.js controle el carrito
-     * - los enlaces funcionen normalmente
-     * - no haya preventDefault() global
-     * - no haya retrasos antes de navegar
-     */
-
     function initializePageTransitions() {
+
+        /*
+         * DESACTIVADAS.
+
+         * Los enlaces deben funcionar normalmente.
+         */
 
         return;
 
@@ -157,15 +251,10 @@
 
 
     /* =====================================================
-       LIMPIEZA DE ESTADOS
+       LIMPIEZA
     ====================================================== */
 
     function cleanupAnimationStates() {
-
-        /*
-         * Nos aseguramos de que animations.js nunca
-         * deje bloqueado el scroll.
-         */
 
         document.documentElement.classList.remove(
             "satori-page-exit"
@@ -190,6 +279,8 @@
 
         initializeAnimatedElements();
 
+        initializeAnimationObserver();
+
         initializePageTransitions();
 
     }
@@ -206,10 +297,14 @@
 
         document.addEventListener(
             "DOMContentLoaded",
-            initializeSatoriAnimations
+            initializeSatoriAnimations,
+            {
+                once: true
+            }
         );
 
-    } else {
+    }
+    else {
 
         initializeSatoriAnimations();
 
