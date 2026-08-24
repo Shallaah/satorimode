@@ -229,8 +229,12 @@
                                 Anime
                             </a>
 
-                            <a href="${SATORIMODE_BASE}yokai.html">
-                                Yokai
+                            <a href="${SATORIMODE_BASE}torii.html">
+                                Torii
+                            </a>
+
+                            <a href="${SATORIMODE_BASE}anime-goods.html">
+                                Anime Goods
                             </a>
 
                             <a href="${SATORIMODE_BASE}productos.html">
@@ -570,8 +574,12 @@
                         Anime
                     </a>
 
-                    <a href="${SATORIMODE_BASE}yokai.html">
-                        Yokai
+                    <a href="${SATORIMODE_BASE}torii.html">
+                        Torii
+                    </a>
+
+                    <a href="${SATORIMODE_BASE}anime-goods.html">
+                        Anime Goods
                     </a>
 
                     <a href="${SATORIMODE_BASE}productos.html">
@@ -1128,11 +1136,11 @@
                 sans-serif;
             font-weight:800;
             font-style:italic;
-            letter-spacing:-0.8px;
+            letter-spacing:-1.8px;
             text-transform:uppercase;
             color:#fff;
             text-decoration:none;
-            line-height:.95;
+            line-height:.88;
             white-space:nowrap;
             transform:skewX(-3deg);
             transition:
@@ -1389,49 +1397,30 @@
             display:none;
         }
 
-/* =====================================================
-   HEADER FLOTANTE
-===================================================== */
 
-#satori-header.scrolled .main-header {
+        /* =====================================================
+           HEADER FLOTANTE
+        ====================================================== */
 
-    position:fixed;
+        #satori-header.scrolled .main-header {
+            position:fixed;
+            top:8px;
+            left:8px;
+            width:calc(100% - 16px);
+            height:64px;
+            background:#000;
+            border:1px solid #222;
+            border-radius:16px;
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,.16);
+            z-index:900000;
+        }
 
-    top:8px;
-    left:8px;
-
-    width:calc(100% - 16px);
-
-    height:64px;
-
-    background:#000;
-
-    border:1px solid #222;
-
-    border-radius:16px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.22);
-
-    z-index:999999;
-
-    transition:
-        top .25s ease,
-        left .25s ease,
-        width .25s ease,
-        height .25s ease,
-        border-radius .25s ease,
-        box-shadow .25s ease;
-
-}
-
-
-#satori-header.scrolled .header-inner {
-
-    height:62px;
-
-}
+        #satori-header.scrolled
+        .header-inner {
+            height:62px;
+        }
 
 
         /* =====================================================
@@ -2651,112 +2640,54 @@
         }
 
 
-   /* =====================================================
-   SCROLL HEADER · SATORII
-====================================================== */
+        /* =====================================================
+           SCROLL HEADER
+        ====================================================== */
 
-let satoriHeaderLastScroll = 0;
-let satoriHeaderTicking = false;
+        function updateScrollHeader() {
 
-function updateScrollHeader() {
+            const scrolled =
+                window.scrollY > 50;
 
-    if (!root) {
-        return;
-    }
-
-    const scrollPosition =
-        window.scrollY ||
-        window.pageYOffset ||
-        0;
-
-    /*
-     * A partir de 50px el header pasa a modo flotante.
-     */
-    const shouldFloat = scrollPosition > 50;
-
-    if (shouldFloat) {
-
-        /*
-         * Activar header flotante
-         */
-        if (!root.classList.contains("scrolled")) {
-
-            root.classList.add("scrolled");
-
-        }
-
-        /*
-         * Mantener el espacio que ocupaba
-         * el header para evitar saltos de contenido.
-         */
-        if (spacer) {
-
-            spacer.style.display = "block";
-            spacer.style.height = "68px";
-
-        }
-
-    } else {
-
-        /*
-         * Volver al estado normal.
-         */
-        if (root.classList.contains("scrolled")) {
-
-            root.classList.remove("scrolled");
-
-        }
-
-        if (spacer) {
-
-            spacer.style.display = "none";
-            spacer.style.height = "0px";
-
-        }
-
-    }
-
-    satoriHeaderLastScroll = scrollPosition;
-
-}
-
-
-/* =====================================================
-   SCROLL
-====================================================== */
-
-window.addEventListener(
-    "scroll",
-    function () {
-
-        if (!satoriHeaderTicking) {
-
-            window.requestAnimationFrame(
-                function () {
-
-                    updateScrollHeader();
-
-                    satoriHeaderTicking = false;
-
-                }
+            root.classList.toggle(
+                "scrolled",
+                scrolled
             );
 
-            satoriHeaderTicking = true;
+
+            if (scrolled) {
+
+                spacer.style.display =
+                    "block";
+
+                spacer.style.height =
+                    "68px";
+
+            } else {
+
+                spacer.style.display =
+                    "none";
+
+                spacer.style.height =
+                    "0px";
+
+            }
 
         }
 
-    },
-    {
-        passive: true
-    }
-);
+
+        window.addEventListener(
+            "scroll",
+            updateScrollHeader,
+            {
+                passive:true
+            }
+        );
 
 
-/* =====================================================
-   CARGA INICIAL
-====================================================== */
+        updateScrollHeader();
 
-updateScrollHeader();
+
         /* =====================================================
            CERRAR DROPDOWNS
         ====================================================== */
@@ -3458,184 +3389,6 @@ updateScrollHeader();
 
 
         /* =====================================================
-           OBTENER PRODUCTO ACTUAL DEL CATÁLOGO
-        ====================================================== */
-
-        function getCatalogProduct(
-            cartItem
-        ) {
-
-            if (
-                typeof PRODUCTS ===
-                "undefined" ||
-                !Array.isArray(PRODUCTS)
-            ) {
-
-                return null;
-
-            }
-
-
-            const cartId =
-                String(
-                    cartItem?.productId ??
-                    cartItem?.id ??
-                    ""
-                );
-
-
-            if (!cartId) {
-
-                return null;
-
-            }
-
-
-            return (
-                PRODUCTS.find(
-                    function (product) {
-
-                        return String(
-                            product.id
-                        ) === cartId;
-
-                    }
-                ) ||
-                null
-            );
-
-        }
-
-
-        /* =====================================================
-           DATOS ACTUALES DEL PRODUCTO
-        ====================================================== */
-
-        function getCurrentCartItemData(
-            cartItem
-        ) {
-
-            const catalogProduct =
-                getCatalogProduct(
-                    cartItem
-                );
-
-
-            if (catalogProduct) {
-
-                return {
-
-                    ...cartItem,
-
-                    id:
-                        catalogProduct.id,
-
-                    productId:
-                        catalogProduct.id,
-
-                    name:
-                        catalogProduct.name ||
-                        cartItem.name ||
-                        "Producto",
-
-                    price:
-                        Number(
-                            catalogProduct.price
-                        ) || 0,
-
-                    image:
-                        catalogProduct.image ||
-                        catalogProduct.images?.[0] ||
-                        cartItem.image ||
-                        "",
-
-                    quantity:
-                        Math.max(
-                            1,
-                            Number(
-                                cartItem.quantity ??
-                                cartItem.cantidad ??
-                                1
-                            ) || 1
-                        )
-
-                };
-
-            }
-
-
-            if (
-                typeof PRODUCTS ===
-                "undefined"
-            ) {
-
-                return {
-
-                    ...cartItem,
-
-                    price:
-                        Number(
-                            cartItem.price ??
-                            cartItem.precio ??
-                            0
-                        ) || 0,
-
-                    quantity:
-                        Math.max(
-                            1,
-                            Number(
-                                cartItem.quantity ??
-                                cartItem.cantidad ??
-                                1
-                            ) || 1
-                        )
-
-                };
-
-            }
-
-
-            return {
-
-                ...cartItem,
-
-                price:0,
-
-                quantity:
-                    Math.max(
-                        1,
-                        Number(
-                            cartItem.quantity ??
-                            cartItem.cantidad ??
-                            1
-                        ) || 1
-                    )
-
-            };
-
-        }
-
-
-        /* =====================================================
-           OBTENER CARRITO NORMALIZADO
-        ====================================================== */
-
-        function getNormalizedCart() {
-
-            return getCart().map(
-                function (cartItem) {
-
-                    return getCurrentCartItemData(
-                        cartItem
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
            CANTIDAD TOTAL
         ====================================================== */
 
@@ -3687,21 +3440,19 @@ updateScrollHeader();
                     item
                 ) {
 
-                    const currentItem =
-                        getCurrentCartItemData(
-                            item
-                        );
-
-
                     const price =
                         Number(
-                            currentItem.price
+                            item.price ??
+                            item.precio ??
+                            0
                         ) || 0;
 
 
                     const quantity =
                         Number(
-                            currentItem.quantity
+                            item.quantity ??
+                            item.cantidad ??
+                            1
                         ) || 1;
 
 
@@ -3804,12 +3555,8 @@ updateScrollHeader();
                 return;
 
 
-            const rawCart =
-                getCart();
-
-
             const cart =
-                getNormalizedCart();
+                getCart();
 
 
             if (!cart.length) {
@@ -3850,22 +3597,13 @@ updateScrollHeader();
                             index
                         ) {
 
-                            const catalogProduct =
-                                getCatalogProduct(
-                                    rawCart[index]
-                                );
-
-
                             const name =
-                                catalogProduct?.name ||
                                 item.name ||
                                 item.nombre ||
                                 "Producto";
 
 
                             const image =
-                                catalogProduct?.image ||
-                                catalogProduct?.images?.[0] ||
                                 item.image ||
                                 item.imagen ||
                                 "";
@@ -3873,7 +3611,9 @@ updateScrollHeader();
 
                             const price =
                                 Number(
-                                    item.price
+                                    item.price ??
+                                    item.precio ??
+                                    0
                                 ) || 0;
 
 
@@ -4327,7 +4067,7 @@ updateScrollHeader();
 
 
         /* =====================================================
-           EVENTO PERSONALIZADO DEL CARRITO
+           EVENTO PERSONALIZADO
         ====================================================== */
 
         window.addEventListener(
@@ -4346,22 +4086,6 @@ updateScrollHeader();
                     renderCart();
 
                 }
-
-            }
-        );
-
-
-        /* =====================================================
-           EVENTO DE ACTUALIZACIÓN DE PRODUCTOS
-        ====================================================== */
-
-        window.addEventListener(
-            "satorii:products-updated",
-            function () {
-
-                updateCartCount();
-
-                renderCart();
 
             }
         );
