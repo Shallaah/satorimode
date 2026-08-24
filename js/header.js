@@ -1389,28 +1389,48 @@
             display:none;
         }
 
-
 /* =====================================================
    HEADER FLOTANTE
-====================================================== */
+===================================================== */
 
 #satori-header.scrolled .main-header {
+
     position:fixed;
+
     top:8px;
     left:8px;
+
     width:calc(100% - 16px);
+
     height:64px;
+
     background:#000;
+
     border:1px solid #222;
+
     border-radius:16px;
+
     box-shadow:
         0 8px 25px
-        rgba(0,0,0,.16);
-    z-index:900000;
+        rgba(0,0,0,.22);
+
+    z-index:999999;
+
+    transition:
+        top .25s ease,
+        left .25s ease,
+        width .25s ease,
+        height .25s ease,
+        border-radius .25s ease,
+        box-shadow .25s ease;
+
 }
 
+
 #satori-header.scrolled .header-inner {
+
     height:62px;
+
 }
 
 
@@ -2631,14 +2651,18 @@
         }
 
 
-    /* =====================================================
+   /* =====================================================
    SCROLL HEADER · SATORII
 ====================================================== */
 
+let satoriHeaderLastScroll = 0;
+let satoriHeaderTicking = false;
+
 function updateScrollHeader() {
 
-    if (!root)
+    if (!root) {
         return;
+    }
 
     const scrollPosition =
         window.scrollY ||
@@ -2646,77 +2670,92 @@ function updateScrollHeader() {
         0;
 
     /*
-     * El header se convierte en flotante
-     * después de bajar 50px.
+     * A partir de 50px el header pasa a modo flotante.
      */
-    const scrolled =
-        scrollPosition > 50;
+    const shouldFloat = scrollPosition > 50;
 
-
-    /*
-     * Activar / desactivar estado flotante
-     */
-    if (scrolled) {
-
-        root.classList.add("scrolled");
+    if (shouldFloat) {
 
         /*
-         * Reservamos el espacio que deja
-         * el header al pasar a position: fixed.
+         * Activar header flotante
+         */
+        if (!root.classList.contains("scrolled")) {
+
+            root.classList.add("scrolled");
+
+        }
+
+        /*
+         * Mantener el espacio que ocupaba
+         * el header para evitar saltos de contenido.
          */
         if (spacer) {
 
             spacer.style.display = "block";
-
             spacer.style.height = "68px";
 
         }
 
     } else {
 
-        root.classList.remove("scrolled");
-
         /*
-         * Volver al header normal.
+         * Volver al estado normal.
          */
+        if (root.classList.contains("scrolled")) {
+
+            root.classList.remove("scrolled");
+
+        }
+
         if (spacer) {
 
             spacer.style.display = "none";
-
             spacer.style.height = "0px";
 
         }
 
     }
 
+    satoriHeaderLastScroll = scrollPosition;
+
 }
 
 
-/*
- * Escuchar el scroll de la página
- */
+/* =====================================================
+   SCROLL
+====================================================== */
+
 window.addEventListener(
     "scroll",
-    updateScrollHeader,
+    function () {
+
+        if (!satoriHeaderTicking) {
+
+            window.requestAnimationFrame(
+                function () {
+
+                    updateScrollHeader();
+
+                    satoriHeaderTicking = false;
+
+                }
+            );
+
+            satoriHeaderTicking = true;
+
+        }
+
+    },
     {
         passive: true
     }
 );
 
 
-/*
- * Ejecutar inmediatamente al cargar
- * por si la página ya tiene scroll.
- */
-window.addEventListener(
-    "load",
-    updateScrollHeader
-);
+/* =====================================================
+   CARGA INICIAL
+====================================================== */
 
-
-/*
- * Estado inicial
- */
 updateScrollHeader();
         /* =====================================================
            CERRAR DROPDOWNS
