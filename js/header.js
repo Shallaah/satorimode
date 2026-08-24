@@ -2582,17 +2582,22 @@
            BLOQUEO DE SCROLL
         ====================================================== */
 
-        function lockScroll() {
+function lockScroll() {
 
-            document.documentElement.classList.add(
-                "satori-lock-scroll"
-            );
+    if (!document.documentElement ||
+        !document.body) {
+        return;
+    }
 
-            document.body.classList.add(
-                "satori-lock-scroll"
-            );
+    document.documentElement.classList.add(
+        "satori-lock-scroll"
+    );
 
-        }
+    document.body.classList.add(
+        "satori-lock-scroll"
+    );
+
+}
 
 
         function unlockScroll() {
@@ -2632,54 +2637,99 @@
         }
 
 
-        /* =====================================================
-           SCROLL HEADER
-        ====================================================== */
+      /* =====================================================
+   SCROLL HEADER · SATORII
+====================================================== */
 
-        function updateScrollHeader() {
+let satoriScrollTicking = false;
 
-            const scrolled =
-                window.scrollY > 50;
+function updateScrollHeader() {
 
-            root.classList.toggle(
-                "scrolled",
-                scrolled
-            );
+    if (!root) {
+        return;
+    }
 
+    const scrollY =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
 
-            if (scrolled) {
+    const shouldFloat =
+        scrollY > 50;
 
-                spacer.style.display =
-                    "block";
+    /*
+     * HEADER NORMAL
+     */
+    if (!shouldFloat) {
 
-                spacer.style.height =
-                    "68px";
+        root.classList.remove("scrolled");
 
-            } else {
-
-                spacer.style.display =
-                    "none";
-
-                spacer.style.height =
-                    "0px";
-
-            }
-
+        if (spacer) {
+            spacer.style.display = "none";
+            spacer.style.height = "0px";
         }
 
+        return;
+    }
 
-        window.addEventListener(
-            "scroll",
-            updateScrollHeader,
-            {
-                passive:true
+
+    /*
+     * HEADER FLOTANTE
+     */
+    root.classList.add("scrolled");
+
+
+    /*
+     * Reservar espacio para que el contenido
+     * no salte cuando el header pasa a fixed.
+     */
+    if (spacer) {
+
+        spacer.style.display = "block";
+        spacer.style.height = "68px";
+
+    }
+
+}
+
+
+/* =====================================================
+   EVENTO SCROLL
+====================================================== */
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        if (satoriScrollTicking) {
+            return;
+        }
+
+        satoriScrollTicking = true;
+
+        window.requestAnimationFrame(
+            function () {
+
+                updateScrollHeader();
+
+                satoriScrollTicking = false;
+
             }
         );
 
+    },
+    {
+        passive: true
+    }
+);
 
-        updateScrollHeader();
 
+/* =====================================================
+   ESTADO INICIAL
+====================================================== */
 
+updateScrollHeader();
         /* =====================================================
            CERRAR DROPDOWNS
         ====================================================== */
