@@ -1564,8 +1564,8 @@ function getPageCSS() {
         }
 
         .satori-animate {
-            opacity: 0;
-            transform: translate3d(0, 28px, 0);
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
             transition:
                 opacity .7s ease,
                 transform .7s cubic-bezier(.22,1,.36,1);
@@ -1577,6 +1577,10 @@ function getPageCSS() {
 
         .satori-page-ready .satori-animate.is-visible {
             opacity: 1;
+            transform: translate3d(0,0,0);
+        }
+
+        .satori-page-ready .satori-animate-left.is-visible {
             transform: translate3d(0,0,0);
         }
 
@@ -2506,7 +2510,7 @@ function getProductScript(root, product, productUrl) {
                         item.url || ""
                     )
                         .replace(
-                            /^\\\\/+|^\\/+/, ""
+                            /^\\/+/, ""
                         )
                         .replace(
                             /\\\\/g,
