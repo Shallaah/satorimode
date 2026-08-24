@@ -13,6 +13,15 @@
 
     function initializePageAnimation() {
 
+        /*
+         * Marca que la página ya está lista.
+         *
+         * IMPORTANTE:
+         * No bloqueamos scroll.
+         * No modificamos overflow.
+         * No modificamos pointer-events.
+         */
+
         document.body.classList.add(
             "satori-page-ready"
         );
@@ -40,30 +49,6 @@
 
         }
 
-
-        const header =
-            document.querySelector(
-                "#satori-header"
-            );
-
-
-        if (header) {
-
-            header.classList.add(
-                "satori-header-animate"
-            );
-
-
-            requestAnimationFrame(function () {
-
-                header.classList.add(
-                    "satori-header-loaded"
-                );
-
-            });
-
-        }
-
     }
 
 
@@ -72,6 +57,10 @@
     ====================================================== */
 
     function initializeAnimatedElements() {
+
+        /*
+         * CONTENIDO
+         */
 
         const contentElements =
             document.querySelectorAll(
@@ -93,6 +82,10 @@
         );
 
 
+        /*
+         * TARJETAS
+         */
+
         const cards =
             document.querySelectorAll(
                 ".satori-card-animate"
@@ -112,6 +105,10 @@
             }
         );
 
+
+        /*
+         * FADE
+         */
 
         const fades =
             document.querySelectorAll(
@@ -136,95 +133,46 @@
 
 
     /* =====================================================
-       TRANSICIÓN AL CAMBIAR DE PÁGINA
+       TRANSICIONES ENTRE PÁGINAS
     ====================================================== */
+
+    /*
+     * DESACTIVADAS TEMPORALMENTE.
+     *
+     * No interceptamos los enlaces.
+     * Esto permite que:
+     *
+     * - header.js controle sus botones
+     * - carrito.js controle el carrito
+     * - los enlaces funcionen normalmente
+     * - no haya preventDefault() global
+     * - no haya retrasos antes de navegar
+     */
 
     function initializePageTransitions() {
 
-        document.addEventListener(
-            "click",
-            function (event) {
+        return;
 
-                const link =
-                    event.target.closest("a");
+    }
 
 
-                if (!link) {
-                    return;
-                }
+    /* =====================================================
+       LIMPIEZA DE ESTADOS
+    ====================================================== */
 
+    function cleanupAnimationStates() {
 
-                const href =
-                    link.getAttribute("href");
+        /*
+         * Nos aseguramos de que animations.js nunca
+         * deje bloqueado el scroll.
+         */
 
+        document.documentElement.classList.remove(
+            "satori-page-exit"
+        );
 
-                if (!href) {
-                    return;
-                }
-
-
-                if (
-                    href.startsWith("#") ||
-                    href.startsWith("mailto:") ||
-                    href.startsWith("tel:") ||
-                    href.startsWith("javascript:")
-                ) {
-                    return;
-                }
-
-
-                if (
-                    link.target === "_blank" ||
-                    link.hasAttribute("download")
-                ) {
-                    return;
-                }
-
-
-                const url =
-                    new URL(
-                        href,
-                        window.location.href
-                    );
-
-
-                if (
-                    url.origin !==
-                    window.location.origin
-                ) {
-                    return;
-                }
-
-
-                if (
-                    url.pathname ===
-                    window.location.pathname &&
-                    url.search ===
-                    window.location.search
-                ) {
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                document.body.classList.add(
-                    "satori-page-exit"
-                );
-
-
-                setTimeout(
-                    function () {
-
-                        window.location.href =
-                            url.href;
-
-                    },
-                    230
-                );
-
-            }
+        document.body.classList.remove(
+            "satori-page-exit"
         );
 
     }
@@ -234,18 +182,38 @@
        INICIALIZACIÓN
     ====================================================== */
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
+    function initializeSatoriAnimations() {
 
-            initializePageAnimation();
+        cleanupAnimationStates();
 
-            initializeAnimatedElements();
+        initializePageAnimation();
 
-            initializePageTransitions();
+        initializeAnimatedElements();
 
-        }
-    );
+        initializePageTransitions();
+
+    }
+
+
+    /* =====================================================
+       DOM READY
+    ====================================================== */
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeSatoriAnimations
+        );
+
+    } else {
+
+        initializeSatoriAnimations();
+
+    }
 
 
 })();
