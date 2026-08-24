@@ -2,19 +2,22 @@
    SATORII · GENERADOR DE PÁGINAS DE PRODUCTOS
    DISEÑO 2 · SATORII ANIME STREETWEAR
 
-   VERSIÓN CORREGIDA Y ESTABLE
+   VERSIÓN SUPABASE + FALLBACK LOCAL
 
    CORRECCIONES:
    ✓ Galería
    ✓ Cantidad
    ✓ Validación de talla
-   ✓ Recomendaciones
+   ✓ Recomendaciones dinámicas
+   ✓ Recomendaciones desde Supabase
+   ✓ Precios dinámicos desde Supabase
+   ✓ Disponibilidad dinámica desde Supabase
    ✓ Rutas de imágenes
    ✓ Banner
    ✓ Animaciones
    ✓ Favoritos
    ✓ Carrito
-   ✓ Supabase preparado
+   ✓ Supabase
    ✓ Responsive
    ✓ Reduced motion
    ✓ Accesibilidad
@@ -204,8 +207,23 @@ function normalizeProductUrl(product) {
         String(
             product.url || ""
         )
+            .trim()
             .replace(/^\/+/, "")
             .replace(/\\/g, "/");
+
+
+    /*
+       Si Supabase tiene una URL absoluta,
+       la dejamos intacta.
+    */
+
+    if (
+        /^(https?:)?\/\//i.test(url)
+    ) {
+
+        return url;
+
+    }
 
 
     if (!url) {
@@ -257,6 +275,20 @@ function getRootPrefix(productUrl) {
         String(productUrl)
             .replace(/\\/g, "/")
             .replace(/^\/+/, "");
+
+
+    /*
+       URLs absolutas no necesitan
+       prefijo relativo.
+    */
+
+    if (
+        /^(https?:)?\/\//i.test(normalized)
+    ) {
+
+        return "";
+
+    }
 
 
     const directory =
@@ -494,6 +526,10 @@ function getImagePath(
 
 function getProductImages(product) {
 
+    /*
+       Supabase puede entregar JSONB como array.
+    */
+
     if (
         Array.isArray(product.images)
     ) {
@@ -511,6 +547,60 @@ function getProductImages(product) {
         if (images.length) {
 
             return images;
+
+        }
+
+    }
+
+
+    /*
+       Fallback por si images llega como
+       string JSON.
+    */
+
+    if (
+        typeof product.images === "string"
+    ) {
+
+        try {
+
+            const parsed =
+                JSON.parse(
+                    product.images
+                );
+
+
+            if (
+                Array.isArray(parsed)
+            ) {
+
+                const images =
+                    parsed
+                        .filter(Boolean)
+                        .map(
+                            image =>
+                                String(image).trim()
+                        )
+                        .filter(Boolean);
+
+
+                if (images.length) {
+
+                    return images;
+
+                }
+
+            }
+
+        }
+
+        catch (
+            error
+        ) {
+
+            /*
+               Continuamos usando image.
+            */
 
         }
 
@@ -570,6 +660,10 @@ function getFirstValidImage(
 
     }
 
+
+    /*
+       Si es una URL remota, también sirve.
+    */
 
     for (
         const image of images
@@ -687,8 +781,6 @@ function getSizeGuide(product) {
 
 
     return [
-
-   
 
         {
             size: "M",
@@ -888,7 +980,7 @@ function shuffle(array) {
 
 
 /* =========================================================
-   RECOMENDACIONES ALEATORIAS · POLERAS
+   RECOMENDACIONES LOCALES
 ========================================================= */
 
 function getRecommendedProducts(
@@ -896,26 +988,12 @@ function getRecommendedProducts(
     products
 ) {
 
-    /*
-       POLERAS RECOMENDADAS
-       --------------------
-
-       La sección recomienda exclusivamente
-       productos identificados como poleras.
-
-       Se excluye:
-       ✓ El producto actual
-       ✓ Productos no disponibles
-       ✓ Productos sin imágenes válidas
-    */
-
     const candidates =
         products.filter(
             item => {
 
                 /*
-                   Nunca recomendamos el producto
-                   que el usuario está viendo.
+                   Nunca recomendar el producto actual.
                 */
 
                 if (
@@ -929,7 +1007,7 @@ function getRecommendedProducts(
 
 
                 /*
-                   Solo productos disponibles.
+                   Solo disponibles.
                 */
 
                 if (
@@ -942,7 +1020,7 @@ function getRecommendedProducts(
 
 
                 /*
-                   SOLO POLERAS
+                   SOLO POLERAS.
                 */
 
                 if (
@@ -953,11 +1031,6 @@ function getRecommendedProducts(
 
                 }
 
-
-                /*
-                   El producto debe tener
-                   al menos una imagen.
-                */
 
                 const images =
                     getProductImages(item);
@@ -972,16 +1045,16 @@ function getRecommendedProducts(
                 }
 
 
-                /*
-                   Comprobamos que exista
-                   al menos una imagen válida.
-                */
-
                 const itemUrl =
                     normalizeProductUrl(
                         item
                     );
 
+
+                /*
+                   Debe tener al menos una imagen
+                   local o remota.
+                */
 
                 return images.some(
                     image => {
@@ -1007,11 +1080,6 @@ function getRecommendedProducts(
         );
 
 
-    /*
-       Si no existen poleras suficientes,
-       usamos todas las disponibles.
-    */
-
     if (
         !candidates.length
     ) {
@@ -1021,30 +1089,16 @@ function getRecommendedProducts(
     }
 
 
-    /*
-       ALEATORIEDAD
-       ------------
-
-       Cada vez que se genera una página,
-       las poleras se mezclan aleatoriamente.
-    */
-
-    const shuffled =
-        shuffle(
-            candidates
-        );
-
-
-    /*
-       Mostramos como máximo 4.
-    */
-
-    return shuffled.slice(
+    return shuffle(
+        candidates
+    ).slice(
         0,
         4
     );
 
 }
+
+
 /* =========================================================
    CARGAR PRODUCTS.JS
 ========================================================= */
@@ -1725,7 +1779,8 @@ function renderTabs(product) {
 
 
 /* =========================================================
-   RECOMENDACIONES
+   RECOMENDACIONES ESTÁTICAS
+   FALLBACK INICIAL
 ========================================================= */
 
 function renderRecommendations(
@@ -1872,6 +1927,7 @@ function renderRecommendations(
         <section
             class="satori-recommendations
                    satori-page-animate"
+            id="satoriRecommendations"
         >
 
             <div
@@ -1881,11 +1937,11 @@ function renderRecommendations(
                 <div>
 
                     <span>
-                        SATORII / SELECCIÓN
+                        SATORII / STREETWEAR
                     </span>
 
                     <h2>
-                        TAMBIÉN TE PUEDE GUSTAR
+                        POLERAS RECOMENDADAS
                     </h2>
 
                 </div>
@@ -1941,7 +1997,8 @@ function generateProductPage(
     fs.mkdirSync(
         path.dirname(outputPath),
         {
-            recursive: true
+            recursive:
+                true
         }
     );
 
@@ -2015,13 +2072,23 @@ function generateProductPage(
         "Negro";
 
 
+    /*
+       DATOS INICIALES.
+
+       Estos datos son fallback.
+       Supabase puede reemplazar precio,
+       disponibilidad e imagen al cargar.
+    */
+
     const productData = {
 
         id:
-            product.id,
+            String(
+                product.id || ""
+            ),
 
         name:
-            product.name,
+            product.name || "",
 
         price:
             Number(product.price) || 0,
@@ -2031,6 +2098,9 @@ function generateProductPage(
 
         collection:
             product.collection || "",
+
+        subcategory:
+            product.subcategory || "",
 
         available:
             product.available !== false,
@@ -2282,6 +2352,18 @@ function generateProductPage(
                 translate3d(
                     28px,
                     0,
+                    0
+                );
+
+        }
+
+
+        .satori-animate-up {
+
+            transform:
+                translate3d(
+                    0,
+                    28px,
                     0
                 );
 
@@ -4590,7 +4672,11 @@ function generateProductPage(
 
 
                 <div
+                    id="satoriProductPrice"
                     class="satori-price"
+                    data-price="${Number(
+                        product.price
+                    ) || 0}"
                 >
                     ${formatPrice(product.price)}
                 </div>
@@ -4912,7 +4998,7 @@ function generateProductPage(
     </script>
 
 
-    <!-- SUPABASE -->
+    <!-- SUPABASE CONFIG -->
 
     <script>
 
@@ -4922,7 +5008,9 @@ function generateProductPage(
                 ${SUPABASE_ENABLED ? "true" : "false"},
 
             url:
-                ${safeJSONString(SUPABASE_URL)},
+                ${safeJSONString(
+                    SUPABASE_URL
+                )},
 
             publishableKey:
                 ${safeJSONString(
@@ -4958,6 +5046,368 @@ function generateProductPage(
         (function () {
 
             "use strict";
+
+
+            /* =========================================
+               UTILIDADES
+            ========================================== */
+
+            function escapeAttribute(
+                value
+            ) {
+
+                return String(
+                    value ?? ""
+                )
+                    .replace(
+                        /&/g,
+                        "&amp;"
+                    )
+                    .replace(
+                        /"/g,
+                        "&quot;"
+                    )
+                    .replace(
+                        /</g,
+                        "&lt;"
+                    )
+                    .replace(
+                        />/g,
+                        "&gt;"
+                    );
+
+            }
+
+
+            function formatSatoriPrice(
+                value
+            ) {
+
+                return (
+                    "$" +
+                    (
+                        Number(value) || 0
+                    ).toLocaleString(
+                        "es-CL"
+                    ) +
+                    " CLP"
+                );
+
+            }
+
+
+            function getProductImagesFromSupabase(
+                product
+            ) {
+
+                if (
+                    Array.isArray(
+                        product?.images
+                    )
+                ) {
+
+                    return product.images
+                        .filter(Boolean)
+                        .map(
+                            image =>
+                                String(
+                                    image
+                                ).trim()
+                        )
+                        .filter(Boolean);
+
+                }
+
+
+                if (
+                    typeof product?.images ===
+                    "string"
+                ) {
+
+                    try {
+
+                        const parsed =
+                            JSON.parse(
+                                product.images
+                            );
+
+
+                        if (
+                            Array.isArray(parsed)
+                        ) {
+
+                            return parsed
+                                .filter(Boolean)
+                                .map(
+                                    image =>
+                                        String(
+                                            image
+                                        ).trim()
+                                )
+                                .filter(Boolean);
+
+                        }
+
+                    }
+
+                    catch (
+                        error
+                    ) {
+
+                        /*
+                           Fallback a image.
+                        */
+
+                    }
+
+                }
+
+
+                if (
+                    product?.image
+                ) {
+
+                    return [
+                        String(
+                            product.image
+                        ).trim()
+                    ];
+
+                }
+
+
+                return [];
+
+            }
+
+
+            function getSupabaseProductImage(
+                product
+            ) {
+
+                const images =
+                    getProductImagesFromSupabase(
+                        product
+                    );
+
+
+                return (
+                    images[0] ||
+                    ""
+                );
+
+            }
+
+
+            function isTshirt(
+                product
+            ) {
+
+                const text =
+                    [
+                        product?.type,
+                        product?.productType,
+                        product?.category,
+                        product?.collection,
+                        product?.subcategory,
+                        product?.name
+                    ]
+                        .filter(Boolean)
+                        .join(" ")
+                        .toLowerCase();
+
+
+                return /polera|t-shirt|tshirt|tee|shirt|oversize/.test(
+                    text
+                );
+
+            }
+
+
+            function shuffle(
+                array
+            ) {
+
+                const copy =
+                    array.slice();
+
+
+                for (
+                    let i =
+                        copy.length - 1;
+                    i > 0;
+                    i--
+                ) {
+
+                    const j =
+                        Math.floor(
+                            Math.random() *
+                            (i + 1)
+                        );
+
+
+                    [
+                        copy[i],
+                        copy[j]
+                    ] =
+                    [
+                        copy[j],
+                        copy[i]
+                    ];
+
+                }
+
+
+                return copy;
+
+            }
+
+
+            function normalizeProductUrl(
+                product
+            ) {
+
+                let url =
+                    String(
+                        product?.url ||
+                        ""
+                    )
+                        .trim()
+                        .replace(
+                            /^\/+/,
+                            ""
+                        )
+                        .replace(
+                            /\\/g,
+                            "/"
+                        );
+
+
+                if (
+                    /^(https?:)?\/\//i.test(
+                        url
+                    )
+                ) {
+
+                    return url;
+
+                }
+
+
+                if (!url) {
+
+                    const category =
+                        String(
+                            product?.category ||
+                            product?.collection ||
+                            "anime"
+                        )
+                            .normalize("NFD")
+                            .replace(
+                                /[\u0300-\u036f]/g,
+                                ""
+                            )
+                            .toLowerCase()
+                            .replace(
+                                /[^a-z0-9]+/g,
+                                "-"
+                            )
+                            .replace(
+                                /^-+|-+$/g,
+                                "");
+
+
+                    const slug =
+                        String(
+                            product?.id ||
+                            product?.name ||
+                            "producto"
+                        )
+                            .normalize("NFD")
+                            .replace(
+                                /[\u0300-\u036f]/g,
+                                ""
+                            )
+                            .toLowerCase()
+                            .replace(
+                                /[^a-z0-9]+/g,
+                                "-"
+                            )
+                            .replace(
+                                /^-+|-+$/g,
+                                "");
+
+
+                    url =
+                        "productos/" +
+                        category +
+                        "/" +
+                        slug +
+                        ".html";
+
+                }
+
+
+                if (
+                    !url
+                        .toLowerCase()
+                        .endsWith(
+                            ".html"
+                        )
+                ) {
+
+                    url += ".html";
+
+                }
+
+
+                return url;
+
+            }
+
+
+            function getPageRoot() {
+
+                const pathname =
+                    window.location.pathname
+                        .replace(
+                            /\\/g,
+                            "/"
+                        )
+                        .replace(
+                            /^\/+/,
+                            ""
+                        );
+
+
+                const segments =
+                    pathname
+                        .split("/")
+                        .filter(Boolean);
+
+
+                /*
+                   La página de producto está en:
+
+                   productos/categoria/producto.html
+
+                   por lo tanto necesita:
+
+                   ../../
+                */
+
+                const depth =
+                    Math.max(
+                        segments.length - 1,
+                        0
+                    );
+
+
+                return "../".repeat(
+                    depth
+                );
+
+            }
 
 
             /* =========================================
@@ -5040,7 +5490,9 @@ function generateProductPage(
 
                             },
                             {
-                                threshold: 0.08,
+                                threshold:
+                                    0.08,
+
                                 rootMargin:
                                     "0px 0px -30px 0px"
                             }
@@ -5124,7 +5576,9 @@ function generateProductPage(
                 0;
 
 
-            function changeImage(index) {
+            function changeImage(
+                index
+            ) {
 
                 if (
                     !mainImage ||
@@ -5160,7 +5614,9 @@ function generateProductPage(
 
 
                 const button =
-                    thumbnails[currentImage];
+                    thumbnails[
+                        currentImage
+                    ];
 
 
                 const nextImage =
@@ -5248,7 +5704,9 @@ function generateProductPage(
                         "click",
                         function () {
 
-                            changeImage(index);
+                            changeImage(
+                                index
+                            );
 
                         }
                     );
@@ -5266,7 +5724,9 @@ function generateProductPage(
 
 
             document
-                .querySelectorAll(".satori-size")
+                .querySelectorAll(
+                    ".satori-size"
+                )
                 .forEach(
                     function (button) {
 
@@ -5328,7 +5788,9 @@ function generateProductPage(
 
 
             document
-                .querySelectorAll(".satori-color")
+                .querySelectorAll(
+                    ".satori-color"
+                )
                 .forEach(
                     function (button) {
 
@@ -5429,7 +5891,9 @@ function generateProductPage(
                     );
 
 
-                if (quantityDisplay) {
+                if (
+                    quantityDisplay
+                ) {
 
                     quantityDisplay.textContent =
                         String(quantity);
@@ -5544,6 +6008,7 @@ function generateProductPage(
                                 sizeList.scrollIntoView({
                                     behavior:
                                         "smooth",
+
                                     block:
                                         "center"
                                 });
@@ -5588,12 +6053,16 @@ function generateProductPage(
 
                     favorites =
                         JSON.parse(
-                            localStorage.getItem(key)
+                            localStorage.getItem(
+                                key
+                            )
                         ) || [];
 
 
                     if (
-                        !Array.isArray(favorites)
+                        !Array.isArray(
+                            favorites
+                        )
                     ) {
 
                         favorites = [];
@@ -5618,7 +6087,9 @@ function generateProductPage(
 
 
                 if (
-                    favorites.includes(productId)
+                    favorites.includes(
+                        productId
+                    )
                 ) {
 
                     favorite.classList.add(
@@ -5798,27 +6269,19 @@ function generateProductPage(
             );
 
 
-            /* =========================================
+            /* =================================================
                SUPABASE
+            ================================================= */
+
+            let supabaseClient =
+                null;
+
+
+            /* =========================================
+               ESPERAR SUPABASE
             ========================================== */
 
-            async function initializeSupabase() {
-
-                const config =
-                    window.SATORII_SUPABASE_CONFIG;
-
-
-                if (
-                    !config ||
-                    !config.enabled ||
-                    !config.url ||
-                    !config.publishableKey
-                ) {
-
-                    return;
-
-                }
-
+            async function waitForSupabase() {
 
                 let attempts =
                     0;
@@ -5826,7 +6289,7 @@ function generateProductPage(
 
                 while (
                     !window.supabase &&
-                    attempts < 50
+                    attempts < 100
                 ) {
 
                     await new Promise(
@@ -5846,27 +6309,63 @@ function generateProductPage(
                 }
 
 
+                return Boolean(
+                    window.supabase
+                );
+
+            }
+
+
+            /* =========================================
+               CREAR CLIENTE
+            ========================================== */
+
+            async function initializeSupabase() {
+
+                const config =
+                    window.SATORII_SUPABASE_CONFIG;
+
+
                 if (
-                    !window.supabase
+                    !config ||
+                    !config.enabled ||
+                    !config.url ||
+                    !config.publishableKey
                 ) {
+
+                    console.info(
+                        "SATORII · Supabase no está configurado."
+                    );
+
+                    return null;
+
+                }
+
+
+                const loaded =
+                    await waitForSupabase();
+
+
+                if (!loaded) {
 
                     console.warn(
                         "SATORII · Supabase no pudo cargarse."
                     );
 
-                    return;
+                    return null;
 
                 }
 
 
                 try {
 
-                    const client =
+                    supabaseClient =
                         window.supabase.createClient(
                             config.url,
                             config.publishableKey,
                             {
                                 auth: {
+
                                     persistSession:
                                         false,
 
@@ -5875,13 +6374,14 @@ function generateProductPage(
 
                                     detectSessionInUrl:
                                         false
+
                                 }
                             }
                         );
 
 
                     window.SATORII_SUPABASE =
-                        client;
+                        supabaseClient;
 
 
                     document.dispatchEvent(
@@ -5889,15 +6389,25 @@ function generateProductPage(
                             "satorii:supabase-ready",
                             {
                                 detail: {
+
                                     client:
-                                        client,
+                                        supabaseClient,
 
                                     product:
                                         window.SATORII_PRODUCT
+
                                 }
                             }
                         )
                     );
+
+
+                    console.log(
+                        "SATORII · Supabase conectado."
+                    );
+
+
+                    return supabaseClient;
 
                 }
 
@@ -5910,12 +6420,845 @@ function generateProductPage(
                         error
                     );
 
+
+                    return null;
+
                 }
 
             }
 
 
-            initializeSupabase();
+            /* =========================================
+               OBTENER PRODUCTO ACTUAL
+            ========================================== */
+
+            async function fetchCurrentProduct() {
+
+                if (
+                    !supabaseClient
+                ) {
+
+                    return null;
+
+                }
+
+
+                const currentId =
+                    String(
+                        window.SATORII_PRODUCT?.id ||
+                        ""
+                    ).trim();
+
+
+                if (!currentId) {
+
+                    console.warn(
+                        "SATORII · El producto no tiene ID."
+                    );
+
+                    return null;
+
+                }
+
+
+                try {
+
+                    const result =
+                        await supabaseClient
+                            .from(
+                                "products"
+                            )
+                            .select(
+                                "id,name,category,collection,subcategory,price,currency,image,images,url,sizes,colors,available"
+                            )
+                            .eq(
+                                "id",
+                                currentId
+                            )
+                            .maybeSingle();
+
+
+                    if (
+                        result.error
+                    ) {
+
+                        console.warn(
+                            "SATORII · Error consultando producto:",
+                            result.error
+                        );
+
+                        return null;
+
+                    }
+
+
+                    if (
+                        !result.data
+                    ) {
+
+                        console.warn(
+                            "SATORII · Producto no encontrado en Supabase:",
+                            currentId
+                        );
+
+                        return null;
+
+                    }
+
+
+                    return result.data;
+
+                }
+
+                catch (
+                    error
+                ) {
+
+                    console.warn(
+                        "SATORII · Error consultando producto:",
+                        error
+                    );
+
+
+                    return null;
+
+                }
+
+            }
+
+
+            /* =========================================
+               ACTUALIZAR PRODUCTO
+            ========================================== */
+
+            function updateCurrentProduct(
+                product
+            ) {
+
+                if (
+                    !product
+                ) {
+
+                    return;
+
+                }
+
+
+                const price =
+                    Number(
+                        product.price
+                    ) || 0;
+
+
+                const available =
+                    product.available !== false;
+
+
+                /*
+                   Actualizar objeto global.
+                */
+
+                if (
+                    window.SATORII_PRODUCT
+                ) {
+
+                    window.SATORII_PRODUCT.price =
+                        price;
+
+
+                    window.SATORII_PRODUCT.available =
+                        available;
+
+
+                    if (
+                        product.name
+                    ) {
+
+                        window.SATORII_PRODUCT.name =
+                            product.name;
+
+                    }
+
+
+                    if (
+                        product.image
+                    ) {
+
+                        window.SATORII_PRODUCT.image =
+                            product.image;
+
+                    }
+
+
+                    if (
+                        product.images
+                    ) {
+
+                        window.SATORII_PRODUCT.images =
+                            product.images;
+
+                    }
+
+                }
+
+
+                /* =================================
+                   PRECIO VISIBLE
+                ================================== */
+
+                const priceElement =
+                    document.getElementById(
+                        "satoriProductPrice"
+                    );
+
+
+                if (
+                    priceElement
+                ) {
+
+                    priceElement.dataset.price =
+                        String(price);
+
+
+                    priceElement.textContent =
+                        formatSatoriPrice(
+                            price
+                        );
+
+                }
+
+
+                /* =================================
+                   BOTÓN CARRITO
+                ================================== */
+
+                const button =
+                    document.getElementById(
+                        "addToCart"
+                    );
+
+
+                if (
+                    button
+                ) {
+
+                    button.dataset.productPrice =
+                        String(price);
+
+
+                    /*
+                       Actualizamos imagen también.
+                    */
+
+                    const image =
+                        getSupabaseProductImage(
+                            product
+                        );
+
+
+                    if (image) {
+
+                        button.dataset.productImage =
+                            image;
+
+                    }
+
+
+                    /*
+                       Disponibilidad.
+                    */
+
+                    if (!available) {
+
+                        button.disabled =
+                            true;
+
+                        button.textContent =
+                            "PRODUCTO NO DISPONIBLE";
+
+                        button.setAttribute(
+                            "aria-disabled",
+                            "true"
+                        );
+
+                    }
+
+                    else {
+
+                        button.disabled =
+                            false;
+
+                        button.textContent =
+                            "AGREGAR AL CARRITO";
+
+                        button.removeAttribute(
+                            "aria-disabled"
+                        );
+
+                    }
+
+                }
+
+
+                /*
+                   Actualizar datos globales
+                   usados por otros scripts.
+                */
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "satorii:product-updated",
+                        {
+                            detail: {
+                                product:
+                                    product
+                            }
+                        }
+                    )
+                );
+
+            }
+
+
+            /* =========================================
+               OBTENER RECOMENDACIONES
+            ========================================== */
+
+            async function fetchRecommendedProducts() {
+
+                if (
+                    !supabaseClient
+                ) {
+
+                    return [];
+
+                }
+
+
+                const currentId =
+                    String(
+                        window.SATORII_PRODUCT?.id ||
+                        ""
+                    ).trim();
+
+
+                try {
+
+                    const result =
+                        await supabaseClient
+                            .from(
+                                "products"
+                            )
+                            .select(
+                                "id,name,category,collection,subcategory,price,currency,image,images,url,available"
+                            )
+                            .eq(
+                                "available",
+                                true
+                            );
+
+
+                    if (
+                        result.error
+                    ) {
+
+                        console.warn(
+                            "SATORII · Error cargando recomendaciones:",
+                            result.error
+                        );
+
+                        return [];
+
+                    }
+
+
+                    const products =
+                        Array.isArray(
+                            result.data
+                        )
+                            ? result.data
+                            : [];
+
+
+                    /*
+                       Solo poleras.
+                    */
+
+                    const candidates =
+                        products.filter(
+                            function (product) {
+
+                                if (
+                                    String(
+                                        product.id
+                                    ) ===
+                                    currentId
+                                ) {
+
+                                    return false;
+
+                                }
+
+
+                                if (
+                                    product.available ===
+                                    false
+                                ) {
+
+                                    return false;
+
+                                }
+
+
+                                if (
+                                    !isTshirt(
+                                        product
+                                    )
+                                ) {
+
+                                    return false;
+
+                                }
+
+
+                                const images =
+                                    getProductImagesFromSupabase(
+                                        product
+                                    );
+
+
+                                if (
+                                    !images.length
+                                ) {
+
+                                    return false;
+
+                                }
+
+
+                                return true;
+
+                            }
+                        );
+
+
+                    /*
+                       Aleatorio.
+                    */
+
+                    return shuffle(
+                        candidates
+                    ).slice(
+                        0,
+                        4
+                    );
+
+                }
+
+                catch (
+                    error
+                ) {
+
+                    console.warn(
+                        "SATORII · Error cargando recomendaciones:",
+                        error
+                    );
+
+
+                    return [];
+
+                }
+
+            }
+
+
+            /* =========================================
+               RENDER RECOMENDACIONES SUPABASE
+            ========================================== */
+
+            function renderSupabaseRecommendations(
+                products
+            ) {
+
+                if (
+                    !Array.isArray(
+                        products
+                    ) ||
+                    !products.length
+                ) {
+
+                    return;
+
+                }
+
+
+                const section =
+                    document.getElementById(
+                        "satoriRecommendations"
+                    );
+
+
+                const grid =
+                    document.querySelector(
+                        ".satori-recommendation-grid"
+                    );
+
+
+                if (
+                    !section ||
+                    !grid
+                ) {
+
+                    return;
+
+                }
+
+
+                const currentProductId =
+                    String(
+                        window.SATORII_PRODUCT?.id ||
+                        ""
+                    );
+
+
+                const pageRoot =
+                    getPageRoot();
+
+
+                const cards =
+                    products
+                        .filter(
+                            function (product) {
+
+                                return (
+                                    String(
+                                        product.id
+                                    ) !==
+                                    currentProductId
+                                );
+
+                            }
+                        )
+                        .map(
+                            function (product) {
+
+                                const productUrl =
+                                    normalizeProductUrl(
+                                        product
+                                    );
+
+
+                                const images =
+                                    getProductImagesFromSupabase(
+                                        product
+                                    );
+
+
+                                const image =
+                                    images[0] ||
+                                    "";
+
+
+                                if (
+                                    !image
+                                ) {
+
+                                    return "";
+
+                                }
+
+
+                                let href =
+                                    productUrl;
+
+
+                                /*
+                                   Si la URL de Supabase
+                                   es relativa, agregamos
+                                   la raíz correcta.
+                                */
+
+                                if (
+                                    !/^(https?:)?\/\//i.test(
+                                        href
+                                    )
+                                ) {
+
+                                    href =
+                                        pageRoot +
+                                        href;
+
+                                }
+
+
+                                return `
+
+                                    <a
+                                        class="satori-recommendation
+                                               satori-animate
+                                               satori-animate-up"
+                                        href="${escapeAttribute(
+                                            href
+                                        )}"
+                                        data-product-id="${escapeAttribute(
+                                            product.id
+                                        )}"
+                                    >
+
+                                        <div
+                                            class="satori-rec-image"
+                                        >
+
+                                            <img
+                                                src="${escapeAttribute(
+                                                    image
+                                                )}"
+                                                alt="${escapeAttribute(
+                                                    product.name ||
+                                                    "Producto"
+                                                )}"
+                                                loading="lazy"
+                                                decoding="async"
+                                            >
+
+                                        </div>
+
+
+                                        <div
+                                            class="satori-rec-info"
+                                        >
+
+                                            <strong>
+                                                ${escapeHTML(
+                                                    product.name ||
+                                                    "Producto"
+                                                )}
+                                            </strong>
+
+                                            <span>
+                                                ${formatSatoriPrice(
+                                                    product.price
+                                                )}
+                                            </span>
+
+                                        </div>
+
+                                    </a>
+
+                                `;
+
+                            }
+                        )
+                        .filter(Boolean)
+                        .join("");
+
+
+                if (!cards) {
+
+                    return;
+
+                }
+
+
+                /*
+                   Reemplazamos las recomendaciones
+                   estáticas por las actuales de Supabase.
+                */
+
+                grid.innerHTML =
+                    cards;
+
+
+                /*
+                   Volver a observar las nuevas
+                   tarjetas para las animaciones.
+                */
+
+                initializeRecommendationAnimations();
+
+            }
+
+
+            /* =========================================
+               ANIMACIONES RECOMENDACIONES
+            ========================================== */
+
+            function initializeRecommendationAnimations() {
+
+                const elements =
+                    document.querySelectorAll(
+                        ".satori-recommendation.satori-animate"
+                    );
+
+
+                if (
+                    !elements.length
+                ) {
+
+                    return;
+
+                }
+
+
+                const reducedMotion =
+                    window.matchMedia(
+                        "(prefers-reduced-motion: reduce)"
+                    ).matches;
+
+
+                if (
+                    reducedMotion ||
+                    !(
+                        "IntersectionObserver" in
+                        window
+                    )
+                ) {
+
+                    elements.forEach(
+                        function (element) {
+
+                            element.classList.add(
+                                "is-visible"
+                            );
+
+                        }
+                    );
+
+
+                    return;
+
+                }
+
+
+                const observer =
+                    new IntersectionObserver(
+                        function (
+                            entries,
+                            observerInstance
+                        ) {
+
+                            entries.forEach(
+                                function (entry) {
+
+                                    if (
+                                        !entry.isIntersecting
+                                    ) {
+
+                                        return;
+
+                                    }
+
+
+                                    entry.target.classList.add(
+                                        "is-visible"
+                                    );
+
+
+                                    observerInstance.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+                            );
+
+                        },
+                        {
+                            threshold:
+                                0.08,
+
+                            rootMargin:
+                                "0px 0px -30px 0px"
+                        }
+                    );
+
+
+                elements.forEach(
+                    function (element) {
+
+                        observer.observe(
+                            element
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =========================================
+               INICIAR SUPABASE
+            ========================================== */
+
+            async function initializeSatoriSupabase() {
+
+                const client =
+                    await initializeSupabase();
+
+
+                if (
+                    !client
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                   1. Buscar producto actual.
+                */
+
+                const currentProduct =
+                    await fetchCurrentProduct();
+
+
+                /*
+                   2. Actualizar precio,
+                      disponibilidad, etc.
+                */
+
+                if (
+                    currentProduct
+                ) {
+
+                    updateCurrentProduct(
+                        currentProduct
+                    );
+
+                }
+
+
+                /*
+                   3. Buscar recomendaciones.
+                */
+
+                const recommendations =
+                    await fetchRecommendedProducts();
+
+
+                /*
+                   4. Reemplazar las
+                      recomendaciones estáticas.
+                */
+
+                if (
+                    recommendations.length
+                ) {
+
+                    renderSupabaseRecommendations(
+                        recommendations
+                    );
+
+                }
+
+            }
+
+
+            /*
+               Ejecutar Supabase.
+            */
+
+            initializeSatoriSupabase();
 
 
         })();
@@ -6025,6 +7368,7 @@ function generateAll() {
 
     console.log("");
     console.log("==============================================");
+
     console.log(
         `✓ ${generated} páginas generadas`
     );
