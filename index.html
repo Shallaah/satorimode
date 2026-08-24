@@ -371,20 +371,45 @@
 
             display: flex;
 
+            align-items: center;
+
             width: max-content;
+
+            min-width: max-content;
 
             white-space: nowrap;
 
+            will-change: transform;
+
             animation:
                 satoriTicker
-                28s
+                34s
                 linear
                 infinite;
 
         }
 
 
+        /*
+           Cada mitad del track contiene varias repeticiones.
+           Así siempre existe contenido suficiente para llenar
+           la pantalla de extremo a extremo.
+        */
+
         .satori-ticker-content {
+
+            display: flex;
+
+            align-items: center;
+
+            flex-shrink: 0;
+
+            min-width: max-content;
+
+        }
+
+
+        .satori-ticker-sequence {
 
             display: flex;
 
@@ -1993,7 +2018,7 @@
             }
 
 
-            .satori-ticker-content {
+            .satori-ticker-sequence {
 
                 gap: 20px;
 
@@ -2633,6 +2658,15 @@
         ====================================================== */
 
         @media (max-width: 380px) {
+
+            .satori-ticker-track {
+
+                animation-duration:
+                    28s;
+
+            }
+
+
 
             .satori-container {
 
@@ -3312,7 +3346,9 @@
 
                 <div class="satori-ticker-content">
 
-                    <span class="satori-ticker-item">
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
                         <span class="satori-ticker-jp">悟</span>
                         SATORII
                     </span>
@@ -3349,6 +3385,176 @@
                     <span class="satori-ticker-item">
                         DISEÑOS QUE VIVEN CONTIGO
                     </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
 
                 </div>
 
@@ -3358,7 +3564,9 @@
                     aria-hidden="true"
                 >
 
-                    <span class="satori-ticker-item">
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
                         <span class="satori-ticker-jp">悟</span>
                         SATORII
                     </span>
@@ -3395,6 +3603,176 @@
                     <span class="satori-ticker-item">
                         DISEÑOS QUE VIVEN CONTIGO
                     </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
+
+                    <div class="satori-ticker-sequence">
+
+<span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">悟</span>
+                        SATORII
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">妖怪</span>
+                        YOKAI
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">新作</span>
+                        NEW DROP
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        <span class="satori-ticker-jp">日本</span>
+                        JAPÓN
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        STREETWEAR
+                    </span>
+
+                    <span class="satori-ticker-symbol">✦</span>
+
+                    <span class="satori-ticker-item">
+                        DISEÑOS QUE VIVEN CONTIGO
+                    </span>
+
+                    </div>
 
                 </div>
 
