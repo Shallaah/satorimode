@@ -4886,6 +4886,15 @@ function generateClothingHTML(
         href="../../css/style.css"
     >
 
+    <link
+        rel="stylesheet"
+        href="../../css/animations.css"
+    >
+
+<style>
+    ${generateProductCSS()}
+</style>
+
 
     <style>
 
@@ -4914,17 +4923,17 @@ function generateClothingHTML(
     ></div>
 
 
-    <main>
+<main class="satori-page-animate">
 
-        <div
-            class="satori-product-page"
-        >
+    <div
+        class="satori-product-page"
+    >
 
 
-            <section
-                class="satori-product-layout"
-                id="producto"
-            >
+<section
+    class="satori-product-layout satori-content-animate"
+    id="producto"
+>
 
 
                 <div
@@ -5248,6 +5257,15 @@ function generateAccessoryHTML(
         rel="stylesheet"
         href="../../css/style.css"
     >
+
+    <link
+        rel="stylesheet"
+        href="../../css/animations.css"
+    >
+
+    <style>
+        ${generateProductCSS()}
+    </style>
 
 
     <style>
