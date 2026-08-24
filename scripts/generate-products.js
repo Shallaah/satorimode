@@ -2,7 +2,7 @@
    SATORII · GENERADOR DE PÁGINAS DE PRODUCTOS
    DISEÑO 2 · SATORII ANIME STREETWEAR
 
-   VERSIÓN ACTUALIZADA
+   VERSIÓN CORREGIDA
 
    ESTRUCTURA:
 
@@ -2395,8 +2395,63 @@ function generateProductPage(
 
 
         /* ==========================================
-           CANTIDAD
+           COMPRA / CANTIDAD
         ========================================== */
+
+        .satori-buy-block {
+
+            margin-top:
+                4px;
+
+        }
+
+
+        .satori-buy-label {
+
+            display:
+                block;
+
+            margin-bottom:
+                10px;
+
+            color:
+                var(--s-black);
+
+            font-size:
+                10px;
+
+            line-height:
+                1.3;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                .07em;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .satori-buy-row {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                124px
+                minmax(
+                    0,
+                    1fr
+                );
+
+            gap:
+                10px;
+
+        }
+
 
         .satori-quantity {
 
@@ -2475,31 +2530,6 @@ function generateProductPage(
 
             font-weight:
                 800;
-
-        }
-
-
-        /* ==========================================
-           COMPRA
-        ========================================== */
-
-        .satori-buy-row {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                124px
-                minmax(
-                    0,
-                    1fr
-                );
-
-            gap:
-                10px;
-
-            margin-top:
-                6px;
 
         }
 
@@ -3914,6 +3944,18 @@ function generateProductPage(
             }
 
 
+            /* ======================================
+               COMPRA MOBILE
+            ====================================== */
+
+            .satori-buy-label {
+
+                font-size:
+                    9px;
+
+            }
+
+
             .satori-quantity {
 
                 width:
@@ -4607,119 +4649,93 @@ function generateProductPage(
 
 
                 <!-- ==================================
-                     CANTIDAD
+                     COMPRA / CANTIDAD
                 =================================== -->
 
                 <div
-                    class="satori-option"
+                    class="satori-buy-block"
                 >
 
-                    <div
-                        class="satori-option-label"
+                    <span
+                        class="satori-buy-label"
                     >
-
-                        <span>
-                            CANTIDAD
-                        </span>
-
-                    </div>
+                        CANTIDAD
+                    </span>
 
 
                     <div
-                        class="satori-quantity"
+                        class="satori-buy-row"
                     >
 
-                        <button
-                            type="button"
-                            data-quantity-minus
-                            aria-label="Disminuir cantidad"
+                        <div
+                            class="satori-quantity"
                         >
-                            −
-                        </button>
 
-                        <span
-                            id="satoriQuantity"
-                        >
-                            1
-                        </span>
+                            <button
+                                type="button"
+                                data-quantity-minus
+                                aria-label="Disminuir cantidad"
+                            >
+                                −
+                            </button>
+
+
+                            <span
+                                id="satoriQuantity"
+                            >
+                                1
+                            </span>
+
+
+                            <button
+                                type="button"
+                                data-quantity-plus
+                                aria-label="Aumentar cantidad"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
 
                         <button
+                            id="addToCart"
+                            class="satori-add-to-cart add-to-cart"
                             type="button"
-                            data-quantity-plus
-                            aria-label="Aumentar cantidad"
+
+                            data-product-id="${escapeHTML(
+                                product.id
+                            )}"
+
+                            data-product-name="${escapeHTML(
+                                product.name
+                            )}"
+
+                            data-product-price="${Number(
+                                product.price
+                            )}"
+
+                            data-product-image="${escapeHTML(
+                                firstImage
+                            )}"
+
+                            data-product-url="${escapeHTML(
+                                productUrl
+                            )}"
+
+                            data-product-size=""
+
+                            data-product-color="${escapeHTML(
+                                product.colors?.[0] ||
+                                "Negro"
+                            )}"
+
+                            data-product-quantity="1"
                         >
-                            +
+                            AGREGAR AL CARRITO
                         </button>
 
                     </div>
-
-                </div>
-
-
-                <!-- ==================================
-                     COMPRA
-                =================================== -->
-
-                <div
-                    class="satori-buy-row"
-                >
-
-                    <div
-                        class="satori-quantity"
-                    >
-
-                        <button
-                            type="button"
-                            data-quantity-minus
-                            aria-label="Disminuir cantidad"
-                        >
-                            −
-                        </button>
-
-                        <span
-                            id="satoriQuantityBottom"
-                        >
-                            1
-                        </span>
-
-                        <button
-                            type="button"
-                            data-quantity-plus
-                            aria-label="Aumentar cantidad"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-
-                    <button
-                        id="addToCart"
-                        class="satori-add-to-cart add-to-cart"
-                        type="button"
-
-                        data-product-id="${escapeHTML(
-                            product.id
-                        )}"
-
-                        data-product-name="${escapeHTML(
-                            product.name
-                        )}"
-
-                        data-product-price="${Number(
-                            product.price
-                        )}"
-
-                        data-product-image="${escapeHTML(
-                            firstImage
-                        )}"
-
-                        data-product-url="${escapeHTML(
-                            productUrl
-                        )}"
-                    >
-                        AGREGAR AL CARRITO
-                    </button>
 
                 </div>
 
@@ -4864,7 +4880,7 @@ function generateProductPage(
 
     <!-- =========================================
          FOOTER
-    ========================================== -->
+    ========================================= -->
 
     <div
         id="satori-footer"
@@ -4873,7 +4889,7 @@ function generateProductPage(
 
     <!-- =========================================
          SCRIPTS
-    ========================================== -->
+    ========================================= -->
 
     <script
         src="${root}js/products.js"
@@ -5027,6 +5043,24 @@ function generateProductPage(
                TALLAS
             ========================================== */
 
+            let selectedSize =
+                "";
+
+
+            const firstSize =
+                document.querySelector(
+                    ".satori-size.active"
+                );
+
+
+            if (firstSize) {
+
+                selectedSize =
+                    firstSize.dataset.size || "";
+
+            }
+
+
             document
                 .querySelectorAll(
                     ".satori-size"
@@ -5057,6 +5091,13 @@ function generateProductPage(
                                     "active"
                                 );
 
+
+                                selectedSize =
+                                    button.dataset.size || "";
+
+
+                                updateCartData();
+
                             }
                         );
 
@@ -5067,6 +5108,13 @@ function generateProductPage(
             /* =========================================
                COLORES
             ========================================== */
+
+            let selectedColor =
+                "${escapeHTML(
+                    product.colors?.[0] ||
+                    "Negro"
+                )}";
+
 
             document
                 .querySelectorAll(
@@ -5099,6 +5147,11 @@ function generateProductPage(
                                 );
 
 
+                                selectedColor =
+                                    button.dataset.color ||
+                                    "";
+
+
                                 const label =
                                     document.getElementById(
                                         "selectedColorLabel"
@@ -5108,9 +5161,12 @@ function generateProductPage(
                                 if (label) {
 
                                     label.textContent =
-                                        button.dataset.color;
+                                        selectedColor;
 
                                 }
+
+
+                                updateCartData();
 
                             }
                         );
@@ -5127,23 +5183,25 @@ function generateProductPage(
                 1;
 
 
-            const quantityDisplays =
-                document.querySelectorAll(
-                    "#satoriQuantity, #satoriQuantityBottom"
+            const quantityDisplay =
+                document.getElementById(
+                    "satoriQuantity"
                 );
 
 
             function updateQuantity() {
 
-                quantityDisplays
-                    .forEach(
-                        function (element) {
+                if (
+                    quantityDisplay
+                ) {
 
-                            element.textContent =
-                                quantity;
+                    quantityDisplay.textContent =
+                        quantity;
 
-                        }
-                    );
+                }
+
+
+                updateCartData();
 
             }
 
@@ -5198,6 +5256,42 @@ function generateProductPage(
 
                     }
                 );
+
+
+            /* =========================================
+               DATOS DEL CARRITO
+            ========================================== */
+
+            const addToCart =
+                document.getElementById(
+                    "addToCart"
+                );
+
+
+            function updateCartData() {
+
+                if (!addToCart) {
+
+                    return;
+
+                }
+
+
+                addToCart.dataset.productSize =
+                    selectedSize;
+
+
+                addToCart.dataset.productColor =
+                    selectedColor;
+
+
+                addToCart.dataset.productQuantity =
+                    String(quantity);
+
+            }
+
+
+            updateCartData();
 
 
             /* =========================================
