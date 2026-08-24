@@ -3,12 +3,6 @@
 
 <head>
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="img/logo.webp"
-    >
-
     <meta charset="UTF-8">
 
     <meta
@@ -18,33 +12,63 @@
 
     <meta
         name="description"
-        content="Preguntas frecuentes de Satorii. Encuentra respuestas sobre pedidos, productos, pagos, envíos, cambios y más."
+        content="Preguntas frecuentes de SATORII. Encuentra respuestas sobre pedidos, productos, pagos, envíos, cambios y más."
     >
 
-    <title>Preguntas frecuentes | Satorii</title>
+    <title>Preguntas frecuentes | SATORII</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.webp"
+    >
 
     <link
         rel="stylesheet"
         href="css/style.css"
     >
 
+
     <style>
 
         /* =====================================================
            SATORII · PREGUNTAS FRECUENTES
-           Misma identidad visual que Cambios y Devoluciones
+           IDENTIDAD GLOBAL SATORII
+        ====================================================== */
+
+        :root {
+
+            --satorii-red: #EF0930;
+            --satorii-black: #111111;
+            --satorii-white: #FFFFFF;
+            --satorii-gray: #666666;
+            --satorii-light: #F6F6F6;
+            --satorii-border: #E5E5E5;
+
+        }
+
+
+        /* =====================================================
+           BASE
         ====================================================== */
 
         .faq-page {
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #fff 0%,
-                    #fafafa 100%
-                );
+            width: 100%;
 
-            color: #111;
+            overflow: hidden;
+
+            background: #fff;
+
+            color:
+                var(--satorii-black);
+
+        }
+
+
+        .faq-page * {
+
+            box-sizing: border-box;
 
         }
 
@@ -57,24 +81,32 @@
 
             position: relative;
 
-            max-width: 1180px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
-            min-height: 420px;
+            min-height: 500px;
 
-            margin: 0 auto;
+            margin:
+                28px auto 0;
 
             padding:
-                105px
-                40px
-                70px;
-
-            box-sizing: border-box;
+                70px 55px;
 
             overflow: hidden;
 
             display: flex;
 
             align-items: center;
+
+            border-radius: 8px;
+
+            background:
+                var(--satorii-red);
+
+            color: #fff;
 
         }
 
@@ -83,7 +115,7 @@
 
             position: relative;
 
-            z-index: 2;
+            z-index: 3;
 
             max-width: 720px;
 
@@ -92,13 +124,13 @@
 
         .faq-label {
 
-            display: inline-block;
+            display: block;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
 
-            color: #ff1b1b;
+            color: #fff;
 
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 900;
 
@@ -111,17 +143,18 @@
 
             margin: 0;
 
-            font-size: clamp(
-                52px,
-                7vw,
-                92px
-            );
+            font-size:
+                clamp(
+                    55px,
+                    7vw,
+                    100px
+                );
 
-            line-height: .9;
+            line-height: .78;
 
-            font-weight: 900;
+            font-weight: 950;
 
-            letter-spacing: -5px;
+            letter-spacing: -6px;
 
             text-transform: uppercase;
 
@@ -130,7 +163,11 @@
 
         .faq-hero h1 span {
 
-            color: #ff1b1b;
+            display: block;
+
+            color: #111;
+
+            font-style: italic;
 
         }
 
@@ -139,11 +176,18 @@
 
             max-width: 590px;
 
-            margin: 25px 0 0;
+            margin:
+                28px 0 0;
 
-            color: #666;
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .92
+                );
 
-            font-size: 14px;
+            font-size: 11px;
 
             line-height: 1.8;
 
@@ -158,13 +202,15 @@
 
             position: absolute;
 
+            z-index: 1;
+
             right: 35px;
 
-            bottom: -45px;
+            bottom: -80px;
 
-            width: 390px;
+            width: 460px;
 
-            height: 390px;
+            height: 460px;
 
             display: flex;
 
@@ -194,13 +240,13 @@
                 Arial,
                 sans-serif;
 
-            font-size: 330px;
+            font-size: 390px;
 
             font-weight: 900;
 
             line-height: 1;
 
-            opacity: .07;
+            opacity: .075;
 
         }
 
@@ -211,17 +257,17 @@
 
             top: 35px;
 
-            right: 5px;
+            right: 15px;
 
-            width: 125px;
+            width: 145px;
 
-            height: 125px;
-
-            background: #ff1b1b;
+            height: 145px;
 
             border-radius: 50%;
 
-            opacity: .12;
+            background: #111;
+
+            opacity: .08;
 
         }
 
@@ -232,26 +278,30 @@
 
         .faq-nav {
 
-            max-width: 1120px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                0
-                30px
-                35px;
+                14px 0 0;
 
             display: grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 12px;
+            gap: 10px;
 
         }
 
 
         .faq-nav-card {
+
+            min-height: 70px;
 
             display: flex;
 
@@ -259,33 +309,20 @@
 
             gap: 13px;
 
-            min-height: 78px;
-
             padding:
-                15px
-                18px;
+                14px 17px;
 
-            box-sizing: border-box;
+            border:
+                1px solid
+                var(--satorii-border);
+
+            border-radius: 6px;
 
             background: #fff;
 
-            border:
-                1px solid #e7e7e7;
-
-            border-radius: 12px;
-
-            color: #222;
+            color: #111;
 
             text-decoration: none;
-
-            box-shadow:
-                0 8px 25px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .035
-                );
 
             transition:
                 transform .2s ease,
@@ -301,15 +338,15 @@
                 translateY(-3px);
 
             border-color:
-                #ff1b1b;
+                var(--satorii-red);
 
             box-shadow:
-                0 12px 30px
+                0 10px 30px
                 rgba(
                     0,
                     0,
                     0,
-                    .07
+                    .06
                 );
 
         }
@@ -319,30 +356,32 @@
 
             background: #111;
 
-            color: #fff;
-
             border-color: #111;
+
+            color: #fff;
 
         }
 
 
         .faq-nav-icon {
 
-            width: 40px;
+            width: 38px;
 
-            height: 40px;
+            height: 38px;
 
-            flex: 0 0 40px;
+            flex:
+                0 0 38px;
 
             display: grid;
 
             place-items: center;
 
-            background: #f5f5f5;
+            border-radius: 5px;
 
-            border-radius: 10px;
+            background:
+                var(--satorii-light);
 
-            font-size: 18px;
+            font-size: 16px;
 
         }
 
@@ -350,14 +389,15 @@
         .faq-nav-card.active
         .faq-nav-icon {
 
-            background: #ff1b1b;
+            background:
+                var(--satorii-red);
 
         }
 
 
         .faq-nav-text {
 
-            font-size: 10px;
+            font-size: 8px;
 
             font-weight: 900;
 
@@ -374,23 +414,25 @@
 
         .faq-content-wrap {
 
-            max-width: 1120px;
+            width:
+                min(
+                    1500px,
+                    calc(100% - 60px)
+                );
 
             margin: 0 auto;
 
             padding:
-                35px
-                30px
-                100px;
+                90px 0 90px;
 
         }
 
 
         .faq-intro {
 
-            max-width: 760px;
+            max-width: 780px;
 
-            margin-bottom: 38px;
+            margin-bottom: 45px;
 
         }
 
@@ -401,37 +443,49 @@
 
             margin-bottom: 12px;
 
-            color: #999;
+            color:
+                var(--satorii-red);
 
             font-size: 9px;
 
             font-weight: 900;
 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
 
         }
 
 
         .faq-intro h2 {
 
-            margin: 0 0 14px;
+            margin:
+                0 0 15px;
 
-            font-size: 30px;
+            font-size:
+                clamp(
+                    32px,
+                    4vw,
+                    48px
+                );
 
-            line-height: 1.05;
+            line-height: .95;
 
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
+
+            font-weight: 950;
 
         }
 
 
         .faq-intro p {
 
+            max-width: 700px;
+
             margin: 0;
 
-            color: #666;
+            color:
+                var(--satorii-gray);
 
-            font-size: 13px;
+            font-size: 11px;
 
             line-height: 1.8;
 
@@ -444,7 +498,7 @@
 
         .faq-category {
 
-            margin-bottom: 35px;
+            margin-bottom: 45px;
 
         }
 
@@ -457,20 +511,23 @@
 
             gap: 14px;
 
-            margin-bottom: 14px;
+            margin-bottom: 12px;
 
         }
 
 
         .faq-category-number {
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
             letter-spacing: 2px;
+
+            white-space: nowrap;
 
         }
 
@@ -481,7 +538,11 @@
 
             font-size: 20px;
 
+            line-height: 1.1;
+
             letter-spacing: -.5px;
+
+            font-weight: 900;
 
         }
 
@@ -496,29 +557,49 @@
 
             flex-direction: column;
 
-            gap: 8px;
+            gap: 7px;
 
         }
 
 
         .faq-item {
 
+            overflow: hidden;
+
             background: #fff;
 
             border:
-                1px solid #e7e7e7;
+                1px solid
+                var(--satorii-border);
 
-            border-radius: 12px;
+            border-radius: 6px;
 
-            overflow: hidden;
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .faq-item:hover {
+
+            border-color: #d8d8d8;
+
+        }
+
+
+        .faq-item.open {
+
+            border-color:
+                #d5d5d5;
 
             box-shadow:
-                0 6px 22px
+                0 8px 25px
                 rgba(
                     0,
                     0,
                     0,
-                    .025
+                    .045
                 );
 
         }
@@ -527,6 +608,8 @@
         .faq-question {
 
             width: 100%;
+
+            min-height: 64px;
 
             display: flex;
 
@@ -537,8 +620,7 @@
             gap: 20px;
 
             padding:
-                20px
-                22px;
+                16px 20px;
 
             border: 0;
 
@@ -550,9 +632,11 @@
 
             font-family: inherit;
 
-            font-size: 12px;
+            font-size: 10px;
 
             font-weight: 900;
+
+            line-height: 1.5;
 
             cursor: pointer;
 
@@ -561,36 +645,41 @@
 
         .faq-question:hover {
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
         }
 
 
         .faq-question-icon {
 
-            width: 28px;
+            width: 30px;
 
-            height: 28px;
+            height: 30px;
 
-            flex: 0 0 28px;
+            flex:
+                0 0 30px;
 
             display: grid;
 
             place-items: center;
 
             border:
-                1px solid #e5e5e5;
+                1px solid #e3e3e3;
 
             border-radius: 50%;
 
             color: #111;
 
-            font-size: 14px;
+            font-size: 15px;
+
+            line-height: 1;
 
             transition:
                 transform .25s ease,
                 background .25s ease,
-                color .25s ease;
+                color .25s ease,
+                border-color .25s ease;
 
         }
 
@@ -601,11 +690,13 @@
             transform:
                 rotate(45deg);
 
-            background: #ff1b1b;
+            background:
+                var(--satorii-red);
 
             color: #fff;
 
-            border-color: #ff1b1b;
+            border-color:
+                var(--satorii-red);
 
         }
 
@@ -632,15 +723,23 @@
         .faq-answer-content {
 
             padding:
-                0
-                22px
-                20px;
+                0 20px 20px;
 
-            color: #666;
+            max-width: 850px;
 
-            font-size: 11px;
+            color:
+                var(--satorii-gray);
+
+            font-size: 10px;
 
             line-height: 1.8;
+
+        }
+
+
+        .faq-answer-content strong {
+
+            color: #111;
 
         }
 
@@ -659,13 +758,13 @@
 
         .faq-contact {
 
-            margin-top: 45px;
+            margin-top: 10px;
 
-            padding: 30px;
+            padding: 28px;
 
             background: #111;
 
-            border-radius: 14px;
+            border-radius: 6px;
 
             color: #fff;
 
@@ -684,37 +783,43 @@
 
             margin-bottom: 10px;
 
-            color: #ff1b1b;
+            color:
+                var(--satorii-red);
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 900;
 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
 
         }
 
 
         .faq-contact h2 {
 
-            margin: 0 0 8px;
+            margin:
+                0 0 8px;
 
             font-size: 22px;
 
+            line-height: 1.1;
+
             letter-spacing: -.7px;
+
+            font-weight: 900;
 
         }
 
 
         .faq-contact p {
 
-            margin: 0;
+            max-width: 650px;
 
-            max-width: 600px;
+            margin: 0;
 
             color: #aaa;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.7;
 
@@ -723,32 +828,39 @@
 
         .faq-contact a {
 
+            min-height: 42px;
+
             display: inline-flex;
 
             align-items: center;
 
-            gap: 8px;
+            justify-content: center;
 
             padding:
-                12px
-                18px;
+                0 20px;
 
-            background: #ff1b1b;
+            background:
+                var(--satorii-red);
 
             color: #fff;
 
-            border-radius: 999px;
+            border-radius: 0;
 
-            font-size: 10px;
+            font-size: 8px;
 
             font-weight: 900;
 
+            letter-spacing: 1px;
+
             text-decoration: none;
+
+            text-transform: uppercase;
 
             white-space: nowrap;
 
             transition:
-                transform .2s ease;
+                transform .2s ease,
+                background .2s ease;
 
         }
 
@@ -758,14 +870,18 @@
             transform:
                 translateY(-2px);
 
+            background: #fff;
+
+            color: #111;
+
         }
 
 
         /* =====================================================
-           RESPONSIVE
+           TABLET
         ====================================================== */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
 
             .faq-nav {
 
@@ -787,42 +903,66 @@
         }
 
 
-        @media (max-width: 600px) {
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
 
             .faq-hero {
 
-                min-height: 400px;
+                width:
+                    calc(100% - 24px);
+
+                min-height: 440px;
+
+                margin-top: 18px;
 
                 padding:
-                    90px
-                    22px
-                    60px;
+                    50px 25px 60px;
+
+                border-radius: 7px;
 
             }
 
 
             .faq-hero h1 {
 
-                font-size: 48px;
+                font-size: 53px;
 
-                letter-spacing: -3px;
+                letter-spacing: -4px;
 
             }
 
 
             .faq-hero p {
 
-                font-size: 12px;
+                max-width: 330px;
+
+                font-size: 10px;
+
+            }
+
+
+            .faq-kanji {
+
+                right: -150px;
+
+                bottom: -70px;
+
+                transform:
+                    scale(.70);
 
             }
 
 
             .faq-nav {
 
+                width:
+                    calc(100% - 30px);
+
                 padding:
-                    0
-                    16px
-                    25px;
+                    12px 0 0;
 
                 grid-template-columns: 1fr;
 
@@ -831,18 +971,68 @@
 
             .faq-content-wrap {
 
+                width:
+                    calc(100% - 30px);
+
                 padding:
-                    25px
-                    16px
-                    70px;
+                    65px 0 65px;
+
+            }
+
+
+            .faq-intro {
+
+                margin-bottom: 35px;
+
+            }
+
+
+            .faq-intro h2 {
+
+                font-size: 34px;
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .faq-category {
+
+                margin-bottom: 35px;
+
+            }
+
+
+            .faq-category-header {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                gap: 5px;
+
+                margin-bottom: 10px;
+
+            }
+
+
+            .faq-category-title {
+
+                font-size: 19px;
 
             }
 
 
             .faq-question {
 
+                min-height: 62px;
+
                 padding:
-                    18px;
+                    15px 16px;
+
+                font-size: 9px;
 
             }
 
@@ -850,18 +1040,22 @@
             .faq-answer-content {
 
                 padding:
-                    0
-                    18px
-                    18px;
+                    0 16px 18px;
+
+                font-size: 9px;
 
             }
 
 
             .faq-contact {
 
-                align-items: flex-start;
+                align-items:
+                    flex-start;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
+
+                padding: 23px;
 
             }
 
@@ -870,19 +1064,23 @@
 
                 width: 100%;
 
-                justify-content: center;
-
             }
 
+        }
 
-            .faq-kanji {
 
-                right: -145px;
+        /* =====================================================
+           REDUCIR ANIMACIONES
+        ====================================================== */
 
-                bottom: -35px;
+        @media (prefers-reduced-motion: reduce) {
 
-                transform:
-                    scale(.72);
+            .faq-nav-card,
+            .faq-question-icon,
+            .faq-answer,
+            .faq-contact a {
+
+                transition: none !important;
 
             }
 
@@ -912,10 +1110,21 @@
 
         <section class="faq-hero">
 
-            <div class="faq-hero-content">
 
-                <span class="faq-label">
+            <div
+                class="
+                    faq-hero-content
+                "
+            >
+
+                <span
+                    class="
+                        faq-label
+                    "
+                >
+
                     SATORII · AYUDA
+
                 </span>
 
 
@@ -941,40 +1150,72 @@
             </div>
 
 
-            <!-- KANJI -->
+            <!-- =================================================
+                 KANJI
+            ================================================== -->
 
-            <div class="faq-kanji">
+            <div
+                class="
+                    faq-kanji
+                "
+                aria-hidden="true"
+            >
 
                 <span>
                     問
                 </span>
 
-                <div class="faq-kanji-circle"></div>
+
+                <div
+                    class="
+                        faq-kanji-circle
+                    "
+                ></div>
 
             </div>
 
-        </section>
 
+        </section>
 
 
         <!-- =================================================
              NAVEGACIÓN DE AYUDA
         ================================================== -->
 
-        <nav class="faq-nav">
+        <nav
+            class="
+                faq-nav
+            "
+            aria-label="
+                Navegación de ayuda
+            "
+        >
 
 
             <a
                 href="cambios-y-devoluciones.html"
-                class="faq-nav-card"
+                class="
+                    faq-nav-card
+                "
             >
 
-                <span class="faq-nav-icon">
+                <span
+                    class="
+                        faq-nav-icon
+                    "
+                >
                     🔄
                 </span>
 
-                <span class="faq-nav-text">
+
+                <span
+                    class="
+                        faq-nav-text
+                    "
+                >
+
                     Cambios y devoluciones
+
                 </span>
 
             </a>
@@ -982,15 +1223,30 @@
 
             <a
                 href="preguntas-frecuentes.html"
-                class="faq-nav-card active"
+                class="
+                    faq-nav-card
+                    active
+                "
+                aria-current="page"
             >
 
-                <span class="faq-nav-icon">
+                <span
+                    class="
+                        faq-nav-icon
+                    "
+                >
                     ❓
                 </span>
 
-                <span class="faq-nav-text">
+
+                <span
+                    class="
+                        faq-nav-text
+                    "
+                >
+
                     Preguntas frecuentes
+
                 </span>
 
             </a>
@@ -998,15 +1254,28 @@
 
             <a
                 href="envios.html"
-                class="faq-nav-card"
+                class="
+                    faq-nav-card
+                "
             >
 
-                <span class="faq-nav-icon">
+                <span
+                    class="
+                        faq-nav-icon
+                    "
+                >
                     🚚
                 </span>
 
-                <span class="faq-nav-text">
+
+                <span
+                    class="
+                        faq-nav-text
+                    "
+                >
+
                     Envíos
+
                 </span>
 
             </a>
@@ -1014,15 +1283,28 @@
 
             <a
                 href="guia-tallas.html"
-                class="faq-nav-card"
+                class="
+                    faq-nav-card
+                "
             >
 
-                <span class="faq-nav-icon">
+                <span
+                    class="
+                        faq-nav-icon
+                    "
+                >
                     📏
                 </span>
 
-                <span class="faq-nav-text">
+
+                <span
+                    class="
+                        faq-nav-text
+                    "
+                >
+
                     Guía de tallas
+
                 </span>
 
             </a>
@@ -1031,23 +1313,39 @@
         </nav>
 
 
-
         <!-- =================================================
              CONTENIDO
         ================================================== -->
 
-        <section class="faq-content-wrap">
+        <section
+            class="
+                faq-content-wrap
+            "
+        >
 
 
-            <div class="faq-intro">
+            <div
+                class="
+                    faq-intro
+                "
+            >
 
-                <span class="faq-intro-label">
+                <span
+                    class="
+                        faq-intro-label
+                    "
+                >
+
                     PREGUNTAS FRECUENTES
+
                 </span>
 
 
                 <h2>
-                    Todo lo que necesitas saber.
+
+                    TODO LO QUE
+                    NECESITAS SABER.
+
                 </h2>
 
 
@@ -1062,53 +1360,99 @@
             </div>
 
 
-
             <!-- =================================================
                  01 / PEDIDOS
             ================================================== -->
 
-            <section class="faq-category">
+            <section
+                class="
+                    faq-category
+                "
+            >
 
 
-                <div class="faq-category-header">
+                <div
+                    class="
+                        faq-category-header
+                    "
+                >
 
-                    <span class="faq-category-number">
+                    <span
+                        class="
+                            faq-category-number
+                        "
+                    >
                         01 / PEDIDOS
                     </span>
 
-                    <h2 class="faq-category-title">
+
+                    <h2
+                        class="
+                            faq-category-title
+                        "
+                    >
                         Sobre tu compra
                     </h2>
 
                 </div>
 
 
-                <div class="faq-list">
+                <div
+                    class="
+                        faq-list
+                    "
+                >
 
 
-                    <article class="faq-item open">
+                    <article
+                        class="
+                            faq-item
+                            open
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="true"
                         >
 
                             <span>
                                 ¿Cómo puedo realizar un pedido?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Selecciona el producto que deseas,
                                     elige la talla o variante disponible
@@ -1125,30 +1469,54 @@
                     </article>
 
 
-
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Cómo sé si mi pedido fue realizado correctamente?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Una vez completado el proceso de
                                     compra, recibirás la información
@@ -1163,30 +1531,54 @@
                     </article>
 
 
-
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Puedo modificar mi pedido después de comprar?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Si necesitas modificar algún dato
                                     de tu pedido, contáctanos lo antes
@@ -1208,53 +1600,98 @@
             </section>
 
 
-
             <!-- =================================================
                  02 / PRODUCTOS
             ================================================== -->
 
-            <section class="faq-category">
+            <section
+                class="
+                    faq-category
+                "
+            >
 
 
-                <div class="faq-category-header">
+                <div
+                    class="
+                        faq-category-header
+                    "
+                >
 
-                    <span class="faq-category-number">
+                    <span
+                        class="
+                            faq-category-number
+                        "
+                    >
                         02 / PRODUCTOS
                     </span>
 
-                    <h2 class="faq-category-title">
+
+                    <h2
+                        class="
+                            faq-category-title
+                        "
+                    >
                         Sobre nuestras prendas
                     </h2>
 
                 </div>
 
 
-                <div class="faq-list">
+                <div
+                    class="
+                        faq-list
+                    "
+                >
 
 
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Cómo puedo saber qué talla elegir?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Puedes revisar nuestra
                                     <strong>Guía de Tallas</strong>
@@ -1271,30 +1708,54 @@
                     </article>
 
 
-
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Los productos tienen stock disponible?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     El stock disponible se muestra
                                     directamente en cada producto.
@@ -1316,53 +1777,98 @@
             </section>
 
 
-
             <!-- =================================================
                  03 / PAGOS
             ================================================== -->
 
-            <section class="faq-category">
+            <section
+                class="
+                    faq-category
+                "
+            >
 
 
-                <div class="faq-category-header">
+                <div
+                    class="
+                        faq-category-header
+                    "
+                >
 
-                    <span class="faq-category-number">
+                    <span
+                        class="
+                            faq-category-number
+                        "
+                    >
                         03 / PAGOS
                     </span>
 
-                    <h2 class="faq-category-title">
+
+                    <h2
+                        class="
+                            faq-category-title
+                        "
+                    >
                         Sobre el pago
                     </h2>
 
                 </div>
 
 
-                <div class="faq-list">
+                <div
+                    class="
+                        faq-list
+                    "
+                >
 
 
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Qué medios de pago puedo utilizar?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Los medios de pago disponibles
                                     aparecerán durante el proceso
@@ -1378,30 +1884,54 @@
                     </article>
 
 
-
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Qué ocurre si mi pago no se completa?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Si el pago no se completa,
                                     el pedido no quedará confirmado.
@@ -1422,53 +1952,98 @@
             </section>
 
 
-
             <!-- =================================================
                  04 / ENVÍOS
             ================================================== -->
 
-            <section class="faq-category">
+            <section
+                class="
+                    faq-category
+                "
+            >
 
 
-                <div class="faq-category-header">
+                <div
+                    class="
+                        faq-category-header
+                    "
+                >
 
-                    <span class="faq-category-number">
+                    <span
+                        class="
+                            faq-category-number
+                        "
+                    >
                         04 / ENVÍOS
                     </span>
 
-                    <h2 class="faq-category-title">
+
+                    <h2
+                        class="
+                            faq-category-title
+                        "
+                    >
                         Sobre la entrega
                     </h2>
 
                 </div>
 
 
-                <div class="faq-list">
+                <div
+                    class="
+                        faq-list
+                    "
+                >
 
 
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Realizan envíos a todo Chile?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Sí. Revisa nuestra sección
                                     <strong>Envíos</strong> para
@@ -1484,30 +2059,54 @@
                     </article>
 
 
-
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Cómo puedo saber dónde está mi pedido?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     La información de seguimiento,
                                     cuando corresponda, será
@@ -1528,53 +2127,98 @@
             </section>
 
 
-
             <!-- =================================================
                  05 / CAMBIOS
             ================================================== -->
 
-            <section class="faq-category">
+            <section
+                class="
+                    faq-category
+                "
+            >
 
 
-                <div class="faq-category-header">
+                <div
+                    class="
+                        faq-category-header
+                    "
+            >
 
-                    <span class="faq-category-number">
+                    <span
+                        class="
+                            faq-category-number
+                        "
+                    >
                         05 / CAMBIOS
                     </span>
 
-                    <h2 class="faq-category-title">
+
+                    <h2
+                        class="
+                            faq-category-title
+                        "
+                    >
                         Si necesitas cambiar tu compra
                     </h2>
 
                 </div>
 
 
-                <div class="faq-list">
+                <div
+                    class="
+                        faq-list
+                    "
+                >
 
 
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Puedo cambiar una prenda por otra talla?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Sí, puedes solicitar un cambio
                                     de talla siempre que el producto
@@ -1591,30 +2235,54 @@
                     </article>
 
 
-
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Qué hago si recibí un producto con un defecto?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Contáctanos indicando tu número
                                     de pedido y explicando el problema.
@@ -1631,30 +2299,54 @@
                     </article>
 
 
-
-                    <article class="faq-item">
+                    <article
+                        class="
+                            faq-item
+                        "
+                    >
 
                         <button
-                            class="faq-question"
+                            class="
+                                faq-question
+                            "
                             type="button"
+                            aria-expanded="false"
                         >
 
                             <span>
                                 ¿Dónde puedo revisar las condiciones de los cambios?
                             </span>
 
-                            <span class="faq-question-icon">
+
+                            <span
+                                class="
+                                    faq-question-icon
+                                "
+                                aria-hidden="true"
+                            >
                                 +
                             </span>
 
                         </button>
 
 
-                        <div class="faq-answer">
+                        <div
+                            class="
+                                faq-answer
+                            "
+                        >
 
-                            <div class="faq-answer-inner">
+                            <div
+                                class="
+                                    faq-answer-inner
+                                "
+                            >
 
-                                <div class="faq-answer-content">
+                                <div
+                                    class="
+                                        faq-answer-content
+                                    "
+                                >
 
                                     Puedes revisar todos los detalles
                                     en nuestra página de
@@ -1674,18 +2366,28 @@
             </section>
 
 
-
             <!-- =================================================
                  CONTACTO
             ================================================== -->
 
-            <div class="faq-contact">
+            <div
+                class="
+                    faq-contact
+                "
+            >
 
 
                 <div>
 
-                    <div class="faq-contact-label">
-                        ¿NO ENCONTRASTE LO QUE BUSCABAS?
+                    <div
+                        class="
+                            faq-contact-label
+                        "
+                    >
+
+                        ¿NO ENCONTRASTE
+                        LO QUE BUSCABAS?
+
                     </div>
 
 
@@ -1710,7 +2412,10 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    ◎ @satorimode
+
+                    INSTAGRAM
+                    &nbsp; →
+
                 </a>
 
 
@@ -1719,28 +2424,31 @@
 
         </section>
 
- </main>
+
+    </main>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+    <!-- =====================================================
+         FOOTER GLOBAL
+    ===================================================== -->
 
-<div id="satori-footer"></div>
+    <div id="satori-footer"></div>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+    <!-- =====================================================
+         JAVASCRIPT GLOBAL
+    ===================================================== -->
 
-<script src="js/main.js"></script>
-<script src="js/header.js"></script>
-<script src="js/footer.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="js/header.js"></script>
+
+    <script src="js/footer.js"></script>
 
 
     <!-- =====================================================
          FAQ JAVASCRIPT
-    ====================================================== -->
+    ===================================================== -->
 
     <script>
 
@@ -1786,6 +2494,22 @@
                                                     "open"
                                                 );
 
+
+                                            const openButton =
+                                                openItem.querySelector(
+                                                    ".faq-question"
+                                                );
+
+
+                                            if (openButton) {
+
+                                                openButton.setAttribute(
+                                                    "aria-expanded",
+                                                    "false"
+                                                );
+
+                                            }
+
                                         }
                                     );
 
@@ -1794,6 +2518,12 @@
 
                                     item.classList.add(
                                         "open"
+                                    );
+
+
+                                    question.setAttribute(
+                                        "aria-expanded",
+                                        "true"
                                     );
 
                                 }
