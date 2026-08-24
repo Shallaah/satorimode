@@ -980,125 +980,200 @@ function shuffle(array) {
 
 
 /* =========================================================
-   RECOMENDACIONES LOCALES
+   RECOMENDACIONES
 ========================================================= */
 
-function getRecommendedProducts(
+function renderRecommendations(
     product,
-    products
+    products,
+    productUrl
 ) {
 
-    const candidates =
-        products.filter(
-            item => {
-
-                /*
-                   Nunca recomendar el producto actual.
-                */
-
-                if (
-                    String(item.id) ===
-                    String(product.id)
-                ) {
-
-                    return false;
-
-                }
-
-
-                /*
-                   Solo disponibles.
-                */
-
-                if (
-                    item.available === false
-                ) {
-
-                    return false;
-
-                }
-
-
-                /*
-                   SOLO POLERAS.
-                */
-
-                if (
-                    !isTshirt(item)
-                ) {
-
-                    return false;
-
-                }
-
-
-                const images =
-                    getProductImages(item);
-
-
-                if (
-                    !images.length
-                ) {
-
-                    return false;
-
-                }
-
-
-                const itemUrl =
-                    normalizeProductUrl(
-                        item
-                    );
-
-
-                /*
-                   Debe tener al menos una imagen
-                   local o remota.
-                */
-
-                return images.some(
-                    image => {
-
-                        const asset =
-                            resolveLocalAsset(
-                                image,
-                                itemUrl
-                            );
-
-
-                        return (
-                            asset?.exists ||
-                            /^(https?:)?\/\//i.test(
-                                String(image)
-                            )
-                        );
-
-                    }
-                );
-
-            }
+    const recommended =
+        getRecommendedProducts(
+            product,
+            products
         );
 
 
     if (
-        !candidates.length
+        !Array.isArray(recommended) ||
+        !recommended.length
     ) {
 
-        return [];
+        return "";
 
     }
 
 
-    return shuffle(
-        candidates
-    ).slice(
-        0,
-        4
+    const cards = [];
+
+
+    recommended.forEach(
+        function (item) {
+
+            const url =
+                normalizeProductUrl(
+                    item
+                );
+
+
+            const itemImages =
+                getProductImages(
+                    item
+                );
+
+
+            let validImage = "";
+
+
+            for (
+                const image of itemImages
+            ) {
+
+                const asset =
+                    resolveLocalAsset(
+                        image,
+                        url
+                    );
+
+
+                if (
+                    asset?.exists ||
+                    /^(https?:)?\/\//i.test(
+                        String(image)
+                    )
+                ) {
+
+                    validImage =
+                        image;
+
+                    break;
+
+                }
+
+            }
+
+
+            if (!validImage) {
+
+                return;
+
+            }
+
+
+            const image =
+                getImagePath(
+                    validImage,
+                    url
+                );
+
+
+            const href =
+                getRootPrefix(
+                    productUrl
+                ) +
+                url;
+
+
+            const card =
+                [
+                    '<a',
+                    'class="satori-recommendation satori-animate satori-animate-up"',
+                    'href="' +
+                        escapeHTML(href) +
+                    '"',
+                    'data-product-id="' +
+                        escapeHTML(
+                            item.id
+                        ) +
+                    '"',
+                    'data-supabase-product-id="' +
+                        escapeHTML(
+                            item.id
+                        ) +
+                    '"',
+                    '>',
+                    '<div class="satori-rec-image">',
+                    '<img',
+                    'src="' +
+                        escapeHTML(image) +
+                    '"',
+                    'alt="' +
+                        escapeHTML(
+                            item.name
+                        ) +
+                    '"',
+                    'loading="lazy"',
+                    'decoding="async"',
+                    '>',
+                    '</div>',
+                    '<div class="satori-rec-info">',
+                    '<strong>',
+                    escapeHTML(
+                        item.name
+                    ),
+                    '</strong>',
+                    '<span data-supabase-price="' +
+                        escapeHTML(
+                            String(item.id)
+                        ) +
+                    '">',
+                    formatPrice(
+                        item.price
+                    ),
+                    '</span>',
+                    '</div>',
+                    '</a>'
+                ].join("");
+
+
+            cards.push(
+                card
+            );
+
+        }
     );
 
+
+    if (!cards.length) {
+
+        return "";
+
+    }
+
+
+    const collectionUrl =
+        getRootPrefix(
+            productUrl
+        ) +
+        "anime.html";
+
+
+    return [
+        '<section',
+        'class="satori-recommendations satori-page-animate"',
+        '>',
+        '<div class="satori-section-heading">',
+        '<div>',
+        '<span>SATORII / SELECCIÓN</span>',
+        '<h2>TAMBIÉN TE PUEDE GUSTAR</h2>',
+        '</div>',
+        '<a href="' +
+            escapeHTML(
+                collectionUrl
+            ) +
+        '">',
+        'VER COLECCIÓN',
+        '</a>',
+        '</div>',
+        '<div class="satori-recommendation-grid">',
+        cards.join(""),
+        '</div>',
+        '</section>'
+    ].join("");
+
 }
-
-
 /* =========================================================
    CARGAR PRODUCTS.JS
 ========================================================= */
