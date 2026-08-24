@@ -11,17 +11,9 @@
    - Mantiene polling de respaldo cada 30 segundos.
    - Mantiene Header, Footer, Carrito y Animaciones globales.
    - Fondo blanco.
-   - Diseño inspirado en la OPCIÓN 4 · BOLD COMMERCE.
-   - Banner editorial SATORII debajo del producto.
-   - Banner preparado para personaje / ilustración / detalle
-     característico de la prenda.
-
-   - PRODUCTOS RELACIONADOS:
-     "TAMBIÉN TE PUEDE GUSTAR"
-   - Prioriza POLERAS.
-   - Excluye el producto actual.
-   - Excluye productos agotados/inactivos.
-   - Selección aleatoria.
+   - Diseño inspirado en BOLD COMMERCE.
+   - Banner editorial SATORII.
+   - Recomendaciones de POLERAS al azar.
 ========================================================= */
 
 "use strict";
@@ -483,18 +475,6 @@ function getBannerImage(
     product
 ) {
 
-    /*
-     * Prioridad:
-     *
-     * 1. bannerImage
-     * 2. featureImage
-     * 3. characterImage
-     * 4. editorialImage
-     * 5. details.bannerImage
-     * 6. segunda imagen del producto
-     * 7. primera imagen
-     */
-
     const images =
         getProductImages(
             product
@@ -620,283 +600,6 @@ function getCare(
         product.details?.care ||
         "Seguir las instrucciones de cuidado del producto."
     );
-
-}
-
-
-/* =========================================================
-   DISPONIBILIDAD
-========================================================= */
-
-function isProductAvailable(
-    product
-) {
-
-    if (
-        !product ||
-        typeof product !== "object"
-    ) {
-
-        return false;
-
-    }
-
-
-    if (
-        product.available === false
-    ) {
-
-        return false;
-
-    }
-
-
-    if (
-        product.active === false
-    ) {
-
-        return false;
-
-    }
-
-
-    if (
-        product.stock !== undefined &&
-        product.stock !== null
-    ) {
-
-        const stock =
-            Number(
-                product.stock
-            );
-
-
-        if (
-            Number.isFinite(
-                stock
-            ) &&
-            stock <= 0
-        ) {
-
-            return false;
-
-        }
-
-    }
-
-
-    return true;
-
-}
-
-
-/* =========================================================
-   DETECTAR POLERA
-========================================================= */
-
-function isTshirt(
-    product
-) {
-
-    if (
-        !product ||
-        typeof product !== "object"
-    ) {
-
-        return false;
-
-    }
-
-
-    /*
-     * Revisamos múltiples campos para que la detección
-     * funcione aunque products.js use distintas convenciones.
-     */
-
-    const values = [
-
-        product.type,
-
-        product.productType,
-
-        product.product_type,
-
-        product.category,
-
-        product.collection,
-
-        product.subcategory,
-
-        product.subCategory,
-
-        product.garment,
-
-        product.garmentType,
-
-        product.kind,
-
-        product.name,
-
-        product.title,
-
-        product.tags,
-
-        product.tag,
-
-        product.details?.type,
-
-        product.details?.productType,
-
-        product.details?.category,
-
-        product.details?.garment
-
-    ];
-
-
-    const text =
-        values
-            .flatMap(
-                function (
-                    value
-                ) {
-
-                    if (
-                        Array.isArray(
-                            value
-                        )
-                    ) {
-
-                        return value;
-
-                    }
-
-                    return [
-                        value
-                    ];
-
-                }
-            )
-            .filter(
-                function (
-                    value
-                ) {
-
-                    return (
-                        value !== undefined &&
-                        value !== null
-                    );
-
-                }
-            )
-            .join(" ")
-            .normalize("NFD")
-            .replace(
-                /[\u0300-\u036f]/g,
-                ""
-            )
-            .toLowerCase();
-
-
-    /*
-     * Palabras que identifican una polera.
-     */
-
-    const tshirtWords = [
-
-        "polera",
-
-        "poleras",
-
-        "tshirt",
-
-        "t-shirt",
-
-        "tee",
-
-        "tees",
-
-        "shirt",
-
-        "shirts",
-
-        "camiseta",
-
-        "camisetas",
-
-        "remera",
-
-        "remeras"
-
-    ];
-
-
-    return tshirtWords.some(
-        function (
-            word
-        ) {
-
-            return text.includes(
-                word
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   MEZCLAR ARRAY
-========================================================= */
-
-function shuffleArray(
-    array
-) {
-
-    const result =
-        Array.isArray(
-            array
-        )
-            ? [...array]
-            : [];
-
-
-    /*
-     * Fisher-Yates.
-     *
-     * Esto permite que las recomendaciones cambien
-     * realmente cada vez que se ejecuta el generador.
-     */
-
-    for (
-        let i = result.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const randomIndex =
-            Math.floor(
-                Math.random() *
-                (i + 1)
-            );
-
-
-        const temporary =
-            result[i];
-
-
-        result[i] =
-            result[randomIndex];
-
-
-        result[randomIndex] =
-            temporary;
-
-    }
-
-
-    return result;
 
 }
 
@@ -1732,7 +1435,131 @@ function buildBenefits() {
 
 
 /* =========================================================
-   PRODUCTOS RELACIONADOS
+   DETECTAR POLERA
+========================================================= */
+
+function isShirtProduct(
+    product
+) {
+
+    const values = [
+
+        product.name,
+
+        product.category,
+
+        product.collection,
+
+        product.type,
+
+        product.productType,
+
+        product.kind,
+
+        ...(Array.isArray(
+            product.tags
+        )
+            ? product.tags
+            : [])
+
+    ];
+
+
+    const text =
+        values
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(
+                /[\u0300-\u036f]/g,
+                ""
+            );
+
+
+    const shirtKeywords = [
+
+        "polera",
+
+        "poleras",
+
+        "t-shirt",
+
+        "tshirt",
+
+        "tee",
+
+        "shirt",
+
+        "camiseta",
+
+        "remera",
+
+        "ropa"
+
+    ];
+
+
+    return shirtKeywords.some(
+        function (
+            keyword
+        ) {
+
+            return text.includes(
+                keyword
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   MEZCLAR ARRAY
+========================================================= */
+
+function shuffleArray(
+    array
+) {
+
+    const result =
+        [...array];
+
+
+    for (
+        let i = result.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (
+                    i + 1
+                )
+            );
+
+
+        [
+            result[i],
+            result[j]
+        ] = [
+            result[j],
+            result[i]
+        ];
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   PRODUCTOS RECOMENDADOS AL AZAR
 ========================================================= */
 
 function getRelatedProducts(
@@ -1740,53 +1567,20 @@ function getRelatedProducts(
     products
 ) {
 
-    /*
-     * =====================================================
-     * OBJETIVO
-     * =====================================================
-     *
-     * Mostrar 4 productos recomendados.
-     *
-     * PRIORIDAD:
-     *
-     * 1. POLERAS disponibles.
-     * 2. Si faltan, otros productos disponibles.
-     *
-     * SIEMPRE:
-     *
-     * - Excluir producto actual.
-     * - Excluir agotados.
-     * - Excluir inactivos.
-     * - Mezclar aleatoriamente.
-     */
-
-    const currentId =
-        String(
-            product.id
-        );
-
-
-    const availableProducts =
+    const available =
         products.filter(
             function (
                 item
             ) {
 
-                if (
-                    !item ||
+                return (
+                    item &&
                     String(
                         item.id
-                    ) ===
-                    currentId
-                ) {
-
-                    return false;
-
-                }
-
-
-                return isProductAvailable(
-                    item
+                    ) !==
+                    String(
+                        product.id
+                    )
                 );
 
             }
@@ -1794,108 +1588,66 @@ function getRelatedProducts(
 
 
     /*
-     * Primero buscamos exclusivamente POLERAS.
+     * Primero buscamos POLERAS.
      */
 
-    const tshirts =
-        shuffleArray(
-            availableProducts.filter(
-                function (
-                    item
-                ) {
-
-                    return isTshirt(
-                        item
-                    );
-
-                }
-            )
+    const shirts =
+        available.filter(
+            isShirtProduct
         );
 
 
     /*
-     * Luego dejamos preparados otros productos
-     * para completar si no hay suficientes poleras.
+     * Si existen suficientes poleras,
+     * usamos exclusivamente poleras.
+     *
+     * Si no existen suficientes,
+     * mezclamos poleras + catálogo restante.
      */
 
-    const others =
-        shuffleArray(
-            availableProducts.filter(
-                function (
-                    item
-                ) {
+    let pool;
 
-                    return !isTshirt(
+
+    if (
+        shirts.length >= 4
+    ) {
+
+        pool =
+            shirts;
+
+    }
+
+    else {
+
+        pool =
+            [
+                ...shirts,
+                ...available.filter(
+                    function (
                         item
-                    );
+                    ) {
 
-                }
-            )
-        );
+                        return !isShirtProduct(
+                            item
+                        );
 
+                    }
+                )
+            ];
 
-    const selected = [];
-
-
-    /*
-     * Agregar primero las poleras.
-     */
-
-    tshirts.forEach(
-        function (
-            item
-        ) {
-
-            if (
-                selected.length >= 4
-            ) {
-
-                return;
-
-            }
-
-
-            selected.push(
-                item
-            );
-
-        }
-    );
+    }
 
 
     /*
-     * Completar con otros productos si faltan.
-     */
-
-    others.forEach(
-        function (
-            item
-        ) {
-
-            if (
-                selected.length >= 4
-            ) {
-
-                return;
-
-            }
-
-
-            selected.push(
-                item
-            );
-
-        }
-    );
-
-
-    /*
-     * Última mezcla para evitar que una polera siempre
-     * quede en la misma posición.
+     * ALEATORIO REAL
+     *
+     * Cada ejecución del generador
+     * puede producir 4 recomendaciones
+     * diferentes.
      */
 
     return shuffleArray(
-        selected
+        pool
     ).slice(
         0,
         4
@@ -2026,7 +1778,7 @@ function buildProductRelatedBanner(
 
 
 /* =========================================================
-   PRODUCTOS RELACIONADOS
+   POLERAS RECOMENDADAS
 ========================================================= */
 
 function buildRelatedProducts(
@@ -2054,7 +1806,7 @@ function buildRelatedProducts(
     return `
 <section
     class="satori-related"
-    aria-label="También te puede gustar"
+    aria-label="Poleras recomendadas"
 >
 
     <div class="satori-section-heading">
@@ -2073,8 +1825,9 @@ function buildRelatedProducts(
 
 
         <p>
-            POLERAS SELECCIONADAS
-            PARA TI.
+            POLERAS RECOMENDADAS
+            SELECCIONADAS AL AZAR
+            PARA DESCUBRIR MÁS DE SATORII.
         </p>
 
     </div>
@@ -2137,6 +1890,11 @@ function buildRelatedProducts(
                 2,
                 "0"
             )}
+        </span>
+
+
+        <span class="satori-related-badge">
+            RECOMENDADO
         </span>
 
 
@@ -2302,9 +2060,6 @@ function buildDesignCSS() {
 
     font-weight:
         700;
-
-    letter-spacing:
-        .02em;
 
     text-transform:
         uppercase;
@@ -3722,7 +3477,7 @@ function buildDesignCSS() {
 
 
 /* =========================================================
-   RELACIONADOS
+   RECOMENDADOS
 ========================================================= */
 
 .satori-related {
@@ -3778,6 +3533,9 @@ function buildDesignCSS() {
 
 .satori-section-heading h2 {
 
+    max-width:
+        650px;
+
     margin:
         0;
 
@@ -3805,7 +3563,7 @@ function buildDesignCSS() {
 .satori-section-heading p {
 
     max-width:
-        250px;
+        270px;
 
     margin:
         0;
@@ -3879,7 +3637,7 @@ function buildDesignCSS() {
         absolute;
 
     z-index:
-        2;
+        3;
 
     left:
         10px;
@@ -3900,6 +3658,41 @@ function buildDesignCSS() {
 
     font-weight:
         900;
+
+}
+
+
+.satori-related-badge {
+
+    position:
+        absolute;
+
+    z-index:
+        4;
+
+    right:
+        9px;
+
+    top:
+        9px;
+
+    padding:
+        5px 7px;
+
+    background:
+        var(--product-red);
+
+    color:
+        #FFFFFF;
+
+    font-size:
+        7px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .06em;
 
 }
 
@@ -4285,6 +4078,14 @@ function buildDesignCSS() {
     }
 
 
+    .satori-section-heading h2 {
+
+        font-size:
+            34px;
+
+    }
+
+
     .satori-section-heading p {
 
         max-width:
@@ -4387,7 +4188,7 @@ function buildDesignCSS() {
     .satori-section-heading h2 {
 
         font-size:
-            33px;
+            30px;
 
     }
 
@@ -5388,7 +5189,7 @@ function buildProductScript(
 
 
     /* =====================================================
-       BANNER EDITORIAL DINÁMICO
+       BANNER EDITORIAL
     ====================================================== */
 
     function updateEditorialBanner(
@@ -7036,32 +6837,6 @@ function generateProducts() {
     );
 
 
-    /*
-     * Información útil sobre el catálogo.
-     */
-
-    const tshirtCount =
-        products.filter(
-            isTshirt
-        ).length;
-
-
-    const availableCount =
-        products.filter(
-            isProductAvailable
-        ).length;
-
-
-    console.log(
-        `✓ Poleras detectadas: ${tshirtCount}`
-    );
-
-
-    console.log(
-        `✓ Productos disponibles: ${availableCount}`
-    );
-
-
     let generated =
         0;
 
@@ -7198,27 +6973,11 @@ function generateProducts() {
     );
 
     console.log(
-        "✓ Banner de personaje / prenda"
-    );
-
-    console.log(
-        "✓ También te puede gustar"
-    );
-
-    console.log(
-        "✓ Poleras priorizadas"
-    );
-
-    console.log(
         "✓ Recomendaciones aleatorias"
     );
 
     console.log(
-        "✓ Productos agotados excluidos"
-    );
-
-    console.log(
-        "✓ Producto actual excluido"
+        "✓ Recomendaciones priorizan POLERAS"
     );
 
     console.log(
