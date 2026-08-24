@@ -4668,4 +4668,2614 @@ function buildHero(
             <div class="satori-description-box">
 
                 <div
-                    class="s
+                    class="satori-tabs"
+                    role="tablist"
+                >
+
+                    <button
+                        type="button"
+                        class="satori-tab active"
+                        data-tab="description"
+                        role="tab"
+                        aria-selected="true"
+                    >
+                        DESCRIPCIÓN
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="satori-tab"
+                        data-tab="shipping"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        ENVÍOS
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="satori-tab"
+                        data-tab="care"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        CUIDADOS
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="satori-panel"
+                    id="tab-description"
+                    data-tab-panel="description"
+                >
+
+                    ${escapeHTML(
+                        getDescription(
+                            product
+                        )
+                    )}
+
+                    <ul>
+
+                        <li>
+                            ${escapeHTML(
+                                getMaterial(
+                                    product
+                                )
+                            )}
+                        </li>
+
+                        <li>
+                            Estampado de alta definición.
+                        </li>
+
+                        <li>
+                            Diseño exclusivo SATORII.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div
+                    class="satori-panel"
+                    data-tab-panel="shipping"
+                    hidden
+                >
+
+                    ${escapeHTML(
+                        getShipping(
+                            product
+                        )
+                    )}
+
+                    <br>
+                    <br>
+
+                    Cambios y devoluciones
+                    según las condiciones de SATORII.
+
+                </div>
+
+
+                <div
+                    class="satori-panel"
+                    data-tab-panel="care"
+                    hidden
+                >
+
+                    ${escapeHTML(
+                        getCare(
+                            product
+                        )
+                    )}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    ${buildProductRelatedBanner(
+        product,
+        productUrl
+    )}
+
+</div>
+`;
+
+}
+
+
+/* =========================================================
+   JAVASCRIPT PRODUCTO
+========================================================= */
+
+function buildProductScript(
+    product,
+    productUrl
+) {
+
+    const productId =
+        JSON.stringify(
+            String(
+                product.id
+            )
+        );
+
+
+    const rootPrefix =
+        JSON.stringify(
+            getRootPrefix(
+                productUrl
+            )
+        );
+
+
+    return `
+<script>
+
+(function () {
+
+    "use strict";
+
+
+    const PRODUCT_ID =
+        ${productId};
+
+
+    const ROOT_PREFIX =
+        ${rootPrefix};
+
+
+    const SUPABASE_RETRY_LIMIT =
+        40;
+
+
+    const POLL_INTERVAL =
+        30000;
+
+
+    let supabaseAttempts =
+        0;
+
+
+    let pollTimer =
+        null;
+
+
+    let realtimeChannel =
+        null;
+
+
+    function formatPrice(
+        value
+    ) {
+
+        return (
+            "$" +
+            (
+                Number(value) || 0
+            ).toLocaleString(
+                "es-CL"
+            )
+        );
+
+    }
+
+
+    function normalizeImage(
+        value
+    ) {
+
+        if (!value) {
+
+            return "";
+
+        }
+
+
+        const original =
+            String(
+                value
+            )
+                .replace(
+                    /\\\\/g,
+                    "/"
+                )
+                .trim();
+
+
+        if (
+            /^(https?:)?\\/\\//i.test(
+                original
+            ) ||
+            original.startsWith(
+                "data:"
+            ) ||
+            original.startsWith(
+                "blob:"
+            )
+        ) {
+
+            return original;
+
+        }
+
+
+        return (
+            ROOT_PREFIX +
+            original.replace(
+                /^\\/+/,
+                ""
+            )
+        );
+
+    }
+
+
+    function getImages(
+        product
+    ) {
+
+        if (
+            Array.isArray(
+                product.images
+            ) &&
+            product.images.length
+        ) {
+
+            return product.images.filter(
+                Boolean
+            );
+
+        }
+
+
+        if (
+            product.image
+        ) {
+
+            return [
+                product.image
+            ];
+
+        }
+
+
+        return [];
+
+    }
+
+
+    function getBannerImage(
+        product
+    ) {
+
+        const images =
+            getImages(
+                product
+            );
+
+
+        return (
+            product.bannerImage ||
+            product.featureImage ||
+            product.characterImage ||
+            product.editorialImage ||
+            product.details?.bannerImage ||
+            images[1] ||
+            images[0] ||
+            ""
+        );
+
+    }
+
+
+    function getBannerLabel(
+        product
+    ) {
+
+        return (
+            product.bannerLabel ||
+            product.details?.bannerLabel ||
+            "SATORII · CHARACTER / DESIGN"
+        );
+
+    }
+
+
+    function getBannerTitle(
+        product
+    ) {
+
+        return (
+            product.bannerTitle ||
+            product.details?.bannerTitle ||
+            "EL UNIVERSO DETRÁS DE LA PRENDA"
+        );
+
+    }
+
+
+    function getBannerText(
+        product
+    ) {
+
+        return (
+            product.bannerText ||
+            product.details?.bannerText ||
+            "Una pieza creada para llevar la identidad de este universo directamente contigo."
+        );
+
+    }
+
+
+    function setMeta(
+        selector,
+        value
+    ) {
+
+        const element =
+            document.querySelector(
+                selector
+            );
+
+
+        if (
+            element &&
+            value !== undefined &&
+            value !== null
+        ) {
+
+            element.setAttribute(
+                "content",
+                String(
+                    value
+                )
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       GALERÍA
+    ====================================================== */
+
+    function animateImageChange(
+        image,
+        callback
+    ) {
+
+        if (!image) {
+
+            return;
+
+        }
+
+
+        image.classList.add(
+            "is-changing"
+        );
+
+
+        window.setTimeout(
+            function () {
+
+                callback();
+
+
+                window.requestAnimationFrame(
+                    function () {
+
+                        image.classList.remove(
+                            "is-changing"
+                        );
+
+                    }
+                );
+
+            },
+            100
+        );
+
+    }
+
+
+    function bindGallery() {
+
+        const main =
+            document.getElementById(
+                "satoriMainImage"
+            );
+
+
+        if (!main) {
+
+            return;
+
+        }
+
+
+        document
+            .querySelectorAll(
+                ".satori-product-thumb"
+            )
+            .forEach(
+                function (
+                    thumb
+                ) {
+
+                    if (
+                        thumb.dataset.bound
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    thumb.dataset.bound =
+                        "true";
+
+
+                    thumb.onclick =
+                        function () {
+
+                            const src =
+                                thumb.dataset.galleryImage;
+
+
+                            if (!src) {
+
+                                return;
+
+                            }
+
+
+                            animateImageChange(
+                                main,
+                                function () {
+
+                                    main.src =
+                                        src;
+
+                                }
+                            );
+
+
+                            document
+                                .querySelectorAll(
+                                    ".satori-product-thumb"
+                                )
+                                .forEach(
+                                    function (
+                                        item
+                                    ) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                            thumb.classList.add(
+                                "active"
+                            );
+
+                        };
+
+                }
+            );
+
+
+        const zoom =
+            document.getElementById(
+                "satoriZoom"
+            );
+
+
+        if (
+            zoom &&
+            !zoom.dataset.bound
+        ) {
+
+            zoom.dataset.bound =
+                "true";
+
+
+            zoom.onclick =
+                function () {
+
+                    if (
+                        main.requestFullscreen
+                    ) {
+
+                        main
+                            .requestFullscreen()
+                            .catch(
+                                function () {}
+                            );
+
+                    }
+
+                };
+
+        }
+
+    }
+
+
+    function updateGallery(
+        product
+    ) {
+
+        const main =
+            document.getElementById(
+                "satoriMainImage"
+            );
+
+
+        const images =
+            getImages(
+                product
+            )
+                .map(
+                    normalizeImage
+                )
+                .filter(
+                    Boolean
+                );
+
+
+        if (
+            !main ||
+            !images.length
+        ) {
+
+            return;
+
+        }
+
+
+        animateImageChange(
+            main,
+            function () {
+
+                main.src =
+                    images[0];
+
+                main.alt =
+                    product.name ||
+                    main.alt;
+
+            }
+        );
+
+
+        let gallery =
+            document.querySelector(
+                ".satori-product-thumbnails"
+            );
+
+
+        if (
+            !gallery
+        ) {
+
+            gallery =
+                document.createElement(
+                    "div"
+                );
+
+
+            gallery.className =
+                "satori-product-thumbnails";
+
+
+            gallery.setAttribute(
+                "aria-label",
+                "Galería de imágenes"
+            );
+
+
+            const visual =
+                document.querySelector(
+                    ".satori-main-visual"
+                );
+
+
+            if (
+                visual
+            ) {
+
+                visual.parentNode.insertBefore(
+                    gallery,
+                    visual
+                );
+
+            }
+
+        }
+
+
+        gallery.innerHTML =
+            "";
+
+
+        images.forEach(
+            function (
+                src,
+                index
+            ) {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                button.type =
+                    "button";
+
+
+                button.className =
+                    "satori-product-thumb" +
+                    (
+                        index === 0
+                            ? " active"
+                            : ""
+                    );
+
+
+                button.dataset.galleryImage =
+                    src;
+
+
+                button.setAttribute(
+                    "aria-label",
+                    "Ver imagen " +
+                    (
+                        index + 1
+                    )
+                );
+
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+
+                image.src =
+                    src;
+
+                image.alt =
+                    product.name || "";
+
+                image.loading =
+                    "lazy";
+
+
+                button.appendChild(
+                    image
+                );
+
+
+                gallery.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        bindGallery();
+
+    }
+
+
+    /* =====================================================
+       BANNER EDITORIAL DINÁMICO
+    ====================================================== */
+
+    function updateEditorialBanner(
+        product
+    ) {
+
+        const banner =
+            document.querySelector(
+                ".satori-editorial-banner"
+            );
+
+
+        if (!banner) {
+
+            return;
+
+        }
+
+
+        const image =
+            banner.querySelector(
+                ".satori-editorial-image img"
+            );
+
+
+        const kicker =
+            banner.querySelector(
+                ".satori-editorial-kicker"
+            );
+
+
+        const title =
+            banner.querySelector(
+                ".satori-editorial-copy h2"
+            );
+
+
+        const text =
+            banner.querySelector(
+                ".satori-editorial-copy p"
+            );
+
+
+        const productName =
+            banner.querySelector(
+                ".satori-editorial-product"
+            );
+
+
+        if (image) {
+
+            const bannerImage =
+                getBannerImage(
+                    product
+                );
+
+
+            if (bannerImage) {
+
+                image.src =
+                    normalizeImage(
+                        bannerImage
+                    );
+
+            }
+
+        }
+
+
+        if (kicker) {
+
+            kicker.textContent =
+                getBannerLabel(
+                    product
+                );
+
+        }
+
+
+        if (title) {
+
+            title.textContent =
+                getBannerTitle(
+                    product
+                );
+
+        }
+
+
+        if (text) {
+
+            text.textContent =
+                getBannerText(
+                    product
+                );
+
+        }
+
+
+        if (productName) {
+
+            productName.textContent =
+                product.name ||
+                "";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       COLORES
+    ====================================================== */
+
+    function colorValue(
+        color
+    ) {
+
+        const value =
+            String(
+                color || ""
+            )
+                .toLowerCase()
+                .trim();
+
+
+        const map = {
+
+            negro:
+                "#080808",
+
+            black:
+                "#080808",
+
+            rojo:
+                "#EF0930",
+
+            red:
+                "#EF0930",
+
+            blanco:
+                "#FFFFFF",
+
+            white:
+                "#FFFFFF",
+
+            gris:
+                "#B8B8B8",
+
+            gray:
+                "#B8B8B8",
+
+            grey:
+                "#B8B8B8",
+
+            azul:
+                "#4B72C9",
+
+            blue:
+                "#4B72C9",
+
+            verde:
+                "#5B8D6B",
+
+            green:
+                "#5B8D6B",
+
+            rosa:
+                "#E56B8C",
+
+            pink:
+                "#E56B8C",
+
+            morado:
+                "#8664B9",
+
+            purple:
+                "#8664B9",
+
+            amarillo:
+                "#E9C64B",
+
+            yellow:
+                "#E9C64B"
+
+        };
+
+
+        return (
+            map[value] ||
+            "#D9D9D9"
+        );
+
+    }
+
+
+    function bindColors() {
+
+        document
+            .querySelectorAll(
+                ".satori-color"
+            )
+            .forEach(
+                function (
+                    button
+                ) {
+
+                    if (
+                        button.dataset.bound
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    button.dataset.bound =
+                        "true";
+
+
+                    button.onclick =
+                        function () {
+
+                            document
+                                .querySelectorAll(
+                                    ".satori-color"
+                                )
+                                .forEach(
+                                    function (
+                                        item
+                                    ) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                            button.classList.add(
+                                "active"
+                            );
+
+
+                            const selected =
+                                document.querySelector(
+                                    ".satori-selected-color"
+                                );
+
+
+                            if (
+                                selected
+                            ) {
+
+                                selected.textContent =
+                                    button.dataset.color ||
+                                    "";
+
+                            }
+
+                        };
+
+                }
+            );
+
+    }
+
+
+    function updateColors(
+        product
+    ) {
+
+        const colors =
+            Array.isArray(
+                product.colors
+            )
+                ? product.colors
+                : [];
+
+
+        const container =
+            document.querySelector(
+                "[data-product-colors]"
+            );
+
+
+        if (!container) {
+
+            return;
+
+        }
+
+
+        container.innerHTML =
+            "";
+
+
+        colors.forEach(
+            function (
+                color,
+                index
+            ) {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                button.type =
+                    "button";
+
+
+                button.className =
+                    "satori-color" +
+                    (
+                        index === 0
+                            ? " active"
+                            : ""
+                    );
+
+
+                button.dataset.color =
+                    String(
+                        color
+                    );
+
+
+                const span =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                span.style.background =
+                    colorValue(
+                        color
+                    );
+
+
+                button.appendChild(
+                    span
+                );
+
+
+                container.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        const selected =
+            document.querySelector(
+                ".satori-selected-color"
+            );
+
+
+        if (
+            selected
+        ) {
+
+            selected.textContent =
+                colors[0] ||
+                "";
+
+        }
+
+
+        bindColors();
+
+    }
+
+
+    /* =====================================================
+       TALLAS
+    ====================================================== */
+
+    function bindSizes() {
+
+        document
+            .querySelectorAll(
+                ".satori-size"
+            )
+            .forEach(
+                function (
+                    button
+                ) {
+
+                    if (
+                        button.dataset.bound
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    button.dataset.bound =
+                        "true";
+
+
+                    button.onclick =
+                        function () {
+
+                            document
+                                .querySelectorAll(
+                                    ".satori-size"
+                                )
+                                .forEach(
+                                    function (
+                                        item
+                                    ) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                            button.classList.add(
+                                "active"
+                            );
+
+
+                            const selected =
+                                document.querySelector(
+                                    ".satori-selected-size"
+                                );
+
+
+                            if (
+                                selected
+                            ) {
+
+                                selected.textContent =
+                                    button.dataset.size ||
+                                    "";
+
+                            }
+
+                        };
+
+                }
+            );
+
+    }
+
+
+    function updateSizes(
+        product
+    ) {
+
+        const sizes =
+            Array.isArray(
+                product.sizes
+            )
+                ? product.sizes
+                : [];
+
+
+        const container =
+            document.querySelector(
+                "[data-product-sizes]"
+            );
+
+
+        if (!container) {
+
+            return;
+
+        }
+
+
+        container.innerHTML =
+            "";
+
+
+        sizes.forEach(
+            function (
+                size,
+                index
+            ) {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                button.type =
+                    "button";
+
+
+                button.className =
+                    "satori-size" +
+                    (
+                        index === 0
+                            ? " active"
+                            : ""
+                    );
+
+
+                button.dataset.size =
+                    String(
+                        size
+                    );
+
+
+                button.textContent =
+                    String(
+                        size
+                    );
+
+
+                container.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        const selected =
+            document.querySelector(
+                ".satori-selected-size"
+            );
+
+
+        if (
+            selected
+        ) {
+
+            selected.textContent =
+                sizes[0] ||
+                "";
+
+        }
+
+
+        bindSizes();
+
+    }
+
+
+    /* =====================================================
+       INFORMACIÓN
+    ====================================================== */
+
+    function updateProductInformation(
+        product
+    ) {
+
+        const title =
+            document.getElementById(
+                "satoriProductTitle"
+            );
+
+
+        const price =
+            document.getElementById(
+                "satoriProductPrice"
+            );
+
+
+        if (
+            title &&
+            product.name
+        ) {
+
+            title.textContent =
+                product.name;
+
+        }
+
+
+        if (
+            price &&
+            product.price !== undefined &&
+            product.price !== null
+        ) {
+
+            price.textContent =
+                formatPrice(
+                    product.price
+                ) +
+                " " +
+                String(
+                    product.currency ||
+                    "CLP"
+                ).toUpperCase();
+
+        }
+
+
+        if (
+            product.name
+        ) {
+
+            document.title =
+                product.name +
+                " | SATORII";
+
+        }
+
+
+        setMeta(
+            'meta[name="description"]',
+            product.description ||
+            product.name
+        );
+
+
+        setMeta(
+            'meta[property="og:title"]',
+            String(
+                product.name ||
+                ""
+            ) +
+            " | SATORII"
+        );
+
+
+        setMeta(
+            'meta[property="og:description"]',
+            product.description ||
+            product.name
+        );
+
+
+        const description =
+            document.getElementById(
+                "tab-description"
+            );
+
+
+        if (
+            description &&
+            product.description
+        ) {
+
+            const firstText =
+                Array.from(
+                    description.childNodes
+                )
+                    .find(
+                        function (
+                            node
+                        ) {
+
+                            return (
+                                node.nodeType ===
+                                Node.TEXT_NODE &&
+                                node.textContent.trim()
+                            );
+
+                        }
+                    );
+
+
+            if (
+                firstText
+            ) {
+
+                firstText.textContent =
+                    product.description;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CARRITO
+    ====================================================== */
+
+    function updateCartButton(
+        product
+    ) {
+
+        const button =
+            document.getElementById(
+                "addToCart"
+            );
+
+
+        if (!button) {
+
+            return;
+
+        }
+
+
+        button.dataset.productId =
+            String(
+                product.id ||
+                PRODUCT_ID
+            );
+
+
+        button.dataset.productName =
+            String(
+                product.name ||
+                ""
+            );
+
+
+        button.dataset.productPrice =
+            String(
+                product.price ||
+                0
+            );
+
+
+        const images =
+            getImages(
+                product
+            );
+
+
+        if (
+            images.length
+        ) {
+
+            button.dataset.productImage =
+                normalizeImage(
+                    images[0]
+                );
+
+        }
+
+
+        const stock =
+            product.stock == null
+                ? null
+                : Number(
+                    product.stock
+                );
+
+
+        const available =
+            product.available !== false &&
+            product.active !== false &&
+            (
+                stock === null ||
+                stock > 0
+            );
+
+
+        button.disabled =
+            !available;
+
+
+        button.textContent =
+            available
+                ? "AGREGAR AL CARRITO"
+                : "AGOTADO";
+
+    }
+
+
+    /* =====================================================
+       ACTUALIZAR PÁGINA
+    ====================================================== */
+
+    function updateProductPage(
+        product
+    ) {
+
+        if (!product) {
+
+            return;
+
+        }
+
+
+        updateProductInformation(
+            product
+        );
+
+
+        updateGallery(
+            product
+        );
+
+
+        updateColors(
+            product
+        );
+
+
+        updateSizes(
+            product
+        );
+
+
+        updateEditorialBanner(
+            product
+        );
+
+
+        updateCartButton(
+            product
+        );
+
+
+        window.dispatchEvent(
+            new CustomEvent(
+                "satorii:product-updated",
+                {
+                    detail: {
+                        product:
+                            product
+                    }
+                }
+            )
+        );
+
+    }
+
+
+    /* =====================================================
+       SUPABASE
+    ====================================================== */
+
+    async function fetchProduct() {
+
+        if (
+            typeof satoriSupabase ===
+            "undefined"
+        ) {
+
+            return false;
+
+        }
+
+
+        try {
+
+            const result =
+                await satoriSupabase
+                    .from(
+                        "products"
+                    )
+                    .select(
+                        "*"
+                    )
+                    .eq(
+                        "id",
+                        PRODUCT_ID
+                    )
+                    .maybeSingle();
+
+
+            if (
+                result.error
+            ) {
+
+                console.error(
+                    "SATORII · Supabase:",
+                    result.error
+                );
+
+
+                return false;
+
+            }
+
+
+            if (
+                result.data
+            ) {
+
+                updateProductPage(
+                    result.data
+                );
+
+            }
+
+
+            return true;
+
+        }
+
+        catch (
+            error
+        ) {
+
+            console.error(
+                "SATORII · Error Supabase:",
+                error
+            );
+
+
+            return false;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       REALTIME
+    ====================================================== */
+
+    function subscribeRealtime() {
+
+        if (
+            typeof satoriSupabase ===
+            "undefined" ||
+            !satoriSupabase.channel
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+            realtimeChannel =
+                satoriSupabase
+                    .channel(
+                        "satorii-product-" +
+                        PRODUCT_ID
+                    )
+                    .on(
+                        "postgres_changes",
+                        {
+                            event:
+                                "*",
+
+                            schema:
+                                "public",
+
+                            table:
+                                "products",
+
+                            filter:
+                                "id=eq." +
+                                PRODUCT_ID
+                        },
+                        function (
+                            payload
+                        ) {
+
+                            if (
+                                payload.eventType ===
+                                "DELETE"
+                            ) {
+
+                                updateProductPage(
+                                    {
+                                        id:
+                                            PRODUCT_ID,
+
+                                        available:
+                                            false
+                                    }
+                                );
+
+                                return;
+
+                            }
+
+
+                            if (
+                                payload.new
+                            ) {
+
+                                updateProductPage(
+                                    payload.new
+                                );
+
+                            }
+
+                        }
+                    )
+                    .subscribe();
+
+        }
+
+        catch (
+            error
+        ) {
+
+            console.warn(
+                "SATORII · Realtime no disponible:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       POLLING
+    ====================================================== */
+
+    function startPolling() {
+
+        if (
+            pollTimer
+        ) {
+
+            clearInterval(
+                pollTimer
+            );
+
+        }
+
+
+        pollTimer =
+            setInterval(
+                fetchProduct,
+                POLL_INTERVAL
+            );
+
+    }
+
+
+    /* =====================================================
+       CANTIDAD
+    ====================================================== */
+
+    function bindQuantity() {
+
+        const value =
+            document.getElementById(
+                "satoriQuantity"
+            );
+
+
+        const input =
+            document.getElementById(
+                "quantity"
+            );
+
+
+        const minus =
+            document.getElementById(
+                "satoriQuantityMinus"
+            );
+
+
+        const plus =
+            document.getElementById(
+                "satoriQuantityPlus"
+            );
+
+
+        if (
+            !value ||
+            !input ||
+            !minus ||
+            !plus
+        ) {
+
+            return;
+
+        }
+
+
+        function setQuantity(
+            next
+        ) {
+
+            const quantity =
+                Math.max(
+                    1,
+                    Math.min(
+                        99,
+                        Number(
+                            next
+                        ) || 1
+                    )
+                );
+
+
+            value.textContent =
+                quantity;
+
+
+            input.value =
+                quantity;
+
+        }
+
+
+        minus.onclick =
+            function () {
+
+                setQuantity(
+                    Number(
+                        input.value
+                    ) - 1
+                );
+
+            };
+
+
+        plus.onclick =
+            function () {
+
+                setQuantity(
+                    Number(
+                        input.value
+                    ) + 1
+                );
+
+            };
+
+    }
+
+
+    /* =====================================================
+       TABS
+    ====================================================== */
+
+    function bindTabs() {
+
+        const tabs =
+            document.querySelectorAll(
+                ".satori-tab"
+            );
+
+
+        const panels =
+            document.querySelectorAll(
+                "[data-tab-panel]"
+            );
+
+
+        tabs.forEach(
+            function (
+                tab
+            ) {
+
+                if (
+                    tab.dataset.bound
+                ) {
+
+                    return;
+
+                }
+
+
+                tab.dataset.bound =
+                    "true";
+
+
+                tab.onclick =
+                    function () {
+
+                        tabs.forEach(
+                            function (
+                                item
+                            ) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                                item.setAttribute(
+                                    "aria-selected",
+                                    "false"
+                                );
+
+                            }
+                        );
+
+
+                        tab.classList.add(
+                            "active"
+                        );
+
+
+                        tab.setAttribute(
+                            "aria-selected",
+                            "true"
+                        );
+
+
+                        panels.forEach(
+                            function (
+                                panel
+                            ) {
+
+                                panel.hidden =
+                                    panel.dataset.tabPanel !==
+                                    tab.dataset.tab;
+
+                            }
+                        );
+
+                    };
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       INICIALIZACIÓN
+    ====================================================== */
+
+    function initializeProductPage() {
+
+        bindGallery();
+
+        bindColors();
+
+        bindSizes();
+
+        bindQuantity();
+
+        bindTabs();
+
+
+        function waitForSupabase() {
+
+            if (
+                typeof satoriSupabase ===
+                "undefined"
+            ) {
+
+                supabaseAttempts++;
+
+
+                if (
+                    supabaseAttempts <
+                    SUPABASE_RETRY_LIMIT
+                ) {
+
+                    setTimeout(
+                        waitForSupabase,
+                        250
+                    );
+
+                }
+
+
+                return;
+
+            }
+
+
+            fetchProduct();
+
+            subscribeRealtime();
+
+            startPolling();
+
+        }
+
+
+        waitForSupabase();
+
+    }
+
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeProductPage,
+            {
+                once:
+                    true
+            }
+        );
+
+    }
+
+    else {
+
+        initializeProductPage();
+
+    }
+
+
+})();
+
+</script>
+`;
+
+}
+
+
+/* =========================================================
+   HTML COMPLETO
+========================================================= */
+
+function buildPage(
+    product,
+    products
+) {
+
+    const productUrl =
+        normalizeProductUrl(
+            product
+        );
+
+
+    const root =
+        getRootPrefix(
+            productUrl
+        );
+
+
+    const title =
+        `${product.name} | SATORII`;
+
+
+    const description =
+        getDescription(
+            product
+        );
+
+
+    const images =
+        getProductImages(
+            product
+        );
+
+
+    const image =
+        getImagePath(
+            images[0],
+            productUrl
+        );
+
+
+    const related =
+        buildRelatedProducts(
+            product,
+            products,
+            productUrl
+        );
+
+
+    return `<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <meta
+        name="description"
+        content="${escapeHTML(
+            description
+        )}"
+    >
+
+
+    <meta
+        name="theme-color"
+        content="${SATORII_DARK}"
+    >
+
+
+    <meta
+        property="og:title"
+        content="${escapeHTML(
+            title
+        )}"
+    >
+
+
+    <meta
+        property="og:description"
+        content="${escapeHTML(
+            description
+        )}"
+    >
+
+
+    <meta
+        property="og:image"
+        content="${escapeHTML(
+            image
+        )}"
+    >
+
+
+    <title>
+        ${escapeHTML(
+            title
+        )}
+    </title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS GLOBAL -->
+
+    <link
+        rel="stylesheet"
+        href="${escapeHTML(
+            root +
+            "css/style.css"
+        )}"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="${escapeHTML(
+            root +
+            "css/animations.css"
+        )}"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="${escapeHTML(
+            root +
+            "css/footer.css"
+        )}"
+    >
+
+
+    <!-- CSS PRODUCTO -->
+
+    <style>
+
+        ${buildDesignCSS()}
+
+    </style>
+
+</head>
+
+
+<body
+    data-product-id="${escapeHTML(
+        product.id
+    )}"
+    data-product-name="${escapeHTML(
+        product.name
+    )}"
+    data-product-price="${escapeHTML(
+        product.price
+    )}"
+    data-product-image="${escapeHTML(
+        image
+    )}"
+>
+
+
+    <!-- HEADER GLOBAL -->
+
+    <div
+        id="satori-header"
+    ></div>
+
+
+    <!-- PRODUCTO -->
+
+    <main
+        class="
+            satori-page-animate
+            satori-product-page
+        "
+    >
+
+        ${buildHero(
+            product,
+            products,
+            productUrl
+        )}
+
+
+        ${related}
+
+    </main>
+
+
+    <!-- FOOTER GLOBAL -->
+
+    <div
+        id="satori-footer"
+    ></div>
+
+
+    <!-- SUPABASE -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <script
+        src="${escapeHTML(
+            root +
+            "js/supabase.js"
+        )}"
+    ></script>
+
+
+    <!-- JAVASCRIPT GLOBAL -->
+
+    <script
+        src="${escapeHTML(
+            root +
+            "js/main.js"
+        )}"
+        defer
+    ></script>
+
+
+    <script
+        src="${escapeHTML(
+            root +
+            "js/header.js"
+        )}"
+        defer
+    ></script>
+
+
+    <script
+        src="${escapeHTML(
+            root +
+            "js/footer.js"
+        )}"
+        defer
+    ></script>
+
+
+    <script
+        src="${escapeHTML(
+            root +
+            "js/cart.js"
+        )}"
+        defer
+    ></script>
+
+
+    <script
+        src="${escapeHTML(
+            root +
+            "js/animations.js"
+        )}"
+        defer
+    ></script>
+
+
+    <!-- JAVASCRIPT PRODUCTO -->
+
+    ${buildProductScript(
+        product,
+        productUrl
+    )}
+
+</body>
+
+</html>
+`;
+
+}
+
+
+/* =========================================================
+   GENERAR
+========================================================= */
+
+function generateProducts() {
+
+    console.log("");
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log(
+        "SATORII · GENERADOR DE PÁGINAS DE PRODUCTOS"
+    );
+
+    console.log(
+        DESIGN_NAME
+    );
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log("");
+
+
+    const products =
+        loadProducts();
+
+
+    console.log(
+        `✓ Productos cargados: ${products.length}`
+    );
+
+
+    validateProducts(
+        products
+    );
+
+
+    console.log(
+        "✓ Catálogo validado"
+    );
+
+
+    /*
+     * Información útil sobre el catálogo.
+     */
+
+    const tshirtCount =
+        products.filter(
+            isTshirt
+        ).length;
+
+
+    const availableCount =
+        products.filter(
+            isProductAvailable
+        ).length;
+
+
+    console.log(
+        `✓ Poleras detectadas: ${tshirtCount}`
+    );
+
+
+    console.log(
+        `✓ Productos disponibles: ${availableCount}`
+    );
+
+
+    let generated =
+        0;
+
+
+    products.forEach(
+        function (
+            product
+        ) {
+
+            const outputPath =
+                getOutputPath(
+                    product
+                );
+
+
+            const productUrl =
+                normalizeProductUrl(
+                    product
+                );
+
+
+            const html =
+                buildPage(
+                    product,
+                    products
+                );
+
+
+            fs.mkdirSync(
+                path.dirname(
+                    outputPath
+                ),
+                {
+                    recursive:
+                        true
+                }
+            );
+
+
+            fs.writeFileSync(
+                outputPath,
+                html,
+                "utf8"
+            );
+
+
+            generated++;
+
+
+            console.log(
+                `✓ ${productUrl}`
+            );
+
+        }
+    );
+
+
+    console.log("");
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log(
+        `✓ Páginas generadas: ${generated}`
+    );
+
+    console.log(
+        "✓ Diseño 10 aplicado"
+    );
+
+    console.log(
+        "✓ Bold Commerce"
+    );
+
+    console.log(
+        "✓ Fondo blanco"
+    );
+
+    console.log(
+        "✓ Rojo SATORII #EF0930"
+    );
+
+    console.log(
+        "✓ Footer / Ticker #101727"
+    );
+
+    console.log(
+        "✓ Header global"
+    );
+
+    console.log(
+        "✓ Footer global"
+    );
+
+    console.log(
+        "✓ Footer.css incluido"
+    );
+
+    console.log(
+        "✓ Galería dinámica"
+    );
+
+    console.log(
+        "✓ Colores dinámicos"
+    );
+
+    console.log(
+        "✓ Tallas dinámicas"
+    );
+
+    console.log(
+        "✓ Cantidad"
+    );
+
+    console.log(
+        "✓ Carrito global"
+    );
+
+    console.log(
+        "✓ Supabase"
+    );
+
+    console.log(
+        "✓ Supabase Realtime"
+    );
+
+    console.log(
+        "✓ Polling de respaldo"
+    );
+
+    console.log(
+        "✓ Banner editorial SATORII"
+    );
+
+    console.log(
+        "✓ Banner de personaje / prenda"
+    );
+
+    console.log(
+        "✓ También te puede gustar"
+    );
+
+    console.log(
+        "✓ Poleras priorizadas"
+    );
+
+    console.log(
+        "✓ Recomendaciones aleatorias"
+    );
+
+    console.log(
+        "✓ Productos agotados excluidos"
+    );
+
+    console.log(
+        "✓ Producto actual excluido"
+    );
+
+    console.log(
+        "✓ Responsive"
+    );
+
+    console.log(
+        "✓ prefers-reduced-motion"
+    );
+
+    console.log(
+        "=============================================="
+    );
+
+    console.log("");
+
+}
+
+
+/* =========================================================
+   EJECUCIÓN
+========================================================= */
+
+try {
+
+    generateProducts();
+
+}
+
+catch (
+    error
+) {
+
+    console.error("");
+
+    console.error(
+        "=============================================="
+    );
+
+    console.error(
+        "SATORII · ERROR"
+    );
+
+    console.error(
+        "=============================================="
+    );
+
+    console.error("");
+
+    console.error(
+        error.message
+    );
+
+    console.error("");
+
+    process.exit(
+        1
+    );
+
+}
