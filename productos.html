@@ -22,10 +22,36 @@
 
     <meta
         name="description"
-        content="SATORII — Descubre todas nuestras colecciones, prendas y productos inspirados en anime, cultura japonesa y streetwear."
+        content="SATORII — Descubre nuestra colección de anime, yokai, cultura japonesa y streetwear."
     >
 
     <title>Productos | SATORII</title>
+
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         CSS PRINCIPAL
+    ====================================================== -->
 
     <link
         rel="stylesheet"
@@ -37,85 +63,146 @@
 
         /* =====================================================
            SATORII · PRODUCTOS
-           Catálogo general
+           CATÁLOGO GENERAL
         ====================================================== */
 
 
         /* =====================================================
-           CONTENEDOR
+           VARIABLES
         ====================================================== */
 
-        .products-page {
+        :root {
 
-            width: min(
-                var(--satori-content-width, 1800px),
-                calc(
-                    100% -
-                    (
-                        var(--satori-side-space, 30px) * 2
-                    )
-                )
-            );
+            --satori-red:
+                #EF0930;
 
-            margin-left: auto;
-            margin-right: auto;
+            --satori-black:
+                #111111;
 
-            box-sizing: border-box;
+            --satori-dark:
+                #101727;
+
+            --satori-gray:
+                #666;
+
+            --satori-light:
+                #f5f5f5;
+
+            --satori-border:
+                #dedede;
 
         }
 
 
         /* =====================================================
-           HERO / INTRO
+           CONTENEDOR PRINCIPAL
+        ====================================================== */
+
+        .products-page {
+
+            width:
+                min(
+                    var(--satori-content-width, 1800px),
+                    calc(
+                        100% -
+                        (
+                            var(--satori-side-space, 30px) * 2
+                        )
+                    )
+                );
+
+            margin-left:
+                auto;
+
+            margin-right:
+                auto;
+
+            box-sizing:
+                border-box;
+
+        }
+
+
+        /* =====================================================
+           INTRO
         ====================================================== */
 
         .products-intro {
 
-            padding-top: 105px;
-            padding-bottom: 75px;
+            padding-top:
+                105px;
+
+            padding-bottom:
+                70px;
 
         }
 
 
         .products-intro-label {
 
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 18px;
+            margin-bottom:
+                18px;
 
             color:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 3px;
+            letter-spacing:
+                3px;
 
-            line-height: 1;
+            line-height:
+                1;
 
         }
 
 
         .products-intro h1 {
 
-            max-width: 1100px;
+            max-width:
+                1100px;
 
-            margin: 0;
+            margin:
+                0;
 
-            color: #111;
+            color:
+                var(
+                    --text,
+                    var(--satori-black)
+                );
 
-            font-size: clamp(
-                58px,
-                7.5vw,
-                115px
-            );
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
 
-            line-height: .86;
+            font-size:
+                clamp(
+                    58px,
+                    7.5vw,
+                    115px
+                );
 
-            font-weight: 900;
+            line-height:
+                .86;
 
-            letter-spacing: -6px;
+            font-weight:
+                900;
+
+            letter-spacing:
+                -5px;
+
+            text-transform:
+                uppercase;
 
         }
 
@@ -123,40 +210,53 @@
         .products-intro h1 span {
 
             color:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
         }
 
 
         .products-intro p {
 
-            max-width: 650px;
+            max-width:
+                650px;
 
             margin:
                 28px 0 0;
 
-            color: #666;
+            color:
+                var(
+                    --muted,
+                    #666
+                );
 
-            font-size: 15px;
+            font-size:
+                15px;
 
-            line-height: 1.75;
+            line-height:
+                1.75;
 
         }
 
 
-        /* =====================================================
-           SEPARADOR
-        ====================================================== */
-
         .products-intro-line {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 1px;
+            height:
+                1px;
 
-            margin-top: 55px;
+            margin-top:
+                55px;
 
-            background: #dedede;
+            background:
+                var(
+                    --border,
+                    var(--satori-border)
+                );
 
         }
 
@@ -167,126 +267,174 @@
 
         .products-controls {
 
-            margin-bottom: 45px;
+            margin-bottom:
+                45px;
 
         }
 
 
         /* =====================================================
-           CABECERA DEL CATÁLOGO
+           CABECERA
         ====================================================== */
 
         .products-category-bar {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: flex-end;
+            align-items:
+                flex-end;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            gap: 25px;
+            gap:
+                25px;
 
-            margin-bottom: 32px;
+            margin-bottom:
+                25px;
 
         }
 
 
         .products-category-left {
 
-            min-width: 0;
+            min-width:
+                0;
 
         }
 
 
         .products-category-number {
 
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 9px;
+            margin-bottom:
+                9px;
 
             color:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
-            font-size: 9px;
+            font-size:
+                9px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 2px;
+            letter-spacing:
+                2px;
 
         }
 
 
         .products-category-title {
 
-            margin: 0;
+            margin:
+                0;
 
-            color: #111;
+            color:
+                var(
+                    --text,
+                    var(--satori-black)
+                );
 
-            font-size: 28px;
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
 
-            line-height: 1;
+            font-size:
+                30px;
 
-            font-weight: 900;
+            line-height:
+                1;
 
-            letter-spacing: -1px;
+            font-weight:
+                900;
+
+            letter-spacing:
+                -1px;
+
+            text-transform:
+                uppercase;
 
         }
 
 
         .products-product-count {
 
-            color: #777;
+            color:
+                #777;
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            font-weight: 600;
+            font-weight:
+                600;
 
-            white-space: nowrap;
+            white-space:
+                nowrap;
 
         }
 
 
         /* =====================================================
-           BOTÓN FILTROS
+           FILTROS
         ====================================================== */
 
         .products-filter-toggle {
 
-            width: 100%;
+            width:
+                100%;
 
-            min-height: 48px;
+            min-height:
+                48px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             padding:
                 0 16px;
 
-            background: #fff;
+            background:
+                #fff;
 
             border:
                 1px solid #ddd;
 
-            border-radius: 8px;
+            border-radius:
+                0;
 
-            color: #111;
+            color:
+                #111;
 
-            font-family: inherit;
+            font-family:
+                inherit;
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 1.5px;
+            letter-spacing:
+                1.5px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
             transition:
-                border-color .2s ease,
                 background .2s ease,
+                border-color .2s ease,
                 color .2s ease;
 
         }
@@ -294,16 +442,19 @@
 
         .products-filter-toggle:hover {
 
-            border-color: #999;
+            border-color:
+                #999;
 
         }
 
 
         .products-filter-toggle-icon {
 
-            font-size: 18px;
+            font-size:
+                18px;
 
-            line-height: 1;
+            line-height:
+                1;
 
             transition:
                 transform .25s ease;
@@ -313,11 +464,14 @@
 
         .products-filter-toggle.active {
 
-            background: #111;
+            background:
+                #111;
 
-            border-color: #111;
+            border-color:
+                #111;
 
-            color: #fff;
+            color:
+                #fff;
 
         }
 
@@ -332,111 +486,124 @@
 
 
         /* =====================================================
-           PANEL DE FILTROS
+           PANEL
         ====================================================== */
 
         .products-filter-panel {
 
-            display: none;
+            display:
+                none;
 
-            margin-top: 14px;
+            margin-top:
+                12px;
 
-            padding: 22px;
+            padding:
+                22px;
 
-            background: #fafafa;
+            background:
+                #fafafa;
 
             border:
                 1px solid #e4e4e4;
 
-            border-radius: 10px;
+            border-radius:
+                0;
 
         }
 
 
         .products-filter-panel.open {
 
-            display: block;
+            display:
+                block;
 
         }
 
 
-        /* =====================================================
-           SECCIÓN DE FILTRO
-        ====================================================== */
-
         .products-filter-section {
 
-            margin-bottom: 22px;
+            margin-bottom:
+                22px;
 
         }
 
 
         .products-filter-section:last-child {
 
-            margin-bottom: 0;
+            margin-bottom:
+                0;
 
         }
 
 
         .products-filter-label {
 
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 10px;
+            margin-bottom:
+                10px;
 
-            color: #777;
+            color:
+                #777;
 
-            font-size: 9px;
+            font-size:
+                9px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 1.5px;
+            letter-spacing:
+                1.5px;
 
         }
 
-
-        /* =====================================================
-           FILAS
-        ====================================================== */
 
         .products-filter-row {
 
-            display: flex;
+            display:
+                flex;
 
-            flex-wrap: wrap;
+            flex-wrap:
+                wrap;
 
-            gap: 8px;
+            gap:
+                8px;
 
         }
 
-
-        /* =====================================================
-           BOTONES DE FILTRO
-        ====================================================== */
 
         .products-filter {
 
             padding:
                 9px 15px;
 
-            background: #fff;
+            background:
+                #fff;
 
             border:
                 1px solid #ddd;
 
-            border-radius: 999px;
+            border-radius:
+                0;
 
-            color: #666;
+            color:
+                #666;
 
-            font-family: inherit;
+            font-family:
+                inherit;
 
-            font-size: 9px;
+            font-size:
+                9px;
 
-            font-weight: 800;
+            font-weight:
+                800;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
             transition:
                 background .2s ease,
@@ -449,20 +616,25 @@
 
         .products-filter:hover {
 
-            border-color: #999;
+            border-color:
+                #999;
 
-            color: #111;
+            color:
+                #111;
 
         }
 
 
         .products-filter.active {
 
-            background: #111;
+            background:
+                #111;
 
-            border-color: #111;
+            border-color:
+                #111;
 
-            color: #fff;
+            color:
+                #fff;
 
             transform:
                 translateY(-1px);
@@ -476,9 +648,11 @@
 
         .products-sort {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 42px;
+            height:
+                42px;
 
             padding:
                 0 12px;
@@ -486,26 +660,34 @@
             border:
                 1px solid #ddd;
 
-            border-radius: 7px;
+            border-radius:
+                0;
 
-            background: #fff;
+            background:
+                #fff;
 
-            color: #111;
+            color:
+                #111;
 
-            font-family: inherit;
+            font-family:
+                inherit;
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            outline: none;
+            outline:
+                none;
 
         }
 
 
         .products-sort:focus {
 
-            border-color: #111;
+            border-color:
+                #111;
 
         }
 
@@ -516,35 +698,49 @@
 
         .products-clear {
 
-            margin-top: 18px;
+            margin-top:
+                18px;
 
-            padding: 0;
+            padding:
+                0;
 
-            border: 0;
+            border:
+                0;
 
-            background: transparent;
+            background:
+                transparent;
 
             color:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
-            font-family: inherit;
+            font-family:
+                inherit;
 
-            font-size: 9px;
+            font-size:
+                9px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
         }
 
 
         .products-clear:hover {
 
-            text-decoration: underline;
+            text-decoration:
+                underline;
 
-            text-underline-offset: 3px;
+            text-underline-offset:
+                3px;
 
         }
 
@@ -555,19 +751,26 @@
 
         .products-grid {
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
                     4,
-                    minmax(0, 1fr)
+                    minmax(
+                        0,
+                        1fr
+                    )
                 );
 
-            column-gap: 24px;
+            column-gap:
+                24px;
 
-            row-gap: 65px;
+            row-gap:
+                65px;
 
-            width: 100%;
+            width:
+                100%;
 
         }
 
@@ -578,15 +781,20 @@
 
         .products-product {
 
-            display: block;
+            display:
+                block;
 
-            min-width: 0;
+            min-width:
+                0;
 
-            text-decoration: none;
+            color:
+                inherit;
 
-            color: inherit;
+            text-decoration:
+                none;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
         }
 
@@ -597,34 +805,46 @@
 
         .products-product-image {
 
-            position: relative;
+            position:
+                relative;
 
-            width: 100%;
+            width:
+                100%;
 
-            aspect-ratio: 1 / 1;
+            aspect-ratio:
+                1 / 1;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            background: #f5f5f5;
+            background:
+                #f5f5f5;
 
-            border-radius: 0;
+            border-radius:
+                0;
 
         }
 
 
         .products-product-image img {
 
-            position: absolute;
+            position:
+                absolute;
 
-            inset: 0;
+            inset:
+                0;
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            object-fit: cover;
+            object-fit:
+                cover;
 
-            display: block;
+            display:
+                block;
 
             transition:
                 opacity .35s ease,
@@ -633,39 +853,30 @@
         }
 
 
-        /* =====================================================
-           IMAGEN PRINCIPAL
-        ====================================================== */
-
         .products-product-image
         .image-primary {
 
-            opacity: 1;
+            opacity:
+                1;
 
         }
 
-
-        /* =====================================================
-           IMAGEN SECUNDARIA
-        ====================================================== */
 
         .products-product-image
         .image-secondary {
 
-            opacity: 0;
+            opacity:
+                0;
 
         }
 
-
-        /* =====================================================
-           HOVER
-        ====================================================== */
 
         .products-product:hover
         .products-product-image
         .image-primary {
 
-            opacity: 0;
+            opacity:
+                0;
 
         }
 
@@ -674,7 +885,8 @@
         .products-product-image
         .image-secondary {
 
-            opacity: 1;
+            opacity:
+                1;
 
         }
 
@@ -694,49 +906,67 @@
 
         .products-product-badges {
 
-            position: absolute;
+            position:
+                absolute;
 
-            top: 12px;
+            top:
+                12px;
 
-            left: 12px;
+            left:
+                12px;
 
-            z-index: 5;
+            z-index:
+                5;
 
-            display: flex;
+            display:
+                flex;
 
-            flex-wrap: wrap;
+            flex-wrap:
+                wrap;
 
-            gap: 5px;
+            gap:
+                5px;
 
         }
 
 
         .products-product-badge {
 
-            display: inline-flex;
+            display:
+                inline-flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            min-height: 23px;
+            min-height:
+                23px;
 
             padding:
                 5px 8px;
 
-            box-sizing: border-box;
+            box-sizing:
+                border-box;
 
-            background: #111;
+            background:
+                #111;
 
-            color: #fff;
+            color:
+                #fff;
 
-            border-radius: 3px;
+            border-radius:
+                0;
 
-            font-size: 7px;
+            font-size:
+                7px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
-            line-height: 1;
+            line-height:
+                1;
 
         }
 
@@ -744,14 +974,18 @@
         .products-product-badge.new {
 
             background:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
         }
 
 
         .products-product-badge.featured {
 
-            background: #111;
+            background:
+                #111;
 
         }
 
@@ -762,53 +996,71 @@
 
         .products-product-info {
 
-            padding-top: 15px;
+            padding-top:
+                15px;
 
         }
 
 
         .products-product-category {
 
-            margin-bottom: 7px;
+            margin-bottom:
+                7px;
 
             color:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
-            font-size: 8px;
+            font-size:
+                8px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 1.7px;
+            letter-spacing:
+                1.7px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
         }
 
 
         .products-product-name {
 
-            margin: 0;
+            margin:
+                0;
 
-            color: #111;
+            color:
+                #111;
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            line-height: 1.3;
+            line-height:
+                1.3;
 
-            font-weight: 600;
+            font-weight:
+                600;
 
         }
 
 
         .products-product-price {
 
-            margin-top: 7px;
+            margin-top:
+                7px;
 
-            color: #111;
+            color:
+                #111;
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            font-weight: 800;
+            font-weight:
+                800;
 
         }
 
@@ -825,24 +1077,35 @@
             padding:
                 100px 20px;
 
-            text-align: center;
+            text-align:
+                center;
 
-            color: #777;
+            color:
+                #777;
 
         }
 
 
         .products-empty strong {
 
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 10px;
+            margin-bottom:
+                10px;
 
-            color: #111;
+            color:
+                #111;
 
-            font-size: 20px;
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
 
-            font-weight: 900;
+            font-size:
+                26px;
+
+            font-weight:
+                900;
 
         }
 
@@ -853,132 +1116,178 @@
 
         .products-feature {
 
-            position: relative;
+            position:
+                relative;
 
-            margin-top: 115px;
+            width:
+                100%;
 
-            margin-bottom: 100px;
+            margin-top:
+                115px;
 
-            min-height: 230px;
+            margin-bottom:
+                100px;
+
+            min-height:
+                230px;
 
             padding:
                 65px 60px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            box-sizing: border-box;
+            box-sizing:
+                border-box;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            background: #101727;
+            background:
+                var(
+                    --satori-dark
+                );
 
-            color: #fff;
+            color:
+                #fff;
 
-            border-radius: 0;
+            border-radius:
+                0;
 
         }
 
-
-        /* =====================================================
-           LÍNEA ROJA SUPERIOR
-        ====================================================== */
 
         .products-feature::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            top: 0;
+            top:
+                0;
 
-            left: 0;
+            left:
+                0;
 
-            width: 180px;
+            width:
+                180px;
 
-            height: 3px;
+            height:
+                3px;
 
             background:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
         }
 
-
-        /* =====================================================
-           LÍNEA ROJA INFERIOR
-        ====================================================== */
 
         .products-feature::after {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            right: 0;
+            right:
+                0;
 
-            bottom: 0;
+            bottom:
+                0;
 
-            width: 180px;
+            width:
+                180px;
 
-            height: 3px;
+            height:
+                3px;
 
             background:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
         }
 
 
-        /* =====================================================
-           CONTENIDO CTA
-        ====================================================== */
-
         .products-feature-content {
 
-            position: relative;
+            position:
+                relative;
 
-            z-index: 2;
+            z-index:
+                2;
 
-            max-width: 720px;
+            max-width:
+                720px;
 
         }
 
 
         .products-feature-label {
 
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 15px;
+            margin-bottom:
+                15px;
 
             color:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
-            font-size: 9px;
+            font-size:
+                9px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 3px;
+            letter-spacing:
+                3px;
 
         }
 
 
         .products-feature h2 {
 
-            margin: 0;
+            margin:
+                0;
 
-            color: #fff;
+            color:
+                #fff;
 
-            font-size: clamp(
-                36px,
-                5vw,
-                65px
-            );
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
 
-            line-height: .9;
+            font-size:
+                clamp(
+                    36px,
+                    5vw,
+                    65px
+                );
 
-            font-weight: 900;
+            line-height:
+                .9;
 
-            letter-spacing: -3px;
+            font-weight:
+                900;
+
+            letter-spacing:
+                -3px;
+
+            text-transform:
+                uppercase;
 
         }
 
@@ -986,58 +1295,74 @@
         .products-feature h2 span {
 
             color:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
         }
 
 
         .products-feature p {
 
-            max-width: 550px;
+            max-width:
+                550px;
 
             margin:
                 22px 0 28px;
 
-            color: #bbb;
+            color:
+                #bbb;
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            line-height: 1.7;
+            line-height:
+                1.7;
 
         }
 
 
-        /* =====================================================
-           BOTÓN CTA
-        ====================================================== */
-
         .products-feature-button {
 
-            display: inline-flex;
+            display:
+                inline-flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            min-height: 44px;
+            min-height:
+                44px;
 
             padding:
                 0 22px;
 
             background:
-                var(--red, #EF0930);
+                var(
+                    --red,
+                    var(--satori-red)
+                );
 
-            color: #fff;
+            color:
+                #fff;
 
-            border-radius: 8px;
+            border-radius:
+                0;
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 1.5px;
+            letter-spacing:
+                1.5px;
 
-            text-decoration: none;
+            text-decoration:
+                none;
 
             transition:
                 transform .2s ease,
@@ -1055,6 +1380,27 @@
 
 
         /* =====================================================
+           LÍNEA FINAL
+        ====================================================== */
+
+        .products-footer-line {
+
+            width:
+                100%;
+
+            height:
+                3px;
+
+            background:
+                var(
+                    --red,
+                    var(--satori-red)
+                );
+
+        }
+
+
+        /* =====================================================
            TABLET
         ====================================================== */
 
@@ -1065,7 +1411,10 @@
                 grid-template-columns:
                     repeat(
                         3,
-                        minmax(0, 1fr)
+                        minmax(
+                            0,
+                            1fr
+                        )
                     );
 
                 column-gap:
@@ -1098,7 +1447,10 @@
                 grid-template-columns:
                     repeat(
                         2,
-                        minmax(0, 1fr)
+                        minmax(
+                            0,
+                            1fr
+                        )
                     );
 
                 column-gap:
@@ -1224,7 +1576,7 @@
 
 
             /* -------------------------------------------------
-               CABECERA CATÁLOGO
+               CABECERA
             -------------------------------------------------- */
 
             .products-controls {
@@ -1298,9 +1650,6 @@
                 padding:
                     0 13px;
 
-                border-radius:
-                    0;
-
                 font-size:
                     8px;
 
@@ -1325,9 +1674,6 @@
 
                 padding:
                     15px;
-
-                border-radius:
-                    0;
 
             }
 
@@ -1367,9 +1713,6 @@
                 padding:
                     8px 11px;
 
-                border-radius:
-                    0;
-
                 font-size:
                     7px;
 
@@ -1383,9 +1726,6 @@
 
                 height:
                     39px;
-
-                border-radius:
-                    0;
 
                 font-size:
                     9px;
@@ -1413,7 +1753,10 @@
                 grid-template-columns:
                     repeat(
                         2,
-                        minmax(0, 1fr)
+                        minmax(
+                            0,
+                            1fr
+                        )
                     );
 
                 column-gap:
@@ -1428,14 +1771,6 @@
             /* -------------------------------------------------
                TARJETAS
             -------------------------------------------------- */
-
-            .products-product-image {
-
-                border-radius:
-                    0;
-
-            }
-
 
             .products-product-info {
 
@@ -1503,9 +1838,6 @@
                 padding:
                     4px 5px;
 
-                border-radius:
-                    0;
-
                 font-size:
                     5.5px;
 
@@ -1516,7 +1848,7 @@
 
 
             /* -------------------------------------------------
-               CTA FINAL · FULL WIDTH
+               CTA
             -------------------------------------------------- */
 
             .products-feature {
@@ -1540,12 +1872,6 @@
 
                 padding:
                     55px 18px;
-
-                border-radius:
-                    0;
-
-                background:
-                    #101727;
 
             }
 
@@ -1636,14 +1962,19 @@
                 padding:
                     0 16px;
 
-                border-radius:
-                    0;
-
                 font-size:
                     8px;
 
                 letter-spacing:
                     1.2px;
+
+            }
+
+
+            .products-footer-line {
+
+                height:
+                    2px;
 
             }
 
@@ -1744,32 +2075,10 @@
 
             }
 
-        }
+            .products-feature-button {
 
-        /* =====================================================
-           LÍNEA FINAL
-        ====================================================== */
-
-        .products-footer-line {
-
-            width:
-                100%;
-
-            height:
-                3px;
-
-            background:
-                #EF0930;
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .products-footer-line {
-
-                height:
-                    2px;
+                transition:
+                    none;
 
             }
 
@@ -1823,14 +2132,17 @@
 
                 <p>
 
-                    Explora todas las colecciones de SATORII:
-                    anime, yokai, cultura japonesa y streetwear
-                    reunidos en un solo lugar.
+                    Explora todo el universo de SATORII:
+                    anime, yokai, cultura japonesa y
+                    streetwear reunidos en un solo lugar.
 
                 </p>
 
 
-                <div class="products-intro-line"></div>
+                <div
+                    class="products-intro-line"
+                    aria-hidden="true"
+                ></div>
 
             </section>
 
@@ -1847,7 +2159,7 @@
                     <div class="products-category-left">
 
                         <span class="products-category-number">
-                            SATORII / STREETWEAR
+                            SATORII / ANIME STREET
                         </span>
 
 
@@ -1872,7 +2184,7 @@
 
 
                 <!-- =================================================
-                     BOTÓN FILTROS
+                     FILTROS
                 ================================================== -->
 
                 <button
@@ -1890,6 +2202,7 @@
 
                     <span
                         class="products-filter-toggle-icon"
+                        aria-hidden="true"
                     >
                         +
                     </span>
@@ -1898,7 +2211,7 @@
 
 
                 <!-- =================================================
-                     PANEL
+                     PANEL DE FILTROS
                 ================================================== -->
 
                 <div
@@ -1908,7 +2221,7 @@
 
 
                     <!-- =================================================
-                         CATEGORÍA
+                         COLECCIÓN
                     ================================================== -->
 
                     <div class="products-filter-section">
@@ -1954,8 +2267,7 @@
                         <div
                             class="products-filter-row"
                             id="products-color-filters"
-                        >
-                        </div>
+                        ></div>
 
                     </div>
 
@@ -2022,6 +2334,7 @@
             <section
                 class="products-grid"
                 id="products-grid"
+                aria-live="polite"
             ></section>
 
 
@@ -2051,9 +2364,10 @@
 
                     <p>
 
-                        Anime, yokai, cultura japonesa y
-                        streetwear. Explora SATORII y encuentra
-                        la colección que representa tu estilo.
+                        Anime, yokai, cultura japonesa
+                        y streetwear. Descubre nuestras
+                        colecciones y encuentra el estilo
+                        que representa tu universo.
 
                     </p>
 
@@ -2211,11 +2525,14 @@
 
                 const state = {
 
-                    category: "",
+                    category:
+                        "",
 
-                    color: "",
+                    color:
+                        "",
 
-                    sort: "featured"
+                    sort:
+                        "featured"
 
                 };
 
@@ -2308,7 +2625,7 @@
 
 
                 /* =================================================
-                   OBTENER VALORES ÚNICOS
+                   VALORES ÚNICOS
                 ================================================== */
 
                 function uniqueArrayValues(
@@ -2439,21 +2756,15 @@
 
                 function buildFilters() {
 
-                    /*
-                     * IMPORTANTE:
-                     *
-                     * Evita duplicar botones cuando
-                     * Supabase actualiza el catálogo.
-                     */
+                    categoryFilters.innerHTML =
+                        "";
 
-                    categoryFilters.innerHTML = "";
-
-
-                    colorFilters.innerHTML = "";
+                    colorFilters.innerHTML =
+                        "";
 
 
                     /* =============================================
-                       BOTÓN TODOS
+                       TODOS
                     ============================================== */
 
                     const allButton =
@@ -2613,10 +2924,6 @@
                     );
 
 
-                    /* =============================================
-                       MOSTRAR / OCULTAR COLOR
-                    ============================================== */
-
                     colorSection.style.display =
                         colors.length
                             ? ""
@@ -2759,6 +3066,7 @@
 
                     }
 
+
                     else if (
                         state.sort ===
                         "price-desc"
@@ -2785,6 +3093,7 @@
                         );
 
                     }
+
 
                     else if (
                         state.sort ===
@@ -2815,11 +3124,8 @@
 
                     }
 
-                    else {
 
-                        /*
-                         * DESTACADOS PRIMERO
-                         */
+                    else {
 
                         result.sort(
                             function (
@@ -2830,11 +3136,11 @@
                                 return (
                                     Number(
                                         b.featured ===
-                                        true
+                                            true
                                     ) -
                                     Number(
                                         a.featured ===
-                                        true
+                                            true
                                     )
                                 );
 
@@ -2850,7 +3156,7 @@
 
 
                 /* =================================================
-                   URL DEL PRODUCTO
+                   URL PRODUCTO
                 ================================================== */
 
                 function getProductUrl(
@@ -2866,10 +3172,6 @@
                     }
 
 
-                    /*
-                     * URL definida en products.js
-                     */
-
                     if (
                         product.url
                     ) {
@@ -2884,12 +3186,6 @@
                                 ""
                             );
 
-
-                        /*
-                         * Evitar:
-                         *
-                         * /satorimode/satorimode/...
-                         */
 
                         if (
                             cleanUrl.startsWith(
@@ -2910,10 +3206,6 @@
 
                     }
 
-
-                    /* =============================================
-                       FALLBACK
-                    ============================================== */
 
                     const category =
                         normalize(
@@ -2957,7 +3249,7 @@
 
 
                 /* =================================================
-                   RENDERIZAR
+                   RENDERIZAR PRODUCTOS
                 ================================================== */
 
                 function renderProducts() {
@@ -2983,7 +3275,7 @@
 
 
                     /* =============================================
-                       TÍTULO DINÁMICO
+                       TÍTULO
                     ============================================== */
 
                     if (
@@ -3021,9 +3313,7 @@
                         grid.innerHTML = `
 
                             <div
-                                class="
-                                    products-empty
-                                "
+                                class="products-empty"
                             >
 
                                 <strong>
@@ -3042,7 +3332,7 @@
 
 
                     /* =============================================
-                       CREAR TARJETAS
+                       TARJETAS
                     ============================================== */
 
                     products.forEach(
@@ -3096,10 +3386,6 @@
                             const badges = [];
 
 
-                            /* =====================================
-                               NUEVO
-                            ====================================== */
-
                             const productIsNew =
                                 typeof isProductNew ===
                                     "function"
@@ -3129,10 +3415,6 @@
 
                             }
 
-
-                            /* =====================================
-                               DESTACADO
-                            ====================================== */
 
                             if (
                                 product.featured ===
@@ -3333,11 +3615,13 @@
                             function (button) {
 
                                 const type =
-                                    button.dataset.filterType;
+                                    button.dataset
+                                        .filterType;
 
 
                                 const value =
-                                    button.dataset.filterValue ||
+                                    button.dataset
+                                        .filterValue ||
                                     "";
 
 
@@ -3402,7 +3686,9 @@
                             );
 
 
-                        if (!button) {
+                        if (
+                            !button
+                        ) {
 
                             return;
 
@@ -3410,11 +3696,13 @@
 
 
                         const type =
-                            button.dataset.filterType;
+                            button.dataset
+                                .filterType;
 
 
                         const value =
-                            button.dataset.filterValue ||
+                            button.dataset
+                                .filterValue ||
                             "";
 
 
@@ -3425,6 +3713,15 @@
 
                             state.category =
                                 value;
+
+                            /*
+                             * Cuando cambia la colección,
+                             * el color anterior deja de
+                             * ser relevante.
+                             */
+
+                            state.color =
+                                "";
 
                         }
 
@@ -3552,7 +3849,7 @@
 
 
                 /* =================================================
-                   ACTUALIZACIÓN DESDE SUPABASE
+                   ACTUALIZACIÓN SUPABASE
                 ================================================== */
 
                 window.addEventListener(
@@ -3611,6 +3908,7 @@
                 updateFilterButtons();
 
                 renderProducts();
+
 
             }
 
