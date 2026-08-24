@@ -1390,29 +1390,54 @@
         }
 
 
-        /* =====================================================
-           HEADER FLOTANTE
-        ====================================================== */
+ /* =====================================================
+   HEADER FLOTANTE
+===================================================== */
 
-        #satori-header.scrolled .main-header {
-            position:fixed;
-            top:8px;
-            left:8px;
-            width:calc(100% - 16px);
-            height:64px;
-            background:#000;
-            border:1px solid #222;
-            border-radius:16px;
-            box-shadow:
-                0 8px 25px
-                rgba(0,0,0,.16);
-            z-index:900000;
-        }
+#satori-header.scrolled .main-header {
 
-        #satori-header.scrolled
-        .header-inner {
-            height:62px;
-        }
+    position:fixed;
+
+    top:8px;
+    left:8px;
+
+    width:calc(100% - 16px);
+
+    height:64px;
+
+    background:#000;
+
+    border:1px solid #222;
+
+    border-radius:16px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.18);
+
+    z-index:999999;
+
+    transition:
+        top .25s ease,
+        left .25s ease,
+        width .25s ease,
+        height .25s ease,
+        border-radius .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/*
+ * Altura del contenido cuando el header
+ * se encuentra flotando.
+ */
+
+#satori-header.scrolled .header-inner {
+
+    height:62px;
+
+}
 
 
         /* =====================================================
@@ -2578,14 +2603,36 @@
             );
 
 
-        /* =====================================================
-           BLOQUEO DE SCROLL
-        ====================================================== */
+/* =====================================================
+   BLOQUEO DE SCROLL
+====================================================== */
+
+/*
+ * IMPORTANTE:
+ * Al iniciar la página eliminamos cualquier bloqueo
+ * que pudiera haber quedado aplicado por otra instancia
+ * del header o por una navegación anterior.
+ */
+
+document.documentElement.classList.remove(
+    "satori-lock-scroll"
+);
+
+document.body.classList.remove(
+    "satori-lock-scroll"
+);
+
+
+/* =====================================================
+   LOCK SCROLL
+====================================================== */
 
 function lockScroll() {
 
-    if (!document.documentElement ||
-        !document.body) {
+    if (
+        !document.documentElement ||
+        !document.body
+    ) {
         return;
     }
 
@@ -2600,94 +2647,41 @@ function lockScroll() {
 }
 
 
-        function unlockScroll() {
-
-            const mobileIsOpen =
-                mobileMenu?.classList.contains(
-                    "open"
-                );
-
-            const searchIsOpen =
-                searchOverlay?.classList.contains(
-                    "open"
-                );
-
-            const cartIsOpen =
-                cartPreview?.classList.contains(
-                    "open"
-                );
-
-
-            if (
-                !mobileIsOpen &&
-                !searchIsOpen &&
-                !cartIsOpen
-            ) {
-
-                document.documentElement.classList.remove(
-                    "satori-lock-scroll"
-                );
-
-                document.body.classList.remove(
-                    "satori-lock-scroll"
-                );
-
-            }
-
-        }
-
-
-      /* =====================================================
-   SCROLL HEADER · SATORII
+/* =====================================================
+   UNLOCK SCROLL
 ====================================================== */
 
-let satoriScrollTicking = false;
-
-function updateScrollHeader() {
-
-    if (!root) {
-        return;
-    }
-
-    const scrollY =
-        window.scrollY ||
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        0;
-
-    const shouldFloat =
-        scrollY > 50;
+function unlockScroll() {
 
     /*
-     * HEADER NORMAL
+     * Solamente quitamos el bloqueo cuando ninguno
+     * de los elementos que necesitan bloquear el scroll
+     * permanece abierto.
      */
-    if (!shouldFloat) {
 
-        root.classList.remove("scrolled");
+    const mobileIsOpen =
+        mobileMenu?.classList.contains("open");
 
-        if (spacer) {
-            spacer.style.display = "none";
-            spacer.style.height = "0px";
-        }
+    const searchIsOpen =
+        searchOverlay?.classList.contains("open");
 
-        return;
-    }
+    const cartIsOpen =
+        cartPreview?.classList.contains("open");
 
 
-    /*
-     * HEADER FLOTANTE
-     */
-    root.classList.add("scrolled");
+    if (
+        !mobileIsOpen &&
+        !searchIsOpen &&
+        !cartIsOpen
+    ) {
 
+        document.documentElement.classList.remove(
+            "satori-lock-scroll"
+        );
 
-    /*
-     * Reservar espacio para que el contenido
-     * no salte cuando el header pasa a fixed.
-     */
-    if (spacer) {
-
-        spacer.style.display = "block";
-        spacer.style.height = "68px";
+        document.body.classList.remove(
+            "satori-lock-scroll"
+        );
 
     }
 
@@ -2695,28 +2689,154 @@ function updateScrollHeader() {
 
 
 /* =====================================================
-   EVENTO SCROLL
+   HEADER · SCROLL
 ====================================================== */
 
-window.addEventListener(
-    "scroll",
-    function () {
+let satoriScrollTicking = false;
 
-        if (satoriScrollTicking) {
-            return;
+
+/*
+ * Distancia necesaria para activar el header flotante.
+ */
+const SATORII_SCROLL_THRESHOLD = 50;
+
+
+/*
+ * Actualizar estado visual del header.
+ */
+function updateScrollHeader() {
+
+    if (!root) {
+        return;
+    }
+
+
+    /*
+     * Obtener posición real del documento.
+     */
+    const scrollY =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
+
+
+    /*
+     * Determinar si debe activarse el header flotante.
+     */
+    const shouldFloat =
+        scrollY > SATORII_SCROLL_THRESHOLD;
+
+
+    /*
+     * HEADER NORMAL
+     */
+    if (!shouldFloat) {
+
+        root.classList.remove(
+            "scrolled"
+        );
+
+
+        if (spacer) {
+
+            spacer.style.height = "0px";
+            spacer.style.display = "none";
+
         }
 
-        satoriScrollTicking = true;
 
-        window.requestAnimationFrame(
-            function () {
+        return;
 
-                updateScrollHeader();
+    }
 
-                satoriScrollTicking = false;
 
-            }
-        );
+    /*
+     * HEADER FLOTANTE
+     */
+    root.classList.add(
+        "scrolled"
+    );
+
+
+    /*
+     * Mantener espacio para el header fijo.
+     */
+    if (spacer) {
+
+        spacer.style.display = "block";
+
+        spacer.style.height =
+            window.innerWidth <= 1000
+                ? "64px"
+                : "68px";
+
+    }
+
+}
+
+
+/* =====================================================
+   EVENTO DE SCROLL
+====================================================== */
+
+function handleSatoriScroll() {
+
+    if (satoriScrollTicking) {
+        return;
+    }
+
+
+    satoriScrollTicking = true;
+
+
+    window.requestAnimationFrame(
+        function () {
+
+            updateScrollHeader();
+
+            satoriScrollTicking = false;
+
+        }
+    );
+
+}
+
+
+/*
+ * Escuchar scroll del navegador.
+ */
+window.addEventListener(
+    "scroll",
+    handleSatoriScroll,
+    {
+        passive: true
+    }
+);
+
+
+/*
+ * También escuchar scroll del documento.
+ * Esto hace el sistema más resistente frente a páginas
+ * que modifican el contenedor de desplazamiento.
+ */
+document.addEventListener(
+    "scroll",
+    handleSatoriScroll,
+    {
+        passive: true
+    }
+);
+
+
+/*
+ * Actualizar también al redimensionar.
+ */
+window.addEventListener(
+    "resize",
+    function () {
+
+        updateScrollHeader();
 
     },
     {
@@ -2725,38 +2845,10 @@ window.addEventListener(
 );
 
 
-/* =====================================================
-   ESTADO INICIAL
-====================================================== */
-
+/*
+ * Estado inicial.
+ */
 updateScrollHeader();
-        /* =====================================================
-           CERRAR DROPDOWNS
-        ====================================================== */
-
-        function closeDropdowns() {
-
-            dropdowns.forEach(
-                function (dropdown) {
-
-                    dropdown.classList.remove(
-                        "open"
-                    );
-
-                    const button =
-                        dropdown.querySelector(
-                            ".nav-dropdown-btn"
-                        );
-
-                    button?.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-            );
-
-        }
 
 
         /* =====================================================
