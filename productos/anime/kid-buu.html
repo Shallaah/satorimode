@@ -204,9 +204,6 @@
     font-weight:
         700;
 
-    letter-spacing:
-        .02em;
-
     text-transform:
         uppercase;
 
@@ -1623,7 +1620,7 @@
 
 
 /* =========================================================
-   RELACIONADOS
+   RECOMENDADOS
 ========================================================= */
 
 .satori-related {
@@ -1679,6 +1676,9 @@
 
 .satori-section-heading h2 {
 
+    max-width:
+        650px;
+
     margin:
         0;
 
@@ -1706,7 +1706,7 @@
 .satori-section-heading p {
 
     max-width:
-        250px;
+        270px;
 
     margin:
         0;
@@ -1780,7 +1780,7 @@
         absolute;
 
     z-index:
-        2;
+        3;
 
     left:
         10px;
@@ -1801,6 +1801,41 @@
 
     font-weight:
         900;
+
+}
+
+
+.satori-related-badge {
+
+    position:
+        absolute;
+
+    z-index:
+        4;
+
+    right:
+        9px;
+
+    top:
+        9px;
+
+    padding:
+        5px 7px;
+
+    background:
+        var(--product-red);
+
+    color:
+        #FFFFFF;
+
+    font-size:
+        7px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .06em;
 
 }
 
@@ -2186,6 +2221,14 @@
     }
 
 
+    .satori-section-heading h2 {
+
+        font-size:
+            34px;
+
+    }
+
+
     .satori-section-heading p {
 
         max-width:
@@ -2288,7 +2331,7 @@
     .satori-section-heading h2 {
 
         font-size:
-            33px;
+            30px;
 
     }
 
@@ -2932,7 +2975,7 @@
         
 <section
     class="satori-related"
-    aria-label="También te puede gustar"
+    aria-label="Poleras recomendadas"
 >
 
     <div class="satori-section-heading">
@@ -2951,8 +2994,9 @@
 
 
         <p>
-            POLERAS SELECCIONADAS
-            PARA TI.
+            POLERAS RECOMENDADAS
+            SELECCIONADAS AL AZAR
+            PARA DESCUBRIR MÁS DE SATORII.
         </p>
 
     </div>
@@ -2970,6 +3014,11 @@
 
         <span class="satori-related-number">
             01
+        </span>
+
+
+        <span class="satori-related-badge">
+            RECOMENDADO
         </span>
 
 
@@ -3628,7 +3677,7 @@
 
 
     /* =====================================================
-       BANNER EDITORIAL DINÁMICO
+       BANNER EDITORIAL
     ====================================================== */
 
     function updateEditorialBanner(
