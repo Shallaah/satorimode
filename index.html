@@ -183,6 +183,12 @@
 
             width: 100%;
 
+            height: clamp(
+                250px,
+                29vw,
+                500px
+            );
+
             overflow: hidden;
 
             background: #111;
@@ -237,6 +243,8 @@
 
             width: 100%;
 
+            height: 100%;
+
         }
 
 
@@ -246,9 +254,13 @@
 
             width: 100%;
 
-            height: auto;
+            height: 100%;
 
-            max-width: 100%;
+            max-width: none;
+
+            object-fit: cover;
+
+            object-position: center center;
 
             user-select: none;
 
@@ -1668,6 +1680,24 @@
                HERO
             ================================================== */
 
+            .hero-slider {
+
+                height: clamp(
+                    225px,
+                    58vw,
+                    390px
+                );
+
+            }
+
+
+            .hero-slide img {
+
+                object-position: center center;
+
+            }
+
+
             .hero-dots {
 
                 bottom: 9px;
@@ -2254,6 +2284,13 @@
             }
 
 
+            .hero-slider {
+
+                height: 220px;
+
+            }
+
+
             .satori-new-drop {
 
                 padding:
@@ -2448,7 +2485,7 @@
 
 
         /* =====================================================
-           ANIMACIONES SATORII
+           ANIMACIONES SATORII — SOLO AL ENTRAR
         ====================================================== */
 
         .satori-index {
@@ -2464,143 +2501,329 @@
         }
 
 
-        .satori-index .satori-animate {
+        /* El banner entra primero */
 
-            opacity: 0;
+        .satori-index .hero-slider {
 
-            transform:
-                translateY(28px);
-
-            transition:
-                opacity .75s var(--satori-ease),
-                transform .75s var(--satori-ease);
-
-            transition-delay:
-                var(
-                    --satori-delay,
-                    0ms
-                );
+            animation:
+                satoriHeroIn
+                .85s
+                var(--satori-ease)
+                both;
 
         }
 
 
-        .satori-index .satori-animate.is-visible {
+        /* El ticker aparece inmediatamente después */
 
-            opacity: 1;
+        .satori-index .satori-ticker {
 
-            transform:
-                translateY(0);
-
-        }
-
-
-        .satori-index .satori-new-drop-products
-        .satori-feature-product,
-        .satori-index .satori-new-drop-products
-        .satori-small-product {
-
-            opacity: 0;
-
-            transform:
-                translateY(24px);
-
-            transition:
-                opacity .65s var(--satori-ease),
-                transform .65s var(--satori-ease);
+            animation:
+                satoriTickerIn
+                .65s
+                var(--satori-ease)
+                .12s
+                both;
 
         }
 
 
-        .satori-index .satori-new-drop-products
-        .satori-feature-product.is-visible,
-        .satori-index .satori-new-drop-products
-        .satori-small-product.is-visible {
+        /* Secciones */
 
-            opacity: 1;
+        .satori-index .satori-new-drop,
+        .satori-index .satori-universe,
+        .satori-index .recommendations {
 
-            transform:
-                translateY(0);
-
-        }
-
-
-        .satori-index .satori-universe-card {
-
-            opacity: 0;
-
-            transform:
-                translateY(25px)
-                scale(.985);
-
-            transition:
-                opacity .65s var(--satori-ease),
-                transform .65s var(--satori-ease),
-                border-color .25s ease;
-
-            transition-delay:
-                var(
-                    --satori-delay,
-                    0ms
-                );
+            animation:
+                satoriSectionIn
+                .8s
+                var(--satori-ease)
+                both;
 
         }
 
 
-        .satori-index .satori-universe-card.is-visible {
+        .satori-index .satori-new-drop {
 
-            opacity: 1;
-
-            transform:
-                translateY(0)
-                scale(1);
+            animation-delay:
+                .24s;
 
         }
 
 
-        .satori-index .satori-new-drop-intro,
+        .satori-index .satori-universe {
+
+            animation-delay:
+                .38s;
+
+        }
+
+
+        .satori-index .recommendations {
+
+            animation-delay:
+                .52s;
+
+        }
+
+
+        /* Contenido interno: entrada escalonada */
+
+        .satori-index .satori-new-drop-intro {
+
+            animation:
+                satoriContentIn
+                .7s
+                var(--satori-ease)
+                .38s
+                both;
+
+        }
+
+
+        .satori-index .satori-feature-product {
+
+            animation:
+                satoriCardIn
+                .75s
+                var(--satori-ease)
+                .46s
+                both;
+
+        }
+
+
+        .satori-index .satori-small-product:nth-child(2) {
+
+            animation:
+                satoriCardIn
+                .65s
+                var(--satori-ease)
+                .54s
+                both;
+
+        }
+
+
+        .satori-index .satori-small-product:nth-child(3) {
+
+            animation:
+                satoriCardIn
+                .65s
+                var(--satori-ease)
+                .62s
+                both;
+
+        }
+
+
+        .satori-index .satori-small-product:nth-child(4) {
+
+            animation:
+                satoriCardIn
+                .65s
+                var(--satori-ease)
+                .70s
+                both;
+
+        }
+
+
         .satori-index .satori-universe-intro {
 
+            animation:
+                satoriContentIn
+                .7s
+                var(--satori-ease)
+                .50s
+                both;
+
+        }
+
+
+        .satori-index .satori-universe-card:nth-child(1) {
+
+            animation:
+                satoriCardIn
+                .65s
+                var(--satori-ease)
+                .56s
+                both;
+
+        }
+
+
+        .satori-index .satori-universe-card:nth-child(2) {
+
+            animation:
+                satoriCardIn
+                .65s
+                var(--satori-ease)
+                .64s
+                both;
+
+        }
+
+
+        .satori-index .satori-universe-card:nth-child(3) {
+
+            animation:
+                satoriCardIn
+                .65s
+                var(--satori-ease)
+                .72s
+                both;
+
+        }
+
+
+        .satori-index .satori-universe-card:nth-child(4) {
+
+            animation:
+                satoriCardIn
+                .65s
+                var(--satori-ease)
+                .80s
+                both;
+
+        }
+
+
+        /* Recomendaciones */
+
+        .satori-index .recommendations {
+
             opacity: 0;
 
             transform:
-                translateY(24px);
-
-            transition:
-                opacity .7s var(--satori-ease),
-                transform .7s var(--satori-ease);
+                translateY(18px);
 
         }
 
 
-        .satori-index .satori-new-drop-intro.is-visible,
-        .satori-index .satori-universe-intro.is-visible {
+        /* Keyframes */
 
-            opacity: 1;
+        @keyframes satoriHeroIn {
 
-            transform:
-                translateY(0);
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(1.025);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+
+            }
 
         }
 
 
-        .satori-index .satori-heading,
-        .satori-index .satori-kicker {
+        @keyframes satoriTickerIn {
 
-            transition:
-                color .25s ease;
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-10px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
 
         }
 
+
+        @keyframes satoriSectionIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(22px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        @keyframes satoriContentIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-24px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+
+            }
+
+        }
+
+
+        @keyframes satoriCardIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(28px)
+                    scale(.975);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        /* Hover: sigue funcionando después de entrar */
 
         .satori-index .satori-feature-product:hover
-        .satori-product-visual img {
-
-            transform:
-                scale(1.045);
-
-        }
-
-
+        .satori-product-visual img,
         .satori-index .satori-small-product:hover
         .satori-product-visual img {
 
@@ -2658,47 +2881,44 @@
         }
 
 
-        .satori-index .recommendations {
-
-            opacity: 0;
-
-            transform:
-                translateY(25px);
+        .satori-index .satori-universe-card {
 
             transition:
-                opacity .7s var(--satori-ease),
-                transform .7s var(--satori-ease);
+                transform .3s ease,
+                border-color .25s ease;
 
         }
 
 
-        .satori-index .recommendations.is-visible {
-
-            opacity: 1;
+        .satori-index .satori-universe-card:hover {
 
             transform:
-                translateY(0);
+                translateY(-4px);
+
+            border-color:
+                var(--satori-red);
 
         }
 
 
         @media (prefers-reduced-motion: reduce) {
 
-            .satori-index .satori-animate,
+            .satori-index .hero-slider,
+            .satori-index .satori-ticker,
+            .satori-index .satori-new-drop,
+            .satori-index .satori-universe,
+            .satori-index .recommendations,
             .satori-index .satori-new-drop-intro,
+            .satori-index .satori-feature-product,
+            .satori-index .satori-small-product,
             .satori-index .satori-universe-intro,
-            .satori-index .satori-new-drop-products
-            .satori-feature-product,
-            .satori-index .satori-new-drop-products
-            .satori-small-product,
-            .satori-index .satori-universe-card,
-            .satori-index .recommendations {
+            .satori-index .satori-universe-card {
 
-                opacity: 1;
+                animation: none !important;
 
-                transform: none;
+                opacity: 1 !important;
 
-                transition: none;
+                transform: none !important;
 
             }
 
@@ -3061,7 +3281,7 @@
         ================================================== -->
 
         <section
-            class="satori-new-drop satori-animate"
+            class="satori-new-drop"
             id="shop"
         >
 
@@ -3413,7 +3633,7 @@
         ================================================== -->
 
         <section
-            class="satori-universe satori-animate"
+            class="satori-universe"
             id="colecciones"
         >
 
@@ -4696,7 +4916,7 @@
 
 
     <!-- =====================================================
-         ANIMACIONES DE ENTRADA
+         RECOMENDACIONES — VISIBILIDAD
     ====================================================== -->
 
     <script>
@@ -4704,185 +4924,6 @@
         document.addEventListener(
             "DOMContentLoaded",
             function () {
-
-                const root =
-                    document.querySelector(
-                        ".satori-index"
-                    );
-
-
-                if (!root) {
-
-                    return;
-
-                }
-
-
-                const animatedElements =
-                    Array.from(
-                        root.querySelectorAll(
-                            ".satori-animate, " +
-                            ".satori-new-drop-intro, " +
-                            ".satori-universe-intro, " +
-                            ".satori-feature-product, " +
-                            ".satori-small-product, " +
-                            ".satori-universe-card, " +
-                            ".recommendations"
-                        )
-                    );
-
-
-                animatedElements.forEach(
-                    function (
-                        element,
-                        index
-                    ) {
-
-                        if (
-                            element.classList.contains(
-                                "satori-small-product"
-                            )
-                        ) {
-
-                            const position =
-                                Array.from(
-                                    element.parentElement
-                                        .children
-                                ).indexOf(
-                                    element
-                                );
-
-                            element.style.setProperty(
-                                "--satori-delay",
-                                `${Math.max(
-                                    0,
-                                    position
-                                ) * 80}ms`
-                            );
-
-                        }
-
-
-                        if (
-                            element.classList.contains(
-                                "satori-universe-card"
-                            )
-                        ) {
-
-                            const position =
-                                Array.from(
-                                    element.parentElement
-                                        .children
-                                ).indexOf(
-                                    element
-                                );
-
-                            element.style.setProperty(
-                                "--satori-delay",
-                                `${position * 90}ms`
-                            );
-
-                        }
-
-                    }
-                );
-
-
-                const reveal =
-                    function (
-                        element
-                    ) {
-
-                        element.classList.add(
-                            "is-visible"
-                        );
-
-                    };
-
-
-                if (
-                    window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches
-                ) {
-
-                    animatedElements.forEach(
-                        reveal
-                    );
-
-                    return;
-
-                }
-
-
-                if (
-                    "IntersectionObserver"
-                    in window
-                ) {
-
-                    const observer =
-                        new IntersectionObserver(
-                            function (
-                                entries
-                            ) {
-
-                                entries.forEach(
-                                    function (
-                                        entry
-                                    ) {
-
-                                        if (
-                                            entry.isIntersecting
-                                        ) {
-
-                                            reveal(
-                                                entry.target
-                                            );
-
-                                            observer.unobserve(
-                                                entry.target
-                                            );
-
-                                        }
-
-                                    }
-                                );
-
-                            },
-                            {
-                                threshold: .12,
-                                rootMargin:
-                                    "0px 0px -45px 0px"
-                            }
-                        );
-
-
-                    animatedElements.forEach(
-                        function (
-                            element
-                        ) {
-
-                            observer.observe(
-                                element
-                            );
-
-                        }
-                    );
-
-                }
-
-                else {
-
-                    animatedElements.forEach(
-                        reveal
-                    );
-
-                }
-
-
-                /* =================================================
-                   RECOMENDACIONES
-                ================================================== */
 
                 const recommendations =
                     document.getElementById(
@@ -4896,61 +4937,50 @@
 
 
                 if (
-                    recommendations &&
-                    grid
+                    !recommendations ||
+                    !grid
                 ) {
 
-                    const syncRecommendations =
-                        function () {
-
-                            const hasProducts =
-                                grid.children.length >
-                                0;
-
-
-                            recommendations.style.display =
-                                hasProducts
-                                    ? ""
-                                    : "none";
-
-
-                            if (
-                                hasProducts
-                            ) {
-
-                                reveal(
-                                    recommendations
-                                );
-
-                            }
-
-                        };
-
-
-                    syncRecommendations();
-
-
-                    const observer =
-                        new MutationObserver(
-                            syncRecommendations
-                        );
-
-
-                    observer.observe(
-                        grid,
-                        {
-                            childList: true,
-                            subtree: true
-                        }
-                    );
+                    return;
 
                 }
+
+
+                function syncRecommendations() {
+
+                    const hasProducts =
+                        grid.children.length > 0;
+
+
+                    recommendations.style.display =
+                        hasProducts
+                            ? ""
+                            : "none";
+
+                }
+
+
+                syncRecommendations();
+
+
+                const observer =
+                    new MutationObserver(
+                        syncRecommendations
+                    );
+
+
+                observer.observe(
+                    grid,
+                    {
+                        childList: true,
+                        subtree: true
+                    }
+                );
 
             }
         );
 
     </script>
-
 
 </body>
 
