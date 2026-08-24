@@ -2123,7 +2123,7 @@ function generateProducts() {
         `✓ Páginas generadas: ${generated}`
     );
     console.log(
-        "✓ animations.js incluido`
+        "✓ animations.js incluido"
     );
     console.log(
         "✓ Rutas relativas corregidas"
