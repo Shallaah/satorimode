@@ -18,16 +18,6 @@
    ✓ Rutas relativas seguras
    ✓ Compatible con GitHub Actions / Node 20
 ========================================================= */
-
-    <!-- =====================================================
-         FAVICON
-    ====================================================== -->
-
-    <link
-        rel="icon"
-        type="image/png"
-        href="img/logo.webp"
-    >
            
 "use strict";
 
@@ -2845,6 +2835,12 @@ function generateProductPage(
         ${escapeHTML(product.name)} | SATORII
     </title>
 
+    <link
+        rel="icon"
+        type="image/webp"
+        href="${root}img/logo.webp"
+    >
+   
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
