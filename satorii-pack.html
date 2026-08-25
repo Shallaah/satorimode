@@ -15,13 +15,35 @@
         content="SATORII PACK — Una edición especial de SATORII."
     >
 
-    <title>SATORII PACK | SATORII</title>
+    <title>Satorii Pack | Satorii</title>
 
     <link
         rel="icon"
         type="image/png"
         href="img/logo.webp"
     >
+
+
+    <!-- =====================================================
+         FUENTES SATORII
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
 
     <link
         rel="stylesheet"
@@ -1790,6 +1812,486 @@
             }
 
         }
+
+
+        /* =====================================================
+           TIPOGRAFÍA SATORII · SATORII PACK
+           -----------------------------------------------------
+           Se mantienen:
+           ✓ márgenes
+           ✓ paddings
+           ✓ estructura
+           ✓ textos
+           ✓ imágenes
+           ✓ unboxing
+           ✓ tarjetas
+           ✓ posiciones
+           ✓ JavaScript
+
+           BARLOW CONDENSED:
+           títulos, labels editoriales, precios y botones.
+
+           INTER:
+           textos descriptivos.
+        ====================================================== */
+
+        .satoriipack-page {
+            font-family:
+                "Inter",
+                sans-serif;
+        }
+
+
+        .sp-hero-eyebrow,
+        .sp-hero-title,
+        .sp-hero-price,
+        .sp-hero-price small,
+        .sp-hero-button,
+        .sp-benefit-title,
+        .sp-section-eyebrow,
+        .sp-section-heading h2,
+        .sp-counter,
+        .sp-counter-current,
+        .sp-unboxing-info-title,
+        .sp-unbox-nav,
+        .sp-card-logo,
+        .sp-card-edition,
+        .sp-card-bottom,
+        .sp-card-copy-label,
+        .sp-card-copy h2,
+        .sp-edition-label,
+        .sp-edition h2,
+        .sp-edition-badge,
+        .sp-buy h2,
+        .sp-buy-price,
+        .sp-buy-price small,
+        .sp-buy-button {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+        }
+
+
+        .sp-hero-description,
+        .sp-benefit-text,
+        .sp-section-heading p,
+        .sp-unboxing-description,
+        .sp-card-copy p,
+        .sp-edition p,
+        .sp-buy p,
+        .sp-notice p {
+            font-family:
+                "Inter",
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .sp-hero-eyebrow {
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .15em;
+        }
+
+
+        .sp-hero-title {
+            font-size:
+                clamp(
+                    58px,
+                    6.2vw,
+                    88px
+                );
+
+            line-height: .88;
+            font-weight: 900;
+            letter-spacing: -.035em;
+        }
+
+
+        .sp-hero-title span {
+            letter-spacing: -.03em;
+        }
+
+
+        .sp-hero-price {
+            font-size: 36px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.015em;
+        }
+
+
+        .sp-hero-price small {
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .08em;
+        }
+
+
+        .sp-hero-button {
+            font-size: 11px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .07em;
+        }
+
+
+        /* =====================================================
+           BENEFICIOS
+        ====================================================== */
+
+        .sp-benefit-title {
+            font-size: 13px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: .035em;
+        }
+
+
+        /* =====================================================
+           TÍTULOS DE SECCIÓN
+        ====================================================== */
+
+        .sp-section-eyebrow {
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .14em;
+        }
+
+
+        .sp-section-heading h2 {
+            font-size:
+                clamp(
+                    40px,
+                    4.4vw,
+                    58px
+                );
+
+            line-height: .92;
+            font-weight: 900;
+            letter-spacing: -.025em;
+        }
+
+
+        .sp-section-heading h2 span {
+            letter-spacing: -.02em;
+        }
+
+
+        /* =====================================================
+           UNBOXING
+        ====================================================== */
+
+        .sp-counter {
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+
+        .sp-counter-current {
+            font-size: 21px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.01em;
+        }
+
+
+        .sp-unboxing-info-title {
+            font-size:
+                clamp(
+                    38px,
+                    3.8vw,
+                    54px
+                );
+
+            line-height: .9;
+            font-weight: 900;
+            letter-spacing: -.025em;
+        }
+
+
+        .sp-unbox-nav {
+            font-size: 11px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: .025em;
+        }
+
+
+        /* =====================================================
+           TARJETA SATORII
+        ====================================================== */
+
+        .sp-card-logo {
+            font-size: 17px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.01em;
+        }
+
+
+        .sp-card-edition {
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .08em;
+        }
+
+
+        .sp-card-bottom {
+            font-size: 14px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .10em;
+        }
+
+
+        .sp-card-copy-label {
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .12em;
+        }
+
+
+        .sp-card-copy h2 {
+            font-size:
+                clamp(
+                    40px,
+                    4.4vw,
+                    58px
+                );
+
+            line-height: .92;
+            font-weight: 900;
+            letter-spacing: -.025em;
+        }
+
+
+        .sp-card-copy h2 span {
+            letter-spacing: -.02em;
+        }
+
+
+        /* =====================================================
+           EDICIÓN
+        ====================================================== */
+
+        .sp-edition-label {
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .14em;
+        }
+
+
+        .sp-edition h2 {
+            font-size:
+                clamp(
+                    40px,
+                    4.4vw,
+                    58px
+                );
+
+            line-height: .92;
+            font-weight: 900;
+            letter-spacing: -.025em;
+        }
+
+
+        .sp-edition h2 span {
+            letter-spacing: -.02em;
+        }
+
+
+        .sp-edition-badge {
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .07em;
+        }
+
+
+        /* =====================================================
+           COMPRA
+        ====================================================== */
+
+        .sp-buy h2 {
+            font-size:
+                clamp(
+                    30px,
+                    3vw,
+                    42px
+                );
+
+            line-height: .94;
+            font-weight: 900;
+            letter-spacing: -.02em;
+        }
+
+
+        .sp-buy-price {
+            font-size: 30px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.01em;
+        }
+
+
+        .sp-buy-price small {
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .08em;
+        }
+
+
+        .sp-buy-button {
+            font-size: 11px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .07em;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1000px) {
+
+            .sp-hero-title {
+                font-size:
+                    clamp(
+                        56px,
+                        8vw,
+                        78px
+                    );
+            }
+
+
+            .sp-section-heading h2,
+            .sp-card-copy h2,
+            .sp-edition h2 {
+                font-size:
+                    clamp(
+                        38px,
+                        5vw,
+                        52px
+                    );
+            }
+
+
+            .sp-unboxing-info-title {
+                font-size:
+                    clamp(
+                        38px,
+                        5vw,
+                        50px
+                    );
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .sp-hero-eyebrow,
+            .sp-section-eyebrow,
+            .sp-card-copy-label,
+            .sp-edition-label {
+                font-size: 10px;
+            }
+
+
+            .sp-hero-title {
+                font-size: 50px;
+                line-height: .9;
+                letter-spacing: -.025em;
+            }
+
+
+            .sp-hero-title span {
+                letter-spacing: -.02em;
+            }
+
+
+            .sp-hero-price {
+                font-size: 32px;
+            }
+
+
+            .sp-hero-button {
+                font-size: 11px;
+            }
+
+
+            .sp-benefit-title {
+                font-size: 12px;
+            }
+
+
+            .sp-section-heading h2,
+            .sp-card-copy h2,
+            .sp-edition h2 {
+                font-size: 38px;
+                line-height: .94;
+                letter-spacing: -.02em;
+            }
+
+
+            .sp-unboxing-info-title {
+                font-size: 38px;
+                line-height: .92;
+                letter-spacing: -.02em;
+            }
+
+
+            .sp-unbox-nav {
+                font-size: 10px;
+            }
+
+
+            .sp-card-logo {
+                font-size: 16px;
+            }
+
+
+            .sp-card-bottom {
+                font-size: 13px;
+            }
+
+
+            .sp-buy h2 {
+                font-size: 34px;
+                line-height: .94;
+            }
+
+
+            .sp-buy-price {
+                font-size: 27px;
+            }
+
+
+            .sp-buy-button {
+                font-size: 11px;
+            }
+
+        }
+
+
 
     </style>
 
