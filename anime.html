@@ -222,7 +222,7 @@
 
             display: block;
 
-            margin-bottom: 16px;
+            margin-bottom: 14px;
 
             color:
                 var(--anime-red);
@@ -307,6 +307,8 @@
             line-height: 1.75;
 
             font-weight: 400;
+
+            letter-spacing: 0;
 
         }
 
@@ -589,19 +591,6 @@
 
             will-change: transform;
 
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            letter-spacing: .8px;
-
-            text-transform: uppercase;
-
             animation:
                 animeTicker
                 34s
@@ -633,7 +622,8 @@
             }
 
         }
-.anime-ticker-set {
+
+        .anime-ticker-set {
 
             display: flex;
 
@@ -660,6 +650,19 @@
 
             box-sizing: border-box;
 
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: .8px;
+
+            text-transform: uppercase;
+
         }
 
 
@@ -667,6 +670,8 @@
 
             color:
                 var(--anime-red);
+
+            font-size: 12px;
 
         }
 
@@ -751,6 +756,8 @@
 
             line-height: 1.4;
 
+            letter-spacing: 0;
+
         }
 
 
@@ -803,7 +810,7 @@
 
             font-weight: 800;
 
-            letter-spacing: .5px;
+            letter-spacing: .4px;
 
             text-transform: uppercase;
 
@@ -1007,6 +1014,8 @@
 
             line-height: 1;
 
+            text-transform: uppercase;
+
         }
 
 
@@ -1090,6 +1099,8 @@
             font-size: 14px;
 
             font-weight: 800;
+
+            letter-spacing: 0;
 
         }
 
@@ -1343,6 +1354,8 @@
             line-height: 1.75;
 
             font-weight: 400;
+
+            letter-spacing: 0;
 
         }
 
@@ -1680,18 +1693,13 @@
             }
 
 
-            .anime-ticker-track {
+            .anime-ticker-group {
 
                 font-size:
                     9px;
 
                 letter-spacing:
                     .65px;
-
-            }
-
-
-            .anime-ticker-group {
 
                 gap:
                     20px;
@@ -1702,7 +1710,13 @@
             }
 
 
-            /* -------------------------------------------------
+            .anime-ticker-track span {
+
+                font-size:
+                    9px;
+
+            }
+/* -------------------------------------------------
                PRODUCTOS
             -------------------------------------------------- */
 
@@ -2225,15 +2239,16 @@
              TICKER · FULL WIDTH
         ================================================== -->
 
-        <div class="anime-ticker">
+        <div
+            class="anime-ticker"
+            aria-label="Información Anime Satorii"
+        >
 
             <div class="anime-ticker-track">
-
 
                 <div class="anime-ticker-set">
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2242,11 +2257,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2255,11 +2268,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2268,11 +2279,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2281,11 +2290,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2294,56 +2301,16 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
-                    </div>
-
-                    <div class="anime-ticker-group">
-
-                        ANIME
-                        <span>✦</span>
-                        JAPAN
-                        <span>✦</span>
-                        STREETWEAR
-                        <span>✦</span>
-                        SATORII
-                        <span>✦</span>
-
-                    </div>
-
-                    <div class="anime-ticker-group">
-
-                        ANIME
-                        <span>✦</span>
-                        JAPAN
-                        <span>✦</span>
-                        STREETWEAR
-                        <span>✦</span>
-                        SATORII
-                        <span>✦</span>
-
-                    </div>
-
-                    <div class="anime-ticker-group">
-
-                        ANIME
-                        <span>✦</span>
-                        JAPAN
-                        <span>✦</span>
-                        STREETWEAR
-                        <span>✦</span>
-                        SATORII
-                        <span>✦</span>
-
                     </div>
 
                 </div>
 
-
-
-                <div class="anime-ticker-set" aria-hidden="true">
+                <div
+                    class="anime-ticker-set"
+                    aria-hidden="true"
+                >
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2352,11 +2319,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2365,11 +2330,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2378,11 +2341,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2391,11 +2352,9 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
                     </div>
 
                     <div class="anime-ticker-group">
-
                         ANIME
                         <span>✦</span>
                         JAPAN
@@ -2404,46 +2363,6 @@
                         <span>✦</span>
                         SATORII
                         <span>✦</span>
-
-                    </div>
-
-                    <div class="anime-ticker-group">
-
-                        ANIME
-                        <span>✦</span>
-                        JAPAN
-                        <span>✦</span>
-                        STREETWEAR
-                        <span>✦</span>
-                        SATORII
-                        <span>✦</span>
-
-                    </div>
-
-                    <div class="anime-ticker-group">
-
-                        ANIME
-                        <span>✦</span>
-                        JAPAN
-                        <span>✦</span>
-                        STREETWEAR
-                        <span>✦</span>
-                        SATORII
-                        <span>✦</span>
-
-                    </div>
-
-                    <div class="anime-ticker-group">
-
-                        ANIME
-                        <span>✦</span>
-                        JAPAN
-                        <span>✦</span>
-                        STREETWEAR
-                        <span>✦</span>
-                        SATORII
-                        <span>✦</span>
-
                     </div>
 
                 </div>
