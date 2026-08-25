@@ -25,7 +25,7 @@
         content="SATORII Anime — Anime, manga y cultura japonesa llevados al streetwear."
     >
 
-    <title>Anime | SATORII</title>
+    <title>Anime | Satorii</title>
 
 
     <!-- =====================================================
@@ -39,12 +39,12 @@
 
     <link
         rel="preconnect"
-        href="https://fonts.googleapis.com"
+        href="https://fonts.gstatic.com"
         crossorigin
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
@@ -118,6 +118,14 @@
         body {
 
             overflow-x: hidden;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            color:
+                var(--anime-black);
 
         }
 
@@ -214,22 +222,25 @@
 
             display: block;
 
-            margin-bottom: 18px;
+            margin-bottom: 16px;
 
             color:
                 var(--anime-red);
 
             font-family:
                 "Inter",
+                Arial,
                 sans-serif;
 
-            font-size: 10px;
+            font-size: 12px;
 
-            font-weight: 900;
+            font-weight: 800;
 
-            letter-spacing: 3px;
+            letter-spacing: 2px;
 
             line-height: 1;
+
+            text-transform: uppercase;
 
         }
 
@@ -245,20 +256,21 @@
 
             font-family:
                 "Barlow Condensed",
+                Arial,
                 sans-serif;
 
             font-size:
                 clamp(
-                    80px,
-                    9vw,
-                    145px
+                    58px,
+                    6vw,
+                    90px
                 );
 
             line-height: .78;
 
             font-weight: 900;
 
-            letter-spacing: -5px;
+            letter-spacing: -3px;
 
             text-transform: uppercase;
 
@@ -280,18 +292,21 @@
             max-width: 520px;
 
             margin:
-                30px 0 0;
+                24px 0 0;
 
             color:
                 #666666;
 
             font-family:
                 "Inter",
+                Arial,
                 sans-serif;
 
-            font-size: 14px;
+            font-size: 15px;
 
             line-height: 1.75;
+
+            font-weight: 400;
 
         }
 
@@ -304,9 +319,9 @@
 
             width: fit-content;
 
-            margin-top: 30px;
+            margin-top: 28px;
 
-            padding-bottom: 8px;
+            padding-bottom: 7px;
 
             border-bottom:
                 2px solid
@@ -317,15 +332,18 @@
 
             font-family:
                 "Inter",
+                Arial,
                 sans-serif;
 
-            font-size: 10px;
+            font-size: 11px;
 
-            font-weight: 900;
+            font-weight: 800;
 
-            letter-spacing: 1.5px;
+            letter-spacing: .5px;
 
             text-decoration: none;
+
+            text-transform: uppercase;
 
             transition:
                 color .2s ease;
@@ -478,14 +496,15 @@
                 var(--anime-red);
 
             font-family:
-                "Barlow Condensed",
+                "Inter",
+                Arial,
                 sans-serif;
 
-            font-size: 13px;
+            font-size: 12px;
 
             font-weight: 800;
 
-            letter-spacing: 2px;
+            letter-spacing: .8px;
 
         }
 
@@ -517,21 +536,41 @@
 
         .anime-ticker {
 
-            display: flex;
-
-            align-items: center;
+            position: relative;
 
             width: 100%;
 
-            min-height: 48px;
+            height: 42px;
 
             overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
 
             background:
                 var(--anime-ticker);
 
             color:
                 var(--anime-white);
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .04
+                );
+
+            border-bottom:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .08
+                );
 
         }
 
@@ -544,25 +583,30 @@
 
             width: max-content;
 
+            min-width: max-content;
+
             white-space: nowrap;
 
-            padding: 0;
+            will-change: transform;
 
             font-family:
-                "Barlow Condensed",
+                "Inter",
+                Arial,
                 sans-serif;
 
-            font-size: 14px;
+            font-size: 12px;
 
             font-weight: 700;
 
-            letter-spacing: 1.5px;
+            letter-spacing: .8px;
+
+            text-transform: uppercase;
 
             animation:
-                animeTicker 36s linear infinite;
-
-            will-change:
-                transform;
+                animeTicker
+                34s
+                linear
+                infinite;
 
         }
 
@@ -589,18 +633,7 @@
             }
 
         }
-
-
-        .anime-ticker:hover
-        .anime-ticker-track {
-
-            animation-play-state:
-                paused;
-
-        }
-
-
-        .anime-ticker-set {
+.anime-ticker-set {
 
             display: flex;
 
@@ -619,12 +652,11 @@
 
             align-items: center;
 
-            gap: 22px;
+            gap: 28px;
+
+            padding-right: 28px;
 
             flex-shrink: 0;
-
-            padding:
-                0 22px;
 
             box-sizing: border-box;
 
@@ -674,16 +706,17 @@
 
             font-family:
                 "Barlow Condensed",
+                Arial,
                 sans-serif;
 
             font-size:
                 clamp(
-                    42px,
+                    50px,
                     5vw,
-                    70px
+                    74px
                 );
 
-            line-height: .82;
+            line-height: .76;
 
             font-weight: 900;
 
@@ -707,9 +740,16 @@
             color:
                 var(--anime-gray);
 
-            font-size: 10px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size: 11px;
 
             font-weight: 600;
+
+            line-height: 1.4;
 
         }
 
@@ -739,7 +779,7 @@
 
         .anime-filter {
 
-            min-height: 32px;
+            min-height: 34px;
 
             padding:
                 0 13px;
@@ -756,13 +796,16 @@
 
             font-family:
                 "Inter",
+                Arial,
                 sans-serif;
 
-            font-size: 8px;
+            font-size: 11px;
 
-            font-weight: 900;
+            font-weight: 800;
 
-            letter-spacing: .8px;
+            letter-spacing: .5px;
+
+            text-transform: uppercase;
 
             cursor: pointer;
 
@@ -951,11 +994,16 @@
             color:
                 var(--anime-white);
 
-            font-size: 7px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-weight: 900;
+            font-size: 10px;
 
-            letter-spacing: 1px;
+            font-weight: 800;
+
+            letter-spacing: .35px;
 
             line-height: 1;
 
@@ -983,16 +1031,21 @@
 
         .anime-product-category {
 
-            margin-bottom: 6px;
+            margin-bottom: 5px;
 
             color:
                 var(--anime-red);
 
-            font-size: 8px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-weight: 900;
+            font-size: 10px;
 
-            letter-spacing: 1.7px;
+            font-weight: 600;
+
+            letter-spacing: .35px;
 
             text-transform: uppercase;
 
@@ -1006,21 +1059,33 @@
             color:
                 var(--anime-black);
 
-            font-size: 14px;
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
 
-            line-height: 1.3;
+            font-size: 23px;
 
-            font-weight: 600;
+            line-height: .9;
+
+            font-weight: 800;
+
+            letter-spacing: 0;
 
         }
 
 
         .anime-product-price {
 
-            margin-top: 6px;
+            margin-top: 7px;
 
             color:
                 var(--anime-black);
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
             font-size: 14px;
 
@@ -1200,11 +1265,20 @@
             color:
                 var(--anime-red);
 
-            font-size: 9px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-weight: 900;
+            font-size: 12px;
 
-            letter-spacing: 3px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            line-height: 1;
+
+            text-transform: uppercase;
 
         }
 
@@ -1220,20 +1294,21 @@
 
             font-family:
                 "Barlow Condensed",
+                Arial,
                 sans-serif;
 
             font-size:
                 clamp(
-                    55px,
-                    7vw,
-                    100px
+                    58px,
+                    6vw,
+                    90px
                 );
 
-            line-height: .8;
+            line-height: .78;
 
             font-weight: 900;
 
-            letter-spacing: -4px;
+            letter-spacing: -3px;
 
             text-transform: uppercase;
 
@@ -1258,9 +1333,16 @@
             color:
                 #DDDDDD;
 
-            font-size: 13px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            line-height: 1.7;
+            font-size: 15px;
+
+            line-height: 1.75;
+
+            font-weight: 400;
 
         }
 
@@ -1284,13 +1366,20 @@
             color:
                 var(--anime-white);
 
-            font-size: 9px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-weight: 900;
+            font-size: 11px;
 
-            letter-spacing: 1.5px;
+            font-weight: 800;
+
+            letter-spacing: .5px;
 
             text-decoration: none;
+
+            text-transform: uppercase;
 
             transition:
                 transform .2s ease;
@@ -1464,10 +1553,10 @@
             .anime-hero-kicker {
 
                 margin-bottom:
-                    14px;
+                    12px;
 
                 font-size:
-                    8px;
+                    12px;
 
                 letter-spacing:
                     2px;
@@ -1481,17 +1570,13 @@
                     100%;
 
                 font-size:
-                    clamp(
-                        58px,
-                        18vw,
-                        76px
-                    );
+                    57px;
 
                 line-height:
-                    .82;
+                    .78;
 
                 letter-spacing:
-                    -2.5px;
+                    -2px;
 
             }
 
@@ -1502,13 +1587,13 @@
                     100%;
 
                 margin-top:
-                    19px;
+                    18px;
 
                 font-size:
-                    11.5px;
+                    13px;
 
                 line-height:
-                    1.6;
+                    1.65;
 
             }
 
@@ -1516,16 +1601,16 @@
             .anime-hero-link {
 
                 margin-top:
-                    22px;
+                    20px;
 
                 padding-bottom:
                     6px;
 
                 font-size:
-                    8px;
+                    11px;
 
                 letter-spacing:
-                    1.2px;
+                    .5px;
 
             }
 
@@ -1589,25 +1674,19 @@
 
             .anime-ticker {
 
-                min-height:
-                    42px;
+                height:
+                    32px;
 
             }
 
 
             .anime-ticker-track {
 
-                padding:
-                    0;
-
                 font-size:
-                    10px;
+                    9px;
 
                 letter-spacing:
-                    1.2px;
-
-                animation-duration:
-                    24s;
+                    .65px;
 
             }
 
@@ -1615,10 +1694,10 @@
             .anime-ticker-group {
 
                 gap:
-                    16px;
+                    20px;
 
-                padding:
-                    0 16px;
+                padding-right:
+                    20px;
 
             }
 
@@ -1649,17 +1728,13 @@
             .anime-products-heading h2 {
 
                 font-size:
-                    clamp(
-                        42px,
-                        14vw,
-                        54px
-                    );
+                    48px;
 
                 line-height:
-                    .84;
+                    .76;
 
                 letter-spacing:
-                    -1.5px;
+                    -2px;
 
             }
 
@@ -1673,7 +1748,7 @@
                     10px;
 
                 font-size:
-                    9px;
+                    11px;
 
             }
 
@@ -1695,13 +1770,13 @@
             .anime-filter {
 
                 min-height:
-                    30px;
+                    32px;
 
                 padding:
-                    0 9px;
+                    0 10px;
 
                 font-size:
-                    7px;
+                    10px;
 
             }
 
@@ -1737,10 +1812,10 @@
                     4px;
 
                 font-size:
-                    6.5px;
+                    9px;
 
                 letter-spacing:
-                    1.2px;
+                    .35px;
 
             }
 
@@ -1748,10 +1823,10 @@
             .anime-product-name {
 
                 font-size:
-                    10.5px;
+                    18px;
 
                 line-height:
-                    1.3;
+                    .9;
 
             }
 
@@ -1759,10 +1834,10 @@
             .anime-product-price {
 
                 margin-top:
-                    4px;
+                    5px;
 
                 font-size:
-                    10.5px;
+                    12px;
 
             }
 
@@ -1784,16 +1859,16 @@
             .anime-product-badge {
 
                 min-height:
-                    18px;
+                    20px;
 
                 padding:
-                    4px 5px;
+                    4px 6px;
 
                 font-size:
-                    5.5px;
+                    9px;
 
                 letter-spacing:
-                    .7px;
+                    .35px;
 
             }
 
@@ -1847,10 +1922,10 @@
                     12px;
 
                 font-size:
-                    7px;
+                    12px;
 
                 letter-spacing:
-                    2.2px;
+                    2px;
 
             }
 
@@ -1861,14 +1936,10 @@
                     100%;
 
                 font-size:
-                    clamp(
-                        48px,
-                        15vw,
-                        64px
-                    );
+                    57px;
 
                 line-height:
-                    .82;
+                    .78;
 
                 letter-spacing:
                     -2px;
@@ -1885,10 +1956,10 @@
                     17px 0 23px;
 
                 font-size:
-                    11px;
+                    13px;
 
                 line-height:
-                    1.6;
+                    1.65;
 
             }
 
@@ -1902,10 +1973,10 @@
                     0 16px;
 
                 font-size:
-                    8px;
+                    11px;
 
                 letter-spacing:
-                    1.2px;
+                    .5px;
 
             }
 
@@ -1943,7 +2014,7 @@
             .anime-hero h1 {
 
                 font-size:
-                    55px;
+                    51px;
 
             }
 
@@ -1986,7 +2057,7 @@
             .anime-product-name {
 
                 font-size:
-                    10px;
+                    17px;
 
             }
 
@@ -1994,7 +2065,7 @@
             .anime-product-price {
 
                 font-size:
-                    10px;
+                    12px;
 
             }
 
@@ -2013,7 +2084,7 @@
             .anime-cta h2 {
 
                 font-size:
-                    46px;
+                    51px;
 
             }
 
@@ -2041,7 +2112,7 @@
             .anime-hero h1 {
 
                 font-size:
-                    60px;
+                    51px;
 
             }
 
@@ -2049,7 +2120,15 @@
             .anime-products-heading h2 {
 
                 font-size:
-                    47px;
+                    44px;
+
+            }
+
+
+            .anime-ticker-track {
+
+                animation-duration:
+                    28s;
 
             }
 
