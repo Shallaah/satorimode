@@ -15,13 +15,35 @@
         content="Regala SATORII — Gift Cards para elegir tus productos favoritos."
     >
 
-    <title>Regala SATORII | SATORII</title>
+    <title>Regala SATORII | Satorii</title>
 
     <link
         rel="icon"
         type="image/png"
         href="img/logo.webp"
     >
+
+
+    <!-- =====================================================
+         FUENTES SATORII
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
 
     <link
         rel="stylesheet"
@@ -1603,6 +1625,412 @@
             }
 
         }
+
+
+        /* =====================================================
+           TIPOGRAFÍA SATORII · REGALA SATORII
+           -----------------------------------------------------
+           Se mantienen:
+           ✓ márgenes
+           ✓ paddings
+           ✓ estructura
+           ✓ carrusel
+           ✓ textos
+           ✓ imágenes
+           ✓ botones
+           ✓ JavaScript
+           ✓ tamaños de bloques
+
+           BARLOW CONDENSED:
+           títulos, labels editoriales, montos y CTA.
+
+           INTER:
+           textos descriptivos y contenido.
+        ====================================================== */
+
+        .satori-gift-page {
+            font-family:
+                "Inter",
+                sans-serif;
+        }
+
+
+        .satori-gift-eyebrow,
+        .satori-gift-hero-title,
+        .satori-gift-button,
+        .satori-gift-section-label,
+        .satori-gift-section-heading h2,
+        .satori-gift-value-label,
+        .satori-gift-value h3,
+        .satori-gift-benefit h3,
+        .satori-gift-how-title h2,
+        .satori-gift-step-number,
+        .satori-gift-step h3,
+        .satori-gift-cta h2,
+        .satori-gift-cta-price,
+        .satori-gift-cta-button {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+        }
+
+
+        .satori-gift-description,
+        .satori-gift-section-heading p,
+        .satori-gift-value-description,
+        .satori-gift-benefit p,
+        .satori-gift-how-title p,
+        .satori-gift-step p,
+        .satori-gift-cta p,
+        .satori-gift-notice p {
+            font-family:
+                "Inter",
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .satori-gift-eyebrow {
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .15em;
+        }
+
+
+        .satori-gift-hero-title {
+            font-size:
+                clamp(
+                    58px,
+                    6.2vw,
+                    88px
+                );
+
+            line-height: .88;
+            font-weight: 900;
+            letter-spacing: -.035em;
+        }
+
+
+        .satori-gift-hero-title span {
+            letter-spacing: -.03em;
+        }
+
+
+        .satori-gift-description {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        .satori-gift-button {
+            font-size: 11px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .07em;
+        }
+
+
+        /* =====================================================
+           SECCIÓN DE MONTOS
+        ====================================================== */
+
+        .satori-gift-section-label {
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .14em;
+        }
+
+
+        .satori-gift-section-heading h2 {
+            font-size:
+                clamp(
+                    40px,
+                    4.4vw,
+                    58px
+                );
+
+            line-height: .92;
+            font-weight: 900;
+            letter-spacing: -.025em;
+        }
+
+
+        .satori-gift-section-heading h2 span {
+            letter-spacing: -.02em;
+        }
+
+
+        .satori-gift-section-heading p {
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           TARJETAS DE VALORES
+        ====================================================== */
+
+        .satori-gift-value-label {
+            font-size: 10px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .10em;
+        }
+
+
+        .satori-gift-value h3 {
+            font-size: 32px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.015em;
+        }
+
+
+        .satori-gift-value-description {
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
+           BENEFICIOS
+        ====================================================== */
+
+        .satori-gift-benefit h3 {
+            font-size: 13px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: .035em;
+        }
+
+
+        .satori-gift-benefit p {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           CÓMO FUNCIONA
+        ====================================================== */
+
+        .satori-gift-how-title h2 {
+            font-size:
+                clamp(
+                    40px,
+                    4.4vw,
+                    58px
+                );
+
+            line-height: .92;
+            font-weight: 900;
+            letter-spacing: -.025em;
+        }
+
+
+        .satori-gift-how-title h2 span {
+            letter-spacing: -.02em;
+        }
+
+
+        .satori-gift-how-title p {
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        .satori-gift-step-number {
+            font-size: 13px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: .03em;
+        }
+
+
+        .satori-gift-step h3 {
+            font-size: 14px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: .035em;
+        }
+
+
+        .satori-gift-step p {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           CTA FINAL
+        ====================================================== */
+
+        .satori-gift-cta h2 {
+            font-size:
+                clamp(
+                    30px,
+                    3vw,
+                    42px
+                );
+
+            line-height: .92;
+            font-weight: 900;
+            letter-spacing: -.02em;
+        }
+
+
+        .satori-gift-cta p {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+
+        .satori-gift-cta-price {
+            font-size: 27px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.01em;
+        }
+
+
+        .satori-gift-cta-button {
+            font-size: 11px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .07em;
+        }
+
+
+        /* =====================================================
+           AVISO
+        ====================================================== */
+
+        .satori-gift-notice p {
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1000px) {
+
+            .satori-gift-hero-title {
+                font-size:
+                    clamp(
+                        56px,
+                        8vw,
+                        78px
+                    );
+            }
+
+
+            .satori-gift-section-heading h2,
+            .satori-gift-how-title h2 {
+                font-size:
+                    clamp(
+                        38px,
+                        5vw,
+                        52px
+                    );
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .satori-gift-eyebrow,
+            .satori-gift-section-label {
+                font-size: 10px;
+            }
+
+
+            .satori-gift-hero-title {
+                font-size: 50px;
+                line-height: .9;
+                letter-spacing: -.025em;
+            }
+
+
+            .satori-gift-hero-title span {
+                letter-spacing: -.02em;
+            }
+
+
+            .satori-gift-description {
+                font-size: 13px;
+                line-height: 1.65;
+            }
+
+
+            .satori-gift-button {
+                font-size: 11px;
+            }
+
+
+            .satori-gift-section-heading h2,
+            .satori-gift-how-title h2 {
+                font-size: 38px;
+                line-height: .94;
+                letter-spacing: -.02em;
+            }
+
+
+            .satori-gift-section-heading p,
+            .satori-gift-how-title p {
+                font-size: 13px;
+            }
+
+
+            .satori-gift-value h3 {
+                font-size: 27px;
+            }
+
+
+            .satori-gift-value-description,
+            .satori-gift-benefit p,
+            .satori-gift-step p {
+                font-size: 12px;
+            }
+
+
+            .satori-gift-benefit h3,
+            .satori-gift-step h3 {
+                font-size: 13px;
+            }
+
+
+            .satori-gift-cta h2 {
+                font-size: 34px;
+                line-height: .94;
+            }
+
+
+            .satori-gift-cta-price {
+                font-size: 25px;
+            }
+
+
+            .satori-gift-cta p,
+            .satori-gift-notice p {
+                font-size: 11px;
+            }
+
+        }
+
+
 
     </style>
 
