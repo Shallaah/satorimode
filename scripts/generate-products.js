@@ -19,6 +19,16 @@
    ✓ Compatible con GitHub Actions / Node 20
 ========================================================= */
 
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="img/logo.webp"
+    >
+           
 "use strict";
 
 const fs = require("fs");
