@@ -3532,10 +3532,12 @@ function generateProductPage(
                 )}
         };
     </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../js/supabase.js"></script>
 
-    <script src="${root}js/products.js"></script>
-    <script src="${root}js/cart.js"></script>
-    <script src="${root}js/footer.js"></script>
+<script src="../../js/products.js"></script>
+<script src="../../js/cart.js"></script>
+<script src="../../js/footer.js"></script>
 
     ${getProductScript(
         root,
