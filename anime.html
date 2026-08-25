@@ -361,48 +361,43 @@
         }
 
 
-        /* =====================================================
-           HERO · IMAGEN
-        ====================================================== */
+/* =====================================================
+   HERO · TRANSICIÓN IMAGEN / FONDO
+===================================================== */
 
-        .anime-hero-image {
+.anime-hero-image {
+    position: relative;
 
-            position: relative;
+    min-height: 610px;
 
-            min-height: 610px;
+    overflow: hidden;
 
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #F5F5F5 0%,
-                    #EEEEEE 100%
-                );
-
-        }
+    background: #FFFFFF;
+}
 
 
-        .anime-hero-image::before {
+.anime-hero-image::before {
+    content: "";
 
-            content: "";
+    position: absolute;
 
-            position: absolute;
+    z-index: 2;
 
-            z-index: 2;
+    inset: 0;
 
-            inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            #FFFFFF 0%,
+            rgba(255,255,255,.98) 5%,
+            rgba(255,255,255,.90) 12%,
+            rgba(255,255,255,.65) 20%,
+            rgba(255,255,255,.30) 30%,
+            rgba(255,255,255,0) 42%
+        );
 
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.7) 0%,
-                    rgba(255,255,255,0) 35%
-                );
-
-            pointer-events: none;
-
-        }
+    pointer-events: none;
+}
 
 
         .anime-hero-image::after {
