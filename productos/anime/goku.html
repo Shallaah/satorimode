@@ -1918,20 +1918,15 @@
             text
         );
     }
+function supabaseHeaders() {
+    return {
+        apikey:
+            SUPABASE_CONFIG.publishableKey,
 
-    function supabaseHeaders() {
-        return {
-            apikey:
-                SUPABASE_CONFIG.publishableKey,
-
-            Authorization:
-                "Bearer " +
-                SUPABASE_CONFIG.publishableKey,
-
-            Accept:
-                "application/json"
-        };
-    }
+        Accept:
+            "application/json"
+    };
+}
 
     function normalizeSupabaseUrl() {
         let url =
