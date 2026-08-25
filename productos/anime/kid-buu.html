@@ -1351,28 +1351,282 @@
     </main>
 
     <div id="satori-footer"></div>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="js/products.js"
+        defer
+    ></script>
+
+
+    <script
+        src="js/header.js"
+        defer
+    ></script>
+
+
+    <script
+        src="js/footer.js"
+        defer
+    ></script>
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <script src="js/supabase.js"></script>
+
+
+    <!-- =====================================================
+         SUPABASE — SINCRONIZAR PRECIOS
+    ====================================================== -->
 
     <script>
-        window.SATORII_PRODUCT =
-            {"id":"kid-buu","name":"Polera Kid Buu","price":18990,"category":"anime","collection":"Anime","available":true,"url":"productos/anime/kid-buu.html","image":"../../img/productos/anime/dbz-kid-buu/01.webp","images":["img/productos/anime/dbz-kid-buu/01.webp","img/productos/anime/dbz-kid-buu/02.webp","img/productos/anime/dbz-kid-buu/03.webp"],"sizes":["M","L","XL"],"colors":["Blanco"]};
 
-        window.SATORII_SUPABASE_CONFIG = {
-            enabled:
-                false,
+        (async function syncSupabasePrices() {
 
-            url:
-                "",
+            const waitForSupabase = async function () {
 
-            publishableKey:
-                ""
-        };
+                for (
+                    let attempt = 0;
+                    attempt < 100;
+                    attempt++
+                ) {
+
+                    if (
+                        typeof satoriSupabase !==
+                        "undefined"
+                    ) {
+
+                        return true;
+
+                    }
+
+                    await new Promise(
+                        function (resolve) {
+
+                            setTimeout(
+                                resolve,
+                                100
+                            );
+
+                        }
+                    );
+
+                }
+
+                return false;
+
+            };
+
+
+            const available =
+                await waitForSupabase();
+
+
+            if (!available) {
+
+                console.warn(
+                    "SATORII · Supabase no está disponible. Se mantienen los precios de respaldo."
+                );
+
+                return;
+
+            }
+
+
+            const {
+                data,
+                error
+            } =
+                await satoriSupabase
+                    .from("products")
+                    .select("name, price");
+
+
+            if (error) {
+
+                console.error(
+                    "SATORII · Error al obtener precios desde Supabase:",
+                    error
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !Array.isArray(data) ||
+                !data.length
+            ) {
+
+                console.warn(
+                    "SATORII · No se encontraron productos en Supabase."
+                );
+
+                return;
+
+            }
+
+
+            const normalize =
+                function (value) {
+
+                    return String(
+                        value ?? ""
+                    )
+                        .normalize("NFD")
+                        .replace(
+                            /[̀-ͯ]/g,
+                            ""
+                        )
+                        .trim()
+                        .toLowerCase();
+
+                };
+
+
+            const formatCLP =
+                function (value) {
+
+                    const numeric =
+                        Number(
+                            String(value)
+                                .replace(
+                                    /[^d.-]/g,
+                                    ""
+                                )
+                        );
+
+
+                    if (
+                        !Number.isFinite(
+                            numeric
+                        )
+                    ) {
+
+                        return null;
+
+                    }
+
+
+                    return new Intl.NumberFormat(
+                        "es-CL",
+                        {
+                            style: "currency",
+                            currency: "CLP",
+                            maximumFractionDigits: 0
+                        }
+                    ).format(
+                        numeric
+                    );
+
+                };
+
+
+            const products =
+                data.map(
+                    function (product) {
+
+                        return {
+
+                            name:
+                                normalize(
+                                    product.name
+                                ),
+
+                            price:
+                                product.price
+
+                        };
+
+                    }
+                );
+
+
+            document
+                .querySelectorAll(
+                    "[data-supabase-product]"
+                )
+                .forEach(
+                    function (element) {
+
+                        const wanted =
+                            normalize(
+                                element
+                                    .dataset
+                                    .supabaseProduct
+                            );
+
+
+                        const product =
+                            products.find(
+                                function (item) {
+
+                                    return (
+                                        item.name ===
+                                            wanted ||
+                                        item.name.includes(
+                                            wanted
+                                        ) ||
+                                        wanted.includes(
+                                            item.name
+                                        )
+                                    );
+
+                                }
+                            );
+
+
+                        if (!product) {
+
+                            console.warn(
+                                "SATORII · No se encontró en Supabase:",
+                                wanted
+                            );
+
+                            return;
+
+                        }
+
+
+                        const formatted =
+                            formatCLP(
+                                product.price
+                            );
+
+
+                        if (!formatted) {
+
+                            return;
+
+                        }
+
+
+                        element.textContent =
+                            formatted;
+
+                    }
+                );
+
+
+            console.log(
+                "SATORII · Precios sincronizados desde Supabase:",
+                data
+            );
+
+        })();
+
     </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../../js/supabase.js"></script>
-
-<script src="../../js/products.js"></script>
-<script src="../../js/cart.js"></script>
-<script src="../../js/footer.js"></script>
 
     
 <script>
