@@ -2395,6 +2395,715 @@
 
         }
 
+
+
+        /* =====================================================
+           SATORII · AJUSTE OFICIAL COMPLETO
+           Tipografía · Tamaños · Interletraje · Márgenes
+        ====================================================== */
+
+        :root {
+            --satori-official-width: 1700px;
+            --satori-official-side: 35px;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR OFICIAL
+        ====================================================== */
+
+        .anime-content {
+
+            width:
+                min(
+                    var(--satori-official-width),
+                    calc(100% - 70px)
+                );
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+            box-sizing: border-box;
+
+        }
+
+
+        /* =====================================================
+           HERO · ALINEACIÓN OFICIAL
+        ====================================================== */
+
+        .anime-hero-content {
+
+            padding:
+                90px
+                40px
+                90px
+                max(
+                    var(--satori-official-side),
+                    calc(
+                        (
+                            100vw -
+                            var(--satori-official-width)
+                        ) / 2
+                    )
+                );
+
+        }
+
+
+        .anime-hero-number {
+
+            right:
+                max(
+                    var(--satori-official-side),
+                    calc(
+                        (
+                            100vw -
+                            var(--satori-official-width)
+                        ) / 2
+                    )
+                );
+
+        }
+
+
+        /* =====================================================
+           TIPOGRAFÍA OFICIAL
+        ====================================================== */
+
+        .anime-products-count,
+        .anime-filter,
+        .anime-product-category,
+        .anime-product-price,
+        .anime-product-badge,
+        .anime-hero-kicker,
+        .anime-hero-description,
+        .anime-hero-link,
+        .anime-hero-number,
+        .anime-cta-label,
+        .anime-cta p,
+        .anime-cta-button {
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+        }
+
+
+        .anime-hero h1,
+        .anime-products-heading h2,
+        .anime-product-name,
+        .anime-empty strong,
+        .anime-cta h2 {
+
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
+
+        }
+
+
+        /* =====================================================
+           HERO · JERARQUÍA OFICIAL
+        ====================================================== */
+
+        .anime-hero-kicker {
+
+            margin-bottom: 14px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            line-height: 1;
+
+        }
+
+
+        .anime-hero h1 {
+
+            font-size:
+                clamp(
+                    58px,
+                    6vw,
+                    90px
+                );
+
+            line-height: .78;
+
+            font-weight: 900;
+
+            letter-spacing: .6px;
+
+        }
+
+
+        .anime-hero-description {
+
+            max-width: 520px;
+
+            margin-top: 24px;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+
+            letter-spacing: 0;
+
+        }
+
+
+        .anime-hero-link {
+
+            margin-top: 28px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        /* =====================================================
+           TICKER · OFICIAL
+           Mantiene exactamente:
+           ANIME · JAPAN · STREETWEAR · SATORII
+        ====================================================== */
+
+        .anime-ticker {
+
+            height: 42px;
+
+            background: #101727;
+
+        }
+
+
+        .anime-ticker-track {
+
+            animation:
+                animeTicker
+                34s
+                linear
+                infinite;
+
+        }
+
+
+        .anime-ticker-group {
+
+            gap: 28px;
+
+            padding-right: 28px;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: .8px;
+
+            line-height: 1;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .anime-ticker-track span {
+
+            color: #EF0930;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           PRODUCTOS · ESPACIADO OFICIAL
+        ====================================================== */
+
+        .anime-products {
+
+            padding-top: 82px;
+
+        }
+
+
+        .anime-products-heading {
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .anime-products-heading h2 {
+
+            font-size:
+                clamp(
+                    50px,
+                    5vw,
+                    74px
+                );
+
+            line-height: .76;
+
+            font-weight: 900;
+
+            letter-spacing: .6px;
+
+        }
+
+
+        .anime-products-count {
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            line-height: 1.4;
+
+            letter-spacing: 0;
+
+        }
+
+
+        .anime-filters {
+
+            margin-bottom: 30px;
+
+            padding-bottom: 15px;
+
+        }
+
+
+        .anime-filter {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .4px;
+
+        }
+
+
+        /* =====================================================
+           PRODUCTO · TIPOGRAFÍA OFICIAL
+        ====================================================== */
+
+        .anime-product-info {
+
+            padding-top: 14px;
+
+        }
+
+
+        .anime-product-badge {
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .anime-product-category {
+
+            margin-bottom: 5px;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .anime-product-name {
+
+            font-size: 23px;
+
+            line-height: .9;
+
+            font-weight: 800;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .anime-product-price {
+
+            margin-top: 7px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 0;
+
+        }
+
+
+        .anime-empty strong {
+
+            font-size: 32px;
+
+            line-height: .9;
+
+            font-weight: 900;
+
+            letter-spacing: .4px;
+
+        }
+
+
+        /* =====================================================
+           CTA · MÁRGENES Y TIPOGRAFÍA OFICIAL
+        ====================================================== */
+
+        .anime-cta {
+
+            margin-top: 88px;
+
+            padding:
+                82px
+                max(
+                    var(--satori-official-side),
+                    calc(
+                        (
+                            100vw -
+                            var(--satori-official-width)
+                        ) / 2
+                    )
+                );
+
+        }
+
+
+        .anime-cta-content {
+
+            max-width:
+                var(--satori-official-width);
+
+        }
+
+
+        .anime-cta-label {
+
+            margin-bottom: 15px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            line-height: 1;
+
+        }
+
+
+        .anime-cta h2 {
+
+            font-size:
+                clamp(
+                    58px,
+                    6vw,
+                    90px
+                );
+
+            line-height: .78;
+
+            font-weight: 900;
+
+            letter-spacing: .6px;
+
+        }
+
+
+        .anime-cta p {
+
+            margin:
+                22px 0 28px;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+
+            letter-spacing: 0;
+
+        }
+
+
+        .anime-cta-button {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        /* =====================================================
+           MÓVIL · MÁRGENES OFICIALES
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .anime-content {
+
+                width:
+                    calc(
+                        100% - 28px
+                    );
+
+            }
+
+
+            .anime-hero-content {
+
+                min-height: 330px;
+
+                padding:
+                    58px
+                    14px
+                    38px;
+
+            }
+
+
+            .anime-hero-number {
+
+                top: 15px;
+
+                right: 14px;
+
+            }
+
+
+            .anime-hero h1,
+            .anime-cta h2 {
+
+                font-size: 57px;
+
+                line-height: .78;
+
+                letter-spacing: .4px;
+
+            }
+
+
+            .anime-hero-description,
+            .anime-cta p {
+
+                font-size: 13px;
+
+                line-height: 1.65;
+
+            }
+
+
+            .anime-hero-link {
+
+                margin-top: 20px;
+
+            }
+
+
+            .anime-ticker {
+
+                height: 32px;
+
+            }
+
+
+            .anime-ticker-group {
+
+                gap: 20px;
+
+                padding-right: 20px;
+
+                font-size: 9px;
+
+                letter-spacing: .65px;
+
+            }
+
+
+            .anime-ticker-track span {
+
+                font-size: 9px;
+
+            }
+
+
+            .anime-products {
+
+                padding-top: 52px;
+
+            }
+
+
+            .anime-products-heading {
+
+                margin-bottom: 18px;
+
+            }
+
+
+            .anime-products-heading h2 {
+
+                font-size: 48px;
+
+                line-height: .76;
+
+                letter-spacing: .4px;
+
+            }
+
+
+            .anime-filters {
+
+                margin-bottom: 24px;
+
+                padding-bottom: 12px;
+
+            }
+
+
+            .anime-product-name {
+
+                font-size: 18px;
+
+                letter-spacing: .3px;
+
+            }
+
+
+            .anime-product-category {
+
+                font-size: 9px;
+
+            }
+
+
+            .anime-product-price {
+
+                font-size: 12px;
+
+            }
+
+
+            .anime-cta {
+
+                margin-top: 55px;
+
+                padding:
+                    55px
+                    14px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL MUY PEQUEÑO
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .anime-content {
+
+                width:
+                    calc(
+                        100% - 24px
+                    );
+
+            }
+
+
+            .anime-hero-content {
+
+                padding:
+                    54px
+                    12px
+                    34px;
+
+            }
+
+
+            .anime-hero-number {
+
+                right: 12px;
+
+            }
+
+
+            .anime-hero h1,
+            .anime-cta h2 {
+
+                font-size: 51px;
+
+                letter-spacing: .35px;
+
+            }
+
+
+            .anime-products-heading h2 {
+
+                font-size: 44px;
+
+                letter-spacing: .35px;
+
+            }
+
+
+            .anime-product-name {
+
+                font-size: 17px;
+
+                letter-spacing: .25px;
+
+            }
+
+
+            .anime-cta {
+
+                padding:
+                    48px
+                    12px;
+
+            }
+
+
+            .anime-ticker-track {
+
+                animation-duration: 28s;
+
+            }
+
+        }
+
     </style>
 
 </head>
