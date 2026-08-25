@@ -54,16 +54,11 @@ const SATORII_BORDER = "#DDDDDD";
 ========================================================= */
 
 const SUPABASE_URL = String(
-    process.env.SATORII_SUPABASE_URL ||
-    process.env.SUPABASE_URL ||
-    ""
+    process.env.SATORII_SUPABASE_URL || ""
 ).trim();
 
 const SUPABASE_PUBLISHABLE_KEY = String(
-    process.env.SATORII_SUPABASE_PUBLISHABLE_KEY ||
-    process.env.SUPABASE_PUBLISHABLE_KEY ||
-    process.env.SUPABASE_ANON_KEY ||
-    ""
+    process.env.SATORII_SUPABASE_PUBLISHABLE_KEY || ""
 ).trim();
 
 const SUPABASE_ENABLED = Boolean(
@@ -2357,20 +2352,15 @@ function getProductScript(root, product, productUrl) {
             text
         );
     }
+function supabaseHeaders() {
+    return {
+        apikey:
+            SUPABASE_CONFIG.publishableKey,
 
-    function supabaseHeaders() {
-        return {
-            apikey:
-                SUPABASE_CONFIG.publishableKey,
-
-            Authorization:
-                "Bearer " +
-                SUPABASE_CONFIG.publishableKey,
-
-            Accept:
-                "application/json"
-        };
-    }
+        Accept:
+            "application/json"
+    };
+}
 
     function normalizeSupabaseUrl() {
         let url =
