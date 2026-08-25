@@ -208,38 +208,32 @@
             color: var(--products-red);
         }
 
-        .products-hero-image {
-            position: relative;
+.products-hero-image {
 
-            min-height: 610px;
+    position: relative;
 
-            overflow: hidden;
+    min-height: 610px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #F5F5F5 0%,
-                    #EEEEEE 100%
-                );
-        }
+    overflow: hidden;
 
-        .products-hero-image::before {
-            content: "";
+    background: transparent;
 
-            position: absolute;
-            z-index: 2;
+}
+.products-hero-image::before {
 
-            inset: 0;
+    content: "";
 
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.7) 0%,
-                    rgba(255,255,255,0) 35%
-                );
+    position: absolute;
 
-            pointer-events: none;
-        }
+    z-index: 2;
+
+    inset: 0;
+
+    background: transparent;
+
+    pointer-events: none;
+
+}
 
         .products-hero-image::after {
             content: "SATORII";
