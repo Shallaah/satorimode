@@ -121,19 +121,6 @@ function shuffle(array) {
 
 function getIconSVG(name, className = "satori-ui-icon") {
     const icons = {
-        heart: `
-            <svg
-                class="${className}"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-            >
-                <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"
-                />
-            </svg>
-        `,
-
         truck: `
             <svg
                 class="${className}"
@@ -1328,33 +1315,6 @@ function getPageCSS() {
             opacity: .55;
             cursor: not-allowed;
         }
-
-        .satori-favorite {
-            width: 100%;
-            min-height: 44px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            background: #fff;
-            cursor: pointer;
-            font-size: 11px;
-            line-height: 1.3;
-            font-weight: 800;
-            letter-spacing: .02em;
-            text-transform: uppercase;
-        }
-
-        .satori-favorite {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .satori-favorite.active {
-            border-color: var(--s-red);
-            color: var(--s-red);
-        }
-
         .satori-ui-icon {
             width: 18px;
             height: 18px;
@@ -1366,20 +1326,6 @@ function getPageCSS() {
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
-        .satori-favorite-icon {
-            width: 16px;
-            height: 16px;
-            fill: transparent;
-            transition:
-                fill .2s ease,
-                color .2s ease;
-        }
-
-        .satori-favorite.active .satori-favorite-icon {
-            fill: currentColor;
-        }
-
         .satori-benefits {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -3077,22 +3023,6 @@ function generateProductPage(
                     </div>
 
                 </div>
-
-                <button
-                    type="button"
-                    id="satoriFavorite"
-                    class="satori-favorite"
-                    aria-pressed="false"
-                >
-                    ${getIconSVG(
-                        "heart",
-                        "satori-ui-icon satori-favorite-icon"
-                    )}
-                    <span class="satori-favorite-label">
-                        AGREGAR A FAVORITOS
-                    </span>
-                </button>
-
                 <div class="satori-benefits">
 
                     <div class="satori-benefit">
