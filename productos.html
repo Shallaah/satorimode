@@ -18,7 +18,7 @@
         content="SATORII — Descubre todas nuestras colecciones, prendas y productos inspirados en anime, cultura japonesa y streetwear."
     >
 
-    <title>Productos | SATORII</title>
+    <title>Productos | Satorii</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1324,6 +1324,363 @@
                 animation: none;
             }
         }
+
+
+        /* =====================================================
+           TIPOGRAFÍA SATORII · PRODUCTOS
+           -----------------------------------------------------
+           IMPORTANTE:
+           - No cambia márgenes.
+           - No cambia paddings.
+           - No cambia estructura.
+           - No cambia textos.
+           - No cambia imágenes.
+           - No cambia filtros ni catálogo.
+           - No cambia el contenido del ticker.
+
+           BARLOW CONDENSED:
+           títulos, letras grandes, ticker y labels editoriales.
+
+           INTER:
+           textos descriptivos y controles.
+        ====================================================== */
+
+
+        /* =====================================================
+           HERO · LABEL
+        ====================================================== */
+
+        .products-hero-kicker {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .15em;
+        }
+
+
+        /* =====================================================
+           HERO · TÍTULO PRINCIPAL
+        ====================================================== */
+
+        .products-hero h1 {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    64px,
+                    7vw,
+                    104px
+                );
+
+            line-height: .88;
+            font-weight: 900;
+            letter-spacing: -.035em;
+        }
+
+
+        .products-hero h1 span {
+            letter-spacing: -.03em;
+        }
+
+
+        /* =====================================================
+           HERO · TEXTO DECORATIVO
+        ====================================================== */
+
+        .products-hero-image::after {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 155px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.04em;
+        }
+
+
+        .products-hero-number {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .10em;
+        }
+
+
+        /* =====================================================
+           TICKER
+        ====================================================== */
+
+        .products-ticker-track {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 18px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .055em;
+        }
+
+
+        /* =====================================================
+           CATÁLOGO · LABEL
+        ====================================================== */
+
+        .products-category-number {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .12em;
+        }
+
+
+        /* =====================================================
+           CATÁLOGO · TÍTULO
+        ====================================================== */
+
+        .products-category-title {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    42px,
+                    4.4vw,
+                    62px
+                );
+
+            line-height: .9;
+            font-weight: 900;
+            letter-spacing: -.025em;
+        }
+
+
+        /* =====================================================
+           CTA · LABEL
+        ====================================================== */
+
+        .products-feature-label {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 11px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: .14em;
+        }
+
+
+        /* =====================================================
+           CTA · TÍTULO GRANDE
+        ====================================================== */
+
+        .products-feature h2 {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    54px,
+                    6vw,
+                    82px
+                );
+
+            line-height: .88;
+            font-weight: 900;
+            letter-spacing: -.03em;
+        }
+
+
+        .products-feature h2 span {
+            letter-spacing: -.025em;
+        }
+
+
+        /* =====================================================
+           ESTADO VACÍO · TÍTULO
+        ====================================================== */
+
+        .products-empty strong {
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 36px;
+            line-height: .95;
+            font-weight: 900;
+            letter-spacing: -.015em;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1100px) {
+
+            .products-hero h1 {
+                font-size:
+                    clamp(
+                        60px,
+                        7.5vw,
+                        90px
+                    );
+            }
+
+
+            .products-feature h2 {
+                font-size:
+                    clamp(
+                        52px,
+                        7vw,
+                        76px
+                    );
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .products-hero-kicker {
+                font-size: 10px;
+                line-height: 1.2;
+                letter-spacing: .13em;
+            }
+
+
+            .products-hero h1 {
+                font-size:
+                    clamp(
+                        50px,
+                        15vw,
+                        64px
+                    );
+
+                line-height: .9;
+                letter-spacing: -.025em;
+            }
+
+
+            .products-hero h1 span {
+                letter-spacing: -.02em;
+            }
+
+
+            .products-hero-image::after {
+                font-size: 86px;
+                letter-spacing: -.035em;
+            }
+
+
+            .products-hero-number {
+                font-size: 10px;
+                letter-spacing: .08em;
+            }
+
+
+            .products-ticker-track {
+                font-size: 15px;
+                line-height: 1;
+                letter-spacing: .045em;
+            }
+
+
+            .products-category-number {
+                font-size: 10px;
+                letter-spacing: .10em;
+            }
+
+
+            .products-category-title {
+                font-size:
+                    clamp(
+                        40px,
+                        12vw,
+                        50px
+                    );
+
+                line-height: .9;
+                letter-spacing: -.02em;
+            }
+
+
+            .products-feature-label {
+                font-size: 10px;
+                letter-spacing: .12em;
+            }
+
+
+            .products-feature h2 {
+                font-size:
+                    clamp(
+                        46px,
+                        13vw,
+                        58px
+                    );
+
+                line-height: .9;
+                letter-spacing: -.025em;
+            }
+
+
+            .products-empty strong {
+                font-size: 32px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL PEQUEÑO
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .products-hero h1 {
+                font-size: 50px;
+            }
+
+
+            .products-ticker-track {
+                font-size: 14px;
+            }
+
+
+            .products-category-title {
+                font-size: 40px;
+            }
+
+
+            .products-feature h2 {
+                font-size: 44px;
+            }
+
+        }
+
+
 
     </style>
 
