@@ -11,7 +11,6 @@
    ✓ Colores
    ✓ Cantidad
    ✓ Carrito
-   ✓ Favoritos
    ✓ Tabs
    ✓ Banner
    ✓ Responsive
@@ -2256,106 +2255,7 @@ function getProductScript(root, product, productUrl) {
 
     updateCartData();
 
-    /* =====================================================
-       FAVORITOS
-    ===================================================== */
-
-    const favorite =
-        document.getElementById(
-            "satoriFavorite"
-        );
-
-    if (favorite) {
-        const key =
-            "satorii_favorites";
-
-        let favorites = [];
-
-        try {
-            favorites =
-                JSON.parse(
-                    localStorage.getItem(key)
-                ) || [];
-
-            if (
-                !Array.isArray(favorites)
-            ) {
-                favorites = [];
-            }
-        } catch (_) {
-            favorites = [];
-        }
-
-        const productId =
-            ${safeJSONString(String(product.id))};
-
-        const favoriteLabel =
-            favorite.querySelector(
-                ".satori-favorite-label"
-            );
-
-        function paintFavorite() {
-            const active =
-                favorites.includes(
-                    productId
-                );
-
-            favorite.classList.toggle(
-                "active",
-                active
-            );
-
-            favorite.setAttribute(
-                "aria-pressed",
-                active
-                    ? "true"
-                    : "false"
-            );
-
-            if (favoriteLabel) {
-                favoriteLabel.textContent =
-                    active
-                        ? "EN FAVORITOS"
-                        : "AGREGAR A FAVORITOS";
-            }
-        }
-
-        paintFavorite();
-
-        favorite.addEventListener(
-            "click",
-            function () {
-                const index =
-                    favorites.indexOf(
-                        productId
-                    );
-
-                if (index === -1) {
-                    favorites.push(
-                        productId
-                    );
-                } else {
-                    favorites.splice(
-                        index,
-                        1
-                    );
-                }
-
-                try {
-                    localStorage.setItem(
-                        key,
-                        JSON.stringify(
-                            favorites
-                        )
-                    );
-                } catch (_) {}
-
-                paintFavorite();
-            }
-        );
-    }
-
-    /* =====================================================
+       /* =====================================================
        TABS
     ===================================================== */
 
