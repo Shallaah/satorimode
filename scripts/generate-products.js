@@ -4,7 +4,7 @@
    ✓ Generación desde js/products.js
    ✓ Precios actualizados desde Supabase al abrir la página
    ✓ Disponibilidad actualizada desde Supabase
-   ✓ Recomendaciones dinámicas desde Supabase
+   ✓ Recomendaciones sincronizadas con Supabase
    ✓ Fallback a products.js si Supabase no está disponible
    ✓ Galería
    ✓ Tallas
@@ -51,20 +51,15 @@ const SATORII_BORDER = "#DDDDDD";
 
 /* =========================================================
    SUPABASE
+   ---------------------------------------------------------
+   Las páginas generadas usan el mismo cliente web que
+   el resto de SATORII:
+   - @supabase/supabase-js
+   - js/supabase.js
+   - satoriSupabase
+
+   No se inyectan claves ni variables de entorno en los HTML.
 ========================================================= */
-
-const SUPABASE_URL = String(
-    process.env.SATORII_SUPABASE_URL || ""
-).trim();
-
-const SUPABASE_PUBLISHABLE_KEY = String(
-    process.env.SATORII_SUPABASE_PUBLISHABLE_KEY || ""
-).trim();
-
-const SUPABASE_ENABLED = Boolean(
-    SUPABASE_URL &&
-    SUPABASE_PUBLISHABLE_KEY
-);
 
 /* =========================================================
    UTILIDADES
@@ -115,6 +110,73 @@ function shuffle(array) {
     }
 
     return copy;
+}
+
+/* =========================================================
+   ICONOS SVG
+   ---------------------------------------------------------
+   No usamos emojis nativos porque su apariencia cambia
+   entre iOS, Android, Windows, macOS y navegadores.
+   Estos SVG se renderizan igual en todos los dispositivos.
+========================================================= */
+
+function getIconSVG(name, className = "satori-ui-icon") {
+    const icons = {
+        heart: `
+            <svg
+                class="${className}"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"
+                />
+            </svg>
+        `,
+
+        truck: `
+            <svg
+                class="${className}"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <path d="M10 17h4V5H2v12h3" />
+                <path d="M14 9h4l4 4v4h-3" />
+                <circle cx="7.5" cy="17.5" r="2.5" />
+                <circle cx="16.5" cy="17.5" r="2.5" />
+            </svg>
+        `,
+
+        refresh: `
+            <svg
+                class="${className}"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <path d="M20 7v5h-5" />
+                <path d="M4 17v-5h5" />
+                <path d="M6.1 8a7 7 0 0 1 11.8-2.6L20 7" />
+                <path d="M17.9 16a7 7 0 0 1-11.8 2.6L4 17" />
+            </svg>
+        `,
+
+        shield: `
+            <svg
+                class="${className}"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z" />
+                <path d="m9 12 2 2 4-4" />
+            </svg>
+        `
+    };
+
+    return icons[name] || "";
 }
 
 /* =========================================================
@@ -1282,9 +1344,41 @@ function getPageCSS() {
             text-transform: uppercase;
         }
 
+        .satori-favorite {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
         .satori-favorite.active {
             border-color: var(--s-red);
             color: var(--s-red);
+        }
+
+        .satori-ui-icon {
+            width: 18px;
+            height: 18px;
+            flex: 0 0 auto;
+            display: inline-block;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .satori-favorite-icon {
+            width: 16px;
+            height: 16px;
+            fill: transparent;
+            transition:
+                fill .2s ease,
+                color .2s ease;
+        }
+
+        .satori-favorite.active .satori-favorite-icon {
+            fill: currentColor;
         }
 
         .satori-benefits {
@@ -1308,6 +1402,18 @@ function getPageCSS() {
         .satori-benefit strong,
         .satori-benefit span {
             display: block;
+        }
+
+        .satori-benefit strong {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .satori-benefit .satori-ui-icon {
+            width: 17px;
+            height: 17px;
         }
 
         .satori-benefit strong {
@@ -1974,7 +2080,7 @@ function getProductScript(root, product, productUrl) {
     );
 
     /* =====================================================
-       TALLAS
+       CARRITO · OPCIONES
     ===================================================== */
 
     function updateCartData() {
@@ -2040,10 +2146,6 @@ function getProductScript(root, product, productUrl) {
             }
         );
 
-    /* =====================================================
-       COLORES
-    ===================================================== */
-
     document
         .querySelectorAll(".satori-color")
         .forEach(
@@ -2096,10 +2198,6 @@ function getProductScript(root, product, productUrl) {
                 );
             }
         );
-
-    /* =====================================================
-       CANTIDAD
-    ===================================================== */
 
     const quantityDisplay =
         document.getElementById(
@@ -2189,9 +2287,12 @@ function getProductScript(root, product, productUrl) {
         }
 
         const productId =
-            ${safeJSONString(
-                String(product.id)
-            )};
+            ${safeJSONString(String(product.id))};
+
+        const favoriteLabel =
+            favorite.querySelector(
+                ".satori-favorite-label"
+            );
 
         function paintFavorite() {
             const active =
@@ -2204,10 +2305,19 @@ function getProductScript(root, product, productUrl) {
                 active
             );
 
-            favorite.innerHTML =
+            favorite.setAttribute(
+                "aria-pressed",
                 active
-                    ? "♥ &nbsp; EN FAVORITOS"
-                    : "♡ &nbsp; AGREGAR A FAVORITOS";
+                    ? "true"
+                    : "false"
+            );
+
+            if (favoriteLabel) {
+                favoriteLabel.textContent =
+                    active
+                        ? "EN FAVORITOS"
+                        : "AGREGAR A FAVORITOS";
+            }
         }
 
         paintFavorite();
@@ -2316,14 +2426,9 @@ function getProductScript(root, product, productUrl) {
     /* =====================================================
        SUPABASE
        -----------------------------------------------------
-       IMPORTANTE:
-       Se usa REST directamente.
-       No depende de que el CDN de supabase-js
-       haya cargado antes del script.
+       Usa exactamente el mismo cliente de Supabase que
+       el resto del sitio: js/supabase.js -> satoriSupabase.
     ===================================================== */
-
-    const SUPABASE_CONFIG =
-        window.SATORII_SUPABASE_CONFIG || {};
 
     function money(value) {
         return (
@@ -2335,170 +2440,36 @@ function getProductScript(root, product, productUrl) {
         );
     }
 
-    function isTshirt(product) {
-        const text = [
-            product.type,
-            product.productType,
-            product.category,
-            product.collection,
-            product.subcategory,
-            product.name
-        ]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase();
-
-        return /polera|t-shirt|tshirt|tee|shirt|oversize/.test(
-            text
-        );
-    }
-function supabaseHeaders() {
-    return {
-        apikey:
-            SUPABASE_CONFIG.publishableKey,
-
-        Accept:
-            "application/json"
-    };
-}
-
-    function normalizeSupabaseUrl() {
-        let url =
-            String(
-                SUPABASE_CONFIG.url || ""
-            ).trim();
-
-        while (
-            url.endsWith("/")
+    async function waitForSupabase() {
+        for (
+            let attempt = 0;
+            attempt < 40;
+            attempt++
         ) {
-            url =
-                url.slice(
-                    0,
-                    -1
-                );
-        }
-
-        return url;
-    }
-
-    async function supabaseRequest(query) {
-        const baseUrl =
-            normalizeSupabaseUrl();
-
-        const publishableKey =
-            String(
-                SUPABASE_CONFIG.publishableKey || ""
-            ).trim();
-
-        if (
-            !SUPABASE_CONFIG.enabled ||
-            !baseUrl ||
-            !publishableKey
-        ) {
-            return null;
-        }
-
-        const endpoint =
-            baseUrl +
-            "/rest/v1/products?" +
-            query;
-
-        const controller =
-            new AbortController();
-
-        const timeout =
-            window.setTimeout(
-                function () {
-                    controller.abort();
-                },
-                8000
-            );
-
-        try {
-            const response =
-                await fetch(
-                    endpoint,
-                    {
-                        method: "GET",
-                        headers:
-                            supabaseHeaders(),
-                        cache: "no-store",
-                        signal:
-                            controller.signal
-                    }
-                );
-
-            if (!response.ok) {
-                let details = "";
-
-                try {
-                    details =
-                        await response.text();
-                } catch (_) {}
-
-                throw new Error(
-                    "Supabase HTTP " +
-                    response.status +
-                    (
-                        details
-                            ? " · " + details.slice(0, 180)
-                            : ""
-                    )
-                );
-            }
-
-            return await response.json();
-
-        } catch (error) {
             if (
-                error &&
-                error.name === "AbortError"
+                typeof satoriSupabase !==
+                "undefined"
             ) {
-                throw new Error(
-                    "Supabase tardó demasiado en responder."
-                );
+                return true;
             }
 
-            throw error;
-
-        } finally {
-            window.clearTimeout(
-                timeout
+            await new Promise(
+                function (resolve) {
+                    window.setTimeout(
+                        resolve,
+                        100
+                    );
+                }
             );
         }
+
+        return false;
     }
 
-    async function updateCurrentProductFromSupabase() {
-        if (
-            PRODUCT.id === undefined ||
-            PRODUCT.id === null ||
-            PRODUCT.id === ""
-        ) {
-            return null;
+    function applyCurrentProduct(current) {
+        if (!current) {
+            return;
         }
-
-        const query =
-            "select=*" +
-            "&id=eq." +
-            encodeURIComponent(
-                String(PRODUCT.id)
-            ) +
-            "&limit=1";
-
-        const rows =
-            await supabaseRequest(
-                query
-            );
-
-        if (
-            !Array.isArray(rows) ||
-            !rows.length
-        ) {
-            return null;
-        }
-
-        const current =
-            rows[0];
 
         /* -----------------------------
            PRECIO
@@ -2510,13 +2481,14 @@ function supabaseHeaders() {
             current.price !== ""
         ) {
             const price =
-                Number(
-                    current.price
-                ) || 0;
+                Number(current.price) || 0;
+
+            PRODUCT.price =
+                price;
 
             const priceElement =
                 document.querySelector(
-                    ".satori-price"
+                    "[data-supabase-current-price]"
                 );
 
             if (priceElement) {
@@ -2533,9 +2505,6 @@ function supabaseHeaders() {
                 cartButton.dataset.productPrice =
                     String(price);
             }
-
-            PRODUCT.price =
-                price;
         }
 
         /* -----------------------------
@@ -2547,8 +2516,11 @@ function supabaseHeaders() {
             current.name !== null &&
             String(current.name).trim()
         ) {
+            const name =
+                String(current.name).trim();
+
             PRODUCT.name =
-                String(current.name);
+                name;
 
             const title =
                 document.querySelector(
@@ -2557,7 +2529,7 @@ function supabaseHeaders() {
 
             if (title) {
                 title.textContent =
-                    current.name;
+                    name;
             }
 
             const breadcrumb =
@@ -2567,18 +2539,27 @@ function supabaseHeaders() {
 
             if (breadcrumb) {
                 breadcrumb.textContent =
-                    current.name;
+                    name;
             }
 
-            const galleryAlt =
-                document.querySelector(
-                    "#satoriMainProductImage"
-                );
-
-            if (galleryAlt) {
-                galleryAlt.alt =
-                    current.name;
+            if (mainImage) {
+                mainImage.alt =
+                    name;
             }
+
+            thumbnails.forEach(
+                button => {
+                    const image =
+                        button.querySelector(
+                            "img"
+                        );
+
+                    if (image) {
+                        image.alt =
+                            name;
+                    }
+                }
+            );
 
             const cartButton =
                 document.getElementById(
@@ -2587,7 +2568,31 @@ function supabaseHeaders() {
 
             if (cartButton) {
                 cartButton.dataset.productName =
-                    String(current.name);
+                    name;
+            }
+
+            document.title =
+                name + " | SATORII";
+        }
+
+        /* -----------------------------
+           CATEGORÍA / COLECCIÓN
+        ----------------------------- */
+
+        const remoteCategory =
+            current.collection ||
+            current.category ||
+            "";
+
+        if (remoteCategory) {
+            const categoryElement =
+                document.querySelector(
+                    ".satori-product-category"
+                );
+
+            if (categoryElement) {
+                categoryElement.textContent =
+                    String(remoteCategory);
             }
         }
 
@@ -2596,9 +2601,10 @@ function supabaseHeaders() {
         ----------------------------- */
 
         const available =
-            current.available === undefined
+            current.available === undefined ||
+            current.available === null
                 ? PRODUCT.available !== false
-                : current.available !== false;
+                : current.available === true;
 
         PRODUCT.available =
             available;
@@ -2617,439 +2623,180 @@ function supabaseHeaders() {
                     ? "AGREGAR AL CARRITO"
                     : "AGOTADO";
         }
-
-        return current;
     }
 
-    function getSupabaseImage(item) {
-        let image = "";
-
+    async function updateCurrentProductFromSupabase() {
         if (
-            Array.isArray(item.images)
+            PRODUCT.id === undefined ||
+            PRODUCT.id === null ||
+            PRODUCT.id === ""
         ) {
-            image =
-                item.images.find(
-                    value =>
-                        value !== null &&
-                        value !== undefined &&
-                        String(value).trim()
-                ) || "";
-        } else if (
-            typeof item.images === "string" &&
-            item.images.trim()
-        ) {
-            try {
-                const parsed =
-                    JSON.parse(
-                        item.images
+            return null;
+        }
+
+        const {
+            data,
+            error
+        } =
+            await satoriSupabase
+                .from("products")
+                .select(
+                    "id,name,category,collection,subcategory,price,currency,available,featured,new_product"
+                )
+                .eq(
+                    "id",
+                    String(PRODUCT.id)
+                )
+                .maybeSingle();
+
+        if (error) {
+            throw error;
+        }
+
+        if (!data) {
+            return null;
+        }
+
+        applyCurrentProduct(
+            data
+        );
+
+        return data;
+    }
+
+    async function updateRecommendationsFromSupabase() {
+        const cards =
+            Array.from(
+                document.querySelectorAll(
+                    ".satori-recommendation[data-product-id]"
+                )
+            );
+
+        if (!cards.length) {
+            return;
+        }
+
+        const ids =
+            cards
+                .map(
+                    card =>
+                        String(
+                            card.dataset.productId ||
+                            ""
+                        ).trim()
+                )
+                .filter(Boolean);
+
+        if (!ids.length) {
+            return;
+        }
+
+        const {
+            data,
+            error
+        } =
+            await satoriSupabase
+                .from("products")
+                .select(
+                    "id,name,price,available"
+                )
+                .in(
+                    "id",
+                    ids
+                );
+
+        if (error) {
+            throw error;
+        }
+
+        if (!Array.isArray(data)) {
+            return;
+        }
+
+        const remoteById =
+            new Map(
+                data.map(
+                    item => [
+                        String(item.id),
+                        item
+                    ]
+                )
+            );
+
+        cards.forEach(
+            card => {
+                const id =
+                    String(
+                        card.dataset.productId ||
+                        ""
+                    );
+
+                const remote =
+                    remoteById.get(id);
+
+                if (!remote) {
+                    return;
+                }
+
+                if (
+                    remote.available === false
+                ) {
+                    card.hidden =
+                        true;
+
+                    return;
+                }
+
+                card.hidden =
+                    false;
+
+                const name =
+                    card.querySelector(
+                        ".satori-rec-info strong"
                     );
 
                 if (
-                    Array.isArray(parsed)
+                    name &&
+                    remote.name
                 ) {
-                    image =
-                        parsed.find(
-                            value =>
-                                value !== null &&
-                                value !== undefined &&
-                                String(value).trim()
-                        ) || "";
+                    name.textContent =
+                        String(remote.name);
                 }
-            } catch (_) {
-                image =
-                    item.images;
+
+                const price =
+                    card.querySelector(
+                        "[data-supabase-rec-price]"
+                    );
+
+                if (
+                    price &&
+                    remote.price !== null &&
+                    remote.price !== undefined
+                ) {
+                    price.textContent =
+                        money(remote.price);
+                }
             }
-        }
-
-        if (
-            !image &&
-            item.image
-        ) {
-            image =
-                String(item.image);
-        }
-
-        return String(
-            image || ""
-        ).trim();
-    }
-
-    function resolveRecommendationImage(
-        image
-    ) {
-        let clean =
-            String(image || "").trim();
-
-        while (
-            clean.startsWith("/")
-        ) {
-            clean =
-                clean.slice(
-                    1
-                );
-        }
-
-        if (
-            clean.startsWith("http://") ||
-            clean.startsWith("https://") ||
-            clean.startsWith("//") ||
-            clean.startsWith("data:") ||
-            clean.startsWith("blob:")
-        ) {
-            return clean;
-        }
-
-        const root =
-            ${safeJSONString(root)};
-
-        return (
-            root +
-            clean
         );
     }
 
-    async function loadSupabaseRecommendations(
-        currentProduct
-    ) {
-        const section =
-            document.getElementById(
-                "satoriRecommendations"
-            );
-
-        if (!section) {
-            return;
-        }
-
-        try {
-            /*
-             * No filtramos "available" en Supabase.
-             * Así la consulta sigue funcionando aunque
-             * el esquema cambie ligeramente. El filtro
-             * se realiza después en el navegador.
-             */
-            const query =
-                "select=*" +
-                "&limit=100";
-
-            const rows =
-                await supabaseRequest(
-                    query
-                );
-
-            if (
-                !Array.isArray(rows)
-            ) {
-                return;
-            }
-
-            const candidates =
-                rows.filter(
-                    item => {
-                        if (
-                            String(item.id) ===
-                            String(
-                                currentProduct.id
-                            )
-                        ) {
-                            return false;
-                        }
-
-                        if (
-                            item.available === false
-                        ) {
-                            return false;
-                        }
-
-                        return isTshirt(
-                            item
-                        );
-                    }
-                );
-
-            const selected =
-                shuffle(
-                    candidates
-                ).slice(0, 4);
-
-            if (
-                !selected.length
-            ) {
-                return;
-            }
-
-            const currentUrl =
-                ${safeJSONString(productUrl)};
-
-            const currentDirectory =
-                currentUrl
-                    .split(
-                        String.fromCharCode(92)
-                    )
-                    .join("/")
-                    .split("/")
-                    .slice(0, -1)
-                    .join("/");
-
-            function recommendationUrl(item) {
-                let url =
-                    String(
-                        item.url || ""
-                    ).trim();
-
-                while (
-                    url.startsWith("/")
-                ) {
-                    url =
-                        url.slice(
-                            1
-                        );
-                }
-
-                url =
-                    url
-                        .split(
-                            String.fromCharCode(92)
-                        )
-                        .join("/");
-
-                if (!url) {
-                    const category =
-                        String(
-                            item.category ||
-                            item.collection ||
-                            "anime"
-                        )
-                            .toLowerCase()
-                            .normalize("NFD")
-                            .replace(
-                                /[\u0300-\u036f]/g,
-                                ""
-                            )
-                            .replace(
-                                /[^a-z0-9]+/g,
-                                "-"
-                            )
-                            .replace(
-                                /^-+|-+$/g,
-                                "");
-
-                    const slug =
-                        String(
-                            item.id ||
-                            item.name
-                        )
-                            .toLowerCase()
-                            .normalize("NFD")
-                            .replace(
-                                /[\u0300-\u036f]/g,
-                                ""
-                            )
-                            .replace(
-                                /[^a-z0-9]+/g,
-                                "-"
-                            )
-                            .replace(
-                                /^-+|-+$/g,
-                                "");
-
-                    url =
-                        "productos/" +
-                        category +
-                        "/" +
-                        slug +
-                        ".html";
-                }
-
-                if (
-                    !url
-                        .toLowerCase()
-                        .endsWith(".html")
-                ) {
-                    url += ".html";
-                }
-
-                const depth =
-                    currentDirectory
-                        .split("/")
-                        .filter(Boolean)
-                        .length;
-
-                return (
-                    "../".repeat(
-                        depth
-                    ) +
-                    url
-                );
-            }
-
-            const cards =
-                selected.map(
-                    item => {
-                        const rawImage =
-                            getSupabaseImage(
-                                item
-                            );
-
-                        const image =
-                            resolveRecommendationImage(
-                                rawImage
-                            );
-
-                        if (
-                            !image
-                        ) {
-                            return "";
-                        }
-
-                        const itemId =
-                            String(
-                                item.id ?? ""
-                            )
-                                .replace(
-                                    /&/g,
-                                    "&amp;"
-                                )
-                                .replace(
-                                    /"/g,
-                                    "&quot;"
-                                )
-                                .replace(
-                                    /</g,
-                                    "&lt;"
-                                )
-                                .replace(
-                                    />/g,
-                                    "&gt;"
-                                );
-
-                        const itemName =
-                            String(
-                                item.name || ""
-                            )
-                                .replace(
-                                    /&/g,
-                                    "&amp;"
-                                )
-                                .replace(
-                                    /"/g,
-                                    "&quot;"
-                                )
-                                .replace(
-                                    /</g,
-                                    "&lt;"
-                                )
-                                .replace(
-                                    />/g,
-                                    "&gt;"
-                                );
-
-                        const safeImage =
-                            image
-                                .replace(
-                                    /&/g,
-                                    "&amp;"
-                                )
-                                .replace(
-                                    /"/g,
-                                    "&quot;"
-                                )
-                                .replace(
-                                    /</g,
-                                    "&lt;"
-                                )
-                                .replace(
-                                    />/g,
-                                    "&gt;"
-                                );
-
-                        return (
-                            '<a class="satori-recommendation satori-animate is-visible" ' +
-                            'href="' +
-                            recommendationUrl(
-                                item
-                            ) +
-                            '" ' +
-                            'data-product-id="' +
-                            itemId +
-                            '">' +
-                            '<div class="satori-rec-image">' +
-                            '<img src="' +
-                            safeImage +
-                            '" alt="' +
-                            itemName +
-                            '" loading="lazy" decoding="async">' +
-                            "</div>" +
-                            '<div class="satori-rec-info">' +
-                            "<strong>" +
-                            itemName +
-                            "</strong>" +
-                            '<span data-supabase-rec-price="' +
-                            itemId +
-                            '">' +
-                            money(
-                                item.price
-                            ) +
-                            "</span>" +
-                            "</div>" +
-                            "</a>"
-                        );
-                    }
-                )
-                .filter(Boolean)
-                .join("");
-
-            if (!cards) {
-                return;
-            }
-
-            const root =
-                ${safeJSONString(root)};
-
-            const heading =
-                '<div class="satori-section-heading">' +
-                "<div>" +
-                "<span>SATORII / SELECCIÓN</span>" +
-                "<h2>TAMBIÉN TE PUEDE GUSTAR</h2>" +
-                "</div>" +
-                '<a href="' +
-                root +
-                'anime.html">VER COLECCIÓN</a>' +
-                "</div>";
-
-            section.innerHTML =
-                heading +
-                '<div class="satori-recommendation-grid" id="satoriRecommendationGrid">' +
-                cards +
-                "</div>";
-
-        } catch (error) {
-            console.warn(
-                "SATORII · No se pudieron cargar recomendaciones desde Supabase. Se mantiene el contenido local.",
-                error
-            );
-        }
-    }
-
     async function initializeSupabase() {
-        if (
-            !SUPABASE_CONFIG.enabled
-        ) {
+        const available =
+            await waitForSupabase();
+
+        if (!available) {
+            console.warn(
+                "SATORII · Supabase no está disponible. Se mantienen los datos locales de respaldo."
+            );
+
             return;
         }
 
         try {
-            const current =
-                await updateCurrentProductFromSupabase();
-
-            if (current) {
-                await loadSupabaseRecommendations(
-                    current
-                );
-            } else {
-                await loadSupabaseRecommendations(
-                    PRODUCT
-                );
-            }
+            await Promise.all([
+                updateCurrentProductFromSupabase(),
+                updateRecommendationsFromSupabase()
+            ]);
 
             document.dispatchEvent(
                 new CustomEvent(
@@ -3065,7 +2812,7 @@ function supabaseHeaders() {
 
         } catch (error) {
             console.warn(
-                "SATORII · Supabase no pudo actualizar el producto.",
+                "SATORII · No se pudo sincronizar esta página con Supabase. Se mantienen los datos locales.",
                 error
             );
         }
@@ -3435,24 +3182,40 @@ function generateProductPage(
                     type="button"
                     id="satoriFavorite"
                     class="satori-favorite"
+                    aria-pressed="false"
                 >
-                    ♡ &nbsp; AGREGAR A FAVORITOS
+                    ${getIconSVG(
+                        "heart",
+                        "satori-ui-icon satori-favorite-icon"
+                    )}
+                    <span class="satori-favorite-label">
+                        AGREGAR A FAVORITOS
+                    </span>
                 </button>
 
                 <div class="satori-benefits">
 
                     <div class="satori-benefit">
-                        <strong>🚚 ENVÍOS A TODO CHILE</strong>
+                        <strong>
+                            ${getIconSVG("truck")}
+                            ENVÍOS A TODO CHILE
+                        </strong>
                         <span>Despachamos a todo el país.</span>
                     </div>
 
                     <div class="satori-benefit">
-                        <strong>↻ CAMBIOS</strong>
+                        <strong>
+                            ${getIconSVG("refresh")}
+                            CAMBIOS
+                        </strong>
                         <span>Cambios y devoluciones.</span>
                     </div>
 
                     <div class="satori-benefit">
-                        <strong>◉ PAGO SEGURO</strong>
+                        <strong>
+                            ${getIconSVG("shield")}
+                            PAGO SEGURO
+                        </strong>
                         <span>Compra protegida.</span>
                     </div>
 
@@ -3512,282 +3275,39 @@ function generateProductPage(
     </main>
 
     <div id="satori-footer"></div>
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
 
-    <script
-        src="js/products.js"
-        defer
-    ></script>
-
-
-    <script
-        src="js/header.js"
-        defer
-    ></script>
-
-
-    <script
-        src="js/footer.js"
-        defer
-    ></script>
-
+    <script>
+        window.SATORII_PRODUCT =
+            ${safeJSONString(productData)};
+    </script>
 
     <!-- =====================================================
-         SUPABASE
+         SUPABASE · MISMO CLIENTE QUE EL RESTO DE SATORII
     ====================================================== -->
 
     <script
         src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
     ></script>
 
-
-    <script src="js/supabase.js"></script>
-
+    <script
+        src="${root}js/supabase.js"
+    ></script>
 
     <!-- =====================================================
-         SUPABASE — SINCRONIZAR PRECIOS
+         JAVASCRIPT SATORII
     ====================================================== -->
 
-    <script>
-
-        (async function syncSupabasePrices() {
-
-            const waitForSupabase = async function () {
-
-                for (
-                    let attempt = 0;
-                    attempt < 100;
-                    attempt++
-                ) {
-
-                    if (
-                        typeof satoriSupabase !==
-                        "undefined"
-                    ) {
-
-                        return true;
-
-                    }
-
-                    await new Promise(
-                        function (resolve) {
-
-                            setTimeout(
-                                resolve,
-                                100
-                            );
-
-                        }
-                    );
-
-                }
-
-                return false;
-
-            };
-
-
-            const available =
-                await waitForSupabase();
-
-
-            if (!available) {
-
-                console.warn(
-                    "SATORII · Supabase no está disponible. Se mantienen los precios de respaldo."
-                );
-
-                return;
-
-            }
-
-
-            const {
-                data,
-                error
-            } =
-                await satoriSupabase
-                    .from("products")
-                    .select("name, price");
-
-
-            if (error) {
-
-                console.error(
-                    "SATORII · Error al obtener precios desde Supabase:",
-                    error
-                );
-
-                return;
-
-            }
-
-
-            if (
-                !Array.isArray(data) ||
-                !data.length
-            ) {
-
-                console.warn(
-                    "SATORII · No se encontraron productos en Supabase."
-                );
-
-                return;
-
-            }
-
-
-            const normalize =
-                function (value) {
-
-                    return String(
-                        value ?? ""
-                    )
-                        .normalize("NFD")
-                        .replace(
-                            /[\u0300-\u036f]/g,
-                            ""
-                        )
-                        .trim()
-                        .toLowerCase();
-
-                };
-
-
-            const formatCLP =
-                function (value) {
-
-                    const numeric =
-                        Number(
-                            String(value)
-                                .replace(
-                                    /[^\d.-]/g,
-                                    ""
-                                )
-                        );
-
-
-                    if (
-                        !Number.isFinite(
-                            numeric
-                        )
-                    ) {
-
-                        return null;
-
-                    }
-
-
-                    return new Intl.NumberFormat(
-                        "es-CL",
-                        {
-                            style: "currency",
-                            currency: "CLP",
-                            maximumFractionDigits: 0
-                        }
-                    ).format(
-                        numeric
-                    );
-
-                };
-
-
-            const products =
-                data.map(
-                    function (product) {
-
-                        return {
-
-                            name:
-                                normalize(
-                                    product.name
-                                ),
-
-                            price:
-                                product.price
-
-                        };
-
-                    }
-                );
-
-
-            document
-                .querySelectorAll(
-                    "[data-supabase-product]"
-                )
-                .forEach(
-                    function (element) {
-
-                        const wanted =
-                            normalize(
-                                element
-                                    .dataset
-                                    .supabaseProduct
-                            );
-
-
-                        const product =
-                            products.find(
-                                function (item) {
-
-                                    return (
-                                        item.name ===
-                                            wanted ||
-                                        item.name.includes(
-                                            wanted
-                                        ) ||
-                                        wanted.includes(
-                                            item.name
-                                        )
-                                    );
-
-                                }
-                            );
-
-
-                        if (!product) {
-
-                            console.warn(
-                                "SATORII · No se encontró en Supabase:",
-                                wanted
-                            );
-
-                            return;
-
-                        }
-
-
-                        const formatted =
-                            formatCLP(
-                                product.price
-                            );
-
-
-                        if (!formatted) {
-
-                            return;
-
-                        }
-
-
-                        element.textContent =
-                            formatted;
-
-                    }
-                );
-
-
-            console.log(
-                "SATORII · Precios sincronizados desde Supabase:",
-                data
-            );
-
-        })();
-
-    </script>
+    <script
+        src="${root}js/products.js"
+    ></script>
+
+    <script
+        src="${root}js/cart.js"
+    ></script>
+
+    <script
+        src="${root}js/footer.js"
+    ></script>
 
     ${getProductScript(
         root,
@@ -3874,11 +3394,7 @@ function generateAll() {
     );
 
     console.log(
-        `✓ Supabase: ${
-            SUPABASE_ENABLED
-                ? "CONFIGURADO"
-                : "NO CONFIGURADO"
-        }`
+        "✓ Supabase: CLIENTE WEB COMPARTIDO (js/supabase.js)"
     );
 
     console.log("==============================================");
