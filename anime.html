@@ -364,19 +364,21 @@
 /* =====================================================
    HERO · TRANSICIÓN IMAGEN / FONDO
 ===================================================== */
-
 .anime-hero-image {
+
     position: relative;
 
     min-height: 610px;
 
     overflow: hidden;
 
-    background: #FFFFFF;
+    background: transparent;
+
 }
 
 
 .anime-hero-image::before {
+
     content: "";
 
     position: absolute;
@@ -385,18 +387,10 @@
 
     inset: 0;
 
-    background:
-        linear-gradient(
-            90deg,
-            #FFFFFF 0%,
-            rgba(255,255,255,.98) 5%,
-            rgba(255,255,255,.90) 12%,
-            rgba(255,255,255,.65) 20%,
-            rgba(255,255,255,.30) 30%,
-            rgba(255,255,255,0) 42%
-        );
+    background: transparent;
 
     pointer-events: none;
+
 }
 
 
