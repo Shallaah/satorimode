@@ -1,5 +1,14 @@
 /* =========================================================
    SATORII · CARRITO GLOBAL
+   ---------------------------------------------------------
+   ✓ LocalStorage principal: satorimode_cart
+   ✓ Compatibilidad con satorii_cart
+   ✓ Lee datos del botón de producto
+   ✓ Precio compatible con Supabase
+   ✓ Actualiza Header mediante satori-cart-updated
+   ✓ Animación al agregar
+   ✓ Toast global autocontenido
+   ✓ Iconos SVG consistentes entre dispositivos
 ========================================================= */
 
 (function () {
@@ -22,6 +31,424 @@
 
 
     /* =====================================================
+       ICONOS SVG
+    ====================================================== */
+
+    function checkIconSVG() {
+
+        return `
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <path
+                    d="M5 12.5L9.2 16.5L19 6.8"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                ></path>
+            </svg>
+        `;
+
+    }
+
+
+    /* =====================================================
+       ESTILOS GLOBALES DEL FEEDBACK
+    ====================================================== */
+
+    function injectFeedbackStyles() {
+
+        if (
+            document.getElementById(
+                "satorii-cart-feedback-style"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        const style =
+            document.createElement(
+                "style"
+            );
+
+
+        style.id =
+            "satorii-cart-feedback-style";
+
+
+        style.textContent = `
+
+            /* =============================================
+               BOTÓN · PRODUCTO AGREGADO
+            ============================================= */
+
+            .satori-cart-added {
+                animation:
+                    satorii-cart-button-pop
+                    .36s
+                    cubic-bezier(.22,1,.36,1);
+            }
+
+            .satori-add-to-cart.satori-cart-added,
+            .add-to-cart.satori-cart-added,
+            #addToCart.satori-cart-added {
+                background:
+                    #111111 !important;
+
+                color:
+                    #ffffff !important;
+
+                box-shadow:
+                    0 10px 28px
+                    rgba(0,0,0,.18);
+            }
+
+            .satorii-cart-added-content {
+                display:
+                    inline-flex;
+
+                align-items:
+                    center;
+
+                justify-content:
+                    center;
+
+                gap:
+                    8px;
+
+                width:
+                    100%;
+            }
+
+            .satorii-cart-added-icon {
+                width:
+                    17px;
+
+                height:
+                    17px;
+
+                display:
+                    inline-flex;
+
+                align-items:
+                    center;
+
+                justify-content:
+                    center;
+
+                flex:
+                    0 0 auto;
+            }
+
+            .satorii-cart-added-icon svg {
+                width:
+                    100%;
+
+                height:
+                    100%;
+
+                display:
+                    block;
+            }
+
+
+            @keyframes satorii-cart-button-pop {
+
+                0% {
+                    transform:
+                        scale(1);
+                }
+
+                42% {
+                    transform:
+                        scale(.975);
+                }
+
+                100% {
+                    transform:
+                        scale(1);
+                }
+
+            }
+
+
+            /* =============================================
+               TOAST · PRODUCTO AGREGADO
+            ============================================= */
+
+            .satori-cart-toast {
+                position:
+                    fixed;
+
+                right:
+                    24px;
+
+                bottom:
+                    24px;
+
+                width:
+                    min(
+                        360px,
+                        calc(100vw - 30px)
+                    );
+
+                padding:
+                    19px 20px;
+
+                background:
+                    #101727;
+
+                color:
+                    #ffffff;
+
+                border:
+                    1px solid
+                    rgba(255,255,255,.10);
+
+                border-left:
+                    4px solid
+                    #EF0930;
+
+                border-radius:
+                    12px;
+
+                box-shadow:
+                    0 20px 60px
+                    rgba(0,0,0,.30);
+
+                z-index:
+                    2147483000;
+
+                opacity:
+                    0;
+
+                visibility:
+                    hidden;
+
+                pointer-events:
+                    none;
+
+                transform:
+                    translate3d(
+                        0,
+                        18px,
+                        0
+                    );
+
+                transition:
+                    opacity .25s ease,
+                    visibility .25s ease,
+                    transform .32s
+                    cubic-bezier(.22,1,.36,1);
+            }
+
+
+            .satori-cart-toast.is-visible {
+                opacity:
+                    1;
+
+                visibility:
+                    visible;
+
+                pointer-events:
+                    auto;
+
+                transform:
+                    translate3d(
+                        0,
+                        0,
+                        0
+                    );
+            }
+
+
+            .satori-toast-title {
+                display:
+                    flex;
+
+                align-items:
+                    center;
+
+                gap:
+                    9px;
+
+                color:
+                    #ffffff;
+
+                font-size:
+                    10px;
+
+                line-height:
+                    1.3;
+
+                font-weight:
+                    900;
+
+                letter-spacing:
+                    .14em;
+
+                text-transform:
+                    uppercase;
+            }
+
+
+            .satori-toast-icon {
+                width:
+                    21px;
+
+                height:
+                    21px;
+
+                display:
+                    inline-flex;
+
+                align-items:
+                    center;
+
+                justify-content:
+                    center;
+
+                flex:
+                    0 0 auto;
+
+                border-radius:
+                    50%;
+
+                background:
+                    #EF0930;
+
+                color:
+                    #ffffff;
+            }
+
+
+            .satori-toast-icon svg {
+                width:
+                    13px;
+
+                height:
+                    13px;
+
+                display:
+                    block;
+            }
+
+
+            .satori-toast-product {
+                margin-top:
+                    10px;
+
+                color:
+                    rgba(255,255,255,.72);
+
+                font-size:
+                    12px;
+
+                line-height:
+                    1.5;
+            }
+
+
+            .satori-toast-link {
+                display:
+                    inline-flex;
+
+                align-items:
+                    center;
+
+                margin-top:
+                    13px;
+
+                color:
+                    #ffffff;
+
+                font-size:
+                    10px;
+
+                line-height:
+                    1.3;
+
+                font-weight:
+                    900;
+
+                letter-spacing:
+                    .08em;
+
+                text-decoration:
+                    none;
+
+                text-transform:
+                    uppercase;
+
+                transition:
+                    color .2s ease,
+                    transform .2s ease;
+            }
+
+
+            .satori-toast-link:hover {
+                color:
+                    #EF0930;
+
+                transform:
+                    translateX(3px);
+            }
+
+
+            @media (
+                max-width: 700px
+            ) {
+
+                .satori-cart-toast {
+                    right:
+                        15px;
+
+                    bottom:
+                        15px;
+
+                    width:
+                        calc(
+                            100vw - 30px
+                        );
+                }
+
+            }
+
+
+            @media (
+                prefers-reduced-motion: reduce
+            ) {
+
+                .satori-cart-toast,
+                .satori-toast-link,
+                .satori-cart-added {
+                    transition:
+                        none !important;
+
+                    animation:
+                        none !important;
+                }
+
+            }
+
+        `;
+
+
+        document.head.appendChild(
+            style
+        );
+
+    }
+
+
+    /* =====================================================
        LEER CARRITO
     ====================================================== */
 
@@ -34,6 +461,7 @@
                     CART_KEY
                 );
 
+
             if (current) {
 
                 const parsed =
@@ -41,21 +469,21 @@
                         current
                     );
 
-                return Array.isArray(parsed)
+
+                return Array.isArray(
+                    parsed
+                )
                     ? parsed
                     : [];
 
             }
 
 
-            /*
-             * Compatibilidad antigua.
-             */
-
             const old =
                 localStorage.getItem(
                     OLD_CART_KEY
                 );
+
 
             if (!old) {
 
@@ -81,10 +509,6 @@
             }
 
 
-            /*
-             * Migrar automáticamente.
-             */
-
             localStorage.setItem(
                 CART_KEY,
                 JSON.stringify(
@@ -106,6 +530,7 @@
                 error
             );
 
+
             return [];
 
         }
@@ -122,7 +547,9 @@
     ) {
 
         const normalized =
-            Array.isArray(cart)
+            Array.isArray(
+                cart
+            )
                 ? cart
                 : [];
 
@@ -141,7 +568,7 @@
 
 
             /*
-             * Evento global.
+             * Header actual.
              */
 
             window.dispatchEvent(
@@ -156,6 +583,11 @@
                 )
             );
 
+
+            /*
+             * Compatibilidad con versiones
+             * anteriores del Header.
+             */
 
             document.dispatchEvent(
                 new CustomEvent(
@@ -203,7 +635,9 @@
                         Math.max(
                             1,
                             Number(
-                                product.quantity
+                                product.quantity ??
+                                product.cantidad ??
+                                1
                             ) || 1
                         )
                     );
@@ -221,10 +655,6 @@
             getCartCount();
 
 
-        /*
-         * Badge propio del Header actual.
-         */
-
         document
             .querySelectorAll(
                 "[data-satori-cart-count]"
@@ -238,6 +668,7 @@
                         String(
                             count
                         );
+
 
                     badge.style.display =
                         count > 0
@@ -280,118 +711,6 @@
             .replace(
                 /'/g,
                 "&#039;"
-            );
-
-    }
-
-
-    /* =====================================================
-       TOAST
-    ====================================================== */
-
-    function showToast(
-        product
-    ) {
-
-        let toast =
-            document.querySelector(
-                ".satori-cart-toast"
-            );
-
-
-        if (!toast) {
-
-            toast =
-                document.createElement(
-                    "div"
-                );
-
-            toast.className =
-                "satori-cart-toast";
-
-            document.body.appendChild(
-                toast
-            );
-
-        }
-
-
-        const sizeText =
-            product.size
-                ? (
-                    " · Talla " +
-                    escapeHTML(
-                        product.size
-                    )
-                )
-                : "";
-
-
-        toast.innerHTML = `
-
-            <div
-                class="satori-toast-title"
-            >
-                <span>
-                    ✓
-                </span>
-
-                PRODUCTO AGREGADO
-            </div>
-
-            <div
-                class="satori-toast-product"
-            >
-                ${escapeHTML(
-                    product.name
-                )}
-                ${sizeText}
-            </div>
-
-            <a
-                href="${SATORIMODE_BASE}carrito.html"
-                class="satori-toast-link"
-            >
-                VER CARRITO →
-            </a>
-
-        `;
-
-
-        /*
-         * Aseguramos interacción.
-         */
-
-        toast.style.pointerEvents =
-            "auto";
-
-
-        requestAnimationFrame(
-            function () {
-
-                toast.classList.add(
-                    "is-visible"
-                );
-
-            }
-        );
-
-
-        clearTimeout(
-            window.satoriToastTimer
-        );
-
-
-        window.satoriToastTimer =
-            window.setTimeout(
-                function () {
-
-                    toast.classList.remove(
-                        "is-visible"
-                    );
-
-                },
-                5000
             );
 
     }
@@ -444,20 +763,12 @@
 
 
     /* =====================================================
-       OBTENER PRODUCTO
+       PRODUCTO
     ====================================================== */
 
     function getProduct(
         button
     ) {
-
-        /*
-         * IMPORTANTE:
-         *
-         * Primero usamos los data-* DEL BOTÓN.
-         * Las páginas generadas ya contienen aquí
-         * el precio actualizado desde Supabase.
-         */
 
         const root =
             button.closest(
@@ -469,7 +780,7 @@
             document.body;
 
 
-        const size =
+        const selectedSize =
             document.querySelector(
                 `
                 .product-size.active,
@@ -481,7 +792,7 @@
             );
 
 
-        const color =
+        const selectedColor =
             document.querySelector(
                 `
                 .product-color.active,
@@ -492,13 +803,6 @@
                 `
             );
 
-
-        /*
-         * Cantidad.
-         *
-         * Las páginas nuevas usan
-         * data-product-quantity en el botón.
-         */
 
         const quantity =
             Math.max(
@@ -533,9 +837,12 @@
 
         const price =
             normalizePrice(
-                button.dataset.productPrice ||
-                root?.dataset.productPrice ||
-                body.dataset.productPrice ||
+                button.dataset
+                    .productPrice ||
+                root?.dataset
+                    .productPrice ||
+                body.dataset
+                    .productPrice ||
                 document.querySelector(
                     ".satori-price, .satori-product-price, .product-price"
                 )?.textContent ||
@@ -571,33 +878,49 @@
         return {
 
             id:
-                String(id),
+                String(
+                    id
+                ),
 
             productId:
-                String(id),
+                String(
+                    id
+                ),
 
             name:
-                String(name),
+                String(
+                    name
+                ),
 
             price:
                 price,
 
             image:
-                String(image),
+                String(
+                    image
+                ),
 
             url:
-                String(url),
+                String(
+                    url
+                ),
 
             size:
-                button.dataset.productSize ||
-                size?.dataset.size ||
-                size?.textContent?.trim() ||
+                button.dataset
+                    .productSize ||
+                selectedSize?.dataset
+                    .size ||
+                selectedSize?.textContent
+                    ?.trim() ||
                 "",
 
             color:
-                button.dataset.productColor ||
-                color?.dataset.color ||
-                color?.textContent?.trim() ||
+                button.dataset
+                    .productColor ||
+                selectedColor?.dataset
+                    .color ||
+                selectedColor?.textContent
+                    ?.trim() ||
                 "",
 
             quantity:
@@ -621,9 +944,10 @@
         ) {
 
             console.error(
-                "SATORII · El producto no tiene ID.",
+                "SATORII · Producto sin ID.",
                 product
             );
+
 
             return false;
 
@@ -635,9 +959,10 @@
         ) {
 
             console.error(
-                "SATORII · El producto no tiene nombre.",
+                "SATORII · Producto sin nombre.",
                 product
             );
+
 
             return false;
 
@@ -652,9 +977,10 @@
         ) {
 
             console.error(
-                "SATORII · El producto tiene un precio inválido.",
+                "SATORII · Precio inválido.",
                 product
             );
+
 
             return false;
 
@@ -687,13 +1013,13 @@
                     return (
 
                         String(
-                            item.productId ||
-                            item.id ||
+                            item.productId ??
+                            item.id ??
                             ""
                         ) ===
                         String(
-                            product.productId ||
-                            product.id ||
+                            product.productId ??
+                            product.id ??
                             ""
                         )
 
@@ -726,9 +1052,15 @@
         ) {
 
             /*
-             * También actualizamos los datos
+             * Actualizar datos dinámicos
              * por si cambiaron desde Supabase.
              */
+
+            existing.id =
+                product.id;
+
+            existing.productId =
+                product.productId;
 
             existing.name =
                 product.name;
@@ -741,6 +1073,12 @@
 
             existing.url =
                 product.url;
+
+            existing.size =
+                product.size;
+
+            existing.color =
+                product.color;
 
             existing.quantity =
                 Math.max(
@@ -765,6 +1103,284 @@
         saveCart(
             cart
         );
+
+    }
+
+
+    /* =====================================================
+       ANIMACIÓN BOTÓN
+    ====================================================== */
+
+    function showAddedButtonState(
+        button
+    ) {
+
+        if (!button) {
+
+            return;
+
+        }
+
+
+        if (
+            !button.dataset
+                .satoriiOriginalHtml
+        ) {
+
+            button.dataset
+                .satoriiOriginalHtml =
+                button.innerHTML;
+
+        }
+
+
+        if (
+            button._satoriiAddedTimer
+        ) {
+
+            clearTimeout(
+                button._satoriiAddedTimer
+            );
+
+        }
+
+
+        button.classList.remove(
+            "satori-cart-added"
+        );
+
+
+        /*
+         * Reiniciar animación.
+         */
+
+        void button.offsetWidth;
+
+
+        button.classList.add(
+            "satori-cart-added"
+        );
+
+
+        button.innerHTML = `
+
+            <span
+                class="satorii-cart-added-content"
+            >
+
+                <span
+                    class="satorii-cart-added-icon"
+                    aria-hidden="true"
+                >
+                    ${checkIconSVG()}
+                </span>
+
+                <span>
+                    AGREGADO AL CARRITO
+                </span>
+
+            </span>
+
+        `;
+
+
+        button._satoriiAddedTimer =
+            window.setTimeout(
+                function () {
+
+                    button.classList.remove(
+                        "satori-cart-added"
+                    );
+
+
+                    if (
+                        button.disabled
+                    ) {
+
+                        button.textContent =
+                            "AGOTADO";
+
+                        return;
+
+                    }
+
+
+                    button.innerHTML =
+                        button.dataset
+                            .satoriiOriginalHtml ||
+                        "AGREGAR AL CARRITO";
+
+                },
+                1800
+            );
+
+    }
+
+
+    /* =====================================================
+       TOAST
+    ====================================================== */
+
+    function showToast(
+        product
+    ) {
+
+        let toast =
+            document.querySelector(
+                ".satori-cart-toast"
+            );
+
+
+        if (!toast) {
+
+            toast =
+                document.createElement(
+                    "div"
+                );
+
+
+            toast.className =
+                "satori-cart-toast";
+
+
+            toast.setAttribute(
+                "role",
+                "status"
+            );
+
+
+            toast.setAttribute(
+                "aria-live",
+                "polite"
+            );
+
+
+            toast.setAttribute(
+                "aria-atomic",
+                "true"
+            );
+
+
+            document.body.appendChild(
+                toast
+            );
+
+        }
+
+
+        const details =
+            [
+                product.size
+                    ? (
+                        "Talla: " +
+                        product.size
+                    )
+                    : "",
+
+                product.color
+                    ? (
+                        "Color: " +
+                        product.color
+                    )
+                    : ""
+            ]
+                .filter(
+                    Boolean
+                )
+                .join(
+                    " · "
+                );
+
+
+        toast.innerHTML = `
+
+            <div
+                class="satori-toast-title"
+            >
+
+                <span
+                    class="satori-toast-icon"
+                    aria-hidden="true"
+                >
+                    ${checkIconSVG()}
+                </span>
+
+                <span>
+                    PRODUCTO AGREGADO
+                </span>
+
+            </div>
+
+
+            <div
+                class="satori-toast-product"
+            >
+                ${escapeHTML(
+                    product.name
+                )}
+                ${
+                    details
+                        ? (
+                            " · " +
+                            escapeHTML(
+                                details
+                            )
+                        )
+                        : ""
+                }
+            </div>
+
+
+            <a
+                href="${SATORIMODE_BASE}carrito.html"
+                class="satori-toast-link"
+            >
+                VER CARRITO →
+            </a>
+
+        `;
+
+
+        toast.classList.remove(
+            "is-visible"
+        );
+
+
+        /*
+         * Forzar reinicio si se agrega
+         * varias veces seguidas.
+         */
+
+        void toast.offsetWidth;
+
+
+        requestAnimationFrame(
+            function () {
+
+                toast.classList.add(
+                    "is-visible"
+                );
+
+            }
+        );
+
+
+        clearTimeout(
+            window.satoriToastTimer
+        );
+
+
+        window.satoriToastTimer =
+            window.setTimeout(
+                function () {
+
+                    toast.classList.remove(
+                        "is-visible"
+                    );
+
+                },
+                4500
+            );
 
     }
 
@@ -809,8 +1425,8 @@
 
 
             /*
-             * Talla obligatoria cuando existen
-             * botones de talla.
+             * Si hay tallas,
+             * debe existir una activa.
              */
 
             const sizeButtons =
@@ -823,17 +1439,22 @@
                 sizeButtons.length
             ) {
 
-                const selectedSize =
+                const selected =
                     document.querySelector(
-                        "[data-size].active, [data-size].selected"
+                        `
+                        [data-size].active,
+                        [data-size].selected,
+                        [data-size].is-active
+                        `
                     );
 
 
-                if (!selectedSize) {
+                if (!selected) {
 
                     alert(
                         "Selecciona una talla antes de continuar."
                     );
+
 
                     return;
 
@@ -861,6 +1482,16 @@
 
             addProduct(
                 product
+            );
+
+
+            /*
+             * Feedback visual solamente
+             * después de guardar correctamente.
+             */
+
+            showAddedButtonState(
+                button
             );
 
 
@@ -901,6 +1532,15 @@
        INICIO
     ====================================================== */
 
+    function initializeCart() {
+
+        injectFeedbackStyles();
+
+        updateBadge();
+
+    }
+
+
     if (
         document.readyState ===
         "loading"
@@ -908,14 +1548,18 @@
 
         document.addEventListener(
             "DOMContentLoaded",
-            updateBadge
+            initializeCart,
+            {
+                once:
+                    true
+            }
         );
 
     }
 
     else {
 
-        updateBadge();
+        initializeCart();
 
     }
 
@@ -939,5 +1583,6 @@
             updateBadge
 
     };
+
 
 })();
