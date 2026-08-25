@@ -1938,11 +1938,22 @@
     }
 
     function normalizeSupabaseUrl() {
-        return String(
-            SUPABASE_CONFIG.url || ""
-        )
-            .trim()
-            .replace(//+$/, "");
+        let url =
+            String(
+                SUPABASE_CONFIG.url || ""
+            ).trim();
+
+        while (
+            url.endsWith("/")
+        ) {
+            url =
+                url.slice(
+                    0,
+                    -1
+                );
+        }
+
+        return url;
     }
 
     async function supabaseRequest(query) {
@@ -2241,19 +2252,22 @@
     function resolveRecommendationImage(
         image
     ) {
-        const clean =
-            String(image || "")
-                .trim()
-                .replace(/^/+/, "")
-                .replace(/^.//, "")
-                .replace(/\/g, "/");
+        let clean =
+            String(image || "").trim();
 
-        if (!clean) {
-            return "";
+        while (
+            clean.startsWith("/")
+        ) {
+            clean =
+                clean.slice(
+                    1
+                );
         }
 
         if (
-            /^(https?:)?///i.test(clean) ||
+            clean.startsWith("http://") ||
+            clean.startsWith("https://") ||
+            clean.startsWith("//") ||
             clean.startsWith("data:") ||
             clean.startsWith("blob:")
         ) {
@@ -2343,10 +2357,10 @@
 
             const currentDirectory =
                 currentUrl
-                    .replace(
-                        /\/g,
-                        "/"
+                    .split(
+                        String.fromCharCode(92)
                     )
+                    .join("/")
                     .split("/")
                     .slice(0, -1)
                     .join("/");
@@ -2355,16 +2369,23 @@
                 let url =
                     String(
                         item.url || ""
-                    )
-                        .trim()
-                        .replace(
-                            /^/+/,
-                            ""
-                        )
-                        .replace(
-                            /\/g,
-                            "/"
+                    ).trim();
+
+                while (
+                    url.startsWith("/")
+                ) {
+                    url =
+                        url.slice(
+                            1
                         );
+                }
+
+                url =
+                    url
+                        .split(
+                            String.fromCharCode(92)
+                        )
+                        .join("/");
 
                 if (!url) {
                     const category =
