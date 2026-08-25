@@ -3656,12 +3656,4 @@ try {
     );
 
     process.exit(1);
-}            const currentDirectory =
-                currentUrl
-                    .split(
-                        String.fromCharCode(92)
-                    )
-                    .join("/")
-                    .split("/")
-                    .slice(0, -1)
-                    .join("/");
+}
