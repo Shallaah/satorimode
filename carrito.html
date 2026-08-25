@@ -20,7 +20,7 @@
         content="#101727"
     >
 
-    <title>Carrito | SATORII</title>
+    <title>Carrito | Satorii</title>
 
 
     <!-- =====================================================
@@ -50,7 +50,7 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
@@ -1305,6 +1305,795 @@
 
         }
 
+
+
+        /* =====================================================
+           SATORII · ESTÁNDAR OFICIAL COMPLETO · CARRITO
+           Tipografía · Tamaños · Interletraje · Márgenes · Ticker
+        ====================================================== */
+
+        :root {
+            --satori-official-width: 1700px;
+            --satori-official-side: 35px;
+            --s-heading: "Barlow Condensed", Arial, sans-serif;
+            --s-body: "Inter", Arial, sans-serif;
+        }
+
+
+        /* =====================================================
+           MÁRGENES / CONTENEDOR OFICIAL
+        ====================================================== */
+
+        .satori-cart-shell {
+
+            width:
+                min(
+                    var(--satori-official-width),
+                    calc(100% - 70px)
+                );
+
+            margin:
+                0 auto;
+
+        }
+
+
+        /* =====================================================
+           TIPOGRAFÍA BASE OFICIAL
+        ====================================================== */
+
+        .satori-cart-page {
+
+            font-family:
+                var(--s-body);
+
+        }
+
+
+        .satori-cart-page h1,
+        .satori-cart-page h2,
+        .satori-cart-page h3,
+        .satori-cart-name,
+        .satori-cart-empty h2 {
+
+            font-family:
+                var(--s-heading);
+
+        }
+
+
+        .satori-cart-kicker,
+        .satori-cart-back,
+        .satori-cart-products-head,
+        .satori-cart-category,
+        .satori-cart-status,
+        .satori-cart-item-total,
+        .satori-summary-top,
+        .satori-summary-count-row,
+        .satori-order-note label,
+        .satori-cart-checkout,
+        .satori-cart-clear,
+        .satori-cart-remove,
+        .satori-cart-empty > span,
+        .satori-cart-empty a {
+
+            font-family:
+                var(--s-body);
+
+        }
+
+
+        /* =====================================================
+           TICKER OFICIAL
+           Mantiene:
+           ANIME STREETWEAR
+           CULTURA JAPONESA
+           DISEÑO · CULTURA · STREETWEAR
+           ENVÍOS A TODO CHILE
+        ====================================================== */
+
+        .satori-cart-ticker {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 42px;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            background: #101727;
+
+            color: #fff;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.04);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+
+        }
+
+
+        .satori-cart-ticker-track {
+
+            display: flex;
+
+            align-items: center;
+
+            width: max-content;
+
+            min-width: max-content;
+
+            gap: 0;
+
+            padding: 0;
+
+            white-space: nowrap;
+
+            will-change: transform;
+
+            animation:
+                satoriTicker
+                34s
+                linear
+                infinite;
+
+        }
+
+
+        .satori-cart-ticker-content {
+
+            display: flex;
+
+            align-items: center;
+
+            flex-shrink: 0;
+
+            min-width: max-content;
+
+        }
+
+
+        .satori-cart-ticker-sequence {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+
+            padding-right: 28px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .satori-cart-ticker-item {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            flex: 0 0 auto;
+
+            gap: 0;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size: 12px;
+
+            line-height: 1;
+
+            font-weight: 700;
+
+            letter-spacing: .8px;
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+
+        }
+
+
+        .satori-cart-ticker-item::after {
+
+            content: none;
+
+        }
+
+
+        .satori-cart-ticker-symbol {
+
+            color: #EF0930;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size: 12px;
+
+            line-height: 1;
+
+        }
+
+
+        /* =====================================================
+           CABECERA DEL CARRITO
+        ====================================================== */
+
+        .satori-cart-main {
+
+            padding:
+                72px 0 78px;
+
+        }
+
+
+        .satori-cart-heading-row {
+
+            margin-bottom: 34px;
+
+        }
+
+
+        .satori-cart-kicker {
+
+            margin-bottom: 10px;
+
+            font-size: 12px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .satori-cart-heading-row h1 {
+
+            margin: 0;
+
+            font-size:
+                clamp(
+                    55px,
+                    5vw,
+                    78px
+                );
+
+            line-height: .78;
+
+            font-weight: 900;
+
+            letter-spacing: .6px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .satori-cart-heading-row p {
+
+            max-width: 620px;
+
+            margin:
+                20px 0 0;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            letter-spacing: 0;
+
+        }
+
+
+        .satori-cart-back {
+
+            min-height: 42px;
+
+            padding:
+                0 18px;
+
+            border-radius: 0;
+
+            font-size: 11px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        /* =====================================================
+           TABLA / PRODUCTOS
+        ====================================================== */
+
+        .satori-cart-products-head {
+
+            padding-bottom: 13px;
+
+            font-size: 11px;
+
+            line-height: 1.2;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        .satori-cart-category {
+
+            margin-bottom: 5px;
+
+            font-size: 10px;
+
+            line-height: 1.2;
+
+            font-weight: 600;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .satori-cart-name {
+
+            margin: 0;
+
+            font-size: 23px;
+
+            line-height: .9;
+
+            font-weight: 800;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .satori-cart-options {
+
+            margin-top: 7px;
+
+            font-size: 12px;
+
+            line-height: 1.55;
+
+        }
+
+
+        .satori-cart-status {
+
+            font-size: 10px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .satori-cart-unit-price-mobile {
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+        }
+
+
+        .satori-cart-item-total {
+
+            font-family:
+                var(--s-body);
+
+            font-size: 14px;
+
+            line-height: 1.2;
+
+            font-weight: 800;
+
+            letter-spacing: 0;
+
+        }
+
+
+        .satori-cart-remove {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .4px;
+
+        }
+
+
+        /* =====================================================
+           RESUMEN
+        ====================================================== */
+
+        .satori-summary-top span {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .4px;
+
+        }
+
+
+        .satori-summary-top strong {
+
+            font-family:
+                var(--s-body);
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+        }
+
+
+        .satori-summary-meta {
+
+            font-size: 11px;
+
+            line-height: 1.55;
+
+        }
+
+
+        .satori-summary-count-row {
+
+            font-size: 11px;
+
+            line-height: 1.3;
+
+            font-weight: 800;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .satori-summary-count-row strong {
+
+            font-size: 14px;
+
+        }
+
+
+        .satori-order-note label {
+
+            font-size: 11px;
+
+            line-height: 1.4;
+
+            font-weight: 800;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .satori-order-note textarea {
+
+            font-family:
+                var(--s-body);
+
+            font-size: 12px;
+
+            line-height: 1.55;
+
+        }
+
+
+        .satori-cart-terms span {
+
+            font-family:
+                var(--s-body);
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .satori-cart-checkout {
+
+            min-height: 48px;
+
+            border-radius: 0;
+
+            font-size: 11px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        .satori-cart-clear {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .35px;
+
+        }
+
+
+        .satori-cart-warning {
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =====================================================
+           CARRITO VACÍO
+        ====================================================== */
+
+        .satori-cart-empty > span {
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            line-height: 1;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .satori-cart-empty h2 {
+
+            font-size:
+                clamp(
+                    50px,
+                    5vw,
+                    74px
+                );
+
+            line-height: .76;
+
+            font-weight: 900;
+
+            letter-spacing: .6px;
+
+        }
+
+
+        .satori-cart-empty p {
+
+            font-size: 13px;
+
+            line-height: 1.65;
+
+        }
+
+
+        .satori-cart-empty a {
+
+            min-height: 44px;
+
+            border-radius: 0;
+
+            font-size: 11px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .satori-cart-shell {
+
+                width:
+                    calc(
+                        100% - 28px
+                    );
+
+            }
+
+
+            .satori-cart-ticker {
+
+                height: 32px;
+
+            }
+
+
+            .satori-cart-ticker-sequence {
+
+                gap: 20px;
+
+                padding-right: 20px;
+
+            }
+
+
+            .satori-cart-ticker-item {
+
+                font-size: 9px;
+
+                letter-spacing: .65px;
+
+            }
+
+
+            .satori-cart-ticker-symbol {
+
+                font-size: 9px;
+
+            }
+
+
+            .satori-cart-main {
+
+                padding:
+                    52px 0 62px;
+
+            }
+
+
+            .satori-cart-heading-row {
+
+                margin-bottom: 28px;
+
+            }
+
+
+            .satori-cart-heading-row h1 {
+
+                font-size: 53px;
+
+                line-height: .76;
+
+                letter-spacing: .4px;
+
+            }
+
+
+            .satori-cart-heading-row p {
+
+                margin-top: 16px;
+
+                font-size: 13px;
+
+                line-height: 1.65;
+
+            }
+
+
+            .satori-cart-name {
+
+                font-size: 18px;
+
+                letter-spacing: .3px;
+
+            }
+
+
+            .satori-cart-category {
+
+                font-size: 9px;
+
+            }
+
+
+            .satori-cart-item-total,
+            .satori-cart-unit-price-mobile {
+
+                font-size: 12px;
+
+            }
+
+
+            .satori-cart-empty h2 {
+
+                font-size: 48px;
+
+                letter-spacing: .4px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL MUY PEQUEÑO
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .satori-cart-shell {
+
+                width:
+                    calc(
+                        100% - 24px
+                    );
+
+            }
+
+
+            .satori-cart-heading-row h1 {
+
+                font-size: 48px;
+
+                letter-spacing: .35px;
+
+            }
+
+
+            .satori-cart-name {
+
+                font-size: 17px;
+
+                letter-spacing: .25px;
+
+            }
+
+
+            .satori-cart-empty h2 {
+
+                font-size: 44px;
+
+                letter-spacing: .35px;
+
+            }
+
+
+            .satori-cart-ticker-track {
+
+                animation-duration: 28s;
+
+            }
+
+        }
+
     </style>
 
 </head>
@@ -1326,41 +2115,383 @@
              TICKER
         ================================================== -->
 
-        <div class="satori-cart-ticker" aria-hidden="true">
+        <div
+            class="satori-cart-ticker"
+            aria-label="Información Satorii"
+        >
 
             <div class="satori-cart-ticker-track">
 
-                <span class="satori-cart-ticker-item">
-                    ANIME STREETWEAR
-                </span>
+                <div class="satori-cart-ticker-content">
 
-                <span class="satori-cart-ticker-item">
-                    CULTURA JAPONESA
-                </span>
+                    <div class="satori-cart-ticker-sequence">
 
-                <span class="satori-cart-ticker-item">
-                    DISEÑO · CULTURA · STREETWEAR
-                </span>
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
 
-                <span class="satori-cart-ticker-item">
-                    ENVÍOS A TODO CHILE
-                </span>
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
 
-                <span class="satori-cart-ticker-item">
-                    ANIME STREETWEAR
-                </span>
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
 
-                <span class="satori-cart-ticker-item">
-                    CULTURA JAPONESA
-                </span>
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
 
-                <span class="satori-cart-ticker-item">
-                    DISEÑO · CULTURA · STREETWEAR
-                </span>
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
 
-                <span class="satori-cart-ticker-item">
-                    ENVÍOS A TODO CHILE
-                </span>
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="satori-cart-ticker-content"
+                    aria-hidden="true"
+                >
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                    <div class="satori-cart-ticker-sequence">
+
+                        <span class="satori-cart-ticker-item">
+                            ANIME STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            CULTURA JAPONESA
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            DISEÑO · CULTURA · STREETWEAR
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                        <span class="satori-cart-ticker-item">
+                            ENVÍOS A TODO CHILE
+                        </span>
+
+                        <span class="satori-cart-ticker-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+                </div>
 
             </div>
 
