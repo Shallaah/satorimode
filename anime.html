@@ -1140,143 +1140,203 @@
            VISTE TU UNIVERSO
            FULL WIDTH
         ====================================================== */
+/* =====================================================
+   SATORII · CTA VISTE TU UNIVERSO · FIX DEFINITIVO
+===================================================== */
 
 .anime-cta {
 
-    position: relative;
+    position: relative !important;
 
-    display: flex;
+    width: 100% !important;
 
-    align-items: center;
+    min-height: 430px !important;
 
-    width: 100%;
+    overflow: hidden !important;
 
-    min-height: 430px;
+    display: flex !important;
 
-    margin: 88px 0 48px;
+    align-items: center !important;
+
+    margin-top: 88px !important;
+
+    margin-bottom: 48px !important;
 
     padding:
-        82px
+        70px
         max(
-            var(--satori-official-side),
+            35px,
             calc(
                 (
-                    100vw -
-                    var(--satori-official-width)
+                    100vw - 1700px
                 ) / 2
             )
-        );
+        ) !important;
 
-    box-sizing: border-box;
+    isolation: isolate !important;
 
-    overflow: hidden;
-
-    isolation: isolate;
-
-    background:
-        radial-gradient(
-            circle at 78% 50%,
-            rgba(255,255,255,.10) 0%,
-            rgba(255,255,255,.04) 25%,
-            transparent 48%
-        ),
-        #101727;
-
-    color: #fff;
+    background: #101727 !important;
 
 }
-        /* =====================================================
-   CTA · ARTE ANIME
-===================================================== */
+
+
+/* IMAGEN */
 
 .anime-cta-art {
+
+    display: block !important;
+
+    position: absolute !important;
+
+    z-index: 1 !important;
+
+    top: 0 !important;
+
+    right: 0 !important;
+
+    bottom: auto !important;
+
+    left: auto !important;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    max-width: none !important;
+
+    object-fit: contain !important;
+
+    object-position: right center !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    transform: none !important;
+
+    pointer-events: none !important;
+
+}
+
+
+/* TEXTO */
+
+.anime-cta-content {
+
+    position: relative !important;
+
+    z-index: 3 !important;
+
+    width: 100% !important;
+
+    max-width: 1700px !important;
+
+    margin: 0 auto !important;
+
+}
+
+
+/* SOMBRA SUAVE DETRÁS DEL TEXTO */
+
+.anime-cta-content::before {
+
+    content: "";
 
     position: absolute;
 
-    z-index: 1;
+    z-index: -1;
 
-    right: 1%;
+    top: -60px;
 
-    bottom: 0;
+    bottom: -60px;
 
-    width: min(72vw, 1380px);
+    left: -80px;
 
-    height: auto;
+    width: 720px;
 
-    max-width: none;
-
-    object-fit: contain;
-
-    object-position: right bottom;
+    background:
+        linear-gradient(
+            90deg,
+            #101727 0%,
+            rgba(16, 23, 39, .95) 45%,
+            rgba(16, 23, 39, .65) 72%,
+            transparent 100%
+        );
 
     pointer-events: none;
 
-    user-select: none;
-
-    -webkit-user-drag: none;
-
-    filter:
-        drop-shadow(
-            0 12px 20px
-            rgba(0,0,0,.30)
-        );
-
 }
 
 
-.anime-cta-content {
+/* =====================================================
+   MÓVIL
+===================================================== */
 
-    position: relative;
+@media (max-width: 700px) {
 
-    z-index: 3;
+    .anime-cta {
 
-    width: 100%;
+        min-height: 400px !important;
 
-    max-width:
-        var(--satori-official-width);
+        margin-top: 55px !important;
 
-    margin: 0 auto;
+        margin-bottom: 28px !important;
 
-}
+        padding:
+            48px
+            14px !important;
 
-        .anime-cta {
+        align-items: center !important;
 
-    min-height: 430px;
-
-    padding:
-        48px
-        14px;
-
-    align-items: flex-start;
-
-}
+    }
 
 
-.anime-cta-art {
+    .anime-cta-art {
 
-    right: -45%;
+        width: 155% !important;
 
-    bottom: 0;
+        height: 100% !important;
 
-    width: 165%;
+        right: -62% !important;
 
-    max-width: none;
+        top: 0 !important;
 
-    opacity: .72;
+        object-fit: contain !important;
 
-}
+        object-position: center center !important;
 
+        opacity: .72 !important;
 
-.anime-cta-content {
-
-    z-index: 3;
-
-}
+    }
 
 
-.anime-cta p {
+    .anime-cta-content::before {
 
-    max-width: 65%;
+        top: -50px;
+
+        bottom: -50px;
+
+        left: -30px;
+
+        width: 110%;
+
+        background:
+            linear-gradient(
+                90deg,
+                #101727 0%,
+                rgba(16,23,39,.96) 48%,
+                rgba(16,23,39,.68) 72%,
+                transparent 100%
+            );
+
+    }
+
+
+    .anime-cta p {
+
+        max-width: 62% !important;
+
+    }
 
 }
 
@@ -4021,45 +4081,39 @@
         class="anime-cta-art"
         alt=""
         aria-hidden="true"
+        onerror="
+            this.onerror=null;
+            this.src='img/banner-anime-universo.png';
+        "
     >
 
-            <div class="anime-cta-content">
+    <div class="anime-cta-content">
 
-                <span class="anime-cta-label">
-                    SATORII · ANIME STREETWEAR
-                </span>
+        <span class="anime-cta-label">
+            SATORII · ANIME STREETWEAR
+        </span>
 
+        <h2>
+            VISTE TU
+            <span>UNIVERSO.</span>
+        </h2>
 
-                <h2>
+        <p>
+            Anime, cultura japonesa y estética
+            urbana llevados a una propuesta
+            para quienes quieren destacar.
+        </p>
 
-                    VISTE TU
+        <a
+            href="productos.html"
+            class="anime-cta-button"
+        >
+            VER TODOS LOS PRODUCTOS
+        </a>
 
-                    <span>
-                        UNIVERSO.
-                    </span>
+    </div>
 
-                </h2>
-
-
-                <p>
-
-                    Anime, cultura japonesa y estética
-                    urbana llevados a una propuesta
-                    para quienes quieren destacar.
-
-                </p>
-
-
-                <a
-                    href="productos.html"
-                    class="anime-cta-button"
-                >
-                    VER TODOS LOS PRODUCTOS
-                </a>
-
-            </div>
-
-        </section>
+</section>
 
 
     </main>
