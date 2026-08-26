@@ -22,7 +22,7 @@
 
     <meta
         name="description"
-        content="SATORII Anime — Anime, manga y cultura japonesa llevados al streetwear."
+        content="SATORII Anime — Anime, estetica y cultura japonesa llevados al streetwear."
     >
 
     <title>Anime | Satorii</title>
@@ -1277,7 +1277,6 @@
                 src="img/banner-anime-universo.webp"
                 alt=""
                 aria-hidden="true"
-                decoding="async"
             >
 
             <div class="anime-cta-content">
@@ -1288,7 +1287,9 @@
 
                 <h2>
                     VISTE TU
-                    <span>UNIVERSO.</span>
+                    <span>
+                        UNIVERSO.
+                    </span>
                 </h2>
 
                 <p>
@@ -1307,63 +1308,6 @@
             </div>
 
         </section>
-
-
-    </main>
-
-
-
-    <!-- =====================================================
-         CTA · RESOLVER IMAGEN DEL BANNER
-         Prueba rutas/extensiones comunes sin afectar el resto.
-    ====================================================== -->
-
-    <script>
-        (function resolveAnimeCtaImage() {
-
-            const image = document.getElementById("anime-cta-art");
-
-            if (!image) {
-                return;
-            }
-
-            const candidates = [
-                "img/banner-anime-universo.webp",
-                "./img/banner-anime-universo.webp",
-                "/satorimode/img/banner-anime-universo.webp",
-                "img/banner-anime-universo.png",
-                "./img/banner-anime-universo.png",
-                "/satorimode/img/banner-anime-universo.png",
-                "img/banner-anime-universo.PNG",
-                "/satorimode/img/banner-anime-universo.PNG",
-                "img/banner-anime-universo.jpg",
-                "/satorimode/img/banner-anime-universo.jpg"
-            ];
-
-            let index = 0;
-
-            function loadCandidate() {
-
-                if (index >= candidates.length) {
-                    console.error(
-                        "SATORII · No se encontró la imagen de VISTE TU UNIVERSO. Revisa que el archivo se llame banner-anime-universo y esté dentro de /img/."
-                    );
-                    image.style.display = "none";
-                    return;
-                }
-
-                image.src = candidates[index++];
-            }
-
-            image.addEventListener("error", loadCandidate);
-
-            if (!image.complete || image.naturalWidth === 0) {
-                loadCandidate();
-            }
-
-        })();
-    </script>
-
 
     <!-- =====================================================
          FOOTER
@@ -2109,6 +2053,51 @@
 
     </script>
 
+
+    <!-- =====================================================
+         CTA · FALLBACK DE IMAGEN
+    ====================================================== -->
+
+    <script>
+        (function () {
+
+            const banner =
+                document.getElementById(
+                    "anime-cta-art"
+                );
+
+            if (!banner) {
+                return;
+            }
+
+            const sources = [
+                "img/banner-anime-universo.webp",
+                "img/banner-anime-universo.png",
+                "img/banner-anime-universo.jpg",
+                "img/banner-anime-universo.jpeg",
+                "/satorimode/img/banner-anime-universo.webp",
+                "/satorimode/img/banner-anime-universo.png",
+                "/satorimode/img/banner-anime-universo.jpg",
+                "/satorimode/img/banner-anime-universo.jpeg"
+            ];
+
+            let index = 0;
+
+            banner.addEventListener(
+                "error",
+                function () {
+
+                    index += 1;
+
+                    if (index < sources.length) {
+                        banner.src = sources[index];
+                    }
+
+                }
+            );
+
+        })();
+    </script>
 
 </body>
 
