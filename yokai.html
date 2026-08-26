@@ -66,6 +66,7 @@
          SATORII · YOKAI EDITORIAL
     ====================================================== -->
 
+    
     <style>
 
         :root {
@@ -90,6 +91,7 @@
             overflow-x: hidden;
             font-family: "Inter", Arial, sans-serif;
             color: var(--yokai-black);
+            background: var(--yokai-white);
         }
 
         main {
@@ -99,7 +101,10 @@
         }
 
         .yokai-content {
-            width: min(var(--satori-official-width), calc(100% - 70px));
+            width: min(
+                var(--satori-official-width),
+                calc(100% - 70px)
+            );
             margin: 0 auto;
             box-sizing: border-box;
         }
@@ -110,25 +115,32 @@
 
         .yokai-hero {
             position: relative;
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(420px, .95fr);
             width: 100%;
+            height: 610px;
             min-height: 610px;
             overflow: hidden;
+            isolation: isolate;
             background: var(--yokai-white);
         }
 
         .yokai-hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 4;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            width: 100%;
+            height: 610px;
+            padding:
+                90px
+                40px
+                90px
+                max(
+                    var(--satori-official-side),
+                    calc((100vw - var(--satori-official-width)) / 2)
+                );
             box-sizing: border-box;
-            padding: 90px 40px 90px max(
-                var(--satori-official-side),
-                calc((100vw - var(--satori-official-width)) / 2)
-            );
+            pointer-events: none;
         }
 
         .yokai-hero-kicker,
@@ -184,32 +196,16 @@
             color: #666666;
         }
 
-        .yokai-hero-link {
-            display: inline-flex;
-            align-items: center;
-            width: fit-content;
-            margin-top: 28px;
-            padding-bottom: 7px;
-            border-bottom: 2px solid var(--yokai-red);
-            color: var(--yokai-black);
-            font-family: "Inter", Arial, sans-serif;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: .5px;
-            text-decoration: none;
-            text-transform: uppercase;
-            transition: color .2s ease;
-        }
-
-        .yokai-hero-link:hover {
-            color: var(--yokai-red);
-        }
-
         .yokai-hero-image {
-            position: relative;
-            min-height: 610px;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            width: 950px;
+            height: 610px;
             overflow: hidden;
             background: transparent;
+            pointer-events: none;
         }
 
         .yokai-hero-image::after {
@@ -230,12 +226,15 @@
         .yokai-hero-product-image {
             position: absolute;
             inset: 0;
-            width: 100%;
-            height: 100%;
+            width: 950px;
+            height: 610px;
+            max-width: none;
             display: block;
             object-fit: contain;
-            object-position: center center;
+            object-position: right center;
             background: transparent;
+            transform: none;
+            transition: none;
         }
 
         .yokai-hero-number {
@@ -247,7 +246,6 @@
                 calc((100vw - var(--satori-official-width)) / 2)
             );
             color: var(--yokai-red);
-            font-family: "Inter", Arial, sans-serif;
             font-size: 12px;
             font-weight: 800;
             letter-spacing: .8px;
@@ -269,11 +267,11 @@
 
         .yokai-ticker {
             position: relative;
+            display: flex;
+            align-items: center;
             width: 100%;
             height: 42px;
             overflow: hidden;
-            display: flex;
-            align-items: center;
             background: var(--yokai-ticker);
             color: var(--yokai-white);
             border-top: 1px solid rgba(255,255,255,.04);
@@ -303,8 +301,6 @@
             gap: 28px;
             padding-right: 28px;
             flex-shrink: 0;
-            box-sizing: border-box;
-            font-family: "Inter", Arial, sans-serif;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: .8px;
@@ -355,7 +351,6 @@
 
         .yokai-products-count {
             color: var(--yokai-gray);
-            font-family: "Inter", Arial, sans-serif;
             font-size: 11px;
             font-weight: 600;
             line-height: 1.4;
@@ -376,13 +371,15 @@
             border: 1px solid var(--yokai-border);
             background: var(--yokai-white);
             color: var(--yokai-black);
-            font-family: "Inter", Arial, sans-serif;
             font-size: 11px;
             font-weight: 800;
             letter-spacing: .4px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: background .2s ease, color .2s ease, border-color .2s ease;
+            transition:
+                background .2s ease,
+                color .2s ease,
+                border-color .2s ease;
         }
 
         .yokai-filter:hover,
@@ -423,14 +420,18 @@
             height: 100%;
             display: block;
             object-fit: cover;
-            transition: opacity .35s ease, transform .45s ease;
+            transition:
+                opacity .35s ease,
+                transform .45s ease;
         }
 
         .yokai-product-image .image-primary { opacity: 1; }
         .yokai-product-image .image-secondary { opacity: 0; }
         .yokai-product:hover .image-primary { opacity: 0; }
         .yokai-product:hover .image-secondary { opacity: 1; }
-        .yokai-product:hover .yokai-product-image img { transform: scale(1.035); }
+        .yokai-product:hover .yokai-product-image img {
+            transform: scale(1.035);
+        }
 
         .yokai-product-badges {
             position: absolute;
@@ -447,10 +448,8 @@
             align-items: center;
             min-height: 23px;
             padding: 5px 8px;
-            box-sizing: border-box;
             background: var(--yokai-black);
             color: var(--yokai-white);
-            font-family: "Inter", Arial, sans-serif;
             font-size: 10px;
             font-weight: 800;
             letter-spacing: .35px;
@@ -469,7 +468,6 @@
         .yokai-product-category {
             margin-bottom: 5px;
             color: var(--yokai-red);
-            font-family: "Inter", Arial, sans-serif;
             font-size: 10px;
             font-weight: 600;
             letter-spacing: .35px;
@@ -489,7 +487,6 @@
         .yokai-product-price {
             margin-top: 7px;
             color: var(--yokai-black);
-            font-family: "Inter", Arial, sans-serif;
             font-size: 14px;
             font-weight: 800;
         }
@@ -512,11 +509,9 @@
             letter-spacing: .4px;
         }
 
-        
         /* =====================================================
            CTA · VISTE TU YOKAI
-           UNA SOLA IMPLEMENTACIÓN
-           Imagen fija · texto responsive
+           TRANSPARENTE / SIN BLOQUE DE COLOR
         ====================================================== */
 
         .yokai-cta {
@@ -529,8 +524,8 @@
             padding: 0;
             overflow: hidden;
             isolation: isolate;
-            background: #101727;
-            color: var(--yokai-white);
+            background: transparent;
+            color: var(--yokai-black);
             box-sizing: border-box;
         }
 
@@ -539,8 +534,6 @@
             z-index: 1 !important;
             top: 0 !important;
             right: 0 !important;
-            bottom: auto !important;
-            left: auto !important;
             width: 1376px !important;
             height: 430px !important;
             max-width: none !important;
@@ -556,6 +549,8 @@
             -webkit-user-drag: none;
         }
 
+        /* Degradado BLANCO transparente solo para legibilidad.
+           No agrega azul, gris ni otro bloque de color. */
         .yokai-cta::before {
             content: "";
             position: absolute;
@@ -564,12 +559,11 @@
             background:
                 linear-gradient(
                     90deg,
-                    #101727 0%,
-                    rgba(16,23,39,.98) 28%,
-                    rgba(16,23,39,.88) 42%,
-                    rgba(16,23,39,.48) 58%,
-                    rgba(16,23,39,.10) 76%,
-                    rgba(16,23,39,0) 100%
+                    rgba(255,255,255,1) 0%,
+                    rgba(255,255,255,.98) 28%,
+                    rgba(255,255,255,.88) 42%,
+                    rgba(255,255,255,.42) 58%,
+                    rgba(255,255,255,0) 76%
                 );
             pointer-events: none;
         }
@@ -602,55 +596,31 @@
         }
 
         .yokai-cta-label {
-            display: block;
             margin-bottom: 15px;
-            color: var(--yokai-red);
-            font-family: "Inter", Arial, sans-serif;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            line-height: 1;
-            text-transform: uppercase;
         }
 
         .yokai-cta h2 {
             max-width: 850px;
-            margin: 0;
-            color: var(--yokai-white);
-            font-family: "Barlow Condensed", Arial, sans-serif;
-            font-size: clamp(58px, 6vw, 90px);
-            line-height: .78;
-            font-weight: 900;
-            letter-spacing: .6px;
-            text-transform: uppercase;
-        }
-
-        .yokai-cta h2 span {
-            display: block;
-            color: var(--yokai-red);
+            color: var(--yokai-black);
         }
 
         .yokai-cta p {
             max-width: 550px;
             margin: 22px 0 28px;
-            color: #DDDDDD;
-            font-family: "Inter", Arial, sans-serif;
-            font-size: 15px;
-            line-height: 1.75;
+            color: #555555;
         }
 
         .yokai-cta-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: fit-content !important;
-            max-width: max-content !important;
-            align-self: flex-start !important;
+            width: fit-content;
+            max-width: max-content;
+            align-self: flex-start;
             min-height: 44px;
             padding: 0 22px;
             background: var(--yokai-red);
             color: var(--yokai-white);
-            font-family: "Inter", Arial, sans-serif;
             font-size: 11px;
             font-weight: 800;
             letter-spacing: .5px;
@@ -663,111 +633,32 @@
             transform: translateY(-2px);
         }
 
-        @media (max-width: 700px) {
-
-            .yokai-cta {
-                height: 430px;
-                min-height: 430px;
-                margin: 55px 0 28px;
-            }
-
-            .yokai-cta-art {
-                width: 1376px !important;
-                height: 430px !important;
-                right: 0 !important;
-                top: 0 !important;
-                object-fit: contain !important;
-                object-position: right center !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            .yokai-cta-content {
-                width: calc(100% - 28px);
-                height: 430px;
-            }
-
-            .yokai-cta h2 {
-                font-size: 57px;
-                line-height: .78;
-                letter-spacing: .4px;
-            }
-
-            .yokai-cta p {
-                max-width: 68%;
-                margin: 17px 0 23px;
-                font-size: 13px;
-                line-height: 1.65;
-            }
-
-            .yokai-cta-button {
-                min-height: 42px;
-                padding: 0 16px;
-            }
-
-            .yokai-cta::after {
-                width: 90px;
-                height: 2px;
-            }
+        #satori-footer {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
         }
-
-        @media (max-width: 380px) {
-
-            .yokai-cta-content {
-                width: calc(100% - 24px);
-            }
-
-            .yokai-cta h2 {
-                font-size: 49px;
-            }
-        }
-
 
         /* =====================================================
            TABLET
         ====================================================== */
 
         @media (max-width: 1100px) {
-            .yokai-hero {
-                grid-template-columns: 1fr 1fr;
-                min-height: 520px;
-            }
-
-            .yokai-hero-image {
-                min-height: 520px;
-            }
 
             .yokai-hero-content {
-                padding-right: 25px;
+                padding: 76px 28px;
             }
 
             .yokai-products-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .yokai-cta-art {
-                width: 82%;
-                right: -4%;
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
 
         @media (max-width: 800px) {
-            .yokai-hero {
-                grid-template-columns: 1fr;
-                min-height: 0;
-            }
-
-            .yokai-hero-content {
-                min-height: 390px;
-                padding: 75px 30px 50px;
-            }
-
-            .yokai-hero-image {
-                min-height: 460px;
-            }
 
             .yokai-products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
                 column-gap: 16px;
                 row-gap: 45px;
             }
@@ -778,29 +669,27 @@
         ====================================================== */
 
         @media (max-width: 700px) {
+
             .yokai-content {
                 width: calc(100% - 28px);
             }
 
+            /* HERO: arte detrás del texto, sin desbordar */
             .yokai-hero {
-                position: relative;
-                display: block;
+                height: 560px;
                 min-height: 560px;
-                isolation: isolate;
             }
 
             .yokai-hero-content {
-                position: relative;
-                z-index: 4;
+                height: 560px;
                 min-height: 560px;
                 justify-content: flex-start;
-                padding: 58px 14px 42px;
-                background: transparent;
+                padding: 58px 14px 36px;
             }
 
             .yokai-hero h1,
             .yokai-cta h2 {
-                font-size: 57px;
+                font-size: clamp(48px, 14vw, 57px);
                 line-height: .78;
                 letter-spacing: .4px;
             }
@@ -808,36 +697,41 @@
             .yokai-hero-description,
             .yokai-cta p {
                 font-size: 13px;
-                line-height: 1.65;
+                line-height: 1.6;
             }
 
             .yokai-hero-description {
-                max-width: min(76%, 330px);
-                margin-top: 20px;
+                max-width: 72%;
+                margin-top: 18px;
                 color: #5F5F5F;
             }
 
             .yokai-hero-image {
-                position: absolute;
-                z-index: 1;
-                inset: 0;
+                top: 0;
+                right: 0;
                 width: 100%;
-                height: 100%;
-                min-height: 0;
-                pointer-events: none;
+                height: 560px;
+                min-height: 560px;
+                overflow: hidden;
+            }
+
+            .yokai-hero-product-image {
+                top: 0;
+                right: -18%;
+                left: auto;
+                width: 720px;
+                height: 560px;
+                object-fit: contain;
+                object-position: right bottom;
+                opacity: .92;
+                transform: none;
             }
 
             .yokai-hero-image::after {
                 right: -18px;
-                bottom: -24px;
+                bottom: -20px;
                 font-size: 88px;
                 letter-spacing: -5px;
-            }
-
-            .yokai-hero-product-image {
-                object-position: right bottom;
-                transform: scale(1.12) translate(8%, 5%);
-                transform-origin: right bottom;
             }
 
             .yokai-hero-number {
@@ -852,6 +746,7 @@
                 height: 2px;
             }
 
+            /* TICKER */
             .yokai-ticker {
                 height: 32px;
             }
@@ -867,6 +762,7 @@
                 font-size: 9px;
             }
 
+            /* PRODUCTOS */
             .yokai-products {
                 padding-top: 48px;
             }
@@ -908,7 +804,8 @@
             }
 
             .yokai-products-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
                 column-gap: 10px;
                 row-gap: 32px;
             }
@@ -923,7 +820,6 @@
 
             .yokai-product-name {
                 font-size: 18px;
-                letter-spacing: .3px;
             }
 
             .yokai-product-price {
@@ -942,22 +838,34 @@
                 font-size: 9px;
             }
 
+            /* CTA TRANSPARENTE EN MÓVIL */
             .yokai-cta {
+                height: 400px;
                 min-height: 400px;
-                margin: 55px 0 28px;
-                padding: 48px 14px;
-                align-items: center;
+                margin: 52px 0 24px;
+                background: transparent;
+            }
+
+            .yokai-cta-art {
+                top: 0 !important;
+                right: -165px !important;
+                width: 900px !important;
+                height: 400px !important;
+                object-fit: contain !important;
+                object-position: right center !important;
+                opacity: .82 !important;
             }
 
             .yokai-cta::before {
-                background: linear-gradient(
-                    90deg,
-                    #101727 0%,
-                    rgba(16,23,39,.98) 42%,
-                    rgba(16,23,39,.72) 62%,
-                    rgba(16,23,39,.18) 82%,
-                    rgba(16,23,39,0) 100%
-                );
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(255,255,255,1) 0%,
+                        rgba(255,255,255,.98) 42%,
+                        rgba(255,255,255,.80) 60%,
+                        rgba(255,255,255,.20) 82%,
+                        rgba(255,255,255,0) 100%
+                    );
             }
 
             .yokai-cta::after {
@@ -965,22 +873,13 @@
                 height: 2px;
             }
 
-            .yokai-cta-art {
-                width: 165%;
-                height: 100%;
-                right: -78%;
-                top: 0;
-                object-fit: contain;
-                object-position: center center;
-                opacity: .68;
-            }
-
             .yokai-cta-content {
-                max-width: 100%;
+                width: calc(100% - 28px);
+                height: 400px;
             }
 
             .yokai-cta p {
-                max-width: 68%;
+                max-width: 72%;
                 margin: 17px 0 23px;
             }
 
@@ -990,18 +889,47 @@
             }
         }
 
+        @media (max-width: 480px) {
+
+            .yokai-hero-description {
+                max-width: 78%;
+            }
+
+            .yokai-hero-product-image {
+                right: -32%;
+                width: 680px;
+            }
+
+            .yokai-products-heading h2 {
+                font-size: 43px;
+            }
+
+            .yokai-cta-art {
+                right: -245px !important;
+                width: 860px !important;
+            }
+
+            .yokai-cta p {
+                max-width: 78%;
+                font-size: 12.5px;
+            }
+        }
+
         @media (max-width: 380px) {
+
             .yokai-content {
                 width: calc(100% - 24px);
             }
 
-            .yokai-hero,
-            .yokai-hero-content {
+            .yokai-hero {
+                height: 520px;
                 min-height: 520px;
             }
 
             .yokai-hero-content {
-                padding: 52px 12px 36px;
+                height: 520px;
+                min-height: 520px;
+                padding: 52px 12px 32px;
             }
 
             .yokai-hero h1,
@@ -1010,145 +938,60 @@
             }
 
             .yokai-hero-description {
-                max-width: 74%;
-                margin-top: 17px;
+                max-width: 80%;
                 font-size: 12.5px;
             }
 
-            .yokai-hero-product-image {
-                transform: scale(1.18) translate(10%, 6%);
+            .yokai-hero-image {
+                height: 520px;
+                min-height: 520px;
             }
 
-            .yokai-products-heading h2 {
-                font-size: 43px;
+            .yokai-hero-product-image {
+                right: -40%;
+                width: 650px;
+                height: 520px;
             }
 
             .yokai-ticker-track {
                 animation-duration: 28s;
             }
 
-            .yokai-cta {
-                min-height: 390px;
-                padding: 44px 12px;
+            .yokai-cta-content {
+                width: calc(100% - 24px);
             }
 
             .yokai-cta-art {
-                width: 180%;
-                right: -90%;
+                right: -280px !important;
+                width: 830px !important;
             }
         }
 
         @media (hover: none) and (pointer: coarse) {
-            .yokai-product:hover .image-primary { opacity: 1; }
-            .yokai-product:hover .image-secondary { opacity: 0; }
-            .yokai-product:hover .yokai-product-image img { transform: none; }
-            .yokai-cta-button:hover { transform: none; }
+
+            .yokai-product:hover .image-primary {
+                opacity: 1;
+            }
+
+            .yokai-product:hover .image-secondary {
+                opacity: 0;
+            }
+
+            .yokai-product:hover .yokai-product-image img,
+            .yokai-cta-button:hover {
+                transform: none;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .yokai-ticker-track { animation: none; }
-        }
 
-    
-        /* =====================================================
-           YOKAI · HERO CON IMAGEN FIJA
-           La imagen no cambia de tamaño/posición.
-           Solo el texto responde.
-        ====================================================== */
-
-        .yokai-hero {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: 610px;
-            min-height: 610px;
-            overflow: hidden;
-            isolation: isolate;
-            background: var(--yokai-white);
-        }
-
-        .yokai-hero-content {
-            position: relative;
-            z-index: 4;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-            height: 610px;
-            box-sizing: border-box;
-            padding:
-                90px
-                40px
-                90px
-                max(
-                    var(--satori-official-side),
-                    calc((100vw - var(--satori-official-width)) / 2)
-                );
-            background: transparent;
-        }
-
-        .yokai-hero-image {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            width: 950px;
-            height: 610px;
-            min-height: 610px;
-            overflow: hidden;
-            background: transparent;
-            pointer-events: none;
-        }
-
-        .yokai-hero-product-image {
-            position: absolute;
-            inset: 0;
-            width: 950px;
-            height: 610px;
-            max-width: none;
-            display: block;
-            object-fit: contain;
-            object-position: right center;
-            transform: none !important;
-            transition: none !important;
-            background: transparent;
-        }
-
-        .yokai-hero:hover
-        .yokai-hero-product-image {
-            transform: none !important;
-        }
-
-        @media (max-width: 700px) {
-
-            .yokai-hero,
-            .yokai-hero-content {
-                height: 610px;
-                min-height: 610px;
-            }
-
-            .yokai-hero-content {
-                justify-content: flex-start;
-                padding: 58px 14px 42px;
-            }
-
-            .yokai-hero-product-image {
-                width: 950px;
-                height: 610px;
-                object-fit: contain;
-                object-position: right center;
-                transform: none !important;
-            }
-        }
-
-        @media (max-width: 380px) {
-
-            .yokai-hero-content {
-                padding: 52px 12px 36px;
+            .yokai-ticker-track {
+                animation: none;
             }
         }
 
     </style>
+
 
 </head>
 
@@ -2239,52 +2082,6 @@
 
         );
 
-    </script>
-
-
-    <!-- =====================================================
-         CTA · FALLBACK DE IMAGEN
-    ====================================================== -->
-
-    <script>
-        (function () {
-
-            const banner =
-                document.getElementById(
-                    "yokai-cta-art"
-                );
-
-            if (!banner) {
-                return;
-            }
-
-            const sources = [
-                "img/banner-yokai-universo.webp",
-                "img/banner-yokai-universo.webp",
-                "img/banner-yokai-universo.jpg",
-                "img/banner-yokai-universo.jpeg",
-                "/satorimode/img/banner-yokai-universo.webp",
-                "/satorimode/img/banner-yokai-universo.png",
-                "/satorimode/img/banner-yokai-universo.jpg",
-                "/satorimode/img/banner-yokai-universo.jpeg"
-            ];
-
-            let index = 0;
-
-            banner.addEventListener(
-                "error",
-                function () {
-
-                    index += 1;
-
-                    if (index < sources.length) {
-                        banner.src = sources[index];
-                    }
-
-                }
-            );
-
-        })();
     </script>
 
 </body>
