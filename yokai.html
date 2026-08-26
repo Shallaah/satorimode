@@ -1052,7 +1052,7 @@
            FULL WIDTH
         ====================================================== */
 
-     .yokai-cta {
+.yokai-cta {
 
     position: relative;
 
@@ -1064,8 +1064,7 @@
 
     min-height: 430px;
 
-    margin:
-        100px 0 0;
+    margin: 100px 0 0;
 
     padding:
         80px
@@ -1083,18 +1082,29 @@
 
     overflow: hidden;
 
-background: transparent !important;
+    background: transparent !important;
 
-background-image: url("./img/banner-yokai.webp") !important;
+    color: var(--yokai-white);
 
-background-size: cover !important;
+}
 
-background-position: center center !important;
+        .yokai-cta-background {
 
-background-repeat: no-repeat !important;
+    position: absolute;
 
-    color:
-        var(--yokai-white);
+    inset: 0;
+
+    z-index: 0;
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
 
 }
 
@@ -2855,9 +2865,16 @@ YOKAI
              FULL WIDTH
         ================================================== -->
 
-        <section class="yokai-cta">
+<section class="yokai-cta">
 
-            <div class="yokai-cta-content">
+    <img
+        class="yokai-cta-background"
+        src="img/banner-yokai.webp"
+        alt=""
+        aria-hidden="true"
+    >
+
+    <div class="yokai-cta-content">
 
                 <span class="yokai-cta-label">
                     SATORII · YOKAI STREETWEAR
