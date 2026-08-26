@@ -546,15 +546,13 @@
                 padding: 58px 14px 36px;
             }
 
-            .yokai-hero h1,
-            .yokai-cta h2 {
+            .yokai-hero h1 {
                 font-size: clamp(48px, 14vw, 57px);
                 line-height: .78;
                 letter-spacing: .4px;
             }
 
-            .yokai-hero-description,
-            .yokai-cta p {
+            .yokai-hero-description {
                 font-size: 13px;
                 line-height: 1.6;
             }
@@ -698,11 +696,6 @@
             }
 
             /* CTA TRANSPARENTE EN MÓVIL */
-
-            .yokai-cta p {
-                max-width: 72%;
-                margin: 17px 0 23px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -718,11 +711,6 @@
 
             .yokai-products-heading h2 {
                 font-size: 43px;
-            }
-
-            .yokai-cta p {
-                max-width: 78%;
-                font-size: 12.5px;
             }
         }
 
@@ -743,8 +731,7 @@
                 padding: 52px 12px 32px;
             }
 
-            .yokai-hero h1,
-            .yokai-cta h2 {
+            .yokai-hero h1 {
                 font-size: 49px;
             }
 
@@ -1110,6 +1097,171 @@
     
         #satori-footer .satori-global-footer {
             margin-top: 0 !important;
+        }
+
+    
+        /* =====================================================
+           YOKAI · HERO MÓVIL · MISMA LÓGICA VISUAL QUE ANIME.HTML
+           Texto arriba + ilustración más abajo
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .yokai-hero {
+                position: relative;
+                height: 610px;
+                min-height: 610px;
+                overflow: hidden;
+                isolation: isolate;
+            }
+
+            .yokai-hero-content {
+                position: relative;
+                z-index: 5;
+                height: 610px;
+                min-height: 610px;
+                justify-content: flex-start;
+                padding: 58px 14px 32px;
+                background: transparent;
+            }
+
+            .yokai-hero-kicker {
+                position: relative;
+                z-index: 6;
+                margin-bottom: 14px;
+            }
+
+            .yokai-hero h1 {
+                position: relative;
+                z-index: 6;
+                max-width: 100%;
+                font-size: clamp(48px, 14vw, 57px);
+                line-height: .78;
+                letter-spacing: .4px;
+            }
+
+            .yokai-hero-description {
+                position: relative;
+                z-index: 6;
+                max-width: min(88%, 350px);
+                margin-top: 20px;
+                color: #5F5F5F;
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            /* La ilustración comienza bastante más abajo,
+               como en Anime.html, para no tapar el texto. */
+            .yokai-hero-image {
+                position: absolute;
+                z-index: 1;
+
+                top: 175px;
+                right: 0;
+                bottom: auto;
+                left: auto;
+
+                width: 100%;
+                height: 435px;
+                min-height: 435px;
+
+                overflow: hidden;
+                pointer-events: none;
+            }
+
+            .yokai-hero-product-image {
+                position: absolute;
+
+                top: auto;
+                right: -18%;
+                bottom: 0;
+                left: auto;
+
+                width: 720px;
+                height: 435px;
+                max-width: none;
+
+                object-fit: contain;
+                object-position: right bottom;
+
+                opacity: 1;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            .yokai-hero-image::after {
+                right: -18px;
+                bottom: -18px;
+                font-size: 82px;
+                letter-spacing: -5px;
+            }
+
+            .yokai-hero-number {
+                top: 14px;
+                right: 14px;
+                z-index: 7;
+                font-size: 9px;
+                letter-spacing: 1.2px;
+            }
+
+            .yokai-hero-line {
+                width: 96px;
+                height: 2px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .yokai-hero-image {
+                top: 185px;
+                height: 425px;
+                min-height: 425px;
+            }
+
+            .yokai-hero-product-image {
+                right: -30%;
+                width: 690px;
+                height: 425px;
+            }
+
+            .yokai-hero-description {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 380px) {
+
+            .yokai-hero {
+                height: 575px;
+                min-height: 575px;
+            }
+
+            .yokai-hero-content {
+                height: 575px;
+                min-height: 575px;
+                padding: 52px 12px 30px;
+            }
+
+            .yokai-hero h1 {
+                font-size: 49px;
+            }
+
+            .yokai-hero-description {
+                max-width: 92%;
+                font-size: 12.5px;
+            }
+
+            .yokai-hero-image {
+                top: 180px;
+                height: 395px;
+                min-height: 395px;
+            }
+
+            .yokai-hero-product-image {
+                right: -38%;
+                width: 650px;
+                height: 395px;
+            }
         }
 
     </style>
