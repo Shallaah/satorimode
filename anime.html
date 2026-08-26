@@ -1661,7 +1661,9 @@
             <img
                 id="anime-cta-art"
                 class="anime-cta-art"
-                src="img/banner-anime-universo.webp?v=13"
+                loading="eager"
+                fetchpriority="high"
+                src="/satorimode/img/banner-anime-universo.png"
                 alt=""
                 aria-hidden="true"
             >
@@ -2438,6 +2440,25 @@
 
         );
 
+    </script>
+
+
+    <script>
+    (function () {
+        const img = document.getElementById("anime-cta-art");
+        if (!img) return;
+
+        img.addEventListener("load", function () {
+            console.log("SATORII CTA OK:", img.currentSrc || img.src);
+        });
+
+        img.addEventListener("error", function () {
+            console.error(
+                "SATORII CTA ERROR: la imagen no está publicada en GitHub Pages:",
+                img.src
+            );
+        });
+    })();
     </script>
 
 </body>
