@@ -22,7 +22,7 @@
 
     <meta
         name="description"
-        content="SATORII Yokai — Yokai, manga y cultura japonesa llevados al streetwear."
+        content="SATORII Yokai — Yokai, estetica y cultura japonesa llevados al streetwear."
     >
 
     <title>Yokai | Satorii</title>
@@ -512,27 +512,48 @@
             letter-spacing: .4px;
         }
 
+        
         /* =====================================================
-           CTA · VISTE TU UNIVERSO
-           UNA SOLA IMPLEMENTACIÓN, SIN REGLAS DUPLICADAS
+           CTA · VISTE TU YOKAI
+           UNA SOLA IMPLEMENTACIÓN
+           Imagen fija · texto responsive
         ====================================================== */
 
         .yokai-cta {
             position: relative;
-            display: flex;
-            align-items: center;
+            display: block;
             width: 100%;
+            height: 430px;
             min-height: 430px;
             margin: 88px 0 48px;
-            padding: 70px max(
-                var(--satori-official-side),
-                calc((100vw - var(--satori-official-width)) / 2)
-            );
-            box-sizing: border-box;
+            padding: 0;
             overflow: hidden;
             isolation: isolate;
             background: #101727;
             color: var(--yokai-white);
+            box-sizing: border-box;
+        }
+
+        .yokai-cta-art {
+            position: absolute !important;
+            z-index: 1 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: auto !important;
+            left: auto !important;
+            width: 1376px !important;
+            height: 430px !important;
+            max-width: none !important;
+            display: block !important;
+            object-fit: contain !important;
+            object-position: right center !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+            transition: none !important;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
         .yokai-cta::before {
@@ -540,15 +561,16 @@
             position: absolute;
             z-index: 2;
             inset: 0;
-            background: linear-gradient(
-                90deg,
-                #101727 0%,
-                rgba(16,23,39,.98) 24%,
-                rgba(16,23,39,.90) 38%,
-                rgba(16,23,39,.48) 56%,
-                rgba(16,23,39,.08) 75%,
-                rgba(16,23,39,0) 100%
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #101727 0%,
+                    rgba(16,23,39,.98) 28%,
+                    rgba(16,23,39,.88) 42%,
+                    rgba(16,23,39,.48) 58%,
+                    rgba(16,23,39,.10) 76%,
+                    rgba(16,23,39,0) 100%
+                );
             pointer-events: none;
         }
 
@@ -556,60 +578,74 @@
             content: "";
             position: absolute;
             z-index: 4;
-            left: 0;
             top: 0;
+            left: 0;
             width: 180px;
             height: 3px;
             background: var(--yokai-red);
             pointer-events: none;
         }
 
-        .yokai-cta-art {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            width: 76%;
-            height: 100%;
-            max-width: none;
-            display: block;
-            object-fit: contain;
-            object-position: right center;
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
         .yokai-cta-content {
             position: relative;
             z-index: 5;
-            width: 100%;
-            max-width: var(--satori-official-width);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: min(
+                var(--satori-official-width),
+                calc(100% - 70px)
+            );
+            height: 430px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .yokai-cta-label {
+            display: block;
             margin-bottom: 15px;
+            color: var(--yokai-red);
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            line-height: 1;
+            text-transform: uppercase;
         }
 
         .yokai-cta h2 {
             max-width: 850px;
+            margin: 0;
             color: var(--yokai-white);
+            font-family: "Barlow Condensed", Arial, sans-serif;
+            font-size: clamp(58px, 6vw, 90px);
+            line-height: .78;
+            font-weight: 900;
+            letter-spacing: .6px;
+            text-transform: uppercase;
+        }
+
+        .yokai-cta h2 span {
+            display: block;
+            color: var(--yokai-red);
         }
 
         .yokai-cta p {
             max-width: 550px;
             margin: 22px 0 28px;
             color: #DDDDDD;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.75;
         }
 
         .yokai-cta-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: fit-content !important;
+            max-width: max-content !important;
+            align-self: flex-start !important;
             min-height: 44px;
             padding: 0 22px;
             background: var(--yokai-red);
@@ -627,10 +663,65 @@
             transform: translateY(-2px);
         }
 
-        #satori-footer {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
+        @media (max-width: 700px) {
+
+            .yokai-cta {
+                height: 430px;
+                min-height: 430px;
+                margin: 55px 0 28px;
+            }
+
+            .yokai-cta-art {
+                width: 1376px !important;
+                height: 430px !important;
+                right: 0 !important;
+                top: 0 !important;
+                object-fit: contain !important;
+                object-position: right center !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .yokai-cta-content {
+                width: calc(100% - 28px);
+                height: 430px;
+            }
+
+            .yokai-cta h2 {
+                font-size: 57px;
+                line-height: .78;
+                letter-spacing: .4px;
+            }
+
+            .yokai-cta p {
+                max-width: 68%;
+                margin: 17px 0 23px;
+                font-size: 13px;
+                line-height: 1.65;
+            }
+
+            .yokai-cta-button {
+                min-height: 42px;
+                padding: 0 16px;
+            }
+
+            .yokai-cta::after {
+                width: 90px;
+                height: 2px;
+            }
         }
+
+        @media (max-width: 380px) {
+
+            .yokai-cta-content {
+                width: calc(100% - 24px);
+            }
+
+            .yokai-cta h2 {
+                font-size: 49px;
+            }
+        }
+
 
         /* =====================================================
            TABLET
@@ -960,14 +1051,9 @@
 
     
         /* =====================================================
-           SATORII · YOKAI · BANNERS FIJOS · CORRECCIÓN FINAL
-           - Las imágenes NO cambian de tamaño ni posición.
-           - Solo el texto es responsive.
-           - El botón mantiene ancho natural.
-        ====================================================== */
-
-        /* =====================================================
-           HERO SUPERIOR · IMAGEN FIJA
+           YOKAI · HERO CON IMAGEN FIJA
+           La imagen no cambia de tamaño/posición.
+           Solo el texto responde.
         ====================================================== */
 
         .yokai-hero {
@@ -1033,162 +1119,7 @@
             transform: none !important;
         }
 
-
-        /* =====================================================
-           CTA INFERIOR · IMAGEN FIJA
-        ====================================================== */
-
-        .yokai-cta {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: 430px;
-            min-height: 430px;
-            margin: 88px 0 48px;
-            padding: 0;
-            overflow: hidden;
-            isolation: isolate;
-            background: #101727;
-            color: var(--yokai-white);
-            box-sizing: border-box;
-        }
-
-        .yokai-cta-art {
-            position: absolute !important;
-            z-index: 1 !important;
-            top: 0 !important;
-            right: 0 !important;
-            bottom: auto !important;
-            left: auto !important;
-
-            width: 1376px !important;
-            height: 430px !important;
-            max-width: none !important;
-
-            display: block !important;
-
-            object-fit: contain !important;
-            object-position: right center !important;
-
-            opacity: 1 !important;
-            visibility: visible !important;
-
-            transform: none !important;
-            transition: none !important;
-
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        .yokai-cta::before {
-            content: "";
-            position: absolute;
-            z-index: 2;
-            inset: 0;
-            background:
-                linear-gradient(
-                    90deg,
-                    #101727 0%,
-                    rgba(16,23,39,.98) 28%,
-                    rgba(16,23,39,.88) 42%,
-                    rgba(16,23,39,.48) 58%,
-                    rgba(16,23,39,.10) 76%,
-                    rgba(16,23,39,0) 100%
-                );
-            pointer-events: none;
-        }
-
-        .yokai-cta::after {
-            content: "";
-            position: absolute;
-            z-index: 4;
-            top: 0;
-            left: 0;
-            width: 180px;
-            height: 3px;
-            background: var(--yokai-red);
-            pointer-events: none;
-        }
-
-        .yokai-cta-content {
-            position: relative;
-            z-index: 5;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            width:
-                min(
-                    var(--satori-official-width),
-                    calc(100% - 70px)
-                );
-
-            height: 430px;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-
-        /* BOTÓN · TAMAÑO NATURAL */
-
-        .yokai-cta-button {
-            width: fit-content !important;
-            max-width: max-content !important;
-            align-self: flex-start !important;
-            flex: 0 0 auto !important;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE · SOLO TEXTO
-        ====================================================== */
-
-        @media (max-width: 1100px) {
-
-            .yokai-hero-content {
-                padding:
-                    76px
-                    28px
-                    76px
-                    28px;
-            }
-
-            .yokai-products-grid {
-                grid-template-columns:
-                    repeat(
-                        3,
-                        minmax(0, 1fr)
-                    );
-            }
-
-        }
-
-        @media (max-width: 800px) {
-
-            .yokai-hero-content {
-                padding:
-                    64px
-                    22px
-                    54px;
-            }
-
-            .yokai-products-grid {
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0, 1fr)
-                    );
-                column-gap: 16px;
-                row-gap: 45px;
-            }
-
-        }
-
         @media (max-width: 700px) {
-
-            .yokai-content {
-                width: calc(100% - 28px);
-            }
 
             .yokai-hero,
             .yokai-hero-content {
@@ -1198,208 +1129,23 @@
 
             .yokai-hero-content {
                 justify-content: flex-start;
-                padding:
-                    58px
-                    14px
-                    42px;
+                padding: 58px 14px 42px;
             }
 
-            .yokai-hero h1,
-            .yokai-cta h2 {
-                font-size: 57px;
-                line-height: .78;
-                letter-spacing: .4px;
+            .yokai-hero-product-image {
+                width: 950px;
+                height: 610px;
+                object-fit: contain;
+                object-position: right center;
+                transform: none !important;
             }
-
-            .yokai-hero-description,
-            .yokai-cta p {
-                font-size: 13px;
-                line-height: 1.65;
-            }
-
-            .yokai-hero-description {
-                max-width: min(74%, 330px);
-                margin-top: 20px;
-                color: #5F5F5F;
-            }
-
-            .yokai-hero-number {
-                top: 14px;
-                right: 14px;
-                font-size: 9px;
-                letter-spacing: 1.2px;
-            }
-
-            .yokai-hero-line {
-                width: 96px;
-                height: 2px;
-            }
-
-            .yokai-hero-image::after {
-                right: -18px;
-                bottom: -24px;
-                font-size: 88px;
-                letter-spacing: -5px;
-            }
-
-            .yokai-ticker {
-                height: 32px;
-            }
-
-            .yokai-ticker-group {
-                gap: 20px;
-                padding-right: 20px;
-                font-size: 9px;
-                letter-spacing: .65px;
-            }
-
-            .yokai-ticker-track span {
-                font-size: 9px;
-            }
-
-            .yokai-products {
-                padding-top: 48px;
-            }
-
-            .yokai-products-heading {
-                display: block;
-                margin-bottom: 18px;
-            }
-
-            .yokai-products-heading h2 {
-                font-size: 48px;
-            }
-
-            .yokai-products-count {
-                display: block;
-                margin-top: 10px;
-            }
-
-            .yokai-filters {
-                flex-wrap: nowrap;
-                gap: 6px;
-                overflow-x: auto;
-                overscroll-behavior-x: contain;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                margin-bottom: 24px;
-                padding-bottom: 12px;
-            }
-
-            .yokai-filters::-webkit-scrollbar {
-                display: none;
-            }
-
-            .yokai-filter {
-                flex: 0 0 auto;
-                min-height: 34px;
-                padding: 0 11px;
-                font-size: 10px;
-            }
-
-            .yokai-products-grid {
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0, 1fr)
-                    );
-                column-gap: 10px;
-                row-gap: 32px;
-            }
-
-            .yokai-product-info {
-                padding-top: 9px;
-            }
-
-            .yokai-product-category {
-                font-size: 9px;
-            }
-
-            .yokai-product-name {
-                font-size: 18px;
-                letter-spacing: .3px;
-            }
-
-            .yokai-product-price {
-                font-size: 12px;
-            }
-
-            .yokai-product-badges {
-                top: 6px;
-                left: 6px;
-                gap: 3px;
-            }
-
-            .yokai-product-badge {
-                min-height: 20px;
-                padding: 4px 6px;
-                font-size: 9px;
-            }
-
-            .yokai-cta {
-                height: 430px;
-                min-height: 430px;
-                margin: 55px 0 28px;
-            }
-
-            .yokai-cta-content {
-                width: calc(100% - 28px);
-                height: 430px;
-            }
-
-            .yokai-cta p {
-                max-width: 68%;
-                margin: 17px 0 23px;
-            }
-
-            .yokai-cta-button {
-                min-height: 42px;
-                padding: 0 16px;
-            }
-
-            .yokai-cta::after {
-                width: 90px;
-                height: 2px;
-            }
-
         }
 
         @media (max-width: 380px) {
 
-            .yokai-content {
-                width: calc(100% - 24px);
-            }
-
             .yokai-hero-content {
-                padding:
-                    52px
-                    12px
-                    36px;
+                padding: 52px 12px 36px;
             }
-
-            .yokai-hero h1,
-            .yokai-cta h2 {
-                font-size: 49px;
-            }
-
-            .yokai-hero-description {
-                max-width: 72%;
-                margin-top: 17px;
-                font-size: 12.5px;
-            }
-
-            .yokai-products-heading h2 {
-                font-size: 43px;
-            }
-
-            .yokai-ticker-track {
-                animation-duration: 28s;
-            }
-
-            .yokai-cta-content {
-                width: calc(100% - 24px);
-            }
-
         }
 
     </style>
@@ -1450,8 +1196,7 @@
 
                 <p class="yokai-hero-description">
 
-                    Diseños inspirados en los universos
-                    que marcaron nuestra generación,
+                    Diseños inspirados en yokai, folklore y símbolos japoneses,
                     llevados a la estética urbana de SATORII.
 
                 </p>
@@ -1707,9 +1452,8 @@
 
         </div>
 
-
         <!-- =================================================
-             CTA · VISTE TU UNIVERSO
+             CTA · VISTE TU YOKAI
              FULL WIDTH
         ================================================== -->
 
@@ -1718,9 +1462,8 @@
             <img
                 id="yokai-cta-art"
                 class="yokai-cta-art"
-                src="img/banner-yokai-universo.webp?v=11"
-                alt=""
-                aria-hidden="true"
+                src="img/banner-yokai-universo.webp"
+                alt="Viste tu Yokai - SATORII"
                 decoding="async"
             >
 
@@ -1736,9 +1479,9 @@
                 </h2>
 
                 <p>
-                    Yokai, cultura japonesa y estética
-                    urbana llevados a una propuesta
-                    para quienes quieren destacar.
+                    Yokai, folklore japonés y estética urbana
+                    llevados a una propuesta para quienes
+                    quieren destacar.
                 </p>
 
                 <a
@@ -1752,13 +1495,11 @@
 
         </section>
 
-
-    </main>
-
-
     <!-- =====================================================
          FOOTER
     ====================================================== -->
+
+    </main>
 
     <div id="satori-footer"></div>
 
@@ -2500,6 +2241,51 @@
 
     </script>
 
+
+    <!-- =====================================================
+         CTA · FALLBACK DE IMAGEN
+    ====================================================== -->
+
+    <script>
+        (function () {
+
+            const banner =
+                document.getElementById(
+                    "yokai-cta-art"
+                );
+
+            if (!banner) {
+                return;
+            }
+
+            const sources = [
+                "img/banner-yokai-universo.webp",
+                "img/banner-yokai-universo.png",
+                "img/banner-yokai-universo.jpg",
+                "img/banner-yokai-universo.jpeg",
+                "/satorimode/img/banner-yokai-universo.webp",
+                "/satorimode/img/banner-yokai-universo.png",
+                "/satorimode/img/banner-yokai-universo.jpg",
+                "/satorimode/img/banner-yokai-universo.jpeg"
+            ];
+
+            let index = 0;
+
+            banner.addEventListener(
+                "error",
+                function () {
+
+                    index += 1;
+
+                    if (index < sources.length) {
+                        banner.src = sources[index];
+                    }
+
+                }
+            );
+
+        })();
+    </script>
 
 </body>
 
