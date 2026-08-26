@@ -1141,64 +1141,144 @@
            FULL WIDTH
         ====================================================== */
 
+.anime-cta {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 430px;
+
+    margin: 88px 0 48px;
+
+    padding:
+        82px
+        max(
+            var(--satori-official-side),
+            calc(
+                (
+                    100vw -
+                    var(--satori-official-width)
+                ) / 2
+            )
+        );
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 78% 50%,
+            rgba(255,255,255,.10) 0%,
+            rgba(255,255,255,.04) 25%,
+            transparent 48%
+        ),
+        #101727;
+
+    color: #fff;
+
+}
+        /* =====================================================
+   CTA · ARTE ANIME
+===================================================== */
+
+.anime-cta-art {
+
+    position: absolute;
+
+    z-index: 1;
+
+    right: 1%;
+
+    bottom: 0;
+
+    width: min(72vw, 1380px);
+
+    height: auto;
+
+    max-width: none;
+
+    object-fit: contain;
+
+    object-position: right bottom;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(
+            0 12px 20px
+            rgba(0,0,0,.30)
+        );
+
+}
+
+
+.anime-cta-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    max-width:
+        var(--satori-official-width);
+
+    margin: 0 auto;
+
+}
+
         .anime-cta {
 
-            position: relative;
+    min-height: 430px;
 
-            display: flex;
+    padding:
+        48px
+        14px;
 
-            align-items: center;
+    align-items: flex-start;
 
-            width: 100%;
+}
 
-            min-height: 430px;
 
-            margin:
-                100px 0 0;
+.anime-cta-art {
 
-            padding:
-                80px
-                max(
-                    30px,
-                    calc(
-                        (
-                            100vw -
-                            var(--satori-content-width, 1800px)
-                        ) / 2
-                    )
-                );
+    right: -45%;
 
-            box-sizing: border-box;
+    bottom: 0;
 
-            overflow: hidden;
+    width: 165%;
 
-            background:
-                var(--anime-black);
+    max-width: none;
 
-            background-image:
-                linear-gradient(
-                    90deg,
-                    rgba(16,23,39,.97) 0%,
-                    rgba(16,23,39,.86) 35%,
-                    rgba(16,23,39,.42) 70%,
-                    rgba(16,23,39,.15) 100%
-                ),
-                var(--anime-cta-image);
+    opacity: .72;
 
-            background-size:
-                cover;
+}
 
-            background-position:
-                center;
 
-            background-repeat:
-                no-repeat;
+.anime-cta-content {
 
-            color:
-                var(--anime-white);
+    z-index: 3;
 
-        }
+}
 
+
+.anime-cta p {
+
+    max-width: 65%;
+
+}
 
         .anime-cta::before {
 
@@ -3933,7 +4013,15 @@
              FULL WIDTH
         ================================================== -->
 
-        <section class="anime-cta">
+        
+<section class="anime-cta">
+
+    <img
+        src="img/banner-anime-universo.webp"
+        class="anime-cta-art"
+        alt=""
+        aria-hidden="true"
+    >
 
             <div class="anime-cta-content">
 
