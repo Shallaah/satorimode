@@ -949,6 +949,376 @@
             }
         }
 
+    
+        /* =====================================================
+           SATORII · AJUSTE FINAL RESPONSIVE
+           IMÁGENES DE BANNER FIJAS · SOLO TEXTO RESPONSIVE
+        ====================================================== */
+
+        .anime-hero {
+            height: 610px !important;
+            min-height: 610px !important;
+        }
+
+        .anime-hero-image {
+            top: 0 !important;
+            right: 0 !important;
+            width: 950px !important;
+            height: 610px !important;
+            min-height: 610px !important;
+            transform: none !important;
+        }
+
+        .anime-hero-product-image {
+            width: 950px !important;
+            height: 610px !important;
+            max-width: none !important;
+            object-fit: contain !important;
+            object-position: right center !important;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .anime-cta {
+            height: 430px !important;
+            min-height: 430px !important;
+        }
+
+        .anime-cta-art {
+            top: 0 !important;
+            right: 0 !important;
+            bottom: auto !important;
+            left: auto !important;
+
+            display: block !important;
+
+            width: 1376px !important;
+            height: 430px !important;
+            min-width: 1376px !important;
+            max-width: none !important;
+
+            object-fit: contain !important;
+            object-position: right center !important;
+
+            transform: none !important;
+            transition: none !important;
+
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .anime-cta-content {
+            align-items: flex-start !important;
+        }
+
+        .anime-cta-button {
+            width: auto !important;
+            max-width: max-content !important;
+            align-self: flex-start !important;
+            flex: 0 0 auto !important;
+        }
+
+
+        /* =====================================================
+           TELÉFONO
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .anime-content {
+                width: calc(100% - 24px);
+            }
+
+            /*
+                El HERO mantiene la misma imagen 950x610.
+                Solo cambia el bloque de texto.
+            */
+
+            .anime-hero,
+            .anime-hero-content {
+                height: 610px !important;
+                min-height: 610px !important;
+            }
+
+            .anime-hero-content {
+                justify-content: flex-start !important;
+
+                padding:
+                    52px
+                    14px
+                    36px !important;
+            }
+
+            .anime-hero-kicker {
+                margin-bottom: 11px;
+                font-size: 10px;
+                letter-spacing: 1.5px;
+            }
+
+            .anime-hero h1 {
+                max-width: 78%;
+
+                font-size:
+                    clamp(
+                        48px,
+                        14.5vw,
+                        57px
+                    ) !important;
+
+                line-height: .80 !important;
+            }
+
+            .anime-hero-description {
+                max-width: min(72%, 285px);
+
+                margin-top: 17px;
+
+                font-size: 12.5px !important;
+                line-height: 1.55 !important;
+            }
+
+            .anime-hero-number {
+                top: 12px;
+                right: 12px;
+            }
+
+            .anime-ticker {
+                height: 32px;
+            }
+
+            .anime-ticker-group {
+                gap: 18px;
+                padding-right: 18px;
+
+                font-size: 9px;
+            }
+
+
+            /* PRODUCTOS */
+
+            .anime-products {
+                padding-top: 45px;
+            }
+
+            .anime-products-heading {
+                display: block;
+                margin-bottom: 17px;
+            }
+
+            .anime-products-heading h2 {
+                font-size:
+                    clamp(
+                        40px,
+                        12vw,
+                        47px
+                    );
+            }
+
+            .anime-products-count {
+                display: block;
+                margin-top: 9px;
+            }
+
+            .anime-filters {
+                flex-wrap: nowrap;
+                gap: 5px;
+
+                overflow-x: auto;
+
+                margin-bottom: 21px;
+                padding-bottom: 10px;
+
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .anime-filters::-webkit-scrollbar {
+                display: none;
+            }
+
+            .anime-filter {
+                flex: 0 0 auto;
+
+                min-height: 33px;
+
+                padding:
+                    0
+                    10px;
+
+                font-size: 9.5px;
+            }
+
+            .anime-products-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+
+                column-gap: 9px;
+                row-gap: 29px;
+            }
+
+            .anime-product-name {
+                font-size: 17px;
+                line-height: .95;
+            }
+
+            .anime-product-category {
+                font-size: 8.5px;
+            }
+
+            .anime-product-price {
+                font-size: 11.5px;
+            }
+
+
+            /*
+                CTA:
+                la imagen continúa siendo 1376x430.
+                NO se escala ni se reposiciona.
+            */
+
+            .anime-cta {
+                height: 430px !important;
+                min-height: 430px !important;
+
+                margin:
+                    52px
+                    0
+                    26px !important;
+            }
+
+            .anime-cta-art {
+                width: 1376px !important;
+                height: 430px !important;
+                min-width: 1376px !important;
+
+                top: 0 !important;
+                right: 0 !important;
+
+                transform: none !important;
+            }
+
+            .anime-cta-content {
+                width: calc(100% - 24px) !important;
+                height: 430px !important;
+
+                justify-content: center !important;
+                align-items: flex-start !important;
+            }
+
+            .anime-cta-label {
+                margin-bottom: 11px;
+
+                font-size: 10px;
+                letter-spacing: 1.5px;
+            }
+
+            .anime-cta h2 {
+                max-width: 62%;
+
+                font-size:
+                    clamp(
+                        46px,
+                        13.5vw,
+                        54px
+                    ) !important;
+
+                line-height: .80 !important;
+            }
+
+            .anime-cta p {
+                max-width: 58%;
+
+                margin:
+                    16px
+                    0
+                    21px;
+
+                font-size: 12px !important;
+                line-height: 1.55 !important;
+            }
+
+            .anime-cta-button {
+                width: auto !important;
+                max-width: max-content !important;
+
+                min-height: 39px;
+
+                padding:
+                    0
+                    13px;
+
+                font-size: 9px;
+
+                white-space: nowrap;
+            }
+
+        }
+
+
+        /* =====================================================
+           TELÉFONO MUY PEQUEÑO
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .anime-content {
+                width: calc(100% - 20px);
+            }
+
+            .anime-hero-content {
+                padding:
+                    48px
+                    10px
+                    32px !important;
+            }
+
+            .anime-hero h1 {
+                font-size: 47px !important;
+            }
+
+            .anime-hero-description {
+                max-width: 68%;
+                font-size: 12px !important;
+            }
+
+            .anime-products-heading h2 {
+                font-size: 40px;
+            }
+
+            .anime-products-grid {
+                column-gap: 8px;
+                row-gap: 26px;
+            }
+
+            .anime-cta-content {
+                width: calc(100% - 20px) !important;
+            }
+
+            .anime-cta h2 {
+                max-width: 64%;
+                font-size: 45px !important;
+            }
+
+            .anime-cta p {
+                max-width: 58%;
+                font-size: 11.5px !important;
+            }
+
+            .anime-cta-button {
+                min-height: 37px;
+                padding: 0 11px;
+                font-size: 8.5px;
+            }
+
+        }
+
     </style>
 
 </head>
@@ -1263,7 +1633,7 @@
             <img
                 id="anime-cta-art"
                 class="anime-cta-art"
-                src="https://raw.githubusercontent.com/Shallaaah/satorimode/main/img/banner-anime-universo.png"
+                src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                 alt=""
                 aria-hidden="true"
                 loading="eager"
@@ -1305,17 +1675,14 @@
         </section>
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <div id="satori-footer"></div>
+    </main>
 
 
 
     <!-- =====================================================
-         CTA · CARGA ROBUSTA DE IMAGEN
-         RAW GITHUB -> PAGES -> LOCAL
+         SATORII · CTA ANIME · CARGA WEBP
+         WEBP es la ruta principal porque el workflow convierte
+         las imágenes subidas. PNG queda solamente como fallback.
     ====================================================== -->
 
     <script>
@@ -1323,83 +1690,98 @@
 
         "use strict";
 
-        const image =
+        const banner =
             document.getElementById(
                 "anime-cta-art"
             );
 
-        if (!image) {
+        if (!banner) {
             return;
         }
 
-        const sources = [
-
-            "https://raw.githubusercontent.com/Shallaaah/satorimode/main/img/banner-anime-universo.png",
-
-            "https://raw.githubusercontent.com/Shallaaah/satorimode/main/img/banner-anime-universo.webp",
-
-            "https://shallaaah.github.io/satorimode/img/banner-anime-universo.png",
-
-            "https://shallaaah.github.io/satorimode/img/banner-anime-universo.webp",
-
-            "/satorimode/img/banner-anime-universo.png",
+        const candidates = [
 
             "/satorimode/img/banner-anime-universo.webp",
+            "img/banner-anime-universo.webp",
 
+            "/satorimode/img/banner-anime-universo.png",
             "img/banner-anime-universo.png",
 
-            "img/banner-anime-universo.webp"
+            "/satorimode/img/banner-anime-universo.WEBP",
+            "img/banner-anime-universo.WEBP"
 
         ];
 
-        let index = 0;
+        const cacheKey =
+            Date.now();
 
-        function trySource() {
+        function tryCandidate(index) {
 
-            if (index >= sources.length) {
+            if (index >= candidates.length) {
 
                 console.error(
-                    "SATORII · No fue posible cargar banner-anime-universo."
+                    "SATORII · No se encontró banner-anime-universo.webp ni su fallback PNG."
                 );
 
                 return;
             }
 
-            image.src =
-                sources[index];
+            const url =
+                candidates[index] +
+                "?v=" +
+                cacheKey;
+
+            const probe =
+                new Image();
+
+            probe.onload =
+                function () {
+
+                    banner.src =
+                        url;
+
+                    banner.style.display =
+                        "block";
+
+                    banner.style.visibility =
+                        "visible";
+
+                    banner.style.opacity =
+                        "1";
+
+                    console.log(
+                        "SATORII · CTA cargado:",
+                        url
+                    );
+
+                };
+
+            probe.onerror =
+                function () {
+
+                    tryCandidate(
+                        index + 1
+                    );
+
+                };
+
+            probe.src =
+                url;
 
         }
 
-        image.addEventListener(
-            "load",
-            function () {
-
-                console.log(
-                    "SATORII · Banner CTA cargado:",
-                    image.currentSrc || image.src
-                );
-
-            }
-        );
-
-        image.addEventListener(
-            "error",
-            function () {
-
-                index++;
-
-                trySource();
-
-            }
-        );
-
-        trySource();
+        tryCandidate(0);
 
     })();
     </script>
 
 
     <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div id="satori-footer"></div>
+<!-- =====================================================
          SUPABASE
     ====================================================== -->
 
