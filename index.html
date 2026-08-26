@@ -1408,22 +1408,24 @@
         }
 
 
-        .satori-universe-card img {
+.satori-universe-card img {
 
-            position: absolute;
+    position: absolute;
 
-            inset: 0;
+    inset: 0;
 
-            width: 100%;
+    z-index: 1;
 
-            height: 100%;
+    width: 100%;
 
-            object-fit: cover;
+    height: 100%;
 
-            transition:
-                transform .6s ease;
+    object-fit: cover;
 
-        }
+    transition:
+        transform .6s ease;
+
+}
 
 
         .satori-universe-card:hover img {
@@ -1514,27 +1516,28 @@
 
         }
 
+.satori-universe-fallback {
 
-        .satori-universe-fallback {
+    position: absolute;
 
-            position: absolute;
+    inset: 0;
 
-            inset: 0;
+    z-index: 0;
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            justify-content: center;
+    justify-content: center;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #131313,
-                    #292929
-                );
+    background:
+        linear-gradient(
+            145deg,
+            #131313,
+            #292929
+        );
 
-        }
+}
 
 
         .satori-universe-fallback span {
