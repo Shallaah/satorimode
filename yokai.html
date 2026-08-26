@@ -1055,64 +1055,55 @@
            FULL WIDTH
         ====================================================== */
 
-        .yokai-cta {
+     .yokai-cta {
 
-            position: relative;
+    position: relative;
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            width: 100%;
+    width: 100%;
 
-            min-height: 430px;
+    min-height: 430px;
 
-            margin:
-                100px 0 0;
+    margin:
+        100px 0 0;
 
-            padding:
-                80px
-                max(
-                    30px,
-                    calc(
-                        (
-                            100vw -
-                            var(--satori-content-width, 1800px)
-                        ) / 2
-                    )
-                );
+    padding:
+        80px
+        max(
+            30px,
+            calc(
+                (
+                    100vw -
+                    var(--satori-content-width, 1800px)
+                ) / 2
+            )
+        );
 
-            box-sizing: border-box;
+    box-sizing: border-box;
 
-            overflow: hidden;
+    overflow: hidden;
 
-            background:
-                var(--yokai-black);
+    background-color: transparent;
 
-            background-image:
-                linear-gradient(
-                    90deg,
-                    rgba(16,23,39,.97) 0%,
-                    rgba(16,23,39,.86) 35%,
-                    rgba(16,23,39,.42) 70%,
-                    rgba(16,23,39,.15) 100%
-                ),
-                var(--yokai-cta-image);
+    background-image:
+        var(--yokai-cta-image);
 
-            background-size:
-                cover;
+    background-size:
+        cover;
 
-            background-position:
-                center;
+    background-position:
+        center;
 
-            background-repeat:
-                no-repeat;
+    background-repeat:
+        no-repeat;
 
-            color:
-                var(--yokai-white);
+    color:
+        var(--yokai-white);
 
-        }
-
+}
 
         .yokai-cta::before {
 
