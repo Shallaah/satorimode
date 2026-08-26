@@ -958,6 +958,384 @@
             .anime-ticker-track { animation: none; }
         }
 
+    
+        /* =====================================================
+           SATORII · BANNERS CON IMAGEN FIJA
+           La imagen NO cambia de tamaño ni posición según pantalla.
+           Solo el texto es responsive.
+        ====================================================== */
+
+        /* HERO SUPERIOR */
+        .anime-hero {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 610px;
+            min-height: 610px;
+            overflow: hidden;
+            isolation: isolate;
+            background: var(--anime-white);
+        }
+
+        .anime-hero-content {
+            position: relative;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 610px;
+            box-sizing: border-box;
+            padding:
+                90px
+                40px
+                90px
+                max(
+                    var(--satori-official-side),
+                    calc((100vw - var(--satori-official-width)) / 2)
+                );
+            background: transparent;
+        }
+
+        .anime-hero-image {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            width: 950px;
+            height: 610px;
+            min-height: 610px;
+            overflow: hidden;
+            background: transparent;
+            pointer-events: none;
+        }
+
+        .anime-hero-product-image {
+            position: absolute;
+            inset: 0;
+            width: 950px;
+            height: 610px;
+            max-width: none;
+            display: block;
+            object-fit: contain;
+            object-position: right center;
+            transform: none !important;
+            transition: none !important;
+            background: transparent;
+        }
+
+        .anime-hero:hover
+        .anime-hero-product-image {
+            transform: none !important;
+        }
+
+        /* CTA INFERIOR */
+        .anime-cta {
+            position: relative;
+            width: 100%;
+            height: 430px;
+            min-height: 430px;
+            margin: 88px 0 48px;
+            overflow: hidden;
+            isolation: isolate;
+            background: #101727;
+            color: var(--anime-white);
+            box-sizing: border-box;
+        }
+
+        .anime-cta-art {
+            position: absolute !important;
+            z-index: 1 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: auto !important;
+            left: auto !important;
+            width: 1376px !important;
+            height: 430px !important;
+            max-width: none !important;
+            display: block !important;
+            object-fit: contain !important;
+            object-position: right center !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+            transition: none !important;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .anime-cta-content {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width:
+                min(
+                    var(--satori-official-width),
+                    calc(100% - 70px)
+                );
+            height: 430px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* =====================================================
+           RESPONSIVE · SOLO TEXTO
+           Las imágenes conservan EXACTAMENTE sus medidas.
+        ====================================================== */
+
+        @media (max-width: 1100px) {
+
+            .anime-hero-content {
+                padding:
+                    76px
+                    28px
+                    76px
+                    28px;
+            }
+
+            .anime-products-grid {
+                grid-template-columns:
+                    repeat(
+                        3,
+                        minmax(0, 1fr)
+                    );
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .anime-hero-content {
+                padding:
+                    64px
+                    22px
+                    54px;
+            }
+
+            .anime-products-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+                column-gap: 16px;
+                row-gap: 45px;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .anime-content {
+                width: calc(100% - 28px);
+            }
+
+            .anime-hero,
+            .anime-hero-content {
+                height: 610px;
+                min-height: 610px;
+            }
+
+            .anime-hero-content {
+                justify-content: flex-start;
+                padding:
+                    58px
+                    14px
+                    42px;
+            }
+
+            .anime-hero h1,
+            .anime-cta h2 {
+                font-size: 57px;
+                line-height: .78;
+                letter-spacing: .4px;
+            }
+
+            .anime-hero-description,
+            .anime-cta p {
+                font-size: 13px;
+                line-height: 1.65;
+            }
+
+            .anime-hero-description {
+                max-width: min(74%, 330px);
+                margin-top: 20px;
+                color: #5F5F5F;
+            }
+
+            .anime-hero-number {
+                top: 14px;
+                right: 14px;
+                font-size: 9px;
+                letter-spacing: 1.2px;
+            }
+
+            .anime-hero-line {
+                width: 96px;
+                height: 2px;
+            }
+
+            .anime-hero-image::after {
+                right: -18px;
+                bottom: -24px;
+                font-size: 88px;
+                letter-spacing: -5px;
+            }
+
+            .anime-ticker {
+                height: 32px;
+            }
+
+            .anime-ticker-group {
+                gap: 20px;
+                padding-right: 20px;
+                font-size: 9px;
+                letter-spacing: .65px;
+            }
+
+            .anime-ticker-track span {
+                font-size: 9px;
+            }
+
+            .anime-products {
+                padding-top: 48px;
+            }
+
+            .anime-products-heading {
+                display: block;
+                margin-bottom: 18px;
+            }
+
+            .anime-products-heading h2 {
+                font-size: 48px;
+            }
+
+            .anime-products-count {
+                display: block;
+                margin-top: 10px;
+            }
+
+            .anime-filters {
+                flex-wrap: nowrap;
+                gap: 6px;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                margin-bottom: 24px;
+                padding-bottom: 12px;
+            }
+
+            .anime-filters::-webkit-scrollbar {
+                display: none;
+            }
+
+            .anime-filter {
+                flex: 0 0 auto;
+                min-height: 34px;
+                padding: 0 11px;
+                font-size: 10px;
+            }
+
+            .anime-products-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+                column-gap: 10px;
+                row-gap: 32px;
+            }
+
+            .anime-product-info {
+                padding-top: 9px;
+            }
+
+            .anime-product-category {
+                font-size: 9px;
+            }
+
+            .anime-product-name {
+                font-size: 18px;
+                letter-spacing: .3px;
+            }
+
+            .anime-product-price {
+                font-size: 12px;
+            }
+
+            .anime-product-badges {
+                top: 6px;
+                left: 6px;
+                gap: 3px;
+            }
+
+            .anime-product-badge {
+                min-height: 20px;
+                padding: 4px 6px;
+                font-size: 9px;
+            }
+
+            .anime-cta {
+                height: 430px;
+                min-height: 430px;
+                margin: 55px 0 28px;
+            }
+
+            .anime-cta-content {
+                width: calc(100% - 28px);
+                height: 430px;
+            }
+
+            .anime-cta p {
+                max-width: 68%;
+                margin: 17px 0 23px;
+            }
+
+            .anime-cta-button {
+                min-height: 42px;
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 380px) {
+
+            .anime-content {
+                width: calc(100% - 24px);
+            }
+
+            .anime-hero-content {
+                padding:
+                    52px
+                    12px
+                    36px;
+            }
+
+            .anime-hero h1,
+            .anime-cta h2 {
+                font-size: 49px;
+            }
+
+            .anime-hero-description {
+                max-width: 72%;
+                margin-top: 17px;
+                font-size: 12.5px;
+            }
+
+            .anime-products-heading h2 {
+                font-size: 43px;
+            }
+
+            .anime-ticker-track {
+                animation-duration: 28s;
+            }
+
+            .anime-cta-content {
+                width: calc(100% - 24px);
+            }
+        }
+
     </style>
 
 </head>
