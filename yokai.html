@@ -498,287 +498,6 @@
 
         
         /* =====================================================
-           BANNER EDITORIAL · VISTE TU YOKAI
-           Sin color · sin degradado · transparente · sin CTA
-        ====================================================== */
-
-        .yokai-editorial-banner {
-            position: relative;
-            width: 100%;
-            height: 430px;
-            min-height: 430px;
-            margin: 88px 0 48px;
-            overflow: hidden;
-            isolation: isolate;
-
-            background: transparent !important;
-            background-color: transparent !important;
-            background-image: none !important;
-
-            color: var(--yokai-black);
-            box-sizing: border-box;
-        }
-
-        .yokai-editorial-banner::before,
-        .yokai-editorial-banner::after {
-            content: none !important;
-            display: none !important;
-            background: none !important;
-        }
-
-        .yokai-editorial-art {
-            position: absolute !important;
-            z-index: 1 !important;
-
-            top: 0 !important;
-            right: 0 !important;
-            bottom: auto !important;
-            left: auto !important;
-
-            width: 1376px !important;
-            height: 430px !important;
-            max-width: none !important;
-
-            display: block !important;
-
-            object-fit: contain !important;
-            object-position: right center !important;
-
-            opacity: 1 !important;
-            visibility: visible !important;
-
-            transform: none !important;
-            transition: none !important;
-            filter: none !important;
-
-            background: transparent !important;
-
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        .yokai-editorial-content {
-            position: relative;
-            z-index: 3;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            width: min(
-                var(--satori-official-width),
-                calc(100% - 70px)
-            );
-
-            height: 430px;
-            margin: 0 auto;
-
-            box-sizing: border-box;
-            pointer-events: none;
-        }
-
-        .yokai-editorial-label {
-            display: block;
-            width: fit-content;
-            margin: 0 0 15px;
-
-            color: var(--yokai-red);
-
-            font-family: "Inter", Arial, sans-serif;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-
-        .yokai-editorial-title {
-            max-width: 760px;
-            margin: 0;
-
-            color: var(--yokai-black);
-
-            font-family: "Barlow Condensed", Arial, sans-serif;
-            font-size: clamp(58px, 6vw, 90px);
-            line-height: .78;
-            font-weight: 900;
-            letter-spacing: .6px;
-            text-transform: uppercase;
-        }
-
-        .yokai-editorial-title span {
-            display: block;
-            color: var(--yokai-red);
-        }
-
-        .yokai-editorial-description {
-            max-width: 500px;
-            margin: 22px 0 0;
-
-            color: #555555;
-
-            font-family: "Inter", Arial, sans-serif;
-            font-size: 15px;
-            line-height: 1.7;
-            font-weight: 400;
-        }
-
-        /* =====================================================
-           BANNER EDITORIAL · TABLET
-        ====================================================== */
-
-        @media (max-width: 900px) {
-
-            .yokai-editorial-banner {
-                height: 400px;
-                min-height: 400px;
-                margin: 64px 0 34px;
-            }
-
-            .yokai-editorial-art {
-                width: 1100px !important;
-                height: 400px !important;
-                right: -160px !important;
-                object-position: right center !important;
-            }
-
-            .yokai-editorial-content {
-                width: calc(100% - 40px);
-                height: 400px;
-            }
-
-            .yokai-editorial-title {
-                font-size: clamp(54px, 8vw, 72px);
-            }
-
-            .yokai-editorial-description {
-                max-width: 430px;
-                font-size: 14px;
-            }
-        }
-
-        /* =====================================================
-           BANNER EDITORIAL · MÓVIL
-        ====================================================== */
-
-        @media (max-width: 700px) {
-
-            .yokai-editorial-banner {
-                height: 370px;
-                min-height: 370px;
-                margin: 50px 0 24px;
-
-                background: transparent !important;
-                background-color: transparent !important;
-                background-image: none !important;
-            }
-
-            .yokai-editorial-art {
-                top: auto !important;
-                right: -245px !important;
-                bottom: 0 !important;
-                left: auto !important;
-
-                width: 860px !important;
-                height: 360px !important;
-
-                object-fit: contain !important;
-                object-position: right bottom !important;
-
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            .yokai-editorial-content {
-                justify-content: flex-start;
-
-                width: calc(100% - 28px);
-                height: 370px;
-
-                padding-top: 30px;
-            }
-
-            .yokai-editorial-label {
-                margin-bottom: 11px;
-                font-size: 10px;
-                letter-spacing: 1.6px;
-            }
-
-            .yokai-editorial-title {
-                max-width: 75%;
-                font-size: clamp(48px, 14vw, 57px);
-                line-height: .78;
-                letter-spacing: .4px;
-            }
-
-            .yokai-editorial-description {
-                max-width: 64%;
-                margin-top: 16px;
-                font-size: 12.5px;
-                line-height: 1.55;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .yokai-editorial-banner {
-                height: 350px;
-                min-height: 350px;
-            }
-
-            .yokai-editorial-art {
-                right: -285px !important;
-                width: 820px !important;
-                height: 340px !important;
-            }
-
-            .yokai-editorial-content {
-                width: calc(100% - 24px);
-                height: 350px;
-                padding-top: 26px;
-            }
-
-            .yokai-editorial-title {
-                max-width: 78%;
-                font-size: 50px;
-            }
-
-            .yokai-editorial-description {
-                max-width: 69%;
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 380px) {
-
-            .yokai-editorial-banner {
-                height: 335px;
-                min-height: 335px;
-            }
-
-            .yokai-editorial-art {
-                right: -310px !important;
-                width: 790px !important;
-                height: 330px !important;
-            }
-
-            .yokai-editorial-content {
-                height: 335px;
-            }
-
-            .yokai-editorial-title {
-                font-size: 47px;
-            }
-
-            .yokai-editorial-description {
-                max-width: 72%;
-                font-size: 11.5px;
-            }
-        }
-
-
-        /* =====================================================
            TABLET
         ====================================================== */
 
@@ -1070,6 +789,327 @@
             .yokai-ticker-track {
                 animation: none;
             }
+        }
+
+    
+        /* =====================================================
+           BANNER EDITORIAL · VISTE TU YOKAI
+           Degradado sutil con el color del footer
+        ====================================================== */
+
+        .yokai-editorial-banner {
+            position: relative;
+            width: 100%;
+            height: 430px;
+            min-height: 430px;
+            margin: 82px 0 44px;
+            overflow: hidden;
+            isolation: isolate;
+            background: #101727;
+            box-sizing: border-box;
+        }
+
+        .yokai-editorial-art {
+            position: absolute !important;
+            z-index: 1 !important;
+            inset: 0 !important;
+
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+
+            display: block !important;
+
+            object-fit: cover !important;
+            object-position: center center !important;
+
+            opacity: 1 !important;
+            visibility: visible !important;
+
+            transform: none !important;
+            transition: none !important;
+            filter: none !important;
+
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
+        }
+
+        .yokai-editorial-banner::before {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #101727 0%,
+                    rgba(16, 23, 39, .98) 24%,
+                    rgba(16, 23, 39, .92) 36%,
+                    rgba(16, 23, 39, .72) 48%,
+                    rgba(16, 23, 39, .38) 60%,
+                    rgba(16, 23, 39, .10) 72%,
+                    rgba(16, 23, 39, 0) 84%
+                );
+
+            pointer-events: none;
+        }
+
+        .yokai-editorial-banner::after {
+            content: "";
+            position: absolute;
+            z-index: 4;
+
+            top: 0;
+            left: 0;
+
+            width: 150px;
+            height: 3px;
+
+            background: var(--yokai-red);
+
+            pointer-events: none;
+        }
+
+        .yokai-editorial-content {
+            position: relative;
+            z-index: 3;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            width: min(
+                var(--satori-official-width),
+                calc(100% - 70px)
+            );
+
+            height: 430px;
+            margin: 0 auto;
+
+            box-sizing: border-box;
+        }
+
+        .yokai-editorial-label {
+            display: block;
+            width: fit-content;
+
+            margin: 0 0 14px;
+
+            color: var(--yokai-red);
+
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .yokai-editorial-title {
+            max-width: 700px;
+            margin: 0;
+
+            color: var(--yokai-white);
+
+            font-family: "Barlow Condensed", Arial, sans-serif;
+            font-size: clamp(58px, 6vw, 86px);
+            line-height: .79;
+            font-weight: 900;
+            letter-spacing: .6px;
+            text-transform: uppercase;
+        }
+
+        .yokai-editorial-title span {
+            display: block;
+            color: var(--yokai-red);
+        }
+
+        .yokai-editorial-description {
+            max-width: 470px;
+
+            margin: 20px 0 0;
+
+            color: rgba(255, 255, 255, .76);
+
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.65;
+            font-weight: 400;
+        }
+
+
+        /* =====================================================
+           BANNER EDITORIAL · TABLET
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .yokai-editorial-banner {
+                height: 400px;
+                min-height: 400px;
+                margin: 68px 0 40px;
+            }
+
+            .yokai-editorial-content {
+                width: calc(100% - 40px);
+                height: 400px;
+            }
+
+            .yokai-editorial-title {
+                max-width: 620px;
+                font-size: clamp(54px, 8vw, 72px);
+            }
+
+            .yokai-editorial-description {
+                max-width: 420px;
+                font-size: 13.5px;
+            }
+
+            .yokai-editorial-banner::before {
+                background:
+                    linear-gradient(
+                        90deg,
+                        #101727 0%,
+                        rgba(16, 23, 39, .98) 34%,
+                        rgba(16, 23, 39, .82) 50%,
+                        rgba(16, 23, 39, .42) 66%,
+                        rgba(16, 23, 39, .08) 82%,
+                        rgba(16, 23, 39, 0) 100%
+                    );
+            }
+        }
+
+
+        /* =====================================================
+           BANNER EDITORIAL · MÓVIL
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .yokai-editorial-banner {
+                height: 365px;
+                min-height: 365px;
+
+                margin:
+                    54px
+                    0
+                    40px;
+            }
+
+            .yokai-editorial-art {
+                object-fit: cover !important;
+                object-position: 68% center !important;
+            }
+
+            .yokai-editorial-banner::before {
+                background:
+                    linear-gradient(
+                        90deg,
+                        #101727 0%,
+                        rgba(16, 23, 39, .99) 42%,
+                        rgba(16, 23, 39, .88) 58%,
+                        rgba(16, 23, 39, .52) 74%,
+                        rgba(16, 23, 39, .12) 90%,
+                        rgba(16, 23, 39, 0) 100%
+                    );
+            }
+
+            .yokai-editorial-banner::after {
+                width: 90px;
+                height: 2px;
+            }
+
+            .yokai-editorial-content {
+                justify-content: center;
+
+                width: calc(100% - 28px);
+                height: 365px;
+            }
+
+            .yokai-editorial-label {
+                margin-bottom: 11px;
+
+                font-size: 9.5px;
+                letter-spacing: 1.5px;
+            }
+
+            .yokai-editorial-title {
+                max-width: 68%;
+
+                font-size: clamp(46px, 13vw, 54px);
+                line-height: .8;
+            }
+
+            .yokai-editorial-description {
+                max-width: 62%;
+
+                margin-top: 15px;
+
+                font-size: 12px;
+                line-height: 1.55;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .yokai-editorial-banner {
+                height: 345px;
+                min-height: 345px;
+
+                margin-bottom: 38px;
+            }
+
+            .yokai-editorial-content {
+                width: calc(100% - 24px);
+                height: 345px;
+            }
+
+            .yokai-editorial-title {
+                max-width: 70%;
+                font-size: 49px;
+            }
+
+            .yokai-editorial-description {
+                max-width: 66%;
+                font-size: 11.5px;
+            }
+
+            .yokai-editorial-art {
+                object-position: 72% center !important;
+            }
+        }
+
+
+        @media (max-width: 380px) {
+
+            .yokai-editorial-banner {
+                height: 330px;
+                min-height: 330px;
+
+                margin-bottom: 36px;
+            }
+
+            .yokai-editorial-content {
+                height: 330px;
+            }
+
+            .yokai-editorial-title {
+                max-width: 72%;
+                font-size: 46px;
+            }
+
+            .yokai-editorial-description {
+                max-width: 69%;
+                font-size: 11px;
+            }
+        }
+
+    
+        #satori-footer .satori-global-footer {
+            margin-top: 0 !important;
         }
 
     </style>
@@ -1377,9 +1417,15 @@
 
         </div>
 
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+
         <!-- =================================================
              BANNER EDITORIAL · VISTE TU YOKAI
-             SOLO IMAGEN + TEXTO
+             DEGRADADO DEL COLOR DEL FOOTER
         ================================================== -->
 
         <section class="yokai-editorial-banner">
@@ -1404,18 +1450,13 @@
                 </h2>
 
                 <p class="yokai-editorial-description">
-                    Lleva contigo el espíritu del folklore japonés:
-                    criaturas, símbolos y leyendas reinterpretados
-                    en el lenguaje urbano de SATORII.
+                    Criaturas, símbolos y leyendas del folklore japonés
+                    reinterpretados en el lenguaje urbano de SATORII.
                 </p>
 
             </div>
 
         </section>
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
 
     </main>
 
