@@ -428,6 +428,76 @@
 
 
         /* =====================================================
+           IMÁGENES · CONTENIDO DEL PACK
+        ===================================================== */
+
+        .sp-benefit {
+
+            position: relative;
+
+            min-height: 245px;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            background: #fff;
+
+        }
+
+
+        .sp-benefit-image {
+
+            width: 100%;
+
+            height: 145px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            background: #f7f7f7;
+
+        }
+
+
+        .sp-benefit-image img {
+
+            width: 88%;
+
+            height: 88%;
+
+            display: block;
+
+            object-fit: contain;
+
+            transition:
+                transform .35s ease;
+
+        }
+
+
+        .sp-benefit:hover
+        .sp-benefit-image img {
+
+            transform: scale(1.05);
+
+        }
+
+
+        .sp-benefit-content {
+
+            padding:
+                18px 22px 22px;
+
+        }
+
+
+        /* =====================================================
            TITULOS DE SECCIÓN
         ===================================================== */
 
@@ -1010,6 +1080,45 @@
         }
 
 
+        .sp-card-real-image {
+
+            width:
+                min(
+                    520px,
+                    100%
+                );
+
+            max-height: 340px;
+
+            display: block;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 28px 30px
+                    rgba(0,0,0,.38)
+                );
+
+            transform:
+                rotate(-3deg);
+
+            transition:
+                transform .35s ease;
+
+        }
+
+
+        .sp-card-real-image:hover {
+
+            transform:
+                rotate(0deg)
+                translateY(-6px)
+                scale(1.02);
+
+        }
+
+
         .sp-card-top {
 
             display: flex;
@@ -1575,10 +1684,24 @@
 
             .sp-benefit {
 
-                min-height: 120px;
+                min-height: 205px;
+
+                padding: 0;
+
+            }
+
+
+            .sp-benefit-image {
+
+                height: 115px;
+
+            }
+
+
+            .sp-benefit-content {
 
                 padding:
-                    17px 14px;
+                    14px 14px 17px;
 
             }
 
@@ -1739,6 +1862,15 @@
             .sp-card {
 
                 width: 88%;
+
+            }
+
+
+            .sp-card-real-image {
+
+                width: 95%;
+
+                max-height: 280px;
 
             }
 
@@ -2341,17 +2473,15 @@
 
 
                 <p class="sp-hero-description">
-
-                    Cuatro piezas exclusivas reunidas en una sola
-                    experiencia SATORII. Diseños especiales para
-                    llevarte un pedacito de nuestra identidad.
-
+                    Compra cualquier polera y agrega el SATORII PACK
+                    para vivir la experiencia completa de SATORII.
+                    Cuatro detalles exclusivos pensados para acompañar tu pedido.
                 </p>
 
 
                 <div class="sp-hero-price">
 
-                    $29.990
+                    $5.990
 
                     <small>
                         CLP
@@ -2402,68 +2532,108 @@
 
                 <article class="sp-benefit">
 
-                    <div class="sp-benefit-icon">
-                        🖼️
+                    <div class="sp-benefit-image">
+
+                        <img
+                            src="img/productos/satorii-pack/mini-poster.jpg"
+                            alt="Mini póster SATORII"
+                            loading="lazy"
+                        >
+
                     </div>
 
-                    <h2 class="sp-benefit-title">
-                        MINI PÓSTER
-                    </h2>
+                    <div class="sp-benefit-content">
 
-                    <p class="sp-benefit-text">
-                        Una pieza especial para tu espacio.
-                    </p>
+                        <h2 class="sp-benefit-title">
+                            MINI PÓSTER
+                        </h2>
+
+                        <p class="sp-benefit-text">
+                            Una pieza especial para tu espacio.
+                        </p>
+
+                    </div>
 
                 </article>
 
 
                 <article class="sp-benefit">
 
-                    <div class="sp-benefit-icon">
-                        💌
+                    <div class="sp-benefit-image">
+
+                        <img
+                            src="img/productos/satorii-pack/postal.jpg"
+                            alt="Postal SATORII"
+                            loading="lazy"
+                        >
+
                     </div>
 
-                    <h2 class="sp-benefit-title">
-                        POSTAL
-                    </h2>
+                    <div class="sp-benefit-content">
 
-                    <p class="sp-benefit-text">
-                        Un diseño para guardar y coleccionar.
-                    </p>
+                        <h2 class="sp-benefit-title">
+                            POSTAL
+                        </h2>
+
+                        <p class="sp-benefit-text">
+                            Un diseño para guardar y coleccionar.
+                        </p>
+
+                    </div>
 
                 </article>
 
 
                 <article class="sp-benefit">
 
-                    <div class="sp-benefit-icon">
-                        ✨
+                    <div class="sp-benefit-image">
+
+                        <img
+                            src="img/productos/satorii-pack/stickers.jpg"
+                            alt="Stickers SATORII"
+                            loading="lazy"
+                        >
+
                     </div>
 
-                    <h2 class="sp-benefit-title">
-                        STICKERS
-                    </h2>
+                    <div class="sp-benefit-content">
 
-                    <p class="sp-benefit-text">
-                        Diseños SATORII para llevar contigo.
-                    </p>
+                        <h2 class="sp-benefit-title">
+                            STICKERS
+                        </h2>
+
+                        <p class="sp-benefit-text">
+                            Diseños SATORII para llevar contigo.
+                        </p>
+
+                    </div>
 
                 </article>
 
 
                 <article class="sp-benefit">
 
-                    <div class="sp-benefit-icon">
-                        🪪
+                    <div class="sp-benefit-image">
+
+                        <img
+                            src="img/productos/satorii-pack/tarjeta.jpg"
+                            alt="Tarjeta SATORII"
+                            loading="lazy"
+                        >
+
                     </div>
 
-                    <h2 class="sp-benefit-title">
-                        TARJETA SATORII
-                    </h2>
+                    <div class="sp-benefit-content">
 
-                    <p class="sp-benefit-text">
-                        Un detalle exclusivo de cada edición.
-                    </p>
+                        <h2 class="sp-benefit-title">
+                            TARJETA SATORII
+                        </h2>
+
+                        <p class="sp-benefit-text">
+                            Un detalle exclusivo de cada edición.
+                        </p>
+
+                    </div>
 
                 </article>
 
@@ -2694,30 +2864,12 @@
                 <div class="sp-card-visual">
 
 
-                    <div class="sp-card">
-
-
-                        <div class="sp-card-top">
-
-                            <div class="sp-card-logo">
-                                SATORII
-                            </div>
-
-                            <div class="sp-card-edition">
-                                EDITION 001
-                            </div>
-
-                        </div>
-
-
-                        <div class="sp-card-bottom">
-
-                            SATORII PACK
-
-                        </div>
-
-
-                    </div>
+                    <img
+                        src="img/productos/satorii-pack/tarjeta.jpg"
+                        alt="Tarjeta SATORII · Edición 001"
+                        class="sp-card-real-image"
+                        loading="lazy"
+                    >
 
 
                 </div>
