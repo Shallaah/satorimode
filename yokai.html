@@ -1522,6 +1522,190 @@
             }
         }
 
+        /* =====================================================
+   YOKAI · HERO · TABLET / VENTANA ANGOSTA
+   Corrige el espacio extraño al reducir pantalla
+===================================================== */
+
+@media (max-width: 1100px) and (min-width: 701px) {
+
+    .yokai-hero {
+        position: relative !important;
+        display: block !important;
+
+        width: 100% !important;
+        height: 560px !important;
+        min-height: 560px !important;
+
+        overflow: hidden !important;
+        isolation: isolate;
+
+        background: #FFFFFF;
+    }
+
+
+    /* =================================================
+       TEXTO
+    ================================================= */
+
+    .yokai-hero-content {
+        position: relative !important;
+        z-index: 5 !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+
+        width: 52% !important;
+        max-width: 560px !important;
+
+        height: 560px !important;
+        min-height: 560px !important;
+
+        padding:
+            70px
+            20px
+            60px
+            35px !important;
+
+        box-sizing: border-box;
+    }
+
+
+    .yokai-hero-kicker {
+        margin-bottom: 14px;
+    }
+
+
+    .yokai-hero h1 {
+        max-width: 100% !important;
+
+        font-size:
+            clamp(
+                58px,
+                7vw,
+                76px
+            ) !important;
+
+        line-height: .78 !important;
+    }
+
+
+    .yokai-hero-description {
+        max-width: 420px !important;
+
+        margin-top: 22px !important;
+
+        font-size: 14px !important;
+        line-height: 1.65 !important;
+    }
+
+
+    /* =================================================
+       IMAGEN
+    ================================================= */
+
+    .yokai-hero-image {
+        position: absolute !important;
+        z-index: 1 !important;
+
+        top: 0 !important;
+        right: 0 !important;
+        bottom: auto !important;
+        left: auto !important;
+
+        width: 58% !important;
+        height: 560px !important;
+        min-height: 560px !important;
+
+        overflow: hidden !important;
+
+        background: transparent !important;
+
+        pointer-events: none;
+    }
+
+
+    .yokai-hero-product-image {
+        position: absolute !important;
+
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: auto !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        max-width: none !important;
+
+        object-fit: contain !important;
+        object-position: right bottom !important;
+
+        transform: none !important;
+        transition: none !important;
+    }
+
+
+    /* =================================================
+       DECORACIÓN
+    ================================================= */
+
+    .yokai-hero-number {
+        top: 22px !important;
+        right: 30px !important;
+    }
+
+
+    .yokai-hero-image::after {
+        right: -20px !important;
+        bottom: -35px !important;
+
+        font-size: 125px !important;
+    }
+
+
+    .yokai-hero-line {
+        width: 130px !important;
+    }
+
+}
+
+
+/* =====================================================
+   YOKAI · TABLET MÁS ANGOSTA
+===================================================== */
+
+@media (max-width: 900px) and (min-width: 701px) {
+
+    .yokai-hero-content {
+        width: 55% !important;
+
+        padding-left: 28px !important;
+        padding-right: 10px !important;
+    }
+
+
+    .yokai-hero-image {
+        width: 60% !important;
+
+        right: -3% !important;
+    }
+
+
+    .yokai-hero h1 {
+        font-size: 60px !important;
+    }
+
+
+    .yokai-hero-description {
+        max-width: 340px !important;
+
+        font-size: 13px !important;
+    }
+
+}
+        
     </style>
 
 
