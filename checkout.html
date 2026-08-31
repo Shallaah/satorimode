@@ -345,23 +345,25 @@
         }
 
 
-        /* =====================================================
-           COLUMNA DERECHA
-        ====================================================== */
+/* =====================================================
+   RESUMEN DE COMPRA · STICKY EN PC
+===================================================== */
 
-        .satori-checkout-summary {
+@media (min-width: 751px) {
 
-            min-width:0;
+    .satori-checkout-summary {
 
-            padding:
-                42px
-                0
-                50px
-                40px;
+        position: sticky;
 
-            background:#ffffff;
+        top: 0;
 
-        }
+        align-self: start;
+
+        height: fit-content;
+
+    }
+
+}
 
 
         /* =====================================================
@@ -1798,6 +1800,23 @@
 
         }
 
+        /* =====================================================
+   RESUMEN DE COMPRA · STICKY EN PC
+===================================================== */
+
+@media (min-width: 751px) {
+
+    .satori-checkout-summary {
+
+        position: sticky;
+        top: 0;
+        align-self: start;
+        height: fit-content;
+
+    }
+
+}
+        
     </style>
 
 </head>
