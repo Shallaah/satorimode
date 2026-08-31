@@ -2244,6 +2244,1542 @@
 
         }
 
+        /* =====================================================
+   SATORII · CHECKOUT COMPACTO
+   Adaptado a proporciones tipo KANJI
+===================================================== */
+
+:root {
+
+    --satori-checkout-width: 990px;
+    --satori-checkout-summary: 390px;
+
+}
+
+
+/* =====================================================
+   TIPOGRAFÍA
+===================================================== */
+
+body {
+
+    font-family:
+        "Inter",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+.satori-checkout-logo,
+.checkout-section-title h2,
+.checkout-product-name,
+.checkout-total span,
+.checkout-total strong {
+
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.satori-checkout-header {
+
+    height: 130px;
+
+}
+
+
+.satori-checkout-logo {
+
+    position: relative;
+
+    z-index: 5;
+
+    color: #fff;
+
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    font-style: normal;
+
+    letter-spacing: .4px;
+
+    text-decoration: none;
+
+}
+
+
+.satori-checkout-cart {
+
+    right:
+        max(
+            28px,
+            calc(
+                (100% - var(--satori-checkout-width)) / 2
+            )
+        );
+
+}
+
+
+/* =====================================================
+   CONTENEDOR GENERAL
+===================================================== */
+
+.satori-checkout {
+
+    width:
+        min(
+            var(--satori-checkout-width),
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.satori-checkout-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 600px)
+        var(--satori-checkout-summary);
+
+    min-height:
+        calc(100vh - 130px);
+
+}
+
+
+/* =====================================================
+   COLUMNA IZQUIERDA
+===================================================== */
+
+.satori-checkout-main {
+
+    min-width: 0;
+
+    padding:
+        42px
+        40px
+        65px
+        0;
+
+    border-right:
+        1px solid
+        var(--border);
+
+}
+
+
+/* =====================================================
+   COLUMNA DERECHA
+===================================================== */
+
+.satori-checkout-summary {
+
+    min-width: 0;
+
+    padding:
+        42px
+        0
+        50px
+        40px;
+
+    background:
+        #fff;
+
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.checkout-section {
+
+    margin-bottom:
+        29px;
+
+}
+
+
+.checkout-section-title {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        10px;
+
+}
+
+
+.checkout-section-title h2 {
+
+    margin:
+        0;
+
+    color:
+        #111;
+
+    font-size:
+        23px;
+
+    line-height:
+        1;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .15px;
+
+}
+
+
+.checkout-login {
+
+    color:
+        #333;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.3;
+
+    text-decoration:
+        underline;
+
+}
+
+
+.checkout-description {
+
+    margin:
+        0
+        0
+        12px;
+
+    color:
+        #888;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =====================================================
+   CAMPOS
+===================================================== */
+
+.checkout-fields {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        8px;
+
+}
+
+
+.checkout-field {
+
+    min-width:
+        0;
+
+}
+
+
+.checkout-field.full {
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+.checkout-field input,
+.checkout-field select {
+
+    width:
+        100%;
+
+    height:
+        46px;
+
+    padding:
+        0
+        12px;
+
+    border:
+        1px solid
+        #d8d8d8;
+
+    border-radius:
+        8px;
+
+    outline:
+        none;
+
+    background:
+        #fff;
+
+    color:
+        #222;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        12px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease;
+
+}
+
+
+.checkout-field input::placeholder {
+
+    color:
+        #8a8a8a;
+
+}
+
+
+.checkout-field input:focus,
+.checkout-field select:focus {
+
+    border-color:
+        #777;
+
+    box-shadow:
+        0 0 0 1px
+        rgba(0,0,0,.03);
+
+}
+
+
+/* =====================================================
+   CHECKBOX
+===================================================== */
+
+.checkout-checkbox {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin-top:
+        10px;
+
+    color:
+        #333;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.45;
+
+}
+
+
+.checkout-checkbox input {
+
+    width:
+        15px;
+
+    height:
+        15px;
+
+    margin:
+        0;
+
+    accent-color:
+        var(--red);
+
+}
+
+
+/* =====================================================
+   ENVÍO
+===================================================== */
+
+.checkout-shipping {
+
+    padding:
+        16px;
+
+    border:
+        1px solid
+        #e1e1e1;
+
+    border-radius:
+        8px;
+
+    background:
+        #f7f7f7;
+
+    color:
+        #777;
+
+    text-align:
+        center;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =====================================================
+   PAGO
+===================================================== */
+
+.checkout-payment {
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        #222;
+
+    border-radius:
+        8px;
+
+}
+
+
+.checkout-payment-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    min-height:
+        52px;
+
+    padding:
+        0
+        13px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+}
+
+
+.checkout-radio {
+
+    width:
+        16px;
+
+    height:
+        16px;
+
+    flex-shrink:
+        0;
+
+}
+
+
+.checkout-payment-name {
+
+    flex:
+        1;
+
+    color:
+        #111;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+}
+
+
+.checkout-flow {
+
+    padding:
+        4px
+        7px;
+
+    border-radius:
+        3px;
+
+    background:
+        #111;
+
+    color:
+        #fff;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .7px;
+
+}
+
+
+.checkout-payment-content {
+
+    padding:
+        15px;
+
+    background:
+        #f8f8f8;
+
+    color:
+        #777;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.55;
+
+}
+
+
+/* =====================================================
+   FACTURACIÓN
+===================================================== */
+
+.checkout-billing {
+
+    margin-top:
+        14px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        8px;
+
+}
+
+
+.checkout-billing label {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    min-height:
+        44px;
+
+    padding:
+        0
+        12px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    color:
+        #333;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.45;
+
+}
+
+
+.checkout-billing label:last-child {
+
+    border-bottom:
+        0;
+
+}
+
+
+/* =====================================================
+   BOTÓN PAGAR
+===================================================== */
+
+.checkout-pay {
+
+    width:
+        100%;
+
+    height:
+        50px;
+
+    margin-top:
+        19px;
+
+    border:
+        0;
+
+    border-radius:
+        7px;
+
+    background:
+        #243447;
+
+    color:
+        #fff;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0;
+
+    text-transform:
+        none;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .2s ease;
+
+}
+
+
+.checkout-pay:hover {
+
+    background:
+        var(--red);
+
+}
+
+
+/* =====================================================
+   PRODUCTOS DEL RESUMEN
+===================================================== */
+
+.checkout-products {
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.checkout-product {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        55px
+        minmax(0, 1fr)
+        auto;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+
+    margin-bottom:
+        16px;
+
+}
+
+
+.checkout-product-image {
+
+    position:
+        relative;
+
+    width:
+        55px;
+
+    height:
+        55px;
+
+    overflow:
+        visible;
+
+    border:
+        1px solid
+        #ddd;
+
+    border-radius:
+        8px;
+
+    background:
+        #f5f5f5;
+
+}
+
+
+.checkout-product-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    border-radius:
+        inherit;
+
+}
+
+
+.checkout-product-quantity {
+
+    position:
+        absolute;
+
+    top:
+        -7px;
+
+    right:
+        -7px;
+
+    min-width:
+        19px;
+
+    height:
+        19px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0
+        4px;
+
+    border:
+        2px solid
+        #fff;
+
+    border-radius:
+        999px;
+
+    background:
+        #111;
+
+    color:
+        #fff;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        800;
+
+}
+
+
+.checkout-product-name {
+
+    margin:
+        0;
+
+    color:
+        #222;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.3;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0;
+
+}
+
+
+.checkout-product-options {
+
+    margin-top:
+        3px;
+
+    color:
+        #888;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.4;
+
+}
+
+
+.checkout-product-price {
+
+    color:
+        #222;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    white-space:
+        nowrap;
+
+}
+
+
+/* =====================================================
+   DESCUENTO
+===================================================== */
+
+.checkout-discount {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        24px;
+
+}
+
+
+.checkout-discount input {
+
+    width:
+        100%;
+
+    height:
+        44px;
+
+    padding:
+        0
+        12px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        8px;
+
+    outline:
+        none;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+}
+
+
+.checkout-discount button {
+
+    min-width:
+        68px;
+
+    padding:
+        0
+        14px;
+
+    border:
+        1px solid
+        #e2e2e2;
+
+    border-radius:
+        8px;
+
+    background:
+        #f7f7f7;
+
+    color:
+        #777;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    text-transform:
+        none;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =====================================================
+   TOTALES
+===================================================== */
+
+.checkout-totals {
+
+    border-top:
+        0;
+
+}
+
+
+.checkout-total-row {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        7px
+        0;
+
+    color:
+        #444;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.4;
+
+}
+
+
+.checkout-total-row strong {
+
+    color:
+        #222;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+}
+
+
+.checkout-total {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-top:
+        5px;
+
+    padding-top:
+        4px;
+
+    border-top:
+        0;
+
+}
+
+
+.checkout-total span {
+
+    color:
+        #111;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        17px;
+
+    line-height:
+        1;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0;
+
+}
+
+
+.checkout-total strong {
+
+    color:
+        #111;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        20px;
+
+    line-height:
+        1;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0;
+
+}
+
+
+.checkout-tax {
+
+    margin-top:
+        6px;
+
+    color:
+        #888;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.4;
+
+    text-align:
+        right;
+
+}
+
+
+/* =====================================================
+   CONFIANZA
+===================================================== */
+
+.checkout-trust {
+
+    margin-top:
+        25px;
+
+    padding-top:
+        20px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+}
+
+
+.checkout-trust-item {
+
+    display:
+        flex;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        11px;
+
+    color:
+        #777;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+
+}
+
+
+.checkout-trust-item strong {
+
+    color:
+        #222;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.checkout-footer {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        center;
+
+    gap:
+        18px;
+
+    width:
+        min(
+            var(--satori-checkout-width),
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        22px
+        0;
+
+    border-top:
+        1px solid
+        var(--border);
+
+}
+
+
+.checkout-footer a {
+
+    color:
+        #555;
+
+    font-size:
+        9px;
+
+    line-height:
+        1.4;
+
+    text-decoration:
+        underline;
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1050px) {
+
+    :root {
+
+        --satori-checkout-width:
+            900px;
+
+        --satori-checkout-summary:
+            350px;
+
+    }
+
+
+    .satori-checkout-layout {
+
+        grid-template-columns:
+            minmax(0, 550px)
+            var(--satori-checkout-summary);
+
+    }
+
+
+    .satori-checkout-main {
+
+        padding-right:
+            30px;
+
+    }
+
+
+    .satori-checkout-summary {
+
+        padding-left:
+            30px;
+
+    }
+
+}
+
+
+/* =====================================================
+   MÓVIL
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .satori-checkout-header {
+
+        height:
+            75px;
+
+    }
+
+
+    .satori-checkout-logo {
+
+        font-size:
+            27px;
+
+    }
+
+
+    .satori-checkout-cart {
+
+        right:
+            18px;
+
+    }
+
+
+    .satori-checkout {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .satori-checkout-layout {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        min-height:
+            auto;
+
+    }
+
+
+    .satori-checkout-summary {
+
+        order:
+            -1;
+
+        padding:
+            26px
+            0
+            28px;
+
+        border-bottom:
+            1px solid
+            var(--border);
+
+    }
+
+
+    .satori-checkout-main {
+
+        padding:
+            30px
+            0
+            48px;
+
+        border-right:
+            0;
+
+    }
+
+
+    .checkout-section {
+
+        margin-bottom:
+            28px;
+
+    }
+
+
+    .checkout-section-title h2 {
+
+        font-size:
+            22px;
+
+    }
+
+
+    .checkout-fields {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .checkout-field.full {
+
+        grid-column:
+            auto;
+
+    }
+
+
+    .checkout-field input,
+    .checkout-field select {
+
+        height:
+            46px;
+
+        font-size:
+            12px;
+
+    }
+
+
+    .checkout-product {
+
+        grid-template-columns:
+            52px
+            minmax(0, 1fr)
+            auto;
+
+    }
+
+
+    .checkout-product-image {
+
+        width:
+            52px;
+
+        height:
+            52px;
+
+    }
+
+
+    .checkout-footer {
+
+        width:
+            calc(100% - 28px);
+
+        gap:
+            13px;
+
+        padding:
+            22px
+            0;
+
+    }
+
+}
+
+
+/* =====================================================
+   MÓVIL PEQUEÑO
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .satori-checkout {
+
+        width:
+            calc(100% - 24px);
+
+    }
+
+
+    .satori-checkout-logo {
+
+        font-size:
+            25px;
+
+    }
+
+
+    .satori-checkout-cart {
+
+        right:
+            14px;
+
+    }
+
+
+    .checkout-section-title h2 {
+
+        font-size:
+            21px;
+
+    }
+
+
+    .checkout-discount {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            65px;
+
+    }
+
+
+    .checkout-total span {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .checkout-total strong {
+
+        font-size:
+            19px;
+
+    }
+
+
+    .checkout-footer {
+
+        width:
+            calc(100% - 24px);
+
+    }
+
+}
     </style>
 
 </head>
