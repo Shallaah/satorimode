@@ -242,46 +242,6 @@
                     </div>
 
 
-                    <!-- PRODUCTOS -->
-
-                    <div class="nav-dropdown">
-
-                        <button
-                            class="nav-dropdown-btn"
-                            type="button"
-                            aria-expanded="false"
-                        >
-
-                            <span>
-                                PRODUCTOS
-                            </span>
-
-                            <svg
-                                class="nav-arrow"
-                                viewBox="0 0 24 24"
-                                aria-hidden="true"
-                            >
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-
-                        </button>
-
-
-                        <div class="dropdown-menu">
-
-                            <a href="${SATORIMODE_BASE}satorii-pack.html">
-                                Satorii Pack
-                            </a>
-
-                            <a href="${SATORIMODE_BASE}regala-satorii.html">
-                                Regala Satorii
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
                     <!-- AYUDA -->
 
                     <div class="nav-dropdown">
@@ -339,20 +299,39 @@
                 <div class="header-icons">
 
 
-                    <!-- BUSCADOR INLINE -->
+                    <!-- =================================================
+                         BUSCADOR INLINE DESKTOP
+                    ================================================== -->
 
                     <form
                         class="header-search-inline"
                         id="satori-search-inline"
+                        autocomplete="off"
                     >
 
-                        <input
-                            type="search"
-                            id="satori-search-inline-input"
-                            placeholder="¿Qué estás buscando?"
-                            autocomplete="off"
-                            aria-label="Buscar productos"
-                        >
+                        <div class="header-search-inline-field">
+
+                            <input
+                                type="search"
+                                id="satori-search-inline-input"
+                                placeholder="Buscar en SATORII..."
+                                autocomplete="off"
+                                spellcheck="false"
+                                aria-label="Buscar productos"
+                                aria-controls="satori-search-suggestions"
+                                aria-expanded="false"
+                            >
+
+                        </div>
+
+
+                        <!-- RECOMENDACIONES -->
+
+                        <div
+                            class="header-search-suggestions"
+                            id="satori-search-suggestions"
+                            aria-live="polite"
+                        ></div>
 
                     </form>
 
@@ -364,7 +343,6 @@
                         id="satori-search"
                         type="button"
                         aria-label="Buscar"
-                        aria-controls="satori-search-overlay"
                         aria-expanded="false"
                     >
 
@@ -576,46 +554,6 @@
 
                     <a href="${SATORIMODE_BASE}productos.html">
                         Todo
-                    </a>
-
-                </div>
-
-
-                <!-- PRODUCTOS -->
-
-                <button
-                    class="mobile-nav-button"
-                    data-target="mobile-products"
-                    type="button"
-                    aria-expanded="false"
-                >
-
-                    <span>
-                        PRODUCTOS
-                    </span>
-
-                    <svg
-                        class="mobile-arrow"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6 6-6"></path>
-                    </svg>
-
-                </button>
-
-
-                <div
-                    class="mobile-submenu"
-                    id="mobile-products"
-                >
-
-                    <a href="${SATORIMODE_BASE}satorii-pack.html">
-                        Satorii Pack
-                    </a>
-
-                    <a href="${SATORIMODE_BASE}regala-satorii.html">
-                        Regala Satorii
                     </a>
 
                 </div>
@@ -1312,48 +1250,490 @@
 
 
         /* =====================================================
-           BUSCADOR INLINE
+           BUSCADOR INLINE · DESKTOP
         ====================================================== */
 
         #satori-header .header-search-inline {
+            position:relative;
+
             display:flex;
             align-items:center;
+
             width:0;
             max-width:0;
-            opacity:0;
-            overflow:hidden;
-            transition:
-                width .25s ease,
-                max-width .25s ease,
-                opacity .2s ease,
-                margin .25s ease;
+
             margin-right:0;
+
+            opacity:0;
+            visibility:hidden;
+
+            pointer-events:none;
+
+            overflow:visible;
+
+            transition:
+                width .28s ease,
+                max-width .28s ease,
+                opacity .2s ease,
+                margin .28s ease,
+                visibility .2s ease;
         }
 
-        #satori-header .header-search-inline.open {
-            width:220px;
-            max-width:220px;
+
+        #satori-header
+        .header-search-inline.open {
+
+            width:250px;
+            max-width:250px;
+
+            margin-right:4px;
+
             opacity:1;
-            margin-right:2px;
+            visibility:visible;
+
+            pointer-events:auto;
         }
 
-        #satori-header .header-search-inline input {
+
+        /* =====================================================
+           CAMPO
+        ====================================================== */
+
+        #satori-header
+        .header-search-inline-field {
+
+            position:relative;
+
             width:100%;
-            height:34px;
-            padding:0 10px;
+            height:36px;
+
+            display:flex;
+            align-items:center;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.55);
+        }
+
+
+        #satori-header
+        .header-search-inline-field::after {
+
+            content:"";
+
+            position:absolute;
+
+            left:0;
+            right:100%;
+            bottom:-1px;
+
+            height:1px;
+
+            background:${SATORII_RED};
+
+            transition:
+                right .25s ease;
+        }
+
+
+        #satori-header
+        .header-search-inline-field:focus-within::after {
+
+            right:0;
+        }
+
+
+        #satori-header
+        .header-search-inline input {
+
+            width:100%;
+            height:100%;
+
+            padding:0 8px;
+
             border:0;
-            border-bottom:1px solid rgba(255,255,255,.65);
-            outline:none;
+            outline:0;
+
             background:transparent;
+
             color:#fff;
+
             font-family:inherit;
+            font-size:12px;
+            font-weight:500;
+
+            appearance:none;
+            -webkit-appearance:none;
+        }
+
+
+        #satori-header
+        .header-search-inline input::-webkit-search-cancel-button {
+
+            display:none;
+        }
+
+
+        #satori-header
+        .header-search-inline input::placeholder {
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .52
+                );
+        }
+
+
+        /* =====================================================
+           RECOMENDACIONES
+        ====================================================== */
+
+        #satori-header
+        .header-search-suggestions {
+
+            position:absolute;
+
+            top:44px;
+            right:0;
+
+            width:360px;
+            max-height:430px;
+
+            padding:6px;
+
+            background:#fff;
+
+            border:
+                1px solid
+                #e5e5e5;
+
+            border-radius:12px;
+
+            box-shadow:
+                0 18px 45px
+                rgba(0,0,0,.20);
+
+            overflow-y:auto;
+            overflow-x:hidden;
+
+            opacity:0;
+            visibility:hidden;
+
+            pointer-events:none;
+
+            transform:
+                translateY(-7px);
+
+            transition:
+                opacity .18s ease,
+                visibility .18s ease,
+                transform .18s ease;
+
+            z-index:1000500;
+        }
+
+
+        #satori-header
+        .header-search-suggestions.open {
+
+            opacity:1;
+            visibility:visible;
+
+            pointer-events:auto;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =====================================================
+           ITEM RECOMENDADO
+        ====================================================== */
+
+        #satori-header
+        .header-search-result {
+
+            width:100%;
+
+            min-height:66px;
+
+            padding:7px;
+
+            border:0;
+
+            background:#fff;
+
+            display:grid;
+
+            grid-template-columns:
+                52px
+                minmax(0,1fr)
+                auto;
+
+            align-items:center;
+
+            gap:11px;
+
+            border-radius:8px;
+
+            color:#111;
+
+            text-align:left;
+
+            cursor:pointer;
+
+            font-family:inherit;
+
+            transition:
+                background .15s ease;
+        }
+
+
+        #satori-header
+        .header-search-result:hover,
+        #satori-header
+        .header-search-result:focus-visible {
+
+            background:#f5f5f5;
+        }
+
+
+        /* IMAGEN */
+
+        #satori-header
+        .header-search-result-image {
+
+            width:52px;
+            height:52px;
+
+            border-radius:6px;
+
+            background:#f4f4f4;
+
+            overflow:hidden;
+        }
+
+
+        #satori-header
+        .header-search-result-image img {
+
+            display:block;
+
+            width:100%;
+            height:100%;
+
+            object-fit:cover;
+        }
+
+
+        #satori-header
+        .header-search-result-placeholder {
+
+            width:100%;
+            height:100%;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            color:#bbb;
+
+            font-size:8px;
+            font-weight:800;
+            letter-spacing:.7px;
+        }
+
+
+        /* INFO */
+
+        #satori-header
+        .header-search-result-info {
+
+            min-width:0;
+        }
+
+
+        #satori-header
+        .header-search-result-name {
+
+            overflow:hidden;
+
+            color:#111;
+
+            font-size:12px;
+            font-weight:750;
+
+            line-height:1.25;
+
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+
+
+        #satori-header
+        .header-search-result-meta {
+
+            margin-top:4px;
+
+            overflow:hidden;
+
+            color:#888;
+
+            font-size:9px;
+            font-weight:600;
+
+            line-height:1.2;
+
+            text-transform:uppercase;
+
+            letter-spacing:.6px;
+
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+
+
+        /* PRECIO */
+
+        #satori-header
+        .header-search-result-price {
+
+            padding-left:6px;
+
+            color:#111;
+
+            font-size:11px;
+            font-weight:800;
+
+            white-space:nowrap;
+        }
+
+
+        /* =====================================================
+           SIN RESULTADOS
+        ====================================================== */
+
+        #satori-header
+        .header-search-empty {
+
+            padding:
+                20px
+                15px;
+
+            text-align:center;
+
+            color:#777;
+
+            font-size:11px;
+            line-height:1.5;
+        }
+
+
+        #satori-header
+        .header-search-empty strong {
+
+            display:block;
+
+            margin-bottom:3px;
+
+            color:#111;
+
             font-size:12px;
         }
 
-        #satori-header .header-search-inline input::placeholder {
-            color:rgba(255,255,255,.65);
+
+        /* =====================================================
+           VER TODOS
+        ====================================================== */
+
+        #satori-header
+        .header-search-view-all {
+
+            width:100%;
+
+            min-height:42px;
+
+            margin-top:4px;
+
+            padding:
+                0
+                11px;
+
+            border:0;
+            border-top:1px solid #eee;
+
+            background:#fff;
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+
+            gap:15px;
+
+            color:#111;
+
+            font-family:inherit;
+
+            font-size:10px;
+            font-weight:800;
+
+            cursor:pointer;
+
+            text-align:left;
         }
 
+
+        #satori-header
+        .header-search-view-all span {
+
+            min-width:0;
+
+            overflow:hidden;
+
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+
+
+        #satori-header
+        .header-search-view-all strong {
+
+            color:${SATORII_RED};
+
+            font-size:14px;
+
+            flex-shrink:0;
+        }
+
+
+        #satori-header
+        .header-search-view-all:hover {
+
+            color:${SATORII_RED};
+        }
+
+
+        /* =====================================================
+           SCROLLBAR RECOMENDACIONES
+        ====================================================== */
+
+        #satori-header
+        .header-search-suggestions::-webkit-scrollbar {
+
+            width:5px;
+        }
+
+
+        #satori-header
+        .header-search-suggestions::-webkit-scrollbar-thumb {
+
+            background:#ccc;
+
+            border-radius:999px;
+        }
 
         /* =====================================================
            CARRITO
@@ -2535,7 +2915,11 @@
                 "#satori-search-inline-input"
             );
 
-
+                const inlineSearchSuggestions =
+            root.querySelector(
+                "#satori-search-suggestions"
+            );
+        
         const cartButton =
             root.querySelector(
                 "#satori-cart-button"
@@ -2993,6 +3377,652 @@
         );
 
 
+         /* =====================================================
+           BUSCADOR · UTILIDADES
+        ====================================================== */
+
+        function normalizeSearchText(
+            value
+        ) {
+
+            return String(
+                value || ""
+            )
+                .toLowerCase()
+                .normalize(
+                    "NFD"
+                )
+                .replace(
+                    /[\u0300-\u036f]/g,
+                    ""
+                )
+                .trim();
+
+        }
+
+
+        /* =====================================================
+           OBTENER PRODUCTOS PARA BÚSQUEDA
+        ====================================================== */
+
+        function getSearchProducts() {
+
+            if (
+                typeof PRODUCTS !==
+                "undefined" &&
+                Array.isArray(
+                    PRODUCTS
+                )
+            ) {
+
+                return PRODUCTS;
+
+            }
+
+
+            return [];
+
+        }
+
+
+        /* =====================================================
+           TEXTO BUSCABLE DEL PRODUCTO
+        ====================================================== */
+
+        function getProductSearchText(
+            product
+        ) {
+
+            const tags =
+                Array.isArray(
+                    product?.tags
+                )
+                    ?
+                    product.tags.join(
+                        " "
+                    )
+                    :
+                    (
+                        product?.tags ||
+                        ""
+                    );
+
+
+            return normalizeSearchText(
+
+                [
+                    product?.name,
+                    product?.nombre,
+
+                    product?.category,
+                    product?.categoria,
+
+                    product?.collection,
+                    product?.coleccion,
+
+                    product?.type,
+                    product?.tipo,
+
+                    tags,
+
+                    product?.description,
+                    product?.descripcion
+
+                ]
+                    .filter(
+                        Boolean
+                    )
+                    .join(
+                        " "
+                    )
+
+            );
+
+        }
+
+
+        /* =====================================================
+           ENCONTRAR RECOMENDACIONES
+        ====================================================== */
+
+        function getSearchSuggestions(
+            value
+        ) {
+
+            const query =
+                normalizeSearchText(
+                    value
+                );
+
+
+            if (!query) {
+
+                return [];
+
+            }
+
+
+            const products =
+                getSearchProducts();
+
+
+            return products
+
+                .map(
+                    function (
+                        product,
+                        originalIndex
+                    ) {
+
+                        const name =
+                            String(
+                                product?.name ||
+                                product?.nombre ||
+                                ""
+                            );
+
+
+                        const normalizedName =
+                            normalizeSearchText(
+                                name
+                            );
+
+
+                        const searchableText =
+                            getProductSearchText(
+                                product
+                            );
+
+
+                        if (
+                            !searchableText.includes(
+                                query
+                            )
+                        ) {
+
+                            return null;
+
+                        }
+
+
+                        let score = 100;
+
+
+                        /*
+                            Prioridad:
+
+                            0 = nombre exacto
+                            1 = nombre comienza con búsqueda
+                            2 = palabra comienza con búsqueda
+                            3 = nombre contiene búsqueda
+                            4 = resto de información
+                        */
+
+                        if (
+                            normalizedName ===
+                            query
+                        ) {
+
+                            score = 0;
+
+                        } else if (
+                            normalizedName.startsWith(
+                                query
+                            )
+                        ) {
+
+                            score = 1;
+
+                        } else if (
+                            normalizedName
+                                .split(/\s+/)
+                                .some(
+                                    function (
+                                        word
+                                    ) {
+
+                                        return word.startsWith(
+                                            query
+                                        );
+
+                                    }
+                                )
+                        ) {
+
+                            score = 2;
+
+                        } else if (
+                            normalizedName.includes(
+                                query
+                            )
+                        ) {
+
+                            score = 3;
+
+                        } else {
+
+                            score = 4;
+
+                        }
+
+
+                        return {
+
+                            product:
+                                product,
+
+                            score:
+                                score,
+
+                            originalIndex:
+                                originalIndex
+
+                        };
+
+                    }
+                )
+
+                .filter(
+                    Boolean
+                )
+
+                .sort(
+                    function (
+                        a,
+                        b
+                    ) {
+
+                        if (
+                            a.score !==
+                            b.score
+                        ) {
+
+                            return (
+                                a.score -
+                                b.score
+                            );
+
+                        }
+
+
+                        return (
+                            a.originalIndex -
+                            b.originalIndex
+                        );
+
+                    }
+                )
+
+                .slice(
+                    0,
+                    6
+                )
+
+                .map(
+                    function (
+                        item
+                    ) {
+
+                        return item.product;
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           CERRAR RECOMENDACIONES
+        ====================================================== */
+
+        function closeSearchSuggestions() {
+
+            if (
+                !inlineSearchSuggestions
+            ) {
+
+                return;
+
+            }
+
+
+            inlineSearchSuggestions
+                .classList.remove(
+                    "open"
+                );
+
+
+            inlineSearchInput?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+
+        /* =====================================================
+           RENDER RECOMENDACIONES
+        ====================================================== */
+
+        function renderSearchSuggestions(
+            value
+        ) {
+
+            if (
+                !inlineSearchSuggestions
+            ) {
+
+                return;
+
+            }
+
+
+            const query =
+                String(
+                    value ||
+                    ""
+                ).trim();
+
+
+            if (!query) {
+
+                inlineSearchSuggestions.innerHTML =
+                    "";
+
+                closeSearchSuggestions();
+
+                return;
+
+            }
+
+
+            const products =
+                getSearchSuggestions(
+                    query
+                );
+
+
+            /* =================================================
+               SIN CATÁLOGO DISPONIBLE
+            ================================================= */
+
+            if (
+                !getSearchProducts()
+                    .length
+            ) {
+
+                inlineSearchSuggestions.innerHTML = `
+
+                    <div
+                        class="header-search-empty"
+                    >
+
+                        <strong>
+                            BUSCAR EN SATORII
+                        </strong>
+
+                        Presiona Enter para buscar
+                        “${escapeHtml(query)}”.
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="header-search-view-all"
+                        data-search-all="${escapeHtml(query)}"
+                    >
+
+                        <span>
+                            BUSCAR “${escapeHtml(query)}”
+                        </span>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </button>
+
+                `;
+
+
+                inlineSearchSuggestions
+                    .classList.add(
+                        "open"
+                    );
+
+
+                inlineSearchInput?.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+
+                return;
+
+            }
+
+
+            /* =================================================
+               SIN COINCIDENCIAS
+            ================================================= */
+
+            if (
+                !products.length
+            ) {
+
+                inlineSearchSuggestions.innerHTML = `
+
+                    <div
+                        class="header-search-empty"
+                    >
+
+                        <strong>
+                            SIN COINCIDENCIAS
+                        </strong>
+
+                        No encontramos productos
+                        relacionados con
+                        “${escapeHtml(query)}”.
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="header-search-view-all"
+                        data-search-all="${escapeHtml(query)}"
+                    >
+
+                        <span>
+                            BUSCAR “${escapeHtml(query)}”
+                        </span>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </button>
+
+                `;
+
+
+                inlineSearchSuggestions
+                    .classList.add(
+                        "open"
+                    );
+
+
+                inlineSearchInput?.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+
+                return;
+
+            }
+
+
+            /* =================================================
+               RESULTADOS
+            ================================================= */
+
+            const resultHtml =
+                products.map(
+                    function (
+                        product
+                    ) {
+
+                        const name =
+                            product?.name ||
+                            product?.nombre ||
+                            "Producto";
+
+
+                        const image =
+                            product?.image ||
+                            product?.imagen ||
+                            product?.images?.[0] ||
+                            product?.imagenes?.[0] ||
+                            "";
+
+
+                        const category =
+                            product?.collection ||
+                            product?.coleccion ||
+                            product?.category ||
+                            product?.categoria ||
+                            product?.type ||
+                            product?.tipo ||
+                            "SATORII";
+
+
+                        const price =
+                            Number(
+                                product?.price ??
+                                product?.precio ??
+                                0
+                            ) || 0;
+
+
+                        return `
+
+                            <button
+                                type="button"
+                                class="header-search-result"
+                                data-search-suggestion="${escapeHtml(name)}"
+                            >
+
+                                <div
+                                    class="header-search-result-image"
+                                >
+
+                                    ${
+                                        image
+                                            ?
+                                            `
+                                                <img
+                                                    src="${escapeHtml(image)}"
+                                                    alt="${escapeHtml(name)}"
+                                                    loading="lazy"
+                                                >
+                                            `
+                                            :
+                                            `
+                                                <div
+                                                    class="header-search-result-placeholder"
+                                                >
+                                                    SATORII
+                                                </div>
+                                            `
+                                    }
+
+                                </div>
+
+
+                                <div
+                                    class="header-search-result-info"
+                                >
+
+                                    <div
+                                        class="header-search-result-name"
+                                    >
+                                        ${escapeHtml(name)}
+                                    </div>
+
+
+                                    <div
+                                        class="header-search-result-meta"
+                                    >
+                                        ${escapeHtml(category)}
+                                    </div>
+
+                                </div>
+
+
+                                ${
+                                    price > 0
+                                        ?
+                                        `
+                                            <div
+                                                class="header-search-result-price"
+                                            >
+                                                ${formatPrice(price)}
+                                            </div>
+                                        `
+                                        :
+                                        ""
+                                }
+
+                            </button>
+
+                        `;
+
+                    }
+                )
+                .join("");
+
+
+            inlineSearchSuggestions.innerHTML = `
+
+                ${resultHtml}
+
+
+                <button
+                    type="button"
+                    class="header-search-view-all"
+                    data-search-all="${escapeHtml(query)}"
+                >
+
+                    <span>
+                        VER RESULTADOS PARA
+                        “${escapeHtml(query)}”
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </button>
+
+            `;
+
+
+            inlineSearchSuggestions
+                .classList.add(
+                    "open"
+                );
+
+
+            inlineSearchInput?.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+
         /* =====================================================
            BUSCADOR — ABRIR
         ====================================================== */
@@ -3005,6 +4035,73 @@
 
             closeDropdowns();
 
+
+            /* =================================================
+               PC · BUSCADOR JUNTO A LA LUPA
+            ================================================= */
+
+            if (
+                window.innerWidth >
+                1000
+            ) {
+
+                /*
+                    Nos aseguramos de que
+                    el overlay móvil esté cerrado.
+                */
+
+                searchOverlay?.classList.remove(
+                    "open"
+                );
+
+
+                searchOverlay?.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+
+                inlineSearch?.classList.add(
+                    "open"
+                );
+
+
+                searchButton?.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+
+                window.setTimeout(
+                    function () {
+
+                        inlineSearchInput?.focus();
+
+
+                        if (
+                            inlineSearchInput?.value
+                                .trim()
+                        ) {
+
+                            renderSearchSuggestions(
+                                inlineSearchInput.value
+                            );
+
+                        }
+
+                    },
+                    80
+                );
+
+
+                return;
+
+            }
+
+
+            /* =================================================
+               MÓVIL · MANTENER BUSCADOR ACTUAL
+            ================================================= */
 
             if (!searchOverlay)
                 return;
@@ -3019,6 +4116,7 @@
                 "aria-hidden",
                 "false"
             );
+
 
             searchButton?.setAttribute(
                 "aria-expanded",
@@ -3047,19 +4145,34 @@
 
         function closeSearch() {
 
-            if (!searchOverlay)
-                return;
+            /* INLINE PC */
 
-
-            searchOverlay.classList.remove(
+            inlineSearch?.classList.remove(
                 "open"
             );
 
 
-            searchOverlay.setAttribute(
+            closeSearchSuggestions();
+
+
+            inlineSearchInput?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            /* OVERLAY MÓVIL */
+
+            searchOverlay?.classList.remove(
+                "open"
+            );
+
+
+            searchOverlay?.setAttribute(
                 "aria-hidden",
                 "true"
             );
+
 
             searchButton?.setAttribute(
                 "aria-expanded",
@@ -3067,23 +4180,58 @@
             );
 
 
-            if (inlineSearch) {
-
-                inlineSearch.classList.remove(
-                    "open"
-                );
-
-            }
-
-
             unlockScroll();
 
         }
 
 
+        /* =====================================================
+           BOTÓN LUPA
+        ====================================================== */
+
         searchButton?.addEventListener(
             "click",
-            function () {
+            function (
+                event
+            ) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                /* PC */
+
+                if (
+                    window.innerWidth >
+                    1000
+                ) {
+
+                    const isOpen =
+                        inlineSearch?.classList.contains(
+                            "open"
+                        );
+
+
+                    if (
+                        isOpen
+                    ) {
+
+                        closeSearch();
+
+                    } else {
+
+                        openSearch();
+
+                    }
+
+
+                    return;
+
+                }
+
+
+                /* MÓVIL */
 
                 const isOpen =
                     searchOverlay?.classList.contains(
@@ -3091,7 +4239,9 @@
                     );
 
 
-                if (isOpen) {
+                if (
+                    isOpen
+                ) {
 
                     closeSearch();
 
@@ -3105,6 +4255,10 @@
         );
 
 
+        /* =====================================================
+           CERRAR OVERLAY MÓVIL
+        ====================================================== */
+
         searchClose?.addEventListener(
             "click",
             closeSearch
@@ -3113,7 +4267,9 @@
 
         searchOverlay?.addEventListener(
             "click",
-            function (event) {
+            function (
+                event
+            ) {
 
                 if (
                     event.target ===
@@ -3129,40 +4285,90 @@
 
 
         /* =====================================================
-           BUSCADOR INLINE
+           ESCRIBIR EN BUSCADOR INLINE
         ====================================================== */
 
         inlineSearchInput?.addEventListener(
-            "focus",
+            "input",
             function () {
 
-                inlineSearch?.classList.add(
-                    "open"
+                const value =
+                    inlineSearchInput.value;
+
+
+                renderSearchSuggestions(
+                    value
                 );
 
             }
         );
 
 
+        /* =====================================================
+           FOCUS DEL BUSCADOR
+        ====================================================== */
+
+        inlineSearchInput?.addEventListener(
+            "focus",
+            function () {
+
+                if (
+                    window.innerWidth <=
+                    1000
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    inlineSearchInput.value
+                        .trim()
+                ) {
+
+                    renderSearchSuggestions(
+                        inlineSearchInput.value
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           TECLADO BUSCADOR INLINE
+        ====================================================== */
+
         inlineSearchInput?.addEventListener(
             "keydown",
-            function (event) {
+            function (
+                event
+            ) {
+
+                /* ESC */
 
                 if (
                     event.key ===
                     "Escape"
                 ) {
 
+                    event.preventDefault();
+
+
                     inlineSearchInput.blur();
 
-                    inlineSearch?.classList.remove(
-                        "open"
-                    );
+
+                    closeSearch();
+
 
                     return;
 
                 }
 
+
+                /* ENTER */
 
                 if (
                     event.key ===
@@ -3192,6 +4398,112 @@
 
 
         /* =====================================================
+           SUBMIT BUSCADOR INLINE
+        ====================================================== */
+
+        inlineSearch?.addEventListener(
+            "submit",
+            function (
+                event
+            ) {
+
+                event.preventDefault();
+
+
+                const value =
+                    inlineSearchInput?.value
+                        .trim();
+
+
+                if (!value)
+                    return;
+
+
+                performSearch(
+                    value
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CLICK EN RECOMENDACIÓN
+        ====================================================== */
+
+        inlineSearchSuggestions?.addEventListener(
+            "click",
+            function (
+                event
+            ) {
+
+                /* PRODUCTO */
+
+                const suggestion =
+                    event.target.closest(
+                        "[data-search-suggestion]"
+                    );
+
+
+                if (
+                    suggestion
+                ) {
+
+                    const value =
+                        suggestion.dataset
+                            .searchSuggestion;
+
+
+                    if (
+                        value
+                    ) {
+
+                        performSearch(
+                            value
+                        );
+
+                    }
+
+
+                    return;
+
+                }
+
+
+                /* VER TODOS */
+
+                const viewAll =
+                    event.target.closest(
+                        "[data-search-all]"
+                    );
+
+
+                if (
+                    viewAll
+                ) {
+
+                    const value =
+                        viewAll.dataset
+                            .searchAll;
+
+
+                    if (
+                        value
+                    ) {
+
+                        performSearch(
+                            value
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
            BÚSQUEDA
         ====================================================== */
 
@@ -3200,7 +4512,10 @@
         ) {
 
             const query =
-                String(value || "")
+                String(
+                    value ||
+                    ""
+                )
                     .trim();
 
 
@@ -3222,9 +4537,15 @@
         }
 
 
+        /* =====================================================
+           SUBMIT BUSCADOR MÓVIL
+        ====================================================== */
+
         searchForm?.addEventListener(
             "submit",
-            function (event) {
+            function (
+                event
+            ) {
 
                 event.preventDefault();
 
@@ -3245,6 +4566,65 @@
             }
         );
 
+
+        /* =====================================================
+           CERRAR BUSCADOR PC AL HACER CLICK FUERA
+        ====================================================== */
+
+        document.addEventListener(
+            "click",
+            function (
+                event
+            ) {
+
+                if (
+                    window.innerWidth <=
+                    1000
+                ) {
+
+                    return;
+
+                }
+
+
+                const searchIsOpen =
+                    inlineSearch?.classList.contains(
+                        "open"
+                    );
+
+
+                if (
+                    !searchIsOpen
+                ) {
+
+                    return;
+
+                }
+
+
+                const clickedSearch =
+                    inlineSearch?.contains(
+                        event.target
+                    );
+
+
+                const clickedButton =
+                    searchButton?.contains(
+                        event.target
+                    );
+
+
+                if (
+                    !clickedSearch &&
+                    !clickedButton
+                ) {
+
+                    closeSearch();
+
+                }
+
+            }
+        );
 
         /* =====================================================
            CARRITO
