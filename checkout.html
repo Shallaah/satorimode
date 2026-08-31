@@ -238,62 +238,177 @@
         }
 
 
-        .satori-checkout-logo {
+/* =====================================================
+   LOGO SATORII · MISMO ESTILO DEL HEADER PRINCIPAL
+===================================================== */
 
-            position:
-                relative;
+.satori-checkout-logo {
 
-            z-index:
-                5;
+    position:
+        relative;
 
-            color:
-                #ffffff;
+    z-index:
+        5;
 
-            font-size:
-                31px;
+    display:
+        inline-block;
 
-            font-weight:
-                950;
+    font-family:
+        "Barlow Condensed",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
 
-            font-style:
-                italic;
+    font-size:
+        30px;
 
-            letter-spacing:
-                -2px;
+    font-weight:
+        800;
 
-            text-decoration:
-                none;
+    font-style:
+        italic;
 
-        }
+    letter-spacing:
+        -0.8px;
+
+    line-height:
+        .95;
+
+    text-transform:
+        uppercase;
+
+    white-space:
+        nowrap;
+
+    color:
+        #ffffff;
+
+    text-decoration:
+        none;
+
+    transform:
+        skewX(-3deg);
+
+    transform-origin:
+        center;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
 
 
-        .satori-checkout-cart {
+.satori-checkout-logo:hover {
 
-            position:
-                absolute;
+    transform:
+        skewX(-5deg)
+        scale(1.04);
 
-            z-index:
-                10;
+    opacity:
+        .92;
 
-            right:
-                35px;
+}
 
-            top:
-                50%;
 
-            transform:
-                translateY(-50%);
+       /* =====================================================
+   ICONO CARRITO / BOLSA
+===================================================== */
 
-            color:
-                #ffffff;
+.satori-checkout-cart {
 
-            font-size:
-                22px;
+    position:
+        absolute;
 
-            text-decoration:
-                none;
+    z-index:
+        10;
 
-        }
+    right:
+        max(
+            28px,
+            calc(
+                (100% - var(--satori-checkout-width)) / 2
+            )
+        );
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        #ffffff;
+
+    text-decoration:
+        none;
+
+    border-radius:
+        50%;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.satori-checkout-cart svg {
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    fill:
+        none;
+
+    stroke:
+        currentColor;
+
+    stroke-width:
+        1.7;
+
+    stroke-linecap:
+        round;
+
+    stroke-linejoin:
+        round;
+
+}
+
+
+.satori-checkout-cart:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+
+    transform:
+        translateY(-50%)
+        scale(1.05);
+
+}
 
 
         /* =====================================================
@@ -3559,10 +3674,25 @@ body {
     }
 
 
-    .satori-checkout-logo {
+  .satori-checkout-logo {
 
         font-size:
-            27px;
+            29px;
+
+        font-weight:
+            800;
+
+        font-style:
+            italic;
+
+        letter-spacing:
+            -0.8px;
+
+        line-height:
+            .95;
+
+        transform:
+            skewX(-3deg);
 
     }
 
@@ -3570,9 +3700,28 @@ body {
     .satori-checkout-cart {
 
         right:
-            18px;
+            16px;
+
+        width:
+            36px;
+
+        height:
+            36px;
 
     }
+
+
+    .satori-checkout-cart svg {
+
+        width:
+            19px;
+
+        height:
+            19px;
+
+    }
+
+}
 
 
     .satori-checkout {
@@ -3723,10 +3872,10 @@ body {
     }
 
 
-    .satori-checkout-logo {
+      .satori-checkout-logo {
 
         font-size:
-            25px;
+            28px;
 
     }
 
@@ -3734,10 +3883,11 @@ body {
     .satori-checkout-cart {
 
         right:
-            14px;
+            12px;
 
     }
 
+}
 
     .checkout-section-title h2 {
 
@@ -3804,13 +3954,28 @@ body {
         </a>
 
 
-        <a
-            href="/satorimode/carrito.html"
-            class="satori-checkout-cart"
-            aria-label="Volver al carrito"
-        >
-            ♧
-        </a>
+<a
+    href="/satorimode/carrito.html"
+    class="satori-checkout-cart"
+    aria-label="Volver al carrito"
+>
+
+    <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+    >
+
+        <path
+            d="M6.5 8.5h11l-.7 10.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6.5 8.5Z"
+        ></path>
+
+        <path
+            d="M9 9V6.8A3 3 0 0 1 12 4a3 3 0 0 1 3 2.8V9"
+        ></path>
+
+    </svg>
+
+</a>
 
     </header>
 
