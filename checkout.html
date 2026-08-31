@@ -344,24 +344,21 @@
 
         }
 
-
-/* =====================================================
-   RESUMEN DE COMPRA · STICKY EN PC
+        /* =====================================================
+   COLUMNA DERECHA
 ===================================================== */
 
-@media (min-width: 751px) {
+.satori-checkout-summary {
 
-    .satori-checkout-summary {
+    min-width:0;
 
-        position: sticky;
+    padding:
+        42px
+        0
+        50px
+        48px;
 
-        top: 0;
-
-        align-self: start;
-
-        height: fit-content;
-
-    }
+    background:#ffffff;
 
 }
 
@@ -1589,7 +1586,7 @@
 
             .satori-checkout-summary {
 
-                padding-left:30px;
+                padding-left:40px;
 
             }
 
@@ -1800,18 +1797,24 @@
 
         }
 
-        /* =====================================================
+/* =====================================================
    RESUMEN DE COMPRA · STICKY EN PC
 ===================================================== */
 
-@media (min-width: 751px) {
+.checkout-summary-sticky {
 
-    .satori-checkout-summary {
+    width:100%;
 
-        position: sticky;
-        top: 0;
-        align-self: start;
-        height: fit-content;
+}
+
+
+@media (min-width:751px) {
+
+    .checkout-summary-sticky {
+
+        position:sticky;
+
+        top:28px;
 
     }
 
@@ -1903,13 +1906,6 @@
                             Contacto
                         </h2>
 
-
-                        <a
-                            href="#"
-                            class="checkout-login"
-                        >
-                            Iniciar sesión
-                        </a>
 
                     </div>
 
@@ -2302,162 +2298,158 @@
                  RESUMEN
             ================================================== -->
 
-            <aside
-                class="satori-checkout-summary satori-content-animate"
+   <aside
+    class="satori-checkout-summary satori-content-animate"
+>
+
+    <div class="checkout-summary-sticky">
+
+
+        <div
+            id="checkout-products"
+            class="checkout-products"
+        ></div>
+
+
+        <!-- CUPÓN -->
+
+        <div
+            class="checkout-discount"
+        >
+
+            <input
+                type="text"
+                id="discount-code"
+                placeholder="Código de descuento o Gift Card"
             >
 
-                <div
-                    id="checkout-products"
-                    class="checkout-products"
-                ></div>
+            <button
+                type="button"
+                id="discount-button"
+            >
+                Aplicar
+            </button>
+
+        </div>
 
 
-                <!-- CUPÓN -->
+        <!-- TOTALES -->
 
-                <div
-                    class="checkout-discount"
+        <div
+            class="checkout-totals"
+        >
+
+            <div
+                class="checkout-total-row"
+            >
+
+                <span>
+                    Subtotal
+                </span>
+
+                <strong
+                    id="checkout-subtotal"
                 >
+                    $0
+                </strong>
 
-                    <input
-                        type="text"
-                        id="discount-code"
-                        placeholder="Código de descuento o Gift Card"
-                    >
+            </div>
 
 
-                    <button
-                        type="button"
-                        id="discount-button"
-                    >
-                        Aplicar
-                    </button>
+            <div
+                class="checkout-total-row"
+            >
 
-                </div>
+                <span>
+                    Envío
+                </span>
+
+                <strong>
+                    Por calcular
+                </strong>
+
+            </div>
 
 
-                <!-- TOTALES -->
+            <div
+                class="checkout-total"
+            >
 
-                <div
-                    class="checkout-totals"
+                <span>
+                    Total
+                </span>
+
+                <strong
+                    id="checkout-total"
                 >
+                    $0
+                </strong>
 
-                    <div
-                        class="checkout-total-row"
-                    >
-
-                        <span>
-                            Subtotal
-                        </span>
+            </div>
 
 
-                        <strong
-                            id="checkout-subtotal"
-                        >
-                            $0
-                        </strong>
+            <div
+                class="checkout-tax"
+            >
+                CLP · Incluye impuestos cuando corresponda.
+            </div>
 
-                    </div>
-
-
-                    <div
-                        class="checkout-total-row"
-                    >
-
-                        <span>
-                            Envío
-                        </span>
+        </div>
 
 
-                        <strong>
-                            Por calcular
-                        </strong>
+        <!-- CONFIANZA -->
 
-                    </div>
+        <div
+            class="checkout-trust"
+        >
 
+            <div
+                class="checkout-trust-item"
+            >
+                ✓
 
-                    <div
-                        class="checkout-total"
-                    >
-
-                        <span>
-                            Total
-                        </span>
-
-
-                        <strong
-                            id="checkout-total"
-                        >
-                            $0
-                        </strong>
-
-                    </div>
+                <span>
+                    <strong>
+                        Pago seguro
+                    </strong>
+                    procesado mediante Flow.
+                </span>
+            </div>
 
 
-                    <div
-                        class="checkout-tax"
-                    >
-                        CLP · Incluye impuestos cuando corresponda.
-                    </div>
+            <div
+                class="checkout-trust-item"
+            >
+                ✓
 
-                </div>
-
-
-                <!-- CONFIANZA -->
-
-                <div
-                    class="checkout-trust"
-                >
-
-                    <div
-                        class="checkout-trust-item"
-                    >
-
-                        ✓
-
-                        <span>
-                            <strong>
-                                Pago seguro
-                            </strong>
-                            procesado mediante Flow.
-                        </span>
-
-                    </div>
+                <span>
+                    <strong>
+                        Envíos a todo Chile
+                    </strong>
+                    con opciones según tu dirección.
+                </span>
+            </div>
 
 
-                    <div
-                        class="checkout-trust-item"
-                    >
+            <div
+                class="checkout-trust-item"
+            >
+                ✓
 
-                        ✓
+                <span>
+                    <strong>
+                        Compra protegida
+                    </strong>
+                    por SATORII.
+                </span>
+            </div>
 
-                        <span>
-                            <strong>
-                                Envíos a todo Chile
-                            </strong>
-                            con opciones según tu dirección.
-                        </span>
-
-                    </div>
+        </div>
 
 
-                    <div
-                        class="checkout-trust-item"
-                    >
+    </div>
 
-                        ✓
-
-                        <span>
-                            <strong>
-                                Compra protegida
-                            </strong>
-                            por SATORII.
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </aside>
+</aside>
 
         </div>
 
