@@ -3,22 +3,31 @@
 
 <head>
 
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
     <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         META
+    ====================================================== -->
+
     <link
         rel="icon"
         type="image/png"
@@ -55,59 +64,46 @@
 
         :root {
 
-            --red:
-                #EF0930;
+            --red:#EF0930;
+            --black:#111111;
+            --text:#222222;
+            --gray:#777777;
+            --light:#f7f7f7;
+            --border:#dddddd;
 
-            --black:
-                #111111;
-
-            --text:
-                #222222;
-
-            --gray:
-                #777777;
-
-            --light:
-                #f7f7f7;
-
-            --border:
-                #dddddd;
+            --checkout-width:990px;
+            --checkout-summary:390px;
 
         }
 
 
         * {
 
-            box-sizing:
-                border-box;
+            box-sizing:border-box;
 
         }
 
 
         html {
 
-            scroll-behavior:
-                smooth;
+            scroll-behavior:smooth;
 
         }
 
 
         body {
 
-            margin:
-                0;
+            margin:0;
 
-            background:
-                #ffffff;
+            background:#ffffff;
 
-            color:
-                var(--text);
+            color:var(--text);
 
-           font-family:
-        "Inter",
-        Arial,
-        Helvetica,
-        sans-serif;
+            font-family:
+                "Inter",
+                Arial,
+                Helvetica,
+                sans-serif;
 
         }
 
@@ -118,334 +114,211 @@
 
         .satori-checkout-header {
 
-            position:
-                relative;
+            position:relative;
 
-            height:
-                92px;
+            width:100%;
+            height:130px;
 
-            display:
-                flex;
+            display:flex;
 
-            align-items:
-                center;
+            align-items:center;
+            justify-content:center;
 
-            justify-content:
-                center;
+            background:var(--red);
 
-            background:
-                var(--red);
-
-            overflow:
-                hidden;
+            overflow:hidden;
 
         }
 
 
-        /*
-         * Paisaje japonés sutil.
-         */
-
         .satori-checkout-header::before {
 
-            content:
-                "";
+            content:"";
 
-            position:
-                absolute;
+            position:absolute;
 
-            inset:
-                0;
+            inset:0;
 
             background:
 
                 radial-gradient(
                     ellipse at 15% 70%,
-                    rgba(
-                        0,
-                        0,
-                        0,
-                        .10
-                    ) 0,
+                    rgba(0,0,0,.08) 0,
                     transparent 45%
                 ),
 
                 radial-gradient(
                     ellipse at 85% 30%,
-                    rgba(
-                        0,
-                        0,
-                        0,
-                        .10
-                    ) 0,
+                    rgba(0,0,0,.08) 0,
                     transparent 45%
                 );
 
-            opacity:
-                .8;
+            pointer-events:none;
 
         }
-
-
-        /*
-         * Montañas decorativas.
-         */
-
-        .satori-checkout-header::after {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            left:
-                -5%;
-
-            right:
-                -5%;
-
-            bottom:
-                -65px;
-
-            height:
-                130px;
-
-            background:
-
-                radial-gradient(
-                    ellipse at 20% 100%,
-                    rgba(
-                        120,
-                        0,
-                        20,
-                        .22
-                    ) 0,
-                    transparent 55%
-                ),
-
-                radial-gradient(
-                    ellipse at 75% 100%,
-                    rgba(
-                        120,
-                        0,
-                        20,
-                        .22
-                    ) 0,
-                    transparent 55%
-                );
-
-        }
-
-
-/* =====================================================
-   LOGO SATORII · MISMO ESTILO DEL HEADER PRINCIPAL
-===================================================== */
-
-.satori-checkout-logo {
-
-    position:
-        relative;
-
-    z-index:
-        5;
-
-    display:
-        inline-block;
-
-    font-family:
-        "Barlow Condensed",
-        "Arial Narrow",
-        Arial,
-        sans-serif;
-
-    font-size:
-        30px;
-
-    font-weight:
-        800;
-
-    font-style:
-        italic;
-
-    letter-spacing:
-        -0.8px;
-
-    line-height:
-        .95;
-
-    text-transform:
-        uppercase;
-
-    white-space:
-        nowrap;
-
-    color:
-        #ffffff;
-
-    text-decoration:
-        none;
-
-    transform:
-        skewX(-3deg);
-
-    transform-origin:
-        center;
-
-    transition:
-        transform .2s ease,
-        opacity .2s ease;
-
-}
-
-
-.satori-checkout-logo:hover {
-
-    transform:
-        skewX(-5deg)
-        scale(1.04);
-
-    opacity:
-        .92;
-
-}
-
-
-       /* =====================================================
-   ICONO CARRITO / BOLSA
-===================================================== */
-
-.satori-checkout-cart {
-
-    position:
-        absolute;
-
-    z-index:
-        10;
-
-    right:
-        max(
-            28px,
-            calc(
-                (100% - var(--satori-checkout-width)) / 2
-            )
-        );
-
-    top:
-        50%;
-
-    transform:
-        translateY(-50%);
-
-    width:
-        38px;
-
-    height:
-        38px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    color:
-        #ffffff;
-
-    text-decoration:
-        none;
-
-    border-radius:
-        50%;
-
-    transition:
-        background .2s ease,
-        transform .2s ease;
-
-}
-
-
-.satori-checkout-cart svg {
-
-    width:
-        20px;
-
-    height:
-        20px;
-
-    fill:
-        none;
-
-    stroke:
-        currentColor;
-
-    stroke-width:
-        1.7;
-
-    stroke-linecap:
-        round;
-
-    stroke-linejoin:
-        round;
-
-}
-
-
-.satori-checkout-cart:hover {
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .12
-        );
-
-    transform:
-        translateY(-50%)
-        scale(1.05);
-
-}
 
 
         /* =====================================================
-           CONTENEDOR PRINCIPAL
+           LOGO
+        ====================================================== */
+
+        .satori-checkout-logo {
+
+            position:relative;
+
+            z-index:5;
+
+            display:inline-block;
+
+            color:#ffffff;
+
+            font-family:
+                "Barlow Condensed",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
+
+            font-size:30px;
+
+            font-weight:800;
+
+            font-style:italic;
+
+            letter-spacing:-.8px;
+
+            line-height:.95;
+
+            text-transform:uppercase;
+
+            white-space:nowrap;
+
+            text-decoration:none;
+
+            transform:skewX(-3deg);
+
+            transition:
+                transform .2s ease,
+                opacity .2s ease;
+
+        }
+
+
+        .satori-checkout-logo:hover {
+
+            transform:
+                skewX(-5deg)
+                scale(1.04);
+
+            opacity:.92;
+
+        }
+
+
+        /* =====================================================
+           ICONO BOLSA
+        ====================================================== */
+
+        .satori-checkout-cart {
+
+            position:absolute;
+
+            z-index:10;
+
+            top:50%;
+
+            right:
+                max(
+                    28px,
+                    calc(
+                        (100% - var(--checkout-width)) / 2
+                    )
+                );
+
+            transform:
+                translateY(-50%);
+
+            width:38px;
+            height:38px;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+            color:#ffffff;
+
+            text-decoration:none;
+
+            border-radius:50%;
+
+            transition:
+                background .2s ease,
+                transform .2s ease;
+
+        }
+
+
+        .satori-checkout-cart svg {
+
+            width:20px;
+            height:20px;
+
+            fill:none;
+
+            stroke:currentColor;
+
+            stroke-width:1.7;
+
+            stroke-linecap:round;
+            stroke-linejoin:round;
+
+        }
+
+
+        .satori-checkout-cart:hover {
+
+            background:
+                rgba(255,255,255,.12);
+
+            transform:
+                translateY(-50%)
+                scale(1.05);
+
+        }
+
+
+        /* =====================================================
+           CONTENEDOR
         ====================================================== */
 
         .satori-checkout {
 
             width:
                 min(
-                    900px,
-                    calc(
-                        100% - 40px
-                    )
+                    var(--checkout-width),
+                    calc(100% - 40px)
                 );
 
-            margin:
-                0 auto;
+            margin:0 auto;
 
         }
 
 
+        /* =====================================================
+           LAYOUT
+        ====================================================== */
+
         .satori-checkout-layout {
 
-            display:
-                grid;
+            display:grid;
 
             grid-template-columns:
-                minmax(
-                    0,
-                    1fr
-                )
-                360px;
+                minmax(0,600px)
+                var(--checkout-summary);
 
             min-height:
                 calc(
-                    100vh - 92px
+                    100vh - 130px
                 );
 
         }
@@ -457,12 +330,36 @@
 
         .satori-checkout-main {
 
+            min-width:0;
+
             padding:
-                42px 38px 70px 0;
+                42px
+                40px
+                65px
+                0;
 
             border-right:
                 1px solid
                 var(--border);
+
+        }
+
+
+        /* =====================================================
+           COLUMNA DERECHA
+        ====================================================== */
+
+        .satori-checkout-summary {
+
+            min-width:0;
+
+            padding:
+                42px
+                0
+                50px
+                40px;
+
+            background:#ffffff;
 
         }
 
@@ -473,56 +370,54 @@
 
         .checkout-section {
 
-            margin-bottom:
-                32px;
+            margin-bottom:29px;
 
         }
 
 
         .checkout-section-title {
 
-            display:
-                flex;
+            display:flex;
 
-            align-items:
-                center;
+            align-items:center;
+            justify-content:space-between;
 
-            justify-content:
-                space-between;
-
-            margin-bottom:
-                10px;
+            margin-bottom:10px;
 
         }
 
 
         .checkout-section-title h2 {
 
-            margin:
-                0;
+            margin:0;
 
-            color:
-                #111;
+            color:#111;
 
-            font-size:
-                15px;
+            font-family:
+                "Barlow Condensed",
+                Arial,
+                sans-serif;
 
-            font-weight:
-                900;
+            font-size:23px;
+
+            line-height:1;
+
+            font-weight:800;
+
+            letter-spacing:.15px;
 
         }
 
 
         .checkout-login {
 
-            color:
-                #333;
+            color:#333;
 
-            font-size:
-                10px;
+            font-size:10px;
 
-            text-decoration:
-                underline;
+            line-height:1.3;
+
+            text-decoration:underline;
 
         }
 
@@ -530,13 +425,15 @@
         .checkout-description {
 
             margin:
-                0 0 12px;
+                0
+                0
+                12px;
 
-            color:
-                #888;
+            color:#888;
 
-            font-size:
-                10px;
+            font-size:11px;
+
+            line-height:1.5;
 
         }
 
@@ -547,23 +444,22 @@
 
         .checkout-fields {
 
-            display:
-                grid;
+            display:grid;
 
             grid-template-columns:
-                1fr
-                1fr;
+                repeat(
+                    2,
+                    minmax(0,1fr)
+                );
 
-            gap:
-                8px;
+            gap:8px;
 
         }
 
 
         .checkout-field {
 
-            min-width:
-                0;
+            min-width:0;
 
         }
 
@@ -579,36 +475,42 @@
         .checkout-field input,
         .checkout-field select {
 
-            width:
-                100%;
-
-            height:
-                44px;
+            width:100%;
+            height:46px;
 
             padding:
-                0 12px;
+                0
+                12px;
 
             border:
                 1px solid
-                var(--border);
+                #d8d8d8;
 
-            border-radius:
-                8px;
+            border-radius:8px;
 
-            outline:
-                none;
+            outline:none;
 
-            background:
-                #ffffff;
+            background:#ffffff;
 
-            color:
-                #222;
+            color:#222;
 
             font-family:
-                inherit;
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-size:
-                11px;
+            font-size:12px;
+
+            transition:
+                border-color .15s ease,
+                box-shadow .15s ease;
+
+        }
+
+
+        .checkout-field input::placeholder {
+
+            color:#8a8a8a;
 
         }
 
@@ -616,45 +518,46 @@
         .checkout-field input:focus,
         .checkout-field select:focus {
 
-            border-color:
-                #222;
+            border-color:#777;
+
+            box-shadow:
+                0 0 0 1px
+                rgba(0,0,0,.03);
 
         }
 
 
+        /* =====================================================
+           CHECKBOX
+        ====================================================== */
+
         .checkout-checkbox {
 
-            display:
-                flex;
+            display:flex;
 
-            align-items:
-                center;
+            align-items:center;
 
-            gap:
-                8px;
+            gap:8px;
 
-            margin-top:
-                10px;
+            margin-top:10px;
 
-            color:
-                #333;
+            color:#333;
 
-            font-size:
-                10px;
+            font-size:11px;
+
+            line-height:1.45;
 
         }
 
 
         .checkout-checkbox input {
 
-            width:
-                15px;
+            width:15px;
+            height:15px;
 
-            height:
-                15px;
+            margin:0;
 
-            accent-color:
-                var(--red);
+            accent-color:var(--red);
 
         }
 
@@ -665,30 +568,23 @@
 
         .checkout-shipping {
 
-            padding:
-                15px;
+            padding:16px;
 
             border:
                 1px solid
-                var(--border);
+                #e1e1e1;
 
-            border-radius:
-                8px;
+            border-radius:8px;
 
-            background:
-                var(--light);
+            background:#f7f7f7;
 
-            color:
-                #777;
+            color:#777;
 
-            text-align:
-                center;
+            text-align:center;
 
-            font-size:
-                10px;
+            font-size:11px;
 
-            line-height:
-                1.5;
+            line-height:1.5;
 
         }
 
@@ -699,35 +595,30 @@
 
         .checkout-payment {
 
-            overflow:
-                hidden;
+            overflow:hidden;
 
             border:
                 1px solid
                 #222;
 
-            border-radius:
-                8px;
+            border-radius:8px;
 
         }
 
 
         .checkout-payment-header {
 
-            display:
-                flex;
+            display:flex;
 
-            align-items:
-                center;
+            align-items:center;
 
-            gap:
-                10px;
+            gap:10px;
 
-            min-height:
-                54px;
+            min-height:52px;
 
             padding:
-                0 14px;
+                0
+                13px;
 
             border-bottom:
                 1px solid
@@ -738,63 +629,46 @@
 
         .checkout-radio {
 
-            width:
-                18px;
+            width:16px;
+            height:16px;
 
-            height:
-                18px;
+            flex-shrink:0;
 
-            display:
-                flex;
+            display:flex;
 
-            align-items:
-                center;
+            align-items:center;
+            justify-content:center;
 
-            justify-content:
-                center;
+            border-radius:50%;
 
-            border-radius:
-                50%;
-
-            background:
-                #243447;
+            background:#243447;
 
         }
 
 
         .checkout-radio::after {
 
-            content:
-                "";
+            content:"";
 
-            width:
-                6px;
+            width:6px;
+            height:6px;
 
-            height:
-                6px;
+            border-radius:50%;
 
-            border-radius:
-                50%;
-
-            background:
-                #ffffff;
+            background:#ffffff;
 
         }
 
 
         .checkout-payment-name {
 
-            flex:
-                1;
+            flex:1;
 
-            color:
-                #111;
+            color:#111;
 
-            font-size:
-                11px;
+            font-size:12px;
 
-            font-weight:
-                900;
+            font-weight:800;
 
         }
 
@@ -802,45 +676,35 @@
         .checkout-flow {
 
             padding:
-                4px 7px;
+                4px
+                7px;
 
-            border-radius:
-                3px;
+            border-radius:3px;
 
-            background:
-                #111;
+            background:#111;
 
-            color:
-                #fff;
+            color:#ffffff;
 
-            font-size:
-                8px;
+            font-size:8px;
 
-            font-weight:
-                900;
+            font-weight:900;
 
-            letter-spacing:
-                1px;
+            letter-spacing:.7px;
 
         }
 
 
         .checkout-payment-content {
 
-            padding:
-                16px;
+            padding:15px;
 
-            background:
-                #f8f8f8;
+            background:#f8f8f8;
 
-            color:
-                #777;
+            color:#777;
 
-            font-size:
-                10px;
+            font-size:11px;
 
-            line-height:
-                1.6;
+            line-height:1.55;
 
         }
 
@@ -851,308 +715,246 @@
 
         .checkout-billing {
 
-            margin-top:
-                16px;
+            margin-top:14px;
 
-            overflow:
-                hidden;
+            overflow:hidden;
 
             border:
                 1px solid
                 var(--border);
 
-            border-radius:
-                8px;
+            border-radius:8px;
 
         }
 
 
         .checkout-billing label {
 
-            display:
-                flex;
+            display:flex;
 
-            align-items:
-                center;
+            align-items:center;
 
-            gap:
-                9px;
+            gap:9px;
 
-            min-height:
-                45px;
+            min-height:44px;
 
             padding:
-                0 13px;
+                0
+                12px;
 
             border-bottom:
                 1px solid
                 var(--border);
 
-            color:
-                #333;
+            color:#333;
 
-            font-size:
-                10px;
+            font-size:11px;
 
-            cursor:
-                pointer;
+            line-height:1.45;
+
+            cursor:pointer;
 
         }
 
 
         .checkout-billing label:last-child {
 
-            border-bottom:
-                0;
+            border-bottom:0;
 
         }
 
 
         .checkout-billing input {
 
-            accent-color:
-                var(--red);
+            accent-color:var(--red);
 
         }
 
 
         /* =====================================================
-           BOTÓN PAGAR
+           PAGAR
         ====================================================== */
 
         .checkout-pay {
 
-            width:
-                100%;
+            width:100%;
+            height:50px;
 
-            height:
-                52px;
+            margin-top:19px;
 
-            margin-top:
-                18px;
+            border:0;
 
-            border:
-                0;
+            border-radius:7px;
 
-            border-radius:
-                7px;
+            background:#243447;
 
-            background:
-                #243447;
+            color:#ffffff;
 
-            color:
-                #ffffff;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-size:
-                11px;
+            font-size:11px;
 
-            font-weight:
-                900;
+            font-weight:800;
 
-            cursor:
-                pointer;
+            cursor:pointer;
 
             transition:
-                .2s ease;
+                background .2s ease;
 
         }
 
 
         .checkout-pay:hover {
 
-            background:
-                var(--red);
+            background:var(--red);
 
         }
 
 
         /* =====================================================
-           COLUMNA DERECHA
+           PRODUCTOS
         ====================================================== */
-
-        .satori-checkout-summary {
-
-            padding:
-                42px 0 50px 28px;
-
-            background:
-                #ffffff;
-
-        }
-
 
         .checkout-products {
 
-            margin-bottom:
-                20px;
+            margin-bottom:20px;
 
         }
 
 
         .checkout-product {
 
-            display:
-                grid;
+            display:grid;
 
             grid-template-columns:
-                52px
-                minmax(
-                    0,
-                    1fr
-                )
+                55px
+                minmax(0,1fr)
                 auto;
 
-            gap:
-                10px;
+            align-items:center;
 
-            align-items:
-                center;
+            gap:11px;
 
-            margin-bottom:
-                15px;
+            margin-bottom:16px;
 
         }
 
 
         .checkout-product-image {
 
-            position:
-                relative;
+            position:relative;
 
-            width:
-                52px;
+            width:55px;
+            height:55px;
 
-            height:
-                52px;
-
-            overflow:
-                hidden;
+            overflow:visible;
 
             border:
                 1px solid
                 #ddd;
 
-            border-radius:
-                7px;
+            border-radius:8px;
 
-            background:
-                #f5f5f5;
+            background:#f5f5f5;
 
         }
 
 
         .checkout-product-image img {
 
-            width:
-                100%;
+            display:block;
 
-            height:
-                100%;
+            width:100%;
+            height:100%;
 
-            display:
-                block;
+            object-fit:cover;
 
-            object-fit:
-                cover;
+            border-radius:inherit;
 
         }
 
 
         .checkout-product-quantity {
 
-            position:
-                absolute;
+            position:absolute;
 
-            top:
-                -5px;
+            top:-7px;
+            right:-7px;
 
-            right:
-                -5px;
+            min-width:19px;
+            height:19px;
 
-            min-width:
-                18px;
+            display:flex;
 
-            height:
-                18px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
+            align-items:center;
+            justify-content:center;
 
             padding:
-                0 4px;
+                0
+                4px;
 
             border:
                 2px solid
-                #fff;
+                #ffffff;
 
-            border-radius:
-                20px;
+            border-radius:999px;
 
-            background:
-                #111;
+            background:#111;
 
-            color:
-                #fff;
+            color:#ffffff;
 
-            font-size:
-                8px;
+            font-size:9px;
 
-            font-weight:
-                900;
+            font-weight:800;
 
         }
 
 
         .checkout-product-name {
 
-            margin:
-                0;
+            margin:0;
 
-            color:
-                #222;
+            color:#222;
 
-            font-size:
-                10px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-weight:
-                700;
+            font-size:12px;
+
+            line-height:1.3;
+
+            font-weight:700;
 
         }
 
 
         .checkout-product-options {
 
-            margin-top:
-                3px;
+            margin-top:3px;
 
-            color:
-                #888;
+            color:#888;
 
-            font-size:
-                8px;
+            font-size:10px;
+
+            line-height:1.4;
 
         }
 
 
         .checkout-product-price {
 
-            color:
-                #222;
+            color:#222;
 
-            font-size:
-                10px;
+            font-size:11px;
 
-            font-weight:
-                800;
+            font-weight:700;
 
-            white-space:
-                nowrap;
+            white-space:nowrap;
 
         }
 
@@ -1163,74 +965,74 @@
 
         .checkout-discount {
 
-            display:
-                grid;
+            display:grid;
 
             grid-template-columns:
-                1fr
+                minmax(0,1fr)
                 auto;
 
-            gap:
-                7px;
+            gap:8px;
 
-            margin-bottom:
-                25px;
+            margin-bottom:24px;
 
         }
 
 
         .checkout-discount input {
 
-            width:
-                100%;
-
-            height:
-                38px;
+            width:100%;
+            height:44px;
 
             padding:
-                0 10px;
+                0
+                12px;
 
             border:
                 1px solid
                 var(--border);
 
-            border-radius:
-                7px;
+            border-radius:8px;
 
-            outline:
-                none;
+            outline:none;
 
-            font-size:
-                10px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:11px;
 
         }
 
 
         .checkout-discount button {
 
+            min-width:68px;
+
             padding:
-                0 12px;
+                0
+                14px;
 
             border:
-                0;
+                1px solid
+                #e2e2e2;
 
-            border-radius:
-                7px;
+            border-radius:8px;
 
-            background:
-                #f1f1f1;
+            background:#f7f7f7;
 
-            color:
-                #777;
+            color:#777;
 
-            font-size:
-                9px;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
-            font-weight:
-                800;
+            font-size:10px;
 
-            cursor:
-                pointer;
+            font-weight:700;
+
+            cursor:pointer;
 
         }
 
@@ -1239,111 +1041,84 @@
            TOTALES
         ====================================================== */
 
-        .checkout-totals {
-
-            border-top:
-                1px solid
-                var(--border);
-
-        }
-
-
         .checkout-total-row {
 
-            display:
-                flex;
+            display:flex;
 
-            justify-content:
-                space-between;
+            align-items:center;
+            justify-content:space-between;
 
             padding:
-                9px 0;
+                7px
+                0;
 
-            color:
-                #555;
+            color:#444;
 
-            font-size:
-                10px;
+            font-size:11px;
+
+            line-height:1.4;
 
         }
 
 
         .checkout-total-row strong {
 
-            color:
-                #222;
+            color:#222;
 
-            font-size:
-                10px;
+            font-size:11px;
+
+            font-weight:700;
 
         }
 
 
         .checkout-total {
 
-            display:
-                flex;
+            display:flex;
 
-            align-items:
-                center;
+            align-items:center;
+            justify-content:space-between;
 
-            justify-content:
-                space-between;
+            margin-top:5px;
 
-            margin-top:
-                5px;
-
-            padding-top:
-                13px;
-
-            border-top:
-                1px solid
-                var(--border);
+            padding-top:4px;
 
         }
 
 
         .checkout-total span {
 
-            color:
-                #111;
+            color:#111;
 
-            font-size:
-                15px;
+            font-size:17px;
 
-            font-weight:
-                900;
+            font-weight:700;
 
         }
 
 
         .checkout-total strong {
 
-            color:
-                #111;
+            color:#111;
 
-            font-size:
-                20px;
+            font-size:20px;
 
-            font-weight:
-                950;
+            font-weight:800;
 
         }
 
 
         .checkout-tax {
 
-            margin-top:
-                5px;
+            margin-top:6px;
 
-            color:
-                #888;
+            color:#888;
 
-            font-size:
-                8px;
+            font-size:9px;
 
-            text-align:
-                right;
+            line-height:1.4;
+
+            text-align:right;
 
         }
 
@@ -1354,11 +1129,9 @@
 
         .checkout-trust {
 
-            margin-top:
-                25px;
+            margin-top:25px;
 
-            padding-top:
-                20px;
+            padding-top:20px;
 
             border-top:
                 1px solid
@@ -1369,28 +1142,24 @@
 
         .checkout-trust-item {
 
-            display:
-                flex;
+            display:flex;
 
-            gap:
-                9px;
+            gap:8px;
 
-            margin-bottom:
-                12px;
+            margin-bottom:11px;
 
-            color:
-                #777;
+            color:#777;
 
-            font-size:
-                9px;
+            font-size:10px;
+
+            line-height:1.5;
 
         }
 
 
         .checkout-trust-item strong {
 
-            color:
-                #222;
+            color:#222;
 
         }
 
@@ -1401,20 +1170,27 @@
 
         .checkout-footer {
 
-            display:
-                flex;
+            display:flex;
 
-            flex-wrap:
-                wrap;
+            flex-wrap:wrap;
 
-            justify-content:
-                center;
+            justify-content:flex-start;
 
-            gap:
-                18px;
+            gap:18px;
+
+            width:
+                min(
+                    var(--checkout-width),
+                    calc(100% - 40px)
+                );
+
+            margin:
+                0 auto;
 
             padding:
-                25px 20px;
+                22px
+                0
+                30px;
 
             border-top:
                 1px solid
@@ -1423,724 +1199,397 @@
         }
 
 
-        .checkout-footer a {
+        .checkout-footer-link {
 
-            color:
-                #555;
+            appearance:none;
+            -webkit-appearance:none;
 
-            font-size:
-                8px;
+            padding:0;
 
-            text-decoration:
-                underline;
+            border:0;
+
+            outline:none;
+
+            background:transparent;
+
+            color:#555;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:9px;
+
+            font-weight:500;
+
+            line-height:1.4;
+
+            text-decoration:underline;
+
+            text-underline-offset:2px;
+
+            cursor:pointer;
+
+            transition:
+                color .18s ease;
+
+        }
+
+
+        .checkout-footer-link:hover {
+
+            color:#111;
 
         }
 
 
         /* =====================================================
-           MÓVIL
+           MODAL OVERLAY
         ====================================================== */
 
-        @media (
-            max-width:750px
-        ) {
+        .checkout-info-overlay {
 
-            .satori-checkout-header {
+            position:fixed;
 
-                height:
-                    75px;
+            inset:0;
 
-            }
+            z-index:999999;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+            padding:20px;
+
+            background:
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .58
+                );
+
+            backdrop-filter:
+                blur(3px);
+
+            -webkit-backdrop-filter:
+                blur(3px);
+
+            opacity:0;
+
+            visibility:hidden;
+
+            pointer-events:none;
+
+            transition:
+                opacity .2s ease,
+                visibility .2s ease;
+
+        }
 
 
-            .satori-checkout-logo {
+        .checkout-info-overlay.open {
 
-                font-size:
-                    25px;
+            opacity:1;
 
-            }
+            visibility:visible;
 
+            pointer-events:auto;
 
-            .satori-checkout-cart {
-
-                right:
-                    18px;
-
-            }
+        }
 
 
-            .satori-checkout {
+        /* =====================================================
+           MODAL
+        ====================================================== */
 
-                width:
-                    100%;
+        .checkout-info-modal {
+
+            position:relative;
+
+            width:
+                min(
+                    440px,
+                    100%
+                );
+
+            max-height:
+                min(
+                    620px,
+                    calc(100vh - 40px)
+                );
+
+            padding:
+                27px
+                28px
+                30px;
+
+            overflow-y:auto;
+
+            background:#ffffff;
+
+            border-radius:16px;
+
+            box-shadow:
+                0
+                24px
+                70px
+                rgba(0,0,0,.22);
+
+            opacity:0;
+
+            transform:
+                translateY(12px)
+                scale(.985);
+
+            transition:
+                opacity .2s ease,
+                transform .2s ease;
+
+            outline:none;
+
+        }
+
+
+        .checkout-info-overlay.open
+        .checkout-info-modal {
+
+            opacity:1;
+
+            transform:
+                translateY(0)
+                scale(1);
+
+        }
+
+
+        /* =====================================================
+           CERRAR MODAL
+        ====================================================== */
+
+        .checkout-info-close {
+
+            position:absolute;
+
+            top:14px;
+            right:14px;
+
+            width:36px;
+            height:36px;
+
+            padding:0;
+
+            border:0;
+
+            border-radius:50%;
+
+            background:transparent;
+
+            color:#777;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+            cursor:pointer;
+
+            transition:
+                color .18s ease,
+                background .18s ease;
+
+        }
+
+
+        .checkout-info-close:hover {
+
+            color:#111;
+
+            background:#f5f5f5;
+
+        }
+
+
+        .checkout-info-close svg {
+
+            width:19px;
+            height:19px;
+
+            fill:none;
+
+            stroke:currentColor;
+
+            stroke-width:1.8;
+
+            stroke-linecap:round;
+
+        }
+
+
+        /* =====================================================
+           MODAL TEXTO
+        ====================================================== */
+
+        .checkout-info-title {
+
+            max-width:
+                calc(100% - 45px);
+
+            margin:
+                0
+                0
+                16px;
+
+            color:#111;
+
+            font-family:
+                "Barlow Condensed",
+                "Arial Narrow",
+                Arial,
+                sans-serif;
+
+            font-size:26px;
+
+            line-height:1;
+
+            font-weight:800;
+
+        }
+
+
+        .checkout-info-content {
+
+            color:#333;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            font-size:12px;
+
+            line-height:1.65;
+
+        }
+
+
+        .checkout-info-content p {
+
+            margin:
+                0
+                0
+                14px;
+
+        }
+
+
+        .checkout-info-content p:last-child {
+
+            margin-bottom:0;
+
+        }
+
+
+        .checkout-info-content strong {
+
+            color:#111;
+
+            font-weight:700;
+
+        }
+
+
+        .checkout-info-content a {
+
+            color:#111;
+
+            font-weight:700;
+
+            text-decoration:underline;
+
+            text-underline-offset:2px;
+
+        }
+
+
+        .checkout-info-content a:hover {
+
+            color:var(--red);
+
+        }
+
+
+        .checkout-info-note {
+
+            margin:
+                17px
+                0
+                0;
+
+            padding:
+                13px
+                14px;
+
+            border-left:
+                2px solid
+                var(--red);
+
+            background:#f7f7f7;
+
+            color:#555;
+
+            font-size:11px;
+
+            line-height:1.55;
+
+        }
+
+
+        html.checkout-modal-open,
+        body.checkout-modal-open {
+
+            overflow:hidden;
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width:1050px) {
+
+            :root {
+
+                --checkout-width:900px;
+                --checkout-summary:350px;
 
             }
 
 
             .satori-checkout-layout {
 
-                display:
-                    flex;
-
-                flex-direction:
-                    column;
-
-            }
-
-
-            .satori-checkout-summary {
-
-                order:
-                    -1;
-
-                padding:
-                    25px 18px;
-
-                border-bottom:
-                    1px solid
-                    var(--border);
+                grid-template-columns:
+                    minmax(0,550px)
+                    var(--checkout-summary);
 
             }
 
 
             .satori-checkout-main {
 
-                padding:
-                    28px 18px 45px;
-
-                border-right:
-                    0;
+                padding-right:30px;
 
             }
 
 
-            .checkout-fields {
+            .satori-checkout-summary {
 
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .checkout-field.full {
-
-                grid-column:
-                    auto;
+                padding-left:30px;
 
             }
-
-        }
-
-
-        @media (
-            max-width:420px
-        ) {
-
-            .satori-checkout-logo {
-
-                font-size:
-                    22px;
-
-            }
-
-
-            .checkout-product {
-
-                grid-template-columns:
-                    48px
-                    minmax(
-                        0,
-                        1fr
-                    )
-                    auto;
-
-            }
-
-
-            .checkout-product-image {
-
-                width:
-                    48px;
-
-                height:
-                    48px;
-
-            }
-
-        }
-
-
-
-
-        /* =====================================================
-           SATORII · ESTÁNDAR OFICIAL COMPLETO · CHECKOUT
-           Tipografía · Tamaños · Interletraje · Márgenes
-        ====================================================== */
-
-        :root {
-
-            --satori-official-width: 1700px;
-            --satori-official-side: 35px;
-
-        }
-
-
-        /* =====================================================
-           BASE
-        ====================================================== */
-
-        body {
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-        }
-
-
-        .satori-checkout-logo,
-        .checkout-section-title h2,
-        .checkout-product-name,
-        .checkout-total span,
-        .checkout-total strong {
-
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
-
-        }
-
-
-        .checkout-login,
-        .checkout-description,
-        .checkout-field input,
-        .checkout-field select,
-        .checkout-checkbox,
-        .checkout-shipping,
-        .checkout-payment-name,
-        .checkout-flow,
-        .checkout-payment-content,
-        .checkout-billing label,
-        .checkout-pay,
-        .checkout-product-options,
-        .checkout-product-price,
-        .checkout-discount input,
-        .checkout-discount button,
-        .checkout-total-row,
-        .checkout-tax,
-        .checkout-trust-item,
-        .checkout-footer a {
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-        }
-
-
-        /* =====================================================
-           HEADER
-        ====================================================== */
-
-        .satori-checkout-header {
-
-            height: 92px;
-
-        }
-
-
-        .satori-checkout-logo {
-
-            font-size: 34px;
-
-            line-height: .9;
-
-            font-weight: 900;
-
-            font-style: normal;
-
-            letter-spacing: .6px;
-
-        }
-
-
-        .satori-checkout-cart {
-
-            right:
-                var(--satori-official-side);
-
-        }
-
-
-        /* =====================================================
-           CONTENEDOR Y MÁRGENES OFICIALES
-        ====================================================== */
-
-        .satori-checkout {
-
-            width:
-                min(
-                    var(--satori-official-width),
-                    calc(100% - 70px)
-                );
-
-            margin:
-                0 auto;
-
-        }
-
-
-        .satori-checkout-layout {
-
-            grid-template-columns:
-                minmax(0, 1fr)
-                390px;
-
-        }
-
-
-        .satori-checkout-main {
-
-            padding:
-                58px
-                48px
-                78px
-                0;
-
-        }
-
-
-        .satori-checkout-summary {
-
-            padding:
-                58px
-                0
-                58px
-                34px;
-
-        }
-
-
-        /* =====================================================
-           SECCIONES
-        ====================================================== */
-
-        .checkout-section {
-
-            margin-bottom: 34px;
-
-        }
-
-
-        .checkout-section-title {
-
-            margin-bottom: 12px;
-
-        }
-
-
-        .checkout-section-title h2 {
-
-            font-size: 27px;
-
-            line-height: .95;
-
-            font-weight: 800;
-
-            letter-spacing: .35px;
-
-        }
-
-
-        .checkout-login {
-
-            font-size: 11px;
-
-            line-height: 1.3;
-
-        }
-
-
-        .checkout-description {
-
-            margin-bottom: 14px;
-
-            font-size: 13px;
-
-            line-height: 1.65;
-
-        }
-
-
-        /* =====================================================
-           CAMPOS
-        ====================================================== */
-
-        .checkout-fields {
-
-            gap: 10px;
-
-        }
-
-
-        .checkout-field input,
-        .checkout-field select {
-
-            height: 46px;
-
-            padding:
-                0 13px;
-
-            font-size: 13px;
-
-            line-height: 1.2;
-
-        }
-
-
-        .checkout-checkbox {
-
-            margin-top: 12px;
-
-            font-size: 12px;
-
-            line-height: 1.5;
-
-        }
-
-
-        /* =====================================================
-           ENVÍO
-        ====================================================== */
-
-        .checkout-shipping {
-
-            padding: 16px;
-
-            font-size: 12px;
-
-            line-height: 1.6;
-
-        }
-
-
-        /* =====================================================
-           PAGO
-        ====================================================== */
-
-        .checkout-payment-header {
-
-            min-height: 56px;
-
-            padding:
-                0 15px;
-
-        }
-
-
-        .checkout-payment-name {
-
-            font-size: 13px;
-
-            font-weight: 800;
-
-            letter-spacing: .25px;
-
-        }
-
-
-        .checkout-flow {
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: .8px;
-
-        }
-
-
-        .checkout-payment-content {
-
-            padding: 17px;
-
-            font-size: 12px;
-
-            line-height: 1.6;
-
-        }
-
-
-        .checkout-billing label {
-
-            min-height: 47px;
-
-            padding:
-                0 14px;
-
-            font-size: 12px;
-
-            line-height: 1.5;
-
-        }
-
-
-        .checkout-pay {
-
-            height: 50px;
-
-            margin-top: 20px;
-
-            border-radius: 0;
-
-            background: #EF0930;
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: .5px;
-
-            text-transform: uppercase;
-
-        }
-
-
-        .checkout-pay:hover {
-
-            background: #111111;
-
-        }
-
-
-        /* =====================================================
-           RESUMEN PRODUCTOS
-        ====================================================== */
-
-        .checkout-product {
-
-            grid-template-columns:
-                58px
-                minmax(0, 1fr)
-                auto;
-
-            gap: 12px;
-
-            margin-bottom: 16px;
-
-        }
-
-
-        .checkout-product-image {
-
-            width: 58px;
-
-            height: 58px;
-
-        }
-
-
-        .checkout-product-quantity {
-
-            min-width: 18px;
-
-            height: 18px;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-        }
-
-
-        .checkout-product-name {
-
-            font-size: 20px;
-
-            line-height: .95;
-
-            font-weight: 800;
-
-            letter-spacing: .35px;
-
-        }
-
-
-        .checkout-product-options {
-
-            margin-top: 4px;
-
-            font-size: 11px;
-
-            line-height: 1.5;
-
-        }
-
-
-        .checkout-product-price {
-
-            font-size: 13px;
-
-            font-weight: 800;
-
-        }
-
-
-        /* =====================================================
-           CUPÓN
-        ====================================================== */
-
-        .checkout-discount {
-
-            gap: 8px;
-
-            margin-bottom: 26px;
-
-        }
-
-
-        .checkout-discount input {
-
-            height: 42px;
-
-            padding:
-                0 11px;
-
-            font-size: 12px;
-
-        }
-
-
-        .checkout-discount button {
-
-            padding:
-                0 14px;
-
-            border-radius: 0;
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: .4px;
-
-            text-transform: uppercase;
-
-        }
-
-
-        /* =====================================================
-           TOTALES
-        ====================================================== */
-
-        .checkout-total-row {
-
-            padding:
-                10px 0;
-
-            font-size: 12px;
-
-            line-height: 1.4;
-
-        }
-
-
-        .checkout-total-row strong {
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-        }
-
-
-        .checkout-total {
-
-            margin-top: 6px;
-
-            padding-top: 14px;
-
-        }
-
-
-        .checkout-total span {
-
-            font-size: 25px;
-
-            line-height: .95;
-
-            font-weight: 800;
-
-            letter-spacing: .35px;
-
-        }
-
-
-        .checkout-total strong {
-
-            font-size: 30px;
-
-            line-height: .9;
-
-            font-weight: 900;
-
-            letter-spacing: .4px;
-
-        }
-
-
-        .checkout-tax {
-
-            margin-top: 6px;
-
-            font-size: 10px;
-
-            line-height: 1.4;
-
-        }
-
-
-        /* =====================================================
-           CONFIANZA / FOOTER
-        ====================================================== */
-
-        .checkout-trust-item {
-
-            gap: 10px;
-
-            margin-bottom: 13px;
-
-            font-size: 11px;
-
-            line-height: 1.55;
-
-        }
-
-
-        .checkout-footer {
-
-            gap: 20px;
-
-            padding:
-                26px
-                35px;
-
-        }
-
-
-        .checkout-footer a {
-
-            font-size: 10px;
-
-            line-height: 1.4;
 
         }
 
@@ -2149,27 +1598,36 @@
            MÓVIL
         ====================================================== */
 
-        @media (max-width: 700px) {
+        @media (max-width:750px) {
 
             .satori-checkout-header {
 
-                height: 75px;
+                height:75px;
 
             }
 
 
             .satori-checkout-logo {
 
-                font-size: 30px;
-
-                letter-spacing: .4px;
+                font-size:29px;
 
             }
 
 
             .satori-checkout-cart {
 
-                right: 14px;
+                right:16px;
+
+                width:36px;
+                height:36px;
+
+            }
+
+
+            .satori-checkout-cart svg {
+
+                width:19px;
+                height:19px;
 
             }
 
@@ -2186,19 +1644,23 @@
 
             .satori-checkout-layout {
 
-                display: flex;
+                display:flex;
 
-                flex-direction: column;
+                flex-direction:column;
+
+                min-height:auto;
 
             }
 
 
             .satori-checkout-summary {
 
-                order: -1;
+                order:-1;
 
                 padding:
-                    30px 0;
+                    26px
+                    0
+                    28px;
 
                 border-bottom:
                     1px solid
@@ -2210,71 +1672,67 @@
             .satori-checkout-main {
 
                 padding:
-                    34px
+                    30px
                     0
-                    52px;
+                    48px;
 
-                border-right: 0;
-
-            }
-
-
-            .checkout-section {
-
-                margin-bottom: 30px;
+                border-right:0;
 
             }
 
 
-            .checkout-section-title h2 {
+            .checkout-fields {
 
-                font-size: 24px;
-
-                letter-spacing: .3px;
+                grid-template-columns:1fr;
 
             }
 
 
-            .checkout-field input,
-            .checkout-field select {
+            .checkout-field.full {
 
-                font-size: 12px;
-
-            }
-
-
-            .checkout-product-name {
-
-                font-size: 18px;
-
-                letter-spacing: .3px;
-
-            }
-
-
-            .checkout-total span {
-
-                font-size: 23px;
-
-                letter-spacing: .3px;
-
-            }
-
-
-            .checkout-total strong {
-
-                font-size: 27px;
-
-                letter-spacing: .35px;
+                grid-column:auto;
 
             }
 
 
             .checkout-footer {
 
+                width:
+                    calc(
+                        100% - 28px
+                    );
+
+                justify-content:center;
+
+                gap:
+                    13px;
+
+            }
+
+
+            .checkout-info-overlay {
+
+                padding:16px;
+
+            }
+
+
+            .checkout-info-modal {
+
+                width:100%;
+
                 padding:
-                    24px
-                    14px;
+                    25px
+                    20px;
+
+                border-radius:14px;
+
+            }
+
+
+            .checkout-info-title {
+
+                font-size:24px;
 
             }
 
@@ -2282,10 +1740,10 @@
 
 
         /* =====================================================
-           MÓVIL MUY PEQUEÑO
+           MÓVIL PEQUEÑO
         ====================================================== */
 
-        @media (max-width: 380px) {
+        @media (max-width:420px) {
 
             .satori-checkout {
 
@@ -2299,2147 +1757,47 @@
 
             .satori-checkout-logo {
 
-                font-size: 27px;
-
-                letter-spacing: .35px;
+                font-size:28px;
 
             }
 
 
             .satori-checkout-cart {
 
-                right: 12px;
+                right:12px;
 
             }
 
 
-            .checkout-section-title h2 {
+            .checkout-product {
 
-                font-size: 23px;
-
-                letter-spacing: .25px;
-
-            }
-
-
-            .checkout-product-name {
-
-                font-size: 17px;
-
-                letter-spacing: .25px;
+                grid-template-columns:
+                    50px
+                    minmax(0,1fr)
+                    auto;
 
             }
 
 
-            .checkout-total span {
+            .checkout-product-image {
 
-                font-size: 22px;
-
-                letter-spacing: .25px;
-
-            }
-
-
-            .checkout-total strong {
-
-                font-size: 26px;
-
-                letter-spacing: .3px;
+                width:50px;
+                height:50px;
 
             }
 
 
             .checkout-footer {
 
-                padding:
-                    22px
-                    12px;
+                width:
+                    calc(
+                        100% - 24px
+                    );
 
             }
 
         }
 
-        /* =====================================================
-   SATORII · CHECKOUT COMPACTO
-   Adaptado a proporciones tipo KANJI
-===================================================== */
-
-:root {
-
-    --satori-checkout-width: 990px;
-    --satori-checkout-summary: 390px;
-
-}
-
-
-/* =====================================================
-   TIPOGRAFÍA
-===================================================== */
-
-body {
-
-    font-family:
-        "Inter",
-        Arial,
-        Helvetica,
-        sans-serif;
-
-}
-
-
-.satori-checkout-logo,
-.checkout-section-title h2,
-.checkout-product-name,
-.checkout-total span,
-.checkout-total strong {
-
-    font-family:
-        "Barlow Condensed",
-        Arial,
-        sans-serif;
-
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.satori-checkout-header {
-
-    height: 130px;
-
-}
-
-
-.satori-checkout-logo {
-
-    position: relative;
-
-    z-index: 5;
-
-    color: #fff;
-
-    font-family:
-        "Barlow Condensed",
-        Arial,
-        sans-serif;
-
-    font-size: 30px;
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    font-style: normal;
-
-    letter-spacing: .4px;
-
-    text-decoration: none;
-
-}
-
-
-.satori-checkout-cart {
-
-    right:
-        max(
-            28px,
-            calc(
-                (100% - var(--satori-checkout-width)) / 2
-            )
-        );
-
-}
-
-
-/* =====================================================
-   CONTENEDOR GENERAL
-===================================================== */
-
-.satori-checkout {
-
-    width:
-        min(
-            var(--satori-checkout-width),
-            calc(100% - 40px)
-        );
-
-    margin:
-        0 auto;
-
-}
-
-
-/* =====================================================
-   LAYOUT
-===================================================== */
-
-.satori-checkout-layout {
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 600px)
-        var(--satori-checkout-summary);
-
-    min-height:
-        calc(100vh - 130px);
-
-}
-
-
-/* =====================================================
-   COLUMNA IZQUIERDA
-===================================================== */
-
-.satori-checkout-main {
-
-    min-width: 0;
-
-    padding:
-        42px
-        40px
-        65px
-        0;
-
-    border-right:
-        1px solid
-        var(--border);
-
-}
-
-
-/* =====================================================
-   COLUMNA DERECHA
-===================================================== */
-
-.satori-checkout-summary {
-
-    min-width: 0;
-
-    padding:
-        42px
-        0
-        50px
-        40px;
-
-    background:
-        #fff;
-
-}
-
-
-/* =====================================================
-   SECCIONES
-===================================================== */
-
-.checkout-section {
-
-    margin-bottom:
-        29px;
-
-}
-
-
-.checkout-section-title {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    margin-bottom:
-        10px;
-
-}
-
-
-.checkout-section-title h2 {
-
-    margin:
-        0;
-
-    color:
-        #111;
-
-    font-size:
-        23px;
-
-    line-height:
-        1;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        .15px;
-
-}
-
-
-.checkout-login {
-
-    color:
-        #333;
-
-    font-size:
-        10px;
-
-    line-height:
-        1.3;
-
-    text-decoration:
-        underline;
-
-}
-
-
-.checkout-description {
-
-    margin:
-        0
-        0
-        12px;
-
-    color:
-        #888;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.5;
-
-}
-
-
-/* =====================================================
-   CAMPOS
-===================================================== */
-
-.checkout-fields {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0, 1fr)
-        );
-
-    gap:
-        8px;
-
-}
-
-
-.checkout-field {
-
-    min-width:
-        0;
-
-}
-
-
-.checkout-field.full {
-
-    grid-column:
-        1 / -1;
-
-}
-
-
-.checkout-field input,
-.checkout-field select {
-
-    width:
-        100%;
-
-    height:
-        46px;
-
-    padding:
-        0
-        12px;
-
-    border:
-        1px solid
-        #d8d8d8;
-
-    border-radius:
-        8px;
-
-    outline:
-        none;
-
-    background:
-        #fff;
-
-    color:
-        #222;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        12px;
-
-    transition:
-        border-color .15s ease,
-        box-shadow .15s ease;
-
-}
-
-
-.checkout-field input::placeholder {
-
-    color:
-        #8a8a8a;
-
-}
-
-
-.checkout-field input:focus,
-.checkout-field select:focus {
-
-    border-color:
-        #777;
-
-    box-shadow:
-        0 0 0 1px
-        rgba(0,0,0,.03);
-
-}
-
-
-/* =====================================================
-   CHECKBOX
-===================================================== */
-
-.checkout-checkbox {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    margin-top:
-        10px;
-
-    color:
-        #333;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.45;
-
-}
-
-
-.checkout-checkbox input {
-
-    width:
-        15px;
-
-    height:
-        15px;
-
-    margin:
-        0;
-
-    accent-color:
-        var(--red);
-
-}
-
-
-/* =====================================================
-   ENVÍO
-===================================================== */
-
-.checkout-shipping {
-
-    padding:
-        16px;
-
-    border:
-        1px solid
-        #e1e1e1;
-
-    border-radius:
-        8px;
-
-    background:
-        #f7f7f7;
-
-    color:
-        #777;
-
-    text-align:
-        center;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.5;
-
-}
-
-
-/* =====================================================
-   PAGO
-===================================================== */
-
-.checkout-payment {
-
-    overflow:
-        hidden;
-
-    border:
-        1px solid
-        #222;
-
-    border-radius:
-        8px;
-
-}
-
-
-.checkout-payment-header {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-
-    min-height:
-        52px;
-
-    padding:
-        0
-        13px;
-
-    border-bottom:
-        1px solid
-        var(--border);
-
-}
-
-
-.checkout-radio {
-
-    width:
-        16px;
-
-    height:
-        16px;
-
-    flex-shrink:
-        0;
-
-}
-
-
-.checkout-payment-name {
-
-    flex:
-        1;
-
-    color:
-        #111;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        12px;
-
-    font-weight:
-        800;
-
-}
-
-
-.checkout-flow {
-
-    padding:
-        4px
-        7px;
-
-    border-radius:
-        3px;
-
-    background:
-        #111;
-
-    color:
-        #fff;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        8px;
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        .7px;
-
-}
-
-
-.checkout-payment-content {
-
-    padding:
-        15px;
-
-    background:
-        #f8f8f8;
-
-    color:
-        #777;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.55;
-
-}
-
-
-/* =====================================================
-   FACTURACIÓN
-===================================================== */
-
-.checkout-billing {
-
-    margin-top:
-        14px;
-
-    overflow:
-        hidden;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        8px;
-
-}
-
-
-.checkout-billing label {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        9px;
-
-    min-height:
-        44px;
-
-    padding:
-        0
-        12px;
-
-    border-bottom:
-        1px solid
-        var(--border);
-
-    color:
-        #333;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.45;
-
-}
-
-
-.checkout-billing label:last-child {
-
-    border-bottom:
-        0;
-
-}
-
-
-/* =====================================================
-   BOTÓN PAGAR
-===================================================== */
-
-.checkout-pay {
-
-    width:
-        100%;
-
-    height:
-        50px;
-
-    margin-top:
-        19px;
-
-    border:
-        0;
-
-    border-radius:
-        7px;
-
-    background:
-        #243447;
-
-    color:
-        #fff;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        11px;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        0;
-
-    text-transform:
-        none;
-
-    cursor:
-        pointer;
-
-    transition:
-        background .2s ease;
-
-}
-
-
-.checkout-pay:hover {
-
-    background:
-        var(--red);
-
-}
-
-
-/* =====================================================
-   PRODUCTOS DEL RESUMEN
-===================================================== */
-
-.checkout-products {
-
-    margin-bottom:
-        20px;
-
-}
-
-
-.checkout-product {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        55px
-        minmax(0, 1fr)
-        auto;
-
-    align-items:
-        center;
-
-    gap:
-        11px;
-
-    margin-bottom:
-        16px;
-
-}
-
-
-.checkout-product-image {
-
-    position:
-        relative;
-
-    width:
-        55px;
-
-    height:
-        55px;
-
-    overflow:
-        visible;
-
-    border:
-        1px solid
-        #ddd;
-
-    border-radius:
-        8px;
-
-    background:
-        #f5f5f5;
-
-}
-
-
-.checkout-product-image img {
-
-    width:
-        100%;
-
-    height:
-        100%;
-
-    display:
-        block;
-
-    object-fit:
-        cover;
-
-    border-radius:
-        inherit;
-
-}
-
-
-.checkout-product-quantity {
-
-    position:
-        absolute;
-
-    top:
-        -7px;
-
-    right:
-        -7px;
-
-    min-width:
-        19px;
-
-    height:
-        19px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        0
-        4px;
-
-    border:
-        2px solid
-        #fff;
-
-    border-radius:
-        999px;
-
-    background:
-        #111;
-
-    color:
-        #fff;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        9px;
-
-    font-weight:
-        800;
-
-}
-
-
-.checkout-product-name {
-
-    margin:
-        0;
-
-    color:
-        #222;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        12px;
-
-    line-height:
-        1.3;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        0;
-
-}
-
-
-.checkout-product-options {
-
-    margin-top:
-        3px;
-
-    color:
-        #888;
-
-    font-size:
-        10px;
-
-    line-height:
-        1.4;
-
-}
-
-
-.checkout-product-price {
-
-    color:
-        #222;
-
-    font-size:
-        11px;
-
-    font-weight:
-        700;
-
-    white-space:
-        nowrap;
-
-}
-
-
-/* =====================================================
-   DESCUENTO
-===================================================== */
-
-.checkout-discount {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        auto;
-
-    gap:
-        8px;
-
-    margin-bottom:
-        24px;
-
-}
-
-
-.checkout-discount input {
-
-    width:
-        100%;
-
-    height:
-        44px;
-
-    padding:
-        0
-        12px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        8px;
-
-    outline:
-        none;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        11px;
-
-}
-
-
-.checkout-discount button {
-
-    min-width:
-        68px;
-
-    padding:
-        0
-        14px;
-
-    border:
-        1px solid
-        #e2e2e2;
-
-    border-radius:
-        8px;
-
-    background:
-        #f7f7f7;
-
-    color:
-        #777;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        10px;
-
-    font-weight:
-        700;
-
-    text-transform:
-        none;
-
-    cursor:
-        pointer;
-
-}
-
-
-/* =====================================================
-   TOTALES
-===================================================== */
-
-.checkout-totals {
-
-    border-top:
-        0;
-
-}
-
-
-.checkout-total-row {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    padding:
-        7px
-        0;
-
-    color:
-        #444;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.4;
-
-}
-
-
-.checkout-total-row strong {
-
-    color:
-        #222;
-
-    font-size:
-        11px;
-
-    font-weight:
-        700;
-
-}
-
-
-.checkout-total {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    margin-top:
-        5px;
-
-    padding-top:
-        4px;
-
-    border-top:
-        0;
-
-}
-
-
-.checkout-total span {
-
-    color:
-        #111;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        17px;
-
-    line-height:
-        1;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        0;
-
-}
-
-
-.checkout-total strong {
-
-    color:
-        #111;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        20px;
-
-    line-height:
-        1;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        0;
-
-}
-
-
-.checkout-tax {
-
-    margin-top:
-        6px;
-
-    color:
-        #888;
-
-    font-size:
-        9px;
-
-    line-height:
-        1.4;
-
-    text-align:
-        right;
-
-}
-
-
-/* =====================================================
-   CONFIANZA
-===================================================== */
-
-.checkout-trust {
-
-    margin-top:
-        25px;
-
-    padding-top:
-        20px;
-
-    border-top:
-        1px solid
-        var(--border);
-
-}
-
-
-.checkout-trust-item {
-
-    display:
-        flex;
-
-    gap:
-        8px;
-
-    margin-bottom:
-        11px;
-
-    color:
-        #777;
-
-    font-size:
-        10px;
-
-    line-height:
-        1.5;
-
-}
-
-
-.checkout-trust-item strong {
-
-    color:
-        #222;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.checkout-footer {
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    justify-content:
-        center;
-
-    gap:
-        18px;
-
-    width:
-        min(
-            var(--satori-checkout-width),
-            calc(100% - 40px)
-        );
-
-    margin:
-        0 auto;
-
-    padding:
-        22px
-        0;
-
-    border-top:
-        1px solid
-        var(--border);
-
-}
-
-
-.checkout-footer a {
-
-    color:
-        #555;
-
-    font-size:
-        9px;
-
-    line-height:
-        1.4;
-
-    text-decoration:
-        underline;
-
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media (max-width: 1050px) {
-
-    :root {
-
-        --satori-checkout-width:
-            900px;
-
-        --satori-checkout-summary:
-            350px;
-
-    }
-
-
-    .satori-checkout-layout {
-
-        grid-template-columns:
-            minmax(0, 550px)
-            var(--satori-checkout-summary);
-
-    }
-
-
-    .satori-checkout-main {
-
-        padding-right:
-            30px;
-
-    }
-
-
-    .satori-checkout-summary {
-
-        padding-left:
-            30px;
-
-    }
-
-}
-
-
-/* =====================================================
-   MÓVIL
-===================================================== */
-
-@media (max-width: 750px) {
-
-    .satori-checkout-header {
-
-        height:
-            75px;
-
-    }
-
-
-  .satori-checkout-logo {
-
-        font-size:
-            29px;
-
-        font-weight:
-            800;
-
-        font-style:
-            italic;
-
-        letter-spacing:
-            -0.8px;
-
-        line-height:
-            .95;
-
-        transform:
-            skewX(-3deg);
-
-    }
-
-
-    .satori-checkout-cart {
-
-        right:
-            16px;
-
-        width:
-            36px;
-
-        height:
-            36px;
-
-    }
-
-
-    .satori-checkout-cart svg {
-
-        width:
-            19px;
-
-        height:
-            19px;
-
-    }
-
-}
-
-
-    .satori-checkout {
-
-        width:
-            calc(100% - 28px);
-
-    }
-
-
-    .satori-checkout-layout {
-
-        display:
-            flex;
-
-        flex-direction:
-            column;
-
-        min-height:
-            auto;
-
-    }
-
-
-    .satori-checkout-summary {
-
-        order:
-            -1;
-
-        padding:
-            26px
-            0
-            28px;
-
-        border-bottom:
-            1px solid
-            var(--border);
-
-    }
-
-
-    .satori-checkout-main {
-
-        padding:
-            30px
-            0
-            48px;
-
-        border-right:
-            0;
-
-    }
-
-
-    .checkout-section {
-
-        margin-bottom:
-            28px;
-
-    }
-
-
-    .checkout-section-title h2 {
-
-        font-size:
-            22px;
-
-    }
-
-
-    .checkout-fields {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .checkout-field.full {
-
-        grid-column:
-            auto;
-
-    }
-
-
-    .checkout-field input,
-    .checkout-field select {
-
-        height:
-            46px;
-
-        font-size:
-            12px;
-
-    }
-
-
-    .checkout-product {
-
-        grid-template-columns:
-            52px
-            minmax(0, 1fr)
-            auto;
-
-    }
-
-
-    .checkout-product-image {
-
-        width:
-            52px;
-
-        height:
-            52px;
-
-    }
-
-
-    .checkout-footer {
-
-        width:
-            calc(100% - 28px);
-
-        gap:
-            13px;
-
-        padding:
-            22px
-            0;
-
-    }
-
-}
-
-
-/* =====================================================
-   MÓVIL PEQUEÑO
-===================================================== */
-
-@media (max-width: 420px) {
-
-    .satori-checkout {
-
-        width:
-            calc(100% - 24px);
-
-    }
-
-
-      .satori-checkout-logo {
-
-        font-size:
-            28px;
-
-    }
-
-
-    .satori-checkout-cart {
-
-        right:
-            12px;
-
-    }
-
-}
-
-    .checkout-section-title h2 {
-
-        font-size:
-            21px;
-
-    }
-
-
-    .checkout-discount {
-
-        grid-template-columns:
-            minmax(0, 1fr)
-            65px;
-
-    }
-
-
-    .checkout-total span {
-
-        font-size:
-            16px;
-
-    }
-
-
-    .checkout-total strong {
-
-        font-size:
-            19px;
-
-    }
-
-
-    .checkout-footer {
-
-        width:
-            calc(100% - 24px);
-
-    }
-
-}
-
-        /* =====================================================
-   FOOTER · LINKS
-===================================================== */
-
-.checkout-footer-link {
-
-    padding:
-        0;
-
-    border:
-        0;
-
-    background:
-        transparent;
-
-    color:
-        #555;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        9px;
-
-    font-weight:
-        500;
-
-    line-height:
-        1.4;
-
-    text-decoration:
-        underline;
-
-    text-underline-offset:
-        2px;
-
-    cursor:
-        pointer;
-
-    transition:
-        color .18s ease;
-
-}
-
-
-.checkout-footer-link:hover {
-
-    color:
-        #111;
-
-}
-
-
-/* =====================================================
-   MODAL · OVERLAY
-===================================================== */
-
-.checkout-info-overlay {
-
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    z-index:
-        999999;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        20px;
-
-    background:
-        rgba(
-            0,
-            0,
-            0,
-            .58
-        );
-
-    -webkit-backdrop-filter:
-        blur(3px);
-
-    backdrop-filter:
-        blur(3px);
-
-    opacity:
-        0;
-
-    visibility:
-        hidden;
-
-    pointer-events:
-        none;
-
-    transition:
-        opacity .2s ease,
-        visibility .2s ease;
-
-}
-
-
-/* MODAL ABIERTO */
-
-.checkout-info-overlay.open {
-
-    opacity:
-        1;
-
-    visibility:
-        visible;
-
-    pointer-events:
-        auto;
-
-}
-
-
-/* =====================================================
-   CAJA MODAL
-===================================================== */
-
-.checkout-info-modal {
-
-    position:
-        relative;
-
-    width:
-        min(
-            440px,
-            100%
-        );
-
-    max-height:
-        min(
-            620px,
-            calc(100vh - 40px)
-        );
-
-    padding:
-        27px
-        28px
-        30px;
-
-    overflow-y:
-        auto;
-
-    background:
-        #ffffff;
-
-    border-radius:
-        16px;
-
-    box-shadow:
-        0
-        24px
-        70px
-        rgba(
-            0,
-            0,
-            0,
-            .22
-        );
-
-    opacity:
-        0;
-
-    transform:
-        translateY(12px)
-        scale(.985);
-
-    transition:
-        opacity .2s ease,
-        transform .2s ease;
-
-    outline:
-        none;
-
-}
-
-
-.checkout-info-overlay.open
-.checkout-info-modal {
-
-    opacity:
-        1;
-
-    transform:
-        translateY(0)
-        scale(1);
-
-}
-
-
-/* =====================================================
-   BOTÓN CERRAR
-===================================================== */
-
-.checkout-info-close {
-
-    position:
-        absolute;
-
-    top:
-        14px;
-
-    right:
-        14px;
-
-    width:
-        36px;
-
-    height:
-        36px;
-
-    padding:
-        0;
-
-    border:
-        0;
-
-    background:
-        transparent;
-
-    color:
-        #777;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    cursor:
-        pointer;
-
-    border-radius:
-        50%;
-
-    transition:
-        color .18s ease,
-        background .18s ease;
-
-}
-
-
-.checkout-info-close:hover {
-
-    color:
-        #111;
-
-    background:
-        #f5f5f5;
-
-}
-
-
-.checkout-info-close svg {
-
-    width:
-        19px;
-
-    height:
-        19px;
-
-    fill:
-        none;
-
-    stroke:
-        currentColor;
-
-    stroke-width:
-        1.8;
-
-    stroke-linecap:
-        round;
-
-}
-
-
-/* =====================================================
-   TÍTULO
-===================================================== */
-
-.checkout-info-title {
-
-    max-width:
-        calc(100% - 45px);
-
-    margin:
-        0
-        0
-        16px;
-
-    color:
-        #111;
-
-    font-family:
-        "Barlow Condensed",
-        "Arial Narrow",
-        Arial,
-        sans-serif;
-
-    font-size:
-        26px;
-
-    line-height:
-        1;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        .1px;
-
-}
-
-
-/* =====================================================
-   CONTENIDO
-===================================================== */
-
-.checkout-info-content {
-
-    color:
-        #333;
-
-    font-family:
-        "Inter",
-        Arial,
-        sans-serif;
-
-    font-size:
-        12px;
-
-    line-height:
-        1.65;
-
-}
-
-
-.checkout-info-content p {
-
-    margin:
-        0
-        0
-        14px;
-
-}
-
-
-.checkout-info-content p:last-child {
-
-    margin-bottom:
-        0;
-
-}
-
-
-.checkout-info-content strong {
-
-    color:
-        #111;
-
-    font-weight:
-        700;
-
-}
-
-
-.checkout-info-content a {
-
-    color:
-        #111;
-
-    font-weight:
-        700;
-
-    text-decoration:
-        underline;
-
-    text-underline-offset:
-        2px;
-
-}
-
-
-.checkout-info-content a:hover {
-
-    color:
-        var(--red);
-
-}
-
-
-/* =====================================================
-   BLOQUE DESTACADO
-===================================================== */
-
-.checkout-info-note {
-
-    margin:
-        17px
-        0
-        0;
-
-    padding:
-        13px
-        14px;
-
-    border-left:
-        2px solid
-        var(--red);
-
-    background:
-        #f7f7f7;
-
-    color:
-        #555;
-
-    font-size:
-        11px;
-
-    line-height:
-        1.55;
-
-}
-
-
-/* =====================================================
-   EVITAR SCROLL AL ABRIR
-===================================================== */
-
-html.checkout-modal-open,
-body.checkout-modal-open {
-
-    overflow:
-        hidden;
-
-}
-
-
-/* =====================================================
-   MODAL · MÓVIL
-===================================================== */
-
-@media (max-width: 600px) {
-
-    .checkout-info-overlay {
-
-        padding:
-            16px;
-
-    }
-
-
-    .checkout-info-modal {
-
-        width:
-            100%;
-
-        padding:
-            25px
-            20px
-            25px;
-
-        border-radius:
-            14px;
-
-    }
-
-
-    .checkout-info-title {
-
-        font-size:
-            24px;
-
-    }
-
-
-    .checkout-info-content {
-
-        font-size:
-            12px;
-
-    }
-
-
-    .checkout-footer-link {
-
-        font-size:
-            9px;
-
-    }
-
-}
     </style>
 
 </head>
@@ -4464,28 +1822,28 @@ body.checkout-modal-open {
         </a>
 
 
-<a
-    href="/satorimode/carrito.html"
-    class="satori-checkout-cart"
-    aria-label="Volver al carrito"
->
+        <a
+            href="/satorimode/carrito.html"
+            class="satori-checkout-cart"
+            aria-label="Volver al carrito"
+        >
 
-    <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-    >
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
 
-        <path
-            d="M6.5 8.5h11l-.7 10.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6.5 8.5Z"
-        ></path>
+                <path
+                    d="M6.5 8.5h11l-.7 10.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6.5 8.5Z"
+                ></path>
 
-        <path
-            d="M9 9V6.8A3 3 0 0 1 12 4a3 3 0 0 1 3 2.8V9"
-        ></path>
+                <path
+                    d="M9 9V6.8A3 3 0 0 1 12 4a3 3 0 0 1 3 2.8V9"
+                ></path>
 
-    </svg>
+            </svg>
 
-</a>
+        </a>
 
     </header>
 
@@ -4494,7 +1852,9 @@ body.checkout-modal-open {
          CHECKOUT
     ====================================================== -->
 
-    <main class="satori-checkout satori-page-animate">
+    <main
+        class="satori-checkout satori-page-animate"
+    >
 
         <div
             class="satori-checkout-layout"
@@ -4540,10 +1900,7 @@ body.checkout-modal-open {
                     >
 
                         <div
-                            class="
-                                checkout-field
-                                full
-                            "
+                            class="checkout-field full"
                         >
 
                             <input
@@ -4567,8 +1924,7 @@ body.checkout-modal-open {
                             type="checkbox"
                         >
 
-                        Recibir ofertas
-                        y anuncios importantes
+                        Recibir ofertas y anuncios importantes
 
                     </label>
 
@@ -4597,10 +1953,7 @@ body.checkout-modal-open {
                     >
 
                         <div
-                            class="
-                                checkout-field
-                                full
-                            "
+                            class="checkout-field full"
                         >
 
                             <select
@@ -4647,10 +2000,7 @@ body.checkout-modal-open {
 
 
                         <div
-                            class="
-                                checkout-field
-                                full
-                            "
+                            class="checkout-field full"
                         >
 
                             <input
@@ -4664,10 +2014,7 @@ body.checkout-modal-open {
 
 
                         <div
-                            class="
-                                checkout-field
-                                full
-                            "
+                            class="checkout-field full"
                         >
 
                             <input
@@ -4682,10 +2029,7 @@ body.checkout-modal-open {
 
 
                         <div
-                            class="
-                                checkout-field
-                                full
-                            "
+                            class="checkout-field full"
                         >
 
                             <input
@@ -4730,75 +2074,29 @@ body.checkout-modal-open {
 
                             <select
                                 id="checkout-region"
+                                required
                             >
 
                                 <option value="">
                                     Región
                                 </option>
 
-                                <option>
-                                    Arica y Parinacota
-                                </option>
-
-                                <option>
-                                    Tarapacá
-                                </option>
-
-                                <option>
-                                    Antofagasta
-                                </option>
-
-                                <option>
-                                    Atacama
-                                </option>
-
-                                <option>
-                                    Coquimbo
-                                </option>
-
-                                <option>
-                                    Valparaíso
-                                </option>
-
-                                <option>
-                                    Metropolitana
-                                </option>
-
-                                <option>
-                                    O'Higgins
-                                </option>
-
-                                <option>
-                                    Maule
-                                </option>
-
-                                <option>
-                                    Ñuble
-                                </option>
-
-                                <option>
-                                    Biobío
-                                </option>
-
-                                <option>
-                                    La Araucanía
-                                </option>
-
-                                <option>
-                                    Los Ríos
-                                </option>
-
-                                <option>
-                                    Los Lagos
-                                </option>
-
-                                <option>
-                                    Aysén
-                                </option>
-
-                                <option>
-                                    Magallanes
-                                </option>
+                                <option>Arica y Parinacota</option>
+                                <option>Tarapacá</option>
+                                <option>Antofagasta</option>
+                                <option>Atacama</option>
+                                <option>Coquimbo</option>
+                                <option>Valparaíso</option>
+                                <option>Metropolitana</option>
+                                <option>O'Higgins</option>
+                                <option>Maule</option>
+                                <option>Ñuble</option>
+                                <option>Biobío</option>
+                                <option>La Araucanía</option>
+                                <option>Los Ríos</option>
+                                <option>Los Lagos</option>
+                                <option>Aysén</option>
+                                <option>Magallanes</option>
 
                             </select>
 
@@ -4830,8 +2128,7 @@ body.checkout-modal-open {
                             type="checkbox"
                         >
 
-                        Guardar mi información
-                        para una futura compra
+                        Guardar mi información para una futura compra
 
                     </label>
 
@@ -4887,8 +2184,8 @@ body.checkout-modal-open {
                     <p
                         class="checkout-description"
                     >
-                        Todas las transacciones son
-                        seguras y están protegidas.
+                        Todas las transacciones son seguras
+                        y están protegidas.
                     </p>
 
 
@@ -4897,9 +2194,7 @@ body.checkout-modal-open {
                     >
 
                         <div
-                            class="
-                                checkout-payment-header
-                            "
+                            class="checkout-payment-header"
                         >
 
                             <span
@@ -4908,9 +2203,7 @@ body.checkout-modal-open {
 
 
                             <span
-                                class="
-                                    checkout-payment-name
-                                "
+                                class="checkout-payment-name"
                             >
                                 Pago seguro con Flow
                             </span>
@@ -4926,14 +2219,11 @@ body.checkout-modal-open {
 
 
                         <div
-                            class="
-                                checkout-payment-content
-                            "
+                            class="checkout-payment-content"
                         >
 
-                            Serás redirigido a Flow
-                            para completar tu compra
-                            de forma segura.
+                            Serás redirigido a Flow para completar
+                            tu compra de forma segura.
 
                         </div>
 
@@ -4954,8 +2244,8 @@ body.checkout-modal-open {
                                 checked
                             >
 
-                            Usar la dirección de envío
-                            como dirección de facturación
+                            Usar la dirección de envío como
+                            dirección de facturación
 
                         </label>
 
@@ -4967,8 +2257,7 @@ body.checkout-modal-open {
                                 name="billing"
                             >
 
-                            Usar una dirección de
-                            facturación distinta
+                            Usar una dirección de facturación distinta
 
                         </label>
 
@@ -5013,9 +2302,7 @@ body.checkout-modal-open {
                     <input
                         type="text"
                         id="discount-code"
-                        placeholder="
-                            Código de descuento o Gift Card
-                        "
+                        placeholder="Código de descuento o Gift Card"
                     >
 
 
@@ -5090,8 +2377,7 @@ body.checkout-modal-open {
                     <div
                         class="checkout-tax"
                     >
-                        CLP · Incluye impuestos
-                        cuando corresponda.
+                        CLP · Incluye impuestos cuando corresponda.
                     </div>
 
                 </div>
@@ -5104,9 +2390,7 @@ body.checkout-modal-open {
                 >
 
                     <div
-                        class="
-                            checkout-trust-item
-                        "
+                        class="checkout-trust-item"
                     >
 
                         ✓
@@ -5122,9 +2406,7 @@ body.checkout-modal-open {
 
 
                     <div
-                        class="
-                            checkout-trust-item
-                        "
+                        class="checkout-trust-item"
                     >
 
                         ✓
@@ -5140,9 +2422,7 @@ body.checkout-modal-open {
 
 
                     <div
-                        class="
-                            checkout-trust-item
-                        "
+                        class="checkout-trust-item"
                     >
 
                         ✓
@@ -5165,603 +2445,573 @@ body.checkout-modal-open {
     </main>
 
 
-<!-- =====================================================
-     FOOTER · INFORMACIÓN
-===================================================== -->
-
-<footer
-    class="checkout-footer"
->
-
-    <button
-        type="button"
-        class="checkout-footer-link"
-        data-checkout-info="refund"
-    >
-        Política de reembolso
-    </button>
-
-
-    <button
-        type="button"
-        class="checkout-footer-link"
-        data-checkout-info="shipping"
-    >
-        Envío
-    </button>
-
-
-    <button
-        type="button"
-        class="checkout-footer-link"
-        data-checkout-info="privacy"
-    >
-        Política de privacidad
-    </button>
-
-
-    <button
-        type="button"
-        class="checkout-footer-link"
-        data-checkout-info="terms"
-    >
-        Términos del servicio
-    </button>
-
-
-    <button
-        type="button"
-        class="checkout-footer-link"
-        data-checkout-info="cancellations"
-    >
-        Cancelaciones
-    </button>
-
-
-    <button
-        type="button"
-        class="checkout-footer-link"
-        data-checkout-info="contact"
-    >
-        Contacto
-    </button>
-
-</footer>
-
     <!-- =====================================================
-     MODAL INFORMACIÓN CHECKOUT
-===================================================== -->
+         FOOTER
+    ====================================================== -->
 
-<div
-    class="checkout-info-overlay"
-    id="checkout-info-overlay"
-    aria-hidden="true"
->
-
-    <div
-        class="checkout-info-modal"
-        id="checkout-info-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="checkout-info-title"
-        tabindex="-1"
+    <footer
+        class="checkout-footer"
     >
-
-        <!-- CERRAR -->
 
         <button
             type="button"
-            class="checkout-info-close"
-            id="checkout-info-close"
-            aria-label="Cerrar"
+            class="checkout-footer-link"
+            data-checkout-info="refund"
         >
-
-            <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-                <path d="M6 6l12 12"></path>
-                <path d="M18 6L6 18"></path>
-            </svg>
-
+            Política de reembolso
         </button>
 
 
-        <!-- CONTENIDO -->
+        <button
+            type="button"
+            class="checkout-footer-link"
+            data-checkout-info="shipping"
+        >
+            Envío
+        </button>
 
-        <h2
-            class="checkout-info-title"
-            id="checkout-info-title"
-        ></h2>
 
+        <button
+            type="button"
+            class="checkout-footer-link"
+            data-checkout-info="privacy"
+        >
+            Política de privacidad
+        </button>
+
+
+        <button
+            type="button"
+            class="checkout-footer-link"
+            data-checkout-info="terms"
+        >
+            Términos del servicio
+        </button>
+
+
+        <button
+            type="button"
+            class="checkout-footer-link"
+            data-checkout-info="cancellations"
+        >
+            Cancelaciones
+        </button>
+
+
+        <button
+            type="button"
+            class="checkout-footer-link"
+            data-checkout-info="contact"
+        >
+            Contacto
+        </button>
+
+    </footer>
+
+
+    <!-- =====================================================
+         MODAL INFORMACIÓN
+    ====================================================== -->
+
+    <div
+        class="checkout-info-overlay"
+        id="checkout-info-overlay"
+        aria-hidden="true"
+    >
 
         <div
-            class="checkout-info-content"
-            id="checkout-info-content"
-        ></div>
+            class="checkout-info-modal"
+            id="checkout-info-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="checkout-info-title"
+            tabindex="-1"
+        >
+
+            <button
+                type="button"
+                class="checkout-info-close"
+                id="checkout-info-close"
+                aria-label="Cerrar"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path d="M6 6l12 12"></path>
+                    <path d="M18 6L6 18"></path>
+
+                </svg>
+
+            </button>
+
+
+            <h2
+                class="checkout-info-title"
+                id="checkout-info-title"
+            ></h2>
+
+
+            <div
+                class="checkout-info-content"
+                id="checkout-info-content"
+            ></div>
+
+        </div>
 
     </div>
 
-</div>
-    
-<!-- =====================================================
-     SUPABASE
-===================================================== -->
 
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
 
-<script
-    src="/satorimode/js/supabase.js"
-></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
 
-
-<!-- =====================================================
-     PRODUCTOS
-===================================================== -->
-
-<script
-    src="/satorimode/js/products.js"
-></script>
-
-<script>
-
-    "use strict";
+    <script
+        src="/satorimode/js/supabase.js"
+    ></script>
 
 
-    const CART_KEY =
-        "satorimode_cart";
+    <!-- =====================================================
+         PRODUCTOS
+    ====================================================== -->
+
+    <script
+        src="/satorimode/js/products.js"
+    ></script>
 
 
-    function getCart() {
+    <!-- =====================================================
+         CHECKOUT
+    ====================================================== -->
 
-        try {
+    <script>
 
-            const saved =
-                localStorage.getItem(
-                    CART_KEY
+        "use strict";
+
+
+        const CART_KEY =
+            "satorimode_cart";
+
+
+        /* =====================================================
+           CARRITO
+        ====================================================== */
+
+        function getCart() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        CART_KEY
+                    );
+
+
+                if (!saved) {
+
+                    return [];
+
+                }
+
+
+                const cart =
+                    JSON.parse(
+                        saved
+                    );
+
+
+                return Array.isArray(cart)
+                    ? cart
+                    : [];
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "SATORII · Error carrito:",
+                    error
                 );
 
-
-            if (!saved) {
 
                 return [];
 
             }
 
+        }
+
+
+        /* =====================================================
+           PRECIO
+        ====================================================== */
+
+        function formatPrice(
+            value
+        ) {
+
+            return new Intl.NumberFormat(
+                "es-CL",
+                {
+                    style:"currency",
+                    currency:"CLP",
+                    maximumFractionDigits:0
+                }
+            ).format(
+                Number(value) || 0
+            );
+
+        }
+
+
+        /* =====================================================
+           ESCAPAR HTML
+        ====================================================== */
+
+        function escapeHTML(
+            value
+        ) {
+
+            return String(
+                value ?? ""
+            )
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        /* =====================================================
+           RENDER CHECKOUT
+        ====================================================== */
+
+        function renderCheckout() {
 
             const cart =
-                JSON.parse(
-                    saved
+                getCart();
+
+
+            const products =
+                document.getElementById(
+                    "checkout-products"
                 );
 
 
-            return Array.isArray(cart)
-                ? cart
-                : [];
-
-        }
-
-        catch (
-            error
-        ) {
-
-            console.error(
-                "SATORII · Error carrito:",
-                error
-            );
-
-            return [];
-
-        }
-
-    }
+            const subtotalElement =
+                document.getElementById(
+                    "checkout-subtotal"
+                );
 
 
-    function formatPrice(
-        value
-    ) {
+            const totalElement =
+                document.getElementById(
+                    "checkout-total"
+                );
 
-        return new Intl.NumberFormat(
-            "es-CL",
-            {
-                style:
-                    "currency",
 
-                currency:
-                    "CLP",
+            if (!products) {
 
-                maximumFractionDigits:
-                    0
+                return;
+
             }
-        ).format(
-            Number(value) || 0
-        );
-
-    }
 
 
-    function escapeHTML(
-        value
-    ) {
+            if (
+                cart.length ===
+                0
+            ) {
 
-        return String(
-            value ?? ""
-        )
-            .replace(
-                /&/g,
-                "&amp;"
-            )
-            .replace(
-                /</g,
-                "&lt;"
-            )
-            .replace(
-                />/g,
-                "&gt;"
-            )
-            .replace(
-                /"/g,
-                "&quot;"
-            )
-            .replace(
-                /'/g,
-                "&#039;"
-            );
+                products.innerHTML = `
 
-    }
+                    <p
+                        style="
+                            margin:0;
+                            font-size:11px;
+                            color:#777;
+                        "
+                    >
+                        Tu carrito está vacío.
+                    </p>
 
+                `;
 
-    /* =====================================================
-       RENDER PRODUCTOS
-       Usa SIEMPRE el precio actual de PRODUCTS
-    ====================================================== */
-
-    function renderCheckout() {
-
-        const cart =
-            getCart();
-
-
-        const products =
-            document.getElementById(
-                "checkout-products"
-            );
-
-
-        const subtotalElement =
-            document.getElementById(
-                "checkout-subtotal"
-            );
-
-
-        const totalElement =
-            document.getElementById(
-                "checkout-total"
-            );
-
-
-        if (
-            !products
-        ) {
-
-            return;
-
-        }
-
-
-        if (
-            cart.length === 0
-        ) {
-
-            products.innerHTML = `
-
-                <p
-                    style="
-                        font-size:11px;
-                        color:#777;
-                    "
-                >
-                    Tu carrito está vacío.
-                </p>
-
-            `;
-
-
-            if (subtotalElement) {
 
                 subtotalElement.textContent =
                     formatPrice(0);
 
-            }
-
-
-            if (totalElement) {
 
                 totalElement.textContent =
                     formatPrice(0);
 
+
+                return;
+
             }
 
 
-            return;
-
-        }
-
-
-        let subtotal =
-            0;
+            let subtotal =
+                0;
 
 
-        let html =
-            "";
+            let html =
+                "";
 
 
-        let missingProducts =
-            [];
+            const missingProducts =
+                [];
 
 
-        cart.forEach(
-            function (
-                cartItem
-            ) {
+            cart.forEach(
+                function (
+                    cartItem
+                ) {
 
-                const quantity =
-                    Math.max(
-                        1,
+                    const quantity =
+                        Math.max(
+                            1,
+                            Number(
+                                cartItem.quantity ||
+                                1
+                            )
+                        );
+
+
+                    const currentProduct =
+                        typeof PRODUCTS !==
+                            "undefined" &&
+                        Array.isArray(PRODUCTS)
+
+                            ?
+
+                            PRODUCTS.find(
+                                function (
+                                    product
+                                ) {
+
+                                    return String(
+                                        product.id
+                                    ) === String(
+                                        cartItem.productId ??
+                                        cartItem.id
+                                    );
+
+                                }
+                            )
+
+                            :
+
+                            null;
+
+
+                    if (!currentProduct) {
+
+                        missingProducts.push(
+                            cartItem.name ||
+                            "Producto"
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    const price =
                         Number(
-                            cartItem.quantity ||
-                            1
-                        )
-                    );
+                            currentProduct.price ||
+                            0
+                        );
 
 
-                /*
-                 * Buscamos nuevamente el producto
-                 * en PRODUCTS usando su ID.
-                 */
-                const currentProduct =
-                    Array.isArray(PRODUCTS)
-                        ? PRODUCTS.find(
-                            function (
-                                product
-                            ) {
-
-                                return String(
-                                    product.id
-                                ) === String(
-                                    cartItem.productId
-                                );
-
-                            }
-                        )
-                        : null;
+                    subtotal +=
+                        price *
+                        quantity;
 
 
-                /*
-                 * Si el producto ya no existe,
-                 * NO usamos el precio antiguo
-                 * guardado en localStorage.
-                 */
-                if (
-                    !currentProduct
-                ) {
-
-                    missingProducts.push(
-                        cartItem.name ||
-                        "Producto"
-                    );
-
-                    return;
-
-                }
+                    const options =
+                        [];
 
 
-                /*
-                 * ESTE es el precio importante:
-                 *
-                 * currentProduct.price
-                 *
-                 * Es el precio actual de PRODUCTS.
-                 */
-                const price =
-                    Number(
-                        currentProduct.price || 0
-                    );
-
-
-                subtotal +=
-                    price *
-                    quantity;
-
-
-                let options =
-                    [];
-
-
-                if (
-                    cartItem.size
-                ) {
-
-                    options.push(
-                        "Talla " +
+                    if (
                         cartItem.size
-                    );
+                    ) {
 
-                }
+                        options.push(
+                            "Talla " +
+                            cartItem.size
+                        );
+
+                    }
 
 
-                if (
-                    cartItem.color
-                ) {
-
-                    options.push(
+                    if (
                         cartItem.color
-                    );
+                    ) {
+
+                        options.push(
+                            cartItem.color
+                        );
+
+                    }
+
+
+                    const productName =
+                        currentProduct.name ||
+                        cartItem.name ||
+                        "Producto";
+
+
+                    const productImage =
+                        currentProduct.image ||
+                        currentProduct.images?.[0] ||
+                        cartItem.image ||
+                        "";
+
+
+                    html += `
+
+                        <article
+                            class="
+                                checkout-product
+                                satori-card-animate
+                            "
+                        >
+
+                            <div
+                                class="checkout-product-image"
+                            >
+
+                                ${
+                                    productImage
+                                        ?
+                                        `
+                                            <img
+                                                src="${escapeHTML(productImage)}"
+                                                alt="${escapeHTML(productName)}"
+                                            >
+                                        `
+                                        :
+                                        ""
+                                }
+
+
+                                <span
+                                    class="checkout-product-quantity"
+                                >
+                                    ${quantity}
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <h3
+                                    class="checkout-product-name"
+                                >
+                                    ${escapeHTML(productName)}
+                                </h3>
+
+
+                                ${
+                                    options.length
+                                        ?
+                                        `
+                                            <div
+                                                class="checkout-product-options"
+                                            >
+                                                ${escapeHTML(
+                                                    options.join(
+                                                        " · "
+                                                    )
+                                                )}
+                                            </div>
+                                        `
+                                        :
+                                        ""
+                                }
+
+                            </div>
+
+
+                            <div
+                                class="checkout-product-price"
+                            >
+                                ${formatPrice(
+                                    price *
+                                    quantity
+                                )}
+                            </div>
+
+                        </article>
+
+                    `;
 
                 }
-
-
-                /*
-                 * Utilizamos los datos actuales
-                 * del producto cuando corresponde.
-                 */
-                const productName =
-                    currentProduct.name ||
-                    cartItem.name ||
-                    "Producto";
-
-
-                const productImage =
-                    currentProduct.image ||
-                    cartItem.image ||
-                    "";
-
-
-                html += `
-
-                    <article
-                        class="
-                            checkout-product
-                            satori-card-animate
-                        "
-                    >
-
-                        <div
-                            class="
-                                checkout-product-image
-                            "
-                        >
-
-                            <img
-                                src="${escapeHTML(
-                                    productImage
-                                )}"
-                                alt="${escapeHTML(
-                                    productName
-                                )}"
-                            >
-
-
-                            <span
-                                class="
-                                    checkout-product-quantity
-                                "
-                            >
-                                ${quantity}
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <h3
-                                class="
-                                    checkout-product-name
-                                "
-                            >
-                                ${escapeHTML(
-                                    productName
-                                )}
-                            </h3>
-
-
-                            ${
-                                options.length
-                                ?
-                                `
-                                    <div
-                                        class="
-                                            checkout-product-options
-                                        "
-                                    >
-                                        ${escapeHTML(
-                                            options.join(
-                                                " · "
-                                            )
-                                        )}
-                                    </div>
-                                `
-                                :
-                                ""
-                            }
-
-                        </div>
-
-
-                        <div
-                            class="
-                                checkout-product-price
-                            "
-                        >
-                            ${formatPrice(
-                                price *
-                                quantity
-                            )}
-                        </div>
-
-                    </article>
-
-                `;
-
-            }
-        );
-
-
-        products.innerHTML =
-            html;
-
-
-        if (
-            missingProducts.length
-        ) {
-
-            const warning =
-                document.createElement(
-                    "p"
-                );
-
-
-            warning.style.cssText =
-                `
-                    margin-top:15px;
-                    padding:10px;
-                    border:1px solid #ddd;
-                    border-radius:7px;
-                    color:#777;
-                    font-size:9px;
-                    line-height:1.5;
-                `;
-
-
-            warning.textContent =
-                "Uno o más productos de tu carrito ya no están disponibles. Vuelve al carrito para revisarlos.";
-
-
-            products.prepend(
-                warning
             );
 
-        }
+
+            products.innerHTML =
+                html;
 
 
-        if (
-            subtotalElement
-        ) {
+            if (
+                missingProducts.length
+            ) {
+
+                products.insertAdjacentHTML(
+                    "afterbegin",
+                    `
+
+                        <p
+                            style="
+                                margin:0 0 15px;
+                                padding:10px;
+                                border:1px solid #ddd;
+                                border-radius:7px;
+                                color:#777;
+                                font-size:9px;
+                                line-height:1.5;
+                            "
+                        >
+                            Uno o más productos de tu carrito
+                            ya no están disponibles.
+                        </p>
+
+                    `
+                );
+
+            }
+
 
             subtotalElement.textContent =
                 formatPrice(
                     subtotal
                 );
 
-        }
-
-
-        if (
-            totalElement
-        ) {
 
             totalElement.textContent =
                 formatPrice(
@@ -5770,763 +3020,822 @@ body.checkout-modal-open {
 
         }
 
-    }
+
+        /* =====================================================
+           CUPÓN
+        ====================================================== */
+
+        document
+            .getElementById(
+                "discount-button"
+            )
+            ?.addEventListener(
+                "click",
+                function () {
+
+                    const code =
+                        document
+                            .getElementById(
+                                "discount-code"
+                            )
+                            ?.value
+                            .trim();
 
 
-    /* =====================================================
-       CUPÓN
-    ====================================================== */
+                    if (!code) {
 
-    document
-        .getElementById(
-            "discount-button"
-        )
-        ?.addEventListener(
-            "click",
-            function () {
-
-                const code =
-                    document
-                        .getElementById(
-                            "discount-code"
-                        )
-                        ?.value
-                        .trim();
+                        alert(
+                            "Ingresa un código de descuento."
+                        );
 
 
-                if (!code) {
+                        return;
+
+                    }
+
 
                     alert(
-                        "Ingresa un código de descuento."
+                        "Los códigos de descuento se habilitarán próximamente."
                     );
 
-                    return;
+                }
+            );
+
+
+        /* =====================================================
+           FLOW
+        ====================================================== */
+
+        document
+            .getElementById(
+                "checkout-pay"
+            )
+            ?.addEventListener(
+                "click",
+                async function () {
+
+                    const email =
+                        document
+                            .getElementById(
+                                "checkout-email"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const name =
+                        document
+                            .getElementById(
+                                "checkout-name"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const lastname =
+                        document
+                            .getElementById(
+                                "checkout-lastname"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const rut =
+                        document
+                            .getElementById(
+                                "checkout-rut"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const address =
+                        document
+                            .getElementById(
+                                "checkout-address"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const city =
+                        document
+                            .getElementById(
+                                "checkout-city"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const phone =
+                        document
+                            .getElementById(
+                                "checkout-phone"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    if (
+                        !email ||
+                        !name ||
+                        !lastname ||
+                        !rut ||
+                        !address ||
+                        !city ||
+                        !phone
+                    ) {
+
+                        alert(
+                            "Completa todos los campos obligatorios antes de continuar."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    const cart =
+                        getCart();
+
+
+                    if (
+                        !cart.length
+                    ) {
+
+                        alert(
+                            "Tu carrito está vacío."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    try {
+
+                        const items =
+                            cart.map(
+                                function (
+                                    item
+                                ) {
+
+                                    return {
+
+                                        product_id:
+                                            item.productId ??
+                                            item.id,
+
+                                        quantity:
+                                            Math.max(
+                                                1,
+                                                Number(
+                                                    item.quantity ||
+                                                    1
+                                                )
+                                            )
+
+                                    };
+
+                                }
+                            );
+
+
+                        const {
+                            data,
+                            error
+                        } =
+                            await supabase
+                                .functions
+                                .invoke(
+                                    "create-order",
+                                    {
+                                        body:{
+                                            items:items
+                                        }
+                                    }
+                                );
+
+
+                        if (error) {
+
+                            console.error(
+                                "Error creando la orden:",
+                                error
+                            );
+
+
+                            alert(
+                                "No se pudo crear la orden. Inténtalo nuevamente."
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        console.log(
+                            "SATORII · Respuesta create-order:",
+                            data
+                        );
+
+
+                        if (
+                            !data?.success
+                        ) {
+
+                            alert(
+                                "No se pudo validar la orden."
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Cuando tu Edge Function entregue
+                         * una URL real de Flow:
+                         */
+
+                        if (
+                            data.url
+                        ) {
+
+                            window.location.href =
+                                data.url;
+
+
+                            return;
+
+                        }
+
+
+                        alert(
+                            "Orden validada correctamente."
+                        );
+
+                    }
+
+                    catch (error) {
+
+                        console.error(
+                            "SATORII · Error:",
+                            error
+                        );
+
+
+                        alert(
+                            "Ocurrió un error al procesar tu pedido."
+                        );
+
+                    }
 
                 }
+            );
 
 
-                alert(
-                    "Los códigos de descuento se habilitarán próximamente."
-                );
+        /* =====================================================
+           ACTUALIZACIONES
+        ====================================================== */
 
-            }
-        );
-
-
-    /* =====================================================
-       FLOW
-    ====================================================== */
-
-    document
-        .getElementById(
-            "checkout-pay"
-        )
-        ?.addEventListener(
-            "click",
-            async () => {
-
-                const email =
-                    document
-                        .getElementById(
-                            "checkout-email"
-                        )
-                        ?.value
-                        .trim();
+        renderCheckout();
 
 
-                const name =
-                    document
-                        .getElementById(
-                            "checkout-name"
-                        )
-                        ?.value
-                        .trim();
-
-
-                const lastname =
-                    document
-                        .getElementById(
-                            "checkout-lastname"
-                        )
-                        ?.value
-                        .trim();
-
-
-                const rut =
-                    document
-                        .getElementById(
-                            "checkout-rut"
-                        )
-                        ?.value
-                        .trim();
-
-
-                const address =
-                    document
-                        .getElementById(
-                            "checkout-address"
-                        )
-                        ?.value
-                        .trim();
-
-
-                const city =
-                    document
-                        .getElementById(
-                            "checkout-city"
-                        )
-                        ?.value
-                        .trim();
-
-
-                const phone =
-                    document
-                        .getElementById(
-                            "checkout-phone"
-                        )
-                        ?.value
-                        .trim();
-
+        window.addEventListener(
+            "storage",
+            function (
+                event
+            ) {
 
                 if (
-                    !email ||
-                    !name ||
-                    !lastname ||
-                    !rut ||
-                    !address ||
-                    !city ||
-                    !phone
+                    event.key ===
+                    CART_KEY
                 ) {
 
-                    alert(
-                        "Completa todos los campos obligatorios antes de continuar."
-                    );
-
-                    return;
+                    renderCheckout();
 
                 }
 
-
-                /*
-                 * AQUÍ irá la conexión
-                 * real con nuestro backend.
-                 *
-                 * El backend creará la orden
-                 * en FLOW y devolverá la URL
-                 * de pago.
-                 */
-
-              try {
-    const items = cart.map(item => ({
-        product_id: item.id,
-        quantity: item.quantity
-    }));
-
-    const { data, error } = await supabase.functions.invoke(
-        "create-order",
-        {
-            body: {
-                items
-            }
-        }
-    );
-
-    if (error) {
-        console.error("Error creando la orden:", error);
-        alert("No se pudo crear la orden. Inténtalo nuevamente.");
-        return;
-    }
-
-    console.log("SATORII - Respuesta create-order:", data);
-
-    if (!data?.success) {
-        alert("No se pudo validar la orden.");
-        return;
-    }
-
-    alert("Orden validada correctamente.");
-
-} catch (error) {
-    console.error("Error:", error);
-    alert("Ocurrió un error al procesar tu pedido.");
-}
             }
         );
 
 
-    /* =====================================================
-       INICIO
-    ====================================================== */
-
-    renderCheckout();
-
-
-    window.addEventListener(
-        "storage",
-        function (
-            event
-        ) {
-
-            if (
-                event.key === CART_KEY
-            ) {
+        window.addEventListener(
+            "satorii:products-updated",
+            function () {
 
                 renderCheckout();
 
             }
-
-        }
-    );
-
-    /* =====================================================
-   ACTUALIZACIÓN DE PRECIOS DESDE SUPABASE
-===================================================== */
-
-window.addEventListener(
-    "satorii:products-updated",
-    function () {
-
-        console.log(
-            "SATORII · Productos actualizados, refrescando checkout."
         );
 
-        renderCheckout();
+    </script>
 
-    }
-);
+
+    <!-- =====================================================
+         MODALES FOOTER
+    ====================================================== -->
+
     <script>
 
-(function () {
+        (function () {
 
-    "use strict";
+            "use strict";
 
 
-    /* =====================================================
-       SATORII · INFORMACIÓN CHECKOUT
-    ====================================================== */
+            const overlay =
+                document.getElementById(
+                    "checkout-info-overlay"
+                );
 
-    const overlay =
-        document.getElementById(
-            "checkout-info-overlay"
-        );
 
+            const modal =
+                document.getElementById(
+                    "checkout-info-modal"
+                );
 
-    const modal =
-        document.getElementById(
-            "checkout-info-modal"
-        );
 
+            const modalTitle =
+                document.getElementById(
+                    "checkout-info-title"
+                );
 
-    const modalTitle =
-        document.getElementById(
-            "checkout-info-title"
-        );
 
+            const modalContent =
+                document.getElementById(
+                    "checkout-info-content"
+                );
 
-    const modalContent =
-        document.getElementById(
-            "checkout-info-content"
-        );
 
+            const closeButton =
+                document.getElementById(
+                    "checkout-info-close"
+                );
 
-    const closeButton =
-        document.getElementById(
-            "checkout-info-close"
-        );
 
+            const triggers =
+                document.querySelectorAll(
+                    "[data-checkout-info]"
+                );
 
-    const triggers =
-        document.querySelectorAll(
-            "[data-checkout-info]"
-        );
 
+            let previousFocus =
+                null;
 
-    let previousFocus =
-        null;
 
+            /* =================================================
+               CONTENIDOS
+            ================================================= */
 
-    /* =====================================================
-       CONTENIDOS
-    ====================================================== */
+            const checkoutInfo = {
 
-    const checkoutInfo = {
 
+                refund: {
 
-        /* =================================================
-           REEMBOLSO
-        ================================================= */
+                    title:
+                        "Política de reembolso",
 
-        refund: {
+                    content: `
 
-            title:
-                "Política de reembolso",
+                        <p>
+                            En SATORII queremos que estés conforme
+                            con tu compra. Si recibiste un producto
+                            con algún problema, contáctanos para
+                            revisar tu caso.
+                        </p>
 
-            content: `
+                        <p>
+                            Para solicitar ayuda, conserva el producto
+                            sin uso y con sus etiquetas y embalaje
+                            original cuando corresponda.
+                        </p>
 
-                <p>
-                    En SATORII queremos que estés conforme
-                    con tu compra. Si recibiste un producto
-                    con algún problema, contáctanos para
-                    revisar tu caso.
-                </p>
+                        <div class="checkout-info-note">
 
-                <p>
-                    Para solicitar ayuda, conserva el producto
-                    sin uso y con sus etiquetas y embalaje
-                    original cuando corresponda.
-                </p>
+                            Para conocer las condiciones completas,
+                            revisa nuestra sección de
+                            <a
+                                href="/satorimode/cambios-y-devoluciones.html"
+                            >
+                                Cambios y devoluciones
+                            </a>.
 
-                <div class="checkout-info-note">
+                        </div>
 
-                    Para información completa sobre cambios,
-                    devoluciones y condiciones aplicables,
-                    revisa nuestra sección de
-                    <a href="/satorimode/cambios-y-devoluciones.html">
-                        Cambios y devoluciones
-                    </a>.
+                    `
 
-                </div>
+                },
 
-            `
 
-        },
+                shipping: {
 
+                    title:
+                        "Envíos",
 
-        /* =================================================
-           ENVÍO
-        ================================================= */
+                    content: `
 
-        shipping: {
+                        <p>
+                            Realizamos envíos a
+                            <strong>todo Chile</strong>.
+                        </p>
 
-            title:
-                "Envíos",
+                        <p>
+                            El valor y las alternativas de envío
+                            disponibles se calculan según la dirección
+                            ingresada durante el proceso de compra.
+                        </p>
 
-            content: `
+                        <p>
+                            Una vez procesado tu pedido recibirás
+                            la información correspondiente para
+                            realizar el seguimiento cuando esté
+                            disponible.
+                        </p>
 
-                <p>
-                    Realizamos envíos a
-                    <strong>todo Chile</strong>.
-                </p>
+                        <div class="checkout-info-note">
 
-                <p>
-                    El valor y las alternativas de envío
-                    disponibles se calculan según la dirección
-                    ingresada durante el proceso de compra.
-                </p>
+                            Puedes encontrar más información en
+                            <a
+                                href="/satorimode/envios.html"
+                            >
+                                Envíos
+                            </a>.
 
-                <p>
-                    Una vez procesado tu pedido, recibirás
-                    la información correspondiente para
-                    realizar el seguimiento cuando esté
-                    disponible.
-                </p>
+                        </div>
 
-                <div class="checkout-info-note">
+                    `
 
-                    Puedes revisar más información en nuestra
-                    sección de
-                    <a href="/satorimode/envios.html">
-                        Envíos
-                    </a>.
+                },
 
-                </div>
 
-            `
+                privacy: {
 
-        },
+                    title:
+                        "Política de privacidad",
 
+                    content: `
 
-        /* =================================================
-           PRIVACIDAD
-        ================================================= */
+                        <p>
+                            SATORII utiliza la información entregada
+                            durante tu compra para gestionar pedidos,
+                            pagos, envíos y atención al cliente.
+                        </p>
 
-        privacy: {
+                        <p>
+                            Tus datos personales no serán publicados
+                            ni utilizados para fines distintos a los
+                            necesarios para prestarte nuestros
+                            servicios, salvo autorización o exigencia
+                            legal.
+                        </p>
 
-            title:
-                "Política de privacidad",
+                        <p>
+                            Los pagos son procesados mediante nuestros
+                            proveedores de pago. SATORII no almacena
+                            directamente los datos completos de tus
+                            tarjetas.
+                        </p>
 
-            content: `
+                    `
 
-                <p>
-                    SATORII utiliza la información entregada
-                    durante tu compra únicamente para gestionar
-                    pedidos, pagos, envíos y atención al cliente.
-                </p>
+                },
 
-                <p>
-                    Tus datos personales no serán publicados
-                    ni utilizados para fines distintos a los
-                    necesarios para prestarte nuestros servicios,
-                    salvo autorización o exigencia legal.
-                </p>
 
-                <p>
-                    Los pagos son procesados mediante nuestros
-                    proveedores de pago y SATORII no almacena
-                    directamente los datos completos de tus
-                    tarjetas.
-                </p>
+                terms: {
 
-            `
+                    title:
+                        "Términos del servicio",
 
-        },
+                    content: `
 
+                        <p>
+                            Al realizar una compra en SATORII aceptas
+                            las condiciones de compra, disponibilidad
+                            de productos, precios, métodos de pago,
+                            despacho y políticas aplicables.
+                        </p>
 
-        /* =================================================
-           TÉRMINOS
-        ================================================= */
+                        <p>
+                            Los productos están sujetos a disponibilidad.
+                            Si existiera algún inconveniente con una
+                            orden, nos pondremos en contacto utilizando
+                            los datos proporcionados durante la compra.
+                        </p>
 
-        terms: {
+                        <p>
+                            SATORII podrá actualizar estas condiciones
+                            cuando sea necesario.
+                        </p>
 
-            title:
-                "Términos del servicio",
+                    `
 
-            content: `
+                },
 
-                <p>
-                    Al realizar una compra en SATORII aceptas
-                    las condiciones de compra, disponibilidad
-                    de productos, precios, métodos de pago,
-                    despacho y políticas aplicables.
-                </p>
 
-                <p>
-                    Los productos están sujetos a disponibilidad.
-                    Si existiera algún inconveniente con una
-                    orden, nos pondremos en contacto utilizando
-                    los datos proporcionados durante la compra.
-                </p>
+                cancellations: {
 
-                <p>
-                    SATORII podrá actualizar estas condiciones
-                    cuando sea necesario.
-                </p>
+                    title:
+                        "Cancelaciones",
 
-            `
+                    content: `
 
-        },
+                        <p>
+                            Si deseas cancelar un pedido,
+                            contáctanos lo antes posible.
+                        </p>
 
+                        <p>
+                            Si el pedido todavía no ha sido preparado
+                            o despachado, revisaremos si es posible
+                            realizar la cancelación.
+                        </p>
 
-        /* =================================================
-           CANCELACIONES
-        ================================================= */
+                        <p>
+                            Si el pedido ya fue procesado o enviado,
+                            será necesario revisar las condiciones
+                            correspondientes a cambios y devoluciones.
+                        </p>
 
-        cancellations: {
+                        <div class="checkout-info-note">
 
-            title:
-                "Cancelaciones",
+                            Incluye tu
+                            <strong>
+                                número de pedido
+                            </strong>
+                            y el correo utilizado durante la compra.
 
-            content: `
+                        </div>
 
-                <p>
-                    Si deseas cancelar un pedido,
-                    contáctanos lo antes posible.
-                </p>
+                    `
 
-                <p>
-                    Si el pedido todavía no ha sido preparado
-                    o despachado, revisaremos si es posible
-                    realizar la cancelación.
-                </p>
+                },
 
-                <p>
-                    Si el pedido ya fue procesado o enviado,
-                    será necesario revisar las condiciones
-                    correspondientes a cambios y devoluciones.
-                </p>
 
-                <div class="checkout-info-note">
+                contact: {
 
-                    Escríbenos indicando tu
-                    <strong>número de pedido</strong>
-                    y el correo utilizado al comprar.
+                    title:
+                        "Contacto",
 
-                </div>
+                    content: `
 
-            `
+                        <p>
+                            Si necesitas ayuda, puedes comunicarte
+                            directamente con SATORII.
+                        </p>
 
-        },
+                        <p>
+                            Puedes encontrarnos en Instagram como
+                            <a
+                                href="https://www.instagram.com/satoriicl/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                @satoriicl
+                            </a>.
+                        </p>
 
+                        <p>
+                            Si tu consulta está relacionada con una
+                            compra, incluye tu
+                            <strong>
+                                número de pedido
+                            </strong>
+                            para que podamos ayudarte más rápido.
+                        </p>
 
-        /* =================================================
-           CONTACTO
-        ================================================= */
+                        <div class="checkout-info-note">
 
-        contact: {
+                            Instagram es actualmente una de las
+                            formas más rápidas de contactarnos.
 
-            title:
-                "Contacto",
+                        </div>
 
-            content: `
+                    `
 
-                <p>
-                    Si necesitas ayuda, puedes comunicarte
-                    directamente con SATORII.
-                </p>
+                }
 
-                <p>
-                    También puedes encontrarnos en Instagram
-                    como
-                    <a
-                        href="https://www.instagram.com/satoriicl/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        @satoriicl
-                    </a>.
-                </p>
+            };
 
-                <p>
-                    Si tu consulta está relacionada con una
-                    compra, incluye tu
-                    <strong>número de pedido</strong>
-                    para que podamos ayudarte más rápido.
-                </p>
 
-                <div class="checkout-info-note">
+            /* =================================================
+               ABRIR
+            ================================================= */
 
-                    Normalmente Instagram es la forma
-                    más rápida de contactarnos.
+            function openInfo(
+                key,
+                trigger
+            ) {
 
-                </div>
+                const info =
+                    checkoutInfo[key];
 
-            `
 
-        }
+                if (
+                    !info ||
+                    !overlay ||
+                    !modal ||
+                    !modalTitle ||
+                    !modalContent
+                ) {
 
-    };
+                    return;
 
+                }
 
-    /* =====================================================
-       ABRIR
-    ====================================================== */
 
-    function openCheckoutInfo(
-        key,
-        trigger
-    ) {
+                previousFocus =
+                    trigger ||
+                    document.activeElement;
 
-        const info =
-            checkoutInfo[key];
 
+                modalTitle.textContent =
+                    info.title;
 
-        if (
-            !info ||
-            !overlay ||
-            !modal ||
-            !modalTitle ||
-            !modalContent
-        ) {
 
-            return;
+                modalContent.innerHTML =
+                    info.content;
 
-        }
 
+                overlay.classList.add(
+                    "open"
+                );
 
-        previousFocus =
-            trigger ||
-            document.activeElement;
 
+                overlay.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
 
-        modalTitle.textContent =
-            info.title;
 
+                document.documentElement
+                    .classList.add(
+                        "checkout-modal-open"
+                    );
 
-        modalContent.innerHTML =
-            info.content;
 
+                document.body
+                    .classList.add(
+                        "checkout-modal-open"
+                    );
 
-        overlay.classList.add(
-            "open"
-        );
 
+                window.setTimeout(
+                    function () {
 
-        overlay.setAttribute(
-            "aria-hidden",
-            "false"
-        );
+                        closeButton?.focus();
 
+                    },
+                    50
+                );
 
-        document.documentElement
-            .classList.add(
-                "checkout-modal-open"
-            );
+            }
 
 
-        document.body
-            .classList.add(
-                "checkout-modal-open"
-            );
+            /* =================================================
+               CERRAR
+            ================================================= */
 
+            function closeInfo() {
 
-        window.setTimeout(
-            function () {
+                if (!overlay) {
 
-                closeButton?.focus();
+                    return;
 
-            },
-            50
-        );
+                }
 
-    }
 
+                overlay.classList.remove(
+                    "open"
+                );
 
-    /* =====================================================
-       CERRAR
-    ====================================================== */
 
-    function closeCheckoutInfo() {
+                overlay.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
 
-        if (
-            !overlay
-        ) {
 
-            return;
+                document.documentElement
+                    .classList.remove(
+                        "checkout-modal-open"
+                    );
 
-        }
 
+                document.body
+                    .classList.remove(
+                        "checkout-modal-open"
+                    );
 
-        overlay.classList.remove(
-            "open"
-        );
 
+                if (
+                    previousFocus &&
+                    typeof previousFocus.focus ===
+                    "function"
+                ) {
 
-        overlay.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+                    previousFocus.focus();
 
+                }
 
-        document.documentElement
-            .classList.remove(
-                "checkout-modal-open"
-            );
 
+                previousFocus =
+                    null;
 
-        document.body
-            .classList.remove(
-                "checkout-modal-open"
-            );
+            }
 
 
-        if (
-            previousFocus &&
-            typeof previousFocus.focus ===
-            "function"
-        ) {
+            /* =================================================
+               BOTONES
+            ================================================= */
 
-            previousFocus.focus();
+            triggers.forEach(
+                function (
+                    trigger
+                ) {
 
-        }
+                    trigger.addEventListener(
+                        "click",
+                        function () {
 
+                            openInfo(
+                                trigger.dataset
+                                    .checkoutInfo,
+                                trigger
+                            );
 
-        previousFocus =
-            null;
-
-    }
-
-
-    /* =====================================================
-       LINKS FOOTER
-    ====================================================== */
-
-    triggers.forEach(
-        function (
-            trigger
-        ) {
-
-            trigger.addEventListener(
-                "click",
-                function () {
-
-                    openCheckoutInfo(
-                        trigger.dataset.checkoutInfo,
-                        trigger
+                        }
                     );
 
                 }
             );
 
-        }
-    );
+
+            closeButton?.addEventListener(
+                "click",
+                closeInfo
+            );
 
 
-    /* =====================================================
-       X CERRAR
-    ====================================================== */
+            overlay?.addEventListener(
+                "click",
+                function (
+                    event
+                ) {
 
-    closeButton?.addEventListener(
-        "click",
-        closeCheckoutInfo
-    );
+                    if (
+                        event.target ===
+                        overlay
+                    ) {
 
+                        closeInfo();
 
-    /* =====================================================
-       CLICK FUERA DEL MODAL
-    ====================================================== */
+                    }
 
-    overlay?.addEventListener(
-        "click",
-        function (
-            event
-        ) {
-
-            if (
-                event.target ===
-                overlay
-            ) {
-
-                closeCheckoutInfo();
-
-            }
-
-        }
-    );
+                }
+            );
 
 
-    /* =====================================================
-       ESC
-    ====================================================== */
+            document.addEventListener(
+                "keydown",
+                function (
+                    event
+                ) {
 
-    document.addEventListener(
-        "keydown",
-        function (
-            event
-        ) {
+                    if (
+                        event.key ===
+                        "Escape" &&
+                        overlay?.classList.contains(
+                            "open"
+                        )
+                    ) {
 
-            if (
-                event.key !==
-                "Escape"
-            ) {
+                        closeInfo();
 
-                return;
+                    }
 
-            }
-
-
-            if (
-                !overlay?.classList.contains(
-                    "open"
-                )
-            ) {
-
-                return;
-
-            }
+                }
+            );
 
 
-            closeCheckoutInfo();
+        })();
 
-        }
-    );
+    </script>
 
 
-})();
+    <!-- =====================================================
+         ANIMACIONES
+    ====================================================== -->
 
-</script>
-    
-</script>
-    <script src="js/animations.js" defer></script>
+    <script
+        src="/satorimode/js/animations.js"
+        defer
+    ></script>
 
 </body>
 
