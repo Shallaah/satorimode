@@ -105,10 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         Yokai
                     </a>
 
-                    <a href="${BASE}productos.html">
-                        Todo
-                    </a>
-
                 </div>
 
 
@@ -128,14 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <a href="${BASE}carrito.html">
                         Carrito
-                    </a>
-
-                    <a href="${BASE}satorii-pack.html">
-                        Satorii Pack
-                    </a>
-
-                    <a href="${BASE}regala-satorii.html">
-                        Regala Satorii
                     </a>
 
                 </div>
