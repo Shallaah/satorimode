@@ -3930,6 +3930,516 @@ body {
     }
 
 }
+
+        /* =====================================================
+   FOOTER · LINKS
+===================================================== */
+
+.checkout-footer-link {
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        #555;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.4;
+
+    text-decoration:
+        underline;
+
+    text-underline-offset:
+        2px;
+
+    cursor:
+        pointer;
+
+    transition:
+        color .18s ease;
+
+}
+
+
+.checkout-footer-link:hover {
+
+    color:
+        #111;
+
+}
+
+
+/* =====================================================
+   MODAL · OVERLAY
+===================================================== */
+
+.checkout-info-overlay {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        999999;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            .58
+        );
+
+    -webkit-backdrop-filter:
+        blur(3px);
+
+    backdrop-filter:
+        blur(3px);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    transition:
+        opacity .2s ease,
+        visibility .2s ease;
+
+}
+
+
+/* MODAL ABIERTO */
+
+.checkout-info-overlay.open {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+
+}
+
+
+/* =====================================================
+   CAJA MODAL
+===================================================== */
+
+.checkout-info-modal {
+
+    position:
+        relative;
+
+    width:
+        min(
+            440px,
+            100%
+        );
+
+    max-height:
+        min(
+            620px,
+            calc(100vh - 40px)
+        );
+
+    padding:
+        27px
+        28px
+        30px;
+
+    overflow-y:
+        auto;
+
+    background:
+        #ffffff;
+
+    border-radius:
+        16px;
+
+    box-shadow:
+        0
+        24px
+        70px
+        rgba(
+            0,
+            0,
+            0,
+            .22
+        );
+
+    opacity:
+        0;
+
+    transform:
+        translateY(12px)
+        scale(.985);
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+
+    outline:
+        none;
+
+}
+
+
+.checkout-info-overlay.open
+.checkout-info-modal {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+/* =====================================================
+   BOTÓN CERRAR
+===================================================== */
+
+.checkout-info-close {
+
+    position:
+        absolute;
+
+    top:
+        14px;
+
+    right:
+        14px;
+
+    width:
+        36px;
+
+    height:
+        36px;
+
+    padding:
+        0;
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        #777;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    cursor:
+        pointer;
+
+    border-radius:
+        50%;
+
+    transition:
+        color .18s ease,
+        background .18s ease;
+
+}
+
+
+.checkout-info-close:hover {
+
+    color:
+        #111;
+
+    background:
+        #f5f5f5;
+
+}
+
+
+.checkout-info-close svg {
+
+    width:
+        19px;
+
+    height:
+        19px;
+
+    fill:
+        none;
+
+    stroke:
+        currentColor;
+
+    stroke-width:
+        1.8;
+
+    stroke-linecap:
+        round;
+
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.checkout-info-title {
+
+    max-width:
+        calc(100% - 45px);
+
+    margin:
+        0
+        0
+        16px;
+
+    color:
+        #111;
+
+    font-family:
+        "Barlow Condensed",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
+
+    font-size:
+        26px;
+
+    line-height:
+        1;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .1px;
+
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.checkout-info-content {
+
+    color:
+        #333;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.65;
+
+}
+
+
+.checkout-info-content p {
+
+    margin:
+        0
+        0
+        14px;
+
+}
+
+
+.checkout-info-content p:last-child {
+
+    margin-bottom:
+        0;
+
+}
+
+
+.checkout-info-content strong {
+
+    color:
+        #111;
+
+    font-weight:
+        700;
+
+}
+
+
+.checkout-info-content a {
+
+    color:
+        #111;
+
+    font-weight:
+        700;
+
+    text-decoration:
+        underline;
+
+    text-underline-offset:
+        2px;
+
+}
+
+
+.checkout-info-content a:hover {
+
+    color:
+        var(--red);
+
+}
+
+
+/* =====================================================
+   BLOQUE DESTACADO
+===================================================== */
+
+.checkout-info-note {
+
+    margin:
+        17px
+        0
+        0;
+
+    padding:
+        13px
+        14px;
+
+    border-left:
+        2px solid
+        var(--red);
+
+    background:
+        #f7f7f7;
+
+    color:
+        #555;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.55;
+
+}
+
+
+/* =====================================================
+   EVITAR SCROLL AL ABRIR
+===================================================== */
+
+html.checkout-modal-open,
+body.checkout-modal-open {
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =====================================================
+   MODAL · MÓVIL
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .checkout-info-overlay {
+
+        padding:
+            16px;
+
+    }
+
+
+    .checkout-info-modal {
+
+        width:
+            100%;
+
+        padding:
+            25px
+            20px
+            25px;
+
+        border-radius:
+            14px;
+
+    }
+
+
+    .checkout-info-title {
+
+        font-size:
+            24px;
+
+    }
+
+
+    .checkout-info-content {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .checkout-footer-link {
+
+        font-size:
+            9px;
+
+    }
+
+}
     </style>
 
 </head>
@@ -4655,41 +5165,125 @@ body {
     </main>
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+<!-- =====================================================
+     FOOTER · INFORMACIÓN
+===================================================== -->
 
-    <footer
-        class="checkout-footer"
+<footer
+    class="checkout-footer"
+>
+
+    <button
+        type="button"
+        class="checkout-footer-link"
+        data-checkout-info="refund"
+    >
+        Política de reembolso
+    </button>
+
+
+    <button
+        type="button"
+        class="checkout-footer-link"
+        data-checkout-info="shipping"
+    >
+        Envío
+    </button>
+
+
+    <button
+        type="button"
+        class="checkout-footer-link"
+        data-checkout-info="privacy"
+    >
+        Política de privacidad
+    </button>
+
+
+    <button
+        type="button"
+        class="checkout-footer-link"
+        data-checkout-info="terms"
+    >
+        Términos del servicio
+    </button>
+
+
+    <button
+        type="button"
+        class="checkout-footer-link"
+        data-checkout-info="cancellations"
+    >
+        Cancelaciones
+    </button>
+
+
+    <button
+        type="button"
+        class="checkout-footer-link"
+        data-checkout-info="contact"
+    >
+        Contacto
+    </button>
+
+</footer>
+
+    <!-- =====================================================
+     MODAL INFORMACIÓN CHECKOUT
+===================================================== -->
+
+<div
+    class="checkout-info-overlay"
+    id="checkout-info-overlay"
+    aria-hidden="true"
+>
+
+    <div
+        class="checkout-info-modal"
+        id="checkout-info-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="checkout-info-title"
+        tabindex="-1"
     >
 
-        <a href="#">
-            Política de reembolso
-        </a>
+        <!-- CERRAR -->
 
-        <a href="#">
-            Envío
-        </a>
+        <button
+            type="button"
+            class="checkout-info-close"
+            id="checkout-info-close"
+            aria-label="Cerrar"
+        >
 
-        <a href="#">
-            Política de privacidad
-        </a>
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <path d="M6 6l12 12"></path>
+                <path d="M18 6L6 18"></path>
+            </svg>
 
-        <a href="#">
-            Términos del servicio
-        </a>
-
-        <a href="#">
-            Cancelaciones
-        </a>
-
-        <a href="#">
-            Contacto
-        </a>
-
-    </footer>
+        </button>
 
 
+        <!-- CONTENIDO -->
+
+        <h2
+            class="checkout-info-title"
+            id="checkout-info-title"
+        ></h2>
+
+
+        <div
+            class="checkout-info-content"
+            id="checkout-info-content"
+        ></div>
+
+    </div>
+
+</div>
+    
 <!-- =====================================================
      SUPABASE
 ===================================================== -->
@@ -5400,6 +5994,537 @@ window.addEventListener(
 
     }
 );
+    <script>
+
+(function () {
+
+    "use strict";
+
+
+    /* =====================================================
+       SATORII · INFORMACIÓN CHECKOUT
+    ====================================================== */
+
+    const overlay =
+        document.getElementById(
+            "checkout-info-overlay"
+        );
+
+
+    const modal =
+        document.getElementById(
+            "checkout-info-modal"
+        );
+
+
+    const modalTitle =
+        document.getElementById(
+            "checkout-info-title"
+        );
+
+
+    const modalContent =
+        document.getElementById(
+            "checkout-info-content"
+        );
+
+
+    const closeButton =
+        document.getElementById(
+            "checkout-info-close"
+        );
+
+
+    const triggers =
+        document.querySelectorAll(
+            "[data-checkout-info]"
+        );
+
+
+    let previousFocus =
+        null;
+
+
+    /* =====================================================
+       CONTENIDOS
+    ====================================================== */
+
+    const checkoutInfo = {
+
+
+        /* =================================================
+           REEMBOLSO
+        ================================================= */
+
+        refund: {
+
+            title:
+                "Política de reembolso",
+
+            content: `
+
+                <p>
+                    En SATORII queremos que estés conforme
+                    con tu compra. Si recibiste un producto
+                    con algún problema, contáctanos para
+                    revisar tu caso.
+                </p>
+
+                <p>
+                    Para solicitar ayuda, conserva el producto
+                    sin uso y con sus etiquetas y embalaje
+                    original cuando corresponda.
+                </p>
+
+                <div class="checkout-info-note">
+
+                    Para información completa sobre cambios,
+                    devoluciones y condiciones aplicables,
+                    revisa nuestra sección de
+                    <a href="/satorimode/cambios-y-devoluciones.html">
+                        Cambios y devoluciones
+                    </a>.
+
+                </div>
+
+            `
+
+        },
+
+
+        /* =================================================
+           ENVÍO
+        ================================================= */
+
+        shipping: {
+
+            title:
+                "Envíos",
+
+            content: `
+
+                <p>
+                    Realizamos envíos a
+                    <strong>todo Chile</strong>.
+                </p>
+
+                <p>
+                    El valor y las alternativas de envío
+                    disponibles se calculan según la dirección
+                    ingresada durante el proceso de compra.
+                </p>
+
+                <p>
+                    Una vez procesado tu pedido, recibirás
+                    la información correspondiente para
+                    realizar el seguimiento cuando esté
+                    disponible.
+                </p>
+
+                <div class="checkout-info-note">
+
+                    Puedes revisar más información en nuestra
+                    sección de
+                    <a href="/satorimode/envios.html">
+                        Envíos
+                    </a>.
+
+                </div>
+
+            `
+
+        },
+
+
+        /* =================================================
+           PRIVACIDAD
+        ================================================= */
+
+        privacy: {
+
+            title:
+                "Política de privacidad",
+
+            content: `
+
+                <p>
+                    SATORII utiliza la información entregada
+                    durante tu compra únicamente para gestionar
+                    pedidos, pagos, envíos y atención al cliente.
+                </p>
+
+                <p>
+                    Tus datos personales no serán publicados
+                    ni utilizados para fines distintos a los
+                    necesarios para prestarte nuestros servicios,
+                    salvo autorización o exigencia legal.
+                </p>
+
+                <p>
+                    Los pagos son procesados mediante nuestros
+                    proveedores de pago y SATORII no almacena
+                    directamente los datos completos de tus
+                    tarjetas.
+                </p>
+
+            `
+
+        },
+
+
+        /* =================================================
+           TÉRMINOS
+        ================================================= */
+
+        terms: {
+
+            title:
+                "Términos del servicio",
+
+            content: `
+
+                <p>
+                    Al realizar una compra en SATORII aceptas
+                    las condiciones de compra, disponibilidad
+                    de productos, precios, métodos de pago,
+                    despacho y políticas aplicables.
+                </p>
+
+                <p>
+                    Los productos están sujetos a disponibilidad.
+                    Si existiera algún inconveniente con una
+                    orden, nos pondremos en contacto utilizando
+                    los datos proporcionados durante la compra.
+                </p>
+
+                <p>
+                    SATORII podrá actualizar estas condiciones
+                    cuando sea necesario.
+                </p>
+
+            `
+
+        },
+
+
+        /* =================================================
+           CANCELACIONES
+        ================================================= */
+
+        cancellations: {
+
+            title:
+                "Cancelaciones",
+
+            content: `
+
+                <p>
+                    Si deseas cancelar un pedido,
+                    contáctanos lo antes posible.
+                </p>
+
+                <p>
+                    Si el pedido todavía no ha sido preparado
+                    o despachado, revisaremos si es posible
+                    realizar la cancelación.
+                </p>
+
+                <p>
+                    Si el pedido ya fue procesado o enviado,
+                    será necesario revisar las condiciones
+                    correspondientes a cambios y devoluciones.
+                </p>
+
+                <div class="checkout-info-note">
+
+                    Escríbenos indicando tu
+                    <strong>número de pedido</strong>
+                    y el correo utilizado al comprar.
+
+                </div>
+
+            `
+
+        },
+
+
+        /* =================================================
+           CONTACTO
+        ================================================= */
+
+        contact: {
+
+            title:
+                "Contacto",
+
+            content: `
+
+                <p>
+                    Si necesitas ayuda, puedes comunicarte
+                    directamente con SATORII.
+                </p>
+
+                <p>
+                    También puedes encontrarnos en Instagram
+                    como
+                    <a
+                        href="https://www.instagram.com/satoriicl/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        @satoriicl
+                    </a>.
+                </p>
+
+                <p>
+                    Si tu consulta está relacionada con una
+                    compra, incluye tu
+                    <strong>número de pedido</strong>
+                    para que podamos ayudarte más rápido.
+                </p>
+
+                <div class="checkout-info-note">
+
+                    Normalmente Instagram es la forma
+                    más rápida de contactarnos.
+
+                </div>
+
+            `
+
+        }
+
+    };
+
+
+    /* =====================================================
+       ABRIR
+    ====================================================== */
+
+    function openCheckoutInfo(
+        key,
+        trigger
+    ) {
+
+        const info =
+            checkoutInfo[key];
+
+
+        if (
+            !info ||
+            !overlay ||
+            !modal ||
+            !modalTitle ||
+            !modalContent
+        ) {
+
+            return;
+
+        }
+
+
+        previousFocus =
+            trigger ||
+            document.activeElement;
+
+
+        modalTitle.textContent =
+            info.title;
+
+
+        modalContent.innerHTML =
+            info.content;
+
+
+        overlay.classList.add(
+            "open"
+        );
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.documentElement
+            .classList.add(
+                "checkout-modal-open"
+            );
+
+
+        document.body
+            .classList.add(
+                "checkout-modal-open"
+            );
+
+
+        window.setTimeout(
+            function () {
+
+                closeButton?.focus();
+
+            },
+            50
+        );
+
+    }
+
+
+    /* =====================================================
+       CERRAR
+    ====================================================== */
+
+    function closeCheckoutInfo() {
+
+        if (
+            !overlay
+        ) {
+
+            return;
+
+        }
+
+
+        overlay.classList.remove(
+            "open"
+        );
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.documentElement
+            .classList.remove(
+                "checkout-modal-open"
+            );
+
+
+        document.body
+            .classList.remove(
+                "checkout-modal-open"
+            );
+
+
+        if (
+            previousFocus &&
+            typeof previousFocus.focus ===
+            "function"
+        ) {
+
+            previousFocus.focus();
+
+        }
+
+
+        previousFocus =
+            null;
+
+    }
+
+
+    /* =====================================================
+       LINKS FOOTER
+    ====================================================== */
+
+    triggers.forEach(
+        function (
+            trigger
+        ) {
+
+            trigger.addEventListener(
+                "click",
+                function () {
+
+                    openCheckoutInfo(
+                        trigger.dataset.checkoutInfo,
+                        trigger
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       X CERRAR
+    ====================================================== */
+
+    closeButton?.addEventListener(
+        "click",
+        closeCheckoutInfo
+    );
+
+
+    /* =====================================================
+       CLICK FUERA DEL MODAL
+    ====================================================== */
+
+    overlay?.addEventListener(
+        "click",
+        function (
+            event
+        ) {
+
+            if (
+                event.target ===
+                overlay
+            ) {
+
+                closeCheckoutInfo();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       ESC
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (
+            event
+        ) {
+
+            if (
+                event.key !==
+                "Escape"
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                !overlay?.classList.contains(
+                    "open"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            closeCheckoutInfo();
+
+        }
+    );
+
+
+})();
+
+</script>
+    
 </script>
     <script src="js/animations.js" defer></script>
 
