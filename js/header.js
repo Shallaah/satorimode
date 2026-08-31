@@ -2810,6 +2810,20 @@
             outline-offset:3px;
         }
 
+/* =====================================================
+   QUITAR BORDE ROJO DEL BUSCADOR INLINE
+===================================================== */
+
+#satori-header
+.header-search-inline input:focus,
+#satori-header
+.header-search-inline input:focus-visible {
+
+    outline:none !important;
+    outline-offset:0 !important;
+    box-shadow:none !important;
+
+}
 
         /* =====================================================
            REDUCED MOTION
