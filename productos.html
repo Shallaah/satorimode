@@ -2299,13 +2299,6 @@
 <div id="satori-footer"></div>
 
     <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase.js"></script>
-
-    <!-- =====================================================
          PRODUCTOS
     ====================================================== -->
 
@@ -2646,12 +2639,12 @@
 
                 function buildFilters() {
 
-                    /*
-                     * IMPORTANTE:
-                     *
-                     * Evita duplicar botones cuando
-                     * Supabase actualiza el catálogo.
-                     */
+/*
+ * IMPORTANTE:
+ *
+ * Evita duplicar botones cuando
+ * se reconstruyen los filtros.
+ */
 
                     categoryFilters.innerHTML = "";
 
@@ -3755,24 +3748,6 @@
                     );
 
                 }
-
-
-                /* =================================================
-                   ACTUALIZACIÓN DESDE SUPABASE
-                ================================================== */
-
-                window.addEventListener(
-                    "satorii:products-updated",
-                    function () {
-
-                        buildFilters();
-
-                        updateFilterButtons();
-
-                        renderProducts();
-
-                    }
-                );
 
 
                 /* =================================================
