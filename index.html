@@ -1312,209 +1312,341 @@
         }
 
 
-        /* =====================================================
-           TARJETAS UNIVERSO
-        ====================================================== */
+/* =====================================================
+   TARJETAS UNIVERSO
+   ANIME + YOKAI
+====================================================== */
 
-        .satori-universe-grid {
+.satori-universe-grid {
 
-            display: grid;
+    display: grid;
 
-            grid-template-columns:
-                repeat(
-                    4,
-                    minmax(
-                        0,
-                        1fr
-                    )
-                );
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
 
-            gap: 12px;
+    gap: 14px;
 
-        }
+    width:
+        min(
+            100%,
+            760px
+        );
 
+    justify-self: start;
 
-        .satori-universe-card {
-
-            position: relative;
-
-            display: block;
-
-            min-width: 0;
-
-            overflow: hidden;
-
-            aspect-ratio: .72 / 1;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .35
-                );
-
-            background: #171717;
-
-            color: #fff;
-
-            transition:
-                transform .3s ease,
-                border-color .25s ease;
-
-        }
+}
 
 
-        .satori-universe-card:hover {
+.satori-universe-card {
 
-            transform: translateY(-4px);
+    position: relative;
 
-            border-color:
-                var(--satori-red);
+    display: block;
 
-        }
+    min-width: 0;
 
+    overflow: hidden;
 
-        .satori-universe-card::after {
+    aspect-ratio:
+        .78 / 1;
 
-            content: "";
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .30
+        );
 
-            position: absolute;
+    background:
+        #171717;
 
-            inset: 0;
+    color:
+        #fff;
 
-            z-index: 2;
+    isolation:
+        isolate;
 
-            background:
-                linear-gradient(
-                    to top,
-                    rgba(
-                        0,
-                        0,
-                        0,
-                        .88
-                    ),
-                    rgba(
-                        0,
-                        0,
-                        0,
-                        .05
-                    ) 62%
-                );
+    transition:
+        transform .35s ease,
+        border-color .25s ease,
+        box-shadow .35s ease;
 
-            pointer-events: none;
-
-        }
+}
 
 
-.satori-universe-card img {
+.satori-universe-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--satori-red);
+
+    box-shadow:
+        0 18px 45px
+        rgba(
+            0,
+            0,
+            0,
+            .22
+        );
+
+}
+
+
+/* =====================================================
+   DEGRADADO SOBRE IMAGEN
+====================================================== */
+
+.satori-universe-card::after {
+
+    content: "";
 
     position: absolute;
 
     inset: 0;
 
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(
+                0,
+                0,
+                0,
+                .02
+            )
+            20%,
+
+            rgba(
+                0,
+                0,
+                0,
+                .12
+            )
+            52%,
+
+            rgba(
+                0,
+                0,
+                0,
+                .88
+            )
+            100%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   IMÁGENES
+====================================================== */
+
+.satori-universe-card img {
+
+    position: absolute;
+
     z-index: 1;
+
+    inset: 0;
+
+    display: block;
 
     width: 100%;
 
     height: 100%;
 
+    max-width: none;
+
     object-fit: cover;
 
+    /*
+     * Muestra mejor al personaje y el diseño
+     * de la espalda.
+     */
+
+    object-position:
+        center 32%;
+
+    transform:
+        scale(1.01);
+
     transition:
-        transform .6s ease;
+        transform .65s
+        cubic-bezier(
+            .22,
+            .61,
+            .36,
+            1
+        );
 
 }
 
 
-        .satori-universe-card:hover img {
+.satori-universe-card:hover img {
 
-            transform: scale(1.055);
+    transform:
+        scale(1.055);
 
-        }
-
-
-        .satori-universe-card-content {
-
-            position: absolute;
-
-            left: 18px;
-
-            right: 18px;
-
-            bottom: 17px;
-
-            z-index: 4;
-
-        }
+}
 
 
-        .satori-universe-card h3 {
+/* =====================================================
+   TEXTO
+====================================================== */
 
-            margin: 0;
+.satori-universe-card-content {
 
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
+    position: absolute;
 
-            font-size: 30px;
+    z-index: 4;
 
-            line-height: .82;
+    left: 20px;
 
-            font-weight: 900;
+    right: 20px;
 
-            letter-spacing: .35px;
+    bottom: 18px;
 
-        }
-
-
-        .satori-universe-card small {
-
-            display: block;
-
-            margin-top: 6px;
-
-            color: #b8bdc5;
-
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
-
-            font-size: 10px;
-
-            text-transform: uppercase;
-
-        }
+}
 
 
-        .satori-universe-arrow {
+.satori-universe-card h3 {
 
-            display: flex;
+    margin: 0;
 
-            align-items: center;
+    color:
+        #fff;
 
-            justify-content: center;
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
 
-            width: 30px;
+    font-size:
+        34px;
 
-            height: 30px;
+    line-height:
+        .82;
 
-            margin-top: 13px;
+    font-weight:
+        900;
 
-            border:
-                1px solid
-                var(--satori-red);
+    letter-spacing:
+        .35px;
 
-            border-radius: 50%;
+    text-transform:
+        uppercase;
 
-            color: #fff;
+}
 
-            font-size: 13px;
 
-        }
+.satori-universe-card small {
+
+    display: block;
+
+    margin-top:
+        7px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .70
+        );
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.4;
+
+    letter-spacing:
+        .35px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =====================================================
+   FLECHA
+====================================================== */
+
+.satori-universe-arrow {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width:
+        31px;
+
+    height:
+        31px;
+
+    margin-top:
+        14px;
+
+    border:
+        1px solid
+        var(--satori-red);
+
+    border-radius:
+        50%;
+
+    color:
+        #fff;
+
+    font-size:
+        13px;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.satori-universe-card:hover
+.satori-universe-arrow {
+
+    background:
+        var(--satori-red);
+
+    transform:
+        translateX(
+            3px
+        );
+
+}
+
+
+/* =====================================================
+   FALLBACK
+====================================================== */
 
 .satori-universe-fallback {
 
@@ -1540,28 +1672,148 @@
 }
 
 
-        .satori-universe-fallback span {
+.satori-universe-fallback span {
 
-            font-family:
-                "Barlow Condensed",
-                Arial,
-                sans-serif;
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
 
-            font-size: 55px;
+    font-size:
+        55px;
 
-            font-weight: 900;
+    font-weight:
+        900;
 
-            color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .12
-                );
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
 
-        }
+}
 
 
+/* =====================================================
+   UNIVERSO · TABLET
+====================================================== */
+
+@media (
+    max-width: 1100px
+) {
+
+    .satori-universe-grid {
+
+        width:
+            min(
+                100%,
+                700px
+            );
+
+        gap:
+            10px;
+
+    }
+
+}
+
+
+/* =====================================================
+   UNIVERSO · MÓVIL
+====================================================== */
+
+@media (
+    max-width: 700px
+) {
+
+    .satori-universe-grid {
+
+        width:
+            100%;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        gap:
+            7px;
+
+    }
+
+
+    .satori-universe-card {
+
+        aspect-ratio:
+            .76 / 1;
+
+    }
+
+
+    .satori-universe-card img {
+
+        object-position:
+            center 30%;
+
+    }
+
+
+    .satori-universe-card-content {
+
+        left:
+            10px;
+
+        right:
+            10px;
+
+        bottom:
+            10px;
+
+    }
+
+
+    .satori-universe-card h3 {
+
+        font-size:
+            22px;
+
+    }
+
+
+    .satori-universe-card small {
+
+        margin-top:
+            4px;
+
+        font-size:
+            8.5px;
+
+    }
+
+
+    .satori-universe-arrow {
+
+        width:
+            24px;
+
+        height:
+            24px;
+
+        margin-top:
+            8px;
+
+        font-size:
+            10px;
+
+    }
+
+}
         /* =====================================================
            FILOSOFÍA SATORII
         ====================================================== */
@@ -3901,7 +4153,7 @@
 
                                     <div
                                         class="satori-product-price"
-                                        data-supabase-product="KID BUU"
+                                        data-product-price-id="kid-buu"
                                     >
                                         $18.990
                                     </div>
@@ -3937,9 +4189,9 @@
 
                                 <div
                                     class="satori-product-price"
-                                    data-supabase-product="GOKU"
+                                    data-product-price-id="goku"
                                 >
-                                    $19.990
+                                    $18.990
                                 </div>
 
                             </div>
@@ -4089,7 +4341,7 @@
                         </h2>
 
                         <p>
-                            Cuatro caminos.
+                            Dos caminos.
                             Un mismo universo.
                             Elige el tuyo.
                         </p>
@@ -4357,105 +4609,26 @@
         defer
     ></script>
 
+<!-- =====================================================
+     SATORII · PRECIOS DESDE PRODUCTS.JS
+====================================================== -->
 
-    <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
+<script>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-    ></script>
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
 
-
-    <script src="js/supabase.js"></script>
-
-
-    <!-- =====================================================
-         SUPABASE — SINCRONIZAR PRECIOS
-    ====================================================== -->
-
-    <script>
-
-        (async function syncSupabasePrices() {
-
-            const waitForSupabase = async function () {
-
-                for (
-                    let attempt = 0;
-                    attempt < 100;
-                    attempt++
-                ) {
-
-                    if (
-                        typeof satoriSupabase !==
-                        "undefined"
-                    ) {
-
-                        return true;
-
-                    }
-
-                    await new Promise(
-                        function (resolve) {
-
-                            setTimeout(
-                                resolve,
-                                100
-                            );
-
-                        }
-                    );
-
-                }
-
-                return false;
-
-            };
-
-
-            const available =
-                await waitForSupabase();
-
-
-            if (!available) {
-
-                console.warn(
-                    "SATORII · Supabase no está disponible. Se mantienen los precios de respaldo."
-                );
-
-                return;
-
-            }
-
-
-            const {
-                data,
-                error
-            } =
-                await satoriSupabase
-                    .from("products")
-                    .select("name, price");
-
-
-            if (error) {
-
-                console.error(
-                    "SATORII · Error al obtener precios desde Supabase:",
-                    error
-                );
-
-                return;
-
-            }
+            "use strict";
 
 
             if (
-                !Array.isArray(data) ||
-                !data.length
+                typeof PRODUCTS === "undefined" ||
+                !Array.isArray(PRODUCTS)
             ) {
 
                 console.warn(
-                    "SATORII · No se encontraron productos en Supabase."
+                    "SATORII · No se pudo cargar el catálogo local."
                 );
 
                 return;
@@ -4463,109 +4636,43 @@
             }
 
 
-            const normalize =
-                function (value) {
+            function formatCLP(value) {
 
-                    return String(
-                        value ?? ""
-                    )
-                        .normalize("NFD")
-                        .replace(
-                            /[\u0300-\u036f]/g,
-                            ""
-                        )
-                        .trim()
-                        .toLowerCase();
-
-                };
-
-
-            const formatCLP =
-                function (value) {
-
-                    const numeric =
-                        Number(
-                            String(value)
-                                .replace(
-                                    /[^\d.-]/g,
-                                    ""
-                                )
-                        );
-
-
-                    if (
-                        !Number.isFinite(
-                            numeric
-                        )
-                    ) {
-
-                        return null;
-
+                return new Intl.NumberFormat(
+                    "es-CL",
+                    {
+                        style: "currency",
+                        currency: "CLP",
+                        maximumFractionDigits: 0
                     }
-
-
-                    return new Intl.NumberFormat(
-                        "es-CL",
-                        {
-                            style: "currency",
-                            currency: "CLP",
-                            maximumFractionDigits: 0
-                        }
-                    ).format(
-                        numeric
-                    );
-
-                };
-
-
-            const products =
-                data.map(
-                    function (product) {
-
-                        return {
-
-                            name:
-                                normalize(
-                                    product.name
-                                ),
-
-                            price:
-                                product.price
-
-                        };
-
-                    }
+                ).format(
+                    Number(value) || 0
                 );
+
+            }
 
 
             document
                 .querySelectorAll(
-                    "[data-supabase-product]"
+                    "[data-product-price-id]"
                 )
                 .forEach(
                     function (element) {
 
-                        const wanted =
-                            normalize(
-                                element
-                                    .dataset
-                                    .supabaseProduct
-                            );
+                        const productId =
+                            String(
+                                element.dataset.productPriceId || ""
+                            )
+                            .trim();
 
 
                         const product =
-                            products.find(
+                            PRODUCTS.find(
                                 function (item) {
 
                                     return (
-                                        item.name ===
-                                            wanted ||
-                                        item.name.includes(
-                                            wanted
-                                        ) ||
-                                        wanted.includes(
-                                            item.name
-                                        )
+                                        String(item.id) ===
+                                        productId
                                     );
 
                                 }
@@ -4575,22 +4682,9 @@
                         if (!product) {
 
                             console.warn(
-                                "SATORII · No se encontró en Supabase:",
-                                wanted
+                                "SATORII · Producto no encontrado:",
+                                productId
                             );
-
-                            return;
-
-                        }
-
-
-                        const formatted =
-                            formatCLP(
-                                product.price
-                            );
-
-
-                        if (!formatted) {
 
                             return;
 
@@ -4598,22 +4692,23 @@
 
 
                         element.textContent =
-                            formatted;
+                            formatCLP(
+                                product.price
+                            );
 
                     }
                 );
 
 
             console.log(
-                "SATORII · Precios sincronizados desde Supabase:",
-                data
+                "SATORII · Precios cargados desde products.js"
             );
 
-        })();
+        }
+    );
 
-    </script>
-
-
+</script>
+    
     <!-- =====================================================
          HERO SLIDER
     ====================================================== -->
