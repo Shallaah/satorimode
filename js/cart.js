@@ -4,7 +4,7 @@
    ✓ LocalStorage principal: satorimode_cart
    ✓ Compatibilidad con satorii_cart
    ✓ Lee datos del botón de producto
-   ✓ Precio compatible con Supabase
+   ✓ Precio compatible con catálogo local
    ✓ Actualiza Header mediante satori-cart-updated
    ✓ Animación al agregar
    ✓ Toast global autocontenido
@@ -1051,10 +1051,10 @@
             existing
         ) {
 
-            /*
-             * Actualizar datos dinámicos
-             * por si cambiaron desde Supabase.
-             */
+/*
+ * Actualizar datos dinámicos
+ * por si cambiaron en el catálogo local.
+ */
 
             existing.id =
                 product.id;
