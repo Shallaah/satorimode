@@ -143,8 +143,6 @@
             pointer-events: none;
         }
 
-        .yokai-hero-kicker,
-
         .yokai-hero-kicker {
             margin-bottom: 14px;
         }
@@ -2058,15 +2056,6 @@
 
 
     <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script src="js/supabase.js"></script>
-
-
-    <!-- =====================================================
          PRODUCTOS
     ====================================================== -->
 
@@ -2282,39 +2271,49 @@
                 }
 
 
-                /* =================================================
-                   ES YOKAI
-                ================================================= */
+/* =================================================
+   ES YOKAI
+================================================= */
 
-                function isYokaiProduct(product) {
+function isYokaiProduct(product) {
 
-                    return (
-                        product &&
-                        product.available === true &&
-                        String(
-                            product.category || ""
-                        )
-                        .toLowerCase()
-                        .trim() ===
-                        "yokai"
-                    );
+    return (
+        product &&
+        product.available !== false &&
+        String(
+            product.category || ""
+        )
+        .toLowerCase()
+        .trim() ===
+        "yokai"
+    );
 
-                }
+}
+
+/* =================================================
+   NUEVO
+================================================= */
+
+function isNewProduct(product) {
+
+    if (
+        typeof isProductNew ===
+        "function"
+    ) {
+
+        return isProductNew(
+            product
+        );
+
+    }
 
 
-                /* =================================================
-                   NUEVO
-                ================================================= */
+    return (
+        product.newProduct ===
+        true
+    );
 
-                function isNewProduct(product) {
-
-                    return (
-                        typeof isProductNew ===
-                            "function" &&
-                        isProductNew(product)
-                    );
-
-                }
+}
 
 
                 /* =================================================
@@ -2323,15 +2322,15 @@
 
                 function createProductCard(product) {
 
-                    const primaryImage =
-                        product.images?.[0] ||
-                        product.image ||
-                        "";
+const primaryImage =
+    product.images?.[0] ||
+    product.image ||
+    "";
 
 
-                    const secondaryImage =
-                        product.images?.[1] ||
-                        "";
+const secondaryImage =
+    product.images?.[1] ||
+    primaryImage;
 
 
                     const productUrl =
@@ -2720,47 +2719,73 @@
                                     );
 
 
-                                cards.forEach(
-                                    function (
-                                        card
-                                    ) {
-
-                                        let visible =
-                                            true;
+                                let visibleCount =
+    0;
 
 
-                                        if (
-                                            value ===
-                                            "new"
-                                        ) {
+cards.forEach(
+    function (
+        card
+    ) {
 
-                                            visible =
-                                                card.dataset.new ===
-                                                "true";
-
-                                        }
+        let visible =
+            true;
 
 
-                                        if (
-                                            value ===
-                                            "featured"
-                                        ) {
+        if (
+            value ===
+            "new"
+        ) {
 
-                                            visible =
-                                                card.dataset.featured ===
-                                                "true";
+            visible =
+                card.dataset.new ===
+                "true";
 
-                                        }
+        }
 
 
-                                        card.style.display =
-                                            visible
-                                            ? ""
-                                            : "none";
+        if (
+            value ===
+            "featured"
+        ) {
 
-                                    }
-                                );
+            visible =
+                card.dataset.featured ===
+                "true";
 
+        }
+
+
+        card.style.display =
+            visible
+                ? ""
+                : "none";
+
+
+        if (
+            visible
+        ) {
+
+            visibleCount++;
+
+        }
+
+    }
+);
+
+
+if (
+    count
+) {
+
+    count.textContent =
+        `${visibleCount} ${
+            visibleCount === 1
+                ? "producto"
+                : "productos"
+        }`;
+
+}
                             }
                         );
 
@@ -2773,20 +2798,6 @@
                 ================================================== */
 
                 renderProducts();
-
-
-                /* =================================================
-                   ACTUALIZACIÓN SUPABASE
-                ================================================== */
-
-                window.addEventListener(
-                    "satorii:products-updated",
-                    function () {
-
-                        renderProducts();
-
-                    }
-                );
 
             }
 
