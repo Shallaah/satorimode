@@ -3514,19 +3514,22 @@
                     );
 
 
-                    alert(
-                        "PEDIDO DE PRUEBA CREADO ✅\n\n" +
-                        "Pedido: " +
-                        order.orderNumber +
-                        "\n\n" +
-                        "Total: " +
-                        formatPrice(
-                            order.total
-                        ) +
-                        "\n\n" +
-                        "Estado de pago: " +
-                        order.paymentStatus
-                    );
+const paymentUrl =
+    data?.paymentUrl;
+
+
+if (!paymentUrl) {
+
+    throw new Error(
+        "No se recibió la URL de pago."
+    );
+
+}
+
+
+window.location.assign(
+    paymentUrl
+);
 
                 }
 
