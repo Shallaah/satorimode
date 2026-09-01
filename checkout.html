@@ -2558,8 +2558,8 @@
          * La API Key y Secret Key de Flow NO deben estar
          * nunca en este archivo ni en GitHub.
          */
-        const CHECKOUT_API_URL =
-            "https://api.satorii.cl/api/checkout";
+const CHECKOUT_API_URL =
+    "https://satorii-api.sebasthianmella13.workers.dev/api/checkout";
 
 
         /* =====================================================
@@ -3284,58 +3284,52 @@
                      * El Worker calculará el total usando
                      * el catálogo real de SATORII.
                      */
-                    const payload = {
+const payload = {
 
-                        customer: {
+    customer: {
 
-                            email:
-                                email,
+        email:
+            email,
 
-                            name:
-                                name,
+        name:
+            name,
 
-                            lastname:
-                                lastname,
+        lastname:
+            lastname,
 
-                            rut:
-                                rut,
+        rut:
+            rut,
 
-                            phone:
-                                phone
+        phone:
+            phone,
 
-                        },
+        country:
+            "Chile",
 
+        address:
+            address,
 
-                        shipping: {
+        extra:
+            extra ||
+            null,
 
-                            country:
-                                "Chile",
+        postal_code:
+            postal ||
+            null,
 
-                            address:
-                                address,
+        city:
+            city,
 
-                            extra:
-                                extra ||
-                                null,
+        region:
+            region
 
-                            postal_code:
-                                postal ||
-                                null,
-
-                            city:
-                                city,
-
-                            region:
-                                region
-
-                        },
+    },
 
 
-                        items:
-                            items
+    items:
+        items
 
-                    };
-
+};
 
                     /* =========================================
                        BOTÓN
@@ -3350,7 +3344,7 @@
 
 
                     button.textContent =
-                        "CONECTANDO CON FLOW...";
+                        "CREANDO PEDIDO...";
 
 
                     /* =========================================
@@ -3429,36 +3423,29 @@
                         }
 
 
-                        const paymentUrl =
-                            data.paymentUrl ||
-                            data.url;
+const order =
+    data.order;
 
 
-                        if (
-                            !paymentUrl
-                        ) {
-
-                            console.error(
-                                "SATORII · El servidor no entregó una URL de pago:",
-                                data
-                            );
+console.log(
+    "SATORII · Pedido creado:",
+    order
+);
 
 
-                            alert(
-                                "La orden fue creada, pero no se recibió la URL de Flow."
-                            );
-
-
-                            return;
-
-                        }
-
-
-                        window.location.href =
-                            paymentUrl;
-
-                    }
-
+alert(
+    "PEDIDO DE PRUEBA CREADO ✅\n\n" +
+    "Pedido: " +
+    order.orderNumber +
+    "\n\n" +
+    "Total: " +
+    formatPrice(
+        order.total
+    ) +
+    "\n\n" +
+    "Estado de pago: " +
+    order.paymentStatus
+);
                     catch (
                         error
                     ) {
