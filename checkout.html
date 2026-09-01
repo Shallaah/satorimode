@@ -2535,741 +2535,952 @@
     ></script>
 
 
-    <!-- =====================================================
-         CHECKOUT
-    ====================================================== -->
+<!-- =====================================================
+     CHECKOUT
+===================================================== -->
 
-    <script>
+<script>
 
-        "use strict";
-
-
-        /* =====================================================
-           CONFIGURACIÓN
-        ====================================================== */
-
-        const CART_KEY =
-            "satorimode_cart";
+    "use strict";
 
 
-        /*
-         * Endpoint del backend privado de SATORII.
-         *
-         * La API Key y Secret Key de Flow NO deben estar
-         * nunca en este archivo ni en GitHub.
-         */
-const CHECKOUT_API_URL =
-    "https://satorii-api.sebasthianmella13.workers.dev/api/checkout";
+    /* =====================================================
+       CONFIGURACIÓN
+    ====================================================== */
+
+    const CART_KEY =
+        "satorimode_cart";
 
 
-        /* =====================================================
-           CARRITO
-        ====================================================== */
-
-        function getCart() {
-
-            try {
-
-                const saved =
-                    localStorage.getItem(
-                        CART_KEY
-                    );
+    const CHECKOUT_API_URL =
+        "https://satorii-api.sebasthianmella13.workers.dev/api/checkout";
 
 
-                if (!saved) {
+    /* =====================================================
+       CARRITO
+    ====================================================== */
 
-                    return [];
+    function getCart() {
 
-                }
+        try {
 
-
-                const cart =
-                    JSON.parse(
-                        saved
-                    );
-
-
-                return Array.isArray(cart)
-                    ? cart
-                    : [];
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "SATORII · Error carrito:",
-                    error
+            const saved =
+                localStorage.getItem(
+                    CART_KEY
                 );
 
+
+            if (!saved) {
 
                 return [];
 
             }
 
-        }
-
-
-        /* =====================================================
-           PRECIO
-        ====================================================== */
-
-        function formatPrice(
-            value
-        ) {
-
-            return new Intl.NumberFormat(
-                "es-CL",
-                {
-                    style:"currency",
-                    currency:"CLP",
-                    maximumFractionDigits:0
-                }
-            ).format(
-                Number(value) || 0
-            );
-
-        }
-
-
-        /* =====================================================
-           ESCAPAR HTML
-        ====================================================== */
-
-        function escapeHTML(
-            value
-        ) {
-
-            return String(
-                value ?? ""
-            )
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
-                .replace(
-                    /</g,
-                    "&lt;"
-                )
-                .replace(
-                    />/g,
-                    "&gt;"
-                )
-                .replace(
-                    /"/g,
-                    "&quot;"
-                )
-                .replace(
-                    /'/g,
-                    "&#039;"
-                );
-
-        }
-
-
-        /* =====================================================
-           RENDER CHECKOUT
-        ====================================================== */
-
-        function renderCheckout() {
 
             const cart =
-                getCart();
-
-
-            const products =
-                document.getElementById(
-                    "checkout-products"
+                JSON.parse(
+                    saved
                 );
 
 
-            const subtotalElement =
-                document.getElementById(
-                    "checkout-subtotal"
-                );
-
-
-            const totalElement =
-                document.getElementById(
-                    "checkout-total"
-                );
-
-
-            if (
-                !products ||
-                !subtotalElement ||
-                !totalElement
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                cart.length ===
-                0
-            ) {
-
-                products.innerHTML = `
-
-                    <p
-                        style="
-                            margin:0;
-                            font-size:11px;
-                            color:#777;
-                        "
-                    >
-                        Tu carrito está vacío.
-                    </p>
-
-                `;
-
-
-                subtotalElement.textContent =
-                    formatPrice(0);
-
-
-                totalElement.textContent =
-                    formatPrice(0);
-
-
-                return;
-
-            }
-
-
-            let subtotal =
-                0;
-
-
-            let html =
-                "";
-
-
-            const missingProducts =
-                [];
-
-
-            cart.forEach(
-                function (
-                    cartItem
-                ) {
-
-                    const quantity =
-                        Math.max(
-                            1,
-                            Number(
-                                cartItem.quantity ||
-                                1
-                            )
-                        );
-
-
-                    const currentProduct =
-                        typeof PRODUCTS !==
-                            "undefined" &&
-                        Array.isArray(PRODUCTS)
-
-                            ?
-
-                            PRODUCTS.find(
-                                function (
-                                    product
-                                ) {
-
-                                    return String(
-                                        product.id
-                                    ) === String(
-                                        cartItem.productId ??
-                                        cartItem.id
-                                    );
-
-                                }
-                            )
-
-                            :
-
-                            null;
-
-
-                    if (!currentProduct) {
-
-                        missingProducts.push(
-                            cartItem.name ||
-                            "Producto"
-                        );
-
-
-                        return;
-
-                    }
-
-
-                    const price =
-                        Number(
-                            currentProduct.price ||
-                            0
-                        );
-
-
-                    subtotal +=
-                        price *
-                        quantity;
-
-
-                    const options =
-                        [];
-
-
-                    if (
-                        cartItem.size
-                    ) {
-
-                        options.push(
-                            "Talla " +
-                            cartItem.size
-                        );
-
-                    }
-
-
-                    if (
-                        cartItem.color
-                    ) {
-
-                        options.push(
-                            cartItem.color
-                        );
-
-                    }
-
-
-                    const productName =
-                        currentProduct.name ||
-                        cartItem.name ||
-                        "Producto";
-
-
-                    const productImage =
-                        currentProduct.image ||
-                        currentProduct.images?.[0] ||
-                        cartItem.image ||
-                        "";
-
-
-                    html += `
-
-                        <article
-                            class="
-                                checkout-product
-                                satori-card-animate
-                            "
-                        >
-
-                            <div
-                                class="checkout-product-image"
-                            >
-
-                                ${
-                                    productImage
-                                        ?
-                                        `
-                                            <img
-                                                src="${escapeHTML(productImage)}"
-                                                alt="${escapeHTML(productName)}"
-                                            >
-                                        `
-                                        :
-                                        ""
-                                }
-
-
-                                <span
-                                    class="checkout-product-quantity"
-                                >
-                                    ${quantity}
-                                </span>
-
-                            </div>
-
-
-                            <div>
-
-                                <h3
-                                    class="checkout-product-name"
-                                >
-                                    ${escapeHTML(productName)}
-                                </h3>
-
-
-                                ${
-                                    options.length
-                                        ?
-                                        `
-                                            <div
-                                                class="checkout-product-options"
-                                            >
-                                                ${escapeHTML(
-                                                    options.join(
-                                                        " · "
-                                                    )
-                                                )}
-                                            </div>
-                                        `
-                                        :
-                                        ""
-                                }
-
-                            </div>
-
-
-                            <div
-                                class="checkout-product-price"
-                            >
-                                ${formatPrice(
-                                    price *
-                                    quantity
-                                )}
-                            </div>
-
-                        </article>
-
-                    `;
-
-                }
+            return Array.isArray(
+                cart
+            )
+                ? cart
+                : [];
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "SATORII · Error leyendo carrito:",
+                error
             );
 
 
-            products.innerHTML =
-                html;
+            return [];
+
+        }
+
+    }
 
 
-            if (
-                missingProducts.length
+    /* =====================================================
+       PRECIO
+    ====================================================== */
+
+    function formatPrice(
+        value
+    ) {
+
+        return new Intl.NumberFormat(
+            "es-CL",
+            {
+                style: "currency",
+                currency: "CLP",
+                maximumFractionDigits: 0
+            }
+        ).format(
+            Number(value) || 0
+        );
+
+    }
+
+
+    /* =====================================================
+       ESCAPAR HTML
+    ====================================================== */
+
+    function escapeHTML(
+        value
+    ) {
+
+        return String(
+            value ?? ""
+        )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    /* =====================================================
+       OBTENER PRODUCTO
+    ====================================================== */
+
+    function getCurrentProduct(
+        productId
+    ) {
+
+        if (
+            typeof PRODUCTS ===
+            "undefined" ||
+            !Array.isArray(
+                PRODUCTS
+            )
+        ) {
+
+            return null;
+
+        }
+
+
+        return PRODUCTS.find(
+            function (
+                product
             ) {
 
-                products.insertAdjacentHTML(
-                    "afterbegin",
-                    `
-
-                        <p
-                            style="
-                                margin:0 0 15px;
-                                padding:10px;
-                                border:1px solid #ddd;
-                                border-radius:7px;
-                                color:#777;
-                                font-size:9px;
-                                line-height:1.5;
-                            "
-                        >
-                            Uno o más productos de tu carrito
-                            ya no están disponibles.
-                        </p>
-
-                    `
+                return String(
+                    product.id
+                ) === String(
+                    productId
                 );
 
             }
+        ) || null;
+
+    }
+
+
+    /* =====================================================
+       RENDER CHECKOUT
+    ====================================================== */
+
+    function renderCheckout() {
+
+        const cart =
+            getCart();
+
+
+        const productsElement =
+            document.getElementById(
+                "checkout-products"
+            );
+
+
+        const subtotalElement =
+            document.getElementById(
+                "checkout-subtotal"
+            );
+
+
+        const totalElement =
+            document.getElementById(
+                "checkout-total"
+            );
+
+
+        if (
+            !productsElement ||
+            !subtotalElement ||
+            !totalElement
+        ) {
+
+            console.warn(
+                "SATORII · No se encontraron los elementos del resumen."
+            );
+
+
+            return;
+
+        }
+
+
+        /* =================================================
+           CARRITO VACÍO
+        ================================================= */
+
+        if (
+            cart.length ===
+            0
+        ) {
+
+            productsElement.innerHTML = `
+
+                <p
+                    style="
+                        margin:0 0 20px;
+                        font-size:11px;
+                        line-height:1.5;
+                        color:#777;
+                    "
+                >
+                    Tu carrito está vacío.
+                </p>
+
+            `;
 
 
             subtotalElement.textContent =
-                formatPrice(
-                    subtotal
-                );
+                formatPrice(0);
 
 
             totalElement.textContent =
-                formatPrice(
-                    subtotal
-                );
+                formatPrice(0);
+
+
+            return;
 
         }
 
 
-        /* =====================================================
-           CUPÓN
-        ====================================================== */
+        /* =================================================
+           PRODUCTOS
+        ================================================= */
 
-        document
-            .getElementById(
-                "discount-button"
-            )
-            ?.addEventListener(
-                "click",
-                function () {
-
-                    const code =
-                        document
-                            .getElementById(
-                                "discount-code"
-                            )
-                            ?.value
-                            .trim();
+        let subtotal =
+            0;
 
 
-                    if (!code) {
-
-                        alert(
-                            "Ingresa un código de descuento."
-                        );
+        let html =
+            "";
 
 
-                        return;
+        const missingProducts =
+            [];
 
-                    }
+
+        cart.forEach(
+            function (
+                cartItem
+            ) {
+
+                const productId =
+                    cartItem.productId ??
+                    cartItem.id;
 
 
-                    alert(
-                        "Los códigos de descuento se habilitarán próximamente."
+                const currentProduct =
+                    getCurrentProduct(
+                        productId
+                    );
+
+
+                if (
+                    !currentProduct
+                ) {
+
+                    missingProducts.push(
+                        cartItem.name ||
+                        String(
+                            productId ||
+                            "Producto"
+                        )
+                    );
+
+
+                    return;
+
+                }
+
+
+                const quantity =
+                    Math.max(
+                        1,
+                        Math.floor(
+                            Number(
+                                cartItem.quantity ||
+                                1
+                            ) || 1
+                        )
+                    );
+
+
+                const price =
+                    Number(
+                        currentProduct.price
+                    ) || 0;
+
+
+                const lineTotal =
+                    price *
+                    quantity;
+
+
+                subtotal +=
+                    lineTotal;
+
+
+                const options =
+                    [];
+
+
+                if (
+                    cartItem.size
+                ) {
+
+                    options.push(
+                        "Talla " +
+                        cartItem.size
                     );
 
                 }
+
+
+                if (
+                    cartItem.color
+                ) {
+
+                    options.push(
+                        cartItem.color
+                    );
+
+                }
+
+
+                const productName =
+                    currentProduct.name ||
+                    cartItem.name ||
+                    "Producto SATORII";
+
+
+                const productImage =
+                    currentProduct.image ||
+                    currentProduct.images?.[0] ||
+                    cartItem.image ||
+                    "";
+
+
+                html += `
+
+                    <article
+                        class="
+                            checkout-product
+                            satori-card-animate
+                        "
+                    >
+
+                        <div
+                            class="checkout-product-image"
+                        >
+
+                            ${
+                                productImage
+                                    ?
+                                    `
+                                        <img
+                                            src="${escapeHTML(productImage)}"
+                                            alt="${escapeHTML(productName)}"
+                                        >
+                                    `
+                                    :
+                                    ""
+                            }
+
+
+                            <span
+                                class="checkout-product-quantity"
+                            >
+                                ${quantity}
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3
+                                class="checkout-product-name"
+                            >
+                                ${escapeHTML(productName)}
+                            </h3>
+
+
+                            ${
+                                options.length
+                                    ?
+                                    `
+                                        <div
+                                            class="checkout-product-options"
+                                        >
+                                            ${escapeHTML(
+                                                options.join(
+                                                    " · "
+                                                )
+                                            )}
+                                        </div>
+                                    `
+                                    :
+                                    ""
+                            }
+
+                        </div>
+
+
+                        <div
+                            class="checkout-product-price"
+                        >
+                            ${formatPrice(
+                                lineTotal
+                            )}
+                        </div>
+
+                    </article>
+
+                `;
+
+            }
+        );
+
+
+        /* =================================================
+           PRODUCTOS NO ENCONTRADOS
+        ================================================= */
+
+        if (
+            missingProducts.length
+        ) {
+
+            html = `
+
+                <p
+                    style="
+                        margin:0 0 15px;
+                        padding:10px;
+                        border:1px solid #ddd;
+                        border-radius:7px;
+                        color:#777;
+                        font-size:9px;
+                        line-height:1.5;
+                    "
+                >
+                    Uno o más productos de tu carrito
+                    ya no están disponibles.
+                </p>
+
+            ` + html;
+
+        }
+
+
+        productsElement.innerHTML =
+            html;
+
+
+        subtotalElement.textContent =
+            formatPrice(
+                subtotal
             );
 
 
-        /* =====================================================
-           FLOW · CLOUDFLARE WORKER
-        ====================================================== */
+        totalElement.textContent =
+            formatPrice(
+                subtotal
+            );
 
-        document
-            .getElementById(
-                "checkout-pay"
-            )
-            ?.addEventListener(
-                "click",
-                async function () {
-
-                    const button =
-                        this;
+    }
 
 
-                    /* =========================================
-                       DATOS
-                    ========================================= */
+    /* =====================================================
+       CUPÓN
+    ====================================================== */
 
-                    const email =
-                        document
-                            .getElementById(
-                                "checkout-email"
-                            )
-                            ?.value
-                            .trim();
+    document
+        .getElementById(
+            "discount-button"
+        )
+        ?.addEventListener(
+            "click",
+            function () {
 
-
-                    const name =
-                        document
-                            .getElementById(
-                                "checkout-name"
-                            )
-                            ?.value
-                            .trim();
-
-
-                    const lastname =
-                        document
-                            .getElementById(
-                                "checkout-lastname"
-                            )
-                            ?.value
-                            .trim();
+                const code =
+                    document
+                        .getElementById(
+                            "discount-code"
+                        )
+                        ?.value
+                        .trim();
 
 
-                    const rut =
-                        document
-                            .getElementById(
-                                "checkout-rut"
-                            )
-                            ?.value
-                            .trim();
+                if (!code) {
+
+                    alert(
+                        "Ingresa un código de descuento."
+                    );
 
 
-                    const address =
-                        document
-                            .getElementById(
-                                "checkout-address"
-                            )
-                            ?.value
-                            .trim();
+                    return;
+
+                }
 
 
-                    const extra =
-                        document
-                            .getElementById(
-                                "checkout-extra"
-                            )
-                            ?.value
-                            .trim();
+                alert(
+                    "Los códigos de descuento se habilitarán próximamente."
+                );
+
+            }
+        );
 
 
-                    const postal =
-                        document
-                            .getElementById(
-                                "checkout-postal"
-                            )
-                            ?.value
-                            .trim();
+    /* =====================================================
+       CREAR PEDIDO · CLOUDFLARE
+    ====================================================== */
+
+    document
+        .getElementById(
+            "checkout-pay"
+        )
+        ?.addEventListener(
+            "click",
+            async function () {
+
+                const button =
+                    this;
 
 
-                    const city =
-                        document
-                            .getElementById(
-                                "checkout-city"
-                            )
-                            ?.value
-                            .trim();
+                /* =============================================
+                   CAMPOS
+                ============================================= */
+
+                const email =
+                    document
+                        .getElementById(
+                            "checkout-email"
+                        )
+                        ?.value
+                        .trim() || "";
 
 
-                    const region =
-                        document
-                            .getElementById(
-                                "checkout-region"
-                            )
-                            ?.value
-                            .trim();
+                const name =
+                    document
+                        .getElementById(
+                            "checkout-name"
+                        )
+                        ?.value
+                        .trim() || "";
 
 
-                    const phone =
-                        document
-                            .getElementById(
-                                "checkout-phone"
-                            )
-                            ?.value
-                            .trim();
+                const lastname =
+                    document
+                        .getElementById(
+                            "checkout-lastname"
+                        )
+                        ?.value
+                        .trim() || "";
 
 
-                    /* =========================================
-                       VALIDACIÓN
-                    ========================================= */
+                const rut =
+                    document
+                        .getElementById(
+                            "checkout-rut"
+                        )
+                        ?.value
+                        .trim() || "";
 
-                    if (
-                        !email ||
-                        !name ||
-                        !lastname ||
-                        !rut ||
-                        !address ||
-                        !city ||
-                        !region ||
-                        !phone
-                    ) {
 
-                        alert(
-                            "Completa todos los campos obligatorios antes de continuar."
+                const country =
+                    document
+                        .getElementById(
+                            "checkout-country"
+                        )
+                        ?.value
+                        .trim() ||
+                    "Chile";
+
+
+                const address =
+                    document
+                        .getElementById(
+                            "checkout-address"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                const extra =
+                    document
+                        .getElementById(
+                            "checkout-extra"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                const postal =
+                    document
+                        .getElementById(
+                            "checkout-postal"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                const city =
+                    document
+                        .getElementById(
+                            "checkout-city"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                const region =
+                    document
+                        .getElementById(
+                            "checkout-region"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                const phone =
+                    document
+                        .getElementById(
+                            "checkout-phone"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                /* =============================================
+                   VALIDACIÓN
+                ============================================= */
+
+                if (
+                    !email ||
+                    !name ||
+                    !lastname ||
+                    !rut ||
+                    !address ||
+                    !city ||
+                    !region ||
+                    !phone
+                ) {
+
+                    alert(
+                        "Completa todos los campos obligatorios antes de continuar."
+                    );
+
+
+                    return;
+
+                }
+
+
+                const emailIsValid =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                        .test(
+                            email
                         );
 
 
-                        return;
+                if (
+                    !emailIsValid
+                ) {
 
-                    }
-
-
-                    const emailIsValid =
-                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                            .test(
-                                email
-                            );
+                    alert(
+                        "Ingresa un correo electrónico válido."
+                    );
 
 
-                    if (
-                        !emailIsValid
-                    ) {
+                    return;
 
-                        alert(
-                            "Ingresa un correo electrónico válido."
-                        );
+                }
 
 
-                        return;
+                /* =============================================
+                   CARRITO
+                ============================================= */
 
-                    }
-
-
-                    const cart =
-                        getCart();
-
-
-                    if (
-                        !cart.length
-                    ) {
-
-                        alert(
-                            "Tu carrito está vacío."
-                        );
+                const cart =
+                    getCart();
 
 
-                        return;
+                if (
+                    !cart.length
+                ) {
 
-                    }
+                    alert(
+                        "Tu carrito está vacío."
+                    );
 
 
-                    /* =========================================
-                       ITEMS
-                    ========================================= */
+                    return;
 
-                    const items =
-                        cart
-                            .map(
-                                function (
-                                    item
+                }
+
+
+                /* =============================================
+                   ITEMS
+                ============================================= */
+
+                const items =
+                    cart
+                        .map(
+                            function (
+                                item
+                            ) {
+
+                                const productId =
+                                    item.productId ??
+                                    item.id;
+
+
+                                if (
+                                    productId ===
+                                        undefined ||
+                                    productId ===
+                                        null
                                 ) {
 
-                                    const productId =
-                                        item.productId ??
-                                        item.id;
+                                    return null;
+
+                                }
 
 
-                                    if (
-                                        productId ===
-                                        undefined ||
-                                        productId ===
-                                        null
-                                    ) {
+                                return {
 
-                                        return null;
+                                    product_id:
+                                        String(
+                                            productId
+                                        ),
 
-                                    }
-
-
-                                    return {
-
-                                        product_id:
-                                            String(
-                                                productId
-                                            ),
-
-                                        quantity:
-                                            Math.max(
-                                                1,
+                                    quantity:
+                                        Math.max(
+                                            1,
+                                            Math.floor(
                                                 Number(
                                                     item.quantity ||
                                                     1
-                                                )
-                                            ),
+                                                ) || 1
+                                            )
+                                        ),
 
-                                        size:
-                                            item.size ??
-                                            null,
+                                    size:
+                                        item.size ??
+                                        null,
 
-                                        color:
-                                            item.color ??
-                                            null
+                                    color:
+                                        item.color ??
+                                        null
 
-                                    };
+                                };
 
-                                }
-                            )
-                            .filter(
-                                Boolean
-                            );
+                            }
+                        )
+                        .filter(
+                            Boolean
+                        );
 
 
-                    if (
-                        !items.length
+                if (
+                    !items.length
+                ) {
+
+                    alert(
+                        "No se pudieron validar los productos de tu carrito."
+                    );
+
+
+                    return;
+
+                }
+
+
+                /* =============================================
+                   PAYLOAD
+
+                   IMPORTANTE:
+                   NO enviamos precios.
+                   Cloudflare calcula el precio real.
+                ============================================= */
+
+                const payload = {
+
+                    customer: {
+
+                        email:
+                            email,
+
+                        name:
+                            name,
+
+                        lastname:
+                            lastname,
+
+                        rut:
+                            rut,
+
+                        phone:
+                            phone,
+
+                        country:
+                            country,
+
+                        address:
+                            address,
+
+                        extra:
+                            extra ||
+                            null,
+
+                        postal_code:
+                            postal ||
+                            null,
+
+                        city:
+                            city,
+
+                        region:
+                            region
+
+                    },
+
+
+                    items:
+                        items
+
+                };
+
+
+                /* =============================================
+                   BOTÓN
+                ============================================= */
+
+                const originalText =
+                    button.textContent;
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "CREANDO PEDIDO...";
+
+
+                /* =============================================
+                   BACKEND
+                ============================================= */
+
+                try {
+
+                    const response =
+                        await fetch(
+                            CHECKOUT_API_URL,
+                            {
+
+                                method:
+                                    "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        payload
+                                    )
+
+                            }
+                        );
+
+
+                    let data =
+                        null;
+
+
+                    try {
+
+                        data =
+                            await response
+                                .json();
+
+                    }
+
+                    catch (
+                        parseError
                     ) {
 
+                        console.error(
+                            "SATORII · El servidor respondió con un formato inválido:",
+                            parseError
+                        );
+
+                    }
+
+
+                    /* =========================================
+                       ERROR BACKEND
+                    ========================================= */
+
+                    if (
+                        !response.ok ||
+                        !data?.success
+                    ) {
+
+                        console.error(
+                            "SATORII · Error creando pedido:",
+                            data
+                        );
+
+
                         alert(
-                            "No se pudieron validar los productos de tu carrito."
+                            data?.error ||
+                            data?.message ||
+                            "No se pudo crear el pedido. Inténtalo nuevamente."
                         );
 
 
@@ -3278,224 +3489,71 @@ const CHECKOUT_API_URL =
                     }
 
 
-                    /*
-                     * IMPORTANTE:
-                     * No enviamos precios desde el navegador.
-                     * El Worker calculará el total usando
-                     * el catálogo real de SATORII.
-                     */
-const payload = {
-
-    customer: {
-
-        email:
-            email,
-
-        name:
-            name,
-
-        lastname:
-            lastname,
-
-        rut:
-            rut,
-
-        phone:
-            phone,
-
-        country:
-            "Chile",
-
-        address:
-            address,
-
-        extra:
-            extra ||
-            null,
-
-        postal_code:
-            postal ||
-            null,
-
-        city:
-            city,
-
-        region:
-            region
-
-    },
-
-
-    items:
-        items
-
-};
-
                     /* =========================================
-                       BOTÓN
+                       PEDIDO CREADO
                     ========================================= */
 
-                    const originalText =
-                        button.textContent;
+                    const order =
+                        data.order;
 
 
-                    button.disabled =
-                        true;
+                    if (
+                        !order
+                    ) {
 
-
-                    button.textContent =
-                        "CREANDO PEDIDO...";
-
-
-                    /* =========================================
-                       BACKEND
-                    ========================================= */
-
-                    try {
-
-                        const response =
-                            await fetch(
-                                CHECKOUT_API_URL,
-                                {
-
-                                    method:
-                                        "POST",
-
-                                    headers: {
-
-                                        "Content-Type":
-                                            "application/json"
-
-                                    },
-
-                                    body:
-                                        JSON.stringify(
-                                            payload
-                                        )
-
-                                }
-                            );
-
-
-                        let data =
-                            null;
-
-
-                        try {
-
-                            data =
-                                await response
-                                    .json();
-
-                        }
-
-                        catch (
-                            parseError
-                        ) {
-
-                            console.error(
-                                "SATORII · Respuesta inválida del servidor:",
-                                parseError
-                            );
-
-                        }
-
-
-                        if (
-                            !response.ok ||
-                            !data?.success
-                        ) {
-
-                            console.error(
-                                "SATORII · Error creando la orden:",
-                                data
-                            );
-
-
-                            alert(
-    data?.error ||
-    data?.message ||
-    "No se pudo crear el pedido. Inténtalo nuevamente."
-);
-
-
-                            return;
-
-                        }
-
-
-const order =
-    data.order;
-
-
-console.log(
-    "SATORII · Pedido creado:",
-    order
-);
-
-
-alert(
-    "PEDIDO DE PRUEBA CREADO ✅\n\n" +
-    "Pedido: " +
-    order.orderNumber +
-    "\n\n" +
-    "Total: " +
-    formatPrice(
-        order.total
-    ) +
-    "\n\n" +
-    "Estado de pago: " +
-    order.paymentStatus
-);
-
-}
-
-catch (
-    error
-) {
-
-    console.error(
-        "SATORII · Error conectando con el servidor:",
-        error
-    );
-
-
-    alert(
-        "No fue posible conectar con el sistema de pago. Inténtalo nuevamente."
-    );
-
-}
-
-                    finally {
-
-                        button.disabled =
-                            false;
-
-
-                        button.textContent =
-                            originalText;
+                        throw new Error(
+                            "El servidor no entregó los datos del pedido."
+                        );
 
                     }
 
-        /* =====================================================
-           ACTUALIZACIONES
-        ====================================================== */
 
-        renderCheckout();
+                    console.log(
+                        "SATORII · Pedido creado:",
+                        order
+                    );
 
 
-        window.addEventListener(
-            "storage",
-            function (
-                event
-            ) {
+                    alert(
+                        "PEDIDO DE PRUEBA CREADO ✅\n\n" +
+                        "Pedido: " +
+                        order.orderNumber +
+                        "\n\n" +
+                        "Total: " +
+                        formatPrice(
+                            order.total
+                        ) +
+                        "\n\n" +
+                        "Estado de pago: " +
+                        order.paymentStatus
+                    );
 
-                if (
-                    event.key ===
-                    CART_KEY
+                }
+
+                catch (
+                    error
                 ) {
 
-                    renderCheckout();
+                    console.error(
+                        "SATORII · Error conectando con Cloudflare:",
+                        error
+                    );
+
+
+                    alert(
+                        "No fue posible conectar con el sistema de pedidos. Inténtalo nuevamente."
+                    );
+
+                }
+
+                finally {
+
+                    button.disabled =
+                        false;
+
+
+                    button.textContent =
+                        originalText;
 
                 }
 
@@ -3503,18 +3561,50 @@ catch (
         );
 
 
-        window.addEventListener(
-            "satorii:products-updated",
-            function () {
+    /* =====================================================
+       INICIO
+    ====================================================== */
+
+    renderCheckout();
+
+
+    /* =====================================================
+       ACTUALIZAR ENTRE PESTAÑAS
+    ====================================================== */
+
+    window.addEventListener(
+        "storage",
+        function (
+            event
+        ) {
+
+            if (
+                event.key ===
+                CART_KEY
+            ) {
 
                 renderCheckout();
 
             }
-        );
 
-    </script>
+        }
+    );
 
 
+    /* =====================================================
+       PRODUCTOS ACTUALIZADOS
+    ====================================================== */
+
+    window.addEventListener(
+        "satorii:products-updated",
+        function () {
+
+            renderCheckout();
+
+        }
+    );
+
+</script>
     <!-- =====================================================
          MODALES FOOTER
     ====================================================== -->
@@ -4017,24 +4107,3 @@ catch (
 </body>
 
 </html>
-'''
-
-out = Path("/mnt/data/checkout.html")
-out.write_text(html, encoding="utf-8")
-
-# Validaciones básicas
-lower = html.lower()
-
-assert "supabase" not in lower
-assert html.count('const CART_KEY =') == 1
-assert html.count('const CHECKOUT_API_URL =') == 1
-assert 'fetch(' in html
-assert 'https://api.satorii.cl/api/checkout' in html
-assert '<script\n        src="/satorimode/js/products.js"' in html
-
-print("✅ checkout.html creado")
-print("✅ Referencias a Supabase:", lower.count("supabase"))
-print("✅ CART_KEY:", html.count("const CART_KEY ="))
-print("✅ CHECKOUT_API_URL:", html.count("const CHECKOUT_API_URL ="))
-print("✅ Tamaño:", out.stat().st_size, "bytes")
-print("✅ Ruta:", out)
