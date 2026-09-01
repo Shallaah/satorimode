@@ -3448,11 +3448,6 @@ alert(
     order.paymentStatus
 );
 
-
-/* =========================================
-   CERRAR TRY
-========================================= */
-
 }
 
 catch (
@@ -3471,18 +3466,6 @@ catch (
 
 }
 
-                        console.error(
-                            "SATORII · Error conectando con el servidor:",
-                            error
-                        );
-
-
-                        alert(
-                            "No fue posible conectar con el sistema de pago. Inténtalo nuevamente."
-                        );
-
-                    }
-
                     finally {
 
                         button.disabled =
@@ -3493,10 +3476,6 @@ catch (
                             originalText;
 
                     }
-
-                }
-            );
-
 
         /* =====================================================
            ACTUALIZACIONES
