@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Estado de tu pago en SATORII."
+    >
+
+    <title>Estado del pago | SATORII</title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                #ffffff;
+
+            color:
+                #111111;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+        }
+
+
+        .payment-page {
+
+            width: 100%;
+
+            max-width: 650px;
+
+            text-align: center;
+
+        }
+
+
+        .payment-kanji {
+
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+            color:
+                #ef0930;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .payment-title {
+
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    42px,
+                    8vw,
+                    76px
+                );
+
+            line-height: .9;
+
+            font-weight: 900;
+
+            letter-spacing: -2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .payment-loader {
+
+            width: 54px;
+            height: 54px;
+
+            border: 4px solid #eeeeee;
+
+            border-top-color:
+                #ef0930;
+
+            border-radius: 50%;
+
+            margin:
+                0 auto
+                28px;
+
+            animation:
+                spin .8s
+                linear
+                infinite;
+
+        }
+
+
+        @keyframes spin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+
+        .payment-text {
+
+            max-width: 480px;
+
+            margin:
+                0 auto
+                30px;
+
+            font-size: 15px;
+
+            line-height: 1.65;
+
+            color: #666666;
+
+        }
+
+
+        .payment-order {
+
+            display: none;
+
+            padding: 18px 20px;
+
+            margin:
+                0 auto
+                30px;
+
+            border-top:
+                1px solid #dddddd;
+
+            border-bottom:
+                1px solid #dddddd;
+
+        }
+
+
+        .payment-order-label {
+
+            display: block;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: #888888;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .payment-order-number {
+
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 19px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .payment-button {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-width: 230px;
+
+            height: 52px;
+
+            padding: 0 30px;
+
+            background:
+                #111111;
+
+            color:
+                #ffffff;
+
+            text-decoration: none;
+
+            font-family:
+                "Barlow Condensed",
+                sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            transition:
+                background .2s ease,
+                transform .2s ease;
+
+        }
+
+
+        .payment-button:hover {
+
+            background:
+                #ef0930;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .payment-help {
+
+            margin-top: 25px;
+
+            font-size: 12px;
+
+            color: #999999;
+
+            line-height: 1.5;
+
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            body {
+
+                padding:
+                    25px 20px;
+
+            }
+
+
+            .payment-title {
+
+                letter-spacing:
+                    -1px;
+
+            }
+
+
+            .payment-button {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="payment-page">
+
+
+        <div class="payment-kanji">
+
+            SATORII · 支払い
+
+        </div>
+
+
+        <h1 class="payment-title">
+
+            VERIFICANDO<br>
+            TU PAGO
+
+        </h1>
+
+
+        <div
+            class="payment-loader"
+            aria-hidden="true"
+        ></div>
+
+
+        <p class="payment-text">
+
+            Estamos verificando con Flow el estado de tu pago.
+            Tu pedido ya fue registrado en nuestro sistema.
+
+        </p>
+
+
+        <div
+            class="payment-order"
+            id="payment-order"
+        >
+
+            <span class="payment-order-label">
+
+                NÚMERO DE PEDIDO
+
+            </span>
+
+
+            <span
+                class="payment-order-number"
+                id="payment-order-number"
+            ></span>
+
+        </div>
+
+
+        <a
+            class="payment-button"
+            href="/satorimode/"
+        >
+
+            VOLVER A LA TIENDA
+
+        </a>
+
+
+        <p class="payment-help">
+
+            Si acabas de realizar el pago,
+            evita repetir la compra mientras
+            confirmamos la transacción.
+
+        </p>
+
+
+    </main>
+
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+
+            const order =
+                (
+                    params.get(
+                        "order"
+                    ) ||
+                    ""
+                )
+                    .trim()
+                    .slice(
+                        0,
+                        100
+                    );
+
+
+            if (!order) {
+
+                return;
+
+            }
+
+
+            const orderBox =
+                document.getElementById(
+                    "payment-order"
+                );
+
+
+            const orderNumber =
+                document.getElementById(
+                    "payment-order-number"
+                );
+
+
+            orderNumber.textContent =
+                order;
+
+
+            orderBox.style.display =
+                "block";
+
+        })();
+
+    </script>
+
+
+</body>
+
+</html>
