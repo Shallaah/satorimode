@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -140,13 +142,11 @@
             inset:0;
 
             background:
-
                 radial-gradient(
                     ellipse at 15% 70%,
                     rgba(0,0,0,.08) 0,
                     transparent 45%
                 ),
-
                 radial-gradient(
                     ellipse at 85% 30%,
                     rgba(0,0,0,.08) 0,
@@ -179,19 +179,14 @@
                 sans-serif;
 
             font-size:30px;
-
             font-weight:800;
-
             font-style:italic;
 
             letter-spacing:-.8px;
-
             line-height:.95;
 
             text-transform:uppercase;
-
             white-space:nowrap;
-
             text-decoration:none;
 
             transform:skewX(-3deg);
@@ -234,8 +229,7 @@
                     )
                 );
 
-            transform:
-                translateY(-50%);
+            transform:translateY(-50%);
 
             width:38px;
             height:38px;
@@ -266,9 +260,7 @@
             fill:none;
 
             stroke:currentColor;
-
             stroke-width:1.7;
-
             stroke-linecap:round;
             stroke-linejoin:round;
 
@@ -277,8 +269,7 @@
 
         .satori-checkout-cart:hover {
 
-            background:
-                rgba(255,255,255,.12);
+            background:rgba(255,255,255,.12);
 
             transform:
                 translateY(-50%)
@@ -344,23 +335,24 @@
 
         }
 
+
         /* =====================================================
-   COLUMNA DERECHA
-===================================================== */
+           COLUMNA DERECHA
+        ====================================================== */
 
-.satori-checkout-summary {
+        .satori-checkout-summary {
 
-    min-width:0;
+            min-width:0;
 
-    padding:
-        42px
-        0
-        50px
-        48px;
+            padding:
+                42px
+                0
+                50px
+                48px;
 
-    background:#ffffff;
+            background:#ffffff;
 
-}
+        }
 
 
         /* =====================================================
@@ -398,25 +390,9 @@
                 sans-serif;
 
             font-size:23px;
-
             line-height:1;
-
             font-weight:800;
-
             letter-spacing:.15px;
-
-        }
-
-
-        .checkout-login {
-
-            color:#333;
-
-            font-size:10px;
-
-            line-height:1.3;
-
-            text-decoration:underline;
 
         }
 
@@ -431,7 +407,6 @@
             color:#888;
 
             font-size:11px;
-
             line-height:1.5;
 
         }
@@ -543,7 +518,6 @@
             color:#333;
 
             font-size:11px;
-
             line-height:1.45;
 
         }
@@ -582,7 +556,6 @@
             text-align:center;
 
             font-size:11px;
-
             line-height:1.5;
 
         }
@@ -666,7 +639,6 @@
             color:#111;
 
             font-size:12px;
-
             font-weight:800;
 
         }
@@ -685,9 +657,7 @@
             color:#ffffff;
 
             font-size:8px;
-
             font-weight:900;
-
             letter-spacing:.7px;
 
         }
@@ -702,7 +672,6 @@
             color:#777;
 
             font-size:11px;
-
             line-height:1.55;
 
         }
@@ -748,7 +717,6 @@
             color:#333;
 
             font-size:11px;
-
             line-height:1.45;
 
             cursor:pointer;
@@ -795,13 +763,13 @@
                 sans-serif;
 
             font-size:11px;
-
             font-weight:800;
 
             cursor:pointer;
 
             transition:
-                background .2s ease;
+                background .2s ease,
+                opacity .2s ease;
 
         }
 
@@ -809,6 +777,22 @@
         .checkout-pay:hover {
 
             background:var(--red);
+
+        }
+
+
+        .checkout-pay:disabled {
+
+            cursor:not-allowed;
+
+            opacity:.65;
+
+        }
+
+
+        .checkout-pay:disabled:hover {
+
+            background:#243447;
 
         }
 
@@ -906,7 +890,6 @@
             color:#ffffff;
 
             font-size:9px;
-
             font-weight:800;
 
         }
@@ -924,9 +907,7 @@
                 sans-serif;
 
             font-size:12px;
-
             line-height:1.3;
-
             font-weight:700;
 
         }
@@ -939,7 +920,6 @@
             color:#888;
 
             font-size:10px;
-
             line-height:1.4;
 
         }
@@ -950,7 +930,6 @@
             color:#222;
 
             font-size:11px;
-
             font-weight:700;
 
             white-space:nowrap;
@@ -1028,7 +1007,6 @@
                 sans-serif;
 
             font-size:10px;
-
             font-weight:700;
 
             cursor:pointer;
@@ -1054,7 +1032,6 @@
             color:#444;
 
             font-size:11px;
-
             line-height:1.4;
 
         }
@@ -1065,7 +1042,6 @@
             color:#222;
 
             font-size:11px;
-
             font-weight:700;
 
         }
@@ -1090,7 +1066,6 @@
             color:#111;
 
             font-size:17px;
-
             font-weight:700;
 
         }
@@ -1101,7 +1076,6 @@
             color:#111;
 
             font-size:20px;
-
             font-weight:800;
 
         }
@@ -1114,7 +1088,6 @@
             color:#888;
 
             font-size:9px;
-
             line-height:1.4;
 
             text-align:right;
@@ -1150,7 +1123,6 @@
             color:#777;
 
             font-size:10px;
-
             line-height:1.5;
 
         }
@@ -1219,13 +1191,10 @@
                 sans-serif;
 
             font-size:9px;
-
             font-weight:500;
-
             line-height:1.4;
 
             text-decoration:underline;
-
             text-underline-offset:2px;
 
             cursor:pointer;
@@ -1262,24 +1231,13 @@
 
             padding:20px;
 
-            background:
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .58
-                );
+            background:rgba(0,0,0,.58);
 
-            backdrop-filter:
-                blur(3px);
-
-            -webkit-backdrop-filter:
-                blur(3px);
+            backdrop-filter:blur(3px);
+            -webkit-backdrop-filter:blur(3px);
 
             opacity:0;
-
             visibility:hidden;
-
             pointer-events:none;
 
             transition:
@@ -1292,9 +1250,7 @@
         .checkout-info-overlay.open {
 
             opacity:1;
-
             visibility:visible;
-
             pointer-events:auto;
 
         }
@@ -1419,9 +1375,7 @@
             fill:none;
 
             stroke:currentColor;
-
             stroke-width:1.8;
-
             stroke-linecap:round;
 
         }
@@ -1450,9 +1404,7 @@
                 sans-serif;
 
             font-size:26px;
-
             line-height:1;
-
             font-weight:800;
 
         }
@@ -1468,7 +1420,6 @@
                 sans-serif;
 
             font-size:12px;
-
             line-height:1.65;
 
         }
@@ -1507,7 +1458,6 @@
             font-weight:700;
 
             text-decoration:underline;
-
             text-underline-offset:2px;
 
         }
@@ -1540,7 +1490,6 @@
             color:#555;
 
             font-size:11px;
-
             line-height:1.55;
 
         }
@@ -1703,8 +1652,7 @@
 
                 justify-content:center;
 
-                gap:
-                    13px;
+                gap:13px;
 
             }
 
@@ -1797,29 +1745,30 @@
 
         }
 
-/* =====================================================
-   RESUMEN DE COMPRA · STICKY EN PC
-===================================================== */
 
-.checkout-summary-sticky {
+        /* =====================================================
+           RESUMEN DE COMPRA · STICKY EN PC
+        ====================================================== */
 
-    width:100%;
+        .checkout-summary-sticky {
 
-}
+            width:100%;
+
+        }
 
 
-@media (min-width:751px) {
+        @media (min-width:751px) {
 
-    .checkout-summary-sticky {
+            .checkout-summary-sticky {
 
-        position:sticky;
+                position:sticky;
 
-        top:28px;
+                top:28px;
 
-    }
+            }
 
-}
-        
+        }
+
     </style>
 
 </head>
@@ -1906,7 +1855,6 @@
                             Contacto
                         </h2>
 
-
                     </div>
 
 
@@ -1975,7 +1923,7 @@
                                 id="checkout-country"
                             >
 
-                                <option>
+                                <option value="Chile">
                                     Chile
                                 </option>
 
@@ -2298,158 +2246,163 @@
                  RESUMEN
             ================================================== -->
 
-   <aside
-    class="satori-checkout-summary satori-content-animate"
->
-
-    <div class="checkout-summary-sticky">
-
-
-        <div
-            id="checkout-products"
-            class="checkout-products"
-        ></div>
-
-
-        <!-- CUPÓN -->
-
-        <div
-            class="checkout-discount"
-        >
-
-            <input
-                type="text"
-                id="discount-code"
-                placeholder="Código de descuento o Gift Card"
+            <aside
+                class="satori-checkout-summary satori-content-animate"
             >
 
-            <button
-                type="button"
-                id="discount-button"
-            >
-                Aplicar
-            </button>
-
-        </div>
-
-
-        <!-- TOTALES -->
-
-        <div
-            class="checkout-totals"
-        >
-
-            <div
-                class="checkout-total-row"
-            >
-
-                <span>
-                    Subtotal
-                </span>
-
-                <strong
-                    id="checkout-subtotal"
+                <div
+                    class="checkout-summary-sticky"
                 >
-                    $0
-                </strong>
-
-            </div>
 
 
-            <div
-                class="checkout-total-row"
-            >
-
-                <span>
-                    Envío
-                </span>
-
-                <strong>
-                    Por calcular
-                </strong>
-
-            </div>
+                    <div
+                        id="checkout-products"
+                        class="checkout-products"
+                    ></div>
 
 
-            <div
-                class="checkout-total"
-            >
+                    <!-- CUPÓN -->
 
-                <span>
-                    Total
-                </span>
+                    <div
+                        class="checkout-discount"
+                    >
 
-                <strong
-                    id="checkout-total"
-                >
-                    $0
-                </strong>
+                        <input
+                            type="text"
+                            id="discount-code"
+                            placeholder="Código de descuento o Gift Card"
+                        >
 
-            </div>
+                        <button
+                            type="button"
+                            id="discount-button"
+                        >
+                            Aplicar
+                        </button>
 
-
-            <div
-                class="checkout-tax"
-            >
-                CLP · Incluye impuestos cuando corresponda.
-            </div>
-
-        </div>
+                    </div>
 
 
-        <!-- CONFIANZA -->
+                    <!-- TOTALES -->
 
-        <div
-            class="checkout-trust"
-        >
+                    <div
+                        class="checkout-totals"
+                    >
 
-            <div
-                class="checkout-trust-item"
-            >
-                ✓
+                        <div
+                            class="checkout-total-row"
+                        >
 
-                <span>
-                    <strong>
-                        Pago seguro
-                    </strong>
-                    procesado mediante Flow.
-                </span>
-            </div>
+                            <span>
+                                Subtotal
+                            </span>
 
+                            <strong
+                                id="checkout-subtotal"
+                            >
+                                $0
+                            </strong>
 
-            <div
-                class="checkout-trust-item"
-            >
-                ✓
-
-                <span>
-                    <strong>
-                        Envíos a todo Chile
-                    </strong>
-                    con opciones según tu dirección.
-                </span>
-            </div>
+                        </div>
 
 
-            <div
-                class="checkout-trust-item"
-            >
-                ✓
+                        <div
+                            class="checkout-total-row"
+                        >
 
-                <span>
-                    <strong>
-                        Compra protegida
-                    </strong>
-                    por SATORII.
-                </span>
-            </div>
+                            <span>
+                                Envío
+                            </span>
 
-        </div>
+                            <strong>
+                                Por calcular
+                            </strong>
+
+                        </div>
 
 
-    </div>
+                        <div
+                            class="checkout-total"
+                        >
 
-</aside>
+                            <span>
+                                Total
+                            </span>
+
+                            <strong
+                                id="checkout-total"
+                            >
+                                $0
+                            </strong>
+
+                        </div>
+
+
+                        <div
+                            class="checkout-tax"
+                        >
+                            CLP · Incluye impuestos cuando corresponda.
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIANZA -->
+
+                    <div
+                        class="checkout-trust"
+                    >
+
+                        <div
+                            class="checkout-trust-item"
+                        >
+                            ✓
+
+                            <span>
+                                <strong>
+                                    Pago seguro
+                                </strong>
+                                procesado mediante Flow.
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="checkout-trust-item"
+                        >
+                            ✓
+
+                            <span>
+                                <strong>
+                                    Envíos a todo Chile
+                                </strong>
+                                con opciones según tu dirección.
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="checkout-trust-item"
+                        >
+                            ✓
+
+                            <span>
+                                <strong>
+                                    Compra protegida
+                                </strong>
+                                por SATORII.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </aside>
 
         </div>
 
@@ -2576,19 +2529,6 @@
 
 
     <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-    ></script>
-
-    <script
-        src="/satorimode/js/supabase.js"
-    ></script>
-
-
-    <!-- =====================================================
          PRODUCTOS
     ====================================================== -->
 
@@ -2606,8 +2546,22 @@
         "use strict";
 
 
+        /* =====================================================
+           CONFIGURACIÓN
+        ====================================================== */
+
         const CART_KEY =
             "satorimode_cart";
+
+
+        /*
+         * Endpoint del backend privado de SATORII.
+         *
+         * La API Key y Secret Key de Flow NO deben estar
+         * nunca en este archivo ni en GitHub.
+         */
+        const CHECKOUT_API_URL =
+            "https://api.satorii.cl/api/checkout";
 
 
         /* =====================================================
@@ -2743,7 +2697,11 @@
                 );
 
 
-            if (!products) {
+            if (
+                !products ||
+                !subtotalElement ||
+                !totalElement
+            ) {
 
                 return;
 
@@ -3074,7 +3032,7 @@
 
 
         /* =====================================================
-           FLOW
+           FLOW · CLOUDFLARE WORKER
         ====================================================== */
 
         document
@@ -3084,6 +3042,14 @@
             ?.addEventListener(
                 "click",
                 async function () {
+
+                    const button =
+                        this;
+
+
+                    /* =========================================
+                       DATOS
+                    ========================================= */
 
                     const email =
                         document
@@ -3130,10 +3096,37 @@
                             .trim();
 
 
+                    const extra =
+                        document
+                            .getElementById(
+                                "checkout-extra"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const postal =
+                        document
+                            .getElementById(
+                                "checkout-postal"
+                            )
+                            ?.value
+                            .trim();
+
+
                     const city =
                         document
                             .getElementById(
                                 "checkout-city"
+                            )
+                            ?.value
+                            .trim();
+
+
+                    const region =
+                        document
+                            .getElementById(
+                                "checkout-region"
                             )
                             ?.value
                             .trim();
@@ -3148,6 +3141,10 @@
                             .trim();
 
 
+                    /* =========================================
+                       VALIDACIÓN
+                    ========================================= */
+
                     if (
                         !email ||
                         !name ||
@@ -3155,11 +3152,33 @@
                         !rut ||
                         !address ||
                         !city ||
+                        !region ||
                         !phone
                     ) {
 
                         alert(
                             "Completa todos los campos obligatorios antes de continuar."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    const emailIsValid =
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                            .test(
+                                email
+                            );
+
+
+                    if (
+                        !emailIsValid
+                    ) {
+
+                        alert(
+                            "Ingresa un correo electrónico válido."
                         );
 
 
@@ -3186,19 +3205,40 @@
                     }
 
 
-                    try {
+                    /* =========================================
+                       ITEMS
+                    ========================================= */
 
-                        const items =
-                            cart.map(
+                    const items =
+                        cart
+                            .map(
                                 function (
                                     item
                                 ) {
 
+                                    const productId =
+                                        item.productId ??
+                                        item.id;
+
+
+                                    if (
+                                        productId ===
+                                        undefined ||
+                                        productId ===
+                                        null
+                                    ) {
+
+                                        return null;
+
+                                    }
+
+
                                     return {
 
                                         product_id:
-                                            item.productId ??
-                                            item.id,
+                                            String(
+                                                productId
+                                            ),
 
                                         quantity:
                                             Math.max(
@@ -3207,60 +3247,182 @@
                                                     item.quantity ||
                                                     1
                                                 )
-                                            )
+                                            ),
+
+                                        size:
+                                            item.size ??
+                                            null,
+
+                                        color:
+                                            item.color ??
+                                            null
 
                                     };
+
+                                }
+                            )
+                            .filter(
+                                Boolean
+                            );
+
+
+                    if (
+                        !items.length
+                    ) {
+
+                        alert(
+                            "No se pudieron validar los productos de tu carrito."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * IMPORTANTE:
+                     * No enviamos precios desde el navegador.
+                     * El Worker calculará el total usando
+                     * el catálogo real de SATORII.
+                     */
+                    const payload = {
+
+                        customer: {
+
+                            email:
+                                email,
+
+                            name:
+                                name,
+
+                            lastname:
+                                lastname,
+
+                            rut:
+                                rut,
+
+                            phone:
+                                phone
+
+                        },
+
+
+                        shipping: {
+
+                            country:
+                                "Chile",
+
+                            address:
+                                address,
+
+                            extra:
+                                extra ||
+                                null,
+
+                            postal_code:
+                                postal ||
+                                null,
+
+                            city:
+                                city,
+
+                            region:
+                                region
+
+                        },
+
+
+                        items:
+                            items
+
+                    };
+
+
+                    /* =========================================
+                       BOTÓN
+                    ========================================= */
+
+                    const originalText =
+                        button.textContent;
+
+
+                    button.disabled =
+                        true;
+
+
+                    button.textContent =
+                        "CONECTANDO CON FLOW...";
+
+
+                    /* =========================================
+                       BACKEND
+                    ========================================= */
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                CHECKOUT_API_URL,
+                                {
+
+                                    method:
+                                        "POST",
+
+                                    headers: {
+
+                                        "Content-Type":
+                                            "application/json"
+
+                                    },
+
+                                    body:
+                                        JSON.stringify(
+                                            payload
+                                        )
 
                                 }
                             );
 
 
-                        const {
-                            data,
-                            error
-                        } =
-                            await supabase
-                                .functions
-                                .invoke(
-                                    "create-order",
-                                    {
-                                        body:{
-                                            items:items
-                                        }
-                                    }
-                                );
+                        let data =
+                            null;
 
 
-                        if (error) {
+                        try {
+
+                            data =
+                                await response
+                                    .json();
+
+                        }
+
+                        catch (
+                            parseError
+                        ) {
 
                             console.error(
-                                "Error creando la orden:",
-                                error
+                                "SATORII · Respuesta inválida del servidor:",
+                                parseError
                             );
-
-
-                            alert(
-                                "No se pudo crear la orden. Inténtalo nuevamente."
-                            );
-
-
-                            return;
 
                         }
 
 
-                        console.log(
-                            "SATORII · Respuesta create-order:",
-                            data
-                        );
-
-
                         if (
+                            !response.ok ||
                             !data?.success
                         ) {
 
+                            console.error(
+                                "SATORII · Error creando la orden:",
+                                data
+                            );
+
+
                             alert(
-                                "No se pudo validar la orden."
+                                data?.message ||
+                                "No se pudo iniciar el pago. Inténtalo nuevamente."
                             );
 
 
@@ -3269,17 +3431,24 @@
                         }
 
 
-                        /*
-                         * Cuando tu Edge Function entregue
-                         * una URL real de Flow:
-                         */
+                        const paymentUrl =
+                            data.paymentUrl ||
+                            data.url;
+
 
                         if (
-                            data.url
+                            !paymentUrl
                         ) {
 
-                            window.location.href =
-                                data.url;
+                            console.error(
+                                "SATORII · El servidor no entregó una URL de pago:",
+                                data
+                            );
+
+
+                            alert(
+                                "La orden fue creada, pero no se recibió la URL de Flow."
+                            );
 
 
                             return;
@@ -3287,23 +3456,35 @@
                         }
 
 
+                        window.location.href =
+                            paymentUrl;
+
+                    }
+
+                    catch (
+                        error
+                    ) {
+
+                        console.error(
+                            "SATORII · Error conectando con el servidor:",
+                            error
+                        );
+
+
                         alert(
-                            "Orden validada correctamente."
+                            "No fue posible conectar con el sistema de pago. Inténtalo nuevamente."
                         );
 
                     }
 
-                    catch (error) {
+                    finally {
 
-                        console.error(
-                            "SATORII · Error:",
-                            error
-                        );
+                        button.disabled =
+                            false;
 
 
-                        alert(
-                            "Ocurrió un error al procesar tu pedido."
-                        );
+                        button.textContent =
+                            originalText;
 
                     }
 
@@ -3851,3 +4032,24 @@
 </body>
 
 </html>
+'''
+
+out = Path("/mnt/data/checkout.html")
+out.write_text(html, encoding="utf-8")
+
+# Validaciones básicas
+lower = html.lower()
+
+assert "supabase" not in lower
+assert html.count('const CART_KEY =') == 1
+assert html.count('const CHECKOUT_API_URL =') == 1
+assert 'fetch(' in html
+assert 'https://api.satorii.cl/api/checkout' in html
+assert '<script\n        src="/satorimode/js/products.js"' in html
+
+print("✅ checkout.html creado")
+print("✅ Referencias a Supabase:", lower.count("supabase"))
+print("✅ CART_KEY:", html.count("const CART_KEY ="))
+print("✅ CHECKOUT_API_URL:", html.count("const CHECKOUT_API_URL ="))
+print("✅ Tamaño:", out.stat().st_size, "bytes")
+print("✅ Ruta:", out)
