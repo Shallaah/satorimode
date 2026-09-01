@@ -3413,9 +3413,10 @@ const payload = {
 
 
                             alert(
-                                data?.message ||
-                                "No se pudo iniciar el pago. Inténtalo nuevamente."
-                            );
+    data?.error ||
+    data?.message ||
+    "No se pudo crear el pedido. Inténtalo nuevamente."
+);
 
 
                             return;
@@ -3446,9 +3447,29 @@ alert(
     "Estado de pago: " +
     order.paymentStatus
 );
-                    catch (
-                        error
-                    ) {
+
+
+/* =========================================
+   CERRAR TRY
+========================================= */
+
+}
+
+catch (
+    error
+) {
+
+    console.error(
+        "SATORII · Error conectando con el servidor:",
+        error
+    );
+
+
+    alert(
+        "No fue posible conectar con el sistema de pago. Inténtalo nuevamente."
+    );
+
+}
 
                         console.error(
                             "SATORII · Error conectando con el servidor:",
