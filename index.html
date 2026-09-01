@@ -3458,7 +3458,621 @@
             }
 
         }
+/* =====================================================
+   SATORII · EXPLORA TU UNIVERSO · AJUSTE DEFINITIVO
+   Anime + Yokai
+===================================================== */
 
+/* =====================================================
+   CONTENEDOR GENERAL
+===================================================== */
+
+.satori-universe {
+
+    padding:
+        72px 0 76px;
+
+}
+
+
+/* =====================================================
+   DISTRIBUCIÓN
+===================================================== */
+
+.satori-universe-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        245px
+        minmax(
+            0,
+            900px
+        );
+
+    gap:
+        44px;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+}
+
+
+/* =====================================================
+   GRID DE TARJETAS
+===================================================== */
+
+.satori-universe-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        16px;
+
+    width:
+        100%;
+
+    max-width:
+        900px;
+
+    justify-self:
+        center;
+
+}
+
+
+/* =====================================================
+   TARJETA
+===================================================== */
+
+.satori-universe-card {
+
+    position: relative;
+
+    display: block;
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    aspect-ratio:
+        4 / 5;
+
+    overflow:
+        hidden;
+
+    isolation:
+        isolate;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .28
+        );
+
+    background:
+        #171717;
+
+    color:
+        #fff;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+.satori-universe-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--satori-red);
+
+    box-shadow:
+        0 20px 50px
+        rgba(
+            0,
+            0,
+            0,
+            .30
+        );
+
+}
+
+
+/* =====================================================
+   IMAGEN
+===================================================== */
+
+.satori-universe-card img {
+
+    position:
+        absolute;
+
+    z-index:
+        1;
+
+    inset:
+        0;
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    max-width:
+        none;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center 35%;
+
+    transform:
+        scale(1.01);
+
+    filter:
+        brightness(1.04)
+        contrast(1.025)
+        saturate(1.035);
+
+    transition:
+        transform .65s
+        cubic-bezier(
+            .22,
+            .61,
+            .36,
+            1
+        ),
+        filter .4s ease;
+
+}
+
+
+/* ANIME */
+
+.satori-universe-card:nth-child(1) img {
+
+    object-position:
+        center 34%;
+
+}
+
+
+/* YOKAI */
+
+.satori-universe-card:nth-child(2) img {
+
+    object-position:
+        center 36%;
+
+}
+
+
+.satori-universe-card:hover img {
+
+    transform:
+        scale(1.045);
+
+    filter:
+        brightness(1.07)
+        contrast(1.03)
+        saturate(1.05);
+
+}
+
+
+/* =====================================================
+   DEGRADADO
+   Más limpio para dejar ver la ilustración
+===================================================== */
+
+.satori-universe-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    z-index:
+        2;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            180deg,
+
+            rgba(
+                0,
+                0,
+                0,
+                0
+            )
+            0%,
+
+            rgba(
+                0,
+                0,
+                0,
+                0
+            )
+            46%,
+
+            rgba(
+                0,
+                0,
+                0,
+                .12
+            )
+            61%,
+
+            rgba(
+                0,
+                0,
+                0,
+                .48
+            )
+            78%,
+
+            rgba(
+                0,
+                0,
+                0,
+                .90
+            )
+            100%
+        );
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =====================================================
+   TEXTO
+===================================================== */
+
+.satori-universe-card-content {
+
+    position:
+        absolute;
+
+    z-index:
+        4;
+
+    left:
+        22px;
+
+    right:
+        22px;
+
+    bottom:
+        20px;
+
+}
+
+
+.satori-universe-card h3 {
+
+    margin:
+        0;
+
+    color:
+        #fff;
+
+    font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+    font-size:
+        36px;
+
+    line-height:
+        .84;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .35px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.satori-universe-card small {
+
+    display:
+        block;
+
+    margin-top:
+        7px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .78
+        );
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.4;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        .35px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =====================================================
+   FLECHA
+===================================================== */
+
+.satori-universe-arrow {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    margin-top:
+        14px;
+
+    border:
+        1px solid
+        var(--satori-red);
+
+    border-radius:
+        50%;
+
+    color:
+        #fff;
+
+    font-size:
+        13px;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.satori-universe-card:hover
+.satori-universe-arrow {
+
+    background:
+        var(--satori-red);
+
+    transform:
+        translateX(
+            3px
+        );
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (
+    max-width: 1100px
+) {
+
+    .satori-universe-layout {
+
+        grid-template-columns:
+            190px
+            minmax(
+                0,
+                1fr
+            );
+
+        gap:
+            26px;
+
+        justify-content:
+            stretch;
+
+    }
+
+
+    .satori-universe-grid {
+
+        width:
+            100%;
+
+        max-width:
+            760px;
+
+    }
+
+
+    .satori-universe-card {
+
+        aspect-ratio:
+            4 / 5;
+
+    }
+
+}
+
+
+/* =====================================================
+   MÓVIL
+===================================================== */
+
+@media (
+    max-width: 700px
+) {
+
+    .satori-universe {
+
+        padding:
+            52px 0 55px;
+
+    }
+
+
+    .satori-universe-layout {
+
+        display:
+            block;
+
+    }
+
+
+    .satori-universe-grid {
+
+        width:
+            100%;
+
+        max-width:
+            none;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        gap:
+            8px;
+
+    }
+
+
+    .satori-universe-card {
+
+        aspect-ratio:
+            .76 / 1;
+
+    }
+
+
+    .satori-universe-card img,
+    .satori-universe-card:nth-child(1) img,
+    .satori-universe-card:nth-child(2) img {
+
+        object-position:
+            center 34%;
+
+    }
+
+
+    .satori-universe-card-content {
+
+        left:
+            10px;
+
+        right:
+            10px;
+
+        bottom:
+            10px;
+
+    }
+
+
+    .satori-universe-card h3 {
+
+        font-size:
+            23px;
+
+    }
+
+
+    .satori-universe-card small {
+
+        margin-top:
+            4px;
+
+        font-size:
+            8px;
+
+    }
+
+
+    .satori-universe-arrow {
+
+        width:
+            24px;
+
+        height:
+            24px;
+
+        margin-top:
+            8px;
+
+        font-size:
+            10px;
+
+    }
+
+}
     </style>
 
 </head>
